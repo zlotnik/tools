@@ -1,0 +1,602 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>League Odds template</title>
+
+<!--<link href="css/euro_globe.css" rel="stylesheet" type="text/css" />
+<link href="css/euro_odds.css" rel="stylesheet" type="text/css" />
+<link href="css/euro_head.css" rel="stylesheet" type="text/css" />
+<link href="css/euro_left.css" rel="stylesheet" type="text/css" />
+<link href="css/euro_right.css" rel="stylesheet" type="text/css" />
+<link href="css/euro_footer.css" rel="stylesheet" type="text/css" />-->
+</head>
+<body onload="window.parent.hash_TmplLoaded['League_tmpl']=true">
+
+	<table id="tmplLeague" cellpadding="0">
+		<tbody id="L_{%BlockId}_{%KickoffDate}_{%LeagueId}" class="{@DisplayCls} {@Class}" onclick="LeagueRowClick(this);">
+			<tr>
+				<td colspan="{%ColSpan}"><div class="Header">{@MatchDate} - {%LeagueName}</div></td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- ContainerMain Begin -->
+		<!--1x2 Odds -->
+	  <table class="Oddstab" id="tmplHeader_5">
+			<tbody id="H_{%BlockId}_{%KickoffDate}_{%LeagueId}" class="{@DisplayCls}">
+				<tr>
+					<th class="first oddsLborder">Czas</th>
+					<th align="left">Zdarzenie</th>
+					<th>1</th>
+					<th>X</th>
+					<th>2</th>
+					<th class="time">więcej</th>
+					<th width="17"></th>
+					<th width="17"></th>
+					<th class="last oddsRborder" width="17"></th>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_5" class="Oddstab">
+      <tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+					<td class="time rborder oddsLborder"><div class="{@LiveIcon}">{%ShowTime}</div></td>
+				  <td class="rborder"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%HomeName}<em>vs</em>{%AwayName}</a></td>
+				  <td class="OddsBet"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','1','{%Odds_5_1}')">{%Odds_5_1}</a></td>
+				  <td class="OddsBet"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','X','{%Odds_5_X}')">{%Odds_5_X}</a></td>
+				  <td class="OddsBet rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','2','{%Odds_5_2}')">{%Odds_5_2}</a></td>
+				  <td class="BetMore"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+				  <td class="widicon">{@SportRadar}</td>
+				  <td class="widicon">{@Streaming}</td>
+				  <td class="widicon oddsRborder">{@StatsInfo}</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_5_L" class="Oddstab">
+	  <tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+					<td class="time rborder {%Changed_Score} oddsLborder">
+						<em class="Score">{%ScoreH} : {%ScoreA}</em><br>
+						<div nowrap="nowrap" style="color:#dc0100">
+							<div class="liveicon2">{%ShowTime}
+							<span style="color:#566C9E">{@InjuryTime}</span></div>
+						</div>
+					</td>
+				  <td class="rborder"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%HomeName}<em>vs</em>{%AwayName}</a></td>
+				  <td class="OddsBet"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','1','{%Odds_5_1}')">{%Odds_5_1}</a></td>
+				  <td class="OddsBet"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','X','{%Odds_5_X}')">{%Odds_5_X}</a></td>
+				  <td class="OddsBet rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','2','{%Odds_5_2}')">{%Odds_5_2}</a></td>
+				  <td class="BetMore" align="left"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+			      <td class="widicon">{@SportRadar}</td>
+				  <td class="widicon">{@Streaming}</td>
+				  <td class="widicon oddsRborder">{@StatsInfo}</td>
+				</tr>
+			</tbody>
+		</table>
+<!-- Handicap Odds-->
+	  <table id="tmplHeader_1" class="Oddstab">
+			<tbody id="H_{%BlockId}_{%KickoffDate}_{%LeagueId}" class="{@DisplayCls}">
+				<tr>
+					<th class="first oddsLborder">Czas</th>
+					<th align="left" width="240">Zdarzenie</th>
+					<th align="left" width="80">Handicap</th>
+					<th>KURS</th>
+					<th class="time">więcej</th>
+					<th width="17"></th>
+					<th width="17"></th>
+					<th class="last oddsRborder" width="17"></th>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_1" class="Oddstab">
+			<tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+					<td rowspan="2" class="time rborder oddsLborder"><div class="{@LiveIcon}">{%ShowTime}</div></td>
+				  <td class="rborder"><a class="{@Home_Cls}" href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%HomeName}</a></td>
+				  <td class="rborder">{@Value_1_H}</td>
+				  <td class="OddsBet rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','h','{%Odds_1_H}')">{%Odds_1_H}</a> </td>
+				  <td rowspan="2" class="BetMore" align="left"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+			      <td rowspan="2" class="widicon">&nbsp;{@SportRadar}</td>
+				  <td rowspan="2" class="widicon">&nbsp;{@Streaming}</td>
+				  <td rowspan="2" class="widicon oddsRborder">&nbsp;{@StatsInfo}</td>
+				</tr>
+				<tr>
+					<td class="padtop rborder"><a class="{@Away_Cls}" href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%AwayName}</a></td>
+				  <td class="padtop rborder">{@Value_1_A}</td>
+					<td class="OddsBet padtop rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','a','{%Odds_1_A}')">{%Odds_1_A}</a> </td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_1_L" class="Oddstab">
+		  <tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+					<td rowspan="2" class="time rborder {%Changed_Score} oddsLborder">
+						<em class="Score {@showScore}">{%ScoreH} : {%ScoreA}</em>
+						<div class="{@TimeSuspendCls1} {@showRound}"> <b>{@Round}</b></div><br>
+						<div nowrap="nowrap" style="color:#dc0100">
+							<div class="liveicon2">{%ShowTime}
+							<span style="color:#566C9E">{@InjuryTime}</span></div>
+						</div>
+					</td>
+				  <td class="rborder"><a class="{@Home_Cls}" href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%HomeName}</a></td>
+				  <td class="rborder">{@Value_1_H}</td>
+				  <td class="OddsBet rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','h','{%Odds_1_H}')">{%Odds_1_H}</a> </td>
+				  <td rowspan="2" class="BetMore" align="left"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+			      <td rowspan="2" class="widicon">&nbsp;{@SportRadar}</td>
+				  <td rowspan="2" class="widicon">&nbsp;{@Streaming}</td>
+				  <td rowspan="2" class="widicon oddsRborder">&nbsp;{@StatsInfo}</td>
+				</tr>
+				<tr>
+				  <td class="padtop rborder"><a class="{@Away_Cls}" href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%AwayName}</a></td>
+				  <td class="padtop rborder">{@Value_1_A}</td>
+				  <td class="OddsBet padtop rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','a','{%Odds_1_A}')">{%Odds_1_A}</a> </td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- Odd/Even Odds-->
+	  <table id="tmplHeader_2" class="Oddstab">
+			<tbody id="H_{%BlockId}_{%KickoffDate}_{%LeagueId}" class="{@DisplayCls}">
+				<tr>
+					<th class="first oddsLborder">Czas</th>
+					<th align="left" width="240">Zdarzenie</th>
+					<th align="left" width="80">Zaznaczony zakład</th>
+				  <th>KURS</th>
+					<th class="time">więcej</th>
+					<th width="17"></th>
+					<th width="17"></th>
+					<th class="last oddsRborder" width="17"></th>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_2" class="Oddstab">
+			<tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+				  <td rowspan="2" class="time rborder oddsLborder"><div class="{@LiveIcon}">{%ShowTime}</div></td>
+				  <td class="rborder">{%HomeName}</td>
+				  <td class="rborder">NIEPARZYSTY</td>
+				  <td class="OddsBet rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','h','{%Odds_2_O}')">{%Odds_2_O}</a> </td>
+				  <td rowspan="2" class="BetMore" align="left"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+		          <td rowspan="2" class="widicon">{@SportRadar}</td>
+				  <td rowspan="2" class="widicon">{@Streaming}</td>
+				  <td rowspan="2" class="widicon oddsRborder">{@StatsInfo}</td>
+				</tr>
+				<tr>
+				  <td class="padtop rborder">{%AwayName}</td>
+				  <td class="padtop rborder">PARZYSTY</td>
+				  <td class="OddsBet padtop rborder">
+						<a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','a','{%Odds_2_E}')">{%Odds_2_E}</a>
+				  </td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_2_L" class="Oddstab">
+		  <tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+					<td rowspan="2" class="time rborder {%Changed_Score} oddsLborder">
+						<em class="Score">{%ScoreH} : {%ScoreA}</em><br>
+						<div nowrap="nowrap" style="color:#dc0100">
+							<div class="liveicon2">{%ShowTime}
+							<span style="color:#566C9E">{@InjuryTime}</span></div>
+						</div>
+					</td>
+				  <td class="rborder">{%HomeName}</td>
+				  <td class="rborder">NIEPARZYSTY</td>
+				  <td class="OddsBet rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','h','{%Odds_2_O}')">{%Odds_2_O}</a> </td>
+				  <td rowspan="2" class="BetMore"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+				  <td rowspan="2" class="widicon">{@SportRadar}</td>
+				  <td rowspan="2" class="widicon">{@Streaming}</td>
+				  <td rowspan="2" class="widicon oddsRborder">{@StatsInfo}</td>
+				</tr>
+				<tr>
+					<td class="padtop rborder">{%AwayName}</td>
+				  <td class="padtop rborder">PARZYSTY</td>
+					<td class="OddsBet padtop rborder">
+						<a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','a','{%Odds_2_E}')">{%Odds_2_E}</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- Over/Under Odds-->
+	  <table id="tmplHeader_3" class="Oddstab">
+			<tbody id="H_{%BlockId}_{%KickoffDate}_{%LeagueId}" class="{@DisplayCls}">
+				<tr>
+					<th class="first oddsLborder">Czas</th>
+					<th align="left" width="240">Zdarzenie</th>
+					<th align="left" width="80">Zaznaczony zakład</th>
+				  <th>KURS</th>
+					<th class="time">więcej</th>
+					<th width="17"></th>
+					<th width="17"></th>
+					<th class="last oddsRborder" width="17"></th>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_3" class="Oddstab">
+			<tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+				  <td rowspan="2" class="time rborder oddsLborder"><div class="{@LiveIcon}">{%ShowTime}</div></td>
+				  <td class="{@Home_Cls}">{%HomeName}</td>
+				  <td class="rborder">Over ({%Goal_3})</td>
+				  <td class="OddsBet rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','h','{%Odds_3_O}')">{%Odds_3_O}</a> </td>
+				  <td rowspan="2" class="BetMore" align="left"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+			      <td rowspan="2" class="widicon">{@SportRadar}</td>
+				  <td rowspan="2" class="widicon">{@Streaming}</td>
+				  <td rowspan="2" class="widicon oddsRborder">{@StatsInfo}</td>
+				</tr>
+				<tr>
+			      <td class="padtop {@Away_Cls}">{%AwayName}</td>
+				  <td class="padtop rborder">Under ({%Goal_3})</td>
+				  <td class="OddsBet padtop rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','a','{%Odds_3_U}')">{%Odds_3_U}</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_3_L" class="Oddstab">
+		  <tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+					<td rowspan="2" class="time rborder {%Changed_Score} oddsLborder">
+						<em class="Score {@showScore}">{%ScoreH} : {%ScoreA}</em>
+						<div class="{@TimeSuspendCls1} {@showRound}"> <b>{@Round}</b></div><br>
+						<div nowrap="nowrap" style="color:#dc0100">
+							<div class="liveicon2">{%ShowTime}
+							<span style="color:#566C9E">{@InjuryTime}</span></div>
+						</div>
+					</td>
+				    <td class="{@Home_Cls}">{%HomeName}</td>
+				    <td class="rborder">Over ({%Goal_3})</td>
+				    <td class="OddsBet rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','h','{%Odds_3_O}')">{%Odds_3_O}</a> </td>
+					<td rowspan="2" class="BetMore" align="left"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+			        <td rowspan="2" class="widicon">{@SportRadar}</td>
+				    <td rowspan="2" class="widicon">{@Streaming}</td>
+					<td rowspan="2" class="widicon oddsRborder">{@StatsInfo}</td>
+				</tr>
+				<tr>
+					<td class="padtop {@Away_Cls}">{%AwayName}</td>
+				    <td class="padtop rborder">Under ({%Goal_3})</td>
+					<td class="OddsBet padtop rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','a','{%Odds_3_U}')">{%Odds_3_U}</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!--First-Half 1X2 Odds -->
+	  <table id="tmplHeader_15" class="Oddstab">
+			<tbody id="H_{%BlockId}_{%KickoffDate}_{%LeagueId}" class="{@DisplayCls}">
+				<tr>
+					<th class="first oddsLborder">Czas</th>
+					<th align="left">Zdarzenie</th>
+					<th>1</th>
+					<th>X</th>
+					<th>2</th>
+					<th class="time">więcej</th>
+					<th width="17"></th>
+					<th width="17"></th>
+					<th class="last oddsRborder" width="17"></th>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_15" class="Oddstab">
+			<tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+					<td class="time rborder oddsLborder"><div class="{@LiveIcon}">{%ShowTime}</div></td>
+				  <td class="rborder">{%HomeName}<em>vs</em>{%AwayName}</td>
+				  <td class="OddsBet"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','1','{%Odds_15_1}')">{%Odds_15_1}</a></td>
+				  <td class="OddsBet"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','X','{%Odds_15_X}')">{%Odds_15_X}</a></td>
+				  <td class="OddsBet rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','2','{%Odds_15_2}')">{%Odds_15_2}</a></td>
+				  <td class="BetMore"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+				  <td class="widicon">{@SportRadar}</td>
+				  <td class="widicon">{@Streaming}</td>
+				  <td class="widicon oddsRborder">{@StatsInfo}</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_15_L" class="Oddstab">
+		  <tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+					<td class="time rborder {%Changed_Score} oddsLborder">
+						<em class="Score">{%ScoreH} : {%ScoreA}</em><br>
+						<div nowrap="nowrap" style="color:#dc0100">
+							<div class="liveicon2">{%ShowTime}
+							<span style="color:#566C9E">{@InjuryTime}</span></div>
+						</div>
+					</td>
+				  <td class="rborder">{%HomeName}<em>vs</em>{%AwayName}</td>
+				  <td class="OddsBet"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','1','{%Odds_15_1}')">{%Odds_15_1}</a></td>
+				  <td class="OddsBet"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','X','{%Odds_15_X}')">{%Odds_15_X}</a></td>
+				  <td class="OddsBet rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','2','{%Odds_15_2}')">{%Odds_15_2}</a></td>
+				  <td class="BetMore"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+				  <td class="widicon">{@SportRadar}</td>
+				  <td class="widicon">{@Streaming}</td>
+				  <td class="widicon oddsRborder">{@StatsInfo}</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- First-Half Handicap Odds-->
+	  <table id="tmplHeader_7" class="Oddstab">
+			<tbody id="H_{%BlockId}_{%KickoffDate}_{%LeagueId}" class="{@DisplayCls}">
+				<tr>
+					<th class="first oddsLborder">Czas</th>
+					<th align="left" width="240">Zdarzenie</th>
+					<th align="left" width="80">Handicap</th>
+					<th>KURS</th>
+					<th class="time">więcej</th>
+					<th width="17"></th>
+					<th width="17"></th>
+					<th class="last oddsRborder" width="17"></th>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_7" class="Oddstab">
+			<tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+				  <td rowspan="2" class="time rborder oddsLborder"><div class="{@LiveIcon}">{%ShowTime}</div></td>
+				  <td class="rborder">{%HomeName}</td>
+				  <td class="rborder">{@Value_7_H}</td>
+				  <td class="OddsBet rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','h','{%Odds_7_H}')">{%Odds_7_H}</a> </td>
+				  <td rowspan="2" class="BetMore" align="left"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+			      <td rowspan="2" class="widicon">{@SportRadar}</td>
+				  <td rowspan="2" class="widicon">{@Streaming}</td>
+				  <td rowspan="2" class="widicon oddsRborder">{@StatsInfo}</td>
+				</tr>
+				<tr>
+				  <td class="padtop rborder">{%AwayName}</td>
+				  <td class="padtop rborder">{@Value_7_A}</td>
+				  <td class="OddsBet padtop rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','a','{%Odds_7_A}')">{%Odds_7_A}</a> </td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_7_L" class="Oddstab">
+		  <tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+					<td rowspan="2" class="time rborder {%Changed_Score} oddsLborder">
+						<em class="Score">{%ScoreH} : {%ScoreA}</em><br>
+						<div nowrap="nowrap" style="color:#dc0100">
+							<div class="liveicon2">{%ShowTime}
+							<span style="color:#566C9E">{@InjuryTime}</span></div>
+						</div>
+					</td>
+				    <td class="rborder">{%HomeName}</td>
+				    <td class="rborder">{@Value_7_H}</td>
+				    <td class="OddsBet rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','h','{%Odds_7_H}')">{%Odds_7_H}</a> </td>
+					<td rowspan="2" class="BetMore" align="left"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+			        <td rowspan="2" class="widicon">{@SportRadar}</td>
+				    <td rowspan="2" class="widicon">{@Streaming}</td>
+					<td rowspan="2" class="widicon oddsRborder">{@StatsInfo}</td>
+				</tr>
+				<tr>
+					<td class="padtop rborder">{%AwayName}</td>
+				    <td class="padtop rborder">{@Value_7_A}</td>
+					<td class="OddsBet padtop rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','a','{%Odds_7_A}')">{%Odds_7_A}</a> </td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- First-Half Over/Under Odds-->
+	  <table id="tmplHeader_8" class="Oddstab">
+			<tbody id="H_{%BlockId}_{%KickoffDate}_{%LeagueId}" class="{@DisplayCls}">
+				<tr>
+					<th class="first oddsLborder">Czas</th>
+					<th align="left" width="240">Zdarzenie</th>
+					<th align="left" width="80">Zaznaczony zakład</th>
+				  <th>NIEPARZYSTY</th>
+					<th class="time">więcej</th>
+					<th width="17"></th>
+					<th width="17"></th>
+					<th class="last oddsRborder" width="17"></th>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_8" class="Oddstab">
+			<tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+					<td rowspan="2" class="time rborder oddsLborder"><div class="{@LiveIcon}">{%ShowTime}</div></td>
+				    <td class="rborder">{%HomeName}</td>
+				    <td class="rborder">Over ({%Goal_8})</td>
+				    <td class="OddsBet rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','h','{%Odds_8_O}')">{%Odds_8_O}</a> </td>
+					<td rowspan="2" class="BetMore" align="left"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+			        <td rowspan="2" class="widicon">{@SportRadar}</td>
+				    <td rowspan="2" class="widicon">{@Streaming}</td>
+					<td rowspan="2" class="widicon oddsRborder">{@StatsInfo}</td>
+				</tr>
+				<tr>
+					<td class="padtop rborder">{%AwayName}</td>
+				  <td class="padtop rborder">Under ({%Goal_8})</td>
+					<td class="OddsBet padtop rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','a','{%Odds_8_U}')">{%Odds_8_U}</a> </td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_8_L" class="Oddstab">
+		  <tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+					<td rowspan="2" class="time rborder {%Changed_Score} oddsLborder">
+						<em class="Score">{%ScoreH} : {%ScoreA}</em><br>
+						<div nowrap="nowrap" style="color:#dc0100">
+							<div class="liveicon2">{%ShowTime}
+							<span style="color:#566C9E">{@InjuryTime}</span></div>
+						</div>
+					</td>
+				    <td class="rborder">{%HomeName}</td>
+				    <td class="rborder">Over ({%Goal_8})</td>
+				    <td class="OddsBet rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','h','{%Odds_8_O}')">{%Odds_8_O}</a> </td>
+					<td rowspan="2" class="BetMore" align="left"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+			        <td rowspan="2" class="widicon">{@SportRadar}</td>
+				    <td rowspan="2" class="widicon">{@Streaming}</td>
+					<td rowspan="2" class="widicon oddsRborder">{@StatsInfo}</td>
+				</tr>
+				<tr>
+					<td class="padtop rborder">{%AwayName}</td>
+				  <td class="padtop rborder">Under ({%Goal_8})</td>
+					<td class="OddsBet padtop rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','a','{%Odds_8_U}')">{%Odds_8_U}</a> </td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- First-Half Odd/Even Odds-->
+	  <table id="tmplHeader_12" class="Oddstab">
+			<tbody id="H_{%BlockId}_{%KickoffDate}_{%LeagueId}" class="{@DisplayCls}">
+				<tr>
+					<th class="first oddsLborder">Czas</th>
+					<th align="left" width="240">Zdarzenie</th>
+					<th align="left" width="80">Zaznaczony zakład</th>
+				  <th>KURS</th>
+					<th class="time">więcej</th>
+					<th width="17"></th>
+					<th width="17"></th>
+					<th class="last oddsRborder" width="17"></th>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_12" class="Oddstab">
+			<tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+					<td rowspan="2" class="time rborder oddsLborder"><div class="{@LiveIcon}">{%ShowTime}</div></td>
+				    <td class="rborder">{%HomeName}</td>
+				    <td class="rborder">NIEPARZYSTY</td>
+					<td class="OddsBet rborder">
+						<a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','h','{%Odds_12_O}')">{%Odds_12_O}</a>
+				    </td>
+					<td rowspan="2" class="BetMore" align="left"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+			        <td rowspan="2" class="widicon">{@SportRadar}</td>
+				    <td rowspan="2" class="widicon">{@Streaming}</td>
+					<td rowspan="2" class="widicon oddsRborder">{@StatsInfo}</td>
+				</tr>
+				<tr>
+					<td class="padtop rborder">{%AwayName}</td>
+				    <td class="padtop rborder">PARZYSTY</td>
+					<td class="OddsBet padtop rborder">
+						<a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','a','{%Odds_12_E}')">{%Odds_12_E}</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_12_L" class="Oddstab">
+		  <tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+					<td rowspan="2" class="time rborder {%Changed_Score} oddsLborder">
+						<em class="Score">{%ScoreH} : {%ScoreA}</em><br>
+						<div nowrap="nowrap" style="color:#dc0100">
+							<div class="liveicon2">{%ShowTime}
+							<span style="color:#566C9E">{@InjuryTime}</span></div>
+						</div>
+					</td>
+				    <td class="rborder">{%HomeName}</td>
+				    <td class="rborder">NIEPARZYSTY</td>
+					<td class="OddsBet rborder">
+						<a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','h','{%Odds_12_O}')">{%Odds_12_O}</a>
+				    </td>
+					<td rowspan="2" class="BetMore" align="left"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+			        <td rowspan="2" class="widicon">{@SportRadar}</td>
+				    <td rowspan="2" class="widicon">{@Streaming}</td>
+					<td rowspan="2" class="widicon oddsRborder">{@StatsInfo}</td>
+				</tr>
+				<tr>
+					<td class="padtop rborder">{%AwayName}</td>
+				  <td class="padtop rborder">PARZYSTY</td>
+					<td class="OddsBet padtop rborder">
+						<a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','a','{%Odds_12_E}')">{%Odds_12_E}</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- MoneyLine Odds-->
+	  <table id="tmplHeader_20" class="Oddstab">
+			<tbody id="H_{%BlockId}_{%KickoffDate}_{%LeagueId}" class="{@DisplayCls}">
+				<tr>
+					<th class="first oddsLborder">Czas</th>
+					<th align="left" width="350">Zdarzenie</th>
+					<th>KURS</th>
+					<th class="time">więcej</th>
+					<th width="17"></th>
+					<th width="17"></th>
+					<th class="last oddsRborder" width="17"></th>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_20" class="Oddstab">
+			<tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+				  <td rowspan="2" class="time rborder oddsLborder"><div class="{@LiveIcon}">{%ShowTime}</div></td>
+				  <td class="rborder">{%HomeName}</td>
+				  <td class="OddsBet rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','h','{%Odds_20_H}')">{%Odds_20_H}</a> </td>
+				  <td rowspan="2" class="BetMore" align="left"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+			      <td rowspan="2" class="widicon">&nbsp;{@SportRadar}</td>
+				  <td rowspan="2" class="widicon">&nbsp;{@Streaming}</td>
+				  <td rowspan="2" class="widicon oddsRborder">&nbsp;{@StatsInfo}</td>
+				</tr>
+				<tr>
+					<td class="padtop rborder">{%AwayName} {@Value_1_A}</td>
+					<td class="OddsBet padtop rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','a','{%Odds_20_A}')">{%Odds_20_A}</a> </td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_20_L" class="Oddstab">
+		  <tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+					<td rowspan="2" class="time rborder {%Changed_Score} oddsLborder">
+						<em class="Score">{%ScoreH} : {%ScoreA}</em><br>
+						<div nowrap="nowrap" style="color:#dc0100">
+							<div class="liveicon2">{%ShowTime}
+							<span style="color:#566C9E">{@InjuryTime}</span></div>
+						</div>
+					</td>
+				    <td class="rborder">{%HomeName}</td>
+				    <td class="OddsBet rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','h','{%Odds_20_H}')">{%Odds_20_H}</a> </td>
+					<td rowspan="2" class="BetMore" align="left"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+			        <td rowspan="2" class="widicon">&nbsp;{@SportRadar}</td>
+				    <td rowspan="2" class="widicon">&nbsp;{@Streaming}</td>
+					<td rowspan="2" class="widicon oddsRborder">&nbsp;{@StatsInfo}</td>
+				</tr>
+				<tr>
+					<td class="padtop rborder">{%AwayName} {@Value_1_A}</td>
+					<td class="OddsBet padtop rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','a','{%Odds_20_A}')">{%Odds_20_A}</a> </td>
+				</tr>
+			</tbody>
+		</table>		
+		<!-- First Money line -->
+		<table id="tmplHeader_21" class="Oddstab">
+			<tbody id="H_{%BlockId}_{%KickoffDate}_{%LeagueId}" class="{@DisplayCls}">
+				<tr>
+					<th class="first oddsLborder">Czas</th>
+					<th align="left" width="350">Zdarzenie</th>
+					<th>KURS</th>
+					<th class="time oddsRborder">więcej</th>					
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_21" class="Oddstab">
+			<tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+					<td rowspan="2" class="time rborder oddsLborder"><div class="{@LiveIcon}">{%ShowTime}</div></td>
+				  <td class="rborder">{%HomeName}</td>
+				  <td class="OddsBet rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','h','{%Odds_20_H}')">{%Odds_20_H}</a> </td>
+					<td rowspan="2" class="BetMore oddsRborder" align="left"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>			    
+				</tr>
+				<tr>
+					<td class="padtop rborder">{%AwayName} {@Value_1_A}</td>
+					<td class="OddsBet padtop rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','a','{%Odds_20_A}')">{%Odds_20_A}</a> </td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="tmplOdds_21_L" class="Oddstab">
+		  <tbody id="O_{%BlockId}_{%KickoffDate}_{%LeagueId}_{%OddsId}" class="{@DisplayCls} {@Tr_Cls}">
+				<tr>
+					<td rowspan="2" class="time rborder {%Changed_Score} oddsLborder">
+						<em class="Score">{%ScoreH} : {%ScoreA}</em><br>
+						<div nowrap="nowrap" style="color:#dc0100">
+							<div class="liveicon2">{%ShowTime}
+							<span style="color:#566C9E">{@InjuryTime}</span></div>
+						</div>
+					</td>
+				  <td class="rborder">{%HomeName}</td>
+				  <td class="OddsBet rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','h','{%Odds_20_H}')">{%Odds_20_H}</a> </td>
+					<td rowspan="2" class="BetMore oddsRborder" align="left"><a href="javascript:clickMore({%Sporttype},'{%MatchId}');">{%MoreCount}</a></td>
+				</tr>
+				<tr>
+					<td class="padtop rborder">{%AwayName} {@Value_1_A}</td>
+					<td class="OddsBet padtop rborder"><a href="javascript:bet({@isParlay},'{%MatchId}','{%OddsId}','a','{%Odds_20_A}')">{%Odds_20_A}</a> </td>
+				</tr>
+			</tbody>
+		</table>
+		<!--Odds End-->
+
+	<!-- ContainerMain End -->
+
+<span id="tmplEnd"></span>
+
+
+</body></html>

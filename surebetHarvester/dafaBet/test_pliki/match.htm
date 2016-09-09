@@ -1,0 +1,438 @@
+
+var bookmaker_urls = null;
+
+function matchdetails_init(eventid, bettype_default)
+{
+	timezone_key = getCookie('my_timezone');
+	timezone_key_int = parseInt(timezone_key, 10);
+	if (timezone_key == null || timezone_key_int < -11 || timezone_key_int > 12)
+	{
+		timezone_key = '+1';
+		timezone_key_int = 1;
+	}
+	if (timezone_key != '+1')
+	{
+		dt = my_tz_format($('#md-date').attr('data-dt'));
+		$('#md-date').html(dt.date).removeAttr('data-dt').show();
+	}
+	else
+	{
+		$('#md-date').removeAttr('data-dt').show();
+	}
+
+	ajax_to_call = 2;
+
+	bettype = window.location.hash != '' ? window.location.hash.substring(1) : bettype_default;
+
+	jQuery.ajax({
+		url: '/gres/ajax-matchdetails.php',
+		type: 'GET',
+		cache: false,
+		dataType: 'json',
+		success: function(data)
+		{
+			if (data.user_logged)
+			{
+				user.logged = true;
+				user.oddsformat = data.oddsformat;
+			}
+			bookmaker_urls = data.bookmaker_urls;
+			
+			ajax_to_call--;
+			if (ajax_to_call == 0)
+			{
+				matchdetails_finish();
+				$('#odds-all-loader').remove();
+				$('#odds-all').show();
+			}
+		}
+	});
+	
+	jQuery.ajax({
+		url: '/gres/ajax-matchodds.php',
+		type: 'GET',
+		data: 't=d&e=' + eventid + '&b=' + bettype,
+		success: function(data)
+		{
+			$('#odds-all').html(data);
+			
+			ajax_to_call--;
+			if (ajax_to_call == 0)
+			{
+				matchdetails_finish();
+				$('#odds-all-loader').remove();
+				$('#odds-all').show();
+			}
+		}
+	});
+}
+
+function matchdetails_finish()
+{
+	format_odds('', false);
+
+	// uprava url bookmakeru podle zeme
+	for (var b in bookmaker_urls)
+	{
+		$('#b-' + b + '-link').attr('href', '/bookmaker/' + b + '/' + bookmaker_urls[b]['URL']);
+		$('#b-' + b + '-stream').attr('href', '/bookmaker/' + b + '/' + (bookmaker_urls[b]['URL2'] != '' ? bookmaker_urls[b]['URL2'] : bookmaker_urls[b]['URL']));
+	}
+	
+	$('#odds-content').show();
+	$('#odds-loader').hide();
+}
+
+
+function match_change_bettype(page, eventid, bettype)
+{
+	window.location.hash = bettype;
+	del_arch_info();
+	if (page == 'n')
+	{
+		$('#odds-addto').hide();
+	}
+	$('#odds-content').hide();
+	$('#odds-loader').show();
+	jQuery.ajax({
+		url: '/gres/ajax-matchodds.php',
+		type: 'GET',
+		data: 't=' + page + '&e=' + eventid + '&b=' + bettype,
+		dataType: (page == 'n' ? 'json' : 'text'),
+		success: function(data)
+		{
+			if (page == 'd')
+			{
+				$('#odds-all').html(data);
+				matchdetails_finish()
+			}
+			else
+			{
+				$('#odds-all').html(data.odds);
+				$('#odds-addto').html(data.addto);
+				nextmatch_finish(false);
+			}
+		}
+	});
+}
+
+
+var active_bookmakers_group = null;
+var user_bookmakers = null;
+var user_blockedbookies = null;
+
+function nextmatch_init(eventid, bettype_default)
+{
+	timezone_init('nextmatch');
+
+	ajax_to_call = 2;
+
+	bettype = window.location.hash != '' ? window.location.hash.substring(1) : bettype_default;
+
+	jQuery.ajax({
+		url: '/gres/ajax-nextmatch.php',
+		type: 'GET',
+		cache: false,
+		dataType: 'json',
+		success: function(data)
+		{
+			user_init(data);
+			myselections_init(data.myselections);
+			user_bookmakers = data.bookmakers;
+			user_blockedbookies = data.blockedbookies;
+			bookmaker_urls = data.bookmaker_urls;
+
+			// upravy podle timezone jen pro BE.com
+			if (timezone_key != '+1')
+			{
+				// hledam data-dt v pavouku, zapasech tymu a h2h
+				$('#sportstats,.team-matches,#mutual_tbody').find('[data-dt]').each(function()
+				{
+					newdate = my_tz_format($(this).attr('data-dt'));
+					if (newdate.day_changed)
+					{
+						// span je v pavoucich
+						if ($(this).prop('tagName') == 'SPAN')
+						{
+							$(this).html((newdate.d < 10 ? '0' + newdate.d : newdate.d) + '/' + (newdate.m < 10 ? '0' + newdate.m : newdate.m));
+						}
+						// kdyz to neni span, je to tr a to je v prehledech zapasu a h2h
+						else
+						{
+							$(this).children().last().html(newdate.date);
+						}
+					}
+				});
+			}
+			
+			ajax_to_call--;
+			if (ajax_to_call == 0)
+			{
+				nextmatch_finish(true);
+				// schovam celkovy loader a zobrazim div
+				$('#nextmatch-loader').hide();
+				$('#all-div').show();
+			}
+		}
+	});
+	
+	jQuery.ajax({
+		url: '/gres/ajax-matchodds.php',
+		type: 'GET',
+		data: 't=n&e=' + eventid + '&b=' + bettype,
+		dataType: 'json',
+		success: function(data)
+		{
+			$('#odds-all').html(data.odds);
+			$('#odds-addto').html(data.addto);
+			
+			ajax_to_call--;
+			if (ajax_to_call == 0)
+			{
+				nextmatch_finish(true);
+				// schovam celkovy loader a zobrazim div
+				$('#nextmatch-loader').hide();
+				$('#all-div').show();
+			}
+		}
+	});
+}
+
+function nextmatch_finish(called_from_init)
+{
+	// prihlaseny uzivatel - k radkum s blokovanymi sazkovkami doplnim atribut, pomoci ktereho je nasledne pri prepnuti na moje sazkovky snaz a rychleji schovam
+	if (user.logged)
+	{
+		for (var i = 0; i < user_blockedbookies.length; i++)
+		{
+			$('[data-bid=' + user_blockedbookies[i] + ']').attr('data-blocked', '1');
+		}
+	}
+	
+	// nastavim na null, aby se nastaveni linku a cela funkce na zmenu bookmakeru provedla i po nacteni jineho typu sazky ajaxem a ne jen pri nacteni stranky
+	active_bookmakers_group = null;
+	
+	// pokud je zvolena neexistujici skupina, nebo uzivatel neni prihlaseny a ma zvolene my bookmakers, nastavim all
+	if ((!user.logged && user_bookmakers == -1) || (user_bookmakers > 0 && $('#bookmakers-link-' + user_bookmakers).length == 0))
+	{
+		user_bookmakers = 0;
+	}
+	
+	// pokud nemam all, zavolam change_bookmakers
+	if (user_bookmakers != 0)
+	{
+		change_bookmakers(user_bookmakers, called_from_init);
+	}
+	else
+	{
+		active_bookmakers_group = 0;
+		$('#bookmakers-link-0').toggleClass('active-betcompanies');
+		
+		// tabulka pro pridani na tiket se zobrazuje v change_bookmakers (v zavislosti na tom jestli jsou nejaky kurzy), pokud se funkce nevola, zobrazim ji tady
+		$('#odds-addto').show();
+	}
+	
+	// zavolam vypsani a formatovani kurzu, ale nemazu data atributy (druhy parametr funkce)
+	format_odds('', false);
+
+	// uprava url bookmakeru podle zeme
+	for (var b in bookmaker_urls)
+	{
+		$('#b-' + b + '-link').attr('href', '/bookmaker/' + b + '/' + bookmaker_urls[b]['URL']);
+		$('#b-' + b + '-stream').attr('href', '/bookmaker/' + b + '/' + (bookmaker_urls[b]['URL2'] != '' ? bookmaker_urls[b]['URL2'] : bookmaker_urls[b]['URL']));
+	}
+	
+	$('#odds-content').show();
+	$('#odds-loader').hide();
+	
+}
+
+
+function change_bookmakers(group, called_from_init)
+{
+	if (group == active_bookmakers_group)
+	{
+		return false;
+	}
+	
+	if (!user.logged && group == -1)
+	{
+		// @debug
+		alert("'My bookmakers' feature is only available to registered users. Please login or register new account.");
+		return false;
+	}
+	
+	// nevolano z initu - schovam div a zobrazim loader
+	if (!called_from_init)
+	{
+		$('#odds-loader').show();
+		$('#odds-content').hide();
+	}
+	
+	// ukazat vsechny
+	if (group == 0)
+	{
+		$('[data-bid]').removeClass('hidden');
+	}
+	
+	// ukazat moje - ukazu vsechny a schovam blokovany
+	if (group == -1)
+	{
+		$('[data-bid]').removeClass('hidden');
+		$('[data-blocked]').addClass('hidden');
+	}
+	
+	// ukazat origin - schovam vsechny a ukazu origin
+	if (group > 0)
+	{
+		$('[data-oid]').addClass('hidden');
+		$('[data-oid=' + group + ']').removeClass('hidden');
+	}
+	
+	// ulozim nastaveni prihlaseneho uzivatele
+	if (user.logged)
+	{
+		jQuery.ajax({
+			url: '/gres/ajax-save-bookmakers-setting.php',
+			type: 'GET',
+			data: 'par=' + group,
+			cache: false
+		});
+	}
+	// ulozim cookie neprihlaseneho uzivatele
+	else
+	{
+		setCookie('betcompanies_v2', group, 30, '/', '', '' )
+	}
+	
+	// nastavim js promennou
+	user_bookmakers = group;
+	
+	// projdu vsechny tabulky
+	tables_visible = 0;
+	$('#odds-content table').each(function()
+	{
+		oddscount = $(this).find('[data-bid]:not(.hidden)').length;
+		// v tabulce zbyly vypsane kurzy
+		if (oddscount > 0)
+		{
+			// zobrazim tabulku
+			$(this).removeClass('hidden');
+			tables_visible++;
+			
+			// odstranim zvyrazneni puvodnich maxim
+			$(this).find('.best-betrate').removeClass('best-betrate');
+			
+			// nastavim pocet sazkovek v th
+			$(this).find('[data-count]').first().html(oddscount);
+
+			// zjistim si indexy sloupcu, kde jsou kurzy
+			indexes = [];
+			$(this).find('tr[data-bid]').first().children('td.course').each(function()
+			{
+				indexes.push($(this).index());
+			});
+
+			// pole pro prumery
+			averages = [];
+			
+			// pro kazdy index (=sloupec)
+			for (var i = 0; i < indexes.length; i++)
+			{
+				index = indexes[i] + 1;
+				odd_max = odd_count = odd_total = 0;
+				
+				// projdu vsechny radky
+				$(this).find('tr[data-bid]:not(.hidden):not([data-exchange])').each(function()
+				{
+					// nactu konkretni bunku a pokud neni notactive, zapocitam do prumeru
+					cell = $(this).children(':nth-child(' + index + '):not(.notactive)[data-odd]');
+					if (cell.length > 0)
+					{
+						odd = parseFloat(cell.attr('data-odd'));
+						odd_max = Math.max(odd_max, odd);
+						odd_count++;
+						odd_total += odd;
+					}
+				});
+				
+				// pokud byl alespon jeden active kurs
+				if (odd_count > 0)
+				{
+					// oznacim maxima
+					$(this).find('tr[data-bid]:not(.hidden):not([data-exchange])').children(':nth-child(' + index + '):not(.notactive)[data-odd="' + odd_max.toFixed(2) + '"]').addClass('best-betrate');
+					
+					// ulozim si prumer
+					averages[i] = (odd_total / odd_count).toFixed(2);
+				}
+				else
+				{
+					averages[i] = '';
+				}
+			}
+			
+			// zapisu prumery
+			avgcells = $(this).children('tfoot').find('.course');
+			for (var i = 0; i < averages.length; i++)
+			{
+				$(avgcells[i]).attr('data-odd', averages[i]);
+			}
+			
+			// nove zapsane prumery musim zformatovat (a tim zobrazit) - jen pokud neni volano z initu, kdy se format vola pro celou stranku
+			if (!called_from_init)
+			{
+				format_odds($(this).children('tfoot'), false);
+			}
+		}
+		// v tabulce nezbyly kurzy - schovam ji celou
+		else
+		{
+			$(this).addClass('hidden');
+		}
+	});
+	
+	// nezbyla zadna zobrazena tabulka - vypisu info a zneviditelnim add-to tabulku
+	if (tables_visible == 0)
+	{
+		$('#odds-content').prepend('<div id="no-odds-info"><a href="#" onclick="return change_bookmakers(0);">No odds from selected bookmakers are available. Click to see all available odds.</a></div>');
+		$('#odds-addto').hide();
+	}
+	// nejaka tabulka se zobrazila - odstranim info a zapisu prumery do add-to tabulky
+	else
+	{
+		$('#no-odds-info').remove();
+		
+		addtocells = $('#odds-addto').find('a');
+		if (addtocells.length > 0)
+		{
+			for (var i = 0; i < averages.length; i++)
+			{
+				$(addtocells[i]).attr('data-odd', averages[i]);
+			}
+			
+			// nove zapsane prumery musim zformatovat (a tim zobrazit) - jen pokud neni volano z initu, kdy se format vola pro celou stranku
+			if (!called_from_init)
+			{
+				format_odds('odds-addto', false);
+			}
+			
+			$('#odds-addto').show();
+		}
+	}
+	
+	// nastavim class aktualni skupine
+	if (active_bookmakers_group != null)
+	{
+		$('#bookmakers-link-' + active_bookmakers_group).toggleClass('active-betcompanies');
+	}
+	$('#bookmakers-link-' + group).toggleClass('active-betcompanies');
+	active_bookmakers_group = group;
+	
+	// nevolano z initu - schovam loader a zobrazim div
+	if (!called_from_init)
+	{
+		$('#odds-loader').hide();
+		$('#odds-content').show();
+	}
+}
+
+

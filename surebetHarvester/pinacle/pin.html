@@ -1,0 +1,3834 @@
+
+<script>
+  dataLayer = [{
+    'page-name': 'Odds~PreGame',
+    'page-category': 'Odds',
+    'domain': 'www.pinnaclesports.com',
+    'site': 'Guest',
+    'referrer': 'xaff405',
+    'language': 'pl-PL'
+  }];
+</script>
+<noscript>&lt;iframe src="//www.googletagmanager.com/ns.html?id=GTM-PSRW2G" height=0 width=0 style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;</noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PSRW2G');</script>
+<div class="guestlinespage" id="body-container">
+<header id="header">
+<div class="topbar">
+<div class="global-width">
+<div class="lang">
+<div id="languageSelector" class="dropdown-button" style="width: 240px;">
+<div class="container">
+<span class="text">
+<span class="flag pl">
+Polski (Polish)
+</span>
+</span>
+</div>
+<ul style="display: none; opacity: 1; position: absolute;">
+<li>
+<a class="value" data-value="2" href="/en/odds/match/soccer/australia/australia-a-league">
+<span class="flag en">English (International)</span>
+</a>
+</li>
+<li>
+<a class="value" data-value="3" href="/zh-cn/odds/match/soccer/australia/australia-a-league">
+<span class="flag zh-cn">简体中文 (Chinese S.)</span>
+</a>
+</li>
+<li>
+<a class="value" data-value="4" href="/zh-tw/odds/match/soccer/australia/australia-a-league">
+<span class="flag zh-tw">繁體中文 (Chinese T.)</span>
+</a>
+</li>
+<li>
+<a class="value" data-value="22" href="/cs/odds/match/soccer/australia/australia-a-league">
+<span class="flag cs">Čeština (Czech)</span>
+</a>
+</li>
+<li>
+<a class="value" data-value="5" href="/fi/odds/match/soccer/australia/australia-a-league">
+<span class="flag fi">Suomi (Finnish)</span>
+</a>
+</li>
+<li>
+<a class="value" data-value="16" href="/fr/odds/match/soccer/australia/australia-a-league">
+<span class="flag fr">Français (French)</span>
+</a>
+</li>
+<li>
+<a class="value" data-value="6" href="/de/odds/match/soccer/australia/australia-a-league">
+<span class="flag de">Deutsch (German)</span>
+</a>
+</li>
+<li>
+<a class="value" data-value="7" href="/he/odds/match/soccer/australia/australia-a-league">
+<span class="flag he">עברית (Hebrew)</span>
+</a>
+</li>
+<li>
+<a class="value" data-value="8" href="/it/odds/match/soccer/australia/australia-a-league">
+<span class="flag it">Italiano (Italian)</span>
+</a>
+</li>
+<li>
+<a class="value" data-value="18" href="/ja/odds/match/soccer/australia/australia-a-league">
+<span class="flag ja">日本語 (Japanese)</span>
+</a>
+</li>
+<li>
+<a class="value" data-value="19" href="/ko/odds/match/soccer/australia/australia-a-league">
+<span class="flag ko">한국어 (Korean)</span>
+</a>
+</li>
+<li>
+<a class="value" data-value="9" href="/no/odds/match/soccer/australia/australia-a-league">
+<span class="flag no">Norsk (Norwegian)</span>
+</a>
+</li>
+<li class="active">
+<a class="value" data-value="15" href="/pl/odds/match/soccer/australia/australia-a-league">
+<span class="flag pl">Polski (Polish)</span>
+</a>
+</li>
+<li>
+<a class="value" data-value="10" href="/pt/odds/match/soccer/australia/australia-a-league">
+<span class="flag pt">Português (Portuguese)</span>
+</a>
+</li>
+<li>
+<a class="value" data-value="11" href="/ru/odds/match/soccer/australia/australia-a-league">
+<span class="flag ru">Русский (Russian)</span>
+</a>
+</li>
+<li>
+<a class="value" data-value="12" href="/es/odds/match/soccer/australia/australia-a-league">
+<span class="flag es">Español (Spanish)</span>
+</a>
+</li>
+<li>
+<a class="value" data-value="13" href="/sv/odds/match/soccer/australia/australia-a-league">
+<span class="flag sv">Svenska (Swedish)</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="bottom">
+<div class="global-width">
+<a class="logo" href="/pl/">Pinnacle Sports</a>
+<div id="loginPopup" style="display: none"></div>
+<script>
+    $(function () {
+        var loginButton = $("#loginButton");
+        if (location.protocol === 'https:') {
+            loginButton.on('click',showLoginPopup);
+			setTimeout(loadLoginContent);          
+        } else {
+            loginButton.attr("href", "https://www.pinnaclesports.com/pl/login");
+        }
+    });
+    function loadLoginContent() {
+        var loginPopup = $("#loginPopup");
+        $.get("/pl/login-popup", function(data) {
+            try {
+                loginPopup.html(data);
+            }
+            finally {
+                
+				window.pinnacle.AssignForgotHandlers();
+            }
+        });
+    }
+    function showLoginPopup(e) {
+        e.preventDefault();
+        var loginPopup = $("#loginPopup");
+        if (!!!loginPopup.data('loaded')) {
+            loginPopup.data('loaded', true);
+            loadLoginContent(loginPopup);
+            loginPopup.dialog({
+                dialogClass: "login-close",
+                draggable: false,
+                modal: true,
+                resizable: false,
+                width: 750,
+                height: 500,
+                open: function() {
+                    $('.ui-widget-overlay').addClass('login-overlay');
+                },
+                close: function() {
+                    $('.ui-widget-overlay').removeClass('login-overlay');
+                }
+            });
+        } else {
+            loginPopup.dialog('open');
+        }
+        loginPopup.click(function (e) {
+        	var wrapper = loginPopup.find(".login__wrapper");
+        	var holder = loginPopup.find(".login__wrapper__holder");
+            if (e.target == loginPopup[0] || e.target == wrapper[0] || e.target == holder[0]) {
+                loginPopup.dialog('close');
+            }
+        });
+        $(".login-overlay").click(function () { loginPopup.dialog('close'); });  
+    }
+</script>
+<ul class="quicklinks">
+<li><a class="button green signup-link" href="/signup/desktop/pl-PL?ico=menuopen" target="_blank">Utwórz konto</a></li>
+<li><a class="button blue login" id="loginButton" href="https://www.pinnaclesports.com/pl/login">Zaloguj się</a></li>
+</ul>
+</div>
+</div>
+<nav class="nav">
+<div class="global-width">
+<ul class="tabs">
+<li class="active">
+<a class="button tab" href="/pl/"><span>zakłady bukmacherskie</span></a>
+</li>
+<li><a class="button tab" href="/pl/casino"><span>kasyno</span></a></li>
+<li><a class="button tab" href="/pl/live-casino"><span>kasyno na żywo</span></a></li>
+<li><a class="button tab" href="/pl/vegas"><span>vegas</span></a></li>
+<li id="esportsTab"><a class="button tab" href="/pl/esports"><span>sporty elektroniczne</span></a></li>
+<li><a class="button tab" href="/pl/mobile"><span>wersja mobilna</span></a></li>
+</ul>
+<ul class="list">
+</ul>
+<ul class="main">
+<li class=""><a href="/pl/" target="">Strona główna</a></li>
+<li class=""><a href="/pl/promotions" target="">Dlaczego Pinnacle Sports?</a></li>
+<li class=""><a href="/pl/payment-options" target="">Metody płatności</a></li>
+<li class=""><a href="/pl/betting-articles" target="">Artykuły bukmacherskie</a></li>
+</ul>
+</div>
+</nav>
+</header>
+<div id="main-container">
+<div class="global-width">
+<div class="container guestlines-table">
+<div class="guestlines-row">
+<aside id="sidebar" class="left guestlines-cell-left">
+<div class="block sports-menu default active">
+<h6 class="title">Menu zakładów</h6>
+<ul>
+<li class="level-1 live ">
+<span class="text"><span class="trigger" title="Na żywo"></span>Na żywo</span>
+<ul style="">
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon hockey" title="Hokej"></span>Hokej</span>
+<ul style="display: none;">
+<li class="collapse">
+<span class="text"><span class="trigger" title="Finlandia"></span>Finlandia</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/live/hockey/finland/finland---sm-liiga-ot-included-">
+Finland - SM Liiga (OT Included)
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon basketball" title="Koszykówka"></span>Koszykówka</span>
+<ul style="display: none;">
+<li class="collapse">
+<span class="text"><span class="trigger" title="Europa"></span>Europa</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/live/basketball/europe/europe-vtb-united-league">
+VTB United League
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Francja"></span>Francja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/live/basketball/france/france-championnat-pro-a">
+Championnat Pro A
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Grecja"></span>Grecja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/live/basketball/greece/greece-a1">
+A1
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Hiszpania"></span>Hiszpania</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/live/basketball/spain/spain-acb">
+ACB
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Turcja"></span>Turcja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/live/basketball/turkey/turkey-tbl">
+TBL
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Włochy"></span>Włochy</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/live/basketball/italy/italy-lega-a">
+Lega A
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon soccer" title="Piłka nożna"></span>Piłka nożna</span>
+<ul style="display: none;">
+<li class="collapse">
+<span class="text"><span class="trigger" title="AFC"></span>AFC</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/live/soccer/afc/afc-champions-league">
+AFC Champions League
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/live/soccer/afc/afc-champions-league-corners">
+AFC Champions League Corners
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/live/soccer/afc/afc-cup">
+AFC Cup
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Czechy"></span>Czechy</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/live/soccer/czech-republic/czech-republic-cup">
+Czech Cup
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/live/soccer/czech-republic/czech-republic-cup-corners">
+Czech Republic - Cup Corners
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Egypt"></span>Egypt</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/live/soccer/egypt/egypt-premier-league">
+Premier League
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Słowacja"></span>Słowacja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/live/soccer/slovakia/slovak-cup">
+Slovak Cup
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="UEFA"></span>UEFA</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/live/soccer/uefa/uefa-youth-league-u19">
+UEFA Youth League U19
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/live/soccer/uefa/uefa-youth-league-u19-corners">
+UEFA Youth League U19 Corners
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon tennis" title="Tenis"></span>Tenis</span>
+<ul style="display: none;">
+<li class="collapse">
+<span class="text"><span class="trigger" title="Challenger Series"></span>Challenger Series</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/live/tennis/challenger-series/atp-challenger-kazan-r1">
+ATP Challenger Kazan - R1
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="WTA"></span>WTA</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/live/tennis/wta/wta-san-antonio-open-r1">
+WTA San Antonio Open - R1
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-1 no-live">
+<span class="text"><span class="trigger" title="Kursy na mecze"></span>Kursy na mecze</span>
+<ul style="">
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon badminton" title="Badminton"></span>Badminton</span>
+<ul style="display: none;">
+<li><a class="text " href="/pl/odds/today/badminton">
+Dzisiaj
+<div class="marker"></div>
+</a>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Mężczyźni"></span>Mężczyźni</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/badminton/men/swiss-open-men-singles">
+Swiss Open - Men Singles
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Nowe rynki"></span>Nowe rynki</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/badminton/new-markets/testapileague">
+TestAPILeague
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon baseball" title="Bejsbol"></span>Bejsbol</span>
+<ul style="display: none;">
+<li><a class="text " href="/pl/odds/today/baseball">
+Dzisiaj
+<div class="marker"></div>
+</a>
+</li>
+<li class="featured">
+<a class="text " href="/pl/odds/match/baseball/usa/mlb?sport=True">
+MLB
+<div class="marker"></div>
+</a>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="MLB"></span>MLB</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/baseball/mlb/mlb-first-inning-only">
+MLB - First Inning Only
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/baseball/mlb/mlb-hits-runs-errors">
+MLB - Hits + Runs + Errors
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/baseball/mlb/mlb-to-score-first">
+MLB - To Score First
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="USA"></span>USA</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/baseball/usa/mlb">
+MLB
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/baseball/usa/mlb-pre-season">
+MLB Pre Season
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon athletics" title="Biatlon"></span>Biatlon</span>
+<ul style="display: none;">
+<li><a class="text " href="/pl/odds/today/biathlon">
+Dzisiaj
+<div class="marker"></div>
+</a>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Kobiety"></span>Kobiety</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/biathlon/women/7-5km-sprint-khanty-mansiysk-women">
+7.5km Sprint Khanty Mansiysk
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Mężczyźni"></span>Mężczyźni</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/biathlon/men/10km-sprint-khanty-mansiysk-men">
+10km Sprint Khanty Mansiysk
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon boxing" title="Boks"></span>Boks</span>
+<ul style="display: none;">
+<li><a class="text " href="/pl/odds/today/boxing">
+Dzisiaj
+<div class="marker"></div>
+</a>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Ciężka"></span>Ciężka</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/boxing/heavyweight/heavyweight">
+Heavyweight
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Lightweight"></span>Lightweight</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/boxing/lightweight/lightweight">
+Lightweight
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Middleweight"></span>Middleweight</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/boxing/middleweight/middleweight">
+Middleweight
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Piórkowa"></span>Piórkowa</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/boxing/featherweight/featherweight">
+Featherweight
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Półśrednia"></span>Półśrednia</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/boxing/welterweight/welterweight">
+Welterweight
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Super Middleweight"></span>Super Middleweight</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/boxing/super-middleweight/super-middleweight">
+Super Middleweight
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Superlekka"></span>Superlekka</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/boxing/super-lightweight/super-lightweight">
+Super Lightweight
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Superpółśrednia"></span>Superpółśrednia</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/boxing/super-welterweight/super-welterweight">
+Jones vs Rose
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon golf" title="Golf"></span>Golf</span>
+<ul style="display: none;">
+<li><a class="text " href="/pl/odds/today/golf">
+Dzisiaj
+<div class="marker"></div>
+</a>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="PGA Tour"></span>PGA Tour</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/golf/pga/arnold-palmer-invitational-tournament-matchups">
+Arnold Palmer Invitational - Tournament Matchups
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Nowe rynki"></span>Nowe rynki</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/golf/new-markets/hero-indian-open---tournament-matchup">
+Hero Indian Open - Tournament Matchup
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon hockey" title="Hokej"></span>Hokej</span>
+<ul style="display: none;">
+<li><a class="text " href="/pl/odds/today/hockey">
+Dzisiaj
+<div class="marker"></div>
+</a>
+</li>
+<li class="featured">
+<a class="text " href="/pl/odds/match/hockey/usa/nhl-ot-included?sport=True">
+NHL - OT Included
+<div class="marker"></div>
+</a>
+</li>
+<li class="featured">
+<a class="text " href="/pl/odds/match/hockey/usa/nhl-ot-included-alternates?sport=True">
+NHL - OT Included Alternates
+<div class="marker"></div>
+</a>
+</li>
+<li class="featured">
+<a class="text " href="/pl/odds/match/hockey/usa/nhl-regular-time?sport=True">
+NHL - Regular Time
+<div class="marker"></div>
+</a>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Austria"></span>Austria</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/austria/austria-ehl">
+EHL
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Dania"></span>Dania</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/denmark/denmark-metal-ligaen">
+Metal Ligaen
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Finlandia"></span>Finlandia</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/finland/finland-mestis">
+Mestis
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Niemcy"></span>Niemcy</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/germany/germany-del">
+DEL
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/germany/germany-del-2">
+Germany - DEL 2
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Norwegia"></span>Norwegia</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/norway/norway-get-ligaen">
+GET Ligaen
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Polska"></span>Polska</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/poland/poland-plh">
+PLH
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Rosja"></span>Rosja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/russia/russia-kontinental-hockey-league">
+Kontinental Hockey League
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/russia/russia-mhl">
+Russia - MHL
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/russia/russia-vysshaya-hokkeinaya-liga">
+Vysshaya hokkeinaya Liga
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Słowacja"></span>Słowacja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/slovakia/hockey-slovakia-extraliga">
+Extraliga
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Szwajcaria"></span>Szwajcaria</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/switzerland/switzerland-nationalliga-a">
+Nationalliga A
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Szwecja"></span>Szwecja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/sweden/sweden-hockey-allsvenskan">
+HockeyAllsvenskan
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/sweden/sweden-shl">
+SHL
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/sweden/sweden-kvalserien">
+Sweden - Kvalserien
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="USA"></span>USA</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/usa/american-hockey-league">
+American Hockey League
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/usa/nhl-ot-included">
+NHL - OT Included
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/usa/nhl-ot-included-alternates">
+NHL - OT Included Alternates
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/hockey/usa/nhl-regular-time">
+NHL - Regular Time
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon basketball" title="Koszykówka"></span>Koszykówka</span>
+<ul style="display: none;">
+<li><a class="text " href="/pl/odds/today/basketball">
+Dzisiaj
+<div class="marker"></div>
+</a>
+</li>
+<li class="featured">
+<a class="text " href="/pl/odds/match/basketball/usa/nba?sport=True">
+NBA
+<div class="marker"></div>
+</a>
+</li>
+<li class="featured">
+<a class="text " href="/pl/odds/match/basketball/usa/ncaa?sport=True">
+NCAA
+<div class="marker"></div>
+</a>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Argentyna"></span>Argentyna</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/argentina/argentina-liga-nacional">
+Liga Nacional
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Chiny"></span>Chiny</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/china/china-basketball-association">
+Basketball Association
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Czechy"></span>Czechy</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/czech-republic/czech-republic-mattoni-nbl">
+Mattoni NBL
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Estonia"></span>Estonia</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/estonia/estonia-meistriliiga">
+Meistriliiga
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Europa"></span>Europa</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/europe/aba-adriatic-league">
+Adriatic League
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/europe/baltic-basketball-league">
+Baltic Basketball League
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/europe/europe-euro-challenge">
+Euro Challenge
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/europe/eurocup">
+Eurocup
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/europe/euroleague">
+Euroleague
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/europe/europe-euroleague-women">
+Euroleague Women
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/europe/europe-vtb-united-league">
+VTB United League
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Filipiny"></span>Filipiny</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/philippines/philippines-pba-commissioners-cup">
+PBA Commissioners Cup
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Francja"></span>Francja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/france/france-championnat-pro-b">
+Championnat Pro B
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/france/france-ligue-feminine-de-basketball">
+Ligue Féminine de Basketball
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Korea Południowa"></span>Korea Południowa</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/south-korea/korea-wkbl">
+WKBL
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Niemcy"></span>Niemcy</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/germany/basketball-germany-bundesliga">
+Bundesliga
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Polska"></span>Polska</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/poland/poland-tauron-basket-liga">
+Tauron Basket Liga
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Szwecja"></span>Szwecja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/sweden/sweden-basketligan">
+Basketligan
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="USA"></span>USA</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/usa/nba">
+NBA
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/basketball/usa/ncaa">
+NCAA
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon cricket" title="Krykiet"></span>Krykiet</span>
+<ul style="display: none;">
+<li><a class="text " href="/pl/odds/today/cricket">
+Dzisiaj
+<div class="marker"></div>
+</a>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="International"></span>International</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/cricket/international/twenty20-world-cup-men">
+Twenty20 World Cup - Men
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon mixed-martial-arts" title="Mieszane sztuki walki"></span>Mieszane sztuki walki</span>
+<ul style="display: none;">
+<li><a class="text " href="/pl/odds/today/mixed-martial-arts">
+Dzisiaj
+<div class="marker"></div>
+</a>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="UFC"></span>UFC</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/mixed-martial-arts/ufc/ufc">
+UFC
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon winter-sports" title="Narciarstwo alpejskie"></span>Narciarstwo alpejskie</span>
+<ul style="display: none;">
+<li><a class="text " href="/pl/odds/today/alpine-skiing">
+Dzisiaj
+<div class="marker"></div>
+</a>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="World Cup"></span>World Cup</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/alpine-skiing/world-cup/downhill-st-moriz-0191-men">
+Downhill St. Moriz - 0191 - Men
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/alpine-skiing/world-cup/downhill-st-moriz-5175-women">
+Downhill St. Moriz - 5175 - Women
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-2">
+<span class="text"><span class="sport-icon soccer" title="Piłka nożna"></span>Piłka nożna</span>
+<ul style="">
+<li><a class="text " href="/pl/odds/today/soccer">
+Dzisiaj
+<div class="marker"></div>
+</a>
+</li>
+<li class="featured">
+<a class="text " href="/pl/odds/match/soccer/germany/bundesliga?sport=True">
+Bundesliga
+<div class="marker"></div>
+</a>
+</li>
+<li class="featured">
+<a class="text " href="/pl/odds/match/soccer/spain/spain-la-liga?sport=True">
+La Liga
+<div class="marker"></div>
+</a>
+</li>
+<li class="featured">
+<a class="text " href="/pl/odds/match/soccer/france/ligue-1?sport=True">
+Ligue 1
+<div class="marker"></div>
+</a>
+</li>
+<li class="featured">
+<a class="text " href="/pl/odds/match/soccer/england/england-premier-league?sport=True">
+Premier League
+<div class="marker"></div>
+</a>
+</li>
+<li class="featured">
+<a class="text " href="/pl/odds/match/soccer/italy/italy-serie-a?sport=True">
+Serie A
+<div class="marker"></div>
+</a>
+</li>
+<li class="featured">
+<a class="text " href="/pl/odds/match/soccer/uefa/uefa-champions-league?sport=True">
+UEFA Champions League
+<div class="marker"></div>
+</a>
+</li>
+<li class="featured">
+<a class="text " href="/pl/odds/match/soccer/uefa/uefa-europa-league?sport=True">
+UEFA Europa League
+<div class="marker"></div>
+</a>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="AFC"></span>AFC</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/afc/afc-champions-league">
+AFC Champions League
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/afc/afc-champions-league-corners">
+AFC Champions League Corners
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Anglia"></span>Anglia</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/england/england-championship">
+Championship
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/england/england-championship-corners">
+Championship Corners
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/england/england-conference-premier">
+Conference Premier
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/england/england-national-league-corners">
+England - National League Corners
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/england/england-isthmian-premier-league">
+Isthmian Premier League
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/england/england-league-1">
+League 1
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/england/england-league-1-corners">
+League 1 Corners
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/england/england-league-2">
+League 2
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/england/england-league-2-corners">
+League 2 Corners
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/england/england-northern-premier-league">
+Northern Premier League
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/england/england-premier-league">
+Premier League
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/england/england-southern-premier-league">
+Southern Premier League
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Argentyna"></span>Argentyna</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/argentina/argentina-primera-b-nacional">
+Primera B Nacional
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/argentina/argentina-primera-division">
+Primera Division
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="">
+<span class="text"><span class="trigger" title="Australia"></span>Australia</span>
+<ul style="display: block;">
+<li class="">
+<a class="text  active" href="/pl/odds/match/soccer/australia/australia-a-league">
+A-League
+<div class="marker" style="top: -1.5px;"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Austria"></span>Austria</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/austria/austria-bundesliga">
+Bundesliga
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/austria/austria-erste-liga">
+Erste Liga
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/austria/austria-erste-liga-corners">
+Erste Liga Corners
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Belgia"></span>Belgia</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/belgium/belgian-cup">
+Belgian Cup
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Brazylia"></span>Brazylia</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/brazil/brazil-paulista-a2">
+Brazil - Paulista A2
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/brazil/brazil-mineiro">
+Mineiro
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/brazil/brazil-paulista">
+Paulista
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Chiny"></span>Chiny</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/china/china-super-league">
+Super League
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Chorwacja"></span>Chorwacja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/croatia/croatia-1-hnl">
+1. HNL
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/croatia/croatian-cup">
+Croatian Cup
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="CONCACAF"></span>CONCACAF</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/concacaf/concacaf-champions-league">
+CONCACAF Champions League
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="CONMEBOL"></span>CONMEBOL</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/conmebol/conmebol-copa-america">
+Copa America
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/conmebol/conmebol-copa-libertadores">
+Copa Libertadores
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Czechy"></span>Czechy</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/czech-republic/czech-republic-cup">
+Czech Cup
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/czech-republic/czech-republic-first-league">
+First League
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Dania"></span>Dania</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/denmark/danish-cup">
+Danish Cup
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/denmark/denmark-division-1">
+Division 1
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/denmark/denmark-superliga">
+Superliga
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Egypt"></span>Egypt</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/egypt/egypt-premier-league-corners">
+Egypt - Premier League Corners
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/egypt/egypt-premier-league">
+Premier League
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="FIFA"></span>FIFA</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/fifa/fifa-world-cup-qualifiers-south-america">
+FIFA - World Cup Qualifiers South America
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Finlandia"></span>Finlandia</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/finland/finland-liiga-cup">
+Liiga Cup
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Francja"></span>Francja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/france/ligue-1">
+Ligue 1
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/france/france-ligue-2">
+Ligue 2
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Gibraltar"></span>Gibraltar</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/gibraltar/gibraltar---premier-division">
+Gibraltar - Premier Division
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Hiszpania"></span>Hiszpania</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/spain/spain-la-liga">
+La Liga
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/spain/spain-segunda-division">
+Segunda Division
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Holandia"></span>Holandia</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/netherlands/netherlands-eredivisie">
+Eredivisie
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/netherlands/netherlands-jong-eredivisie-u23">
+Jong Eredivisie U23
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Japonia"></span>Japonia</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/japan/j-league-division-1">
+J.League Division 1
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Korea Południowa"></span>Korea Południowa</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/south-korea/korea-republic-k-league-classic">
+K League Classic
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Mecze towarzyskie – klubowe"></span>Mecze towarzyskie – klubowe</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/friendlies---club/club-friendlies">
+Club Friendlies
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Meksyk"></span>Meksyk</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/mexico/copa-mx">
+Copa MX
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/mexico/mexico-primera-division">
+Primera Division
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Niemcy"></span>Niemcy</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/germany/bundesliga">
+Bundesliga
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/germany/germany-bundesliga-2">
+Bundesliga 2
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/germany/germany-bundesliga-3">
+Bundesliga 3
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/germany/germany-regionalliga-bavaria">
+Regionalliga Bavaria
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Norwegia"></span>Norwegia</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/norway/norway-tippeligaen">
+Tippeligaen
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Polska"></span>Polska</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/poland/poland-ekstraklasa">
+Ekstraklasa
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/poland/poland-cup-corners">
+Poland - Cup Corners
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/poland/polish-cup">
+Polish Cup
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Portugalia"></span>Portugalia</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/portugal/portugal-liga-de-honra">
+Liga de Honra
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/portugal/portugal-primeira-liga">
+Primeira Liga
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Rosja"></span>Rosja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/russia/russian-premier-league">
+Premier League
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/russia/russia-fnl">
+Russia - FNL
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="RPA"></span>RPA</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/south-africa/south-africa-premier-league">
+Premier League
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Szkocja"></span>Szkocja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/scotland/scotland-championship">
+Championship
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/scotland/scotland-league-one">
+League One
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/scotland/scotland-league-two">
+League Two
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/scotland/scotland-premier-league">
+Premier League
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/scotland/scotland-championship-corners">
+Scotland - Championship Corners
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/scotland/scottish-cup">
+Scottish Cup
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Szwajcaria"></span>Szwajcaria</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/switzerland/switzerland-super-league">
+Super League
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Szwecja"></span>Szwecja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/sweden/sweden-cup-corners">
+Sweden - Cup Corners
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/sweden/swedish-cup">
+Swedish Cup
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Turcja"></span>Turcja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/turkey/turkey-super-league">
+Super League
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/turkey/turkey-super-league-corners">
+Super League Corners
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="UEFA"></span>UEFA</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/uefa/uefa-euro">
+Euro 2016
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/uefa/uefa-champions-league">
+UEFA Champions League
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/uefa/uefa-champions-league-bookings">
+UEFA Champions League Bookings
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/uefa/uefa-champions-league-corners">
+UEFA Champions League Corners
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/uefa/uefa-europa-league">
+UEFA Europa League
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Walia"></span>Walia</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/wales/wales-premier-league">
+Premier League
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Węgry"></span>Węgry</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/hungary/hungarian-cup">
+Hungarian Cup
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Włochy"></span>Włochy</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/italy/italy-serie-a">
+Serie A
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/soccer/italy/italy-serie-b">
+Serie B
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon handball" title="Piłka ręczna"></span>Piłka ręczna</span>
+<ul style="display: none;">
+<li><a class="text " href="/pl/odds/today/handball">
+Dzisiaj
+<div class="marker"></div>
+</a>
+</li>
+<li class="featured">
+<a class="text " href="/pl/odds/match/handball/france/france-division-1-men?sport=True">
+France - Division 1 Men
+<div class="marker"></div>
+</a>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Dania"></span>Dania</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/handball/denmark/handball-denmark-haandboldligaen-men">
+Haandboldligaen Men
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Europa"></span>Europa</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/handball/europe/european-champions-league-men">
+Champions League Men
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Francja"></span>Francja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/handball/france/france-division-1-men">
+France - Division 1 Men
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Hiszpania"></span>Hiszpania</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/handball/spain/spain-liga-asobal-men">
+Liga Asobal Men
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Niemcy"></span>Niemcy</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/handball/germany/germany-bundesliga-men-q">
+Bundesliga Men
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Szwecja"></span>Szwecja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/handball/sweden/handball-sweden-elitserien-men">
+Elitserien Men
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon rugby-union" title="Rugby Union"></span>Rugby Union</span>
+<ul style="display: none;">
+<li><a class="text " href="/pl/odds/today/rugby-union">
+Dzisiaj
+<div class="marker"></div>
+</a>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Europa"></span>Europa</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/rugby-union/europe/six-nations">
+Six Nations
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon volleyball" title="Siatkówka"></span>Siatkówka</span>
+<ul style="display: none;">
+<li><a class="text " href="/pl/odds/today/volleyball">
+Dzisiaj
+<div class="marker"></div>
+</a>
+</li>
+<li class="featured">
+<a class="text " href="/pl/odds/match/volleyball/europe/europe-cev-cup-men?sport=True">
+CEV Cup Men
+<div class="marker"></div>
+</a>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Brazylia"></span>Brazylia</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/volleyball/brazil/brazil-superliga-men">
+Superliga - Men
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/volleyball/brazil/brazil-superliga-women">
+Superliga - Women
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Czechy"></span>Czechy</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/volleyball/czech-republic/volleyball-czech-republic-extraliga-men">
+Extraliga Men
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Europa"></span>Europa</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/volleyball/europe/europe-cev-cup-men">
+CEV Cup Men
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/volleyball/europe/volleyball-european-champions-league-men-a">
+Champions League Men
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Francja"></span>Francja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/volleyball/france/france-pro-a">
+France Pro A
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Niemcy"></span>Niemcy</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/volleyball/germany/volleyball-germany-bundesliga-men">
+Bundesliga Men
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Polska"></span>Polska</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/volleyball/poland/poland-plus-liga-men">
+Plus Liga Men
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Rosja"></span>Rosja</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/volleyball/russia/russia-super-league-women">
+Super League Women
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon e-sports" title="Sporty elektroniczne"></span>Sporty elektroniczne</span>
+<ul style="display: none;">
+<li><a class="text " href="/pl/odds/today/e-sports">
+Dzisiaj
+<div class="marker"></div>
+</a>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="CS:GO"></span>CS:GO</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/e-sports/c-s-go/counter-strike-global-offensive-cevo">
+CEVO
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/e-sports/c-s-go/counter-strike-global-offensive-champions-league">
+Champions League
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/e-sports/c-s-go/cs-go-alien-tech-cup">
+CS:GO - Alien Tech Cup
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/e-sports/c-s-go/cs-go-operation-kinguin">
+CS:GO - Operation Kinguin
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/e-sports/c-s-go/counter-strike-global-offensive---esl-esea-pro-le">
+ESL ESEA Pro Le
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/e-sports/c-s-go/counter-strike-global-offensive-game-show-league">
+Game Show League
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/e-sports/c-s-go/counter-strike-global-offensive-sltv-starseries">
+SLTV StarSeries
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/e-sports/c-s-go/counter-strike-global-offensive-uprise-champions-c-2">
+Uprise Champions C
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Dota 2"></span>Dota 2</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/e-sports/dota-2/dota-2-epicenter">
+Dota 2 - Epicenter
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/e-sports/dota-2/dota-2-prodota-cup">
+Dota 2 - Prodota Cup
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/e-sports/dota-2/dota-2-stars-arena">
+Dota 2 - Stars Arena
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/e-sports/dota-2/dota-2-weplay-league">
+WePlay League
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="League of Legends"></span>League of Legends</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/e-sports/league-of-legends/league-of-legends-championship-series">
+Championship Series
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/e-sports/league-of-legends/league-of-legends-champions-korea">
+League of Legends - Champions Korea
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/e-sports/league-of-legends/league-of-legends-lol-master-series">
+LoL Master Series
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/e-sports/league-of-legends/league-of-legends-tencent-lol-pro-league">
+Tencent LoL Pro League
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="StarCraft 2"></span>StarCraft 2</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/e-sports/starcraft-2/starcraft-2-starcraft-2-starleague">
+Starcraft 2 StarLeague
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon tennis" title="Tenis"></span>Tenis</span>
+<ul style="display: none;">
+<li><a class="text " href="/pl/odds/today/tennis">
+Dzisiaj
+<div class="marker"></div>
+</a>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="ATP"></span>ATP</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/tennis/atp/atp-indian-wells-doubles">
+Indian Wells - Doubles
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/tennis/atp/atp-indian-wells-r16">
+Indian Wells - R16
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/tennis/atp/atp-indian-wells-r3">
+Indian Wells - R3
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="Challenger Series"></span>Challenger Series</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/tennis/challenger-series/atp-challenger-drummondville-r1">
+ATP Challenger Drummondville - R1
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/tennis/challenger-series/atp-challenger-guadalajara-r1">
+ATP Challenger Guadalajara R1
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/tennis/challenger-series/atp-challenger-guangzhou-r1">
+ATP Challenger Guangzhou - R1
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/tennis/challenger-series/atp-challenger-guangzhou-r16">
+ATP Challenger Guangzhou - R16
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/tennis/challenger-series/atp-challenger-irving-r1">
+ATP Challenger Irving - R1
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/tennis/challenger-series/atp-challenger-kazan-r1">
+ATP Challenger Kazan - R1
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/tennis/challenger-series/atp-challenger-kazan-r16">
+ATP Challenger Kazan - R16
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="ITF"></span>ITF</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/tennis/itf/itf-women-canberra-r1">
+ITF Women Canberra - R1
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapse">
+<span class="text"><span class="trigger" title="WTA"></span>WTA</span>
+<ul style="display: none;">
+<li class="">
+<a class="text " href="/pl/odds/match/tennis/wta/wta-indian-wells-doubles">
+Indian Wells - Doubles
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/tennis/wta/wta-indian-wells-r16">
+Indian Wells - R16
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/tennis/wta/itf-women-irapuato-r1">
+ITF Women Irapuato - R1
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/tennis/wta/wta-san-antonio-open-doubles">
+WTA San Antonio Open - Doubles
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/tennis/wta/wta-san-antonio-open-r1">
+WTA San Antonio Open - R1
+<div class="marker"></div>
+</a>
+</li>
+<li class="">
+<a class="text " href="/pl/odds/match/tennis/wta/wta-san-antonio-open-r16">
+WTA San Antonio Open - R16
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level-1 future ">
+<span class="text"><span class="trigger" title="Specjalne"></span>Specjalne</span>
+<ul style="">
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon aussie-rules-football" title="Aussie Rules"></span>Aussie Rules</span>
+<ul style="display: none;">
+<li>
+<a class="text " href="/pl/odds/specials/aussie-rules/afl-futures-2016">
+AFL Futures 2016
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon baseball" title="Bejsbol"></span>Bejsbol</span>
+<ul style="display: none;">
+<li>
+<a class="text " href="/pl/odds/specials/baseball/japan-npb">
+Japan NPB
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/baseball/korea-baseball-organization">
+Korea Baseball Organization
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/baseball/mlb">
+World Series
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon formula-one" title="Formuła 1"></span>Formuła 1</span>
+<ul style="display: none;">
+<li>
+<a class="text " href="/pl/odds/specials/formula-1/australian-grand-prix">
+Australian Grand Prix
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/formula-1/constructors-championship">
+Constructors Championship
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/formula-1/drivers-championship">
+Drivers Championship
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon football" title="Futbol"></span>Futbol</span>
+<ul style="display: none;">
+<li>
+<a class="text " href="/pl/odds/specials/football/nfl">
+NFL
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon golf" title="Golf"></span>Golf</span>
+<ul style="display: none;">
+<li>
+<a class="text " href="/pl/odds/specials/golf/european-tour-hero-indian-open">
+European Tour Hero Indian Open
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/golf/major-wins-2016--must-start-the-masters-">
+Major Wins 2016
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/golf/pga-tour-arnold-palmer-invitational">
+PGA Tour Arnold Palmer Invitational
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/golf/ryder-cup">
+Ryder Cup
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/golf/pga-tour-us-masters">
+US Masters
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon hockey" title="Hokej"></span>Hokej</span>
+<ul style="display: none;">
+<li>
+<a class="text " href="/pl/odds/specials/hockey/nhl">
+NHL
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon other" title="Inne sporty"></span>Inne sporty</span>
+<ul style="display: none;">
+<li>
+<a class="text " href="/pl/odds/specials/unknown/team-matchups-more-wins-in-tourney">
+Team Matchups-More Wins in Tourney
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon basketball" title="NCAAB Tournament"></span>NCAAB Tournament</span>
+<ul style="display: none;">
+<li>
+<a class="text " href="/pl/odds/specials/ncaa-basketball-futures/east-region-winner">
+East Region Winner
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/ncaa-basketball-futures/midwest--region-winner">
+Midwest Region Winner
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/ncaa-basketball-futures/odds-to-win-ncaa-basketball-tournament">
+Odds to Win NCAA Basketball Tournament
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/ncaa-basketball-futures/seed-props">
+Seed Props
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/ncaa-basketball-futures/south-region-winner">
+South Region Winner
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/ncaa-basketball-futures/sweet-16">
+Sweet 16
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/ncaa-basketball-futures/west-region-winner">
+West Region Winner
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon soccer" title="Piłka nożna"></span>Piłka nożna</span>
+<ul style="display: none;">
+<li>
+<a class="text " href="/pl/odds/specials/soccer/concacaf-champions-league">
+CONCACAF - Champions League
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/soccer/copa-america-2016">
+Copa America 2016
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/soccer/uefa-euro-2016">
+Euro 2016
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/soccer/uefa-champions-league">
+UEFA Champions League
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/soccer/uefa-europa-league">
+UEFA Europa League
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+<li class="level-2 collapse">
+<span class="text"><span class="sport-icon tennis" title="Tenis"></span>Tenis</span>
+<ul style="display: none;">
+<li>
+<a class="text " href="/pl/odds/specials/tennis/atp-french-open">
+ATP French Open
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/tennis/atp-indian-wells">
+ATP Indian Wells
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/tennis/davis-cup">
+Davis Cup
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/tennis/fed-cup">
+Fed Cup
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/tennis/wta-french-open">
+WTA French Open
+<div class="marker"></div>
+</a>
+</li>
+<li>
+<a class="text " href="/pl/odds/specials/tennis/wta-indian-wells">
+WTA Indian Wells
+<div class="marker"></div>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<script>
+            var path = window.location.pathname.replace(/\/+$/, "").toLowerCase();
+            if (window.location.search.match(/sport=true/i))
+            {
+                path += "?sport=True";
+            }
+            var link = $(".block.sports-menu a[href$='" + path + "']");
+            link.addClass("active");
+        </script>
+</aside>
+<div id="main" class="right guestlines-cell-right">
+<aside id="right-content" class="right ng-scope ng-hide" ng-show="show" ng-controller="RightHandMenuController">
+<div class="center" style="width: 100%; padding: 20px;">
+<div><a href="/pl/casino"> <img src="/Cms_Data/Contents/Guestpl/Media/GuestLines/rhm/hp-pol-casino-banner.jpg" alt="hp-pol-casino-banner.jpg" width="140" height="500"></a></div>
+</div>
+</aside>
+<div id="left-content" class="left alone">
+<header>
+<div class="left">
+<div class="guestlines">
+<div class="breadcrumbs">
+<a href="/">Bukmacher</a>
+<span> &gt; </span>
+<a href="/pl/odds-list/countries/soccer">Piłka nożna</a>
+<span> &gt; </span>
+<a href="/pl/odds-list/leagues/soccer/australia">Australia</a>
+<span> &gt; </span>
+<span>A-League</span>
+</div>
+</div>
+</div>
+<div class="right">
+<div class="guestlines">
+<div class="social-list">
+<a id="guestlines-facebook-button" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2fwww.pinnaclesports.com%2fpl%2fodds%2fmatch%2fsoccer%2faustralia%2faustralia-a-league" class="facebook-share-button" target="_blank"></a>
+<a id="guestlines-twitter-button" href="https://twitter.com/share?url=http%3a%2f%2fwww.pinnaclesports.com%2fpl%2fodds%2fmatch%2fsoccer%2faustralia%2faustralia-a-league&amp;text=Znalaz%c5%82em+najlepsze+kursy+w+sieci+dla+A-League+w+%40pinnaclesports+-&amp;count=none" class="twitter-share-button" target="_blank"></a>
+<a id="guestlines-googleplus-button" href="https://plus.google.com/share?url=http%3a%2f%2fwww.pinnaclesports.com%2fpl%2fodds%2fmatch%2fsoccer%2faustralia%2faustralia-a-league" class="googleplus-share-button" target="_blank"></a>
+</div>
+</div>
+</div>
+</header>
+<div class="main-placeholder">
+<div class="guestlines ng-scope" ng-controller="TopAdController" ng-init="init(ng-init)" ng-show="show">
+<div class="top-ad">
+</div>
+</div>
+<div ng-controller="GuestLinesController" ng-init="init(29, 1766, false, 0)" class="guestlines ng-scope">
+<div ng-hide="contentLoaded || isError" class="content-loading ng-hide">
+</div>
+<div class="" ng-class="{hide:!contentLoaded}" ng-show="contentLoaded">
+<!-- ngIf: dataExists --><div ng-if="dataExists" class="ng-scope">
+<div class="tabs">
+<ul class="tab-index">
+<li ng-class="{active: isActivePeriod(0)}" class="active"><a href="javascript:void(0)" ng-click="selectPeriod(0)"><span class="ng-binding">Full Time Result</span></a></li>
+<!-- ngIf: showTotalsTab --><li ng-if="showTotalsTab" ng-class="{active: isActiveTotals()}" class="ng-scope"><a ng-click="selectTotals()" href="javascript:void(0)"><span class="ng-binding">Team Totals</span></a></li><!-- end ngIf: showTotalsTab -->
+<!-- ngRepeat: period in periods --><li ng-repeat="period in periods" ng-class="{active: isActivePeriod(period)}" ng-show="isPeriodTabDataExist(period)" class="ng-scope"><a href="javascript:void(0)" ng-click="selectPeriod(period)"><span class="ng-binding">1st Half</span></a></li><!-- end ngRepeat: period in periods -->
+</ul>
+</div>
+<div class="odds-selector-container">
+<div class="right">
+<script>
+    function fnPlaceItemFirst($scope, element, apply) {
+        if (element != null){
+            var item = element.parent("li");
+            var parent = item.parent("ul");
+            if (apply) {
+                $scope.$apply(function() {
+                    item.prependTo(parent);
+                });
+            } else {
+                item.prependTo(parent);
+            }
+        }
+    }
+
+    function fnInitOddsCombo($scope, $element) {
+        $('#oddsSelector').dropdownButton({
+            onItemSelected: function() {
+                $scope.oddSelected($(this).data('value'));
+                window.pinnacle.setUserPrefsCookie("priceStyle", $(this).data('value'));
+                fnPlaceItemFirst($scope, $(this), true);
+            }
+        });
+        var cookieValue = window.pinnacle.getUserPrefsCookie("priceStyle");
+        var currentItem = null;
+        if (!!cookieValue) {
+          	cookieValue = cookieValue.toLowerCase();
+            currentItem = $('#oddsSelector ul li a[data-value="' + cookieValue + '"]');
+        } else {
+            var items = $('#oddsSelector ul li a');
+            if (items.length > 0) {
+                currentItem = $(items[0]);
+            }
+        }
+        if (currentItem != null){
+            currentItem.addClass("active");
+            $('#oddsSelector .text').text(currentItem.text());
+        }
+        fnPlaceItemFirst($scope, currentItem, false);
+        $element.removeClass('hide');
+    }
+</script>
+<div ng-controller="OddsController" ng-init="init('fnInitOddsCombo', false)" class="ng-scope">
+<div id="oddsSelector" ng-show="show" class="dropdown-button gradient-gray odds-selector" style="width: 100px;">
+<div class="container"><span class="text">Kursy dziesiętne</span></div>
+<ul style="display: none; opacity: 1; position: absolute;"><li>
+<a data-value="decimal" class="active">Kursy dziesiętne</a>
+</li>
+<li>
+<a data-value="american">Kursy amerykańskie</a>
+</li>
+
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div ng-show="activeTab == 'period'" class="">
+<div ng-show="currentPeriod.period == 0 &amp;&amp; !isPeriodTabDataExist(currentPeriod.period)" class="error-message-container ng-hide">
+<div class="error-message">
+<img src="/Cms_Data/Contents/Guest/Media/lines-pages/warning.png">
+<div>
+Niestety, wyniki całego meczu są obecnie niedostępne.
+</div>
+</div>
+</div>
+<!-- ngIf: isPeriodTabDataExist(currentPeriod.period) --><div ng-if="isPeriodTabDataExist(currentPeriod.period)" class="ng-scope">
+<!-- ngRepeat: date in currentPeriod.dates --><div ng-repeat="date in currentPeriod.dates" class="ng-scope">
+<!-- ngRepeat: league in date.leagues --><div ng-repeat="league in date.leagues" class="ng-scope">
+<div class="toolbar" ng-click="triggerCollapse(league.league, date.date)">
+<span class="trigger" ng-class="{collapsed:isCollapsed(league.league, date.date)}"></span><span class="date-highlight ng-binding">Fri 18/03</span> Australia - A-League
+</div>
+<!-- ngIf: showLiveLeagueMessage(league.league) -->
+<table class="odds-data" ng-hide="isCollapsed(league.league, date.date)">
+<tbody><tr>
+<th class="center time-column ng-binding">Time</th>
+<th class="center match-column ng-binding">Game</th>
+<th class="center handicap-column ng-binding">Handicap</th>
+<th class="center moneyline-column ng-binding">Moneyline</th>
+<th class="center total-column ng-binding" colspan="2">Total</th>
+</tr>
+</tbody><!-- ngRepeat: event in events = (league.events | filter: linesDataExists) --><tbody ng-repeat="event in events = (league.events | filter: linesDataExists)" ng-class-even="'even'" class="ng-scope">
+<!-- ngRepeat: participant in participants = (event.Participants) --><tr ng-repeat="participant in participants = (event.Participants)" class="ng-scope">
+<!-- ngIf: $index == 0 --><td align="center" ng-if="$index == 0" rowspan="3" valign="top" class="ng-scope">
+<span class="ng-binding">01.40</span>
+<!-- ngIf: showLiveEventMessage(event) -->
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Melbourne City</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: participant.IsDraw == true -->
+<!-- ngIf: participant.IsDraw == false && !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.Handicap != undefined && !isOffline(event) --><span ng-if="participant.Handicap != undefined &amp;&amp; !isOffline(event)" class="handicap-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">0 i -0.5</span>
+<span class="space"></span>
+<span class="price ng-binding">1.943</span>
+</span>
+</span><!-- end ngIf: participant.Handicap != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.MoneyLine != undefined && !isOffline(event) --><span ng-if="participant.MoneyLine != undefined &amp;&amp; !isOffline(event)" class="ng-binding ng-scope">2.179</span><!-- end ngIf: participant.MoneyLine != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<!-- ngIf: $index == 0 --><td ng-if="$index == 0" rowspan="3" class="ng-scope">
+<!-- ngIf: event.Totals != undefined && event.Totals.OverPrice != undefined && !isOffline(event) --><div ng-if="event.Totals != undefined &amp;&amp; event.Totals.OverPrice != undefined &amp;&amp; !isOffline(event)" class="ng-scope">
+<span class="ng-binding">Powyżej 3 i 3.5</span>
+<div class="vertical-spacer"></div>
+<span class="ng-binding">1.925</span>
+</div><!-- end ngIf: event.Totals != undefined && event.Totals.OverPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+<!-- ngIf: $index == 0 --><td ng-if="$index == 0" rowspan="3" class="ng-scope">
+<!-- ngIf: event.Totals != undefined && event.Totals.UnderPrice != undefined && !isOffline(event) --><div ng-if="event.Totals != undefined &amp;&amp; event.Totals.UnderPrice != undefined &amp;&amp; !isOffline(event)" class="ng-scope">
+<span class="ng-binding">Poniżej 3 i 3.5</span>
+<div class="vertical-spacer"></div>
+<span class="ng-binding">1.970</span>
+</div><!-- end ngIf: event.Totals != undefined && event.Totals.UnderPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+</tr><!-- end ngRepeat: participant in participants = (event.Participants) --><tr ng-repeat="participant in participants = (event.Participants)" class="ng-scope">
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Brisbane Roar</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: participant.IsDraw == true -->
+<!-- ngIf: participant.IsDraw == false && !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.Handicap != undefined && !isOffline(event) --><span ng-if="participant.Handicap != undefined &amp;&amp; !isOffline(event)" class="handicap-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">0 i +0.5</span>
+<span class="space"></span>
+<span class="price ng-binding">1.980</span>
+</span>
+</span><!-- end ngIf: participant.Handicap != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.MoneyLine != undefined && !isOffline(event) --><span ng-if="participant.MoneyLine != undefined &amp;&amp; !isOffline(event)" class="ng-binding ng-scope">3.200</span><!-- end ngIf: participant.MoneyLine != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+</tr><!-- end ngRepeat: participant in participants = (event.Participants) --><tr ng-repeat="participant in participants = (event.Participants)" class="ng-scope">
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined -->
+<!-- ngIf: participant.IsDraw == true --><span ng-if="participant.IsDraw == true" class="ng-binding ng-scope">Remis</span><!-- end ngIf: participant.IsDraw == true -->
+<!-- ngIf: participant.IsDraw == false && !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.Handicap != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.MoneyLine != undefined && !isOffline(event) --><span ng-if="participant.MoneyLine != undefined &amp;&amp; !isOffline(event)" class="ng-binding ng-scope">3.940</span><!-- end ngIf: participant.MoneyLine != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+</tr><!-- end ngRepeat: participant in participants = (event.Participants) -->
+<!-- ngIf: $index < league.events.length - 1 --><tr class="divider ng-scope" ng-if="$index &lt; league.events.length - 1"><td colspan="6">&nbsp;</td></tr><!-- end ngIf: $index < league.events.length - 1 -->
+</tbody><!-- end ngRepeat: event in events = (league.events | filter: linesDataExists) --><tbody ng-repeat="event in events = (league.events | filter: linesDataExists)" ng-class-even="'even'" class="ng-scope even">
+<!-- ngRepeat: participant in participants = (event.Participants) --><tr ng-repeat="participant in participants = (event.Participants)" class="ng-scope">
+<!-- ngIf: $index == 0 --><td align="center" ng-if="$index == 0" rowspan="3" valign="top" class="ng-scope">
+<span class="ng-binding">23.15</span>
+<!-- ngIf: showLiveEventMessage(event) -->
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Central Coast Mariners</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: participant.IsDraw == true -->
+<!-- ngIf: participant.IsDraw == false && !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.Handicap != undefined && !isOffline(event) --><span ng-if="participant.Handicap != undefined &amp;&amp; !isOffline(event)" class="handicap-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">+1</span>
+<span class="space"></span>
+<span class="price ng-binding">1.980</span>
+</span>
+</span><!-- end ngIf: participant.Handicap != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.MoneyLine != undefined && !isOffline(event) --><span ng-if="participant.MoneyLine != undefined &amp;&amp; !isOffline(event)" class="ng-binding ng-scope">5.860</span><!-- end ngIf: participant.MoneyLine != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<!-- ngIf: $index == 0 --><td ng-if="$index == 0" rowspan="3" class="ng-scope">
+<!-- ngIf: event.Totals != undefined && event.Totals.OverPrice != undefined && !isOffline(event) --><div ng-if="event.Totals != undefined &amp;&amp; event.Totals.OverPrice != undefined &amp;&amp; !isOffline(event)" class="ng-scope">
+<span class="ng-binding">Powyżej 3</span>
+<div class="vertical-spacer"></div>
+<span class="ng-binding">1.847</span>
+</div><!-- end ngIf: event.Totals != undefined && event.Totals.OverPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+<!-- ngIf: $index == 0 --><td ng-if="$index == 0" rowspan="3" class="ng-scope">
+<!-- ngIf: event.Totals != undefined && event.Totals.UnderPrice != undefined && !isOffline(event) --><div ng-if="event.Totals != undefined &amp;&amp; event.Totals.UnderPrice != undefined &amp;&amp; !isOffline(event)" class="ng-scope">
+<span class="ng-binding">Poniżej 3</span>
+<div class="vertical-spacer"></div>
+<span class="ng-binding">2.060</span>
+</div><!-- end ngIf: event.Totals != undefined && event.Totals.UnderPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+</tr><!-- end ngRepeat: participant in participants = (event.Participants) --><tr ng-repeat="participant in participants = (event.Participants)" class="ng-scope">
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Sydney FC</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: participant.IsDraw == true -->
+<!-- ngIf: participant.IsDraw == false && !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.Handicap != undefined && !isOffline(event) --><span ng-if="participant.Handicap != undefined &amp;&amp; !isOffline(event)" class="handicap-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">-1</span>
+<span class="space"></span>
+<span class="price ng-binding">1.943</span>
+</span>
+</span><!-- end ngIf: participant.Handicap != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.MoneyLine != undefined && !isOffline(event) --><span ng-if="participant.MoneyLine != undefined &amp;&amp; !isOffline(event)" class="ng-binding ng-scope">1.584</span><!-- end ngIf: participant.MoneyLine != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+</tr><!-- end ngRepeat: participant in participants = (event.Participants) --><tr ng-repeat="participant in participants = (event.Participants)" class="ng-scope">
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined -->
+<!-- ngIf: participant.IsDraw == true --><span ng-if="participant.IsDraw == true" class="ng-binding ng-scope">Remis</span><!-- end ngIf: participant.IsDraw == true -->
+<!-- ngIf: participant.IsDraw == false && !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.Handicap != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.MoneyLine != undefined && !isOffline(event) --><span ng-if="participant.MoneyLine != undefined &amp;&amp; !isOffline(event)" class="ng-binding ng-scope">4.470</span><!-- end ngIf: participant.MoneyLine != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+</tr><!-- end ngRepeat: participant in participants = (event.Participants) -->
+<!-- ngIf: $index < league.events.length - 1 -->
+</tbody><!-- end ngRepeat: event in events = (league.events | filter: linesDataExists) -->
+</table>
+</div><!-- end ngRepeat: league in date.leagues -->
+</div><!-- end ngRepeat: date in currentPeriod.dates --><div ng-repeat="date in currentPeriod.dates" class="ng-scope">
+<!-- ngRepeat: league in date.leagues --><div ng-repeat="league in date.leagues" class="ng-scope">
+<div class="toolbar" ng-click="triggerCollapse(league.league, date.date)">
+<span class="trigger" ng-class="{collapsed:isCollapsed(league.league, date.date)}"></span><span class="date-highlight ng-binding">Sat 19/03</span> Australia - A-League
+</div>
+<!-- ngIf: showLiveLeagueMessage(league.league) -->
+<table class="odds-data" ng-hide="isCollapsed(league.league, date.date)">
+<tbody><tr>
+<th class="center time-column ng-binding">Time</th>
+<th class="center match-column ng-binding">Game</th>
+<th class="center handicap-column ng-binding">Handicap</th>
+<th class="center moneyline-column ng-binding">Moneyline</th>
+<th class="center total-column ng-binding" colspan="2">Total</th>
+</tr>
+</tbody><!-- ngRepeat: event in events = (league.events | filter: linesDataExists) --><tbody ng-repeat="event in events = (league.events | filter: linesDataExists)" ng-class-even="'even'" class="ng-scope">
+<!-- ngRepeat: participant in participants = (event.Participants) --><tr ng-repeat="participant in participants = (event.Participants)" class="ng-scope">
+<!-- ngIf: $index == 0 --><td align="center" ng-if="$index == 0" rowspan="3" valign="top" class="ng-scope">
+<span class="ng-binding">01.30</span>
+<!-- ngIf: showLiveEventMessage(event) -->
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Western Sydney Wanderers</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: participant.IsDraw == true -->
+<!-- ngIf: participant.IsDraw == false && !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.Handicap != undefined && !isOffline(event) --><span ng-if="participant.Handicap != undefined &amp;&amp; !isOffline(event)" class="handicap-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">-0.5</span>
+<span class="space"></span>
+<span class="price ng-binding">2.020</span>
+</span>
+</span><!-- end ngIf: participant.Handicap != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.MoneyLine != undefined && !isOffline(event) --><span ng-if="participant.MoneyLine != undefined &amp;&amp; !isOffline(event)" class="ng-binding ng-scope">2.020</span><!-- end ngIf: participant.MoneyLine != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<!-- ngIf: $index == 0 --><td ng-if="$index == 0" rowspan="3" class="ng-scope">
+<!-- ngIf: event.Totals != undefined && event.Totals.OverPrice != undefined && !isOffline(event) --><div ng-if="event.Totals != undefined &amp;&amp; event.Totals.OverPrice != undefined &amp;&amp; !isOffline(event)" class="ng-scope">
+<span class="ng-binding">Powyżej 3</span>
+<div class="vertical-spacer"></div>
+<span class="ng-binding">2.080</span>
+</div><!-- end ngIf: event.Totals != undefined && event.Totals.OverPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+<!-- ngIf: $index == 0 --><td ng-if="$index == 0" rowspan="3" class="ng-scope">
+<!-- ngIf: event.Totals != undefined && event.Totals.UnderPrice != undefined && !isOffline(event) --><div ng-if="event.Totals != undefined &amp;&amp; event.Totals.UnderPrice != undefined &amp;&amp; !isOffline(event)" class="ng-scope">
+<span class="ng-binding">Poniżej 3</span>
+<div class="vertical-spacer"></div>
+<span class="ng-binding">1.826</span>
+</div><!-- end ngIf: event.Totals != undefined && event.Totals.UnderPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+</tr><!-- end ngRepeat: participant in participants = (event.Participants) --><tr ng-repeat="participant in participants = (event.Participants)" class="ng-scope">
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Adelaide United</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: participant.IsDraw == true -->
+<!-- ngIf: participant.IsDraw == false && !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.Handicap != undefined && !isOffline(event) --><span ng-if="participant.Handicap != undefined &amp;&amp; !isOffline(event)" class="handicap-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">+0.5</span>
+<span class="space"></span>
+<span class="price ng-binding">1.900</span>
+</span>
+</span><!-- end ngIf: participant.Handicap != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.MoneyLine != undefined && !isOffline(event) --><span ng-if="participant.MoneyLine != undefined &amp;&amp; !isOffline(event)" class="ng-binding ng-scope">3.690</span><!-- end ngIf: participant.MoneyLine != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+</tr><!-- end ngRepeat: participant in participants = (event.Participants) --><tr ng-repeat="participant in participants = (event.Participants)" class="ng-scope">
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined -->
+<!-- ngIf: participant.IsDraw == true --><span ng-if="participant.IsDraw == true" class="ng-binding ng-scope">Remis</span><!-- end ngIf: participant.IsDraw == true -->
+<!-- ngIf: participant.IsDraw == false && !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.Handicap != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.MoneyLine != undefined && !isOffline(event) --><span ng-if="participant.MoneyLine != undefined &amp;&amp; !isOffline(event)" class="ng-binding ng-scope">3.860</span><!-- end ngIf: participant.MoneyLine != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+</tr><!-- end ngRepeat: participant in participants = (event.Participants) -->
+<!-- ngIf: $index < league.events.length - 1 --><tr class="divider ng-scope" ng-if="$index &lt; league.events.length - 1"><td colspan="6">&nbsp;</td></tr><!-- end ngIf: $index < league.events.length - 1 -->
+</tbody><!-- end ngRepeat: event in events = (league.events | filter: linesDataExists) --><tbody ng-repeat="event in events = (league.events | filter: linesDataExists)" ng-class-even="'even'" class="ng-scope even">
+<!-- ngRepeat: participant in participants = (event.Participants) --><tr ng-repeat="participant in participants = (event.Participants)" class="ng-scope">
+<!-- ngIf: $index == 0 --><td align="center" ng-if="$index == 0" rowspan="3" valign="top" class="ng-scope">
+<span class="ng-binding">21.00</span>
+<!-- ngIf: showLiveEventMessage(event) -->
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Wellington Phoenix</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: participant.IsDraw == true -->
+<!-- ngIf: participant.IsDraw == false && !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.Handicap != undefined && !isOffline(event) --><span ng-if="participant.Handicap != undefined &amp;&amp; !isOffline(event)" class="handicap-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">0</span>
+<span class="space"></span>
+<span class="price ng-binding">2.050</span>
+</span>
+</span><!-- end ngIf: participant.Handicap != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.MoneyLine != undefined && !isOffline(event) --><span ng-if="participant.MoneyLine != undefined &amp;&amp; !isOffline(event)" class="ng-binding ng-scope">2.780</span><!-- end ngIf: participant.MoneyLine != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<!-- ngIf: $index == 0 --><td ng-if="$index == 0" rowspan="3" class="ng-scope">
+<!-- ngIf: event.Totals != undefined && event.Totals.OverPrice != undefined && !isOffline(event) --><div ng-if="event.Totals != undefined &amp;&amp; event.Totals.OverPrice != undefined &amp;&amp; !isOffline(event)" class="ng-scope">
+<span class="ng-binding">Powyżej 3</span>
+<div class="vertical-spacer"></div>
+<span class="ng-binding">1.934</span>
+</div><!-- end ngIf: event.Totals != undefined && event.Totals.OverPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+<!-- ngIf: $index == 0 --><td ng-if="$index == 0" rowspan="3" class="ng-scope">
+<!-- ngIf: event.Totals != undefined && event.Totals.UnderPrice != undefined && !isOffline(event) --><div ng-if="event.Totals != undefined &amp;&amp; event.Totals.UnderPrice != undefined &amp;&amp; !isOffline(event)" class="ng-scope">
+<span class="ng-binding">Poniżej 3</span>
+<div class="vertical-spacer"></div>
+<span class="ng-binding">1.970</span>
+</div><!-- end ngIf: event.Totals != undefined && event.Totals.UnderPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+</tr><!-- end ngRepeat: participant in participants = (event.Participants) --><tr ng-repeat="participant in participants = (event.Participants)" class="ng-scope">
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Perth Glory</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: participant.IsDraw == true -->
+<!-- ngIf: participant.IsDraw == false && !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.Handicap != undefined && !isOffline(event) --><span ng-if="participant.Handicap != undefined &amp;&amp; !isOffline(event)" class="handicap-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">0</span>
+<span class="space"></span>
+<span class="price ng-binding">1.869</span>
+</span>
+</span><!-- end ngIf: participant.Handicap != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.MoneyLine != undefined && !isOffline(event) --><span ng-if="participant.MoneyLine != undefined &amp;&amp; !isOffline(event)" class="ng-binding ng-scope">2.510</span><!-- end ngIf: participant.MoneyLine != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+</tr><!-- end ngRepeat: participant in participants = (event.Participants) --><tr ng-repeat="participant in participants = (event.Participants)" class="ng-scope">
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined -->
+<!-- ngIf: participant.IsDraw == true --><span ng-if="participant.IsDraw == true" class="ng-binding ng-scope">Remis</span><!-- end ngIf: participant.IsDraw == true -->
+<!-- ngIf: participant.IsDraw == false && !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.Handicap != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.MoneyLine != undefined && !isOffline(event) --><span ng-if="participant.MoneyLine != undefined &amp;&amp; !isOffline(event)" class="ng-binding ng-scope">3.740</span><!-- end ngIf: participant.MoneyLine != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+</tr><!-- end ngRepeat: participant in participants = (event.Participants) -->
+<!-- ngIf: $index < league.events.length - 1 --><tr class="divider ng-scope" ng-if="$index &lt; league.events.length - 1"><td colspan="6">&nbsp;</td></tr><!-- end ngIf: $index < league.events.length - 1 -->
+</tbody><!-- end ngRepeat: event in events = (league.events | filter: linesDataExists) --><tbody ng-repeat="event in events = (league.events | filter: linesDataExists)" ng-class-even="'even'" class="ng-scope">
+<!-- ngRepeat: participant in participants = (event.Participants) --><tr ng-repeat="participant in participants = (event.Participants)" class="ng-scope">
+<!-- ngIf: $index == 0 --><td align="center" ng-if="$index == 0" rowspan="3" valign="top" class="ng-scope">
+<span class="ng-binding">23.00</span>
+<!-- ngIf: showLiveEventMessage(event) -->
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Melbourne Victory</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: participant.IsDraw == true -->
+<!-- ngIf: participant.IsDraw == false && !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.Handicap != undefined && !isOffline(event) --><span ng-if="participant.Handicap != undefined &amp;&amp; !isOffline(event)" class="handicap-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">-1.5</span>
+<span class="space"></span>
+<span class="price ng-binding">2.040</span>
+</span>
+</span><!-- end ngIf: participant.Handicap != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.MoneyLine != undefined && !isOffline(event) --><span ng-if="participant.MoneyLine != undefined &amp;&amp; !isOffline(event)" class="ng-binding ng-scope">1.369</span><!-- end ngIf: participant.MoneyLine != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<!-- ngIf: $index == 0 --><td ng-if="$index == 0" rowspan="3" class="ng-scope">
+<!-- ngIf: event.Totals != undefined && event.Totals.OverPrice != undefined && !isOffline(event) --><div ng-if="event.Totals != undefined &amp;&amp; event.Totals.OverPrice != undefined &amp;&amp; !isOffline(event)" class="ng-scope">
+<span class="ng-binding">Powyżej 3 i 3.5</span>
+<div class="vertical-spacer"></div>
+<span class="ng-binding">1.961</span>
+</div><!-- end ngIf: event.Totals != undefined && event.Totals.OverPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+<!-- ngIf: $index == 0 --><td ng-if="$index == 0" rowspan="3" class="ng-scope">
+<!-- ngIf: event.Totals != undefined && event.Totals.UnderPrice != undefined && !isOffline(event) --><div ng-if="event.Totals != undefined &amp;&amp; event.Totals.UnderPrice != undefined &amp;&amp; !isOffline(event)" class="ng-scope">
+<span class="ng-binding">Poniżej 3 i 3.5</span>
+<div class="vertical-spacer"></div>
+<span class="ng-binding">1.943</span>
+</div><!-- end ngIf: event.Totals != undefined && event.Totals.UnderPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+</tr><!-- end ngRepeat: participant in participants = (event.Participants) --><tr ng-repeat="participant in participants = (event.Participants)" class="ng-scope">
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Newcastle Jets</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: participant.IsDraw == true -->
+<!-- ngIf: participant.IsDraw == false && !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.Handicap != undefined && !isOffline(event) --><span ng-if="participant.Handicap != undefined &amp;&amp; !isOffline(event)" class="handicap-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">+1.5</span>
+<span class="space"></span>
+<span class="price ng-binding">1.877</span>
+</span>
+</span><!-- end ngIf: participant.Handicap != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.MoneyLine != undefined && !isOffline(event) --><span ng-if="participant.MoneyLine != undefined &amp;&amp; !isOffline(event)" class="ng-binding ng-scope">8.680</span><!-- end ngIf: participant.MoneyLine != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+</tr><!-- end ngRepeat: participant in participants = (event.Participants) --><tr ng-repeat="participant in participants = (event.Participants)" class="ng-scope">
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined -->
+<!-- ngIf: participant.IsDraw == true --><span ng-if="participant.IsDraw == true" class="ng-binding ng-scope">Remis</span><!-- end ngIf: participant.IsDraw == true -->
+<!-- ngIf: participant.IsDraw == false && !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.Handicap != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.MoneyLine != undefined && !isOffline(event) --><span ng-if="participant.MoneyLine != undefined &amp;&amp; !isOffline(event)" class="ng-binding ng-scope">5.570</span><!-- end ngIf: participant.MoneyLine != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+</tr><!-- end ngRepeat: participant in participants = (event.Participants) -->
+<!-- ngIf: $index < league.events.length - 1 -->
+</tbody><!-- end ngRepeat: event in events = (league.events | filter: linesDataExists) -->
+</table>
+</div><!-- end ngRepeat: league in date.leagues -->
+</div><!-- end ngRepeat: date in currentPeriod.dates -->
+</div><!-- end ngIf: isPeriodTabDataExist(currentPeriod.period) -->
+</div>
+<div ng-show="activeTab == 'totals'" class="ng-hide">
+<!-- ngRepeat: date in groupedDates --><div ng-repeat="date in groupedDates" class="ng-scope">
+<!-- ngRepeat: period in date.periods --><div ng-repeat="period in date.periods" class="ng-scope">
+<!-- ngRepeat: league in period.leagues --><div ng-repeat="league in period.leagues" class="ng-scope">
+<!-- ngIf: league.teamTotalsExists --><div class="toolbar ng-scope" ng-click="triggerCollapse(league.league, date.date, period.period)" ng-if="league.teamTotalsExists">
+<span class="trigger" ng-class="{collapsed:isCollapsed(league.league, date.date, period.period)}"></span>
+<span class="date-highlight ng-binding">Fri 18/03 </span>
+<span>Australia - A-League</span>
+<!-- ngIf: period.period > 0 -->
+</div><!-- end ngIf: league.teamTotalsExists -->
+<!-- ngIf: league.teamTotalsExists --><table class="odds-data ng-scope" ng-hide="isCollapsed(league.league, date.date, period.period)" ng-if="league.teamTotalsExists">
+<tbody><tr>
+<th class="center totals-time-column ng-binding">Time</th>
+<th class="center totals-match-column ng-binding">Game</th>
+<th class="center totals-over-column ng-binding">Total Over</th>
+<th class="center totals-under-column ng-binding">Total Under</th>
+</tr>
+</tbody><!-- ngRepeat: event in events = (league.events | filter: teamTotalsExists) --><tbody ng-repeat="event in events = (league.events | filter: teamTotalsExists)" ng-class-even="'even'" class="ng-scope">
+<!-- ngRepeat: participant in participants = (event.Participants | filter: { IsDraw: false }) --><tr ng-repeat="participant in participants = (event.Participants | filter: { IsDraw: false })" class="ng-scope">
+<!-- ngIf: $index == 0 --><td ng-if="$index == 0" rowspan="2" valign="top" class="ng-scope">
+<span class="ng-binding">01.40</span>
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Melbourne City</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.OverPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Powyżej 1.5 i 2</span>
+<span class="space"></span>
+<span class="price ng-binding">1.990</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.UnderPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Poniżej 1.5 i 2</span>
+<span class="space"></span>
+<span class="price ng-binding">1.900</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+</tr><!-- end ngRepeat: participant in participants = (event.Participants | filter: { IsDraw: false }) --><tr ng-repeat="participant in participants = (event.Participants | filter: { IsDraw: false })" class="ng-scope">
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Brisbane Roar</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.OverPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Powyżej 1.5</span>
+<span class="space"></span>
+<span class="price ng-binding">2.070</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.UnderPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Poniżej 1.5</span>
+<span class="space"></span>
+<span class="price ng-binding">1.819</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+</tr><!-- end ngRepeat: participant in participants = (event.Participants | filter: { IsDraw: false }) -->
+<!-- ngIf: $index < league.events.length - 1 --><tr class="divider ng-scope" ng-if="$index &lt; league.events.length - 1"><td colspan="4">&nbsp;</td></tr><!-- end ngIf: $index < league.events.length - 1 -->
+</tbody><!-- end ngRepeat: event in events = (league.events | filter: teamTotalsExists) --><tbody ng-repeat="event in events = (league.events | filter: teamTotalsExists)" ng-class-even="'even'" class="ng-scope even">
+<!-- ngRepeat: participant in participants = (event.Participants | filter: { IsDraw: false }) --><tr ng-repeat="participant in participants = (event.Participants | filter: { IsDraw: false })" class="ng-scope">
+<!-- ngIf: $index == 0 --><td ng-if="$index == 0" rowspan="2" valign="top" class="ng-scope">
+<span class="ng-binding">23.15</span>
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Central Coast Mariners</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.OverPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Powyżej 1</span>
+<span class="space"></span>
+<span class="price ng-binding">2.060</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.UnderPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Poniżej 1</span>
+<span class="space"></span>
+<span class="price ng-binding">1.826</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+</tr><!-- end ngRepeat: participant in participants = (event.Participants | filter: { IsDraw: false }) --><tr ng-repeat="participant in participants = (event.Participants | filter: { IsDraw: false })" class="ng-scope">
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Sydney FC</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.OverPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Powyżej 2</span>
+<span class="space"></span>
+<span class="price ng-binding">1.970</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.UnderPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Poniżej 2</span>
+<span class="space"></span>
+<span class="price ng-binding">1.917</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+</tr><!-- end ngRepeat: participant in participants = (event.Participants | filter: { IsDraw: false }) -->
+<!-- ngIf: $index < league.events.length - 1 -->
+</tbody><!-- end ngRepeat: event in events = (league.events | filter: teamTotalsExists) -->
+</table><!-- end ngIf: league.teamTotalsExists -->
+</div><!-- end ngRepeat: league in period.leagues -->
+</div><!-- end ngRepeat: period in date.periods --><div ng-repeat="period in date.periods" class="ng-scope">
+<!-- ngRepeat: league in period.leagues --><div ng-repeat="league in period.leagues" class="ng-scope">
+<!-- ngIf: league.teamTotalsExists -->
+<!-- ngIf: league.teamTotalsExists -->
+</div><!-- end ngRepeat: league in period.leagues -->
+</div><!-- end ngRepeat: period in date.periods -->
+</div><!-- end ngRepeat: date in groupedDates --><div ng-repeat="date in groupedDates" class="ng-scope">
+<!-- ngRepeat: period in date.periods --><div ng-repeat="period in date.periods" class="ng-scope">
+<!-- ngRepeat: league in period.leagues --><div ng-repeat="league in period.leagues" class="ng-scope">
+<!-- ngIf: league.teamTotalsExists --><div class="toolbar ng-scope" ng-click="triggerCollapse(league.league, date.date, period.period)" ng-if="league.teamTotalsExists">
+<span class="trigger" ng-class="{collapsed:isCollapsed(league.league, date.date, period.period)}"></span>
+<span class="date-highlight ng-binding">Sat 19/03 </span>
+<span>Australia - A-League</span>
+<!-- ngIf: period.period > 0 -->
+</div><!-- end ngIf: league.teamTotalsExists -->
+<!-- ngIf: league.teamTotalsExists --><table class="odds-data ng-scope" ng-hide="isCollapsed(league.league, date.date, period.period)" ng-if="league.teamTotalsExists">
+<tbody><tr>
+<th class="center totals-time-column ng-binding">Time</th>
+<th class="center totals-match-column ng-binding">Game</th>
+<th class="center totals-over-column ng-binding">Total Over</th>
+<th class="center totals-under-column ng-binding">Total Under</th>
+</tr>
+</tbody><!-- ngRepeat: event in events = (league.events | filter: teamTotalsExists) --><tbody ng-repeat="event in events = (league.events | filter: teamTotalsExists)" ng-class-even="'even'" class="ng-scope">
+<!-- ngRepeat: participant in participants = (event.Participants | filter: { IsDraw: false }) --><tr ng-repeat="participant in participants = (event.Participants | filter: { IsDraw: false })" class="ng-scope">
+<!-- ngIf: $index == 0 --><td ng-if="$index == 0" rowspan="2" valign="top" class="ng-scope">
+<span class="ng-binding">01.30</span>
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Western Sydney Wanderers</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.OverPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Powyżej 1.5</span>
+<span class="space"></span>
+<span class="price ng-binding">1.819</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.UnderPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Poniżej 1.5</span>
+<span class="space"></span>
+<span class="price ng-binding">2.070</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+</tr><!-- end ngRepeat: participant in participants = (event.Participants | filter: { IsDraw: false }) --><tr ng-repeat="participant in participants = (event.Participants | filter: { IsDraw: false })" class="ng-scope">
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Adelaide United</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.OverPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Powyżej 1 i 1.5</span>
+<span class="space"></span>
+<span class="price ng-binding">2.230</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.UnderPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Poniżej 1 i 1.5</span>
+<span class="space"></span>
+<span class="price ng-binding">1.699</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+</tr><!-- end ngRepeat: participant in participants = (event.Participants | filter: { IsDraw: false }) -->
+<!-- ngIf: $index < league.events.length - 1 --><tr class="divider ng-scope" ng-if="$index &lt; league.events.length - 1"><td colspan="4">&nbsp;</td></tr><!-- end ngIf: $index < league.events.length - 1 -->
+</tbody><!-- end ngRepeat: event in events = (league.events | filter: teamTotalsExists) --><tbody ng-repeat="event in events = (league.events | filter: teamTotalsExists)" ng-class-even="'even'" class="ng-scope even">
+<!-- ngRepeat: participant in participants = (event.Participants | filter: { IsDraw: false }) --><tr ng-repeat="participant in participants = (event.Participants | filter: { IsDraw: false })" class="ng-scope">
+<!-- ngIf: $index == 0 --><td ng-if="$index == 0" rowspan="2" valign="top" class="ng-scope">
+<span class="ng-binding">21.00</span>
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Wellington Phoenix</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.OverPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Powyżej 1.5</span>
+<span class="space"></span>
+<span class="price ng-binding">2.110</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.UnderPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Poniżej 1.5</span>
+<span class="space"></span>
+<span class="price ng-binding">1.787</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+</tr><!-- end ngRepeat: participant in participants = (event.Participants | filter: { IsDraw: false }) --><tr ng-repeat="participant in participants = (event.Participants | filter: { IsDraw: false })" class="ng-scope">
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Perth Glory</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.OverPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Powyżej 1.5</span>
+<span class="space"></span>
+<span class="price ng-binding">1.990</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.UnderPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Poniżej 1.5</span>
+<span class="space"></span>
+<span class="price ng-binding">1.892</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+</tr><!-- end ngRepeat: participant in participants = (event.Participants | filter: { IsDraw: false }) -->
+<!-- ngIf: $index < league.events.length - 1 --><tr class="divider ng-scope" ng-if="$index &lt; league.events.length - 1"><td colspan="4">&nbsp;</td></tr><!-- end ngIf: $index < league.events.length - 1 -->
+</tbody><!-- end ngRepeat: event in events = (league.events | filter: teamTotalsExists) --><tbody ng-repeat="event in events = (league.events | filter: teamTotalsExists)" ng-class-even="'even'" class="ng-scope">
+<!-- ngRepeat: participant in participants = (event.Participants | filter: { IsDraw: false }) --><tr ng-repeat="participant in participants = (event.Participants | filter: { IsDraw: false })" class="ng-scope">
+<!-- ngIf: $index == 0 --><td ng-if="$index == 0" rowspan="2" valign="top" class="ng-scope">
+<span class="ng-binding">23.00</span>
+</td><!-- end ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Melbourne Victory</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.OverPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Powyżej 2 i 2.5</span>
+<span class="space"></span>
+<span class="price ng-binding">1.961</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.UnderPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Poniżej 2 i 2.5</span>
+<span class="space"></span>
+<span class="price ng-binding">1.925</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+</tr><!-- end ngRepeat: participant in participants = (event.Participants | filter: { IsDraw: false }) --><tr ng-repeat="participant in participants = (event.Participants | filter: { IsDraw: false })" class="ng-scope">
+<!-- ngIf: $index == 0 -->
+<!-- ngIf: $index > 0 --><td ng-if="$index &gt; 0" class="rowspan ng-scope"></td><!-- end ngIf: $index > 0 -->
+<td class="name">
+<!-- ngIf: participant.Name != undefined --><span ng-if="participant.Name != undefined" class="ng-binding ng-scope">Newcastle Jets</span><!-- end ngIf: participant.Name != undefined -->
+<!-- ngIf: !!participant.Pitcher -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.OverPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Powyżej 0.5 i 1</span>
+<span class="space"></span>
+<span class="price ng-binding">1.877</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.OverPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+<td>
+<!-- ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) --><span ng-if="participant.TeamTotals != undefined &amp;&amp; participant.TeamTotals.UnderPrice != undefined &amp;&amp; !isOffline(event)" class="overunder-table ng-scope">
+<span class="row">
+<span class="spread ng-binding">Poniżej 0.5 i 1</span>
+<span class="space"></span>
+<span class="price ng-binding">2.010</span>
+</span>
+</span><!-- end ngIf: participant.TeamTotals != undefined && participant.TeamTotals.UnderPrice != undefined && !isOffline(event) -->
+<!-- ngIf: isOffline(event) -->
+</td>
+</tr><!-- end ngRepeat: participant in participants = (event.Participants | filter: { IsDraw: false }) -->
+<!-- ngIf: $index < league.events.length - 1 -->
+</tbody><!-- end ngRepeat: event in events = (league.events | filter: teamTotalsExists) -->
+</table><!-- end ngIf: league.teamTotalsExists -->
+</div><!-- end ngRepeat: league in period.leagues -->
+</div><!-- end ngRepeat: period in date.periods --><div ng-repeat="period in date.periods" class="ng-scope">
+<!-- ngRepeat: league in period.leagues --><div ng-repeat="league in period.leagues" class="ng-scope">
+<!-- ngIf: league.teamTotalsExists -->
+<!-- ngIf: league.teamTotalsExists -->
+</div><!-- end ngRepeat: league in period.leagues -->
+</div><!-- end ngRepeat: period in date.periods -->
+</div><!-- end ngRepeat: date in groupedDates -->
+</div>
+</div><!-- end ngIf: dataExists -->
+<!-- ngIf: !dataExists -->
+</div>
+<div class="error-message-container hide ng-hide" ng-class="{hide:!isError}" ng-show="isError">
+<div class="error-message">
+<img src="/Cms_Data/Contents/Guest/Media/lines-pages/warning.png">
+<div>
+Nie można nawiązać połączenia z serwerem. Prosimy spróbować ponownie.
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class="sport-rules-link-container">
+<div class="right">
+<a id="helpfooter" href="/pl/help/betting-rules#Piłka nożna" target="_blank">Piłka nożna Zasady</a>
+</div>
+</div>
+<div class="guestlines">
+<div class="boilerplate">
+<h1>Kursy na: A-League</h1>
+Skorzystaj z najlepszych kursów online na A-League w Pinnacle Sports. The ultimate bookmaker for your A-League betting needs.
+</div>
+</div>
+</footer>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer id="footer">
+<div class="global-width">
+<div class="column">
+<h6 class="title"><a href="/pl/">Zakłady bukmacherskie</a></h6>
+<ul class="quicklinks">
+<li><a href="/pl/">Gospodarze</a></li>
+<li><a href="/pl/payment-options">Metody płatności</a></li>
+<li><a href="/pl/promotions">Dlaczego Pinnacle Sports?</a></li>
+<li><a href="/pl/betting-articles">Artykuły bukmacherskie</a></li>
+</ul>
+</div>
+<div class="column">
+<h6 class="title"><a href="/pl/casino">Kasyno</a></h6>
+<h6 class="title"><a href="/pl/live-casino">Live Casino</a></h6>
+<ul class="quicklinks">
+</ul>
+</div>
+<div class="column">
+<h6 class="title"><a href="/pl/esports">Sporty elektroniczne</a></h6>
+<ul class="quicklinks">
+<li><a href="/pl/esports/odds">Kursy</a></li>
+<li><a href="/pl/esports/schedule">Harmonogram</a></li>
+<li><a href="/pl/esports/betting-articles">Artykuły</a></li>
+<li><a href="/pl/esports/help">Pomoc</a></li>
+</ul>
+</div>
+<div class="column">
+<h6 class="title"><a target="_blank" id="helpfooter" href="http://pl.help.pinnaclesports.com">Pomoc</a></h6>
+<ul class="quicklinks">
+<li><a target="_blank" id="rulesfooter" href="/pl/help/betting-rules">Regulamin bukmacherski</a></li>
+<li><a target="_blank" id="offeredfooter" href="/pl/help/bets-sports-offered">Oferowane zakłady</a></li>
+<li><a href="/pl/sitemap">Mapa witryny</a></li>
+</ul>
+</div>
+<div class="column">
+<script>
+        
+        $( document ).load(
+	FreshWidget.init("", {"queryString": "&widgetType=popup", "utf8": "✓", "widgetType": "popup", "buttonType": "text", "buttonText": "Support", "buttonColor": "white", "buttonBg": "#f96500", "alignment": "4", "offset": "235px", "formHeight": "500px", "url": "https://pl.help.pinnaclesports.com"} ) );
+      
+        
+      </script><style>.freshwidget-button{display:none!important}</style>
+<h6 class="title"><a href="#" onclick="window.FreshWidget.show();">Kontakt</a></h6>
+<h6 class="title" style="margin-top:10px;"><a href="/pl/about">Informacje</a></h6>
+<h6 class="title" style="margin-top:10px;"><a href="/pl/api">API</a></h6>
+</div>
+<div class="column">
+<a class="button lightgray" style="margin-top:30px;" target="_blank" href="http://www.pinnaclesportsaffiliates.com/">Partnerzy</a>
+</div>
+</div>
+<div class="bottom">
+<div class="global-width">
+<div class="logos"><img src="/Cms_Data/Contents/Guest/Media/Common/logos.png" alt="logos.png" height="33" width="950"></div>
+<p class="copyright">Internetowe zakłady sportowe dostarczane przez Pinnacle Sports – Twojego najlepszego międzynarodowego bukmachera © 2004 – 2015 Pinnacle Sports</p>
+<div class="block logos" id="lines_area_footer">
+<ul class="logo_license_list">
+<li><span class="logo_license_18"> </span></li>
+<li><a href="http://www.gamcare.org.uk/" target="_blank" title="GamCare – wsparcie w problemach z hazardem"> <span class="logo_license_gamecare"> </span> </a></li>
+<li><a href="http://seals.networksolutions.com/siteseal_seek/siteseal?v_shortname=PINSP&amp;v_querytype=W&amp;v_search=pinnaclesports.com&amp;x=5&amp;y=5" title="O ochronie witryny PinnacleSports.com przez Network Solutions" target="_blank"> <span class="logo_license_networksolutions"> </span> </a></li>
+<li><a href="http://www.gaminglicences.com/pages/validate.php?lid=8048-R2006754" target="_blank" title="Rząd Curacao"> <span class="logo_license_curacao"> </span> </a></li>
+<li><iframe src="https://www.authorisation.mga.org.mt/handlers/seal-of-authorisation.aspx?company=dd32c28b-4878-4f40-ad81-1d70719a35cc&amp;lang=en&amp;fullDetails=0&amp;size=20" frameborder="0" height="72" width="125"></iframe></li>
+<li><a href="http://www.gaminglabs.com/extranetGLI/cmsAdmin/getsplash.asp?i=176" target="_blank" title="Certyfikat Gaming Llabs"> <span class="logo_license_gmc"> </span> </a></li>
+</ul>
+<div class="footer_text">
+<p>Włączając niniejszą witrynę, korzystając z niej i poruszając się po niej, akceptujesz fakt, że wykorzystuje ona ciasteczka (pliki cookie) w celu poprawy jakości oferowanych usług. Pinnacle Sports korzysta z ciasteczek wyłącznie we wspomnianym celu i nie wpływają one w żaden sposób na Twoją prywatność. Pamiętaj, że jeśli wyłączysz ciasteczka, witryna przestanie działać. Aby zmienić swoje ustawienia dotyczące ciasteczek, zajrzyj do działu poświęconego <a href="/pl/privacy-policy" id="privacytextfooter" target="_blank">ochronie prywatności</a>.</p>
+<p>Pinnacle Sports posiada licencję na oferowanie usług bukmacherskich i kasynowych numer <a href="http://www.gaminglicences.com/pages/validate.php?lid=8048-R2006754" target="_blank">8048/JAZ2013-013</a> wydaną zgodnie z prawem Curacao oraz licencję klasy drugiej na oferowanie zdalnych usług bukmacherskich numer <a href="https://www.authorisation.mga.org.mt/verification.aspx?lang=en&amp;company=dd32c28b-4878-4f40-ad81-1d70719a35cc" target="_blank">MGA/CL2/1069/2015</a> wydaną zgodnie z prawem Malty. 3 marca 2015 roku maltański urząd ds. hazardu (Malta Gaming Authority) udzielił firmie PinBet Malta Ltd, zarejestrowanej pod adresem Susan Court B1, Triq il-Prinjolata, Ta’Xbiex, XBX 1130 Malta, licencji klasy drugiej na zdalne oferowanie usług gamingowych. Więcej informacji znajdziesz pod adresem <a href="http://www.mga.org.mt" target="blank">www.mga.org.mt</a>.</p>
+<p>Hazard może uzależniać. Znaj swoje granice i graj z rozwagą.</p>
+<hr>
+<p><a class="footerLink" id="termsfooter" target="_blank" href="/pl/termsandconditions">Regulamin</a> | <a id="responsiblefooter" class="footerLink" target="_blank" href="/pl/responsible-gaming">Odpowiedzialny hazard</a> | <a id="privacyfooter" class="footerLink" target="_blank" href="/pl/privacy-policy">Ochrona prywatności</a></p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<test>http</test>
+</div>
+<script src="/Guest~Polish/Kooboo-Resource/scripts/1_0_0_20141209103704!1_0_0_20151216175400/True"></script>
+<script>
+    var kooboo = {
+        RightHandMenuShowWidth: '1280',
+        KoobooApiUrl: '/webapi/1.15/api/v1',
+        Translations: {
+            GuestLines: {
+                MinMaxTemplate: '$min i $max',
+                ZeroValue: {
+                    american: '0',
+                    decimal: '0'
+                },
+                Offline: 'offline',
+                Draw : 'Remis',
+                Over: 'Powyżej',
+                Under: 'Poniżej'
+            }
+        }
+    };
+</script>
+<script>
+                kooboo.Translations.GuestLines.TabTitles = {
+                    FullTimeResult: 'Full Time Result',
+                    TeamTotals: 'Team Totals'
+                };
+                    
+                    kooboo.Translations.GuestLines.TabTitles.Period1 = '1st Half';
+                    
+                    
+                    kooboo.Translations.GuestLines.TabTitles.Period2 = '2nd Half';
+                    
+                    
+                    kooboo.Translations.GuestLines.TabTitles.Period3 = 'Over Time';
+                    
+                    
+                    kooboo.Translations.GuestLines.TabTitles.Period4 = '4-th period';
+                    
+                    
+                    kooboo.Translations.GuestLines.TabTitles.Period5 = '5-th period';
+                    
+                    
+                    kooboo.Translations.GuestLines.TabTitles.Period6 = '6-th period';
+                    
+                    
+                    kooboo.Translations.GuestLines.TabTitles.Period7 = '7-th period';
+                    
+                    
+                    kooboo.Translations.GuestLines.TabTitles.Period8 = '8-th period';
+                    
+                    
+                    kooboo.Translations.GuestLines.TabTitles.Period9 = '9-th period';
+                    
+                    
+                    kooboo.Translations.GuestLines.TabTitles.Period10 = '10-th period';
+                    
+                kooboo.Translations.GuestLines.ColumnTitles = {
+                    Time: 'Time',
+                    Match: 'Game',
+                    Moneyline: 'Moneyline',
+                    Handicap: 'Handicap',
+                    Total: 'Total',
+                    TotalOver: 'Total Over',
+                    TotalUnder: 'Total Under',
+                    Score: 'Score'
+                };
+            </script>
+<script src="/Guest~Polish/Kooboo-Resource/scripts/1_0_0_20141209103704!1_0_0_20151216175400/True/underscore"></script>
+<!--[if lte IE 7]>
+    <script type="text/javascript" src="/Guest~Polish/Kooboo-Resource/scripts/1_0_0_20141209103704!1_0_0_20151216175400/True/angular.1.1.5" ></script>
+
+    <![endif]-->
+<script src="/Guest~Polish/Kooboo-Resource/scripts/1_0_0_20141209103704!1_0_0_20151216175400/True/guestlines"></script>
+<script>
+        if (typeof (angular) == "undefined") {
+            document.write('<script type="text/javascript" src="/Guest~Polish/Kooboo-Resource/scripts/1_0_0_20141209103704!1_0_0_20151216175400/True/angular" ><\/script>');
+        }
+    </script><script type="text/javascript" src="/Guest~Polish/Kooboo-Resource/scripts/1_0_0_20141209103704!1_0_0_20151216175400/True/angular"></script>
+<script src="/Guest~Polish/Kooboo-Resource/scripts/1_0_0_20141209103704!1_0_0_20151216175400/True/koobooApp"></script>
+<script>
+    window.pinnacle.initUserPrefsCookie(15, 'c', 'all',30);
+    window.pinnacle.setPctrCookie(5);
+    window.pinnacle.setPsCdnCookie(3);
+</script>
+<script>
+    $(document).ready(function() {
+        var redirectToRtnPage = false;
+
+        if ($.cookie('HomePageVisitedTime') != null) {
+            var stayOnHomeTime = 43200000;
+            var currentTime = new Date().valueOf();
+            var creationTime = new Date($.cookie('HomePageVisitedTime')).valueOf();
+
+            redirectToRtnPage = (currentTime - creationTime) > stayOnHomeTime;
+        }
+
+        if (redirectToRtnPage) {
+            $('a[href="/pl"]').each(function() {
+                $(this).attr('href', "/pl/rtn");
+            });
+            $('a[href="/pl/"]').each(function() {
+                $(this).attr('href', "/pl/rtn");
+            });
+        }
+    });
+</script>
+<script><!--
+    var language = window.pinnacle.getUserPrefsCookie("languageId");
+    var oddsFormat = window.pinnacle.getUserPrefsCookie("priceStyle");
+    var pqry = "LanguageID%3D" + language + "%26oddsFormat%3D" + oddsFormat; 
+    var rqry = "iREGQry"; 
+    var sqry = "iSale";
+    var itrMId = 825; 
+    var itrRqstH = "tracker.pinnaclesports.com";
+    var dt = window.document, nr = navigator, ina = nr.appName, sr = "0&0", px = 0, sv = 13, je = 0;
+    var inav = nr.appVersion, iie = inav.indexOf('MSIE '), intp = (ina.indexOf('Netscape') >= 0);
+    if (iie > 0) inavi = parseInt(inav.substring(iie + 5)); else inavi = parseFloat(inav);		
+    var idl = window.location.href; var isl = "http" + (idl.indexOf('https:') == 0 ? 's' : '') + "://tracker.pinnaclesports.com/e/t3.dll?" + itrMId + "&";
+    itrc();	
+//--></script><div style="display:none"><img name="itr825" height="1" width="1" alt="IntelliTracker" src="http://tracker.pinnaclesports.com/e/t3.dll?825&amp;547617773&amp;%20&amp;LanguageID%3D15%26oddsFormat%3Ddecimal%20&amp;iREGQry%20&amp;iSale%20&amp;1&amp;0&amp;0&amp;0&amp;0&amp;13&amp;pl-PL%20&amp;-60&amp;http%3A%2F%2Fwww%2Epinnaclesports%2Ecom%2Fpl%2Fodds%2Fmatch%2Fsoccer%2Faustralia%2Faustralia-a-league%20&amp;0"></div>
+<script>
+    <!--
+    if (iie > 0) dt.write("\<\!\-\-");
+    //-->
+</script>
+<script src="https://tracker.pinnaclesports.com/e/clicks.js"></script>
+<noscript>&lt;div style="display: none"&gt;&lt;img src="https://tracker.pinnaclesports.com/e/t3.dll?825&amp;amp;amp;0&amp;amp;amp;%20&amp;amp;amp;LanguageID%3D2%26oddsFormat%3Ddecimal&amp;amp;amp;iREGQry&amp;amp;amp;iSale&amp;amp;amp;0&amp;amp;amp;0&amp;amp;amp;0&amp;amp;amp;0&amp;amp;amp;0&amp;amp;amp;0&amp;amp;amp;%20&amp;amp;amp;1500&amp;amp;amp;%20&amp;amp;amp;0" height=1 width=1 alt=IntelliTracker /&gt;&lt;/div&gt;</noscript>
+<script>
+        window['adrum-start-time'] = new Date().getTime();
+    </script>
+<script async="" src="/Cms_Data/Sites/Guest/Scripts/appDynamics/adrum.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+var _analytics_scr = document.createElement('script');
+_analytics_scr.type = 'text/javascript'; _analytics_scr.async = true; _analytics_scr.src = '/_Incapsula_Resource?SWJIYLWA=2977d8d74f63d7f8fedbea018b7a1d05&ns=1';
+var _analytics_elem = document.getElementsByTagName('script')[0]; _analytics_elem.parentNode.insertBefore(_analytics_scr, _analytics_elem);
+})();
+// ]]>
+</script>
+

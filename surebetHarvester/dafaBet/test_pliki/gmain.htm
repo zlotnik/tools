@@ -1,0 +1,1825 @@
+
+
+var $_ = jQuery;
+
+
+// function create_th() {{{
+/**
+ * Create TH element.
+ *
+ * @param  mixed $content  TH content.
+ * @return object  Return TH object.
+ */
+function create_th(content)
+{
+	var cell = document.createElement('th');
+
+	if (typeof content == 'object')
+	{
+		cell.appendChild(content);
+	}
+	else
+	{
+		var cellValue = document.createTextNode(content);
+		cell.appendChild(cellValue);
+	}
+
+	return cell;
+}
+// }}}
+
+// function create_td() {{{
+/**
+ * Create TD element.
+ *
+ * @param  mixed $content  TD content.
+ * @return object  Return TD object.
+ */
+function create_td(content)
+{
+	var cell = document.createElement('td');
+
+	if (typeof content == 'object')
+	{
+		cell.appendChild(content);
+	}
+	else
+	{
+		var cellValue = document.createTextNode(content);
+		cell.appendChild(cellValue);
+	}
+
+	return cell;
+}
+// }}}
+
+// function getElementPosition() {{{
+/**
+ * Get element position.
+ *
+ * @param {Object} obj   DOM element.
+ * @return {Object}   Returns object with element position.
+ */
+function getElementPosition(obj)
+{
+	var curleft, curtop = 0;
+	
+	if (isObject(obj)) {
+		if (obj.offsetParent){
+			curleft = obj.offsetLeft;
+			curtop  = obj.offsetTop;
+			while (obj = obj.offsetParent) {
+				curleft += obj.offsetLeft;
+				curtop  += obj.offsetTop;
+			}
+		}
+	}
+	return {curleft:curleft, curtop:curtop};
+}
+// }}}
+
+/**
+ * Get element size.
+ *
+ * @param {Object} obj   DOM element.
+ * @return {Object}   Returns the element dimension.
+ */
+function getElementSize(obj)
+{
+	var width, height = 0;
+	
+	if (isObject(obj)) {
+		width  = obj.offsetWidth;
+		height = obj.offsetHeight;
+	}
+	
+	return {width:width, height:height}; 
+};
+
+
+// arch_odds {{{
+var parE;
+
+function arch_odds(element, o_id, b_id)
+{
+	parE = element;
+	jQuery.ajax({
+		url: '/gres/archive-odds.php',
+		type: 'GET',
+		data: '&outcome=' + o_id + '&provider=' + b_id,
+		cache: false,
+		dataType: 'xml',
+		success: function(xml)
+		{
+			var nodata = xml.getElementsByTagName('nodata');
+			var attrName = isie ? 'className' : 'class';
+
+			// some data, show it
+			if (nodata.length == 0)
+			{
+				var isie = navigator.userAgent.match(/MSIE/) && !navigator.userAgent.match(/MSIE 8/) && !navigator.userAgent.match(/MSIE 9/);
+			
+				// check if box for archive courses already generated and remove it
+				del_arch_info();
+				var elem = xml.getElementsByTagName('element'); // all element with archive courses
+
+				var div  = document.createElement('div');
+				div.setAttribute('id', 'aodds-info');
+				div.setAttribute('title', 'Click to close');
+
+				// archive course closer
+				var closer = document.createElement('div');
+				if (isie)
+				{
+					closer.setAttribute('className', 'a-closer');
+				}
+				else
+				{
+					closer.setAttribute('class', 'a-closer');
+				}
+				var strong = document.createElement('strong');
+				strong.appendChild(document.createTextNode('Archive odds'));
+				closer.appendChild(strong);
+				var link   = document.createElement('a');
+				if (isie)
+				{
+					link.onclick = new Function("env", "del_arch_info()");
+					div.onclick = new Function("env", "del_arch_info()");
+				}
+				else
+				{
+					link.setAttribute('onclick', 'del_arch_info()');
+					div.setAttribute('onclick', 'del_arch_info()');
+				}
+				link.appendChild(document.createTextNode('X'));
+				closer.appendChild(link);
+				div.appendChild(closer);
+
+				// archive course content
+				var cont = document.createElement('div');
+				if (isie)
+				{
+					cont.setAttribute('className', 'a-content');
+				}
+				else
+				{
+					cont.setAttribute('class', 'a-content');
+				}
+				var table = document.createElement('table');
+				var tbody = document.createElement('tbody');
+
+				// closing
+				course = $(parE).parent().attr('data-odd');
+				dat = my_tz_format($(parE).parent().attr('data-created'));
+				dat = dat['date_noyear'] + ' ' + dat['time'];
+
+				var next = elem.item(0).getElementsByTagName('course').item(0).firstChild.nodeValue;
+				change = Math.round((parseFloat(course) - parseFloat(next)) * 100) / 100;
+				change = change.toFixed(2).toString();
+				if (change > 0) change = '+' + change;
+
+				var tr = document.createElement('tr');
+
+				var dateTD = create_td(dat);
+				dateTD.setAttribute(attrName, 'date');
+				
+								var courseTD = create_td('');
+				courseTD.setAttribute('data-odd', course);
+				var changeTD = create_td('')
+				if (change != 0) changeTD.setAttribute('data-odd', change);
+					
+				courseTD.setAttribute(attrName, 'bold');
+				
+				if (change.charAt(0) == '-') changeTD.setAttribute(attrName, 'change-neg');
+				if (change.charAt(0) == '+') changeTD.setAttribute(attrName, 'change-pos');
+
+				tr.appendChild(dateTD);
+				tr.appendChild(courseTD);
+				tr.appendChild(changeTD);
+
+				tbody.appendChild(tr);
+				
+
+
+
+				
+				
+				// archiv
+				for (var i = 0; i < elem.length; i++)
+				{
+					if (i == elem.length - 1)
+					{
+						var tr = document.createElement('tr');
+						var td = create_td('Opening odds');
+						td.setAttribute('colspan', 3);
+						td.setAttribute(attrName, 'title');
+						tr.appendChild(td);
+						tbody.appendChild(tr);
+					}
+					
+					var tr = document.createElement('tr');
+
+					var dat = elem.item(i).getElementsByTagName('date');
+					dat     = dat.item(0).firstChild.nodeValue;
+					
+					var course = elem.item(i).getElementsByTagName('course');
+					course     = course.item(0).firstChild.nodeValue;
+
+					var change = elem.item(i).getElementsByTagName('change');
+					change     = change.item(0).firstChild.nodeValue;
+
+					var dateTD = create_td(dat);
+					dateTD.setAttribute(attrName, 'date');
+					
+										var courseTD = create_td('');
+					courseTD.setAttribute('data-odd', course);
+					var changeTD = create_td('')
+					if (change != 0) changeTD.setAttribute('data-odd', change);
+						
+					courseTD.setAttribute(attrName, 'bold');
+					
+					if (change.charAt(0) == '-') changeTD.setAttribute(attrName, 'change-neg');
+					if (change.charAt(0) == '+') changeTD.setAttribute(attrName, 'change-pos');
+
+					//var arch = elem.item(i).getElementsByTagName('archive_course');
+					//arch     = arch.item(0).firstChild.nodeValue;
+
+					tr.appendChild(dateTD);
+					tr.appendChild(courseTD);
+					tr.appendChild(changeTD);
+					//tr.appendChild(create_td(arch));
+
+					tbody.appendChild(tr);
+				}
+
+				table.appendChild(tbody);
+				cont.appendChild(table);
+				div.appendChild(cont);
+
+				// set position
+				var pos = getElementPosition(parE);
+
+				// correction child position (move from right corner)
+				/*
+				var div_main   = document.getElementById('main');
+				var correction = 0;
+
+				if ((pos.curleft+125) >= (div_main.offsetLeft+div_main.offsetWidth))
+				{
+					correction = pos.curleft-(div_main.offsetLeft+div_main.offsetWidth-120);
+				}
+
+				var l   = pos.curleft+10-correction;
+				*/
+				
+				var l   = pos.curleft-115;
+				var t   = pos.curtop+15;
+				
+				if (isie)
+				{
+					div.style.cssText = 'display:block;top:'+t+'px;left:'+l+'px;';
+				}
+				else
+				{
+					div.setAttribute('style', 'display:block;top:'+t+'px;left:'+l+'px;');
+				}
+
+				document.body.appendChild(div);
+				
+				format_odds('aodds-info', true)			}
+		}
+	});
+	
+}
+
+function del_arch_info()
+{
+	var box = document.getElementById('aodds-info');
+	if (box != undefined)
+	{
+		document.body.removeChild(box);
+	}
+}
+// }}}
+
+
+// function tz() {{{
+
+var tz_uri = null;
+var timezone = null;
+
+function tz(uri)
+{
+	tz_uri = uri;
+	
+	jQuery.ajax({
+		url: '/res/timezone.php',
+		type: 'GET',
+		cache: false,
+		dataType: 'xml',
+		success: function(xml)
+		{
+			// check if exists timezone element
+			var tz = document.getElementById('timezone');
+			
+			if (tz != undefined)
+			{
+				getElement('panel').removeChild(tz);
+			}
+
+			var sel = xml.getElementsByTagName('selected_zone');
+			sel     = sel.item(0).firstChild.nodeValue;
+
+			var div   = document.createElement('div');
+			div.id    = 'timezone';
+			var table = document.createElement('table');
+			var tbody = document.createElement('tbody');
+			var zone  = xml.getElementsByTagName('timezone');
+
+			if (zone.length > 0)
+			{
+				for (var i = 0; i < zone.length; i++)
+				{
+					var row = document.createElement('tr');
+
+					var offset = zone.item(i).getElementsByTagName('offset');
+					offset     = offset.item(0).firstChild.nodeValue;
+
+					var location = zone.item(i).getElementsByTagName('location');
+					location     = location.item(0).firstChild.nodeValue;
+
+					if(timezone == offset)
+					{
+						if(navigator.userAgent.match(/MSIE/))
+							row.setAttribute('className', 'local');
+						else
+							row.setAttribute('class', 'local');
+
+						row.title = 'Probably your local timezone';
+					}
+
+					var destination = "set_timezone('" + offset + "'); return false;";
+
+					if (navigator.userAgent.match(/MSIE/))
+					{
+						row.onclick     = new Function("env", destination);
+						row.onmouseover = new Function("env", "over(this)");
+						row.onmouseout  = new Function("env", "out(this)");
+
+						if (offset == sel)
+						{
+							row.setAttribute('className', 'set');
+						}
+					}
+					else
+					{
+						row.setAttribute('onclick', destination);
+
+						if (offset == sel)
+						{
+							row.setAttribute('class', 'set');
+						}
+					}
+
+					row.appendChild(create_th(offset));
+					row.appendChild(create_td(location));
+
+					tbody.appendChild(row);
+				}
+			}
+
+			table.appendChild(tbody);
+			
+			var table_head = document.createElement('div');
+			table_head.id  = 'tz-head';
+			table_head.appendChild(document.createTextNode(' '));
+			
+			var table_foot = document.createElement('div');
+			table_foot.id  = 'tz-foot';
+			table_foot.appendChild(document.createTextNode(' '));
+			
+			div.appendChild(table_head);
+			div.appendChild(table);
+			div.appendChild(table_foot);
+			document.getElementById('panel').appendChild(div);
+		}
+	});
+}
+
+function set_timezone(offset)
+{
+	setCookie('my_timezone', offset, 365, '/', '', '' );
+	location.reload();
+}
+
+// }}}
+
+
+var last_cls; // content last class for row
+
+function over(elem)
+{
+	if (navigator.userAgent.match(/MSIE/))
+	{
+		last_cls = elem.getAttribute('className');
+		elem.setAttribute('className', 'hover');
+	}
+	else
+	{
+		last_cls = elem.getAttribute('class');
+		elem.setAttribute('class', 'hover');
+	}
+}
+
+// function out() {{{
+function out(elem)
+{
+	if (last_cls != undefined && last_cls != '')
+	{
+		if (navigator.userAgent.match(/MSIE/))
+		{
+			elem.setAttribute('className', last_cls);
+		}
+		else
+		{
+			elem.setAttribute('class', last_cls);
+		}
+	}
+	else
+	{
+		if (navigator.userAgent.match(/MSIE/))
+		{
+			elem.removeAttribute('className');
+		}
+		else
+		{
+			elem.removeAttribute('class');
+		}
+	}
+}
+// }}}
+
+// function getElement() {{{
+/**
+ * Alias for document.getElementById function.
+ *
+ * @return object
+ */
+function getElement(id)
+{
+	return document.getElementById(id);
+}
+// }}}
+
+// function d_option() {{{
+/**
+ * Disable (remove) option element in pared element (mutual matches combo).
+ *
+ * @param  string elem  ID of paired element.
+ * @return void
+ */
+var lastRemove;
+var lastData;
+
+function d_option(elem)
+{
+	// get paired element
+	var mainElemID = (elem == 'mm_home' ? 'mm_away' : 'mm_home');
+	var pairSel    = getElement(elem);
+	var mainSel    = getElement(mainElemID);
+
+	pairSel.focus();
+
+	if (lastRemove != undefined && lastData != undefined)
+	{
+		var lastSel = getElement(lastRemove);
+		var opt     = new Array();
+		var selected;
+
+		// get all option
+		for (var i = 0; i < lastSel.length; i++)
+		{
+			opt.push(lastSel.options[i].text+'|=|'+lastSel.options[i].value);
+		}
+		opt.push(lastData[1]+'|=|'+lastData[0]);
+		selected = lastSel.options[lastSel.selectedIndex].text;
+
+		// sort option
+		opt.sort();
+
+		// remove all childs
+		while (lastSel.firstChild)
+		{
+			lastSel.removeChild(lastSel.firstChild);
+		}
+
+		// generate new options
+		for (i in opt) {
+		    if (typeof opt[i] == 'string') {
+                var option  = document.createElement('option');
+                var split   = opt[i].split('|=|');
+
+                option.setAttribute('value', split[1]);
+                if (split[0] == selected) {
+                    option.setAttribute('selected', true);
+                }
+                option.appendChild(document.createTextNode(split[0]));
+                lastSel.appendChild(option);
+		    }
+		}
+	}
+
+	for (var i = 0; i < pairSel.length; i++)
+	{
+		if (pairSel.options[i].value == mainSel.options[mainSel.selectedIndex].value)
+		{
+			lastRemove = elem;
+			lastData   = [pairSel.options[i].value, pairSel.options[i].text];
+			pairSel.removeChild(pairSel.options[i]);
+			break;
+		}
+	}
+}
+// }}}
+
+// function isIE() {{{
+/**
+ * Check if user's browser is Internet Explorer.
+ *
+ * @return boolean  Return <strong>true</strong> if yes, otherwise <strong>false</strong>.
+ */
+function isIE()
+{
+	//return (navigator.userAgent.match(/MSIE/) ? true : false);	
+	return (navigator.userAgent.match(/MSIE/) && !navigator.userAgent.match(/MSIE 8/) && !navigator.userAgent.match(/MSIE 9/) ? true : false);	
+}
+// }}}
+
+// function setStyle() {{{
+/**
+ * Set CSS style for element.
+ *
+ * @param  object element  Element for set CSS.
+ * @param  string style    CSS style.
+ */
+function setStyle(element, style)
+{
+	if (isIE())
+	{
+		element.style.cssText = style;
+	}
+	else
+	{
+		element.setAttribute('style', style);
+	}
+}
+// }}}
+
+// function rmClass() {{{
+/**
+ * Remove CSS class style for element.
+ *
+ * @param  object element  Element for set CSS.
+ * @param  string style    CSS class style.
+ * @deprecated 
+ */
+function rmClass(element)
+{
+	if (isIE())
+	{
+		element.removeAttribute('className');
+	}
+	else
+	{
+		element.removeAttribute('class');
+	}
+}
+// }}}
+
+// function setClass() {{{
+/**
+ * Set CSS class style for element.
+ *
+ * @param  object element  Element for set CSS.
+ * @param  string style    CSS class style.
+ * @deprecated
+ */
+function setClass(elem, cls)
+{
+	if (isIE())
+	{
+		elem.setAttribute('className', cls);
+	}
+	else
+	{
+		elem.setAttribute('class', cls);
+	}
+}
+// }}}
+
+// function addClass() {{{
+/**
+ * Replaces / adds new CSS class style for element.
+ *
+ * @param  object element  Element for set CSS.
+ * @param  string style    New CSS class style.
+ * @param  string style    CSS class style for replace.
+ * @deprecated
+ */
+function addClass(elem, add, repl)
+{
+	var attrName = isIE() ? 'className' : 'class';
+	var cls = elem.getAttribute(attrName);
+	var re = new RegExp(repl);
+	if (repl != null && repl != '' && cls.search(re) != -1)
+	{
+		cls = cls.replace(re, add);
+	}
+	else
+	{
+		cls = cls == null || cls == '' ? add : cls + ' ' + add;
+	}
+	elem.setAttribute(attrName, cls);
+}
+// }}}
+
+
+/**
+ * Finds whether the given variable is object.
+ *
+ * @param {Mixed} element   The variable being evaluated.
+ * @return {Boolean}   Returns TRUE if element is object, FALSE otherwise. 
+ */
+function isObject(element)
+{
+	return (!isNull(element) && typeof element == 'object' ? true : false);
+};
+
+/**
+ * Finds whether the given variable is NULL.
+ * 
+ * @param {Mixed} element   The variable being evaluated.
+ * @return {Boolean}   Returns TRUE if element is null, FALSE otherwise.
+ */
+function isNull(element)
+{
+	return (typeof element == 'undefined' || element == null ? true : false);
+};
+
+function streakMenuDataSh(idData)
+{
+    document.getElementById('streakMenu_1').className = 'first';
+    document.getElementById('streakMenu_2').className = '';
+    document.getElementById('streakMenu_3').className = '';
+    document.getElementById('streakMenu_' + idData).className = (idData == 1 ? 'first ' : '') + 'set';
+    document.getElementById('menuStreakData_1').style.display = 'none';
+    document.getElementById('menuStreakData_2').style.display = 'none';
+    document.getElementById('menuStreakData_3').style.display = 'none';
+    document.getElementById('menuStreakData_' + idData).style.display = 'block';
+};
+
+
+function movementShow(parentElem, elem)
+{
+	var e = getElement('legend-' + elem).style;
+	var pe = getElementPosition(parentElem);
+	var sc = getElementPosition(document.getElementById('main'));
+
+	e.left = pe.curleft-115+'px';
+	e.top = pe.curtop-sc.curtop+'px';
+	e.display = 'block';
+}
+
+function movementHide(elem)
+{
+	getElement('legend-' + elem).style.display = 'none';
+}
+
+
+
+function stagesMenuClick(gr, c)
+{
+	var el;
+	if (gr != smActiveGroup)
+	{
+		el = document.getElementById('sm-' + smActiveGroup);
+		if (el != null) el.style.display = 'none';
+		el = document.getElementById('sm-a-' + smActiveGroup + '-0');
+		if (el != null) el.className = '';
+		document.getElementById('sm-a-' + gr + '-0').className = 'set';
+		el = document.getElementById('sm-' + gr);
+		if (el != null) el.style.display = 'block';
+	}
+	if (gr != smActiveGroup || c != smActiveCountry)
+	{
+		el = document.getElementById('sm-' + smActiveGroup + '-' + smActiveCountry);
+		if (el != null) el.style.display = 'none';
+		if (gr != smActiveGroup || smActiveCountry != 0)
+		{
+			el = document.getElementById('sm-a-' + smActiveGroup + '-' + smActiveCountry);
+			if (el != null) el.className = '';
+		}
+		document.getElementById('sm-a-' + gr + '-' + c).className = 'set';
+		el = document.getElementById('sm-' + gr + '-' + c);
+		if (el != null) el.style.display = 'block';
+	}
+	smActiveGroup = gr;
+	smActiveCountry = c;
+}
+
+
+
+function fix_height()
+{
+	if (document.getElementById('msel'))
+	{
+		height = document.getElementById('msel').offsetHeight;
+		window.parent.document.getElementById('myselections').style.height = height + "px";
+		window.parent.document.getElementById('msiframe').style.height = "100%";
+	}
+	
+	parent.$.waypoints('refresh');
+	
+	/*	
+	var height1 = height2 = 0;
+
+	if(window.parent.document.getElementById('screen'))
+		height1 = window.parent.document.getElementById('screen').offsetHeight;
+
+	if(document.getElementById('msel'))
+		height2 = document.getElementById('msel').offsetHeight;
+		
+	var height = Math.max(height1, height2);
+
+	if(height > 500) {
+		window.parent.document.getElementById('myselections').style.height = height + "px";
+		window.parent.document.getElementById('msiframe').style.height = "100%";
+	}
+	*/
+}
+
+
+function rangeCheck(type)
+{
+	var from = document.getElementById('rangeFrom');
+	var to = document.getElementById('rangeTo');
+	if (to.selectedIndex < from.selectedIndex)
+	{
+		if (type == 1) from.selectedIndex = to.selectedIndex;
+		else to.selectedIndex = from.selectedIndex;
+	}
+}
+
+function upcomingEventsClick(sid, key)
+{
+	if (user.logged)
+	{
+		upcomingEventsClickSetDisplay(sid, key);
+		
+		if ($('#upcoming_' + sid + '_' + key).find('.set').length == 0)
+		{
+			jQuery.ajax({
+				url: '/gres/upcoming-click.php',
+				type: 'GET',
+				data: 'key=' + key,
+				cache: false
+			});
+		}
+	}
+	
+	else
+	{
+		var cookie = getCookie('upcoming');
+		if (cookie === null) cookie = '';
+		
+		var cookie_parts = cookie.split(',');
+		
+		var e = document.getElementById('upcoming_' + sid + '_' + key);
+		if (e.style.display == 'none')
+		{
+			xcookie = cookie + ',';
+			if (xcookie.indexOf(key + ',') == -1)
+			{
+				cookie = cookie + (cookie == '' ? '' : ',') + key;
+			}
+		}
+		else
+		{
+			cookie = '';
+			for (i = 0; i < cookie_parts.length; i++)
+			{
+				if (cookie_parts[i] != key)
+				{
+					cookie = cookie + (cookie == '' ? '' : ',') + cookie_parts[i];
+				}
+			}
+		}
+		
+		setCookie('upcoming', cookie, 30, '/', '', '' );
+		
+		upcomingEventsClickSetDisplay(sid, key);
+	}
+}
+
+function upcomingEventsClickSetDisplay(sid, key)
+{
+	var e = document.getElementById('upcoming_' + sid + '_' + key);
+	e.style.display = e.style.display == 'none' ? '' : 'none';
+	
+	var e2 = document.getElementById('upcoming_' + (sid == 0 ? key.substring(0, key.indexOf('-')) : 0) + '_' + key);
+	if (e2 != null)
+	{
+		e2.style.display = e.style.display;
+	}
+}
+
+function setCookie(name, value, expires, path, domain, secure)
+{
+	var today = new Date();
+	today.setTime(today.getTime());
+
+	if (expires)
+	{
+		expires = expires * 1000 * 60 * 60 * 24;
+	}
+	var expires_date = new Date(today.getTime() + (expires));
+
+	document.cookie = name + "=" +escape(value) +
+	((expires) ? ";expires=" + expires_date.toGMTString() : "") +
+	((path) ? ";path=" + path : "") +
+	((domain) ? ";domain=" + domain : "") +
+	((secure) ? ";secure" : "");
+}
+
+function getCookie(check_name)
+{
+	var a_all_cookies = document.cookie.split(';');
+	var a_temp_cookie = '';
+	var cookie_name = '';
+	var cookie_value = '';
+	var b_cookie_found = false;
+
+	for (i = 0; i < a_all_cookies.length; i++)
+	{
+		// now we'll split apart each name=value pair
+		a_temp_cookie = a_all_cookies[i].split('=');
+
+		// and trim left/right whitespace while we're at it
+		cookie_name = a_temp_cookie[0].replace(/^\s+|\s+$/g, '');
+
+		// if the extracted name matches passed check_name
+		if (cookie_name == check_name)
+		{
+			b_cookie_found = true;
+			// we need to handle case where cookie has no value but exists (no = sign, that is):
+			if (a_temp_cookie.length > 1)
+			{
+				cookie_value = unescape(a_temp_cookie[1].replace(/^\s+|\s+$/g, ''));
+			}
+			// note that in cases where cookie is initialized but no value, null is returned
+			return cookie_value;
+			break;
+		}
+		a_temp_cookie = null;
+		cookie_name = '';
+	}
+	if (!b_cookie_found)
+	{
+		return null;
+	}
+}
+
+function setTablePreloader(colspan, tbodyid)
+{
+	var img = document.createElement('img');
+	img.setAttribute('src', '/res/img/ajax-loader.gif');
+	img.setAttribute('style', 'margin: 5px;');
+	var td = create_td(img);
+	td.setAttribute('class', 'first-cell last-cell nobr tc');
+	td.setAttribute('colspan', colspan);
+	var tr = document.createElement('tr');
+	tr.appendChild(td);
+	tr.setAttribute('class', 'first-row');
+	var tbody = document.getElementById(tbodyid);
+	var table = tbody.parentNode;
+	table.removeChild(tbody);
+	table.appendChild(tr);
+}
+
+function nextmatchChangeTeamMatches(ev, team, colspan, type_changed)
+{
+	var type = document.getElementById('lm_' + team + '_sel_type').value;
+	var count = type_changed ? null : document.getElementById('lm_' + team + '_sel_count').value;
+	setTablePreloader(colspan, 'lm_tbody_' + team);
+
+	jQuery.ajax({
+		url: 'ajax-team-matches.php',
+		type: 'GET',
+		data: 'event=' + ev + '&team=' + team + '&type=' + type + (count !== null ? '&count=' + count : ''),
+		cache: false,
+		success: function(data)
+		{
+			$('#lm_div_' + team).html(data);
+			if (timezone_key != '+1')
+			{
+				$('#lm_div_' + team).find('[data-dt]').each(function()
+				{
+					newdate = my_tz_format($(this).attr('data-dt'));
+					if (newdate.day_changed)
+					{
+						$(this).children().last().html(newdate.date);
+					}
+				});
+			}
+			format_odds('lm_div_' + team, true);
+		}
+	});
+}
+
+function mutualChangeType(h, a, where, colspan, in_league)
+{
+	var type = document.getElementById('mutual_sel_type').value;
+	setTablePreloader(colspan, 'mutual_tbody');
+
+	jQuery.ajax({
+		url: (in_league ? '../' : '') + 'ajax-mutual.php',
+		type: 'GET',
+		data: 'home=' + h + '&away=' + a + '&type=' + type + '&where=' + where + '&inleague=' + in_league,
+		cache: false,
+		success: function(data)
+		{
+			$('#mutual_div').html(data);
+			if (timezone_key != '+1')
+			{
+				$('#mutual_tbody').find('[data-dt]').each(function()
+				{
+					newdate = my_tz_format($(this).attr('data-dt'));
+					if (newdate.day_changed)
+					{
+						$(this).children().last().html(newdate.date);
+					}
+				});
+			}
+			format_odds('mutual_div', true);
+		}
+	});
+}
+
+function leagueresultsChange(stage, colspan)
+{
+	var months = document.getElementById('leagueresults_sel_months').value;
+	var sort = document.getElementById('leagueresults_sel_sort').value;
+	setTablePreloader(colspan, 'leagueresults_tbody');
+	
+	jQuery.ajax({
+		url: 'ajax-league-results.php',
+		type: 'GET',
+		data: 'stage=' + stage + '&months=' + months + '&sort=' + sort,
+		cache: false,
+		success: function(data)
+		{
+			$('#leagueresults_div').html(data);
+			format_odds('leagueresults_div', true);
+		}
+	});
+}
+
+
+
+
+/* AJAX */
+
+function processRequest(httpRequest, target, wait)
+{
+	if (httpRequest.readyState == 4)
+	{
+		if (httpRequest.status == 200)
+		{
+			if (typeof target == 'string' && target != '')
+			{
+				document.getElementById(target).innerHTML = httpRequest.responseText;
+			}
+			if (typeof target == 'function')
+			{
+				target(httpRequest.responseText);
+			}
+		}
+		else
+		{
+			//alert("Chyba pri nacitani stanky " + httpRequest.status +" : "+ httpRequest.statusText);
+		}
+	}
+	else
+	{
+		if (typeof target == 'string' && target != '' && wait != '')
+		{
+			document.getElementById(target).innerHTML = wait;
+		}
+	}
+
+}
+
+function ajax(url, target, wait)
+{
+	var httpRequest;
+	if (typeof window.ActiveXObject != 'undefined') httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+	else httpRequest = new XMLHttpRequest();
+	httpRequest.open('GET', url, true);
+	httpRequest.onreadystatechange = function ()
+	{
+		processRequest(httpRequest, target, wait);
+	};
+	httpRequest.send(null);
+}
+
+
+
+
+var to_hide;
+var firstLoad = true;
+var divShown = false;
+var prevString = '';
+
+function searchLoad()
+{
+	clearTimeout(to_hide);
+	
+	var inp = document.getElementById('search-text');
+	var tg = document.getElementById('search-results');
+	
+	if (firstLoad)
+	{
+		inp.value = '';
+		firstLoad = false;
+	}
+
+	var string = new String(inp.value);
+	string = string.replace(/^\s+|\s+$/, '');
+	
+	if (string.length > 2)
+	{
+		if (string != prevString)
+		{
+			if (!divShown)
+			{
+				tg.style.display = 'block';
+				tg.innerHTML = '<div class="waiter"><img src="/res/img/ajax-loader.gif" /></div>'
+				divShown = true;
+			}
+			ajax(encodeURI('/ajax-search.php?searchText=' + string), 'search-results', '');
+			prevstring = string;
+		}
+	}
+	else if (divShown)
+	{
+		doSearchHide();
+	}
+}
+
+function searchHide()
+{
+	to_hide = setTimeout('doSearchHide()', 300)
+}
+
+function doSearchHide()
+{
+	var tg = document.getElementById('search-results');
+	tg.style.display = 'none';
+	divShown = false;
+	prevString = '';
+}
+
+
+function nextmatch_bettype(link, h, a)
+{
+	var hv = document.getElementById('lm_' + h + '_sel_type').value;
+	var av = document.getElementById('lm_' + a + '_sel_type').value;
+	if (hv != 1) link.href += '&h=' + hv;
+	if (av != 1) link.href += '&a=' + av;
+	return true;
+}
+
+
+function xlog(text)
+{
+	var xlog = document.getElementById('xlog');
+	xlog.appendChild(document.createTextNode(text));
+	xlog.appendChild(document.createElement('br'));
+}
+
+
+function my_selections_click(e)
+{
+	var sel = document.getElementById('myselections');
+	
+	if (sel.firstChild.tagName != 'IFRAME')
+	{
+		var iframe = document.createElement('iframe');
+		iframe.setAttribute('src', '');
+		iframe.setAttribute('frameborder', '0');
+		iframe.setAttribute('name', 'mySelections');
+		iframe.setAttribute('scrolling', 'no');
+		iframe.setAttribute('id', 'msiframe');
+		sel.insertBefore(iframe, sel.firstChild);
+	}
+
+	return true;
+}
+
+function my_selections_hide()
+{
+	var sel = document.getElementById('myselections');
+	
+	if (sel.firstChild.tagName == 'IFRAME')
+	{
+		sel.removeChild(sel.firstChild);
+		$.waypoints('refresh');
+	}
+}
+
+
+// cookie init
+
+var cookie = getCookie('js_cookie');
+if (cookie === null)
+{
+	setCookie('js_cookie', '1', 30, '/', '', '' )
+}
+
+
+function myLeaguesSportSwitch(id)
+{
+	if (myLeaguesSportActive != id)
+	{
+		setClass(document.getElementById('menu-' + myLeaguesSportActive), '');
+		setClass(document.getElementById('menu-' + id), 'set');
+		document.getElementById('div-' + myLeaguesSportActive).style.display = 'none';
+		document.getElementById('div-' + id).style.display = 'block';
+		document.getElementById('form-back-sport').value = id;
+		myLeaguesSportActive = id;
+	}
+}
+
+function myLeaguesCountryClick(key)
+{
+	var e = document.getElementById('tbody-' + key);
+	e.style.display = e.style.display == 'none' ? '' : 'none';
+}
+
+
+function upcomingSportSwitch(id)
+{
+	if (upcoming_sport_active != id)
+	{
+		$('#ue-menu-' + upcoming_sport_active).removeClass('set');
+		$('#ue-menu-' + id).addClass('set');
+		$('#ue-div-' + upcoming_sport_active).hide();
+		$('#ue-div-' + id).show();
+		upcoming_sport_active = id;
+	}
+}
+
+function myleagues_init(ids)
+{
+	jQuery.ajax({
+		url: '/gres/myleagues.php',
+		type: 'POST',
+		data: 'ids=' + ids,
+		cache: false,
+		dataType: 'json',
+		success: function(data)
+		{
+			if (data.myleagues)
+			{
+				for (var i = 0; i < data.myleagues.length; i++)
+				{
+					$('[id^="myleague-link-' + data['myleagues'][i] + '-"]').each(function()
+					{
+						$(this).addClass('set');
+						$(this).attr('title', "Click to remove league from 'My Leagues'");
+					});
+				}
+			}
+		}
+	});
+	
+	$('.myleague-link').mouseover(function()
+	{
+		$(this).addClass('hover');
+	});
+	
+	$('.myleague-link').mouseout(function()
+	{
+		$(this).removeClass('hover');
+	});
+}
+
+function myleagues_league_init()
+{
+	$('.myleague-league-link').mouseover(function()
+	{
+		$(this).addClass('hover');
+	});
+	
+	$('.myleague-league-link').mouseout(function()
+	{
+		$(this).removeClass('hover');
+	});
+}
+
+function myleague_click(id, inleague)
+{
+	jQuery.ajax({
+		url: '/gres/myleague-change.php',
+		type: 'GET',
+		data: 'id=' + id,
+		cache: false,
+		dataType: 'json',
+		success: function(data)
+		{
+			if (data.id)
+			{
+				if (inleague)
+				{
+					$('.myleague-league-link').html(data.response == 0 ? 'Add to My Leagues' : 'Remove from My Leagues')
+					$('.myleague-league-link').toggleClass('set', data.response == 1).removeClass('hover');
+				}
+				else
+				{
+					$('[id^="myleague-link-' + data.id + '"]').each(function()
+					{
+						$(this).toggleClass('set', data.response == 1).removeClass('hover');
+						$(this).attr('title', data.response == 0 ? "Click to add league to 'My Leagues'" : "Click to remove league from 'My Leagues'");
+					});
+				}
+			}
+		}
+	});
+}
+
+
+function format_odds(parent_element, remove_data)
+{
+	var format = parseInt(user.oddsformat);
+	var usemax = parseInt(user.oddstype) == 2;
+
+	// format je 1 - neni potreba formatovat, jen zobrazit
+	var use_format = format != 1;
+
+	// nastavim format
+	if (use_format)
+	{
+		oddsformater.setOddsFormat(format);
+	}
+	
+	// archiv kurzu - upravim rozmery okna pro UK format
+	if (parent_element == 'aodds-info' && format == 2)
+	{
+		$('#aodds-info').width($('#aodds-info').width() + 25).css('left', parseInt($('#aodds-info').css('left')) - 25 + 'px');
+	}
+
+	// urcim element, v nemz se bude formatovat - v parametru mam bud objekt, nebo jeho ID, nebo nic (pak formatuju vsude)
+	if (jQuery.type(parent_element) == 'object')
+	{
+		e = parent_element.find('[data-odd]');
+	}
+	else if (parent_element != '')
+	{
+		e = $('#' + parent_element).find('[data-odd]');
+	}
+	else
+	{
+		e = $('[data-odd]');
+	}
+
+	e.each(function()
+	{
+		// zmena kurzu - krome EU a UK kurzu neformatuju, ale pocitam
+		if (parent_element == 'aodds-info' && format != 1 && format != 2 && $(this).next().length == 0)
+		{
+			var thisodd = $(this).prev().text();
+			var prevodd = oddsformater.formatOdd($(this).parent().next().children().first().next().attr('data-odd'), true);
+			var newodd = thisodd - prevodd;
+			if (format != 3)
+			{
+				newodd = newodd.toFixed(2);
+			}
+			if (newodd > 0) newodd = '+' + newodd;
+		}
+		else
+		{
+			var odd = $(this).attr('data-odd' + (usemax ? '-max' : '')); // musim pouzit funkci attr, funkce data to bere jako cislo a 2.20 zmeni na 2.2
+			if (usemax && odd == null)
+			{
+				odd = $(this).attr('data-odd');
+			}
+			var newodd = use_format && odd != '-' ? oddsformater.formatOdd(odd, true) : odd;
+		}
+		
+		// nastavim sirku elementu pokud je potreba
+		if ($(this).parents('.odds-details').length)
+		{
+			if (newodd != null && newodd.toString().length > 4)
+			{
+				var w = 38 + (format == 2 || format == 3 ? 5 : 4) * (newodd.toString().length - 4);
+				$(this).width(w);
+			}
+		}
+		
+		// zformatuju a zapisu kurs; pokud je v elementu jeste jeden element, budu kurz davat do nej
+		$($(this).children().size() > 0 ? $(this).children(":first") : this).html(newodd);
+		
+		if (remove_data)
+		{
+			$(this).removeAttr('data-odd').removeAttr('data-odd-max');
+		}
+	});
+}
+
+
+
+function info_box_close(id)
+{
+	setCookie('ib_' + id, '1', 100, '/', '', '' )
+	$('#ib_' + id).css('display', 'none');
+}
+
+
+function mytooltip_init()
+{
+	$('.hastooltip').mouseenter(function()
+	{
+		if ($(this).attr('title') != '')
+		{
+			$(this).append('<div class="mytooltip">' + $(this).attr('title') + '</div>');
+			$(this).removeAttr('title');
+		}
+	});
+		
+	$('.hastooltip').mouseleave(function()
+	{
+		var titlediv = $(this).find('.mytooltip');
+		if (titlediv.length)
+		{
+			$(this).attr('title', $(titlediv).html());
+			$(titlediv).remove();
+		}
+	});
+}
+
+
+
+/* --------------------------------------------------------------
+	funkce z main.js.php, ktere jsou stejne pro vsechny projekty
+   -------------------------------------------------------------- */
+
+function win(url, width, height, resizable, scroll)
+{
+	if (!width)
+	{
+		width = 300;
+	}
+	if (!height)
+	{
+		width = 300;
+	}
+	if (scroll == null)
+	{
+		scroll = 0;
+	}
+	
+	if (document.all)
+	{
+		var x = Math.round(window.screen.availWidth / 2 - width / 2);
+		var y = Math.round(window.screen.availHeight / 2 - height / 2);
+		if (x < 0) x = 10;
+		if (y < 0) y = 10;
+	}
+	else
+	{
+		var x = 200, y = 200;
+	}
+
+	var features = 'height='+height+', left='+x+', location=no, menubar=no, resizable='+(resizable ? 'yes' : 'no')+', '
+		+'scrollbars='+(scroll ? 'yes' : 'no')+', status=no, titlebar=no, toolbar=no, top='+y+', width='+width;
+	window.open(url, '_blank', features);
+
+	return false;
+}
+
+
+function olFocus(elem) {
+	getElement(elem).select();
+	getElement(elem).focus();
+}
+
+
+/**
+ * Show / hide element.
+ *
+ * @param object $element  Element object.
+ * @return void
+ */
+function show(element)
+{
+	if (element.style.display == 'block')
+	{
+		element.setAttribute('style', 'display:none;');
+		element.style.display = 'none';
+	}
+	else
+	{
+		element.setAttribute('style', 'display:block;');
+		element.style.display = 'block';
+	}
+
+	return true;
+}
+
+
+// user tip form check functions {{{
+function set_error_elem(elem, error)
+{
+	var lab    = getElement('l-'+elem.id);
+    var cls    = '';
+    var newCls = '';
+
+	if (error == 'y') {
+	   if (navigator.userAgent.match(/MSIE/)) {
+	        cls    = elem.getAttribute('className');
+            newCls = (cls != '' || cls != null ? cls + ' ' : '') + 'err';
+           
+            elem.setAttribute('className', newCls);
+            lab.setAttribute('className', newCls);
+       } else {
+	        cls    = elem.getAttribute('class');
+            newCls = cls + (cls != '' || cls != null ? ' ' : '') + 'err';
+
+            if (cls == '' || cls == null || (cls != '' && cls.match('err') == null)) {
+                elem.setAttribute('class', newCls);
+                lab.setAttribute('class', newCls);
+            }
+       }
+	} else if (error == 'n') {
+	   if (navigator.userAgent.match(/MSIE/)) {
+	        var cls = elem.getAttribute('className');
+
+            if (cls != null) {
+                newCls = cls.replace('err', '');
+            }
+           
+            if (newCls == '') {
+                elem.removeAttribute('className');
+                lab.removeAttribute('className');
+            } else {
+                elem.setAttribute('className', newCls);
+                lab.setAttribute('className', newCls);
+            }
+	   } else {
+	        var cls = elem.getAttribute('class');
+
+            if (cls != null) {
+                newCls = cls.replace('err', '');
+            }
+           
+            if (newCls == '') {
+                elem.removeAttribute('class');
+                lab.removeAttribute('class');
+            } else {
+                elem.setAttribute('class', newCls);
+                lab.setAttribute('class', newCls);
+            }
+	   }
+	}
+
+	return true;
+}
+
+
+
+function check_combo(element)
+{
+	var value = element.options[element.selectedIndex].value;
+
+	if (value == '')
+	{
+		set_error_elem(element, 'y');
+	}
+	else
+	{
+		set_error_elem(element, 'n');
+	}
+}
+
+function check_date(element)
+{
+	var value = element;
+
+	if (value != '')
+	{
+		if (element.value.match(/^(([0,1,2][0-9]|3[0,1])|[0-9])\.((0[0-9]|1[0,1,2])|[0-9])\.(2[0-9]{3})$/) == null)
+		{
+			set_error_elem(value, 'y');
+		}
+		else
+		{
+			set_error_elem(value, 'n');
+		}
+	}
+}
+
+function check_time(element)
+{
+	var value = element;
+
+	if (value != '')
+	{
+		if (element.value.match(/^(([0-1][0-9]|[2][0-3])|([0-9])):(([0-5][0-9])){1,2}$/) == null)
+		{
+			set_error_elem(value, 'y');
+		}
+		else
+		{
+			set_error_elem(value, 'n');
+		}
+	}
+}
+
+function check_number(element)
+{
+	element.value = element.value.replace(/,/, ".");
+
+	if (element.value == '' || isNaN(new Number(element.value)))
+	{
+		set_error_elem(element, 'y');
+		return false;
+	}
+	else
+	{
+		set_error_elem(element, 'n');
+	}
+
+	return true;
+}
+
+function equal()
+{
+	var odd = getElement('overall_odds').value;
+	var stake = getElement('stake').value;
+	var eq = getElement('return');
+
+    if (! isNaN(Number(stake)) && (stake < 0 || stake > 10)) {
+        alert('Stake can be from 1 to 10.');
+        return false;
+    } else if (!isNaN(Number(odd)) && !isNaN(Number(stake))) {
+		eq.value = odd * stake;
+	} else {
+		eq.value = '';
+		return false;
+	}
+
+	return true;
+}
+
+function check_score(element)
+{
+	/*if ((element.value.match(/^[0-9]{1,2}$/) == null) || (element.value.match(/^[0-9]{1,}:[0-9]{1,}$/) == null))*/
+    if (element.value.match(/^((\d+)(\:\d+)?)$/) == null)
+	{
+		set_error_elem(element, 'y');
+	}
+	else
+	{
+		set_error_elem(element, 'n');
+	}
+
+	return true;
+}
+
+
+function check_form()
+{
+	equal();
+}
+// }}}
+
+
+
+
+var streamsTimeout = null;
+var streamsVisible = null;
+
+$(document).on('mouseenter', '.streamsicon, .streamsdiv', function()
+{
+	container = $('#streamscontainer');
+	eid = $(this).attr('data-eid');
+	
+	if (streamsTimeout != null)
+	{
+		clearTimeout(streamsTimeout);
+	}
+	
+	if (streamsVisible != null)
+	{
+		if (streamsVisible != eid)
+		{
+			doHideStreams(streamsVisible, container);
+		}
+		else
+		{
+			return;
+		}
+	}
+	
+	if (container.length)
+	{
+		$('#streams-' + eid).show().insertAfter(this);
+	}
+	else
+	{
+		$('#streams-' + eid).show();
+	}
+	
+	streamsVisible = eid;
+});
+
+$(document).on('mouseleave', '.streamsicon, .streamsdiv', function()
+{
+	container = $('#streamscontainer');
+	eid = $(this).attr('data-eid');
+	streamsTimeout = setTimeout('doHideStreams(eid, container)', 300);
+});
+
+function doHideStreams(eid, container)
+{
+	if (container.length)
+	{
+		$('#streams-' + eid).hide().appendTo(container);
+	}
+	else
+	{
+		$('#streams-' + eid).hide();
+	}
+	streamsVisible = null;
+}
+
+
+
+
+
+// SPOLECNE FUNKCE PRO AJAXOVE UPRAVY STRANEK Z PROXY
+
+var user = {
+	'logged': false,
+	'id': 0,
+	'nick': '',
+	'oddsformat': 1,
+	'oddstype': 1,
+	'usersportid': null,
+	'sportid': null,
+	'sporturl': null
+};
+
+var timezone_key = '+1';
+var today = null;
+var yesterday = null;
+
+function timezone_init(page)
+{
+	timezone_key = getCookie('my_timezone');
+	timezone_key_int = parseInt(timezone_key, 10);
+	tz_a = $($('#tz-switch>a')[0]);
+	time = tz_a.attr('data-time').split(':');
+	
+	if (timezone_key == null || !timezone_key.match(/^[+-]?[0-9]+$/))
+	{
+		timezone_key = '+1';
+		timezone_key_int = 1;
+	}
+	if (timezone_key != '+1')
+	{
+		hours = parseInt(time[0], 10) + timezone_key_int - 1;
+		time[0] = hours < 0 ? hours + 24 : (hours >= 24 ? hours - 24 : hours);
+	}
+	tz_a.html(time[0] + ':' + time[1] + ' (GMT ' + timezone_key + ')');
+	
+	if (timezone_key == '+1')
+	{
+		if (page == 'homepage' || page == 'nr')
+		{
+			$('#calendar-loader').remove();
+			$('#calendar').show();
+		}
+	}
+
+	// na strance nextmatch muzu hned zformatovat cas, nemusim cekat na ajax
+	if (page == 'nextmatch')
+	{
+		dt = my_tz_format($('#nm-date').attr('data-dt'));
+		$('#nm-date').html(dt.date + ' - ' + dt.time).removeAttr('data-dt');
+	}
+}
+
+function user_init(data)
+{
+	// uzivatel
+	if (data.user_logged)
+	{
+		user.logged = true;
+		user.id = data.user_id;
+		user.nick = data.user_nick;
+		user.oddsformat = data.oddsformat;
+		user.oddstype = data.oddstype;
+		
+		user.usersportid = data.usersportid;
+		if (data.sportid != null)
+		{
+			user.sportid = data.sportid;
+			user.sporturl = data.sporturl;
+		}
+		
+		user_html = data.user_nick + '&nbsp;|&nbsp;<a href="/user/settings/">Settings</a>&nbsp;|&nbsp;';
+		if (data.user_more)
+		{
+			user_html += '<a href="/user/url_messages/" title="Messages"' + (data.messages_no > 0 ? ' class="icon-mail"' : '') + '>';
+			user_html += 'Messages';
+			if (data.messages_no > 0) user_html += ' (' + data.messages_no + ')';
+			user_html += '</a>&nbsp;|&nbsp;';
+			user_html += '<a href="/user/picks/">Picks</a>&nbsp;|&nbsp;';
+		}
+		
+		user_html += '<a href="/user/logout/">Logout</a>';
+		
+		$('#user-info').html(user_html);
+	}
+	
+	// casove zony
+	if (timezone_key != '+1')
+	{
+		today = my_tz_format(data.datetime);
+	}
+}
+
+function myselections_init(show)
+{
+	if (show)
+	{
+		par = $('#myselections');
+		if (par.length)
+		{
+			par.prepend('<iframe src="/my_selections.php" frameborder="0" name="mySelections" scrolling="no" id="msiframe"></iframe>');
+		}
+	}
+}
+
+function my_tz_format(par, days_add)
+{
+	arr = par.split(',');
+	obj = new Date(arr[2], parseInt(arr[1], 10) - 1, parseInt(arr[0], 10) + parseInt(days_add || 0, 10), parseInt(arr[3], 10) + parseInt(timezone_key, 10) - 1, arr[4], 0);
+
+	d = obj.getDate();
+	m = obj.getMonth() + 1;
+	y = obj.getFullYear();
+	h = obj.getHours();
+	i = obj.getMinutes();
+	t = (h < 10 ? '0' + h : h) + ':' + (i < 10 ? '0' + i : i);
+	hn = h < 6 || (h == 6 && i == 0);
+	
+	ret = {
+		'date': (d < 10 ? '0' + d : d) + '.' + (m < 10 ? '0' + m : m) + '.' + y, 
+		'date_noyear': (d < 10 ? '0' + d : d) + '.' + (m < 10 ? '0' + m : m) + '.', 
+		'time': t, 
+		'd': d, 
+		'm': m, 
+		'y': y, 
+		'day_changed': d != (parseInt(arr[0], 10) + parseInt(days_add || 0, 10)), 
+		'hours_night': hn
+	};
+	return ret;
+}
+
+function my_date_add_days(date, days)
+{
+	arr = date.split('.');
+	date = new Date(arr[2], parseInt(arr[1], 10) - 1, parseInt(arr[0], 10) + days);
+	d = date.getDate();
+	m = date.getMonth() + 1;
+	y = date.getFullYear();
+	return (d < 10 ? '0' + d : d) + '.' + (m < 10 ? '0' + m : m) + '.' + y;
+}
+
+function calendar_reload(year, month, act)
+{
+	jQuery.ajax({
+		url: '/gres/ajax-calendar.php',
+		type: 'GET',
+		data: 'y=' + year + '&m=' + month + '&a=' + act + (today != null ? '&t=' + today.date : '') + (user.logged && user.sporturl != null ? '&s=' + user.sporturl : ''),
+		cache: false,
+		success: function(data)
+		{
+			$('#calendar-loader').remove();
+			$('#calendar').html(data).show();
+		}
+	});
+}
+

@@ -1,0 +1,1275 @@
+
+
+   <!-- Google Tag Manager -->
+ <noscript>&lt;iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWSLS5" height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;</noscript>
+ <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NWSLS5');</script>
+ <!-- End Google Tag Manager -->
+ 
+<div id="punterMessage" class="messenger hidden">
+<p class="_message">$punterMessage</p>
+<div class="buttons messenger-but">
+<button type="submit" class="button yes simplemodal-close" onclick="closeMessengerNote('punterMessage');"><span>OK</span></button>
+</div>
+</div>
+ <div id="errorMessage" class="messenger hidden">
+<p class="_message">$errorMessage</p>
+<div class="buttons messenger-but">
+<button type="submit" class="button yes simplemodal-close" onclick="closeMessengerNote('errorMessage');"><span>OK</span></button>
+</div>
+</div>
+
+<div id="sherror" class="messenger hidden">
+<p class="_message">Wyszukiwany ciąg nie może zawierać znaków „%” ani „_” i musi mieć długość co najmniej 3 znaków.</p>
+<div class="buttons messenger-but">
+<button type="submit" class="button yes simplemodal-close" onclick="closeMessengerNote('sherror');"><span>OK</span></button>
+</div>
+</div>
+<div id="forbidden" class="messenger hidden">
+<p class="_message">Dostęp zabroniony</p>
+<div class="buttons messenger-but">
+<button type="submit" class="button yes simplemodal-close" onclick="closeMessengerNote('forbidden');"><span>OK</span></button>
+</div>
+</div>
+<div id="select_events_warning" class="messenger hidden">
+<p class="_message">Wybierz wydarzenia do wyświetlenia</p>
+<div class="buttons messenger-but">
+<button type="submit" class="button yes simplemodal-close" onclick="closeMessengerNote('select_events_warning');"><span>OK</span></button>
+</div>
+</div>
+
+ <div id="any_message" class="messenger hidden">
+<p class="_message"></p>
+<div class="buttons messenger-but">
+<button type="submit" class="button yes simplemodal-close" onclick="closeMessengerNote('any_message');"><span>OK</span></button>
+</div>
+</div>
+
+ 
+<div class="container" id="id_container">
+ <div id="js_topbar_messages" class="topbar-container" style="display: block;">
+   <div id="js_topbar_optimum_browser" class="topbar-messages hidden">
+ <div class="topbar-messages-wrap">
+ <div class="topbar-message-text">Ta wersja przeglądarki internetowej nie jest obsługiwana.  Dokonaj wymaganej aktualizacji albo zainstaluj obsługiwaną przeglądarkę.</div>
+ </div>
+</div> </div><div class="header" id="header_container" data-topbar-fix="true" style="top: 0px;">
+<div class="header-content">
+<div class="head">
+<div class="head-main ">
+ <div class="head-right">
+   <form action="https://www.marathonbet.com:443/pl/login.htm" id="auth">
+ <div class="login-pass">
+ <a href="https://www.marathonbet.com:443/pl/forgottenpassword.htm" class="lostpass">Zagubione hasło?</a>
+ <div class="user"><input id="auth_login" tabindex="1" type="text" name="login" rel="Nazwa użytkownika:" maxlength="40" regex="^[0-9]{6,7}|[A-Za-z0-9\-_\.\%\+]+@([A-Za-z0-9\-_]+\.)+[A-Za-z]{2,4}$" class="empty">
+  </div>
+ <div class="pass">
+  <input id="auth_login_password" tabindex="2" type="password" name="login_password" rel="Hasło:" maxlength="100" regex="^.{6,}$" style="display: none;"><input type="text" value="Hasło:" class="undefined empty" tabindex="2"></div>
+ <div class="login"><button type="submit" tabindex="3" class="button btn-login">Zaloguj</button></div>
+ <div class="join"><a href="https://www.marathonbet.com:443/pl/join.htm" tabindex="4" class="button btn-join">Dołącz teraz</a></div>
+ </div>
+   <div class="captcha">
+ <div class="image">
+ Kod weryfikacji:
+ <img src="" style="height: 20px; width: 106px;">
+ <button type="button" class="button btn-reload"></button>
+ </div>
+ <div class="code">
+ <div><input type="text" name="captcha" id="captcha" value="" size="20" regex="^.+$" autocomplete="off" rel="Wprowadź kod" class="required empty" disabled=""></div>
+ <div class="login"><button type="submit" class="button btn-login">Zaloguj</button></div>
+ </div>
+</div>
+  </form>
+   <div id="login" class="messenger hidden">
+<form id="login_form" action="https://www.marathonbet.com:443/pl/login.htm">
+ <div class="login-pass">
+ <p>Nie jesteś zalogowany(-a). Wprowadź dane szczegółowe konta lub kliknij Dołącz teraz.</p>
+ <table class="login-form-table">
+ <tbody><tr>
+ <td class="popup-login">
+ <p>Nazwa użytkownika:&nbsp;&nbsp;</p>
+ </td>
+ <td class="popup-input">
+ <p><input type="text" name="login" regex="^[0-9]{6,7}|[A-Za-z0-9\-_\.\%\+]+@([A-Za-z0-9\-_]+\.)+[A-Za-z]{2,4}$" maxlength="40" class="required _copy"></p>
+ </td>
+ </tr>
+ <tr>
+ <td class="popup-login">
+ <p>Hasło:&nbsp;&nbsp;</p>
+ </td>
+ <td class="popup-input">
+  <p><input type="password" name="login_password" maxlength="100" class="required _copy" regex="^.{6,}$"></p>
+ </td>
+ </tr>
+ </tbody></table>
+  <input type="hidden" name="placebet" value="">
+  <input type="hidden" name="totoStake" value="">
+ <div class="buttons messenger-but">
+ <button type="submit" class="button"><span>Zaloguj</span></button>
+ <button type="button" class="button btn-join-now" onclick="location.href = 'https://www.marathonbet.com:443/pl/join.htm'"><span>Dołącz teraz</span></button>
+ <button type="button" class="button btn-cancel no simplemodal-close"><span>Anuluj</span></button>
+ </div>
+ </div>
+ <div class="captcha">
+ <p>Użytkownik nie jest zalogowany.</p>
+ <table class="login-form-table">
+   <tbody><tr>
+ <td>
+ <p>Kod weryfikacji:&nbsp;&nbsp;</p>
+ </td>
+ <td>
+ <img src="" style="height: 20px; width: 106px;">
+ <button type="button" class="button btn-reload"></button>
+ </td>
+</tr>
+<tr>
+ <td colspan="2">
+ <p>
+ <input type="text" name="captcha" id="captcha" value="" size="20" autocomplete="off" rel="Wprowadź kod" class="required">
+ </p>
+ </td>
+</tr>
+  </tbody></table>
+ <div class="buttons messenger-but">
+ <button type="submit" class="button"><span>Zaloguj</span></button>
+ </div>
+ </div>
+</form>
+</div>  </div>
+
+ <div class="head-left">
+ <div class="logo">
+<a href="/pl/"><img src="/cdn/3-0-431-194/images/marathon_logo_en.png" alt="Marathon Bet Logo" height="53" width="163"></a>
+</div>
+ <div class="main-menu">
+  <span class="top-tabs-block">
+ 
+ <a class="act" href="/pl/"><span>Sport</span></a>
+  
+ <a class="live" href="/pl/live/popular"><span>Na żywo</span></a>
+  
+ <a class="" href="/pl/toto/cs/home.htm"><span>Totalizator</span><span class="top-tabs-hint">JP: € 597116</span></a>
+  
+ <a class="" href="https://games.marathonbet.com/pl"><span>Kasyno</span></a>
+  
+ <a class="" href="https://games.marathonbet.com/pl/?v=live-casino"><span>Kasyno na żywo</span></a>
+  </span>
+   <span class="top-tabs-block">
+ 
+ <a class="" href="/pl/betconstructor/footballconstructor.htm"><span>KONSTRUKTOR</span></a>
+  
+ <a class="" href="https://www.marathonbet.com:443/pl/loto"><span>Lotto</span></a>
+  
+ <a class="" href="https://www.marathonbet.com:443/pl/virtual-sports"><span>Wirtualne</span></a>
+  
+ <a class="" href="/pl/finstakes.htm"><span>Finanse</span></a>
+  </span>
+ </div> </div>
+</div>
+
+<div class="head-sub js-head-sub">
+ 
+ <div id="timer"><span id="time">23.06.16, 18:18 (GMT+2)</span></div>
+ 
+ <div class="head-sub-item services js-head-sub-item">
+ <div class="menu-link js-menu-link">Uslugi
+ <b>
+ <i class="arrow"></i>
+ </b>
+ </div>
+
+ <ul class="dropdown js-dropdown">
+  <li class="first"><span data-show-help="  /pl/help/payments/
+ " class="show-help-link ur-link">Płatności</span></li>
+    <li><span data-show-help="  /pl/help/general_rules/
+ " class="show-help-link ur-link">Pomoc</span></li>
+    <li><span data-show-help="  /pl/help/contact_us/
+ " class="show-help-link ur-link">Kontakt</span></li>
+  <li><span data-show-help="  /pl/help/how_to_place_a_bet/
+ " class="show-help-link ur-link">Jak obstawiać?</span></li>
+  <li><a href="/pl/mobile.htm" class="ur-link">Wersja mobilna</a></li>
+   <li><span data-show-help="  /pl/help/bonuses_and_offers/
+ " class="show-help-link ur-link">Bonusy</span></li>
+  </ul>
+ </div>
+
+ <div class="head-sub-item js-head-sub-item">
+  <div name="languageSwitcher" id="language_form" data-action-url="/pl/changelanguage.htm"><div name="languageSelectField" id="languageSelectField"><div class="menu-link js-menu-link"><span class="flag pl_PL"></span>Polski<b><i class="arrow"></i></b></div><div class="dropdown js-dropdown"><ul class="lang-col-1"><li><div class="ur-link js-ur-link" data-field-value="en"><span class="flag en_GB"></span>English</div></li><li><div class="ur-link js-ur-link" data-field-value="az"><span class="flag az_AZ"></span>Azərbaycanca</div></li><li><div class="ur-link js-ur-link" data-field-value="de"><span class="flag de_DE"></span>Deutsch</div></li><li><div class="ur-link js-ur-link" data-field-value="es"><span class="flag es_ES"></span>Español</div></li><li><div class="ur-link js-ur-link" data-field-value="fr"><span class="flag fr_FR"></span>Français</div></li><li><div class="ur-link js-ur-link" data-field-value="hr"><span class="flag hr_HR"></span>Hrvatski</div></li><li><div class="ur-link js-ur-link" data-field-value="in"><span class="flag in_ID"></span>Indonesian</div></li><li><div class="ur-link js-ur-link" data-field-value="it"><span class="flag it_IT"></span>Italiano</div></li><li><div class="ur-link js-ur-link" data-field-value="lt"><span class="flag lt_LT"></span>Lietuvių</div></li><li><div class="ur-link js-ur-link" data-field-value="hu"><span class="flag hu_HU"></span>Magyar</div></li><li><div class="ur-link js-ur-link" data-field-value="pl" data-menu-item-selected="true"><span class="flag pl_PL"></span>Polski</div></li><li><div class="ur-link js-ur-link" data-field-value="pt"><span class="flag pt_PT"></span>Português</div></li><li><div class="ur-link js-ur-link last-item" data-field-value="sr"><span class="flag sr_RS"></span>Srpski</div></li></ul><ul class="lang-col-2"><li><div class="ur-link js-ur-link" data-field-value="tr"><span class="flag tr_TR"></span>Türkçe</div></li><li><div class="ur-link js-ur-link" data-field-value="vi"><span class="flag vi_VN"></span>Việt</div></li><li><div class="ur-link js-ur-link" data-field-value="cs"><span class="flag cs_CZ"></span>Český</div></li><li><div class="ur-link js-ur-link" data-field-value="el"><span class="flag el_GR"></span>Ελληνικά</div></li><li><div class="ur-link js-ur-link" data-field-value="uz"><span class="flag uz_UZ"></span>Ўзбек тили</div></li><li><div class="ur-link js-ur-link" data-field-value="bg"><span class="flag bg_BG"></span>Български</div></li><li><div class="ur-link js-ur-link" data-field-value="su"><span class="flag ru_RU"></span>Русский</div></li><li><div class="ur-link js-ur-link" data-field-value="hi"><span class="flag hi_IN"></span>हिन्दी</div></li><li><div class="ur-link js-ur-link" data-field-value="th"><span class="flag th_TH"></span>ภาษาไทย</div></li><li><div class="ur-link js-ur-link" data-field-value="ka"><span class="flag ka_GE"></span>ქართული</div></li><li><div class="ur-link js-ur-link" data-field-value="zh"><span class="flag zh_CN"></span>简体中文</div></li><li><div class="ur-link js-ur-link" data-field-value="tw"><span class="flag zh_TW"></span>繁體中文</div></li><li><div class="ur-link js-ur-link last-item" data-field-value="ko"><span class="flag ko_KR"></span>한국어</div></li></ul></div></div></div>
+  </div>
+
+ <div class="head-sub-item js-head-sub-item">
+ <div class="menu-link js-menu-link">Wyniki i statystyki
+ <b>
+ <i class="arrow"></i>
+ </b>
+ </div>
+
+ <ul class="dropdown js-dropdown">
+   <li><a href="/pl/results.htm" class="ur-link ">Wyniki</a></li>
+    <li><a href="/pl/liveresults.htm" class="ur-link ">Wyniki na żywo</a></li>
+    <li><a href="/pl/stats" class="ur-link last-item ">Statystyki sportowe</a></li>
+   </ul>
+ </div>
+
+ 
+
+ <div class="head-sub-item js-head-sub-item">
+ <div class="menu-link js-menu-link">Ustawienia
+ <b>
+ <i class="arrow"></i>
+ </b>
+ </div>
+ <div name="settingsMenuSwitcher" id="settingsMenuSwitcher" class="dropdown js-dropdown"><div name="oddstypeMenuItem" id="oddstypeMenuItem" data-action-url="/pl/changeoddstype.htm"><div class="ur-link two-line-text">Typ zakładów<ul class="inner-dropdown"><li><div class="ur-link" data-odds-type-value="American"><span class="menu-item-cell"></span><span class="menu-item-cell">Amerykańskie</span></div></li><li><div class="ur-link" data-odds-type-value="Decimal"><span data-menu-item-selected="true" class="select-item"></span><span class="menu-item-cell">Dziesiętny</span></div></li><li><div class="ur-link" data-odds-type-value="HongKong"><span class="menu-item-cell"></span><span class="menu-item-cell">Hong Kong</span></div></li><li><div class="ur-link" data-odds-type-value="Indonesian"><span class="menu-item-cell"></span><span class="menu-item-cell">Indonezyjskie</span></div></li><li><div class="ur-link" data-odds-type-value="Malaysian"><span class="menu-item-cell"></span><span class="menu-item-cell">Malezyjskie</span></div></li><li><div class="ur-link" data-odds-type-value="Fractions"><span class="menu-item-cell"></span><span class="menu-item-cell">Ułamkowy</span></div></li></ul></div></div><div name="siteStyleMenuItem" id="siteStyleMenuItem"><div class="ur-link two-line-text">Typ witryny<ul class="inner-dropdown"><li><div class="ur-link" data-site-style-value="MULTIMARKETS"><span class="menu-item-cell"></span><span class="menu-item-cell">Muliti rynki</span></div></li><li><div class="ur-link" data-site-style-value="SIMPLE"><span data-menu-item-selected="true" class="select-item"></span><span class="menu-item-cell">Widok klasyczny</span></div></li><li><div class="ur-link" data-site-style-value="ASIAN"><span class="menu-item-cell"></span><span class="menu-item-cell">Widok azjatycki</span></div></li></ul></div></div><div name="liveTrendsVisualizationMenuItem" id="liveTrendsVisualizationMenuItem"><div class="ur-link two-line-text">Powiadomienie o zmianie ceny<ul class="inner-dropdown"><li><div class="ur-link" data-visualization-type="TEXT_COLOR"><span class="menu-item-cell" data-visualization-type-selected="false"></span><span class="menu-item-cell">Zmiana koloru cen</span></div></li><li><div class="ur-link" data-visualization-type="ARROW"><span class="menu-item-cell" data-visualization-type-selected="false"></span><span class="menu-item-cell">Strzałki</span></div></li><li><div class="ur-link" data-visualization-type="OFF"><span data-visualization-type-selected="true" class="menu-item-cell select-item"></span><span class="menu-item-cell">Wyłączony</span></div></li></ul></div></div></div>
+ </div>
+
+ <div class="head-sub-item js-head-sub-item">
+ <div class="online-chat" style="display: block;"><a href="http://www.livehelpnow.net/lhn/lcv.aspx?d=8180&amp;ms=&amp;zzwindow=9370&amp;lhnid=8102&amp;custom1=&amp;custom2=&amp;custom3=&amp;time=" target="_blank">Czat</a></div>
+ </div>
+
+ <div class="head-sub-item js-head-sub-item">
+ <div id="bonus-info" class="bonus-info-hide">
+ <div data-tooltip-parent="{&quot;position&quot;:{&quot;container&quot;:&quot;.header-content&quot;,&quot;at&quot;:&quot;bottom center&quot;,&quot;my&quot;:&quot;top left&quot;},&quot;hide&quot;:{&quot;delay&quot;:&quot;300&quot;,&quot;fixed&quot;:&quot;true&quot;}}">
+ <span class="bonus-info-ico"></span>
+ <div class="tooltip">
+ Dostępne darmowe zakłady (<span data-show-help="  /pl/help/bonuses_and_offers/free_bet/
+ " class="show-help-link">więcej</span>):
+ <ol id="bonus-info-list" class="bonus-info-list"></ol>
+ </div>
+ </div>
+</div>
+ </div>
+</div>
+
+<div id="auth_validation_warning" class="messenger hidden">
+<p class="_message"><span id="auth_validation_warning_message" class="simple-text"></span></p>
+<div class="buttons messenger-but">
+<button type="submit" class="button yes simplemodal-close" onclick="closeMessengerNote('auth_validation_warning');"><span>OK</span></button>
+</div>
+</div>
+<div id="on_line_notification" class="messenger hidden">
+<p class="_message">Jesteś online od&nbsp;<span id="on_line_notification_value"></span>&nbsp;godz.</p>
+<div class="buttons messenger-but">
+<button type="submit" class="button yes simplemodal-close" onclick="closeMessengerNote('on_line_notification');"><span>OK</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="main-panel  " id="main_panel" data-topbar-fix="true" style="top: 100px;">
+ <div class="pure-g leftbar-helper">
+ <div class="pure-u-1 main-panel-container">
+ <div class="main-panel-content" style="margin-right: 17px;">
+ <div class="pure-g top-panel-helper">
+ <div class=" grid-top-panel ">
+ <div class="top-panel js-top-panel">
+
+  <div class="bet-in-one-click" id="bet-in-one-click">
+ <label for="bet-in-one-click-checked">Zakład jednym kliknięciem</label>
+ <input type="checkbox" name="checked" id="bet-in-one-click-checked" disabled="disabled" onclick="getOneClick().update()">
+ </div>
+
+ <div class="js-scroll-to-top scroll-to-top-wrapper"><a href="#top" class="scroll-top-img" title="Do góry"></a></div>
+ 
+<div class="but-position">
+
+
+
+  
+  
+ 
+ <span>
+  <input type="checkbox" name="collapseAllCategoriesCheckbox" class="collapse-all-categories-checkbox">
+ <span data-collapse-all-categories-link="true" class="link">Kategorie</span>
+   <input type="checkbox" name="collapseAllSportsCheckbox" class="collapse-all-sports-checkbox">
+ <span data-collapse-all-sports-link="true" class="link">Sporty</span>
+  </span>
+</div>
+
+</div>
+ </div>
+  <div class="grid-betslip">
+  <div id="betslip-container"><div class="betslip-content" id="betslip-content">
+ <input id="isPriceChangesSubscriptionEnabled" value="false" type="hidden">
+<div class="bet-slip betslip-not-wide-screen" onclick="toggleBetslipEmpty(); return false;">
+<a id="betslip_button">(Pozycje: 0)<span class="arrow"></span></a>
+Kupon zakładu
+</div>
+ <div id="stakeNoWideScreenId" class="stake-no hidden">
+ <div class="bet-slip-nostake">Wybierz kurs</div>
+ <div class="bet-slip-info">Im bliżej godziny rozpoczęcia meczu, tym większe maksymalne stawki.</div>
+ </div>
+<div id="stakeNoNotWideScreenId" class="stake-no hidden" style="display: block;">
+ <div class="bet-slip-nostake-not-wide">Wybierz kurs</div>
+ </div>
+</div>
+</div>
+
+
+<div id="result-dialog" class="messenger hidden">
+<p id="betresult">$betresult</p>
+<div id="detail-result" class="detail-result hidden">
+<p id="detail-result-content"></p>
+<div id="deposit-msg" class="deposit-msg hidden">
+<p>Kliknij <button type="submit" class="button yes simplemodal-close" onclick="location.href = '/pl/deposit.htm'"><span>Depozyt</span></button>&nbsp;aby dodać środki.</p>
+</div>
+</div>
+<div class="buttons messenger-but">
+<button type="submit" id="ok-button" class="button no simplemodal-close"><span>OK</span></button>
+<button type="submit" id="print-bet" class="button no simplemodal-close"><span>Drukuj</span></button>
+<button type="submit" id="deposit-button" class="button yes simplemodal-close hidden" onclick="location.href = '/pl/deposit.htm'"><span>Depozyt</span></button>
+
+
+
+
+<button type="submit" id="cancel-button" class="button btn-cancel no simplemodal-close hidden"><span>Anuluj</span></button>
+<button type="submit" id="place-changed-terms" class="button no simplemodal-close hidden"><span>Zawrzyj zakład ze zmienionymi warunkami</span></button>
+<button type="submit" id="place-amended-stake" class="button no simplemodal-close hidden"><span>Zawrzyj zakład ze zmienioną stawką</span></button>
+</div>
+</div>
+<div id="off_events_placebet" class="messenger hidden">
+<p>$betresult</p>
+<div class="buttons messenger-but">
+<button type="submit" class="button yes simplemodal-close" onclick="location.reload()"><span>OK</span></button>
+</div>
+</div><div id="out_of_money_dialog" class="messenger hidden">
+<p class="_message">$betresult</p>
+<div class="buttons messenger-but">
+<button type="submit" class="button yes simplemodal-close" onclick="location.href = '/pl/deposit.htm'"><span>Depozyt</span></button>
+<button type="submit" class="button btn-cancel no simplemodal-close"><span>Anuluj</span></button>
+</div>
+</div>
+<div id="half-place-dialog" class="messenger hidden">
+<p>
+Część dotycząca miejsca w tym zakładzie ma ograniczenia.:<br> <span id="half-palace-msg"></span>
+<br>
+Potwierdź lub anuluj zakład.
+</p>
+<div class="buttons messenger-but">
+<button type="submit" class="button yes" onclick="(function(){ this.disabled = true; getBetslip().continuePlaceBet(false);})();"><span>Potwierdź zakład</span>
+</button>
+<button type="button" class="button btn-cancel no simplemodal-close"><span>Anuluj</span></button>
+</div>
+</div>  
+ </div>
+  </div>
+ </div>
+</div>
+ </div>
+</div>
+<div class="pure-g body-container" id="body_container">
+ <div class="grid-leftbar leftbar-bg" data-topbar-fix="true" data-leftbar-scroll="true" style="top: 100px;">
+ <div class="left-bar" id="left_bar2">
+  <div class="mode-selector-wrap">
+  <div data-sports-menu-selector="" class="mode-selector">
+ <a data-live-sports-button="" class="el live-sports" href="/pl/live/popular" data-ellipsis="{}">NA ŻYWO</a>
+ <a data-sports-button="" class="el sports" href="/pl/all-events.htm" data-ellipsis="{}">Wszystkie wydarzenia</a>
+ </div>
+</div>
+  <div class="events-for-hours">
+ <label>Wydarzenia za</label>
+
+ <div class="select-hours">
+ <select name="periodGroup" id="period-group-select-3" size="1"><option value="0">Zawsze</option><option selected="selected" value="2">2 Godziny</option><option value="6">6 Godziny</option><option value="12">12 Godziny</option><option value="24">24 Godziny</option></select>
+<input type="button" name="" id="" value="" onclick="location.href = '/pl/period-events.htm?periodgroup=' + document.getElementById('period-group-select-3').value">
+ </div>
+</div>
+  <div class="menu-categories popular-categories">
+ <p>Popularne</p>
+  <ul data-prematch-menu="popularSport">
+  <li>
+ <div data-prematch-menu-item="4260315" data-sub-menu-opened="false" id="popularSport4260315" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="4260315" href="/pl/popular/EURO+2016/?menu=true">EURO 2016</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="11" data-sub-menu-opened="false" id="popularSport11" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="11" href="/pl/popular/Football/?menu=true">Piłka nożna</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="2398" data-sub-menu-opened="false" id="popularSport2398" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="2398" href="/pl/popular/Tennis/?menu=true">Tenis</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="6" data-sub-menu-opened="false" id="popularSport6" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="6" href="/pl/popular/Basketball/?menu=true">Koszykówka</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  </ul>
+ </div>
+  <div class="menu-categories">
+ <p>Kategorie (A–Z)</p>
+  <ul data-prematch-menu="sport">
+  <li>
+ <div data-prematch-menu-item="5" data-sub-menu-opened="false" id="sport5" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="5" href="/pl/betting/Baseball/?menu=true">Baseball</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="7" data-sub-menu-opened="false" id="sport7" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="7" href="/pl/betting/Boxing/?menu=true">Boks</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="4" data-sub-menu-opened="false" id="sport4" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="4" href="/pl/betting/American+Football/?menu=true">Futbol amerykański</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="1037392" data-sub-menu-opened="false" id="sport1037392" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="1037392" href="/pl/betting/Gaelic+Football/?menu=true">Futbol gaelicki</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="10" data-sub-menu-opened="false" id="sport10" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="10" href="/pl/betting/Golf/?menu=true">Golf</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="537" data-sub-menu-opened="false" id="sport537" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="537" href="/pl/betting/Ice+Hockey/?menu=true">Hokej na lodzie</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="456960" data-sub-menu-opened="false" id="sport456960" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="456960" href="/pl/betting/Field+Hockey/?menu=true">Hokej na trawie</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="1037395" data-sub-menu-opened="false" id="sport1037395" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="1037395" href="/pl/betting/Hurling/?menu=true">Hurling</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="2311" data-sub-menu-opened="false" id="sport2311" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="2311" href="/pl/betting/Cycling/?menu=true">Kolarstwo</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="6" data-sub-menu-opened="false" id="sport6" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="6" href="/pl/betting/Basketball/?menu=true">Koszykówka</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="8" data-sub-menu-opened="false" id="sport8" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="8" href="/pl/betting/Cricket/?menu=true">Krykiet</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="480946" data-sub-menu-opened="false" id="sport480946" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="480946" href="/pl/betting/Lottery/?menu=true">Loteria</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="439050" data-sub-menu-opened="false" id="sport439050" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="439050" href="/pl/betting/MMA/?menu=true">Mieszane sztuki walki</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="11" data-sub-menu-opened="false" id="sport11" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="11" href="/pl/betting/Football/?menu=true">Piłka nożna</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="193335" data-sub-menu-opened="false" id="sport193335" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="193335" href="/pl/betting/Beach+Soccer/?menu=true">Piłka nożna plażowa</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="1506" data-sub-menu-opened="false" id="sport1506" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="1506" href="/pl/betting/Football+Ante+Post/?menu=true">Piłka nożna w ciemno</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="382582" data-sub-menu-opened="false" id="sport382582" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="382582" href="/pl/betting/Water+Polo/?menu=true">Polo wodne</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="237218" data-sub-menu-opened="false" id="sport237218" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="237218" href="/pl/betting/Aussie+Rules/?menu=true">Reguły australijskie</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="947" data-sub-menu-opened="false" id="sport947" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="947" href="/pl/betting/Rugby+League/?menu=true">Rugby league</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="1580" data-sub-menu-opened="false" id="sport1580" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="1580" href="/pl/betting/Rugby+Union/?menu=true">Rugby union</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="9" data-sub-menu-opened="false" id="sport9" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="9" href="/pl/betting/Darts/?menu=true">Rzutki</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="22712" data-sub-menu-opened="false" id="sport22712" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="22712" href="/pl/betting/Volleyball/?menu=true">Siatkówka</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="382580" data-sub-menu-opened="false" id="sport382580" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="382580" href="/pl/betting/Beach+Volleyball/?menu=true">Siatkówka plażowa</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="2185" data-sub-menu-opened="false" id="sport2185" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="2185" href="/pl/betting/Snooker/?menu=true">Snooker</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="2066262" data-sub-menu-opened="false" id="sport2066262" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="2066262" href="/pl/betting/Softball/?menu=true">Softball</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="1261" data-sub-menu-opened="false" id="sport1261" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="1261" href="/pl/betting/Motorsport/?menu=true">Sport motorowy</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="1895085" data-sub-menu-opened="false" id="sport1895085" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="1895085" href="/pl/betting/e-Sports/?menu=true">Sporty elektroniczne</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="4262780" data-sub-menu-opened="false" id="sport4262780" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="4262780" href="/pl/betting/Summer+Olympics+2016/?menu=true">Summer Olympics 2016</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="140628" data-sub-menu-opened="false" id="sport140628" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="140628" href="/pl/betting/Chess/?menu=true">Szachy</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="2398" data-sub-menu-opened="false" id="sport2398" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="2398" href="/pl/betting/Tennis/?menu=true">Tenis</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="382549" data-sub-menu-opened="false" id="sport382549" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="382549" href="/pl/betting/Table+Tennis/?menu=true">Tenis stołowy</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="13" data-sub-menu-opened="false" id="sport13" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="13" href="/pl/betting/Horse+Racing/?menu=true">Wyścigi konne</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  <li>
+ <div data-prematch-menu-item="3898" data-sub-menu-opened="false" id="sport3898" class="marker">
+ <div data-menu-link-block="" data-menu-active="false" class="menu-link">
+ <div data-menu-arrow="" class="menu-arrow"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <a data-tree-id="3898" href="/pl/betting/Specials/?menu=true">Zakłady specjalne</a>
+ </div>
+ <span>
+  </span>
+</div>
+ </li>
+  </ul>
+ </div>
+  <div class="search">
+ <label>Wyszukaj</label>
+
+ <form action="/pl/search.htm" method="GET" id="searchForm" novalidate="novalidate">
+ <input type="text" name="searchText" value="">
+ <input type="submit" class="but-search" value="">
+ </form>
+</div>
+ 
+<div class="contact-service-centre">
+<div class="call-message">
+Obsługa klienta i zakłady przez telefon:
+<br>Obsługa w języku Angielskim 24/7
+</div>
++44&nbsp;1273&nbsp;964706
+ </div>
+</div>
+ </div>
+<div class="grid-main" id="main_container" data-topbar-fix="true" data-scrollable-container="true" style="top: 100px;">
+ <div class="main-container">
+ <div class="main-content pure-g  leftbar-helper  rightbar-helper " data-scrollable-content="true">
+ <div class=" grid-middle   padding-top ">
+ <div data-content="" class="content">
+ <a id="top" name="top"></a>
+ <div id="container_EVENTS">
+   
+ 
+  <div data-sport-treeid="11" class="sport-category-container" data-collapsible="11">
+ <div id="11-dummy" style="width: 0px; height: 0px;"></div><div class="sport-category-header" data-collapsible-clickable-surface="true" data-sticky="11" style="position: relative; top: 2px; z-index: 1000;">
+  <div data-ellipsis="{}" class="sport-category-label">Piłka nożna</div>
+ <div class="right">
+ <div class="down-arrow"></div>
+ </div>
+ <div class="clear"></div>
+</div> 
+ <div class="sport-category-content" data-collapsing="true">
+ 
+ 
+<div class="category-container" id="container_549781" data-category-treeid="549781" data-filtered="false" data-collapsible="549781">
+ <div>
+ <h1 class="category-header" data-collapsible-clickable-surface="true">
+ 
+   
+ <span data-ellipsis="{}" class="category-label"><span class="nowrap">Argentina.</span> <span class="nowrap">Cup.</span> <span class="nowrap">Round of 64</span></span>
+
+ <span class="right" data-right-category-menu="true">
+ 
+  
+<span data-category-events-link="" data-state="hide" class="show-category-events " data-collapsing="true">
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="load" alt="">
+ <span class="show-all-category-events">Wszystkie wydarzenia</span>
+ <span class="show-selected-category-events">Wstecz</span>
+</span>
+
+
+   <a href="/pl/stats/5/1545?" data-tooltip="{&quot;position&quot;:{&quot;container&quot;:&quot;.header-content&quot;}}" class="sport-stat-icon-link"></a>
+ <span class="tooltip">
+ Statystyki
+ </span>
+ 
+  
+  </span>
+
+</h1>
+
+
+
+</div> <div id="category549781" class="category-content" data-collapsing="true">
+ <div class="category-blurb" data-collapsing="true">  </div>
+  <div class="foot-market-border">
+     <table class="foot-market" data-columns-count="8">
+  <tbody><tr class="coupone-labels">
+ <th class="first">Nazwa wydarzenia</th>
+ <th class="main-row-buttons-header"></th>
+     <th class="coupone" colspan="2" data-tooltip-parent="{}">
+  <span class="hint">
+ <b>1</b>
+ </span>
+ <div id="hint_549781_1" class="tooltip">
+ Zwycięstwo 1
+ </div>
+  </th>
+   <th class="coupone" colspan="2" data-tooltip-parent="{}">
+  <span class="hint">
+ <b>X</b>
+ </span>
+ <div id="hint_549781_2" class="tooltip">
+ Remis
+ </div>
+  </th>
+   <th class="coupone" colspan="2" data-tooltip-parent="{}">
+  <span class="hint">
+ <b>2</b>
+ </span>
+ <div id="hint_549781_3" class="tooltip">
+ Zwycięstwo 2
+ </div>
+  </th>
+               </tr>  </tbody><tbody class="" id="event_4312730" data-event-treeid="4312730" data-event-name="Crucero del Norte vs Juventud Unida Gualeguaychu" data-live="false">
+ 
+
+    <tr data-mutable-id="" class=" event-header">
+      
+
+
+
+    
+<td class="first member-area  " rowspan="1" data-mutable-id="MRMAmainRow" data-member-area="member-area">
+<table class="member-area-content-table">
+   <tbody><tr>
+ 
+ <td class="name">
+ <div data-members="true" data-has-additional-markets="true" class="command text-underline">
+    <b class="member-number">1.</b>
+ <div class="member-name nowrap " data-ellipsis="{}">Crucero del Norte</div>
+    <b class="member-number">2.</b>
+ <div class="member-name nowrap " data-ellipsis="{}">Juventud Unida Gualeguaychu</div>
+      </div>
+   </td>
+
+ <td class="date">
+   24  cze 00:10
+    </td>
+ </tr>
+
+   
+   </tbody></table>
+</td>
+       
+<td class="main-row-buttons " rowspan="1" data-mutable-id="BmainRow">
+ <table>
+  <tbody><tr>
+ <td data-event-statistics="true" class="member-area-button">
+ <div class="member-area-buttons-label">
+ <div class="statistics-button-ico"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="loading-ico" alt="">
+ </div>
+ </td>
+ </tr>
+   <tr>
+ <td class="member-area-button loading" id="event-more-view-4312730" data-event-more-view="event-more-view" treeid="4312730" islive="false">
+ <div class="member-area-buttons-label">
+ <span class="event-more-view">+34</span>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="loading-ico" alt="">
+ </div>
+
+ </td>
+ </tr>
+  </tbody></table>
+</td>               <td data-tmpl="/components/selectionMainRow.vm" colspan="2" class="price height-column-with-price    first-in-main-row  " data-coeff-uuid="-1680902816-9200200781" data-sel="{&quot;sn&quot;:&quot;Wygra Crucero del Norte&quot;,&quot;mn&quot;:&quot;Match Result&quot;,&quot;ewc&quot;:&quot;1/1 1&quot;,&quot;cid&quot;:9200200781,&quot;prt&quot;:&quot;CP&quot;,&quot;ewf&quot;:&quot;1.0&quot;,&quot;epr&quot;:&quot;2.5300000000000002&quot;,&quot;prices&quot;:{&quot;0&quot;:&quot;153/100&quot;,&quot;1&quot;:&quot;2.53&quot;,&quot;2&quot;:&quot;+153&quot;,&quot;3&quot;:&quot;1.53&quot;,&quot;4&quot;:&quot;+0.654&quot;,&quot;5&quot;:&quot;1.53&quot;}}" data-mutable-id="S1mainRow" data-market-type="RESULT">
+      <span class="selection-link
+normal 
+" data-selection-price="2.53" data-selection-key="3829721@Match_Result.1">2.53</span>
+   </td>    <td data-tmpl="/components/selectionMainRow.vm" colspan="2" class="price height-column-with-price    " data-coeff-uuid="-724283903-9199631243" data-sel="{&quot;sn&quot;:&quot;Remis&quot;,&quot;mn&quot;:&quot;Match Result&quot;,&quot;ewc&quot;:&quot;1/1 1&quot;,&quot;cid&quot;:9199631243,&quot;prt&quot;:&quot;CP&quot;,&quot;ewf&quot;:&quot;1.0&quot;,&quot;epr&quot;:&quot;3.1&quot;,&quot;prices&quot;:{&quot;0&quot;:&quot;21/10&quot;,&quot;1&quot;:&quot;3.10&quot;,&quot;2&quot;:&quot;+210&quot;,&quot;3&quot;:&quot;2.10&quot;,&quot;4&quot;:&quot;-0.476&quot;,&quot;5&quot;:&quot;2.10&quot;}}" data-mutable-id="S2mainRow" data-market-type="RESULT">
+      <span class="selection-link
+normal 
+" data-selection-price="3.1" data-selection-key="3829721@Match_Result.draw">3.10</span>
+   </td>    <td data-tmpl="/components/selectionMainRow.vm" colspan="2" class="price height-column-with-price    " data-coeff-uuid="-1680902814-9200200780" data-sel="{&quot;sn&quot;:&quot;Wygra Juventud Unida Gualeguaychu&quot;,&quot;mn&quot;:&quot;Match Result&quot;,&quot;ewc&quot;:&quot;1/1 1&quot;,&quot;cid&quot;:9200200780,&quot;prt&quot;:&quot;CP&quot;,&quot;ewf&quot;:&quot;1.0&quot;,&quot;epr&quot;:&quot;3.08&quot;,&quot;prices&quot;:{&quot;0&quot;:&quot;52/25&quot;,&quot;1&quot;:&quot;3.08&quot;,&quot;2&quot;:&quot;+208&quot;,&quot;3&quot;:&quot;2.08&quot;,&quot;4&quot;:&quot;-0.481&quot;,&quot;5&quot;:&quot;2.08&quot;}}" data-mutable-id="S3mainRow" data-market-type="RESULT">
+      <span class="selection-link
+normal 
+" data-selection-price="3.08" data-selection-key="3829721@Match_Result.3">3.08</span>
+   </td>                          </tr>  
+<tr class="sportStats coupon-statistics" data-coupon-statistics-tr="true" data-loaded="false">
+ <td colspan="8" data-event-statistics-container="true"></td>
+</tr>
+
+
+
+
+ </tbody>
+ <tbody class="bg" id="event_4312721" data-event-treeid="4312721" data-event-name="Nueva Chicago vs Deportivo Santamarina" data-live="false">
+ 
+
+    <tr data-mutable-id="" class=" event-header">
+      
+
+
+
+    
+<td class="first member-area  " rowspan="1" data-mutable-id="MRMAmainRow" data-member-area="member-area">
+<table class="member-area-content-table">
+   <tbody><tr>
+ 
+ <td class="name">
+ <div data-members="true" data-has-additional-markets="true" class="command text-underline">
+    <b class="member-number">1.</b>
+ <div class="member-name nowrap " data-ellipsis="{}">Nueva Chicago</div>
+    <b class="member-number">2.</b>
+ <div class="member-name nowrap " data-ellipsis="{}">Deportivo Santamarina</div>
+      </div>
+   </td>
+
+ <td class="date">
+   25  cze 00:10
+    </td>
+ </tr>
+
+   
+   </tbody></table>
+</td>
+       
+<td class="main-row-buttons " rowspan="1" data-mutable-id="BmainRow">
+ <table>
+  <tbody><tr>
+ <td data-event-statistics="true" class="member-area-button">
+ <div class="member-area-buttons-label">
+ <div class="statistics-button-ico"></div>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="loading-ico" alt="">
+ </div>
+ </td>
+ </tr>
+   <tr>
+ <td class="member-area-button" id="event-more-view-4312721" data-event-more-view="event-more-view" treeid="4312721" islive="false">
+ <div class="member-area-buttons-label">
+ <span class="event-more-view">+34</span>
+ <img src="/cdn/3-0-431-194/images/loading.gif" class="loading-ico" alt="">
+ </div>
+
+ </td>
+ </tr>
+  </tbody></table>
+</td>               <td data-tmpl="/components/selectionMainRow.vm" colspan="2" class="price height-column-with-price    first-in-main-row  " data-coeff-uuid="-1680903075-9200498230" data-sel="{&quot;sn&quot;:&quot;Wygra Nueva Chicago&quot;,&quot;mn&quot;:&quot;Match Result&quot;,&quot;ewc&quot;:&quot;1/1 1&quot;,&quot;cid&quot;:9200498230,&quot;prt&quot;:&quot;CP&quot;,&quot;ewf&quot;:&quot;1.0&quot;,&quot;epr&quot;:&quot;2.06&quot;,&quot;prices&quot;:{&quot;0&quot;:&quot;53/50&quot;,&quot;1&quot;:&quot;2.06&quot;,&quot;2&quot;:&quot;+106&quot;,&quot;3&quot;:&quot;1.06&quot;,&quot;4&quot;:&quot;-0.944&quot;,&quot;5&quot;:&quot;1.06&quot;}}" data-mutable-id="S1mainRow" data-market-type="RESULT">
+      <span class="selection-link
+normal 
+" data-selection-price="2.06" data-selection-key="3829714@Match_Result.1">2.06</span>
+   </td>    <td data-tmpl="/components/selectionMainRow.vm" colspan="2" class="price height-column-with-price    " data-coeff-uuid="-724284162-9200495760" data-sel="{&quot;sn&quot;:&quot;Remis&quot;,&quot;mn&quot;:&quot;Match Result&quot;,&quot;ewc&quot;:&quot;1/1 1&quot;,&quot;cid&quot;:9200495760,&quot;prt&quot;:&quot;CP&quot;,&quot;ewf&quot;:&quot;1.0&quot;,&quot;epr&quot;:&quot;3.15&quot;,&quot;prices&quot;:{&quot;0&quot;:&quot;43/20&quot;,&quot;1&quot;:&quot;3.15&quot;,&quot;2&quot;:&quot;+215&quot;,&quot;3&quot;:&quot;2.15&quot;,&quot;4&quot;:&quot;-0.465&quot;,&quot;5&quot;:&quot;2.15&quot;}}" data-mutable-id="S2mainRow" data-market-type="RESULT">
+      <span class="selection-link
+normal 
+" data-selection-price="3.15" data-selection-key="3829714@Match_Result.draw">3.15</span>
+   </td>    <td data-tmpl="/components/selectionMainRow.vm" colspan="2" class="price height-column-with-price    " data-coeff-uuid="-1680903073-9200498227" data-sel="{&quot;sn&quot;:&quot;Wygra Deportivo Santamarina&quot;,&quot;mn&quot;:&quot;Match Result&quot;,&quot;ewc&quot;:&quot;1/1 1&quot;,&quot;cid&quot;:9200498227,&quot;prt&quot;:&quot;CP&quot;,&quot;ewf&quot;:&quot;1.0&quot;,&quot;epr&quot;:&quot;4.2&quot;,&quot;prices&quot;:{&quot;0&quot;:&quot;16/5&quot;,&quot;1&quot;:&quot;4.20&quot;,&quot;2&quot;:&quot;+320&quot;,&quot;3&quot;:&quot;3.20&quot;,&quot;4&quot;:&quot;-0.313&quot;,&quot;5&quot;:&quot;3.20&quot;}}" data-mutable-id="S3mainRow" data-market-type="RESULT">
+      <span class="selection-link
+normal 
+" data-selection-price="4.2" data-selection-key="3829714@Match_Result.3">4.20</span>
+   </td>                          </tr>  
+<tr class="sportStats coupon-statistics" data-coupon-statistics-tr="true" data-loaded="false">
+ <td colspan="8" data-event-statistics-container="true"></td>
+</tr>
+
+
+
+
+ </tbody>
+  </table>
+</div>
+ 
+</div></div>
+
+  </div>
+ </div>
+ <div data-sticky="end-sticky" style="top: 0px;"></div>
+</div>
+
+ </div>
+ <div id="body_footer"></div>
+ </div>
+  <div class="grid-rightbar">
+ 
+
+
+<div class="sidebar-right">
+ <div id="banners_block" data-version="-847549116" class="banners  banners-padding-top " style="padding-top: 50px;">
+
+    
+
+ <a href="/pl/betting/Football/UEFA+Euro/2016/Final+Tournament/France/" target="_self" title="" onclick="TrackingEngine.trigger(TrackingEngine.EVENT.BANNER_CLICKED, ['Football / UEFA Euro / 2016 / Final Tournament / France', 'pl']);" data-id="14590" data-version="690310339" data-type="IMG">
+ <img src="/webbanners/archive/20160622/img_146664017285016.jpg" alt="" width="476" height="100">
+ </a>
+     
+
+ <a href="/pl/betting/Football/UEFA+Euro/2016/Final+Tournament/France/Play-Offs/Round+of+16/Switzerland+vs+Poland/" target="_self" title="" onclick="TrackingEngine.trigger(TrackingEngine.EVENT.BANNER_CLICKED, ['FOOTBALL. UEFA Euro. 2016. Final Tournament. France. Play-Offs. Round of 16   Switzerland-Poland', 'pl']);" data-id="14592" data-version="-1704639435" data-type="IMG">
+ <img src="/webbanners/archive/20160623/img_146668767738883.png" alt="" width="476" height="100">
+ </a>
+     
+
+ <a href="/pl/betting/Football/UEFA+Euro/2016/Final+Tournament/France/Play-Offs/Round+of+16/Wales+vs+Northern+Ireland/" target="_self" title="" onclick="TrackingEngine.trigger(TrackingEngine.EVENT.BANNER_CLICKED, ['FOOTBALL. UEFA Euro. 2016. Final Tournament. France. Play-Offs. Round of 16   Wales-Northern Ireland', 'pl']);" data-id="14587" data-version="-1474418396" data-type="IMG">
+ <img src="/webbanners/archive/20160623/img_146668574170987.png" alt="" width="476" height="100">
+ </a>
+     
+
+ <a href="/pl/betting/Football/UEFA+Euro/2016/Final+Tournament/France/Play-Offs/Round+of+16/Croatia+vs+Portugal/" target="_self" title="" onclick="TrackingEngine.trigger(TrackingEngine.EVENT.BANNER_CLICKED, ['FOOTBALL. UEFA Euro. 2016. Final Tournament. France. Play-Offs. Round of 16   Croatia-Portugal', 'pl']);" data-id="14400" data-version="2058303074" data-type="IMG">
+ <img src="/webbanners/archive/20160623/img_146668652289416.png" alt="" width="476" height="100">
+ </a>
+     
+
+ <a href="/pl/betting/Specials/Politics/UK/Referendum+On+Membership+Of+The+EU/" target="_self" title="" onclick="TrackingEngine.trigger(TrackingEngine.EVENT.BANNER_CLICKED, ['Referendum On Membership Of The EU', 'pl']);" data-id="14588" data-version="110265818" data-type="IMG">
+ <img src="/webbanners/archive/20160622/img_146658986078384.jpg" alt="" width="476" height="100">
+ </a>
+     
+
+ <a href="/pl/betting/Tennis/Wimbledon/" target="_self" title="" onclick="TrackingEngine.trigger(TrackingEngine.EVENT.BANNER_CLICKED, ['Tennis. Wimbledon', 'pl']);" data-id="14201" data-version="443200476" data-type="IMG">
+ <img src="/webbanners/archive/20160614/img_146590210865768.jpg" alt="" width="476" height="100">
+ </a>
+     
+
+ <a href="/pl/betting/Volleyball/FIVB+World+League/Men/" target="_self" title="" onclick="TrackingEngine.trigger(TrackingEngine.EVENT.BANNER_CLICKED, ['Volleyball.Fivb World league', 'pl']);" data-id="13486" data-version="582731773" data-type="IMG">
+ <img src="/webbanners/archive/20160614/img_146590154043073.jpg" alt="" width="476" height="100">
+ </a>
+     
+
+<iframe src="/pl/webbanners/public/b/1127/801943133/pPL.html" scrolling="no" frameborder="0" data-id="1127" data-version="1749234994" data-type="HTML"></iframe>     
+
+ <a href="/pl/advancebets.htm" target="_self" title="" onclick="TrackingEngine.trigger(TrackingEngine.EVENT.BANNER_CLICKED, ['advancebet', 'pl']);" data-id="1046" data-version="707337385" data-type="IMG">
+ <img src="/webbanners/archive/20150719/img_1439993906420.jpg" alt="" width="476" height="100">
+ </a>
+     
+
+ <span data-show-help="/pl/help/bet_glossary/losetowin_accumulator/" title="" class="show-help-link" onclick="TrackingEngine.trigger(TrackingEngine.EVENT.BANNER_CLICKED, ['antiexpress', 'pl']);" data-id="1073" data-version="557669452" data-type="HELP">
+ <img src="/webbanners/archive/20150630/img_1438259041641.png" alt="" width="476" height="100">
+ </span>
+     
+
+ <a href="/pl/extensions.htm" target="_self" title="" onclick="TrackingEngine.trigger(TrackingEngine.EVENT.BANNER_CLICKED, ['browser.extensions', 'pl']);" data-id="1100" data-version="799503439" data-type="IMG">
+ <img src="/webbanners/archive/20160224/img_145632823750459.jpg" alt="" width="476" height="100">
+ </a>
+  
+ </div>
+</div> </div>
+  </div>
+ <div id="footer" class="footer-content leftbar-helper  rightbar-helper ">
+ <div class="pure-g">
+ <div class="grid-footer">
+  <div class="bottom-menu-first-line">
+<ul>
+
+<li class="first">
+  <span class="show-help-link" data-show-help="/pl/help/">Informacje</span>
+ </li>
+
+<li>
+  <span class="show-help-link" data-show-help="/pl/help/privacy_policy/">Polityka prywatności</span>
+ </li>
+
+<li>
+  <span class="show-help-link" data-show-help="/pl/help/general_rules/">Pomoc</span>
+ </li>
+
+<li>
+  <span class="show-help-link" data-show-help="/pl/help/contact_us/">Kontakt</span>
+ </li>
+
+<li>
+  <span class="show-help-link" data-show-help="/pl/help/payments/">Płatności</span>
+ </li>
+
+<li>
+  <a href="/pl/shops.htm">Placówki</a>
+ </li>
+
+<li>
+  <a href="https://mobile.marathonbet.com/en_GB/">Witryna mobilna</a>
+ </li>
+
+<li>
+  <a target="_blank" href="http://affiliates.marathonbet.com">Affiliate</a>
+ </li>
+</ul>
+</div>
+ 
+<div class="footer-main">
+  
+<p class="sponsor">Nasi partnerzy<br>
+  <em class="sprite-manchester"><a href="http://www.manutd.com/" target="_blank" title="Oficjalny partner bukmacherski klubu Manchester United FC" rel="nofollow"></a></em>
+   <em class="sprite-liverpool"><a href="http://liverpoolfc.com/" target="_blank" title="Oficjalny partner regionalny klubu FC Liverpool" rel="nofollow"></a></em>
+ <em class="sprite-hibernian"><a href="http://www.hibernianfc.co.uk/" target="_blank" title="Glowny sponsor Hiberian FC" rel="nofollow"></a></em>
+</p>
+
+  <em class="sprite-visa" title="VISA"></em>
+ <em class="sprite-visa_credit" title="VISA Electron"></em>
+ <em class="sprite-visa_debit" title="VISA Debit"></em>
+ <em class="sprite-mastercard" title="MasterCard"></em>
+ <em class="sprite-maestro" title="Maestro"></em>
+  <em class="sprite-small_wm" title="WebMoney">
+ <a href="http://www.wmtransfer.com/" target="_blank" title="WebMoney"></a>
+ </em>
+ 
+ <em class="sprite-bank_transfer" title="Bank Transfer"></em>
+ 
+ <em class="sprite-moneybookers" title="Skrill">
+ <a href="http://www.skrill.com/" target="_blank" title="Skrill"></a>
+ </em>
+ <em class="sprite-neteller" title="NETELLER">
+ <a href="http://www.neteller.com/" target="_blank" title="NETELLER"></a>
+ </em>
+    <em class="sprite-ecopayz" title="ecoPayz">
+ <a href="https://www.ecopayz.com/en-GB/Home" target="_blank" title="ecoPayz"></a>
+ </em>
+   
+<br>
+<img src="/cdn/3-0-431-194/images/footer/age_restriction.png" class="age-restriction" alt="">
+<img src="/cdn/3-0-431-194/images/footer/rgt_donor.png" class="rgt-donor" alt=""><em class="sprite-thawte" title="Thawte"></em>
+
+  <em class="sprite-curacao_gaming_licensing" title="Panbet Curacao N.V. licence">
+ <a href="http://200.124.131.5/pages/validate.php?lid=8048-P11" target="_blank" title="Panbet Curacao N.V. licence"></a>
+ </em>
+ 
+  <em class="sprite-social_f"><a href="http://www.facebook.com/marathonbet" target="_blank" title="Facebook"></a></em>
+ <em class="sprite-social_t"><a href="http://twitter.com/marathonbet" target="_blank" title="Twitter"></a></em>
+
+ <p class="copyright">2016 Copyright Panbet Curacao N.V.</p>
+ </div>
+ <div id="footerLinks" class="footer-links"></div>
+</div>
+ </div>
+ </div>
+ </div>
+</div></div>
+
+</div>
+ <script type="text/javascript">
+ //<![CDATA[
+ 
+  panbetInit(); 
+ 
+  getSearchHelper().Init && getSearchHelper().Init();
+  getBaseEventsPageHelper().Init && getBaseEventsPageHelper().Init();
+ 
+ //]]>>
+ </script>
+
+<script src="/pl/pagemessages.htm"></script>
+
+  
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"errorBeacon":"bam.nr-data.net","licenseKey":"0f06f09ace","agent":"","beacon":"bam.nr-data.net","applicationTime":14,"applicationID":"3528351","transactionName":"NFJRbRdYVhFSVkMLDg0YZksMFkgOHFdSFhUKWVQWI1ZXFlFUWw5OIkVUXAtNUQxSGnQXEUw=","queueTime":0}</script>
+  
+ <!-- modal dialogs containers -->
+ <div id="enter_stake_dialog" class="messenger hidden">
+ <p>Wprowadź stawkę zakładu</p>
+ <div class="buttons messenger-but">
+ <button class="button no simplemodal-close"><span>OK</span></button>
+ </div>
+ </div>
+ <div id="invalid_stake_dialog" class="messenger hidden">
+ <p>Wprowadź prawidłową stawkę.</p>
+ <div class="buttons messenger-but">
+ <button class="button no simplemodal-close"><span>OK</span></button>
+ </div>
+ </div>
+ <div id="no_selections" class="messenger hidden">
+ <p>Brak pozycji na kuponie zakładu</p>
+ <div class="buttons messenger-but">
+ <button class="button no simplemodal-close"><span>OK</span></button>
+ </div>
+ </div>
+ <div id="no_selected_freebets" class="messenger hidden">
+ <p>Nie wybrano darmowego zakładu.</p>
+ <div class="buttons messenger-but">
+ <button class="button no simplemodal-close"><span>OK</span></button>
+ </div>
+ </div>
+ <div id="session_timeout" class="messenger hidden">
+ <p>Czas sesji dobiega końca. Kliknij przycisk OK, aby wydłużyć sesję.</p>
+ <div class="buttons messenger-but">
+ <button data-submit-btn="" class="button no simplemodal-close"><span>OK</span></button>
+ </div>
+ </div>
+ <div id="session_close_notification" class="messenger hidden">
+ <p>Połączenie z serwerem zostało utracone.</p>
+ <div class="buttons messenger-but">
+ <button class="button no simplemodal-close" onclick="replacePage()"><span>OK</span></button>
+ </div>
+ </div>
+ <div id="common_messenger" class="messenger hidden">
+ <p id="common_messenger_msg"></p>
+ <div class="buttons messenger-but">
+ <button class="button no simplemodal-close"><span>OK</span></button>
+ </div>
+ </div>
+  <div id="progress_dialog" class="messenger hidden">
+<img src="/cdn/3-0-431-194/images/loading.gif" class="loading" alt="">
+<p>Czekaj...</p>
+</div>
+
+<div id="swfcontainer" style="visibility: visible;"></div><div id="userdata_el" style="visibility: hidden; position: absolute;"></div><script type="text/javascript" id="">(function(f,c,b,a){function h(){a.on(a.EVENT.VISIT_PAGE,function(){yaCounter24133222.reachGoal("VISIT_PAGE",void 0)});a.on(a.EVENT.VISIT_TOTO_STATISTIC_PAGE,function(){yaCounter24133222.reachGoal("VISIT_TOTO_STATISTIC_PAGE",void 0)});a.on(a.EVENT.JOIN_PAGE_VISIT,function(){yaCounter24133222.reachGoal("JOIN_PAGE_VISIT",void 0)});a.on(a.EVENT.JOIN,function(){yaCounter24133222.reachGoal("JOIN",void 0)});a.on(a.EVENT.REGISTRATION,function(){yaCounter24133222.reachGoal("REGISTRATION",void 0)});a.on(a.EVENT.BANNER_CLICKED,
+function(a,d,b){a={banner_clicked_statisticKey:d};yaCounter24133222.reachGoal("BANNER_CLICKED",a)});a.on(a.EVENT.BET_PLACED,function(){yaCounter24133222.reachGoal("BET_PLACED",void 0)});a.on(a.EVENT.LOGIN,function(a,d){yaCounter24133222.reachGoal("LOGIN",void 0)});a.on(a.EVENT.DEPOSIT,function(a,d){yaCounter24133222.reachGoal("DEPOSIT",void 0)});a.on(a.EVENT.TOTO_BET_PLACED,function(){yaCounter24133222.reachGoal("TOTO_BET_PLACED",void 0)});a.on("join",function(a,d){var b=$.cookie("landing-utm-source"),
+c=$.cookie("referer-landing");null!=c&&(yaCounter24133222.reachGoal("NEWUSERLANDING"),yaCounter24133222.params(c,"utm-source",b));yaCounter24133222.reachGoal("NEWUSER")});$(document).ready(function(){$("td.price").click(function(a){yaCounter24133222.reachGoal("MARKET")});var a=0;$(document).on("click",".but-place-bet",function(){a=$("#total_cost").html();0!=a&&yaCounter24133222.reachGoal("BET")});$(".extension-block .btn-chrome").click(function(a){yaCounter24133222.reachGoal("btn_chrome")});$(".extension-block .btn-firefox").click(function(a){yaCounter24133222.reachGoal("btn_firefox")});
+$(".extension-block .btn-opera").click(function(a){yaCounter24133222.reachGoal("btn_opera")});$(".mobile-block.dw-ios").click(function(a){yaCounter24133222.reachGoal("ios")})})}(c[b]=c[b]||[]).push(function(){try{c.yaCounter24133222=new Ya.Metrika({id:24133222,clickmap:!0,trackLinks:!0,accurateTrackBounce:!0,webvisor:!0,trackHash:!0}),h()}catch(a){}});var g=f.getElementsByTagName("script")[0],e=f.createElement("script");b=function(){g.parentNode.insertBefore(e,g)};e.type="text/javascript";e.async=
+!0;e.src="https://mc.yandex.ru/metrika/watch.js";"[object Opera]"==c.opera?f.addEventListener("DOMContentLoaded",b,!1):b()})(document,window,"yandex_metrika_callbacks",TrackingEngine);</script>
+<noscript>&lt;div&gt;&lt;img src="https://mc.yandex.ru/watch/24133222" style="position:absolute; left:-9999px;" alt=""&gt;&lt;/div&gt;</noscript><div style="display: none; visibility: hidden;"><script type="text/javascript">(function(b,a){a.on(a.EVENT.JOIN,function(){var a=new Image;a.src="http://c-conv.ru/conv/?offerUID\x3d47431\x26hashID\x3d9a31909bfb04eca434c182a0968b6f3fa60b6f87\x26conversion"})})(jQuery,TrackingEngine);</script>  </div><script type="text/javascript" id="">(function(d,a){function e(){var a="UA-20393386-1",b=d.Page.location().protocol;"www."==b.slice(0,4)&&b.replace("www.","");ga("create",a,b,{name:"webPanbet2GaTracker"})}function c(){ga("webPanbet2GaTracker.send","pageview")}e();a.on(a.EVENT.VISIT_PAGE,c);a.on(a.EVENT.VISIT_TOTO_STATISTIC_PAGE,c);a.on(a.EVENT.JOIN,function(){ga("webPanbet2GaTracker.send","event","user","new user")});a.on(a.EVENT.BANNER_CLICKED,function(a,b,c){ga("webPanbet2GaTracker.send","event","Banner",b,c)});a.on(a.EVENT.LOGIN,
+function(a,b){})})(jQuery,TrackingEngine);</script>  <script type="text/javascript" id="">(function(b,a){a.on(a.EVENT.JOIN,function(){b("body").append("\x3ciframe src\x3d'https://cpamatica.go2cloud.org/aff_l?offer_id\x3d134' scrolling\x3d'no' frameborder\x3d'0' width\x3d'1' height\x3d'1' style\x3d'display:none'\x3e\x3c/iframe\x3e")})})(jQuery,TrackingEngine);</script>  <script type="text/javascript" id="">(function(d,a){a.on(a.EVENT.BANNER_CLICKED,function(a,b,c){dataLayer.push({event:"GAevent",eventCategory:"BANNER_CLICKED",eventAction:b,eventLabel:c})})})(jQuery,TrackingEngine);</script><script type="text/javascript" id="">$.extend({getUrlVars:function(){for(var a=[],b,d=window.location.href.slice(window.location.href.indexOf("?")+1).split("\x26"),c=0;c<d.length;c++)b=d[c].split("\x3d"),a.push(b[0]),a[b[0]]=b[1];return a},getUrlVar:function(a){return $.getUrlVars()[a]}});var subdomain=location.host,domain=subdomain.split(".").slice(1).join("."),domain="."+domain,pref=$.getUrlVar("pref"),referer=$.getUrlVar("referer"),utmsource=$.getUrlVar("utm_source");$.cookie("aff_cookie",pref,{path:"/",expires:3650,domain:domain});
+$.cookie("referer-landing",referer,{path:"/",expires:3650,domain:domain});$.cookie("landing-utm-source",utmsource,{path:"/",expires:3650,domain:domain});</script><script type="text/javascript" id="">if(initData){var sub_projectID=0;1==initData.isAlderney&&(sub_projectID=2);1==initData.isBelarus&&(sub_projectID=3);1==initData.isMarathon&&(sub_projectID=1);1==initData.isSpain&&(sub_projectID=4);dataLayer.push({currencySymbol:initData.currencySymbol,localeLanguage:initData.localeLanguage,locale_name:initData.locale_name,oddsType:initData.oddsType,siteStyle:initData.siteStyle,punterToken:initData.pt,sub_projectID:sub_projectID})};</script><script type="text/javascript" id="">var script=document.createElement("script");script.src="//webstr1974.com/divolte.js";document.documentElement.appendChild(script);function afterLoadScript(){dataLayer.push({event:"DIVOLTEjs",DIVOLTEjs:"yes"})}script.onload=function(){this.executed||(this.executed=!0,afterLoadScript())};script.onreadystatechange=function(){var a=this;"complete"==this.readyState&&setTimeout(function(){a.onload()},0)};</script><script type="text/javascript" id="">(function(e,a){function b(a){dataLayer.push({event:a,TE_event:a})}a.on(a.EVENT.VISIT_PAGE,function(){b("VISIT_PAGE")});a.on(a.EVENT.VISIT_TOTO_STATISTIC_PAGE,function(){b("VISIT_TOTO_STATISTIC_PAGE")});a.on(a.EVENT.JOIN_PAGE_VISIT,function(){b("JOIN_PAGE_VISIT")});a.on(a.EVENT.JOIN,function(){b("JOIN")});a.on(a.EVENT.REGISTRATION,function(){b("REGISTRATION")});a.on(a.EVENT.BANNER_CLICKED,function(a,c,d){dataLayer.push({banner_statisticKey:c,banner_language:d});b("BANNER_CLICKED")});a.on(a.EVENT.BET_PLACED,
+function(){b("BET_PLACED")});a.on(a.EVENT.LOGIN,function(a,c){dataLayer.push({punterId:c});b("LOGIN")});a.on(a.EVENT.DEPOSIT,function(a,c){dataLayer.push({punterId:c});b("DEPOSIT")});a.on(a.EVENT.TOTO_BET_PLACED,function(){b("TOTO_BET_PLACED")})})(jQuery,TrackingEngine);</script><script type="text/javascript" id="">$(document).ready(function(){$(".foot-market .price").click(function(){var a=$(this).parents(".event-header").parent().attr("data-event-treeid"),b=$(this).parents(".category-container").attr("data-category-treeid");divolte.signal("customEvent",{projectId:1,sub_projectId:google_tag_manager["GTM-NWSLS5"].macro('gtm1466698729861'),loginId:"undefined",customEvent_category:"markets",customEvent_action:"click",customEvent_label:"price",extraOptions:[{name:"event_category_id",value:b},{name:"event_id",value:a}]})});$(".sport-stat-icon-link").click(function(){var a=
+$(this).parents(".category-container").attr("data-category-treeid");divolte.signal("customEvent",{projectId:1,sub_projectId:google_tag_manager["GTM-NWSLS5"].macro('gtm1466698729862'),loginId:"undefined",customEvent_category:"markets",customEvent_action:"click",customEvent_label:"market_stats_above",extraOptions:[{name:"event_category_id",value:a}]})});$(".member-area-button[data-event-statistics\x3dtrue]").click(function(){var a=$(this).parents(".event-header").parent().attr("data-event-treeid"),b=$(this).parents(".category-container").attr("data-category-treeid");
+divolte.signal("customEvent",{projectId:1,sub_projectId:google_tag_manager["GTM-NWSLS5"].macro('gtm1466698729863'),loginId:"undefined",customEvent_category:"markets",customEvent_action:"click",customEvent_label:"market_stats_extra",extraOptions:[{name:"event_category_id",value:b},{name:"event_id",value:a}]})});$(".ss-pop-up-btn").click(function(){var a=$(this).parents(".event-header").parent().attr("data-event-treeid"),b=$(this).parents(".category-container").attr("data-category-treeid");divolte.signal("customEvent",{projectId:1,
+sub_projectId:google_tag_manager["GTM-NWSLS5"].macro('gtm1466698729864'),loginId:"undefined",customEvent_category:"markets",customEvent_action:"click",customEvent_label:"market_stats_extra_popup",extraOptions:[{name:"event_category_id",value:b},{name:"event_id",value:a}]})});$(".ss-close").click(function(){var a=$(this).parents(".event-header").parent().attr("data-event-treeid"),b=$(this).parents(".category-container").attr("data-category-treeid");divolte.signal("customEvent",{projectId:1,sub_projectId:google_tag_manager["GTM-NWSLS5"].macro('gtm1466698729865'),
+loginId:"undefined",customEvent_category:"markets",customEvent_action:"click",customEvent_label:"market_stats_extra_close",extraOptions:[{name:"event_category_id",value:b},{name:"event_id",value:a}]})})});</script><script type="text/javascript" id="">divolte.signal("pageView",{projectId:1,sub_projectId:google_tag_manager["GTM-NWSLS5"].macro('gtm1466698729866'),loginId:"undefined",extraOptions:[{name:"referer-landing",value:"undefined"},{name:"pref",value:"undefined"},{name:"currencySymbol",value:"€"},{name:"localeLanguage",value:"pl"},{name:"locale_name",value:"pl"},{name:"oddsType",value:"Decimal"},{name:"siteStyle",value:"SIMPLE"}]});</script>

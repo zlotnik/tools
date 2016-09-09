@@ -1,0 +1,149 @@
+
+// ----------- ODDS INFO -----------------
+var REFRESH_INTERVAL = 60000;
+var HORSE_REFRESH_INTERVAL = 20000;
+var GREYHOUNDS_REFRESH_INTERVAL = 20000;
+var HARNESS_REFRESH_INTERVAL = 20000;
+var REFRESH_COUNTDOWN = 720; //60;
+
+var RES_REFRESH = "Odśwież";
+var RES_PLEASE_WAIT = "Proszę czekać";
+var RES_MORE = "Więcej";
+var RES_1ST_HALF = "Po pierwszej połowie";//"1. POŁOWA";
+var RES_SELECTONE = "Wybierz spotkanie";
+
+var RES_BettypeName = new Array();
+RES_BettypeName[1] = "Handicap";
+RES_BettypeName[2] = "Nieparzysty Parzysty";
+RES_BettypeName[3] = "Over/Under";
+RES_BettypeName[4] = "Poprawny wynik";
+RES_BettypeName[5] = "1X2";
+RES_BettypeName[6] = "Łączna liczba bramek";
+RES_BettypeName[7] = RES_1ST_HALF + " Handicap";
+RES_BettypeName[8] = RES_1ST_HALF + " Over/Under";
+RES_BettypeName[12] = RES_1ST_HALF + " Nieparzysty Parzysty";
+RES_BettypeName[14] = "Pierwsza bramka / Ostatnia bramka";
+RES_BettypeName[15] = RES_1ST_HALF + " 1X2";
+RES_BettypeName[16] = "HT.FT";
+RES_BettypeName[20] = "MoneyLine";
+
+RES_BettypeName[30] = RES_1ST_HALF + " Poprawny wynik";
+RES_BettypeName[24] = "Double Chance";
+RES_BettypeName[25] = "Draw No Bet";
+RES_BettypeName[26] = "Both/One/Neither Team To Score";
+RES_BettypeName[27] = "To Win To Nil";
+RES_BettypeName[28] = "3-Way Handicap";
+RES_BettypeName[13] = "Clean Sheet";
+RES_BettypeName[21] = "1st Money Line";
+RES_BettypeName[121] = "Home No Bet";
+RES_BettypeName[122] = "Away No Bet";
+RES_BettypeName[123] = "Draw / No Draw";
+RES_BettypeName[126] = RES_1ST_HALF + " Łączna liczba bramek";
+RES_BettypeName[127] = RES_1ST_HALF + " Pierwsza bramka / Ostatnia bramka";
+
+//new bet types from betradar
+RES_BettypeName[128] = "HT/FT Odd/Even";
+RES_BettypeName[133] = "Home To Win Both Halves";
+RES_BettypeName[134] = "Away To Win Both Halves";
+RES_BettypeName[135] = "Penalty Shootout";
+RES_BettypeName[140] = "Highest Scoring Half";
+RES_BettypeName[141] = "Highest Scoring Half Home Team";
+RES_BettypeName[142] = "Highest Scoring Half Away Team";
+RES_BettypeName[145] = "Both Teams To Score";
+RES_BettypeName[146] = "2H Both Teams To Score";
+RES_BettypeName[147] = "Home To Score In Both Halves";
+RES_BettypeName[148] = "Away To Score In Both Halves";
+RES_BettypeName[149] = "Home To Win Either Half";
+RES_BettypeName[150] = "Away To Win Either Half";
+RES_BettypeName[151] = "1H Double Chance";
+RES_BettypeName[152] = "Half Time/Full Time Correct Score";
+
+//Racing
+var Racing151 = "Wyścigi Konne";
+var Racing152 = "Wyścigi Chartów";
+var Racing153 = "Wyścigi Zaprzęgów";
+var Info = " Info";
+//--------Site Const---------------
+var SiteMode = 2;
+var Deposit_SiteMode = 4; //1:12bet 2:a88 Deposit site use only
+var DomainName = "dafabet.com";
+var IsLogin = false;
+var UserLang = "pl";
+var SkinRootPath = "/EuroSite/template/alog/";
+var UserName = "";
+var imgServerURL = "";
+var SiteId = "4200400";
+//--------Odds Display---------------
+var DisplayMode	= '3';
+var PopupAD = false;
+var PopupNews = false;
+var PopupHAD = true;
+var hash_TmplLoaded = new Array(); // hashtable for keeping template loaded flag (value: true / false)
+//--------Streaming ---------------
+var StreamingFrame = null; //streaming window handle
+var IsUserStreaming = false ;
+//--------Menu---------------
+var LastSelectedSport='0';
+var LastSelectedMArket='';
+var LastSelectedMenu=0; // Default All
+var LastSelectedCountry=''; //for euro menu 
+var CanBetOutright=false;
+var CanSeeHorse=false;
+var CanSeeGreyhounds=false;
+var CanSeeHarness=false;
+var CanSeeHorseFixOdds=true;
+//--------AccountInfo--------
+var AccountInfoData = "";
+var IsEuro = true;
+//------- Clock info -----------------
+var strMonth = new Array('sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru');
+var year = 2016;
+var month = 2;
+var day = 25;
+var hrs = 20;
+var min = 6;
+var sec = 19;
+var RES_DOMAIN = "dafabet.com";
+var patraAM = "rano";
+var patraPM = "po południu";
+//setInterval("clock()",1000);
+
+// ------  Login  --------
+var i = 0 ; 
+var Login_UNameEmpty = "Pole nazwy użytkownika jest puste. Prosimy sprawdzić!";
+var Login_UPwdEmpty = "Pole hasła jest puste. Prosimy sprawdzić!";
+var Login_VCodeEmpty = "Pole kodu sprawdzania poprawności jest puste. Prosimy sprawdzić!";
+
+var error_username="Wpisz nazwę użytkownika";
+var error_password="Wpisz hasło";
+var error_validation="Wpisz dane do sprawdzenia poprawności ";
+
+// ------  Outright ------
+var SelectLeagueTitle = "Wybierz ligę";
+
+// -----   Css Generator control ----
+//var IsCssGenerator = true; 
+
+//-------AUS Racing Two Pools-----
+var SelectRacingCountry;
+
+var RES_Text_all = "Wszystko";
+var RES_ROUND = "Round";
+//--------SitePermission--------
+var CanSeeSportStreaming=true;
+var CanSeeStatsInfo=false;
+var CanSeeSportRadar=false;
+var IsUseCssGenerate=true;
+var IsShowHeader=false;
+var LiveCasinoWebUrl="";
+var LiveCasinoWebUrlHead="";
+var CanSeeVirtualSports=false;
+var EnableVirtualSportList="";
+var CanSeeWordCupMenu=false;
+var CanSeeWordCupBar=false;
+var EnableOddsTypeIDList="1,2,3,4,5";
+var IsNewDropdownList=true;
+var CanSeeEuroFooter=false;
+var CanSeeESport=true;
+var CanBetESport=true;
+//--------Enable WebCentral.Config--------

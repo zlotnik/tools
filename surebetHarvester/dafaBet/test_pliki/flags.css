@@ -1,0 +1,675 @@
+.flag, .newflag
+{
+    background: url('/gres/img/flags.png?serial=16011511411') no-repeat scroll -4px -621px;
+    height: 11px;
+    width: 16px;
+    display: block;
+    float: left;
+    margin: 0px;
+    /*IE6 hack: */
+    font-size: 1px;
+}
+
+.flag {
+	margin: 2px 5px 0 0;
+}
+
+.f-19, .fl_19 {
+    background-position: -4px -5px !important;
+}
+.f-196, .fl_196 {
+    background-position: -32px -5px !important;
+}
+.f-16, .fl_16 {
+    background-position: -60px -5px !important;
+}
+.f-21, .fl_21 {
+    background-position: -88px -5px !important;
+}
+.f-243, .fl_243 {
+    background-position: -116px -5px !important;
+}
+.f-17, .fl_17 {
+    background-position: -144px -5px !important;
+}
+.f-23, .fl_23 {
+    background-position: -172px -5px !important;
+}
+.f-241, .fl_241 {
+    background-position: -200px -5px !important;
+}
+.f-20, .fl_20 {
+    background-position: -228px -5px !important;
+}
+.f-22, .fl_22 {
+    background-position: -256px -5px !important;
+}
+.f-242, .fl_242 {
+    background-position: -284px -5px !important;
+}
+.f-25, .fl_25 {
+    background-position: -4px -33px !important;
+}
+.f-24, .fl_24 {
+    background-position: -32px -33px !important;
+}
+.f-229, .fl_229 {
+    background-position: -60px -33px !important;
+}
+.f-26, .fl_26 {
+    background-position: -116px -33px !important;
+}
+.f-37, .fl_37 {
+    background-position: -144px -33px !important;
+}
+.f-30, .fl_30 {
+    background-position: -172px -33px !important;
+}
+.f-29, .fl_29 {
+    background-position: -200px -33px !important;
+}
+.f-32, .fl_32 {
+    background-position: -228px -33px !important;
+}
+.f-42, .fl_42 {
+    background-position: -256px -33px !important;
+}
+.f-41, .fl_41 {
+    background-position: -284px -33px !important;
+}
+.f-28, .fl_28 {
+    background-position: -4px -61px !important;
+}
+.f-44, .fl_44 {
+    background-position: -32px -61px !important;
+}
+.f-34, .fl_34 {
+    background-position: -60px -61px !important;
+}
+.f-230, .fl_230 {
+    background-position: -88px -61px !important;
+}
+.f-40, .fl_40 {
+    background-position: -116px -61px !important;
+}
+.f-36, .fl_36 {
+    background-position: -144px -61px !important;
+}
+.f-39, .fl_39 {
+    background-position: -172px -61px !important;
+}
+.f-27, .fl_27 {
+    background-position: -200px -61px !important;
+}
+.f-35, .fl_35 {
+    background-position: -228px -61px !important;
+}
+.f-38, .fl_38 {
+    background-position: -284px -61px !important;
+}
+.f-31, .fl_31 {
+    background-position: -4px -89px !important;
+}
+.f-33, .fl_33 {
+    background-position: -32px -89px !important;
+}
+.f-47, .fl_47 {
+    background-position: -60px -89px !important;
+}
+.f-56, .fl_56 {
+    background-position: -116px -89px !important;
+}
+.f-49, .fl_49 {
+    background-position: -144px -89px !important;
+}
+.f-55, .fl_55 {
+    background-position: -172px -89px !important;
+}
+.f-182, .fl_182 {
+    background-position: -200px -89px !important;
+    width: 11px;
+}
+.f-58, .fl_58 {
+    background-position: -228px -89px !important;
+}
+.f-244, .fl_244 {
+    background-position: -256px -89px !important;
+}
+.f-51, .fl_51 {
+    background-position: -284px -89px !important;
+}
+.f-46, .fl_46 {
+    background-position: -4px -117px !important;
+}
+.f-52, .fl_52 {
+    background-position: -32px -117px !important;
+}
+.f-53, .fl_53 {
+    background-position: -60px -117px !important;
+}
+.f-57, .fl_57 {
+    background-position: -88px -117px !important;
+}
+.f-60, .fl_60 {
+    background-position: -144px -117px !important;
+}
+.f-48, .fl_48 {
+    background-position: -172px -117px !important;
+}
+.f-61, .fl_61 {
+    background-position: -228px -117px !important;
+}
+.f-62, .fl_62 {
+    background-position: -256px -117px !important;
+}
+.f-81, .fl_81 {
+    background-position: -284px -117px !important;
+}
+.f-64, .fl_64 {
+    background-position: -4px -145px !important;
+}
+.f-63, .fl_63 {
+    background-position: -32px -145px !important;
+}
+.f-65, .fl_65 {
+    background-position: -60px -145px !important;
+}
+.f-66, .fl_66 {
+    background-position: -88px -145px !important;
+}
+.f-18, .fl_18 {
+    background-position: -116px -145px !important;
+}
+.f-68, .fl_68 {
+    background-position: -144px -145px !important;
+}
+.f-73, .fl_73 {
+    background-position: -172px -145px !important;
+}
+.f-69, .fl_69 {
+    background-position: -200px -145px !important;
+}
+.f-198, .fl_198 {
+    background-position: -256px -145px !important;
+}
+.f-72, .fl_72 {
+    background-position: -284px -145px !important;
+}
+.f-176, .fl_176 {
+    background-position: -4px -173px !important;
+}
+.f-74, .fl_74 {
+    background-position: -32px -173px !important;
+}
+.f-76, .fl_76 {
+    background-position: -88px -173px !important;
+}
+.f-75, .fl_75 {
+    background-position: -116px -173px !important;
+}
+.f-129, .fl_129 {
+    background-position: -172px -173px !important;
+}
+.f-231, .fl_231 {
+    background-position: -200px -173px !important;
+}
+.f-77, .fl_77,
+.f-237, .fl_237 {
+    background-position: -228px -173px !important;
+}
+.f-78, .fl_78 {
+    background-position: -256px -173px !important;
+}
+.f-197, .fl_197 {
+    background-position: -284px -173px !important;
+}
+.f-84, .fl_84 {
+    background-position: -4px -201px !important;
+}
+.f-80, .fl_80 {
+    background-position: -32px -201px !important;
+}
+.f-82, .fl_82 {
+    background-position: -60px -201px !important;
+}
+.f-79, .fl_79 {
+    background-position: -144px -201px !important;
+}
+.f-86, .fl_86 {
+    background-position: -172px -201px !important;
+}
+.f-221, .fl_221 {
+    background-position: -200px -201px !important;
+}
+.f-71, .fl_71 {
+    background-position: -228px -201px !important;
+}
+.f-83, .fl_83 {
+    background-position: -256px -201px !important;
+}
+.f-85, .fl_85 {
+    background-position: -4px -229px !important;
+}
+.f-232, .fl_232 {
+    background-position: -32px -229px !important;
+}
+.f-87, .fl_87 {
+    background-position: -60px -229px !important;
+}
+.f-88, .fl_88 {
+    background-position: -88px -229px !important;
+}
+.f-222, .fl_222 {
+    background-position: -116px -229px !important;
+}
+.f-90, .fl_90 {
+    background-position: -144px -229px !important;
+}
+.f-59, .fl_59 {
+    background-position: -172px -229px !important;
+}
+.f-89, .fl_89 {
+    background-position: -200px -229px !important;
+}
+.f-91, .fl_91 {
+    background-position: -228px -229px !important;
+}
+.f-228, .fl_228 {
+    background-position: -256px -229px !important;
+}
+.f-96, .fl_96 {
+    background-position: -284px -229px !important;
+}
+.f-97, .fl_97 {
+    background-position: -4px -257px !important;
+}
+.f-93, .fl_93 {
+    background-position: -32px -257px !important;
+}
+.f-95, .fl_95 {
+    background-position: -88px -257px !important;
+}
+.f-94, .fl_94 {
+    background-position: -116px -257px !important;
+}
+.f-92, .fl_92 {
+    background-position: -144px -257px !important;
+}
+.f-98, .fl_98 {
+    background-position: -172px -257px !important;
+}
+.f-99, .fl_99 {
+    background-position: -200px -257px !important;
+}
+.f-101, .fl_101 {
+    background-position: -228px -257px !important;
+}
+.f-100, .fl_100 {
+    background-position: -256px -257px !important;
+}
+.f-103, .fl_103 {
+    background-position: -284px -257px !important;
+}
+.f-108, .fl_108 {
+    background-position: -4px -285px !important;
+}
+.f-45, .fl_45 {
+    background-position: -32px -285px !important;
+}
+.f-104, .fl_104 {
+    background-position: -60px -285px !important;
+}
+.f-160, .fl_160 {
+    background-position: -116px -285px !important;
+}
+.f-105, .fl_105 {
+    background-position: -144px -285px !important;
+}
+.f-106, .fl_106 {
+    background-position: -172px -285px !important;
+}
+.f-107, .fl_107 {
+    background-position: -200px -285px !important;
+}
+.f-102, .fl_102 {
+    background-position: -256px -285px !important;
+}
+.f-109, .fl_109 {
+    background-position: -284px -285px !important;
+}
+.f-111, .fl_111 {
+    background-position: -4px -313px !important;
+}
+.f-225, .fl_225 {
+    background-position: -32px -313px !important;
+}
+.f-115, .fl_115 {
+    background-position: -60px -313px !important;
+}
+.f-177, .fl_177 {
+    background-position: -88px -313px !important;
+}
+.f-113, .fl_113 {
+    background-position: -116px -313px !important;
+}
+.f-112, .fl_112 {
+    background-position: -144px -313px !important;
+}
+.f-116, .fl_116 {
+    background-position: -172px -313px !important;
+}
+.f-117, .fl_117 {
+    background-position: -200px -313px !important;
+}
+.f-110, .fl_110 {
+    background-position: -228px -313px !important;
+}
+.f-114, .fl_114 {
+    background-position: -256px -313px !important;
+}
+.f-134, .fl_134 {
+    background-position: -284px -313px !important;
+}
+.f-131, .fl_131 {
+    background-position: -4px -341px !important;
+}
+.f-130, .fl_130 {
+    background-position: -32px -341px !important;
+}
+.f-119, .fl_119 {
+    background-position: -60px -341px !important;
+}
+.f-125, .fl_125 {
+    background-position: -88px -341px !important;
+}
+.f-118, .fl_118 {
+    background-position: -116px -341px !important;
+}
+.f-123, .fl_123 {
+    background-position: -144px -341px !important;
+}
+.f-132, .fl_132 {
+    background-position: -200px -341px !important;
+}
+.f-233, .fl_233 {
+    background-position: -228px -341px !important;
+}
+.f-235, .fl_235 {
+    background-position: -256px -341px !important;
+}
+.f-126, .fl_126 {
+    background-position: -4px -369px !important;
+}
+.f-234, .fl_234 {
+    background-position: -32px -369px !important;
+}
+.f-124, .fl_124 {
+    background-position: -60px -369px !important;
+}
+.f-127, .fl_127 {
+    background-position: -88px -369px !important;
+}
+.f-122, .fl_122 {
+    background-position: -116px -369px !important;
+}
+.f-120, .fl_120 {
+    background-position: -144px -369px !important;
+}
+.f-128, .fl_128 {
+    background-position: -172px -369px !important;
+}
+.f-121, .fl_121 {
+    background-position: -200px -369px !important;
+}
+.f-135, .fl_135 {
+    background-position: -228px -369px !important;
+}
+.f-136, .fl_136 {
+    background-position: -256px -369px !important;
+}
+.f-245, .fl_245 {
+    background-position: -284px -369px !important;
+}
+.f-142, .fl_142 {
+    background-position: -4px -397px !important;
+}
+.f-143, .fl_143 {
+    background-position: -60px -397px !important;
+}
+.f-141, .fl_141 {
+    background-position: -88px -397px !important;
+}
+.f-139, .fl_139 {
+    background-position: -116px -397px !important;
+}
+.f-145, .fl_145 {
+    background-position: -144px -397px !important;
+}
+.f-138, .fl_138 {
+    background-position: -172px -397px !important;
+}
+.f-137, .fl_137 {
+    background-position: -200px -397px !important;
+}
+.f-140, .fl_140 {
+    background-position: -256px -397px !important;
+}
+.f-146, .fl_146 {
+    background-position: -284px -397px !important;
+}
+.f-149, .fl_149 {
+    background-position: -4px -425px !important;
+}
+.f-152, .fl_152 {
+    background-position: -32px -425px !important;
+}
+.f-150, .fl_150 {
+    background-position: -88px -425px !important;
+}
+.f-153, .fl_153 {
+    background-position: -116px -425px !important;
+}
+.f-147, .fl_147 {
+    background-position: -144px -425px !important;
+}
+.f-154, .fl_154 {
+    background-position: -172px -425px !important;
+}
+.f-236, .fl_236 {
+    background-position: -256px -425px !important;
+}
+.f-215, .fl_215 {
+    background-position: -284px -425px !important;
+}
+.f-155, .fl_155 {
+    background-position: -4px -453px !important;
+}
+.f-148, .fl_148 {
+    background-position: -32px -453px !important;
+}
+.f-151, .fl_151 {
+    background-position: -60px -453px !important;
+}
+.f-156, .fl_156 {
+    background-position: -88px -453px !important;
+}
+.f-157, .fl_157 {
+    background-position: -116px -453px !important;
+}
+.f-158, .fl_158 {
+    background-position: -144px -453px !important;
+}
+.f-159, .fl_159 {
+    background-position: -172px -453px !important;
+}
+.f-165, .fl_165 {
+    background-position: -200px -453px !important;
+}
+.f-173, .fl_173 {
+    background-position: -228px -453px !important;
+}
+.f-168, .fl_168 {
+    background-position: -256px -453px !important;
+}
+.f-199, .fl_199 {
+    background-position: -284px -453px !important;
+}
+.f-178, .fl_178 {
+    background-position: -4px -481px !important;
+}
+.f-181, .fl_181 {
+    background-position: -32px -481px !important;
+}
+.f-170, .fl_170 {
+    background-position: -60px -481px !important;
+}
+.f-172, .fl_172 {
+    background-position: -116px -481px !important;
+}
+.f-171, .fl_171 {
+    background-position: -144px -481px !important;
+}
+.f-169, .fl_169 {
+    background-position: -172px -481px !important;
+}
+.f-163, .fl_163 {
+    background-position: -200px -481px !important;
+}
+.f-166, .fl_166 {
+    background-position: -228px -481px !important;
+}
+.f-174, .fl_174 {
+    background-position: -256px -481px !important;
+}
+.f-179, .fl_179 {
+    background-position: -284px -481px !important;
+}
+.f-164, .fl_164 {
+    background-position: -4px -509px !important;
+}
+.f-70, .fl_70 {
+    background-position: -32px -509px !important;
+}
+.f-183, .fl_183 {
+    background-position: -60px -509px !important;
+}
+.f-180, .fl_180 {
+    background-position: -88px -509px !important;
+}
+.f-238, .fl_238 {
+    background-position: -116px -509px !important;
+}
+.f-187, .fl_187 {
+    background-position: -200px -509px !important;
+}
+.f-186, .fl_186 {
+    background-position: -228px -509px !important;
+}
+.f-184, .fl_184 {
+    background-position: -256px -509px !important;
+}
+.f-192, .fl_192 {
+    background-position: -32px -537px !important;
+}
+.f-190, .fl_190 {
+    background-position: -60px -537px !important;
+}
+.f-188, .fl_188 {
+    background-position: -88px -537px !important;
+}
+.f-191, .fl_191 {
+    background-position: -116px -537px !important;
+}
+.f-189, .fl_189 {
+    background-position: -144px -537px !important;
+}
+.f-193, .fl_193 {
+    background-position: -172px -537px !important;
+}
+.f-218, .fl_218 {
+    background-position: -200px -537px !important;
+}
+.f-185, .fl_185 {
+    background-position: -228px -537px !important;
+}
+.f-195, .fl_195 {
+    background-position: -256px -537px !important;
+}
+.f-194, .fl_194 {
+    background-position: -284px -537px !important;
+}
+.f-200, .fl_200 {
+    background-position: -32px -565px !important;
+}
+.f-201, .fl_201 {
+    background-position: -60px -565px !important;
+}
+.f-202, .fl_202 {
+    background-position: -88px -565px !important;
+}
+.f-161, .fl_161 {
+    background-position: -144px -565px !important;
+}
+.f-205, .fl_205 {
+    background-position: -172px -565px !important;
+}
+.f-240, .fl_240 {
+    background-position: -228px -565px !important;
+}
+.f-206, .fl_206 {
+    background-position: -256px -565px !important;
+}
+.f-203, .fl_203 {
+    background-position: -284px -565px !important;
+}
+.f-207, .fl_207 {
+    background-position: -4px -593px !important;
+}
+.f-162, .fl_162 {
+    background-position: -60px -593px !important;
+}
+.f-208, .fl_208 {
+    background-position: -88px -593px !important;
+}
+.f-175, .fl_175 {
+    background-position: -144px -593px !important;
+}
+.f-209, .fl_209 {
+    background-position: -172px -593px !important;
+}
+.f-210, .fl_210 {
+    background-position: -200px -593px !important;
+}
+.f-6, .fl_6 {
+    background-position: -228px -593px !important;
+}
+.f-167, .fl_167 {
+    background-position: -284px -593px !important;
+}
+.f-1, .fl_1 {
+    background-position: -88px -621px !important;
+}
+.f-2, .fl_2 {
+    background-position: -88px -621px !important;
+}
+.f-3, .fl_3 {
+    background-position: -88px -621px !important;
+}
+.f-5, .fl_5 {
+    background-position: -88px -621px !important;
+}
+.f-7, .fl_7 {
+    background-position: -88px -621px !important;
+}
+.f-8, .fl_8 {
+    background-position: -116px -621px !important;
+}
+.f-133, .fl_133 {
+    background-position: -32px -621px !important;
+}
+.f-144, .fl_144 {
+    background-position: -60px -621px !important;
+}
+.f-12, .fl_12 {
+	background-position: -116px -117px !important;
+}

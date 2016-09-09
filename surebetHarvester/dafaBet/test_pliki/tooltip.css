@@ -1,0 +1,180 @@
+
+/* ------------------------- tooltip ----------------------------------- */
+#tooltip
+{
+	position:absolute;
+	display:none;
+	max-width:400px;
+	max-height:400px;
+
+	_height:1px;
+}
+
+#tooltip span
+{
+	display:block;
+	margin:0;
+	padding:0;
+	padding-top:10px;
+	padding-left:10px;
+	white-space:nowrap;
+	color:#656565;
+
+	_padding-top:11px;
+	_padding-left:9px;
+	_padding-bottom:2px;
+	_width:1px;
+}
+
+#tooltip.revert span
+{
+	padding-right:6px;
+	padding-left:0;
+}
+
+#tooltip div
+{
+	position:absolute;
+	background-repeat:no-repeat;
+}
+
+#tooltip-lt
+{
+	top:0;
+	left:-5px;
+	width:5px;
+	height:100%;
+}
+
+.revert #tooltip-lt
+{
+	left:-12px;
+	width:12px;
+}
+
+#tooltip-rt
+{
+	top:0;
+	right:-14px;
+	width:14px;
+	height:100%;
+}
+
+.revert #tooltip-rt
+{
+	top:0;
+	right:-6px;
+	width:6px;
+	height:100%;
+}
+
+#tooltip-lb
+{
+	bottom:-6px;
+	left:-5px;
+	width:5px;
+	height:6px;
+
+	_bottom:-13px;
+}
+
+.revert #tooltip-lb
+{
+	bottom:-6px;
+	left:-12px;
+	width:12px;
+	height:6px;
+
+	_bottom:-13px;
+}
+
+#tooltip-cb
+{
+	bottom:-6px;
+	left:0;
+	width:100%;
+	height:6px;
+
+	_bottom:-13px;
+}
+
+#tooltip-rb
+{
+	right:-14px;
+	bottom:-6px;
+	width:14px;
+	height:6px;
+
+	_bottom:-13px;
+}
+
+.revert #tooltip-rb
+{
+	right:-6px;
+	bottom:-6px;
+	width:6px;
+	height:6px;
+
+	_bottom:-13px;
+}
+
+#tooltip
+{
+	background:url(/gres/img/tooltip/tooltip-soccer-ct.gif) no-repeat;
+}
+
+#tooltip-lt
+{
+	background-image:url(/gres/img/tooltip/tooltip-soccer-lt.png);
+
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src = '/gres/image/tooltip-soccer-lt.png', sizingMethod = 'crop');
+}
+
+.revert #tooltip-lt
+{
+	background-image:url(/gres/img/tooltip/tooltip-soccer-lt2.png);
+
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src = '/gres/img/tooltip/tooltip-soccer-lt2.png', sizingMethod = 'crop');
+}
+
+#tooltip-rt
+{
+	background-image:url(/gres/img/tooltip/tooltip-soccer-rt.png);
+
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src = '/gres/img/tooltip/tooltip-soccer-rt.png', sizingMethod = 'crop');
+}
+
+.revert #tooltip-rt
+{
+	background-image:url(/gres/img/tooltip/tooltip-soccer-rt2.png);
+
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src = '/gres/img/tooltip/tooltip-soccer-rt2.png', sizingMethod = 'crop');
+}
+
+#tooltip-lb
+{
+	background-image:url(/gres/img/tooltip/tooltip-soccer-lb.png);
+
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src = '/gres/img/tooltip/tooltip-soccer-lb.png', sizingMethod = 'crop');
+}
+
+#tooltip-cb
+{
+	background-image:url(/gres/img/tooltip/tooltip-soccer-cb.png);
+
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src = '/gres/img/tooltip/tooltip-soccer-cb.png', sizingMethod = 'crop');
+}
+
+#tooltip-rb
+{
+	background-image:url(/gres/img/tooltip/tooltip-soccer-rb.png);
+
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src = '/gres/img/tooltip/tooltip-soccer-rb.png', sizingMethod = 'crop');
+}
+
+.revert #tooltip-rb
+{
+	background-image:url(/gres/img/tooltip/tooltip-soccer-rb2.png);
+
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src = '/gres/img/tooltip/tooltip-soccer-rb2.png', sizingMethod = 'crop');
+}

@@ -1,0 +1,606 @@
+/*	Main Layout Fixes
+	======================================================================================== */
+body {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.ContainerGlobe {
+	width: 980px;
+	padding:0;
+}
+.ContainerHead{
+	display: none;
+}
+
+.ContainerMain,
+.ContainerRight,
+.ContainerLeft {
+	margin: 0;
+	padding-top: 0;
+	/*overflow: hidden;*/
+}
+
+*+html .pre-logged-in .ContainerMain,
+*+html .pre-logged-in .ContainerRight,
+*+html .pre-logged-in .ContainerLeft {
+	margin-top: -20px;
+}
+
+.ContainerMain,
+.ContainerMain iframe {
+	width: 598px;
+}
+
+/* .ContainerMain iframe {
+	height: 650px;
+} */
+
+.ContainerMain {
+	margin-right: 10px;
+}
+
+.ContainerLeft {
+	width: 174px;
+	margin-right: 10px;
+}
+
+.ContainerRight {
+	width: 188px;
+}
+
+.Special_game,
+.normal_game {
+	width: 175px;
+}
+
+.Even {
+	width: auto;
+}
+
+.ajxbox {
+	margin-top: 0 !important;
+	padding-top: 0 !important;
+}
+
+.Oddstab {
+	width: 100%;
+}
+
+.Oddstab a {
+	color: #000;
+}
+
+
+/* EU Left Sidebar */
+.menu_line_left {
+	display: none;
+}
+
+.betbox_footer_left {
+	width: 175px;
+	height: 1px;
+	background: #ebcb0b;
+}
+
+.Special_game,
+.normal_game {
+	border-left: none;
+	border-right: none;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.Special_game .menu_R,
+.Special_game .menu_gr,
+.normal_game .menu_R,
+.normal_game .menu_gr {
+	width: 63px !important;
+}
+
+.Special_game .menu_R a,
+.Special_game .menu_gr a,
+.normal_game .menu_R a,
+.normal_game .menu_gr a {
+	padding: 0;
+}
+
+.Special_game .menu_R a,
+.normal_game .menu_R a {
+	background: #ffe000;
+}
+
+.Special_game .menu_gr a,
+.normal_game .menu_gr a {
+	background: #414042;
+	color: #fff;
+}
+
+.Special_game, .menu_R a span, .Special_game .menu_gr a span,
+.normal_game, .menu_R a span, .normal_game .menu_gr a span {
+	height: 29px;
+	line-height: 29px;
+	padding-top: 0;
+	font-size: 12px;
+	font-weight: normal;
+	text-align: center !important;
+}
+
+.sg_align {
+	padding-left: 16px;
+}
+
+/* START Fix for sports nav after changing class .Special_game to .normal_game */
+.normal_game .menu_R a, .normal_game .menu_gr a, .normal_game .menu_R a span, .normal_game .menu_gr a span {
+	background: #414042;
+	height: 29px;
+	line-height: 29px;
+	padding-top: 0;
+	font-size: 12px;
+	font-weight: normal;
+	text-align: center !important;
+	cursor: pointer;
+	width:80px;
+}
+
+.normal_game .menu_R a,
+.normal_game .menu_R a span {
+	background: #ffe000;
+	color: #000;
+}
+
+.normal_game .sg_align {
+	padding-left: 0;
+}
+
+.normal_game .menu_liveR,
+.normal_game .menu_livevg {
+	float: none;
+	width: auto;
+	margin: 0;
+	padding: 0;
+	background: none;
+	font-size: inherit;
+	color: inherit;
+	font-weight: inherit !important;
+}
+
+.servicesBox, 
+.gray_bg_left{
+
+	width:auto;
+
+}
+/* END Fix for sports nav after changing class .Special_game to .normal_game */
+
+/* First Level */
+#subnav {
+	width: 173px;
+	border-right-color: #ebcb0b;
+	border-left-color: #ebcb0b;
+}
+
+#subnav span.nav {
+	width: 173px;
+}
+
+#subnav span.nav a:link, #subnav span.nav a:visited,
+#subnav span.navnone a:link, #subnav span.navnone a:visited {
+	width: auto;
+	height: 29px;
+	line-height: 29px;
+	background-color: #ffe000;
+	color: #000 !important;
+	font-size: 12px;
+	font-weight: normal;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+#subnav span.nav a:link, #subnav span.nav a:visited {
+	background-image: url(http://cdn.resources.dfzuqiu.org/prd/images/home_content/sprite_sports_nav.png);
+	background-position: 10px 8px;
+}
+
+#subnav span.navnone {
+	width: auto !important;
+	height: 29px;
+	line-height: 29px;
+	background-color: #ffe000;
+}
+
+#subnav span.navnone a:link, #subnav span.navnone a:visited {
+	text-indent: 13px;
+}
+
+#subnav span.navclose {
+	width: 173px;
+	height: 29px;
+	line-height: 29px;
+	background-color: #ffe000;
+	border-bottom: 1px solid #e5b72c;
+}
+
+#subnav span.navclose a:link, #subnav span.navclose a:visited {
+	color: #000 !important;
+	font-size: 12px;
+	font-weight: normal;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	text-indent: 25px;
+	background-image: url(http://cdn.resources.dfzuqiu.org/prd/images/home_content/sprite_sports_nav.png);
+	background-position: 10px -52px;
+}
+
+#subnav span.navclose a:hover {
+	color: #000 !important;
+	font-weight: normal;
+}
+
+#subnav div.subnav-link, #subnav div.subnav-more, #subnav div.subnav-hide {
+	width: 173px;
+}
+
+#subnav div.subnav-link a:link, #subnav div.subnav-link a:visited,
+#subnav div.subnav-more a, #subnav div.subnav-hide a {
+	line-height: 29px;
+}
+
+/* Third level */
+.Layer3 {
+	width: 164px;
+	margin-right: 0;
+}
+
+#subnav div.subnav-link2  {
+	border-right: 1px solid #ebcb0b;
+}
+
+#subnav div.subnav-link2 a {
+	padding-top: 4px;
+	padding-bottom: 4px;
+	font-size: 11px !important;
+}
+
+/* START OddsTable */
+
+.Oddstab {
+	border: none;
+	border-bottom: 1px solid #d8b716 !important;
+}
+
+#H_TOP_2 {
+	border-top: none;
+}
+
+.Oddstab td {
+	padding: 10px;
+	border: 1px solid #d8b716;
+}
+
+.Oddstab td.padtop {
+	padding-top: 10px !important;
+}
+
+.Oddstab .Header-Open td,
+.Oddstab .Header-Close td {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-color: #414042;
+}
+
+.Oddstab .Header-Close td {
+	border-bottom: 1px solid #fff !important;
+}
+
+*+html .Oddstab .Header-Close td {
+	border-bottom: 2px solid #fff !important;
+}
+
+
+.Oddstab td.rightborder,
+.Oddstab td.OddsBet {
+	border-right-color: #e1c950;
+}
+
+.Oddstab td.time {
+	width: 60px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: #000;
+	font-size: 12px;
+}
+
+tbody.Header-Open,
+tbody.Header-Close {
+	background: #414042 url(http://cdn.resources.dfzuqiu.org/prd/images/home_content/sprite_sports_nav.png) no-repeat 11px -451px !important;
+}
+
+tbody.Header-Close {
+	background-position: 11px -511px !important;
+}
+
+tbody.Header-Open .Header, tbody.Header-Close .Header {
+	padding-left: 20px !important;
+	color: #fff !important;
+	font-size: 12px!important;
+}
+
+.Header-Open2 {
+	padding-left: 10px !important;
+	border: 1px solid #414042;
+	background: #414042 !important;
+	font-size: 12px!important;
+}
+
+.oddstr2 {
+	background-color: transparent;
+}
+
+.bglivelight {
+	background-color: #ffefb9;
+}
+
+.bglive {
+	background-color: #ffd9dc;
+}
+
+.Oddstab td, .Oddstab .slangTime span {
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.Oddstab th {
+	padding: 3px 10px;
+	background-color: #ffe000;
+	font-size: 12px;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+.Oddstab th.first {
+	border-left: 1px solid #ffe000;
+}
+
+.Oddstab th.last {
+	border-right: 1px solid #ffe000;
+}
+
+/* After Clicking Sportsnav */
+.topinfo_mid {
+	width: auto;
+}
+
+#OddsTr table.Selectbtn table, #DivMainOdds table.Selectbtn table {
+	width: 215px;
+}
+
+.location {
+	width: auto;
+}
+
+#OddsTr table,
+#DivMainOdds table {
+	width: 100%;
+}
+
+.Oddstab td.OddsBet a,
+.Oddstab td.OddsBet a:hover,
+.Oddstab td.BetMore a,
+.Oddstab td.BetMore a:hover {
+	width: auto;
+	background: none;
+	color: #aa0000;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+/* END OddsTable */
+
+/* START Filters */
+
+h1.BigTitle {
+	width: 350px;
+	margin-bottom: 0;
+	padding-left: 0;
+	background: none;
+	font-size: 14px;
+	color: #58595b;
+}
+
+.Selectedtime {
+	position: relative;
+}
+
+.slangTime {
+	height: auto;
+	padding-left: 0;
+	background: none;
+}
+
+.slangTime span {
+	height: 29px;
+	line-height: 29px;
+	padding-left: 6px;
+	padding-right: 20px;
+	border: 1px solid #acacac;
+	background: url(http://cdn.resources.dfzuqiu.org/prd/images/home_content/icon_arrow_down.png) no-repeat right 11px;
+	font-size: 12px;
+}
+
+.slangTime:before {
+	display: none!important;
+}
+
+.Selectedtime dl {
+	margin-top: -1px;
+	border: none;
+	border-top: 1px solid #abacad;
+	border-bottom: 1px solid #abacad;
+	font-size: 12px;
+}
+
+.Selectedtime dd {
+	border-left: 1px solid #abacad;
+	border-right: 1px solid #abacad;
+}
+
+.Selectedtime dd a {
+	padding: 6px;
+}
+
+.ContainerMain a.btnRefresh, .ContainerMain a.btnRefresh:active, .ContainerMain a.btnRefresh:visited {
+	height: auto;
+	margin: 0;
+	padding: 0;
+	background: none;
+	color: #58595b !important;
+}
+
+.ContainerMain a.btnRefresh span {
+	height: 29px;
+	line-height: 29px;
+	margin: 0;
+	padding: 0 6px 0 26px;
+	border: 1px solid #acacac;
+	background: url(http://cdn.resources.dfzuqiu.org/prd/images/home_content/sprite_sports_nav.png) no-repeat 6px -394px;
+	font-size: 12px;
+	font-weight: normal !important;
+	cursor: pointer;
+}
+
+.ContainerMain a.btnRefresh:hover span {
+	background-position: 6px -394px;
+}
+
+/* END Filters */
+
+
+/*	Right Sidebar
+	======================================================================================== */
+#Betslip {
+	margin-bottom: 10px;
+	width: 188px;
+}
+
+
+
+.gray_bg,
+.TabBox,
+.betbox,
+.betboxbg,
+.betbox_footer {
+	width: auto;
+}
+
+.gray_bg {
+	height: 29px;
+	line-height: 29px;
+	background: #414042;
+	text-align: center;
+}
+
+.betboxbg{
+
+background-color:  #dbdbdb !important;
+padding: 5px;
+
+}
+.betboxbg font{
+
+	background-color:#f8f8f8;
+	border:1px solid #e2e2e2;
+	display: block;
+	line-height: 18px;
+	padding:3px 0;
+}
+
+.TabOpen{
+
+background-color:#dbdbdb;
+border:2px solid #dbdbdb;
+
+}
+.TabClose{
+	border:2px solid #dbdbdb;
+	padding:0 2px 0 4px;
+}
+
+.TabBoxLine{
+	display: none;
+}
+.betbox_footer {
+	display: none;
+}
+
+.betlistbg{
+	width:182px;
+}
+
+#BetListMiniContainer table,
+#WaitingBetsSpan table {
+	width: 100%;
+}
+
+.stakeline_open, .stakeline_close{
+
+	width:86%;
+}
+
+.menu_line {
+	width: 100%;
+	background: #ffe000;
+}
+
+
+
+h2.SubTitle {
+	margin-top: 15px;
+	padding: 5px;
+	border: none;
+	background: none;
+	font-size: 14px;
+	color: #000;
+}
+
+.ContainerRight .menu_gr a,
+.ContainerRight .menu_gr a span {
+	background: #414042;
+	font-weight: bold;
+}
+
+.ContainerRight .menu_R a span {
+	background: #ffe000;
+	color: #000;
+	font-weight: bold;
+}
+
+.menu_gr a:link, .menu_gr a:visited {
+	color: #fff;
+}
+
+.ContainerRight .menu_gr a span {
+	height: 29px;
+	line-height: 29px;
+	padding-top: 0;
+}
+
+.ContainerRight table .menu_R a span, .ContainerRight table .menu_gr a span, #BetListMiniContainer .menu_R a {
+	width: 180px !important;
+}
+
+.talkbox {
+	left: 3px;
+}
+
+.Balancebox {
+	width: 172px !important;
+}
+
+.ContainerGlobe {
+	margin-top: 0 !important;
+}
+
+#MainPromotionIFrame {
+	height: 650px;
+}
+
+.Oddstab_bg {
+	width: auto;
+}

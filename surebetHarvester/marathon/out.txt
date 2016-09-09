@@ -1,0 +1,91 @@
+TypeError: undefined is not a constructor (evaluating '$.cookie(initData.siteStyleCookieName,a,{expires:365,path:"/"})')
+
+  https://www.marathonbet.com/cdn/3-0-450/js/common/plugins.js:6
+  https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js:5 in dispatch
+  https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js:5 in handle
+  https://www.marathonbet.com/pl/betting/Football/Argentina/Cup/:15 in nrWrapper
+  :0 in click
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17 in trigger
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:16 in each
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:16 in each
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17 in trigger
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17
+  :2
+  :4
+TypeError: undefined is not a constructor (evaluating '$.cookie(initData.siteStyleCookieName,a,{expires:365,path:"/"})')
+
+  https://www.marathonbet.com/cdn/3-0-450/js/common/plugins.js:6
+  https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js:5 in dispatch
+  https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js:5 in handle
+  https://www.marathonbet.com/pl/betting/Football/Argentina/Cup/:15 in nrWrapper
+  :0 in click
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17 in trigger
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:16 in each
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:16 in each
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17 in trigger
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17
+  :2
+  :4
+TypeError: undefined is not a constructor (evaluating '$.cookie(initData.siteStyleCookieName,a,{expires:365,path:"/"})')
+
+  https://www.marathonbet.com/cdn/3-0-450/js/common/plugins.js:6
+  https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js:5 in dispatch
+  https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js:5 in handle
+  https://www.marathonbet.com/pl/betting/Football/Argentina/Cup/:15 in nrWrapper
+  :0 in click
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17 in trigger
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:16 in each
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:16 in each
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17 in trigger
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17
+  :2
+  :4
+TypeError: undefined is not a constructor (evaluating '$.cookie(initData.trendVisualizationCookieName,a,{expires:365,path:"/",secure:!1})')
+
+  https://www.marathonbet.com/cdn/3-0-450/js/common/plugins.js:6
+  https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js:5 in dispatch
+  https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js:5 in handle
+  https://www.marathonbet.com/pl/betting/Football/Argentina/Cup/:15 in nrWrapper
+  :0 in click
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17 in trigger
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:16 in each
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:16 in each
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17 in trigger
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17
+  :2
+  :4
+TypeError: undefined is not a constructor (evaluating '$.cookie(initData.trendVisualizationCookieName,a,{expires:365,path:"/",secure:!1})')
+
+  https://www.marathonbet.com/cdn/3-0-450/js/common/plugins.js:6
+  https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js:5 in dispatch
+  https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js:5 in handle
+  https://www.marathonbet.com/pl/betting/Football/Argentina/Cup/:15 in nrWrapper
+  :0 in click
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17 in trigger
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:16 in each
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:16 in each
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17 in trigger
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17
+  :2
+  :4
+TypeError: undefined is not a constructor (evaluating '$.cookie(initData.trendVisualizationCookieName,a,{expires:365,path:"/",secure:!1})')
+
+  https://www.marathonbet.com/cdn/3-0-450/js/common/plugins.js:6
+  https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js:5 in dispatch
+  https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js:5 in handle
+  https://www.marathonbet.com/pl/betting/Football/Argentina/Cup/:15 in nrWrapper
+  :0 in click
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17 in trigger
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:16 in each
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:16 in each
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17 in trigger
+  http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js:17
+  :2
+  :4
+[object Object]

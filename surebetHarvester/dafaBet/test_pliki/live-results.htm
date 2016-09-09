@@ -1,0 +1,766 @@
+var event_stage_names = new Array();
+var event_stage_shortnames = new Array();
+event_stage_names[1] = 'Scheduled';
+event_stage_shortnames[1] = 'SCHED.';
+event_stage_names[2] = 'Live';
+event_stage_shortnames[2] = 'LI';
+event_stage_names[3] = 'Finished';
+event_stage_shortnames[3] = 'FIN';
+event_stage_names[4] = 'Postponed';
+event_stage_shortnames[4] = 'POSTP.';
+event_stage_names[5] = 'Canceled';
+event_stage_shortnames[5] = 'CAN.';
+event_stage_names[6] = 'Extra Time';
+event_stage_shortnames[6] = 'ET';
+event_stage_names[7] = 'Penalties';
+event_stage_shortnames[7] = 'PEN';
+event_stage_names[8] = 'Retired';
+event_stage_shortnames[8] = 'RET.';
+event_stage_names[9] = 'Walkover';
+event_stage_shortnames[9] = 'WO.';
+event_stage_names[10] = 'After Extra Time';
+event_stage_shortnames[10] = 'ET';
+event_stage_names[11] = 'After Penalties';
+event_stage_shortnames[11] = 'PEN.';
+event_stage_names[12] = '1st Half';
+event_stage_shortnames[12] = '1H';
+event_stage_names[13] = '2nd Half';
+event_stage_shortnames[13] = '2H';
+event_stage_names[14] = '1st Period';
+event_stage_shortnames[14] = '1P';
+event_stage_names[15] = '2nd Period';
+event_stage_shortnames[15] = '2P';
+event_stage_names[16] = '3rd Period';
+event_stage_shortnames[16] = '3P';
+event_stage_names[17] = '1st Set';
+event_stage_shortnames[17] = '1S';
+event_stage_names[18] = '2nd Set';
+event_stage_shortnames[18] = '2S';
+event_stage_names[19] = '3rd Set';
+event_stage_shortnames[19] = '3S';
+event_stage_names[20] = '4th Set';
+event_stage_shortnames[20] = '4S';
+event_stage_names[21] = '5th Set';
+event_stage_shortnames[21] = '5S';
+event_stage_names[22] = '1st Quarter';
+event_stage_shortnames[22] = '1Q';
+event_stage_names[23] = '2nd Quarter';
+event_stage_shortnames[23] = '2Q';
+event_stage_names[24] = '3rd Quarter';
+event_stage_shortnames[24] = '3Q';
+event_stage_names[25] = '4th Quarter';
+event_stage_shortnames[25] = '4Q';
+event_stage_names[26] = '1st Inning';
+event_stage_shortnames[26] = '1I';
+event_stage_names[27] = '2nd Inning';
+event_stage_shortnames[27] = '2I';
+event_stage_names[28] = '3rd Inning';
+event_stage_shortnames[28] = '3I';
+event_stage_names[29] = '4th Inning';
+event_stage_shortnames[29] = '4I';
+event_stage_names[30] = '5th Inning';
+event_stage_shortnames[30] = '5I';
+event_stage_names[31] = '6th Inning';
+event_stage_shortnames[31] = '6I';
+event_stage_names[32] = '7th Inning';
+event_stage_shortnames[32] = '7I';
+event_stage_names[33] = '8th Inning';
+event_stage_shortnames[33] = '8I';
+event_stage_names[34] = '9th Inning';
+event_stage_shortnames[34] = '9I';
+event_stage_names[35] = 'Extra Inning';
+event_stage_shortnames[35] = 'EI';
+event_stage_names[36] = 'Interrupted';
+event_stage_shortnames[36] = 'INT.';
+event_stage_names[37] = 'Abandoned';
+event_stage_shortnames[37] = 'ABN.';
+event_stage_names[38] = 'Half-time';
+event_stage_shortnames[38] = 'HT';
+event_stage_names[39] = 'Time-out';
+event_stage_shortnames[39] = 'TM';
+event_stage_names[40] = '1. Extra Time';
+event_stage_shortnames[40] = '1. ET';
+event_stage_names[41] = '2. Extra Time';
+event_stage_shortnames[41] = '2. ET';
+event_stage_names[42] = 'Pending';
+event_stage_shortnames[42] = 'PEND.';
+event_stage_names[43] = 'Delayed';
+event_stage_shortnames[43] = 'DEL.';
+event_stage_names[45] = 'To Finish';
+event_stage_shortnames[45] = 'TO FIN.';
+event_stage_names[46] = 'Pause';
+event_stage_shortnames[46] = 'PAU';
+event_stage_names[47] = '1st Set Tiebreak';
+event_stage_shortnames[47] = '1ST';
+event_stage_names[48] = '2nd Set Tiebreak';
+event_stage_shortnames[48] = '2ST';
+event_stage_names[49] = '3rd Set Tiebreak';
+event_stage_shortnames[49] = '3ST';
+event_stage_names[50] = '4th Set Tiebreak';
+event_stage_shortnames[50] = '4ST';
+event_stage_names[51] = '5th Set Tiebreak';
+event_stage_shortnames[51] = '5ST';
+event_stage_names[54] = 'Awarded';
+event_stage_shortnames[54] = 'AWA.';
+event_stage_names[55] = '6th Set';
+event_stage_shortnames[55] = '6S';
+event_stage_names[56] = '7th Set';
+event_stage_shortnames[56] = '7S';
+event_stage_names[57] = 'After day 1';
+event_stage_shortnames[57] = 'AD1';
+event_stage_names[58] = 'After day 2';
+event_stage_shortnames[58] = 'AD2';
+event_stage_names[59] = 'After day 3';
+event_stage_shortnames[59] = 'AD3';
+event_stage_names[60] = 'After day 4';
+event_stage_shortnames[60] = 'AD4';
+event_stage_names[61] = 'After day 5';
+event_stage_shortnames[61] = 'AD5';
+event_stage_names[62] = 'After round 1';
+event_stage_shortnames[62] = 'AR1';
+event_stage_names[63] = 'After round 2';
+event_stage_shortnames[63] = 'AR2';
+event_stage_names[64] = 'After round 3';
+event_stage_shortnames[64] = 'AR3';
+event_stage_names[65] = 'Round 1';
+event_stage_shortnames[65] = 'RO1';
+event_stage_names[66] = 'Round 2';
+event_stage_shortnames[66] = 'RO2';
+event_stage_names[67] = 'Round 3';
+event_stage_shortnames[67] = 'RO3';
+event_stage_names[68] = 'Round 4';
+event_stage_shortnames[68] = 'RO4';
+event_stage_names[69] = 'After Extra Inning';
+event_stage_shortnames[69] = 'AEI';
+event_stage_names[70] = 'Practice';
+event_stage_shortnames[70] = 'Practice';
+event_stage_names[71] = 'Qualification';
+event_stage_shortnames[71] = '';
+event_stage_names[72] = 'Warm Up';
+event_stage_shortnames[72] = 'Warm Up';
+event_stage_names[73] = 'Race';
+event_stage_shortnames[73] = 'Race';
+event_stage_names[74] = 'Overall';
+event_stage_shortnames[74] = '';
+event_stage_names[75] = 'Play Offs';
+event_stage_shortnames[75] = '';
+event_stage_names[76] = 'Practice 1';
+event_stage_shortnames[76] = '';
+event_stage_names[77] = 'Practice 2';
+event_stage_shortnames[77] = '';
+event_stage_names[78] = 'Practice 3';
+event_stage_shortnames[78] = '';
+event_stage_names[79] = 'Practice 4';
+event_stage_shortnames[79] = '';
+event_stage_names[80] = 'Practice 5';
+event_stage_shortnames[80] = '';
+event_stage_names[81] = 'Practice 6';
+event_stage_shortnames[81] = '';
+event_stage_names[82] = 'Practice 7';
+event_stage_shortnames[82] = '';
+event_stage_names[83] = 'Qualification - First stage';
+event_stage_shortnames[83] = '';
+event_stage_names[84] = 'Qualification - Second stage';
+event_stage_shortnames[84] = '';
+event_stage_names[85] = 'Qualification - Third stage';
+event_stage_shortnames[85] = '';
+event_stage_names[86] = 'Qualification 1';
+event_stage_shortnames[86] = '';
+event_stage_names[87] = 'Qualification 2';
+event_stage_shortnames[87] = '';
+event_stage_names[88] = 'Qualification 3';
+event_stage_shortnames[88] = '';
+event_stage_names[89] = 'Race 1';
+event_stage_shortnames[89] = '';
+event_stage_names[90] = 'Race 2';
+event_stage_shortnames[90] = '';
+event_stage_names[91] = 'Testing';
+event_stage_shortnames[91] = '';
+event_stage_names[92] = 'Special Stage 1';
+event_stage_shortnames[92] = '';
+event_stage_names[93] = 'Special Stage 2';
+event_stage_shortnames[93] = '';
+event_stage_names[94] = 'Special Stage 3';
+event_stage_shortnames[94] = '';
+event_stage_names[95] = 'Special Stage 4';
+event_stage_shortnames[95] = '';
+event_stage_names[96] = 'Special Stage 5';
+event_stage_shortnames[96] = '';
+event_stage_names[97] = 'Special Stage 6';
+event_stage_shortnames[97] = '';
+event_stage_names[99] = 'Special Stage 7';
+event_stage_shortnames[99] = '';
+event_stage_names[100] = 'Special Stage 8';
+event_stage_shortnames[100] = '';
+event_stage_names[101] = 'Special Stage 9';
+event_stage_shortnames[101] = '';
+event_stage_names[102] = 'Special Stage 10';
+event_stage_shortnames[102] = '';
+event_stage_names[103] = 'Special Stage 11';
+event_stage_shortnames[103] = '';
+event_stage_names[104] = 'Special Stage 12';
+event_stage_shortnames[104] = '';
+event_stage_names[105] = 'Special Stage 13';
+event_stage_shortnames[105] = '';
+event_stage_names[106] = 'Special Stage 14';
+event_stage_shortnames[106] = '';
+event_stage_names[107] = 'Special Stage 15';
+event_stage_shortnames[107] = '';
+event_stage_names[108] = 'Special Stage 16';
+event_stage_shortnames[108] = '';
+event_stage_names[109] = 'Special Stage 17';
+event_stage_shortnames[109] = '';
+event_stage_names[110] = 'Special Stage 18';
+event_stage_shortnames[110] = '';
+event_stage_names[111] = 'Special Stage 19';
+event_stage_shortnames[111] = '';
+event_stage_names[112] = 'Special Stage 20';
+event_stage_shortnames[112] = '';
+event_stage_names[113] = 'Special Stage 21';
+event_stage_shortnames[113] = '';
+event_stage_names[114] = 'Special Stage 22';
+event_stage_shortnames[114] = '';
+event_stage_names[115] = 'Special Stage 23';
+event_stage_shortnames[115] = '';
+event_stage_names[116] = 'Special Stage 24';
+event_stage_shortnames[116] = '';
+event_stage_names[117] = 'Special Stage 25';
+event_stage_shortnames[117] = '';
+event_stage_names[118] = 'Special Stage 26';
+event_stage_shortnames[118] = '';
+event_stage_names[119] = 'Heat 1';
+event_stage_shortnames[119] = '';
+event_stage_names[120] = 'Heat 2';
+event_stage_shortnames[120] = '';
+event_stage_names[121] = 'Heat 3';
+event_stage_shortnames[121] = '';
+event_stage_names[122] = 'Heat 4';
+event_stage_shortnames[122] = '';
+event_stage_names[123] = 'Heat 5';
+event_stage_shortnames[123] = '';
+event_stage_names[124] = 'Heat 6';
+event_stage_shortnames[124] = '';
+event_stage_names[125] = 'Heat 7';
+event_stage_shortnames[125] = '';
+event_stage_names[126] = 'Heat 8';
+event_stage_shortnames[126] = '';
+event_stage_names[127] = 'Heat 9';
+event_stage_shortnames[127] = '';
+event_stage_names[128] = 'Heat 10';
+event_stage_shortnames[128] = '';
+event_stage_names[129] = 'Heat 11';
+event_stage_shortnames[129] = '';
+event_stage_names[130] = 'Heat 12';
+event_stage_shortnames[130] = '';
+event_stage_names[131] = 'Heat 13';
+event_stage_shortnames[131] = '';
+event_stage_names[132] = 'Heat 14';
+event_stage_shortnames[132] = '';
+event_stage_names[133] = 'Heat 15';
+event_stage_shortnames[133] = '';
+event_stage_names[134] = 'Heat 16';
+event_stage_shortnames[134] = '';
+event_stage_names[135] = 'Heat 17';
+event_stage_shortnames[135] = '';
+event_stage_names[136] = 'Heat 18';
+event_stage_shortnames[136] = '';
+event_stage_names[137] = 'Heat 19';
+event_stage_shortnames[137] = '';
+event_stage_names[138] = 'Heat 20';
+event_stage_shortnames[138] = '';
+event_stage_names[139] = 'Heat 21';
+event_stage_shortnames[139] = '';
+event_stage_names[140] = 'Heat 22';
+event_stage_shortnames[140] = '';
+event_stage_names[141] = 'Heat 23';
+event_stage_shortnames[141] = '';
+event_stage_names[142] = 'Heat 24';
+event_stage_shortnames[142] = '';
+event_stage_names[143] = 'Heat 25';
+event_stage_shortnames[143] = '';
+event_stage_names[144] = 'Test Day 1';
+event_stage_shortnames[144] = '';
+event_stage_names[145] = 'Test Day 2';
+event_stage_shortnames[145] = '';
+event_stage_names[146] = 'Test Day 3';
+event_stage_shortnames[146] = '';
+event_stage_names[147] = 'Test Day 4';
+event_stage_shortnames[147] = '';
+event_stage_names[148] = 'Test Day 5';
+event_stage_shortnames[148] = '';
+event_stage_names[149] = 'After Stage 1';
+event_stage_shortnames[149] = 'AS1';
+event_stage_names[150] = 'After Stage 2';
+event_stage_shortnames[150] = 'AS2';
+event_stage_names[151] = 'After Stage 3';
+event_stage_shortnames[151] = 'AS3';
+event_stage_names[152] = 'After Stage 4';
+event_stage_shortnames[152] = 'AS4';
+event_stage_names[153] = 'After Stage 5';
+event_stage_shortnames[153] = 'AS5';
+event_stage_names[154] = 'After Stage 6';
+event_stage_shortnames[154] = 'AS6';
+event_stage_names[155] = 'After Stage 7';
+event_stage_shortnames[155] = 'AS7';
+event_stage_names[156] = 'After Stage 8';
+event_stage_shortnames[156] = 'AS8';
+event_stage_names[157] = 'After Stage 9';
+event_stage_shortnames[157] = 'AS9';
+event_stage_names[158] = 'After Stage 10';
+event_stage_shortnames[158] = '';
+event_stage_names[159] = 'After Stage 11';
+event_stage_shortnames[159] = 'AS11';
+event_stage_names[160] = 'After Stage 12';
+event_stage_shortnames[160] = 'AS12';
+event_stage_names[161] = 'After Stage 13';
+event_stage_shortnames[161] = 'AS13';
+event_stage_names[162] = 'After Stage 14';
+event_stage_shortnames[162] = 'AS14';
+event_stage_names[163] = 'After Stage 15';
+event_stage_shortnames[163] = 'AS15';
+event_stage_names[164] = 'After Stage 16';
+event_stage_shortnames[164] = 'AS16';
+event_stage_names[165] = 'After Stage 17';
+event_stage_shortnames[165] = 'AS17';
+event_stage_names[166] = 'After Stage 18';
+event_stage_shortnames[166] = 'AS18';
+event_stage_names[167] = 'After Stage 19';
+event_stage_shortnames[167] = 'AS19';
+event_stage_names[168] = 'After Stage 20';
+event_stage_shortnames[168] = 'AS20';
+event_stage_names[169] = 'After Stage 21';
+event_stage_shortnames[169] = 'AS21';
+event_stage_names[170] = 'After Stage 22';
+event_stage_shortnames[170] = 'AS22';
+event_stage_names[171] = 'After Stage 23';
+event_stage_shortnames[171] = 'AS23';
+event_stage_names[172] = 'After Stage 24';
+event_stage_shortnames[172] = 'AS24';
+event_stage_names[173] = 'After Stage 25';
+event_stage_shortnames[173] = 'AS25';
+event_stage_names[174] = 'After Stage 26';
+event_stage_shortnames[174] = 'AS26';
+event_stage_names[175] = 'After Stage 27';
+event_stage_shortnames[175] = 'AS27';
+event_stage_names[176] = 'After Stage 28';
+event_stage_shortnames[176] = 'AS28';
+event_stage_names[177] = 'After Stage 29';
+event_stage_shortnames[177] = 'AS29';
+event_stage_names[178] = 'After Stage 30';
+event_stage_shortnames[178] = 'AS30';
+event_stage_names[179] = 'Stage 1';
+event_stage_shortnames[179] = '';
+event_stage_names[180] = 'Stage 2';
+event_stage_shortnames[180] = '';
+event_stage_names[181] = 'Stage 3';
+event_stage_shortnames[181] = '';
+event_stage_names[182] = 'Stage 4';
+event_stage_shortnames[182] = '';
+event_stage_names[183] = 'Stage 5';
+event_stage_shortnames[183] = '';
+event_stage_names[184] = 'Stage 6';
+event_stage_shortnames[184] = '';
+event_stage_names[185] = 'Stage 7';
+event_stage_shortnames[185] = '';
+event_stage_names[186] = 'Stage 8';
+event_stage_shortnames[186] = '';
+event_stage_names[187] = 'Stage 9';
+event_stage_shortnames[187] = '';
+event_stage_names[188] = 'Stage 10';
+event_stage_shortnames[188] = '';
+event_stage_names[189] = 'Stage 11';
+event_stage_shortnames[189] = '';
+event_stage_names[190] = 'Stage 12';
+event_stage_shortnames[190] = '';
+event_stage_names[191] = 'Stage 13';
+event_stage_shortnames[191] = '';
+event_stage_names[192] = 'Stage 14';
+event_stage_shortnames[192] = '';
+event_stage_names[193] = 'Stage 15';
+event_stage_shortnames[193] = '';
+event_stage_names[194] = 'Stage 16';
+event_stage_shortnames[194] = '';
+event_stage_names[195] = 'Stage 17';
+event_stage_shortnames[195] = '';
+event_stage_names[196] = 'Stage 18';
+event_stage_shortnames[196] = '';
+event_stage_names[197] = 'Stage 19';
+event_stage_shortnames[197] = '';
+event_stage_names[198] = 'Stage 20';
+event_stage_shortnames[198] = '';
+event_stage_names[199] = 'Stage 21';
+event_stage_shortnames[199] = '';
+event_stage_names[200] = 'Stage 22';
+event_stage_shortnames[200] = '';
+event_stage_names[201] = 'Stage 23';
+event_stage_shortnames[201] = '';
+event_stage_names[202] = 'Stage 24';
+event_stage_shortnames[202] = '';
+event_stage_names[203] = 'Stage 25';
+event_stage_shortnames[203] = '';
+event_stage_names[204] = 'Semi Final 1';
+event_stage_shortnames[204] = '';
+event_stage_names[205] = 'Semi Final 2';
+event_stage_shortnames[205] = '';
+event_stage_names[206] = 'Final';
+event_stage_shortnames[206] = '';
+event_stage_names[207] = 'Race 3';
+event_stage_shortnames[207] = '';
+event_stage_names[208] = 'Race 4';
+event_stage_shortnames[208] = '';
+event_stage_names[209] = 'Race 5';
+event_stage_shortnames[209] = '';
+event_stage_names[210] = 'Race 6';
+event_stage_shortnames[210] = '';
+event_stage_names[211] = 'Race 7';
+event_stage_shortnames[211] = '';
+event_stage_names[212] = 'Race 8';
+event_stage_shortnames[212] = '';
+event_stage_names[213] = 'Race 9';
+event_stage_shortnames[213] = '';
+event_stage_names[214] = 'Race 10';
+event_stage_shortnames[214] = '';
+event_stage_names[215] = 'Race 11';
+event_stage_shortnames[215] = '';
+event_stage_names[216] = 'Race 12';
+event_stage_shortnames[216] = '';
+event_stage_names[217] = 'Race 13';
+event_stage_shortnames[217] = '';
+event_stage_names[218] = 'Race 14';
+event_stage_shortnames[218] = '';
+event_stage_names[219] = 'Race 15';
+event_stage_shortnames[219] = '';
+event_stage_names[220] = 'Round 5';
+event_stage_shortnames[220] = 'RO5';
+event_stage_names[221] = 'Round 6';
+event_stage_shortnames[221] = 'RO6';
+event_stage_names[222] = 'Round 7';
+event_stage_shortnames[222] = 'RO7';
+event_stage_names[223] = 'Round 8';
+event_stage_shortnames[223] = 'RO8';
+event_stage_names[224] = 'Round 9';
+event_stage_shortnames[224] = 'RO9';
+event_stage_names[225] = 'Round 10';
+event_stage_shortnames[225] = 'RO10';
+event_stage_names[226] = 'Round 11';
+event_stage_shortnames[226] = 'RO11';
+event_stage_names[227] = 'Round 12';
+event_stage_shortnames[227] = 'RO12';
+event_stage_names[228] = 'Current';
+event_stage_shortnames[228] = '';
+event_stage_names[229] = 'Practice 8';
+event_stage_shortnames[229] = '';
+event_stage_names['H7'] = 'Penalties';
+event_stage_names['H11'] = 'After penalties';
+event_stage_shortnames['H7'] = 'PEN';
+event_stage_shortnames['H11'] = 'pen.';
+
+var events_live = null;
+var events_time_content = null;
+var events_score_content = null;
+var live_page = '';
+var live_events = '';
+
+function live_results_init(page, ids)
+{
+	live_events = ids.split(',');
+	events_live = new Array();
+	events_time_content = new Array();
+	events_score_content = new Array();
+	live_page = page;
+	live_results_load();
+
+	setInterval(function()
+	{
+		$('.blink').each(function()
+		{
+			$(this).css('visibility', $(this).css('visibility') == 'hidden' ? 'visible' : 'hidden');
+		});
+	}, 1000);
+}
+
+function live_results_load()
+{
+	if (live_events.join() != '')
+	{
+		jQuery.ajax({
+			url: '/gres/live-results.php',
+			type: 'GET',
+			dataType: 'json',
+			success: function(data)
+			{
+				live_results_show(data)
+				setTimeout('live_results_load()', 10000)
+			}
+		});
+	}
+}
+
+function live_results_show(data)
+{
+	if (data.events)
+	{
+		for (var i = 0; i < live_events.length; i++)
+		{
+			var eid = live_events[i]
+			var ev = data['events'][eid];
+
+			if (ev)
+			{
+				finished = ev.finished == 1;
+				event_stage_id = ev.event_stage_id;
+				score = ev.score;
+				partial = ev.partial;
+				minute = ev.minute;
+				live_bet = ev.live_bet;
+
+				event_stage_key = (ev.sport_id == 4 && (event_stage_id == 7 || event_stage_id == 11) ? 'H' : '') + event_stage_id;
+				time = event_stage_shortnames[event_stage_key];
+				time_full = event_stage_names[event_stage_key];
+				if (minute != 0)
+				{
+					time = time + '&nbsp;' + minute + "<span class=\"blink\">'</span>";
+					time_full = time_full + ', ' + minute + '. ' + 'minute';
+				}
+
+				if (finished && event_stage_id != 3)
+				{
+					score = score + '&nbsp;' + event_stage_shortnames[event_stage_key];
+				}
+				
+				$('[data-live=' + eid + ']').each(function()
+				{
+					row = $(this);
+					
+					if (live_page == 'league' && row.children('[data-live-cell=cell]').length)
+					{
+						cell = row.children('[data-live-cell=cell]');
+						events_time_content['e' + eid] = cell.html();
+						cell.remove();
+
+						cell_time = $('<td></td>').addClass('live-time nobr').attr('data-live-cell', 'time').appendTo(row);
+						$('<td></td>').addClass('space nobr').html('&nbsp;').appendTo(row);
+						cell_score = $('<td></td>').addClass('live-score last-cell nobr').attr('data-live-cell', 'score').appendTo(row);
+					}
+					else
+					{
+						cell_time = row.children('[data-live-cell=time]');
+						cell_score = row.children('[data-live-cell=score]');
+					}
+					
+					if (!finished)
+					{
+						if (live_page == 'next' || live_page == 'ticket')
+						{
+							if (events_live['e' + eid] == null)
+							{
+								events_time_content['e' + eid] = cell_time.html();
+								cell_time.removeClass(live_page == 'next' ? 'time' : 'datetime').addClass('live-time');
+								cell_score.removeClass(live_page == 'next' ? 'tv' : 'score').addClass('live-score');
+								if (live_page == 'ticket') cell_time.removeClass('left').addClass('center');
+								events_score_content['e' + eid] = cell_score.html();
+							}
+						}
+
+						if (live_page == 'league' || live_page == 'next')
+						{
+							cell_livebet = row.children('[data-live-cell=livebet]');
+							cell_livebet.html(live_bet == 'y' ? '<a href="/bookmaker/11/' + bet365_url + '" target="_blank"></a>' : '&nbsp;').attr('title', live_bet == 'y' ? 'Bet on this match now LIVE!' : '');
+						}
+
+						cell_time.html(time).attr('title', time_full);
+						cell_score.html(score).attr('title', partial);
+					}
+					
+					if (finished)
+					{
+						// uprava odkazu z nextmatch na matchdetails
+						cell_teams = row.children('[data-live-cell=teams]');
+						if (cell_teams)
+						{
+							link = cell_teams.children().first();
+							link.attr('href', link.attr('href').replace(/\/[a-zA-Z0-9-]+\/([a-zA-Z0-9-]+)\/$/, '/matchdetails.php?matchid=$1'));
+							link.click(function(){win(this.href,560,500,0,1); return false;});
+						}
+						
+						// vysledek
+						cell_score.removeClass('live-score').addClass('score').removeAttr('title').html('<strong>' + score + '</strong>');
+						
+						if (live_page == 'next')
+						{
+							// do prvniho sloupce vratim cas zacatku a puvodni class
+							if (events_time_content['e' + eid] != null)
+							{
+								cell_time.removeClass('live-time').addClass('time').removeAttr('title').html(events_time_content['e' + eid]);
+							}
+							
+							// odebrat bunky s kurzy a doplnit misto nich partial
+							to_remove = row.children('.odds, .partial');
+							count = to_remove.length;
+							if (count)
+							{
+								to_remove.remove();
+								$('<td></td>').addClass('last-cell nobr partial').attr('colSpan', count).html(partial != '' ? '(' + partial + ')' : '').appendTo(row);
+							}
+
+							// live bet
+							row.children('[data-live-cell=livebet]').html('&nbsp;').removeAttr('title');
+						}
+						
+						if (live_page == 'ticket')
+						{
+							// class radce
+							row.addClass('played');
+
+							// do prvniho sloupce vratim cas zacatku a puvodni class
+							if (events_time_content['e' + eid] != null)
+							{
+								cell_time.removeClass('live-time center').addClass('datetime left').removeAttr('title').html(events_time_content['e' + eid]);
+							}
+						}
+
+						if (live_page == 'league')
+						{
+							// cas
+							cell_time.attr('class', 'nobr').removeAttr('title').html(time);
+							
+							// class radce
+							row.addClass('played');
+
+							// live bet
+							row.children('[data-live-cell=livebet]').html('&nbsp;').removeAttr('title');
+						}
+					}
+				});
+
+				if (!finished)
+				{
+					events_live['e' + eid] = 1;
+				}
+				else
+				{
+					// odebrat zapas z pole live_events
+					new_live_events = new Array()
+					for (var i = 0; i < live_events.length; i++)
+					{
+						if (live_events[i] != eid)
+						{
+							new_live_events[new_live_events.length] = live_events[i];
+						}
+					}
+					live_events = new_live_events;
+
+					events_live['e' + eid] = null;
+				}
+
+				
+			} // END event exists
+
+			// event neni ve feedu, ale ve strance je nastaveny jako live - byl ve feedu a zmizel - vratit radky zpatky jak byly
+			else if (events_live['e' + eid] != null)
+			{
+				$('[data-live=' + eid + ']').each(function()
+				{
+					row = $(this);
+
+					cell_time = row.children('[data-live-cell=time]');
+					cell_score = row.children('[data-live-cell=score]');
+
+					if (live_page == 'next')
+					{
+						cell_time.removeClass('live-time').addClass('time').removeAttr('title').html(events_time_content['e' + eid]);
+						cell_score.removeClass('live-score').addClass('tv').removeAttr('title').html(events_score_content['e' + eid]);
+					}
+
+					if (live_page == 'ticket')
+					{
+						cell_time.removeClass('live-time center').addClass('datetime left').removeAttr('title').html(events_time_content['e' + eid]);
+						cell_score.removeClass('live-score').addClass('score').removeAttr('title').html(events_score_content['e' + eid]);
+					}
+
+					if (live_page == 'league')
+					{
+						cell_time.remove();
+						cell_score.remove();
+						row.children().last().remove();
+						$('<td></td>').addClass('last-cell nobr right').attr({'data-live-cell': 'cell', colSpan: '3'}).html(events_time_content['e' + eid]).appendTo(row);
+					}
+				});
+
+				events_time_content['e' + eid] = null
+				events_score_content['e' + eid] = null
+				events_live['e' + eid] = null
+			}
+
+		} // end events foreach
+
+	} // end no nodata
+}
+
+
+var live_results_event_id = null;
+
+
+function live_results_load_event(id)
+{
+	live_results_event_id = id;
+	jQuery.ajax({
+		url: '/gres/live-results.php',
+		type: 'GET',
+		dataType: 'json',
+		success: function(data)
+		{
+			finished = live_results_show_event(data)
+			if (!finished)
+			{
+				setTimeout('live_results_load_event(\'' + id + '\')', 10000)
+			}
+		}
+	});
+}
+
+function live_results_show_event(data)
+{
+	if (data.events)
+	{
+		par = $('#event-live');
+		e_time = par.children().first();
+		e_score = e_time.next();
+
+		ev = data['events'][live_results_event_id];
+		if (ev)
+		{
+			finished = ev.finished == 1;
+			event_stage_id = ev.event_stage_id;
+			score = ev.score;
+			partial = ev.partial;
+			minute = ev.minute;
+
+			event_stage_key = (ev.sport_id == 4 && (event_stage_id == 7 || event_stage_id == 11) ? 'H' : '') + event_stage_id;
+			time_full = event_stage_names[event_stage_key] + (minute != 0 ? ' ' + minute + "' " : '');
+
+			if (finished && event_stage_id != 3)
+			{
+				score = score + '&nbsp;' + event_stage_shortnames[event_stage_key];
+			}
+
+			par.css('display', 'block');
+			e_time.html(time_full);
+			e_score.html(score).attr('title', partial);
+
+			if (finished)
+			{
+				par.attr('class', 'event-live finished');
+			}
+		}
+		else
+		{
+			e_time.html('');
+			e_score.html('');
+			e_score.removeAttr('title');
+			par.css('display', 'none');
+		}
+	}
+	
+	return data.events && ev && finished;
+}

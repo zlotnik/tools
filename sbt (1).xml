@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<harvest>
+    <date>
+        <year>2016</year>
+        <month>09</month>
+        <day>12</day>
+        <hour>13</hour>
+        <minute>01</minute>   
+    </date> 
+    <disciplines>
+        <footbal>        
+            <nation>
+            <name>France</name>
+                <league>
+                    <name>La liga</name>
+                    <events>
+                        <teams>
+                        <home_team>PSG</home_team>
+                        <visiting_team>Olimpique</visiting_team>
+                        <time>
+                            <year></year>
+                            <month></month>
+                            <day></day>
+                            <hour></hour>
+                        </time>
+                        <bets>
+                        <1></1>
+                            <bookmakers>
+                                <Marathon>1.05</Marathon>
+                                <Pinnacle>1.0</Pinnacle>
+                            </bookmakers>
+                        <X></X>
+                        <2></2>
+                        </bets>
+                        
+                        </teams>                    
+                    </events>
+                </league>
+                <league>
+                    <name>seconda liga</name>                
+                </league>
+            </nation>
+        </footbal>
+        <tenis>
+        </tenis>
+    </disciplines>
+</harvest>
+<harvest>
+    <date>
+        <year>2016</year>
+        <month>09</month>
+        <day>11</day>
+        <hour>16</hour>
+        <minute>21</minute>   
+    </date> 
+</harvest>
+</root>

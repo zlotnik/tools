@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-2"><script>
+(function(){var d=window,d=d.frosmo=d.frosmo||{},a=d.easy=d.easy||{};a.config=a.config||{};!0===a.namespaceLoaded?a.console&&a.console.error("frosmo.easy.js is already loaded. Initialization could be corrupted"):(function(){a.xdmRemote=function(){this.sendReadyMessage()};a.xdmRemote.prototype={log:function(a){},receiveMessage:function(a){var b,c;try{b=JSON.parse(a.data)}catch(e){return}switch(b.method){case "get":try{c=JSON.parse(localStorage[b.name])}catch(d){c=null}this.log("     Remote "+window.location.host+
+" received "+a.data);b={method:"get",name:b.name,value:c};a.source.postMessage(JSON.stringify(b),"*");break;case "set":this.log("     Remote "+window.location.host+" received "+a.data),localStorage[b.name]=JSON.stringify(b.value),b={method:"set",name:b.name,value:b.value},a.source.postMessage(JSON.stringify(b),"*")}},checkRequirements:function(){return window.JSON&&window.localStorage},sendReadyMessage:function(){var a=this,b=function(b){a.receiveMessage(b)},c;this.checkRequirements()?(c=JSON.stringify({method:"ready"}),
+window.addEventListener?addEventListener("message",b,!1):attachEvent("onmessage",b)):c='{"method":"error"}';window.onload=function(){for(var a=window;a!==window.top;)a.postMessage(c,"*"),a=a.parent;a.postMessage(c,"*")}}}}(),new window.frosmo.easy.xdmRemote,a.namespaceLoaded=!0)})();
+
+</script></head><body></body></html>
