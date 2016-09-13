@@ -1,0 +1,7 @@
+Start git
+git config --global user.name "Wojciech Marzec"
+git config --global user.email "wojomc81@gmail.com"
+git clone https://gitlab.com/wojomc/arrakis.git
+
+push to git
+git push -u origin master
