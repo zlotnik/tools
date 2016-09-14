@@ -1,8 +1,10 @@
 
 
 
-
-	harvestData         -----------> filterData 		-----> findSurebets 		-------------> frontend::present
-	IN:bookmaker sites		IN:xml with events		IN:xml with events			IN:xml with surebet
-					IN:filter criterium1		OUT:xml with surebets			OUT: www site
-	OUT:xml with events		OUT: xml with events
+______________________		 ________________________           ______________________    ________________________    _______________________
+| harvestData         |		 |filterData            |	    | translateData      |    | findSurebets         |    | frontend::present   |
+|                     |          |			|           |                    |    |                      |    |                     |
+| IN:bookmaker sites  |--------->|IN:xml with events	|---------->| IN:xml with events |--->| IN:xml with events   |--->| IN:xml with surebet |
+| OUT:xml with events |          |IN:filter criterium	|	    | OUT:xml with events|    | OUT:xml with surebets|	  | OUT:www site        |
+|                     |		 |OUT: xml with events  |	    |                    |    |                      |    |                     |
+----------------------           ------------------------           ----------------------    ------------------------    -----------------------
