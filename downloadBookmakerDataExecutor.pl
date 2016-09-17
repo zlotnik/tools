@@ -5,20 +5,28 @@ use XML::Simple;
 
 
 
-my $theBookmakerBetDownloader = BookmakerBetDownloader->new();
+my @parserList = ("Marathon", "BetExplorer");
+my $theBookmakerBetDownloader = BookmakerBetDownloader->new(@parserList);
 
-my $thePinnacleParser = PinnacleParser->new();
-my $theMarathonParser = MarathonParser->new();
-
-$theBookmakerBetDownloader->add($theBookmakerBetDownloaderMarathon);
-$theBookmakerBetDownloader->add($theBookmakerBetDownloaderPinnacle);
+#my $thePinnacleParser = PinnacleParser->new();
+#my $theMarathonParser = MarathonParser->new();
 
 
+#$theBookmakerBetDownloader->add($theBookmakerBetDownloaderMarathon);
+#$theBookmakerBetDownloader->add($theBookmakerBetDownloaderPinnacle);
+
+
+my @filter = ("Soccer->Germany",
+	      "Soccer->Polland"
+	     );
+
+
+	
 my $outXmlFileName = "bets.xml"; 
-my $numberOfBetDownload = $theBookmakerBetDownloader->download();
+my $numberOfBetDownload = $theBookmakerBetDownloader->download(@filter);
 if ($numberOfBetDownload > 0 );
 {
-	$theBookmakerBetDownloader->saveToXml();
+	print $theBookmakerBetDownloader->getXml();
 	$theBookmakerBetDownloader->reset();
 
 
