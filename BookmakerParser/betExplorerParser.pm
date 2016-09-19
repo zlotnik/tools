@@ -1,4 +1,9 @@
 #!/usr/bin/perl -w
+package BetexplorerParser;
+use BookmakerParser;
+
+use strict;
+our @ISA = qw(BookmakerParser);
 use POSIX ":sys_wait_h";
 use LWP::Simple;
 use 5.010;
