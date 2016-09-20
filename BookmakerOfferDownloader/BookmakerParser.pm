@@ -7,3 +7,13 @@ sub new
 	return bless $self, $class
 
 }
+sub downloadOffer()
+{
+	print "xxx";
+
+
+
+}
+
+
+1;

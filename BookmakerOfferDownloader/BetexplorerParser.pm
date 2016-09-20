@@ -30,7 +30,7 @@ my @groupA = ( {nation=> 'germany', league=>'bundesliga'}
 	      ,{nation=> 'belgium', league=>'jupiler-league'});
 
 
-generateReport(@groupA);
+#generateReport(@groupA);
 
 
 ############# SUBS DEFINITIONS ################################
@@ -43,7 +43,7 @@ sub generateReport(\@)
 
 	foreach(@groupToAnalize)
 	{
-		%categoryToAnalize = %{$_};	
+		my %categoryToAnalize = %{$_};	
 		generateReportForSubCategory(%categoryToAnalize);
 		
 	}
@@ -219,7 +219,7 @@ sub getTableWithEvents($)
 }
 
 
-
+1;
 
 
 

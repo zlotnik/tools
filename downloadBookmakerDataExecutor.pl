@@ -1,12 +1,14 @@
 #!/usr/bin/perl
-use BookmakerBetDownloader;
-use XML::Simple;
+use BookmakerOfferDownloader::BookmakerOfferDownloader;
+#use XML::Simple;
 
+use File::Basename qw(dirname);
+use Cwd  qw(abs_path);
+use lib dirname(dirname abs_path $0) . '/BookmakerOfferDownloader';
 
-
-
-my @parserList = ("Marathon", "BetExplorer");
-my $theBookmakerBetDownloader = BookmakerBetDownloader->new(@parserList);
+my @parserList = ("Marathon", "Betexplorer");
+#my $theBookmakerBetDownloader = BookmakerOfferDownloader->new(@parserList);
+my $theBookmakerBetDownloader = new BookmakerOfferDownloader(\@parserList);
 
 
 
@@ -20,7 +22,7 @@ my @filter = ("Soccer->Germany",
 	
 my $outXmlFileName = "bets.xml"; 
 my $numberOfBetDownload = $theBookmakerBetDownloader->downloadOffer(@filter);
-if ($numberOfBetDownload > 0 );
+if ($numberOfBetDownload > 0 )
 {
 	print $theBookmakerBetDownloader->getXml();
 	$theBookmakerBetDownloader->reset();
