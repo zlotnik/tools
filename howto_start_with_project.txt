@@ -1,7 +1,12 @@
-Start git
+1.Start git
+
+download git from [..]
 git config --global user.name "Wojciech Marzec"
 git config --global user.email "wojomc81@gmail.com"
+
+
+2.Cloning repository
 git clone https://gitlab.com/wojomc/arrakis.git
 
-push to git
+3.Pushing to git
 git push -u origin master
