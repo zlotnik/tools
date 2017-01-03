@@ -25,6 +25,8 @@ sub checkNumberOfBookmaker($);
 #zeby nie pobieral danych zakladu jezeli nie ma zadnego()-96 na outpucie
 #dodac statystyki
 #filter buchmacher z pliku
+#add show usage
+#add parse input file
 
 
 #getsLinksForAllEventsFromSubCategory('germany','bundesliga');

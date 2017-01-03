@@ -1,0 +1,5 @@
+TODO:
+
+BookmakerOfferDownloader-> 		+prepare example of input file 
+BookmakerOfferDownloader->	 	+show usage procedure 
+BookmakerOfferDownloader->	 	+simple parsing of input, just checking if consist of all needed data
