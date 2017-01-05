@@ -409,8 +409,9 @@ sub getTableWithEvents($)
 {
 	#open OUTPUT, '>', "output.txt" or die "Can't create filehandle: $!";
 	#select OUTPUT;
+	
 	my $htmlPageWithEvents = $_[0];
-	$htmlPageWithEvents =~ /(<table class=\"result-table)([\s\S]*?)(table>)/m;
+	$htmlPageWithEvents =~ /(<table class=\"table\-main__daysign)([\s\S]*?)(table>)/m;
 	
 	(defined $1 and defined $1 and defined $1) or die "BetExplorerParser: Isn't possible to parse the table with events "; 
 	
