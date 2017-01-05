@@ -114,13 +114,17 @@ my @groupF	= (
 			
 			
 
+			
+my @smallGroup = ( {nation=> 'germany', league=>'bundesliga'});
 
-generateReport(@groupA);
-generateReport(@groupB);
-generateReport(@groupC);
-generateReport(@groupE);
-generateReport(@groupF);
+#generateReport(@groupA);
+#generateReport(@groupB);
+#generateReport(@groupC);
+#generateReport(@groupE);
+#generateReport(@groupF);
 
+
+generateReport(@smallGroup);
 
 sub findTheBestOddInLinkToEvent($)
 {
@@ -139,7 +143,7 @@ sub findTheBestOddInLinkToEvent($)
 sub generateReport(\@)
 {
 	my @groupToAnalize = @{$_[0]};
-
+	
 	foreach(@groupToAnalize)
 	{
 		%categoryToAnalize = %{$_};	
@@ -407,6 +411,9 @@ sub getTableWithEvents($)
 	#select OUTPUT;
 	my $htmlPageWithEvents = $_[0];
 	$htmlPageWithEvents =~ /(<table class=\"result-table)([\s\S]*?)(table>)/m;
+	
+	(defined $1 and defined $1 and defined $1) or die "BetExplorerParser: Isn't possible to parse the table with events "; 
+	
 #	$htmlPageWithEvents =~ /(table id=\")(*)\"/;
 	return $1.$2.$3;
 }
