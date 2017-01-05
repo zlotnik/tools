@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+  <dataSources>
+  <betexplorer/>  
+  </dataSources>
+
+  <dataChoosenToDownload>
+  <soccer>
+  <Poland>
+  <Ekstraklasa/>
+  </Poland>  
+  </soccer>
+  </dataChoosenToDownload>
+  
+</note> 
