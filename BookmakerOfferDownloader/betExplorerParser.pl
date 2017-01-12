@@ -2,6 +2,7 @@
 use POSIX ":sys_wait_h";
 use LWP::Simple;
 use 5.010;
+use Data::Dumper;
 #use HTML::TableParser;
 
 #($#ARGV +1) == 1 or die 'usage surebet.pl inputFile';
@@ -13,7 +14,7 @@ sub getsLinksForAllEventsFromSubCategory($$);
 sub getTableWithEvents($);
 sub getLinksToEventFromTable($);
 sub findTheBestOddInLinkToEvent($);
-sub generateReport(\@);
+sub generateOutputXML(\@);
 sub generateReportForSubCategory(\%);
 sub generateReportLine($);
 sub getRawDataOfEvent($);
@@ -117,14 +118,14 @@ my @groupF	= (
 			
 my @smallGroup = ( {nation=> 'germany', league=>'bundesliga'});
 
-#generateReport(@groupA);
-#generateReport(@groupB);
-#generateReport(@groupC);
-#generateReport(@groupE);
-#generateReport(@groupF);
+#generateOutputXML(@groupA);
+#generateOutputXML(@groupB);
+#generateOutputXML(@groupC);
+#generateOutputXML(@groupE);
+#generateOutputXML(@groupF);
 
 
-generateReport(@smallGroup);
+generateOutputXML(@smallGroup);
 
 sub findTheBestOddInLinkToEvent($)
 {
@@ -140,7 +141,7 @@ sub findTheBestOddInLinkToEvent($)
 }
 
 
-sub generateReport(\@)
+sub generateOutputXML(\@)
 {
 	my @groupToAnalize = @{$_[0]};
 	
@@ -158,8 +159,6 @@ sub generateReportForSubCategory(\%)
 	my $nation = $category{'nation'};
 	my $league = $category{'league'};
 	my @allLinksToEventInSubCategory = getsLinksForAllEventsFromSubCategory($nation, $league);
-
-	
 	
 	#select REPORT;
 	foreach(@allLinksToEventInSubCategory)
@@ -167,14 +166,13 @@ sub generateReportForSubCategory(\%)
 		#$| = 1;
 		my $linkToEvent = $_;
 		my $reportLine = generateReportLine($linkToEvent);
+		my $hashToEventWithBookmakersOffer = downloadOfferFromLinkToEvent();
 		if($reportLine)
 		{
 			open (REPORT,">>",'report.txt') or die ;
 			print REPORT $reportLine;
 			close REPORT or die;		
 		}
-		
-	
 	}
 	
 	#select STDOUT; 
@@ -370,12 +368,12 @@ sub getLinksToEventFromTable($)
 		my $lineWithData = $_;
 		if($lineWithData =~ /a href="(.*?)"/)
 		{
-			my $linkToEvent = $1;
-			if(checkNumberOfBookmaker($lineWithData) > 0)
-			{
-				push @linksToEvents, "http://www.betexplorer.com$1";			
+			my $linkToEvent = "http://www.betexplorer.com$1";
+			#if(checkNumberOfBookmaker($lineWithData) > 0) #doesn't used anymore propably it was used to check how many bookmaker link contains
+			#{
+			push @linksToEvents, "http://www.betexplorer.com$1";			
 			#	print STDOUT "after link==$1 \n";
-			}
+			#}
 			#print STDOUT 'no of bookmakers ' . checkNumberOfBookmaker($lineWithData) ."\n";
 			
 		} 
@@ -407,15 +405,10 @@ sub checkNumberOfBookmaker($)
 
 sub getTableWithEvents($)
 {
-	#open OUTPUT, '>', "output.txt" or die "Can't create filehandle: $!";
-	#select OUTPUT;
-	
 	my $htmlPageWithEvents = $_[0];
-	$htmlPageWithEvents =~ /(<table class=\"table\-main__daysign)([\s\S]*?)(table>)/m;
+	$htmlPageWithEvents =~ /(<table class=\"table\-main)([\s\S]*?)(table>)/m;
 	
 	(defined $1 and defined $1 and defined $1) or die "BetExplorerParser: Isn't possible to parse the table with events "; 
-	
-#	$htmlPageWithEvents =~ /(table id=\")(*)\"/;
 	return $1.$2.$3;
 }
 
