@@ -15,12 +15,13 @@ sub getTableWithEvents($);
 sub getLinksToEventFromTable($);
 sub findTheBestOddInLinkToEvent($);
 sub generateOutputXML(\@);
-sub generateReportForSubCategory(\%);
+sub downloadRawDataOfChoosenOfert(\%);
 sub generateReportLine($);
 sub getRawDataOfEvent($);
 sub findBestOdds($);
 sub calculateProfit(\%);
 sub checkNumberOfBookmaker($);
+sub convertRawDownloadedDataToHash($);
 
 #TODO
 #zeby nie pobieral danych zakladu jezeli nie ma zadnego()-96 na outpucie
@@ -118,13 +119,6 @@ my @groupF	= (
 			
 my @smallGroup = ( {nation=> 'germany', league=>'bundesliga'});
 
-#generateOutputXML(@groupA);
-#generateOutputXML(@groupB);
-#generateOutputXML(@groupC);
-#generateOutputXML(@groupE);
-#generateOutputXML(@groupF);
-
-
 generateOutputXML(@smallGroup);
 
 sub findTheBestOddInLinkToEvent($)
@@ -143,42 +137,47 @@ sub findTheBestOddInLinkToEvent($)
 
 sub generateOutputXML(\@)
 {
-	my @groupToAnalize = @{$_[0]};
+	my @offersChoosenToDownload = @{$_[0]};
 	
-	foreach(@groupToAnalize)
+	foreach(@offersChoosenToDownload)
 	{
-		%categoryToAnalize = %{$_};	
-		generateReportForSubCategory(%categoryToAnalize);
+		%anOfferChoosenToDownload = %{$_};	
+		
+		my $downloadedDataRawText = downloadRawDataOfChoosenOfert(%anOfferChoosenToDownload);
+		my %hashWithAnDownloadOffer = connvertRawDownloadedDataToHash($downloadedDataRawText);
 		
 	}
 }
 
-sub generateReportForSubCategory(\%)
+
+sub convertRawDownloadedDataToHash($)
+{
+	my $downloadedDataRawText = $_[0];
+	print $downloadedDataRawText;
+	die;
+
+
+};
+
+
+
+sub downloadRawDataOfChoosenOfert(\%)
 {
 	my %category = %{$_[0]};
 	my $nation = $category{'nation'};
 	my $league = $category{'league'};
 	my @allLinksToEventInSubCategory = getsLinksForAllEventsFromSubCategory($nation, $league);
 	
-	#select REPORT;
 	foreach(@allLinksToEventInSubCategory)
 	{
-		#$| = 1;
+
 		my $linkToEvent = $_;
-		my $reportLine = generateReportLine($linkToEvent);
-		my $hashToEventWithBookmakersOffer = downloadOfferFromLinkToEvent();
-		if($reportLine)
-		{
-			open (REPORT,">>",'report.txt') or die ;
-			print REPORT $reportLine;
-			close REPORT or die;		
-		}
+		my $rowDataForReport = getRawDataOfEvent($linkToEvent);
+		print "### $rowDataForReport  ###";
+		die;
 	}
-	
-	#select STDOUT; 
-	
-	
 };
+	
 
 sub generateReportLine($)
 {	
@@ -285,11 +284,12 @@ sub getRawDataOfEvent($)
 	}
 	else
 	{
-		while($res == 0 and $retryIdx++ < 3)
+		my $numberOfAttempts = 3;
+		while($res == 0 and $retryIdx++ < $numberOfAttempts)
 		{
 			sleep(26);
 			$res = waitpid($pid, WNOHANG);
-			print STDOUT "no answer from $linkToEvent  attemp no $retryIdx\n";					
+			print STDOUT "no answer from $linkToEvent  attemp no $retryIdx/$numberOfAttempts\n";					
 		}
 	}
 	
@@ -366,7 +366,7 @@ sub getLinksToEventFromTable($)
 	foreach (split("\n",$tableWithEvents))
 	{
 		my $lineWithData = $_;
-		if($lineWithData =~ /a href="(.*?)"/)
+		if($lineWithData =~ /a href="(.*?)" class="in-match"/)
 		{
 			my $linkToEvent = "http://www.betexplorer.com$1";
 			#if(checkNumberOfBookmaker($lineWithData) > 0) #doesn't used anymore propably it was used to check how many bookmaker link contains
