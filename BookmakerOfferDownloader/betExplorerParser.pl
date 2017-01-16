@@ -3,18 +3,25 @@ use POSIX ":sys_wait_h";
 use LWP::Simple;
 use 5.010;
 use Data::Dumper;
+push @INC, "/c/Perl64/site/";
+#use XML::Simple;
+#use XML::LibXML::Simple;
+use XML::LibXML;
+#use /c/Perl64/site/lib/XML/
 #use HTML::TableParser;
+
 
 #($#ARGV +1) == 1 or die 'usage surebet.pl inputFile';
 
 #my $inputFileName = $ARGV[0];
 
 #open(INPUT, "<", $inputFileName) or die "Unable to open file"; 
+###############SUB PROTOTYPES############################################
 sub getsLinksForAllEventsFromSubCategory($$);
 sub getTableWithEvents($);
 sub getLinksToEventFromTable($);
 sub findTheBestOddInLinkToEvent($);
-sub generateOutputXML(\@);
+sub generateOutputXML($);
 sub downloadRawDataOfChoosenOfert(\%);
 sub generateReportLine($);
 sub getRawDataOfEvent($);
@@ -22,8 +29,14 @@ sub findBestOdds($);
 sub calculateProfit(\%);
 sub checkNumberOfBookmaker($);
 sub convertRawDownloadedDataToHash($);
+sub createEventListXML($$);
 
-#TODO
+#################DICTIONARY##############################################
+#choosen bookmaker offer - choosen part of bookmaker offer by appling an offert selector eg. all German, soccer, matches  
+
+
+
+#################TODO####################################################
 #zeby nie pobieral danych zakladu jezeli nie ma zadnego()-96 na outpucie
 #dodac statystyki
 #filter buchmacher z pliku
@@ -40,7 +53,7 @@ sub convertRawDownloadedDataToHash($);
 
 #findTheBestOddInLinkToEvent('http://www.betexplorer.com/soccer/germany/bundesliga/mainz-schalke/GEcPMEM6/#1x2');
 
-
+############################MAIN##############################################
 my @groupA = ( {nation=> 'germany', league=>'bundesliga'}
 			   ,{nation=> 'belgium', league=>'jupiler-league'});
 
@@ -119,8 +132,14 @@ my @groupF	= (
 			
 my @smallGroup = ( {nation=> 'germany', league=>'bundesliga'});
 
-generateOutputXML(@smallGroup);
 
+my $pathToXmlSelector = $ARGV[0];
+
+generateOutputXML($pathToXmlSelector);
+
+
+
+####################SUB DEFINITIONS############################################
 sub findTheBestOddInLinkToEvent($)
 {
 	open OUTPUT, '>', "output.html" or die "Can't create filehandle: $!";
@@ -135,9 +154,16 @@ sub findTheBestOddInLinkToEvent($)
 }
 
 
-sub generateOutputXML(\@)
+sub generateOutputXML($)
 {
-	my @offersChoosenToDownload = @{$_[0]};
+	#my @offersChoosenToDownload = @{$_[0]};
+	
+	my $pathToXmlSelector = shift;
+	my $xmlParser = XML::LibXML->new; 
+	my $doc = $xmlParser->parse_file($pathToXmlSelector);
+	my $xpath = "/dataChoosenToDownload";
+	createEventListXML($doc, $xpath);
+	die;
 	
 	foreach(@offersChoosenToDownload)
 	{
@@ -148,6 +174,42 @@ sub generateOutputXML(\@)
 		
 	}
 }
+
+
+sub createEventListXML($$)
+{
+	my $xmlDoc = $_[0];
+	my $xpath = $_[1];
+	
+	foreach ($xmlDoc->findNodes($xpath)) 
+	{
+		my $nodeName = $_;
+		
+		if(isItAnEvent($xmlDoc,$xpath))
+		{
+		}
+		else
+		{
+			$xpath .= "/$nodeName";
+			createEventListXML($xmlDoc,$xpath);
+		}
+		
+	
+	}
+	
+			
+
+};
+
+
+#sub updateEventXml(@$)
+#{
+#	die "not used";
+
+#}
+
+
+
 
 
 sub convertRawDownloadedDataToHash($)
