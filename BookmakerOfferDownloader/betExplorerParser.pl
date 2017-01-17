@@ -134,7 +134,7 @@ my @smallGroup = ( {nation=> 'germany', league=>'bundesliga'});
 
 
 my $pathToXmlSelector = $ARGV[0];
-
+$pathToXmlSelector = "input/spainLaLigaSelector.xml";
 generateOutputXML($pathToXmlSelector);
 
 
@@ -162,6 +162,8 @@ sub generateOutputXML($)
 	my $xmlParser = XML::LibXML->new; 
 	my $doc = $xmlParser->parse_file($pathToXmlSelector);
 	my $xpath = "/dataChoosenToDownload";
+	$xpath = "/note/dataChoosenToDownload";
+	$xpath = "";
 	createEventListXML($doc, $xpath);
 	die;
 	
@@ -180,23 +182,32 @@ sub createEventListXML($$)
 {
 	my $xmlDoc = $_[0];
 	my $xpath = $_[1];
-	
-	foreach ($xmlDoc->findNodes($xpath)) 
+	#$xpath = '';
+	foreach ($xmlDoc->childNodes()) 
 	{
-		my $nodeName = $_;
-		
-		if(isItAnEvent($xmlDoc,$xpath))
+		my $node = $_;				
+		if($node->nodeName !~ /#text/)
 		{
+			#print "XPATH $xpath\n";
+			my $nodeName = $node->nodeName;
+			#$xpath .= "/". $node->nodeName ;
+			#print "BEFORE $xpath\n"; 
+			
+			if($node->hasChildNodes() )
+			{
+				my $childNode = $_;
+				createEventListXML($node,"$xpath/$nodeName");
+			}
+			else
+			{
+				print "END OF RECURENCE $xpath/$nodeName\n";
+				#$xpath .= "/$nodeName";
+				#createEventListXML($xmlDoc,$xpath);
+			}
 		}
-		else
-		{
-			$xpath .= "/$nodeName";
-			createEventListXML($xmlDoc,$xpath);
-		}
-		
 	
+		#print "END OF RECURENCE 2 $xpath\n"
 	}
-	
 			
 
 };
