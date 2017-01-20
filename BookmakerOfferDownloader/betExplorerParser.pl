@@ -30,7 +30,7 @@ sub calculateProfit(\%);
 sub checkNumberOfBookmaker($);
 sub convertRawDownloadedDataToHash($);
 sub createEventListXML($$);
-
+sub getAllSubCategories($$);
 #################DICTIONARY##############################################
 #choosen bookmaker offer - choosen part of bookmaker offer by appling an offert selector eg. all German, soccer, matches  
 
@@ -156,7 +156,7 @@ sub findTheBestOddInLinkToEvent($)
 
 sub generateOutputXML($)
 {
-	#my @offersChoosenToDownload = @{$_[0]};
+	my @offersChoosenToDownload = @{$_[0]};
 	
 	my $pathToXmlSelector = shift;
 	my $xmlParser = XML::LibXML->new; 
@@ -164,15 +164,16 @@ sub generateOutputXML($)
 	my $xpath = "/dataChoosenToDownload";
 	$xpath = "/note/dataChoosenToDownload";
 	$xpath = "";
-	createEventListXML($doc, $xpath);
-	die;
 	
-	foreach(@offersChoosenToDownload)
+	die "copy here xml to temporary file";
+	createEventListXML($doc, $xpath);
+	
+	#foreach(@offersChoosenToDownload)
 	{
-		%anOfferChoosenToDownload = %{$_};	
+	#	%anOfferChoosenToDownload = %{$_};	
 		
-		my $downloadedDataRawText = downloadRawDataOfChoosenOfert(%anOfferChoosenToDownload);
-		my %hashWithAnDownloadOffer = connvertRawDownloadedDataToHash($downloadedDataRawText);
+	#	my $downloadedDataRawText = downloadRawDataOfChoosenOfert(%anOfferChoosenToDownload);
+	#	my %hashWithAnDownloadOffer = connvertRawDownloadedDataToHash($downloadedDataRawText);
 		
 	}
 }
@@ -201,6 +202,7 @@ sub createEventListXML($$)
 			else
 			{
 				print "END OF RECURENCE $xpath/$nodeName\n";
+				updateXmlNodeWithDataFromBookmaer($node);
 				#$xpath .= "/$nodeName";
 				#createEventListXML($xmlDoc,$xpath);
 			}
@@ -212,12 +214,36 @@ sub createEventListXML($$)
 
 };
 
+sub updateXmlNodeWithDataFromBookmaer($$);
+{
+	my $node = $_[0];
+	my $subPath = $_[1];
+	die "finished here";
+		
+	for(getAllSubCategories($node,$subPath))
+	{
+		my $subCategoryName = $_;
+		getSubAllSubCategories($node,$subPath+$subCategoryName);
+	}
+	#open temporary xml 
+	#save add new node basis on xpath to temporary file
+	#close file
+	
 
-#sub updateEventXml(@$)
-#{
-#	die "not used";
+}
 
-#}
+sub getAllSubCategories($$)
+{
+
+	#IN:  "soccer/Portugal"
+	#Out arra: ["LaLiga","LaLiga", "and so on"];
+	die;
+
+}
+
+
+
+
 
 
 
