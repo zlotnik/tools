@@ -29,8 +29,9 @@ sub findBestOdds($);
 sub calculateProfit(\%);
 sub checkNumberOfBookmaker($);
 sub convertRawDownloadedDataToHash($);
-sub createEventListXML($$);
+sub createEventListXML($$$);
 sub getAllSubCategories($$);
+sub updateXmlNodeWithDataFromBookmaker($$$);
 #################DICTIONARY##############################################
 #choosen bookmaker offer - choosen part of bookmaker offer by appling an offert selector eg. all German, soccer, matches  
 
@@ -160,13 +161,14 @@ sub generateOutputXML($)
 	
 	my $pathToXmlSelector = shift;
 	my $xmlParser = XML::LibXML->new; 
+	my $temporaryXmlPath = "output/tmp.xml";
 	my $doc = $xmlParser->parse_file($pathToXmlSelector);
 	my $xpath = "/dataChoosenToDownload";
 	$xpath = "/note/dataChoosenToDownload";
 	$xpath = "";
 	
 	die "copy here xml to temporary file";
-	createEventListXML($doc, $xpath);
+	createEventListXML($doc, $xpath, $temporaryXmlPath);
 	
 	#foreach(@offersChoosenToDownload)
 	{
@@ -179,10 +181,12 @@ sub generateOutputXML($)
 }
 
 
-sub createEventListXML($$)
+sub createEventListXML($$$)
 {
 	my $xmlDoc = $_[0];
 	my $xpath = $_[1];
+	my $temporaryXmlPath = $_[1];
+	
 	#$xpath = '';
 	foreach ($xmlDoc->childNodes()) 
 	{
@@ -197,12 +201,12 @@ sub createEventListXML($$)
 			if($node->hasChildNodes() )
 			{
 				my $childNode = $_;
-				createEventListXML($node,"$xpath/$nodeName");
+				createEventListXML($node,"$xpath/$nodeName", $temporaryXmlPath);
 			}
 			else
 			{
 				print "END OF RECURENCE $xpath/$nodeName\n";
-				updateXmlNodeWithDataFromBookmaer($node);
+				updateXmlNodeWithDataFromBookmaker($node, $xpath, $temporaryXmlPath);
 				#$xpath .= "/$nodeName";
 				#createEventListXML($xmlDoc,$xpath);
 			}
@@ -214,10 +218,11 @@ sub createEventListXML($$)
 
 };
 
-sub updateXmlNodeWithDataFromBookmaer($$);
+sub updateXmlNodeWithDataFromBookmaker($$$);
 {
 	my $node = $_[0];
 	my $subPath = $_[1];
+	my $temporaryXmlPath = $_[2];
 	die "finished here";
 		
 	for(getAllSubCategories($node,$subPath))
@@ -234,7 +239,9 @@ sub updateXmlNodeWithDataFromBookmaer($$);
 
 sub getAllSubCategories($$)
 {
-
+	my $xmlNode = $_[0];
+	my $subCategoryXpath = $_[1];
+	
 	#IN:  "soccer/Portugal"
 	#Out arra: ["LaLiga","LaLiga", "and so on"];
 	die;
