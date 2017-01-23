@@ -246,18 +246,8 @@ sub getAllSubCategories($$)
 	my $linkToCategory = 'http://www.betexplorer.com/' . $subCategoryXpath;  
 	my $contentOfSubcategoryPage  = get($linkToCategory) or die "unable to get $contentOfSubcategoryPage \n";
 	
-	if(firstLevel)
-	{
-	}
-	
-	if(secondLevel)
-	{
-	}
-	
-	if(thirdLevel)
-	{
-		#do nothing
-	}
+	my $categoryPage = $category->makeCategoryPageObject($subCategoryXpath);
+	my @subcategories  = $categoryPage->getAllSubCategories();
 	
 	
 	#IN:  "soccer/Portugal"
