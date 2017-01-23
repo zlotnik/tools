@@ -1,49 +1,270 @@
 
-1X2 Odds (25)
-O/U (116)
-AH (57)
-DNB (12)
-DC (20)
-BTS (17)
+      class="set">1X2 Odds (24)
+      title="Over/Under">O/U (136)
+      title="Asian Handicap">AH (49)
+      title="Draw No Bet">DNB (12)
+      title="Double Chance">DC (17)
+      title="Both Teams To Score">BTS (16)
+
+
+Show: 
+
+
+
+My Bookmakers (settings)
+
+
+
+All bookmakers
+
+
+
+
+
+
+Bookmakers: 24Bookmakers: 241X2
+
+
+
+10Bet
+
 
  
+ 12.50
+ 6.00
+ 1.20
 
 
-Bookmakers: 25 1X2
-
- 10Bet 2.453.302.90
- 12BET 2.543.152.80
- 188BET 2.473.352.95
- bet-at-home 2.433.292.82
- bet3652.503.402.80
- Betclic 2.403.102.80
- Betfair 2.503.202.87
- Betsafe 2.453.302.90
- Betsson 2.453.252.90
- BetVictor 2.503.302.90
- Betway 2.503.302.88
- bwin 2.403.502.90
- ComeOn 2.503.352.90
- Expekt 2.403.102.80
- Interwetten 2.403.302.95
- Ladbrokes 2.403.252.88
- mybet 2.453.402.85
- Paddy Power 2.303.403.00
- Pinnacle 2.543.423.00
- SBOBET 2.553.202.83
- Sportingbet 2.503.302.95
- Tipico 2.453.302.90
- Unibet 2.503.302.90
- William Hill 2.403.103.10
- youwin 2.503.302.95
+12BET
 
 
-Average odds 2.463.292.90
-Add to My Selections:+++
+ 
+13.00
+5.30
+1.24
+
+
+188BET
+
+
+ 
+ 10.50
+ 5.80
+ 1.23
+
+
+888sport
+
+
+ 
+ 13.00
+ 6.00
+ 1.25
 
 
 
+bet-at-home
 
 
-Show only: My Bookmakers (settings), All bookmakers
+ 
+ 10.94
+ 5.78
+ 1.24
+
+
+bet365
+
+
+
+12.00
+6.00
+1.22
+
+
+Betclic
+
+
+ 
+ 12.00
+ 5.25
+ 1.22
+
+
+Betfair
+
+
+ 
+ 17.00
+
+ 5.50
+ 1.22
+
+
+Betsafe
+
+
+ 
+ 14.50
+ 6.80
+ 1.21
+
+
+Betsson
+
+
+ 
+ 14.50
+ 6.80
+ 1.21
+
+
+BetVictor
+
+
+ 
+ 13.00
+ 6.50
+ 1.22
+
+
+Betway
+
+
+ 
+ 10.00
+ 7.00
+
+ 1.25
+
+
+
+bwin
+
+
+ 
+ 12.50
+6.50
+ 1.20
+
+
+ComeOn
+
+
+ 
+ 12.75
+ 6.10
+ 1.21
+
+
+Expekt
+
+
+ 
+ 12.00
+ 5.25
+ 1.22
+
+
+Interwetten
+
+
+ 
+11.00
+6.00
+1.25
+
+
+
+Ladbrokes
+
+
+ 
+ 12.00
+ 6.00
+ 1.25
+
+
+
+mybet
+
+
+ 
+ 11.50
+6.50
+ 1.23
+
+
+Pinnacle
+
+
+ 
+ 13.44
+ 6.77
+ 1.25
+
+
+
+SBOBET
+
+
+ 
+ 14.00
+ 5.00
+ 1.25
+
+
+
+Sportingbet
+
+
+ 
+ 13.00
+ 6.50
+ 1.22
+
+
+Tipico
+
+
+ 
+ 13.00
+6.50
+ 1.22
+
+
+Unibet
+
+
+ 
+ 13.00
+ 6.00
+ 1.25
+
+
+
+William Hill
+
+
+ 
+13.00
+6.00
+1.22
+
+
+youwin
+
+
+ 
+ 13.00
+ 6.50
+ 1.22
+
+
+
+Average odds (exchanges not included in calculation)Average odds (exchanges not included in calculation)12.676.131.23
+Add to my selections
+
+
+
+
 

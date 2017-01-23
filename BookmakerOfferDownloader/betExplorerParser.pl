@@ -228,10 +228,11 @@ sub updateXmlNodeWithDataFromBookmaker($$$);
 	for(getAllSubCategories($node,$subPath))
 	{
 		my $subCategoryName = $_;
-		getSubAllSubCategories($node,$subPath+$subCategoryName);
+		getAllSubCategories($node,$subPath+$subCategoryName);
 	}
+	
 	#open temporary xml 
-	#save add new node basis on xpath to temporary file
+	#save add new node basis on $temporaryXmlPath to temporary file
 	#close file
 	
 
@@ -241,6 +242,23 @@ sub getAllSubCategories($$)
 {
 	my $xmlNode = $_[0];
 	my $subCategoryXpath = $_[1];
+	
+	my $linkToCategory = 'http://www.betexplorer.com/' . $subCategoryXpath;  
+	my $contentOfSubcategoryPage  = get($linkToCategory) or die "unable to get $contentOfSubcategoryPage \n";
+	
+	if(firstLevel)
+	{
+	}
+	
+	if(secondLevel)
+	{
+	}
+	
+	if(thirdLevel)
+	{
+		#do nothing
+	}
+	
 	
 	#IN:  "soccer/Portugal"
 	#Out arra: ["LaLiga","LaLiga", "and so on"];
