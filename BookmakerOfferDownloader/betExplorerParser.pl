@@ -3,10 +3,11 @@ use POSIX ":sys_wait_h";
 use LWP::Simple;
 use 5.010;
 use Data::Dumper;
-push @INC, "/c/Perl64/site/";
+#push @INC, "/c/Perl64/site/";
 #use XML::Simple;
 #use XML::LibXML::Simple;
 use XML::LibXML;
+use CategoryPage;
 #use /c/Perl64/site/lib/XML/
 #use HTML::TableParser;
 
@@ -135,7 +136,7 @@ my @smallGroup = ( {nation=> 'germany', league=>'bundesliga'});
 
 
 my $pathToXmlSelector = $ARGV[0];
-$pathToXmlSelector = "input/spainLaLigaSelector.xml";
+$pathToXmlSelector = "input/parameters/spainLaLigaSelector.xml";
 generateOutputXML($pathToXmlSelector);
 
 
@@ -167,7 +168,7 @@ sub generateOutputXML($)
 	$xpath = "/note/dataChoosenToDownload";
 	$xpath = "";
 	
-	die "copy here xml to temporary file";
+	# copy here xml to temporary file";
 	createEventListXML($doc, $xpath, $temporaryXmlPath);
 	
 	#foreach(@offersChoosenToDownload)
@@ -180,6 +181,26 @@ sub generateOutputXML($)
 	}
 }
 
+
+sub updateXmlNodeWithDataFromBookmaker($$$)
+{
+	my $node = $_[0];
+	my $subPath = $_[1];
+	my $temporaryXmlPath = $_[2];
+		
+	for(getAllSubCategories($node,$subPath))
+	{
+		die "finished here";
+		my $subCategoryName = $_;
+		getAllSubCategories($node,$subPath+$subCategoryName);
+	}
+	
+	#open temporary xml 
+	#save add new node basis on $temporaryXmlPath to temporary file
+	#close file
+	
+
+}
 
 sub createEventListXML($$$)
 {
@@ -218,25 +239,6 @@ sub createEventListXML($$$)
 
 };
 
-sub updateXmlNodeWithDataFromBookmaker($$$);
-{
-	my $node = $_[0];
-	my $subPath = $_[1];
-	my $temporaryXmlPath = $_[2];
-	die "finished here";
-		
-	for(getAllSubCategories($node,$subPath))
-	{
-		my $subCategoryName = $_;
-		getAllSubCategories($node,$subPath+$subCategoryName);
-	}
-	
-	#open temporary xml 
-	#save add new node basis on $temporaryXmlPath to temporary file
-	#close file
-	
-
-}
 
 sub getAllSubCategories($$)
 {
@@ -246,9 +248,10 @@ sub getAllSubCategories($$)
 	my $linkToCategory = 'http://www.betexplorer.com/' . $subCategoryXpath;  
 	my $contentOfSubcategoryPage  = get($linkToCategory) or die "unable to get $contentOfSubcategoryPage \n";
 	
-	my $categoryPage = $category->makeCategoryPageObject($subCategoryXpath);
-	my @subcategories  = $categoryPage->getAllSubCategories();
+	my $categoryPage = CategoryPage->makeCategoryPageObject($subCategoryXpath);
 	
+	my @subCategories  = $categoryPage->getAllSubCategories();
+	return @subCategories;
 	
 	#IN:  "soccer/Portugal"
 	#Out arra: ["LaLiga","LaLiga", "and so on"];
