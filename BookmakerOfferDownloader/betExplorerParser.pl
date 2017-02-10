@@ -209,7 +209,7 @@ sub createEventListXML($$$)
 	my $temporaryXmlPath = $_[1];
 	
 	#$xpath = '';
-	foreach ($xmlDoc->childNodes()) 
+	foreach (getAllSubCategories($xmlDoc, $xpath)) 
 	{
 		my $node = $_;				
 		if($node->nodeName !~ /#text/)

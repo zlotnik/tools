@@ -12,11 +12,11 @@ sub makeCategoryPageObject
 	my $subCategoryXpath = shift;
 	my $self = {};
 	
-	if ()
+	if (1)
 	{
 		return FirstLevelPageCategory->new($subCategoryXpath);
 	}
-	elsif()
+	elsif(1)
 	{
 		return SecondLevelPageCategory->new($subCategoryXpath);
 	}
