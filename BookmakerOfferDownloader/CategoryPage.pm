@@ -1,8 +1,11 @@
 package CategoryPage;
 #our @ISA = qw(BookmakerParser);
+
 use warnings;
 use strict;
-
+use FirstLevelPageCategory;
+use ThirdLevelPageCategory;
+use SecondLevelPageCategory;
 
 #our $test = 'xyz';
 
@@ -20,7 +23,7 @@ sub makeCategoryPageObject
 	{
 		return SecondLevelPageCategory->new($subCategoryXpath);
 	}
-	elsif()
+	elsif(1)
 	{
 		return ThirdLevelPageCategory->new($subCategoryXpath);
 	}

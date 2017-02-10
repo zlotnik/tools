@@ -1,4 +1,4 @@
-package FirstLevelPageCategory;
+package SecondLevelPageCategory;
 
 use CategoryPage;
 use warnings;
@@ -8,7 +8,7 @@ our @ISA = qw(CategoryPage);
 
 sub getAllSubCategories($)
 {
-	return "I am the FirstLevelPageCategory\n";
+	return "I am the SecondLevelPageCategory\n";
 
 }
 

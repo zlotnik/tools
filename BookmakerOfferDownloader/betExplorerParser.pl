@@ -8,7 +8,6 @@ use Data::Dumper;
 #use XML::LibXML::Simple;
 use XML::LibXML;
 use CategoryPage;
-#use /c/Perl64/site/lib/XML/
 #use HTML::TableParser;
 
 
@@ -117,21 +116,7 @@ my @groupE	=
 			,{nation=> 'spain', league=>'primera-division'}
 			);
 			
-my @groupF	= (
-					{nation=> 'sweden', league=>'allsvenskan'}
-					,{nation=> 'sweden', league=>'superettan'}
-					,{nation=> 'switzerland', league=>'super-league'}
-					,{nation=> 'switzerland', league=>'challenge-league'}
-					,{nation=> 'turkey', league=>'super-lig'}
-					,{nation=> 'united-arab-emirates', league=>'uae-league'}
-					,{nation=> 'uruguay', league=>'primera-division'}
-					,{nation=> 'wales', league=>'premier-league'}
-					,{nation=> 'wales', league=>'division-1'}
-			  );
-			
-			
-
-			
+						
 my @smallGroup = ( {nation=> 'germany', league=>'bundesliga'});
 
 
@@ -171,14 +156,6 @@ sub generateOutputXML($)
 	# copy here xml to temporary file";
 	createEventListXML($doc, $xpath, $temporaryXmlPath);
 	
-	#foreach(@offersChoosenToDownload)
-	{
-	#	%anOfferChoosenToDownload = %{$_};	
-		
-	#	my $downloadedDataRawText = downloadRawDataOfChoosenOfert(%anOfferChoosenToDownload);
-	#	my %hashWithAnDownloadOffer = connvertRawDownloadedDataToHash($downloadedDataRawText);
-		
-	}
 }
 
 
@@ -195,18 +172,13 @@ sub updateXmlNodeWithDataFromBookmaker($$$)
 		getAllSubCategories($node,$subPath+$subCategoryName);
 	}
 	
-	#open temporary xml 
-	#save add new node basis on $temporaryXmlPath to temporary file
-	#close file
-	
-
 }
 
 sub createEventListXML($$$)
 {
 	my $xmlDoc = $_[0];
 	my $xpath = $_[1];
-	my $temporaryXmlPath = $_[1];
+	my $temporaryXmlPath = $_[2];
 	
 	#$xpath = '';
 	foreach (getAllSubCategories($xmlDoc, $xpath)) 
