@@ -176,12 +176,13 @@ sub updateXmlNodeWithDataFromBookmaker($$$)
 
 sub createEventListXML($$$)
 {
-	my $xmlDoc = $_[0];
+	my $xmlDoc = $_[0];#finished here maybe there should be node instead of xmldoc
 	my $xpath = $_[1];
 	my $temporaryXmlPath = $_[2];
 	
 	#$xpath = '';
-	foreach (getAllSubCategories($xmlDoc, $xpath)) # finished here there is a problem
+	#foreach (getAllSubCategories($xmlDoc, $xpath))
+	foreach ($xmlDoc->findnodes("/"))
 	{
 		my $node = $_;				
 		if($node->nodeName !~ /#text/)
@@ -231,14 +232,6 @@ sub getAllSubCategories($$)
 
 }
 
-
-
-
-
-
-
-
-
 sub convertRawDownloadedDataToHash($)
 {
 	my $downloadedDataRawText = $_[0];
@@ -247,8 +240,6 @@ sub convertRawDownloadedDataToHash($)
 
 
 };
-
-
 
 sub downloadRawDataOfChoosenOfert(\%)
 {
@@ -429,7 +420,6 @@ sub createJavaScriptForDownload($)
 	close(TEMPLATE)or die;
 
 }
-
 
 
 sub getsLinksForAllEventsFromSubCategory($$)
