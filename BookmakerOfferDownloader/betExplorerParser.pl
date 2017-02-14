@@ -152,9 +152,10 @@ sub generateOutputXML($)
 	my $xpath = "/dataChoosenToDownload";
 	$xpath = "/note/dataChoosenToDownload";
 	$xpath = "";
+	my @rootXmlNode = $doc->findnodes("/");
 	
 	# copy here xml to temporary file";
-	createEventListXML($doc, $xpath, $temporaryXmlPath);
+	createEventListXML($rootXmlNode[0], $xpath, $temporaryXmlPath);
 	
 }
 
@@ -176,13 +177,13 @@ sub updateXmlNodeWithDataFromBookmaker($$$)
 
 sub createEventListXML($$$)
 {
-	my $xmlDoc = $_[0];#finished here maybe there should be node instead of xmldoc
+	my $xmlNode = $_[0];#finished here maybe there should be node instead of xmldoc
 	my $xpath = $_[1];
 	my $temporaryXmlPath = $_[2];
 	
 	#$xpath = '';
 	#foreach (getAllSubCategories($xmlDoc, $xpath))
-	foreach ($xmlDoc->findnodes("/"))
+	foreach ($xmlNode->nonBlankChildNodes())
 	{
 		my $node = $_;				
 		if($node->nodeName !~ /#text/)
@@ -205,6 +206,10 @@ sub createEventListXML($$$)
 				#createEventListXML($xmlDoc,$xpath);
 			}
 		}
+		else
+		{
+			die "blank childNode\n"; #just to check if its work as expected
+		}
 	
 		#print "END OF RECURENCE 2 $xpath\n"
 	}
@@ -219,7 +224,7 @@ sub getAllSubCategories($$)
 	my $subCategoryXpath = $_[1];
 	
 	my $linkToCategory = 'http://www.betexplorer.com/' . $subCategoryXpath;  
-	my $contentOfSubcategoryPage  = get($linkToCategory) or die "unable to get $contentOfSubcategoryPage \n";
+	my $contentOfSubcategoryPage  = get($linkToCategory) or die "unable to get $linkToCategory \n";
 	
 	my $categoryPage = CategoryPage->makeCategoryPageObject($subCategoryXpath);
 	
