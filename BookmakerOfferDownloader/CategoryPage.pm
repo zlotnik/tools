@@ -8,8 +8,17 @@ use ThirdLevelPageCategory;
 use SecondLevelPageCategory;
 
 #our $test = 'xyz';
+######################################################
+sub makeCategoryPageObject();
+sub checkLevelOfCategoryPage();
 
-sub makeCategoryPageObject
+
+
+######################################################
+
+
+
+sub makeCategoryPageObject()
 {
 	my $class = shift;
 	my $subCategoryXpath = shift;
@@ -33,6 +42,11 @@ sub makeCategoryPageObject
 	}
  
 	#return bless $self, $class
+
+}
+
+sub checkLevelOfCategoryPage()
+{
 
 }
 

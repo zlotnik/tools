@@ -8,7 +8,7 @@ our @ISA = qw(CategoryPage);
 
 sub getAllSubCategories($)
 {
-	return "I am the FirstLevelPageCategory\n";
+	return ('Albania', 'Algeria', 'Australia');
 
 }
 

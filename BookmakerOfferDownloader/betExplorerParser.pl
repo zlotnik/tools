@@ -177,7 +177,7 @@ sub updateXmlNodeWithDataFromBookmaker($$$)
 
 sub createEventListXML($$$)
 {
-	my $xmlNode = $_[0];#finished here maybe there should be node instead of xmldoc
+	my $xmlNode = $_[0];
 	my $xpath = $_[1];
 	my $temporaryXmlPath = $_[2];
 	
@@ -201,7 +201,7 @@ sub createEventListXML($$$)
 			else
 			{
 				print "END OF RECURENCE $xpath/$nodeName\n";
-				updateXmlNodeWithDataFromBookmaker($node, $xpath, $temporaryXmlPath);
+				updateXmlNodeWithDataFromBookmaker($node, "${xpath}/${nodeName}", $temporaryXmlPath);
 				#$xpath .= "/$nodeName";
 				#createEventListXML($xmlDoc,$xpath);
 			}
