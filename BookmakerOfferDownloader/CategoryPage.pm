@@ -3,14 +3,14 @@ package CategoryPage;
 
 use warnings;
 use strict;
-use FirstLevelPageCategory;
+use CountryCategoryPage;
 use ThirdLevelPageCategory;
 use SecondLevelPageCategory;
 
 #our $test = 'xyz';
 ######################################################
 sub makeCategoryPageObject();
-sub checkLevelOfCategoryPage();
+sub checkLevelOfCategoryPage($);
 
 
 
@@ -24,15 +24,16 @@ sub makeCategoryPageObject()
 	my $subCategoryXpath = shift;
 	my $self = {};
 	
-	if (1)
+	my $categoryPage = checkCategoryPage($subCategoryXpath);
+	if ($categoryPage == 'CountryCategoryPage')
 	{
-		return FirstLevelPageCategory->new($subCategoryXpath);
+		return CountryCategoryPage->new($subCategoryXpath);
 	}
-	elsif(1)
+	elsif($categoryPage == 2)
 	{
 		return SecondLevelPageCategory->new($subCategoryXpath);
 	}
-	elsif(1)
+	elsif($categoryPage == 3)
 	{
 		return ThirdLevelPageCategory->new($subCategoryXpath);
 	}
@@ -45,8 +46,30 @@ sub makeCategoryPageObject()
 
 }
 
-sub checkLevelOfCategoryPage()
+sub checkCategoryPage($)
 {
+	my $categoryPageSelector = shift;
+	my @tokoenizedCategoryPageSelector = split('/',$categoryPageSelector);
+	if ($tokoenizedCategoryPageSelector[$#tokoenizedCategoryPageSelector] eq '')
+	{
+		pop @tokoenizedCategoryPageSelector;
+	}
+	if ($tokoenizedCategoryPageSelector[0] eq '')
+	{
+		shift @tokoenizedCategoryPageSelector;
+	}
+	
+	if($#tokoenizedCategoryPageSelector == 1)
+	{
+		return 'CountryCategoryPage';
+	}
+	else
+	{
+		die 'unsoported category page'
+		
+	}
+	
+	
 
 }
 

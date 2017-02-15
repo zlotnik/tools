@@ -1,8 +1,12 @@
-package FirstLevelPageCategory;
-
+package CountryCategoryPage;
 use CategoryPage;
 use warnings;
 use strict;
+
+#############TODO#########################
+#-hardcoded category list
+#
+
 
 our @ISA = qw(CategoryPage);
 
