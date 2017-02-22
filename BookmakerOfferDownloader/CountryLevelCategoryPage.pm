@@ -1,4 +1,4 @@
-package CountryCategoryPage;
+package CountryLevelCategoryPage;
 use CategoryPage;
 use warnings;
 use strict;

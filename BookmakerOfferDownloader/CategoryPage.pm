@@ -3,9 +3,9 @@ package CategoryPage;
 
 use warnings;
 use strict;
-use CountryCategoryPage;
-use ThirdLevelPageCategory;
-use SecondLevelPageCategory;
+use CountryLevelCategoryPage;
+use GroupLevelPageCategory;
+use EventLevelPageCategory;
 
 #our $test = 'xyz';
 ######################################################

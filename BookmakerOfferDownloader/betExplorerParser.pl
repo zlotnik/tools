@@ -57,65 +57,7 @@ sub updateXmlNodeWithDataFromBookmaker($$$);
 ############################MAIN##############################################
 my @groupA = ( {nation=> 'germany', league=>'bundesliga'}
 			   ,{nation=> 'belgium', league=>'jupiler-league'});
-
-my @groupB = 
-					(
-						{nation=> 'argentina', league=>'primera-division'}
-						,{nation=> 'brazil', league=>'campeonato-paulista'}
-						,{nation=> 'brazil', league=>'campeonato-carioca'}
-						,{nation=> 'brazil', league=>'campeonato-gaucho'}
-						,{nation=> 'chile', league=>'primera-division'}
-					);			   
-			   
-
-my @groupC = 
-						(
-							{nation=> 'austria', league=>'tipico-bundesliga'},
-							,{nation=> 'bulgaria', league=>'a-pfg'}
-							,{nation=> 'croatia', league=>'1-hnl'}
-							,{nation=> 'czech-republic', league=>'synot-liga'}
-							,{nation=> 'denmark', league=>'superliga'}
-							,{nation=> 'england', league=>'premier-league'}
-						);
-
-
-my @groupD = 
-						(
-							{nation=> 'finland', league=>'veikkausliiga'}
-							,{nation=> 'france', league=>'ligue-1'}
-							,{nation=> 'france', league=>'ligue-2'}
-							,{nation=> 'hungary', league=>'otp-bank-liga'}
-							,{nation=> 'india', league=>'i-league'}
-							,{nation=> 'iran', league=>'persian-gulf-pro-league'}
-							,{nation=> 'italy', league=>'serie-a'}
-							,{nation=> 'italy', league=>'serie-b'}
-							,{nation=> 'lebanon', league=>'premier-league'}
-							,{nation=> 'mexico', league=>'primera-division'}
-							,{nation=> 'mexico', league=>'liga-de-ascenso'}
-							,{nation=> 'netherlands', league=>'eredivisie'}
-							,{nation=> 'netherlands', league=>'eerste-divisie'}
-							,{nation=> 'new-zealand', league=>'football-championship'}
-							,{nation=> 'northern-ireland', league=>'nifl-premiership'}
-							,{nation=> 'norway', league=>'tippeligaen'}
-							,{nation=> 'norway', league=>'obos-ligaen'}
-							,{nation=> 'poland', league=>'ekstraklasa'}
-			
-						);
-
-my @groupE	=
-			(
-			{nation=> 'portugal', league=>'primeira-liga'}
-			,{nation=> 'portugal', league=>'segunda-liga'}
-			,{nation=> 'romania', league=>'liga-1'}
-			,{nation=> 'russia', league=>'fnl-cup'}
-			,{nation=> 'russia', league=>'premier-league'}
-			,{nation=> 'scotland', league=>'premiership'}
-			,{nation=> 'scotland', league=>'championship'}
-			,{nation=> 'serbia', league=>'super-liga'}
-			,{nation=> 'spain', league=>'segunda-division'}
-			,{nation=> 'spain', league=>'primera-division'}
-			);
-			
+	
 						
 my @smallGroup = ( {nation=> 'germany', league=>'bundesliga'});
 
