@@ -1,4 +1,4 @@
-package ThirdLevelPageCategory;
+package GroupLevelPageCategory;
 
 use CategoryPage;
 use warnings;
@@ -8,7 +8,7 @@ our @ISA = qw(CategoryPage);
 
 sub getAllSubCategories($)
 {
-	return "I am the ThirdLevelPageCategory\n";
+	return "I am the GroupLevelPageCategory\n";
 
 }
 

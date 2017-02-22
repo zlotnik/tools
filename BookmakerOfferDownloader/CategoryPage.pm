@@ -27,15 +27,15 @@ sub makeCategoryPageObject()
 	my $categoryPage = checkCategoryPage($subCategoryXpath);
 	if ($categoryPage == 'CountryCategoryPage')
 	{
-		return CountryCategoryPage->new($subCategoryXpath);
+		return CountryLevelCategoryPage->new($subCategoryXpath);
 	}
 	elsif($categoryPage == 2)
 	{
-		return SecondLevelPageCategory->new($subCategoryXpath);
+		return GroupLevelPageCategory->new($subCategoryXpath);
 	}
 	elsif($categoryPage == 3)
 	{
-		return ThirdLevelPageCategory->new($subCategoryXpath);
+		return EventLevelPageCategory->new($subCategoryXpath);
 	}
 	else
 	{
