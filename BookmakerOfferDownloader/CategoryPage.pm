@@ -25,7 +25,7 @@ sub makeCategoryPageObject()
 	my $self = {};
 	
 	my $categoryPage = checkCategoryPage($subCategoryXpath);
-	if ($categoryPage == 'CountryCategoryPage')
+	if ($categoryPage eq 'CountryLevelPageCategory')
 	{
 		return CountryLevelCategoryPage->new($subCategoryXpath);
 	}
@@ -61,7 +61,7 @@ sub checkCategoryPage($)
 	
 	if($#tokoenizedCategoryPageSelector == 1)
 	{
-		return 'CountryCategoryPage';
+		return 'CountryLevelPageCategory';
 	}
 	else
 	{
@@ -70,6 +70,16 @@ sub checkCategoryPage($)
 	}
 	
 	
+
+}
+
+
+sub new
+{
+	my $class = shift;
+	my ($mSubCategoryXpath) = @_;
+	my $self = bless { mSubCategoryXpath => $mSubCategoryXpath }, $class;
+	return $self;
 
 }
 

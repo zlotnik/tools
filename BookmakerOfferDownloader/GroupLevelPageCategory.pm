@@ -9,9 +9,7 @@ our @ISA = qw(CategoryPage);
 sub getAllSubCategories($)
 {
 	return "I am the GroupLevelPageCategory\n";
-
 }
-
 
 1;
 
