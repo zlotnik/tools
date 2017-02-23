@@ -63,7 +63,7 @@ my @smallGroup = ( {nation=> 'germany', league=>'bundesliga'});
 
 
 my $pathToXmlSelector = $ARGV[0];
-$pathToXmlSelector = "input/parameters/spainLaLigaSelector.xml";
+$pathToXmlSelector = "input/parameters/polandEkstraklasaSelector.xml";                                       
 generateOutputXML($pathToXmlSelector);
 
 
@@ -89,7 +89,7 @@ sub generateOutputXML($)
 	
 	my $pathToXmlSelector = shift;
 	my $xmlParser = XML::LibXML->new; 
-	my $temporaryXmlPath = "output/tmp.xml";
+	my $outputXmlPath = "output/fetchedData.xml";
 	my $doc = $xmlParser->parse_file($pathToXmlSelector);
 	my $xpath = "/dataChoosenToDownload";
 	$xpath = "/note/dataChoosenToDownload";
@@ -97,7 +97,7 @@ sub generateOutputXML($)
 	my @rootXmlNode = $doc->findnodes("/");
 	
 	# copy here xml to temporary file";
-	createEventListXML($rootXmlNode[0], $xpath, $temporaryXmlPath);
+	createEventListXML($rootXmlNode[0], $xpath, $outputXmlPath);
 	
 }
 
@@ -106,13 +106,12 @@ sub updateXmlNodeWithDataFromBookmaker($$$)
 {
 	my $node = $_[0];
 	my $subPath = $_[1];
-	my $temporaryXmlPath = $_[2];
+	my $outputXmlPath = $_[2];
 		
 	for(getAllSubCategories($node,$subPath))
 	{
-		die "finished here";
 		my $subCategoryName = $_;
-		getAllSubCategories($node,$subPath+$subCategoryName);
+		getAllSubCategories($node,"${subPath}${subCategoryName}");
 	}
 	
 }
@@ -121,7 +120,7 @@ sub createEventListXML($$$)
 {
 	my $xmlNode = $_[0];
 	my $xpath = $_[1];
-	my $temporaryXmlPath = $_[2];
+	my $outputXmlPath = $_[2];
 	
 	#$xpath = '';
 	#foreach (getAllSubCategories($xmlDoc, $xpath))
@@ -138,12 +137,12 @@ sub createEventListXML($$$)
 			if($node->hasChildNodes() )
 			{
 				my $childNode = $_;
-				createEventListXML($node,"$xpath/$nodeName", $temporaryXmlPath);
+				createEventListXML($node,"$xpath/$nodeName", $outputXmlPath);
 			}
 			else
 			{
 				print "END OF RECURENCE $xpath/$nodeName\n";
-				updateXmlNodeWithDataFromBookmaker($node, "${xpath}/${nodeName}", $temporaryXmlPath);
+				updateXmlNodeWithDataFromBookmaker($node, "${xpath}/${nodeName}", $outputXmlPath);
 				#$xpath .= "/$nodeName";
 				#createEventListXML($xmlDoc,$xpath);
 			}

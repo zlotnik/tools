@@ -6,13 +6,17 @@
   <Events>
   <event>
   <id>
+  
   8
   </id>
+  <name>
+  Legia-Wisla
+  </name>
   <hometeam>
   Legia
   </hometeam>
   <visitingteam>
-  Wisła
+  Wisla
   </visitingteam>
   <bets>
   <_1X2>
