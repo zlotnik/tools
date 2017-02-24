@@ -214,7 +214,7 @@ sub getAllSubCategories($$)
 	my $xmlNode = $_[0];
 	my $subCategoryXpath = $_[1];
 	
-	#my $contentOfSubcategoryPage  = get($linkToCategory) or die "unable to get $linkToCategory \n"; # move it to CategoryPage objects
+	#my $contentOfSubcategoryPage  = get($linkToCategory) or die "unable to get $linkToCategory \n"; # move it to CategoryPage objects 
 	#my $linkToCategory = 'http://www.betexplorer.com/' . $subCategoryXpath;  # move it to CategoryPage objects
 	
 	my $categoryPage = CategoryPage->makeCategoryPageObject($subCategoryXpath);
