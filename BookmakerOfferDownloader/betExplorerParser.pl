@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 
+use XML::Tidy;
 use POSIX ":sys_wait_h";
 use LWP::Simple;
 use 5.010;
@@ -39,6 +40,8 @@ sub getRootNode($);
 sub addChildSubcategoryNode($$$);
 sub updateEventListXMLWithEventDetails($);
 sub updateEventListXMLWithBookmakerOffer($);
+sub correctFormatXmlDocument($);
+sub xmlDocumentHasNodeWithoutLineBreaks($);
 #################DICTIONARY##############################################
 #choosen bookmaker offer - choosen part of bookmaker offer by appling an offert selector eg. all German, soccer, matches  
 
@@ -104,12 +107,30 @@ sub generateOutputXML($)
 	$xpath = "";
 	my @rootXmlNode = $doc->findnodes("/");
 	
-	# copy here xml to temporary file";
+	
 	createEventListXML($rootXmlNode[0], $xpath, $outputXmlPath);
+	correctFormatXmlDocument($outputXmlPath);
 	updateEventListXMLWithEventDetails($outputXmlPath);
 	updateEventListXMLWithBookmakerOffer($outputXmlPath);
 	
 }
+
+sub correctFormatXmlDocument($)
+{
+
+	my $pathToXmlDocumentToCorrect = shift;
+ # create new   XML::Tidy object from         MainFile.xml
+  my $tidy_obj = XML::Tidy->new('filename' => $pathToXmlDocumentToCorrect);
+
+  # Tidy up the indenting
+     $tidy_obj->tidy();
+
+  # Write out changes back to MainFile.xml
+     $tidy_obj->write();
+    
+}
+
+
 
 sub updateEventListXMLWithEventDetails($)
 {
@@ -161,7 +182,11 @@ sub addChildSubcategoryNode($$$)
 	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
 	my $parentNodeToUpdate = $document->findnodes($xpathToParent)->[0] or die $?;
 	my $newNode = XML::LibXML::Element->new($nameOfNewChildNode);
+	my $lineBreakTextNode = XML::LibXML::Text->new("\n");
+	#$newNode->addChild($lineBreakTextNode);
+	#$parentNodeToUpdate->addChild($lineBreakTextNode);
 	$parentNodeToUpdate->addChild($newNode);
+	#my $format = 2;
 	$document->toFile($outputXmlFilePath) or die $?;	
 }
 		
