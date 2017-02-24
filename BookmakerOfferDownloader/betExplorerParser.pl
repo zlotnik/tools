@@ -1,13 +1,18 @@
 #!/usr/bin/perl -w
+use strict;
+use warnings;
+
 use POSIX ":sys_wait_h";
 use LWP::Simple;
 use 5.010;
 use Data::Dumper;
-#push @INC, "/c/Perl64/site/";
 #use XML::Simple;
 #use XML::LibXML::Simple;
 use XML::LibXML;
 use CategoryPage;
+use File::Copy qw(copy);
+
+
 #use HTML::TableParser;
 
 
@@ -31,19 +36,22 @@ sub checkNumberOfBookmaker($);
 sub convertRawDownloadedDataToHash($);
 sub createEventListXML($$$);
 sub getAllSubCategories($$);
-sub updateXmlNodeWithDataFromBookmaker($$$);
+sub updateXmlNodeWithDataFromBookmaker($$);
+sub getRootNode($);
+sub addChildSubcategoryNode($$$);
 #################DICTIONARY##############################################
 #choosen bookmaker offer - choosen part of bookmaker offer by appling an offert selector eg. all German, soccer, matches  
 
 
 
 #################TODO####################################################
-#zeby nie pobieral danych zakladu jezeli nie ma zadnego()-96 na outpucie
-#dodac statystyki
-#filter buchmacher z pliku
-#add show usage
-#add parse input file
-
+# zeby nie pobieral danych zakladu jezeli nie ma zadnego()-96 na outpucie
+# dodac statystyki
+# filter buchmacher z pliku
+# add show usage
+# add parse input file
+# 'clasify' this script
+# #updating nodes like <poland/> seems to not work
 
 #getsLinksForAllEventsFromSubCategory('germany','bundesliga');
 
@@ -85,11 +93,11 @@ sub findTheBestOddInLinkToEvent($)
 
 sub generateOutputXML($)
 {
-	my @offersChoosenToDownload = @{$_[0]};
-	
 	my $pathToXmlSelector = shift;
+	
 	my $xmlParser = XML::LibXML->new; 
 	my $outputXmlPath = "output/fetchedData.xml";
+	copy $pathToXmlSelector, $outputXmlPath or die $?; 
 	my $doc = $xmlParser->parse_file($pathToXmlSelector);
 	my $xpath = "/dataChoosenToDownload";
 	$xpath = "/note/dataChoosenToDownload";
@@ -102,19 +110,51 @@ sub generateOutputXML($)
 }
 
 
-sub updateXmlNodeWithDataFromBookmaker($$$)
+sub updateXmlNodeWithDataFromBookmaker($$)
 {
-	my $node = $_[0];
-	my $subPath = $_[1];
-	my $outputXmlPath = $_[2];
+	#my $currentlyUpdatedNode = $_[0]; # not sure if it is needed maybe better to load every time from $outputXmlPath
+	my $xsubPath = $_[0];
+	my $outputXmlPath = $_[1];
+	my $rootNode = getRootNode($outputXmlPath); 
 		
-	for(getAllSubCategories($node,$subPath))
+	for(getAllSubCategories($rootNode, $xsubPath))
 	{
 		my $subCategoryName = $_;
-		getAllSubCategories($node,"${subPath}${subCategoryName}");
+		my $pathToNewChildNode = "${xsubPath}${subCategoryName}";
+		addChildSubcategoryNode($xsubPath,  $subCategoryName, $outputXmlPath);
+		getAllSubCategories($outputXmlPath, $pathToNewChildNode);
 	}
 	
 }
+
+sub getRootNode($)
+{
+	my $pathToXmlSelector = shift;
+	
+	my $xmlParser = XML::LibXML->new;
+	my $doc = $xmlParser->parse_file($pathToXmlSelector) or die $?;
+	my @rootXmlNode = $doc->findnodes("/");#$doc->findnodes("/")->[0];
+	return $rootXmlNode[0];
+}
+
+sub addChildSubcategoryNode($$$)
+{
+
+	my ($xpathToParent, $nameOfNewChildNode, $outputXmlPath) = @_;
+	my $node = getRootNode($outputXmlPath);
+	my @parentNodeList = ($node->findnodes($xpathToParent));
+	#my @parentNodeList = ($node->findnodes('/'));
+	my $parentNodeToUpdate = $parentNodeList[0];# = $node->findnodes($xpathToParent)->[0];
+	
+	#$parentNodeToUpdate->tst();
+	#$parentNodeToUpdate->addChild($nameOfNewChildNode);
+	
+	$parentNodeToUpdate->nodeName;
+	my $newNode = XML::LibXML::Element->new("new");
+	$parentNodeToUpdate->addChild($newNode);
+	
+}
+	
 
 sub createEventListXML($$$)
 {
@@ -122,7 +162,6 @@ sub createEventListXML($$$)
 	my $xpath = $_[1];
 	my $outputXmlPath = $_[2];
 	
-	#$xpath = '';
 	#foreach (getAllSubCategories($xmlDoc, $xpath))
 	foreach ($xmlNode->nonBlankChildNodes())
 	{
@@ -142,9 +181,8 @@ sub createEventListXML($$$)
 			else
 			{
 				print "END OF RECURENCE $xpath/$nodeName\n";
-				updateXmlNodeWithDataFromBookmaker($node, "${xpath}/${nodeName}", $outputXmlPath);
-				#$xpath .= "/$nodeName";
-				#createEventListXML($xmlDoc,$xpath);
+				#updateXmlNodeWithDataFromBookmaker($node, "${xpath}/${nodeName}", $outputXmlPath);
+				updateXmlNodeWithDataFromBookmaker("${xpath}/${nodeName}", $outputXmlPath);				
 			}
 		}
 		else
@@ -161,6 +199,8 @@ sub createEventListXML($$$)
 
 sub getAllSubCategories($$)
 {
+	#IN:  "soccer/Portugal"
+	#Out arra: ["LaLiga","LaLiga", "and so on"];
 	my $xmlNode = $_[0];
 	my $subCategoryXpath = $_[1];
 	
@@ -172,9 +212,7 @@ sub getAllSubCategories($$)
 	my @subCategories  = $categoryPage->getAllSubCategories();
 	return @subCategories;
 	
-	#IN:  "soccer/Portugal"
-	#Out arra: ["LaLiga","LaLiga", "and so on"];
-	die;
+	
 
 }
 
@@ -232,15 +270,15 @@ sub generateReportLine($)
 
 sub calculateProfit(\%)
 {
-	%bestOdds = %{$_[0]};
+	my %bestOdds = %{$_[0]};
 
 	my $best1  = $bestOdds{'1'};
 	my $bestX  = $bestOdds{'X'};
 	my $best2  = $bestOdds{'2'};
 	
-	$profit1 = $best1 * 100;  
-	$betX  = $profit1 / $bestX;  
-	$bet2  = $profit1 / $best2;
+	my $profit1 = $best1 * 100;  
+	my $betX  = $profit1 / $bestX;  
+	my $bet2  = $profit1 / $best2;
 	
 	my $profit  =  ($best1 * 100) - (100 + $betX + $bet2) ;
 	my $profitPercent = ($profit / (100 + $betX + $bet2)) * 100;
@@ -260,7 +298,7 @@ sub findBestOdds($)
 	
 	foreach(split("\n",$dataWithBets))
 	{
-		$lineWithBetData = $_;
+		my $lineWithBetData = $_;
 		$lineWithBetData =~ s/[^\w\.]/#/g;
 		
 		if($lineWithBetData =~/(\w+)#{0,2}(\d?\d\.\d\d)(\d?\d\.\d\d)(\d?\d\.\d\d)/ )
