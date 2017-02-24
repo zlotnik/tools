@@ -12,7 +12,7 @@ our @ISA = qw(CategoryPage);
 
 sub getAllSubCategories($)
 {
-	return ('Ekstraklasa', 'Polish Cup');
+	return ('ekstraklasa', 'polish-cup');
 
 }
 

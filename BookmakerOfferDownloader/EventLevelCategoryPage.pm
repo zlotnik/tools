@@ -1,4 +1,4 @@
-package EventLevelPageCategory;
+package EventLevelCategoryPage;
 
 use CategoryPage;
 use warnings;

@@ -1,4 +1,4 @@
-package GroupLevelPageCategory;
+package GroupLevelCategoryPage;
 
 use CategoryPage;
 use warnings;
@@ -8,7 +8,7 @@ our @ISA = qw(CategoryPage);
 
 sub getAllSubCategories($)
 {
-	return "I am the GroupLevelPageCategory\n";
+	return ('Legia-Wisla', 'Plock-Zaglebie');
 }
 
 1;

@@ -4,18 +4,15 @@ package CategoryPage;
 use warnings;
 use strict;
 use CountryLevelCategoryPage;
-use GroupLevelPageCategory;
-use EventLevelPageCategory;
+use GroupLevelCategoryPage;
+use EventLevelCategoryPage;
 
-#our $test = 'xyz';
+
 ######################################################
 sub makeCategoryPageObject();
 sub checkLevelOfCategoryPage($);
 
-
-
 ######################################################
-
 
 
 sub makeCategoryPageObject()
@@ -25,17 +22,17 @@ sub makeCategoryPageObject()
 	my $self = {};
 	
 	my $categoryPage = checkCategoryPage($subCategoryXpath);
-	if ($categoryPage eq 'CountryLevelPageCategory')
+	if ($categoryPage eq 'CountryLevelCategoryPage')
 	{
 		return CountryLevelCategoryPage->new($subCategoryXpath);
 	}
-	elsif($categoryPage == 2)
+	elsif($categoryPage eq 'GroupLevelCategoryPage')
 	{
-		return GroupLevelPageCategory->new($subCategoryXpath);
+		return GroupLevelCategoryPage->new($subCategoryXpath);
 	}
-	elsif($categoryPage == 3)
+	elsif($categoryPage eq 'EventLevelCategoryPage')
 	{
-		return EventLevelPageCategory->new($subCategoryXpath);
+		return EventLevelCategoryPage->new($subCategoryXpath);
 	}
 	else
 	{
@@ -63,9 +60,17 @@ sub checkCategoryPage($)
 	{
 		return 'CountryLevelPageCategory';
 	}
+	elsif($#tokoenizedCategoryPageSelector == 2)
+	{
+		return 'GroupLevelCategoryPage'
+	}
+	elsif($#tokoenizedCategoryPageSelector == 3)
+	{
+		return 'EventLevelCategoryPage'
+	}
 	else
 	{
-		die 'unsoported category page'
+		die 'unsupported category page'
 		
 	}
 	
