@@ -36,7 +36,7 @@ sub makeCategoryPageObject()
 	}
 	else
 	{
-		die "Isn't possible to create CategoryPage object";
+		die "Isn't possible to create CategoryPage object basis on object string: $categoryPage";
 	}
  
 	#return bless $self, $class
@@ -58,7 +58,7 @@ sub checkCategoryPage($)
 	
 	if($#tokoenizedCategoryPageSelector == 1)
 	{
-		return 'CountryLevelPageCategory';
+		return 'CountryLevelCategoryPage';
 	}
 	elsif($#tokoenizedCategoryPageSelector == 2)
 	{

@@ -6,8 +6,6 @@ use POSIX ":sys_wait_h";
 use LWP::Simple;
 use 5.010;
 use Data::Dumper;
-#use XML::Simple;
-#use XML::LibXML::Simple;
 use XML::LibXML;
 use CategoryPage;
 use File::Copy qw(copy);
@@ -39,6 +37,8 @@ sub getAllSubCategories($$);
 sub updateXmlNodeWithDataFromBookmaker($$);
 sub getRootNode($);
 sub addChildSubcategoryNode($$$);
+sub updateEventListXMLWithEventDetails($);
+sub updateEventListXMLWithBookmakerOffer($);
 #################DICTIONARY##############################################
 #choosen bookmaker offer - choosen part of bookmaker offer by appling an offert selector eg. all German, soccer, matches  
 
@@ -106,27 +106,42 @@ sub generateOutputXML($)
 	
 	# copy here xml to temporary file";
 	createEventListXML($rootXmlNode[0], $xpath, $outputXmlPath);
+	updateEventListXMLWithEventDetails($outputXmlPath);
+	updateEventListXMLWithBookmakerOffer($outputXmlPath);
 	
+}
+
+sub updateEventListXMLWithEventDetails($)
+{
+	die "Not implemented yet\n"
+
+}
+
+
+sub updateEventListXMLWithBookmakerOffer($)
+{
+	die "Not implemented yet\n"
+
 }
 
 
 sub updateXmlNodeWithDataFromBookmaker($$)
 {
 	#my $currentlyUpdatedNode = $_[0]; # not sure if it is needed maybe better to load every time from $outputXmlPath
-	my $xsubPath = $_[0];
-	my $outputXmlPath = $_[1];
-	my $rootNode = getRootNode($outputXmlPath); 
+	my ($xsubPath, $outputXmlPath) = @_; 
+	
 		
+	my $rootNode = getRootNode($outputXmlPath); 
 	for(getAllSubCategories($rootNode, $xsubPath))
 	{
 		my $subCategoryName = $_;
-		my $pathToNewChildNode = "${xsubPath}${subCategoryName}";
+		my $xpathToNewChildNode = "${xsubPath}/${subCategoryName}";
 		addChildSubcategoryNode($xsubPath,  $subCategoryName, $outputXmlPath);
-		getAllSubCategories($outputXmlPath, $pathToNewChildNode);
+		updateXmlNodeWithDataFromBookmaker($xpathToNewChildNode,$outputXmlPath);
 	}
 	
 }
-
+	
 sub getRootNode($)
 {
 	my $pathToXmlSelector = shift;
@@ -140,22 +155,17 @@ sub getRootNode($)
 sub addChildSubcategoryNode($$$)
 {
 
-	my ($xpathToParent, $nameOfNewChildNode, $outputXmlPath) = @_;
-	my $node = getRootNode($outputXmlPath);
-	my @parentNodeList = ($node->findnodes($xpathToParent));
-	#my @parentNodeList = ($node->findnodes('/'));
-	my $parentNodeToUpdate = $parentNodeList[0];# = $node->findnodes($xpathToParent)->[0];
+	my ($xpathToParent, $nameOfNewChildNode, $outputXmlFilePath) = @_;
 	
-	#$parentNodeToUpdate->tst();
-	#$parentNodeToUpdate->addChild($nameOfNewChildNode);
-	
-	$parentNodeToUpdate->nodeName;
-	my $newNode = XML::LibXML::Element->new("new");
+	my $xmlParser = XML::LibXML->new;
+	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
+	my $parentNodeToUpdate = $document->findnodes($xpathToParent)->[0] or die $?;
+	my $newNode = XML::LibXML::Element->new($nameOfNewChildNode);
 	$parentNodeToUpdate->addChild($newNode);
-	
+	$document->toFile($outputXmlFilePath) or die $?;	
 }
-	
-
+		
+		
 sub createEventListXML($$$)
 {
 	my $xmlNode = $_[0];
@@ -204,24 +214,21 @@ sub getAllSubCategories($$)
 	my $xmlNode = $_[0];
 	my $subCategoryXpath = $_[1];
 	
-	my $linkToCategory = 'http://www.betexplorer.com/' . $subCategoryXpath;  
-	my $contentOfSubcategoryPage  = get($linkToCategory) or die "unable to get $linkToCategory \n";
+	#my $contentOfSubcategoryPage  = get($linkToCategory) or die "unable to get $linkToCategory \n"; # move it to CategoryPage objects
+	#my $linkToCategory = 'http://www.betexplorer.com/' . $subCategoryXpath;  # move it to CategoryPage objects
 	
 	my $categoryPage = CategoryPage->makeCategoryPageObject($subCategoryXpath);
 	
 	my @subCategories  = $categoryPage->getAllSubCategories();
 	return @subCategories;
-	
-	
-
 }
+	
 
 sub convertRawDownloadedDataToHash($)
 {
 	my $downloadedDataRawText = $_[0];
 	print $downloadedDataRawText;
 	die;
-
 
 };
 

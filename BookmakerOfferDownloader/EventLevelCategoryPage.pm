@@ -8,10 +8,9 @@ our @ISA = qw(CategoryPage);
 
 sub getAllSubCategories($)
 {
-	return "I am the EventLevelPageCategory\n";
+	return ();
 
 }
-
 
 1;
 
