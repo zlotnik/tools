@@ -79,11 +79,11 @@ sub checkCategoryPage($)
 }
 
 
-sub new
+sub new($)
 {
 	my $class = shift;
 	my ($mSubCategoryXpath) = @_;
-	my $self = bless { mSubCategoryXpath => $mSubCategoryXpath }, $class;
+	my $self = bless { mSubCategoryXpath => $mSubCategoryXpath }, $class;	
 	return $self;
 
 }

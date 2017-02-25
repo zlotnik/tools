@@ -1,69 +1,24 @@
 #!/usr/bin/perl -w
 package BetexplorerParser;
 use BookmakerParser;
+our @ISA = qw(BookmakerParser);
 
 use strict;
-our @ISA = qw(BookmakerParser);
 use POSIX ":sys_wait_h";
 use LWP::Simple;
 use 5.010;
 
 
 ############ SUB PROTOTYPES ###################################
-
 sub getsLinksForAllEventsFromSubCategory($$);
-sub getTableWithEvents($);
+sub pickupTableWithEventsFromWeburl($);
 sub getLinksToEventFromTable($);
-
-sub generateReport(\@);
-sub generateReportForSubCategory(\%);
-sub generateReportLine($);
 sub getRawDataOfEvent($);
 sub checkNumberOfBookmaker($);
 
 
-############# MAIN ############################################
-
-
-
-my @groupA = ( {nation=> 'germany', league=>'bundesliga'}
-	      ,{nation=> 'belgium', league=>'jupiler-league'});
-
-
-#generateReport(@groupA);
-
-
 ############# SUBS DEFINITIONS ################################
 
-
-
-sub generateReport(\@)
-{
-	my @groupToAnalize = @{$_[0]};
-
-	foreach(@groupToAnalize)
-	{
-		my %categoryToAnalize = %{$_};	
-		generateReportForSubCategory(%categoryToAnalize);
-		
-	}
-}
-
-sub generateReportForSubCategory(\%)
-{
-	my %category = %{$_[0]};
-	my $nation = $category{'nation'};
-	my $league = $category{'league'};
-	my @allLinksToEventInSubCategory = getsLinksForAllEventsFromSubCategory($nation, $league);
-		
-	foreach(@allLinksToEventInSubCategory)
-	{
-		my $linkToEvent = $_;
-		my $rowDataForReport = getRawDataOfEvent($linkToEvent);
-		print $rowDataForReport;
-	}
-	
-};
 
 
 
@@ -155,7 +110,7 @@ sub getsLinksForAllEventsFromSubCategory($$)
 	my $content  = get($link) or die "unable to get $link \n";
         # print $content;
 	
-	return getLinksToEventFromTable(getTableWithEvents($content));
+	return getLinksToEventFromTable(pickupTableWithEventsFromWeburl($link));
 	die "bug: getRelativeLinksToEventFromTable after go through array and ad prefix address "; 
 
 	#print $content;
@@ -163,6 +118,8 @@ sub getsLinksForAllEventsFromSubCategory($$)
 
 sub getLinksToEventFromTable($)
 {
+
+
 	my $tableWithEvents = $_[0];
 	#open OUTPUT, '>', "output.txt" or die "Can't create filehandle: $!";
 	#select OUTPUT;
@@ -208,11 +165,13 @@ sub checkNumberOfBookmaker($)
 
 
 
-sub getTableWithEvents($)
+sub pickupTableWithEventsFromWeburl($)
 {
 	#open OUTPUT, '>', "output.txt" or die "Can't create filehandle: $!";
 	#select OUTPUT;
-	my $htmlPageWithEvents = $_[0];
+	my $link = $_[0];
+	my $htmlPageWithEvents  = get($link) or die "unable to get $link \n";
+	
 	$htmlPageWithEvents =~ /(<table class=\"result-table)([\s\S]*?)(table>)/m;
 #	$htmlPageWithEvents =~ /(table id=\")(*)\"/;
 	return $1.$2.$3;

@@ -1,4 +1,5 @@
 #!/usr/bin/perl -w
+package BetExplorerDownloader;
 use strict;
 use warnings;
 
@@ -12,8 +13,6 @@ use CategoryPage;
 use File::Copy qw(copy);
 
 
-#use HTML::TableParser;
-
 
 #($#ARGV +1) == 1 or die 'usage surebet.pl inputFile';
 
@@ -21,11 +20,13 @@ use File::Copy qw(copy);
 
 #open(INPUT, "<", $inputFileName) or die "Unable to open file"; 
 ###############SUB PROTOTYPES############################################
+sub new();
+sub loadSelectorFile($);
 sub getsLinksForAllEventsFromSubCategory($$);
 sub getTableWithEvents($);
 sub getLinksToEventFromTable($);
 sub findTheBestOddInLinkToEvent($);
-sub generateOutputXML($);
+sub generateOutputXML();
 sub downloadRawDataOfChoosenOfert(\%);
 sub generateReportLine($);
 sub getRawDataOfEvent($);
@@ -42,6 +43,7 @@ sub updateEventListXMLWithEventDetails($);
 sub updateEventListXMLWithBookmakerOffer($);
 sub correctFormatXmlDocument($);
 sub xmlDocumentHasNodeWithoutLineBreaks($);
+sub validateSelectorFile();
 #################DICTIONARY##############################################
 #choosen bookmaker offer - choosen part of bookmaker offer by appling an offert selector eg. all German, soccer, matches  
 
@@ -55,6 +57,7 @@ sub xmlDocumentHasNodeWithoutLineBreaks($);
 # add parse input file
 # 'clasify' this script
 # #updating nodes like <poland/> seems to not work
+# add to validateSelectorFile checking if it is a correct selector file so it means contains all needed data in good format needed by the program  
 
 #getsLinksForAllEventsFromSubCategory('germany','bundesliga');
 
@@ -66,20 +69,53 @@ sub xmlDocumentHasNodeWithoutLineBreaks($);
 #findTheBestOddInLinkToEvent('http://www.betexplorer.com/soccer/germany/bundesliga/mainz-schalke/GEcPMEM6/#1x2');
 
 ############################MAIN##############################################
-my @groupA = ( {nation=> 'germany', league=>'bundesliga'}
-			   ,{nation=> 'belgium', league=>'jupiler-league'});
-	
-						
-my @smallGroup = ( {nation=> 'germany', league=>'bundesliga'});
 
 
 my $pathToXmlSelector = $ARGV[0];
 $pathToXmlSelector = "input/parameters/polandEkstraklasaSelector.xml";                                       
-generateOutputXML($pathToXmlSelector);
+#generateOutputXML($pathToXmlSelector);
 
 
 
 ####################SUB DEFINITIONS############################################
+sub new()
+{
+	my $class = shift;
+	my $self = bless {}, $class;
+	return $self; 
+}
+
+sub loadSelectorFile($)
+{
+	my $self = shift;
+	my ($selectorFilePath) = @_;
+	$self->{mSelectorFile} = $selectorFilePath;
+	$self->validateSelectorFile();
+	
+}
+
+sub validateSelectorFile()
+{
+	my $self = shift;
+	(-e $self->{mSelectorFile}) or die $?;
+	isItCorrectXmlFile($self->{mSelectorFile}) or die "the selector file isn't a correct xml file\n";  
+	
+	
+}
+
+sub isItCorrectXmlFile($)
+{
+	my $xmlParser = XML::LibXML->new; 
+	if($xmlParser->parse_file($pathToXmlSelector))
+	{
+		return 1
+	}
+	else 
+	{
+		return 0;
+	}
+}
+
 sub findTheBestOddInLinkToEvent($)
 {
 	open OUTPUT, '>', "output.html" or die "Can't create filehandle: $!";
@@ -94,9 +130,13 @@ sub findTheBestOddInLinkToEvent($)
 }
 
 
-sub generateOutputXML($)
+sub generateOutputXML()
 {
-	my $pathToXmlSelector = shift;
+	my $self = shift;
+	
+	
+	defined  $self->{mSelectorFile} or die "The selector file didn't loaded\n";
+	my $pathToXmlSelector = $self->{mSelectorFile};
 	
 	my $xmlParser = XML::LibXML->new; 
 	my $outputXmlPath = "output/fetchedData.xml";
@@ -513,3 +553,4 @@ sub getTableWithEvents($)
 
 
 
+1;

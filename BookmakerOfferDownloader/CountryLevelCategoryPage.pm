@@ -11,13 +11,25 @@ use LWP::Simple;
 
 our @ISA = qw(CategoryPage);
 
+
+sub new($)
+{
+	my $class = shift;
+	my ($mSubCategoryXpath) = @_;
+	my $self = $class->SUPER::new($mSubCategoryXpath);
+		
+	$self->{mlinkToCategory} = 'http://www.betexplorer.com/';
+	return $self;
+
+}
+
 sub getAllSubCategories()
 {
 	my $self = shift;
 	my $mSubCategoryXpath = $self->{mSubCategoryXpath}; 
 	my @toReturn = ();
 	
-	my $linkToCategory = 'http://www.betexplorer.com/' ;#. $mSubCategoryXpath;  # move it to CategoryPage objects
+	my $linkToCategory = 'http://www.betexplorer.com/' ;
 	my $contentOfSubcategoryPage  = get($linkToCategory) or die "unable to get $linkToCategory \n"; # move it to CategoryPage objects 
 	
 	

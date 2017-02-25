@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
-use BookMakerDownloader;
+use BetExplorerDownloader;
 
 #################BACKLOG        #######################################################
 # the one BookMakerDownloader which will be filled with other classes basis on the selector file
@@ -12,8 +12,9 @@ use BookMakerDownloader;
 
 #################MAIN           #######################################################
 
-my $selectorFile = 'input/parameters/ekstraklasaSelector.xml';
-$theBookMakerDownloader =  betExplorerDownloader->new();  
+my $selectorFile = 'input/parameters/polandEkstraklasaSelector.xml';
+my $theBookMakerDownloader =  BetExplorerDownloader->new();  
 $theBookMakerDownloader->loadSelectorFile($selectorFile);
+$theBookMakerDownloader->generateOutputXML();
 
 #################SUB DEFINITIONS #######################################################
