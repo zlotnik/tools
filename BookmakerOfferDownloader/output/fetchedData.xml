@@ -2,21 +2,9 @@
 
 <soccer>
   <poland>
-    <ekstraklasa>
-      <Legia-Wisla />
-      <Plock-Zaglebie />
-    </ekstraklasa>
-    <division-1>
-      <Legia-Wisla />
-      <Plock-Zaglebie />
-    </division-1>
-    <iii-liga-group-iv>
-      <Legia-Wisla />
-      <Plock-Zaglebie />
-    </iii-liga-group-iv>
-    <polish-cup>
-      <Legia-Wisla />
-      <Plock-Zaglebie />
-    </polish-cup>
+    <ekstraklasa />
+    <division-1 />
+    <iii-liga-group-iv />
+    <polish-cup />
   </poland>
 </soccer>

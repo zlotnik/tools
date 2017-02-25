@@ -2,6 +2,7 @@
 package BetexplorerParser;
 use BookmakerParser;
 our @ISA = qw(BookmakerParser);
+our @EXPORT = qw(pickupLinksToEventFromTable pickupTableWithEventsFromWeburl);
 
 use strict;
 use POSIX ":sys_wait_h";
@@ -12,7 +13,7 @@ use 5.010;
 ############ SUB PROTOTYPES ###################################
 sub getsLinksForAllEventsFromSubCategory($$);
 sub pickupTableWithEventsFromWeburl($);
-sub getLinksToEventFromTable($);
+sub pickupLinksToEventFromTable($);
 sub getRawDataOfEvent($);
 sub checkNumberOfBookmaker($);
 
@@ -110,13 +111,13 @@ sub getsLinksForAllEventsFromSubCategory($$)
 	my $content  = get($link) or die "unable to get $link \n";
         # print $content;
 	
-	return getLinksToEventFromTable(pickupTableWithEventsFromWeburl($link));
+	return pickupLinksToEventFromTable(pickupTableWithEventsFromWeburl($link));
 	die "bug: getRelativeLinksToEventFromTable after go through array and ad prefix address "; 
 
 	#print $content;
 };
 
-sub getLinksToEventFromTable($)
+sub pickupLinksToEventFromTable($)
 {
 
 

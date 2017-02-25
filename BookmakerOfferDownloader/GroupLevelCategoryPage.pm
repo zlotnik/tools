@@ -4,7 +4,7 @@ use CategoryPage;
 use warnings;
 use strict;
 use LWP::Simple;
-use BetExplorerParser;
+use BetexplorerParser;
 
 our @ISA = qw(CategoryPage);
 
@@ -28,13 +28,10 @@ sub new()
 sub getAllSubCategories($)
 {
 	my $self = shift;
+	BetexplorerParser::pickupLinksToEventFromTable("");
+	my @toReturn = BetexplorerParser::pickupLinksToEventFromTable(BetexplorerParser::pickupTableWithEventsFromWeburl($self->{mlinkToCategory}));
 	
-	
-	#my $tableWithEventList = BetExplorerParser::pickupTableWithEventsFromWeburl($self->{mlinkToCategory});
-
-	
-	
-	return ('Legia-Wisla', 'Plock-Zaglebie');
+	return @toReturn;
 }
 
 1;
