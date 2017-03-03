@@ -175,6 +175,7 @@ sub pickupTableWithEventsFromWeburl($)
 	
 	$htmlPageWithEvents =~ /(<table class=\"result-table)([\s\S]*?)(table>)/m;
 #	$htmlPageWithEvents =~ /(table id=\")(*)\"/;
+	$1 or die "It hasn't been possible to parse table with events from given URL: $link"; 
 	return $1.$2.$3;
 }
 
