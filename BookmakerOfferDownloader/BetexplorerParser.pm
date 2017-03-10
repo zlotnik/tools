@@ -173,9 +173,12 @@ sub pickupTableWithEventsFromWeburl($)
 	my $link = $_[0];
 	my $htmlPageWithEvents  = get($link) or die "unable to get $link \n";
 	
-	$htmlPageWithEvents =~ /(<table class=\"result-table)([\s\S]*?)(table>)/m;
-#	$htmlPageWithEvents =~ /(table id=\")(*)\"/;
-	$1 or die "It hasn't been possible to parse table with events from given URL: $link"; 
+	
+	$htmlPageWithEvents =~ /(<td class=\"table-main__daysign\")([\s\S]*?)(<\/table>)/m or die "It hasn't been possible to parse table with events from given URL: $link";	
+	
+	
+	
+	die "finished here";
 	return $1.$2.$3;
 }
 
