@@ -6,9 +6,8 @@ our @EXPORT = qw(pickupLinksToEventFromTable pickupTableWithEventsFromWeburl);
 
 use strict;
 use POSIX ":sys_wait_h";
-use LWP::Simple;
 use 5.010;
-
+use WojtekToolbox;
 
 ############ SUB PROTOTYPES ###################################
 sub getsLinksForAllEventsFromSubCategory($$);
@@ -19,8 +18,6 @@ sub checkNumberOfBookmaker($);
 
 
 ############# SUBS DEFINITIONS ################################
-
-
 
 
 sub getRawDataOfEvent($)
@@ -108,8 +105,8 @@ sub getsLinksForAllEventsFromSubCategory($$)
 	my $subCategoryName = $_[1];
 	my $link = 'http://www.betexplorer.com/soccer/' .  $categoryName .'/'. $subCategoryName;
 	
-	my $content  = get($link) or die "unable to get $link \n";
-        # print $content;
+	my $content  = tryToGetUrl($link, 3) or die "unable to get $link \n";
+        
 	
 	return pickupLinksToEventFromTable(pickupTableWithEventsFromWeburl($link));
 	die "bug: getRelativeLinksToEventFromTable after go through array and ad prefix address "; 
@@ -131,13 +128,14 @@ sub pickupLinksToEventFromTable($)
 		if($lineWithData =~ /a href="(.*?)"/)
 		{
 			my $linkToEvent = $1;
-			if(checkNumberOfBookmaker($lineWithData) > 0)
+			die "finished here: 2 problems identifed: 1.checkHowManyBookmakeroffersContainsLink 2.picking up the links seems to works but URL links can't be inserted to valid xml file  "
+			die 'something like <event url="https://dog.com/fcretriever.gif" /> must be applied';
+			if(checkHowManyBookmakeroffersContainsLink($lineWithData) > 0)
 			{
-				print $lineWithData;die;
-				push @linksToEvents, "http://www.betexplorer.com$1";die "bug return only $1";			
-			#	print STDOUT "after link==$1 \n";
+				push @linksToEvents, "http://www.betexplorer.com$1";
+			
 			}
-			#print STDOUT 'no of bookmakers ' . checkNumberOfBookmaker($lineWithData) ."\n";
+			
 			
 		} 
 	}
@@ -151,8 +149,8 @@ sub eventInLinkAlreadyPlayed($)
 
 }
 
-sub checkNumberOfBookmaker($)
-{
+sub checkHowManyBookmakerOffersContainsLink($)
+{	
 	my $rowToAnalize = $_[0];
 	
 	if($rowToAnalize =~ /td class="bs">(\d?\d)/)
@@ -171,17 +169,11 @@ sub pickupTableWithEventsFromWeburl($)
 	#open OUTPUT, '>', "output.txt" or die "Can't create filehandle: $!";
 	#select OUTPUT;
 	my $link = $_[0];
-	my $htmlPageWithEvents  = get($link) or die "unable to get $link \n";
-	
+	my $htmlPageWithEvents = tryToGetUrl($link, 3) or die " BetexplorerParser: unable to get $link \n";
 	
 	$htmlPageWithEvents =~ m|(<td class=\"table-main__daysign\")([\s\S]*?)(</table>)|m or die "It hasn't been possible to parse table with events from given URL: $link";	
-	
-	
-	
-	die "finished here";
 	return $1.$2.$3;
 }
-
 
 1;
 

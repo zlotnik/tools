@@ -5,13 +5,12 @@ use warnings;
 
 use XML::Tidy;
 use POSIX ":sys_wait_h";
-use LWP::Simple;
 use 5.010;
 use Data::Dumper;
 use XML::LibXML;
 use CategoryPage;
 use File::Copy qw(copy);
-
+use WojtekToolbox;
 
 
 #($#ARGV +1) == 1 or die 'usage surebet.pl inputFile';
@@ -80,6 +79,7 @@ $pathToXmlSelector = "input/parameters/polandEkstraklasaSelector.xml";
 ####################SUB DEFINITIONS############################################
 sub new()
 {
+		
 	my $class = shift;
 	my $self = bless {}, $class;
 	return $self; 
@@ -121,7 +121,7 @@ sub findTheBestOddInLinkToEvent($)
 	open OUTPUT, '>', "output.html" or die "Can't create filehandle: $!";
 	select OUTPUT; 
 	my $linkToEvent = $_[0];
-	my $content  = get($linkToEvent) or die "unable to get $linkToEvent \n";
+	my $content  = tryToGetUrl($linkToEvent,3) or die "BetExplorerDownloader: unable to get $linkToEvent \n";
 	my $best1odd;
 	
 	#$content =~ /td class="course best-betrate arrow-up" data-odd=(.)/m;
@@ -174,14 +174,14 @@ sub correctFormatXmlDocument($)
 
 sub updateEventListXMLWithEventDetails($)
 {
-	die "Not implemented yet\n"
+	die "updateEventListXMLWithEventDetails: Not implemented yet\n"
 
 }
 
 
 sub updateEventListXMLWithBookmakerOffer($)
 {
-	die "Not implemented yet\n"
+	die "updateEventListXMLWithBookmakerOffer: Not implemented yet\n"
 
 }
 
@@ -241,29 +241,21 @@ sub createEventListXML($$$)
 	foreach ($xmlNode->nonBlankChildNodes())
 	{
 		my $node = $_;				
-		if($node->nodeName !~ /#text/)
-		{
-			#print "XPATH $xpath\n";
-			my $nodeName = $node->nodeName;
-			#$xpath .= "/". $node->nodeName ;
-			#print "BEFORE $xpath\n"; 
+		
+		my $nodeName = $node->nodeName;
 			
-			if($node->hasChildNodes() )
-			{
-				my $childNode = $_;
-				createEventListXML($node,"$xpath/$nodeName", $outputXmlPath);
-			}
-			else
-			{
-				print "END OF RECURENCE $xpath/$nodeName\n";
-				#updateXmlNodeWithDataFromBookmaker($node, "${xpath}/${nodeName}", $outputXmlPath);
-				updateXmlNodeWithDataFromBookmaker("${xpath}/${nodeName}", $outputXmlPath);				
-			}
+		if($node->hasChildNodes() )
+		{
+			my $childNode = $_;
+			createEventListXML($node,"$xpath/$nodeName", $outputXmlPath);
 		}
 		else
 		{
-			die "blank childNode\n"; #just to check if its work as expected
+			print "END OF RECURENCE $xpath/$nodeName\n";
+			#updateXmlNodeWithDataFromBookmaker($node, "${xpath}/${nodeName}", $outputXmlPath);
+			updateXmlNodeWithDataFromBookmaker("${xpath}/${nodeName}", $outputXmlPath);				
 		}
+		
 	
 		#print "END OF RECURENCE 2 $xpath\n"
 	}
@@ -278,9 +270,6 @@ sub getAllSubCategories($$)
 	#Out arra: ["LaLiga","LaLiga", "and so on"];
 	my $xmlNode = $_[0];
 	my $subCategoryXpath = $_[1];
-	
-	#my $contentOfSubcategoryPage  = get($linkToCategory) or die "unable to get $linkToCategory \n"; # move it to CategoryPage objects 
-	#my $linkToCategory = 'http://www.betexplorer.com/' . $subCategoryXpath;  # move it to CategoryPage objects
 	
 	my $categoryPage = CategoryPage->makeCategoryPageObject($subCategoryXpath);
 	
@@ -484,7 +473,7 @@ sub getsLinksForAllEventsFromSubCategory($$)
 	my $subCategoryName = $_[1];
 	my $link = 'http://www.betexplorer.com/soccer/' .  $categoryName .'/'. $subCategoryName;
 	
-	my $content  = get($link) or die "unable to get $link \n";
+	my $content  = tryToGetUrl($link,3) or die "unable to get $link \n";
 
 	
 	return getLinksToEventFromTable(getTableWithEvents($content))

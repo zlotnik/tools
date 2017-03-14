@@ -29,7 +29,7 @@ sub getAllSubCategories($)
 {
 	my $self = shift;
 	#BetexplorerParser::pickupLinksToEventFromTable("");
-	my @toReturn = BetexplorerParser::pickupLinksToEventFromTable(BetexplorerParser::pickupTableWithEventsFromWeburl($self->{mlinkToCategory}));
+	my @toReturn = BetexplorerParser::pickupLinksToEventFromTable(BetexplorerParser::pickupTableWithEventsFromWeburl($self->{mlinkToCategory}));	
 	return @toReturn;
 }
 
