@@ -37,15 +37,18 @@ sub createEventListXML($$$);
 sub getAllSubCategories($$);
 sub updateXmlNodeWithDataFromBookmaker($$);
 sub getRootNode($);
-sub addChildSubcategoryNode($$$);
+sub addChildSubcategoryNodeToOfferXml($$$);
+sub addLinkToEventToOfferXml($$$);
 sub updateEventListXMLWithEventDetails($);
 sub updateEventListXMLWithBookmakerOffer($);
 sub correctFormatXmlDocument($);
 sub xmlDocumentHasNodeWithoutLineBreaks($);
 sub validateSelectorFile();
+sub isLinkToEvent($);
 #################DICTIONARY##############################################
-#choosen bookmaker offer - choosen part of bookmaker offer by appling an offert selector eg. all German, soccer, matches  
-
+#choosen bookmaker offer - choosen part of bookmakers offer by appling an offert selector eg. all German, soccer, matches  
+#offer selector - a xml file used choose which data will be downloadedDataRawText
+#offer xml - an output xml generated basis on the offer selector
 
 
 #################TODO####################################################
@@ -197,12 +200,25 @@ sub updateXmlNodeWithDataFromBookmaker($$)
 	{
 		my $subCategoryName = $_;
 		my $xpathToNewChildNode = "${xsubPath}/${subCategoryName}";
-		addChildSubcategoryNode($xsubPath,  $subCategoryName, $outputXmlPath);
+		
+		isLinkToEvent($subCategoryName)
+		{
+			addLinkToEventToOfferXml($xsubPath,  $subCategoryName, $outputXmlPath);
+		}
+		else
+		{
+			addChildSubcategoryNodeToOfferXml($xsubPath,  $subCategoryName, $outputXmlPath);
+		}
 		updateXmlNodeWithDataFromBookmaker($xpathToNewChildNode,$outputXmlPath);
 	}
 	
 }
 	
+sub isLinkToEvent($)
+{
+	die "unimplemented yet";
+
+}
 sub getRootNode($)
 {
 	my $pathToXmlSelector = shift;
@@ -213,7 +229,24 @@ sub getRootNode($)
 	return $rootXmlNode[0];
 }
 
-sub addChildSubcategoryNode($$$)
+sub addLinkToEventToOfferXml($$$)
+{
+	my ($xpathToParent, $linkToEvent, $outputXmlFilePath) = @_;
+	
+	my $xmlParser = XML::LibXML->new;
+	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
+	my $parentNodeToUpdate = $document->findnodes($xpathToParent)->[0] or die $?;
+	
+	my $newNode = XML::LibXML::Element->new('event');
+	#my $lineBreakTextNode = XML::LibXML::Text->new("\n");
+	
+	$parentNodeToUpdate->addChild($newNode);	
+	$document->toFile($outputXmlFilePath) or die $?;	
+
+
+};
+
+sub addChildSubcategoryNodeToOfferXml($$$)
 {
 
 	my ($xpathToParent, $nameOfNewChildNode, $outputXmlFilePath) = @_;
@@ -222,11 +255,8 @@ sub addChildSubcategoryNode($$$)
 	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
 	my $parentNodeToUpdate = $document->findnodes($xpathToParent)->[0] or die $?;
 	my $newNode = XML::LibXML::Element->new($nameOfNewChildNode);
-	my $lineBreakTextNode = XML::LibXML::Text->new("\n");
-	#$newNode->addChild($lineBreakTextNode);
-	#$parentNodeToUpdate->addChild($lineBreakTextNode);
-	$parentNodeToUpdate->addChild($newNode);
-	#my $format = 2;
+	my $lineBreakTextNode = XML::LibXML::Text->new("\n");	
+	$parentNodeToUpdate->addChild($newNode);	
 	$document->toFile($outputXmlFilePath) or die $?;	
 }
 		
