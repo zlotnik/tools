@@ -201,7 +201,7 @@ sub updateXmlNodeWithDataFromBookmaker($$)
 		my $subCategoryName = $_;
 		my $xpathToNewChildNode = "${xsubPath}/${subCategoryName}";
 		
-		isLinkToEvent($subCategoryName)
+		if(isLinkToEvent($subCategoryName))
 		{
 			addLinkToEventToOfferXml($xsubPath,  $subCategoryName, $outputXmlPath);
 		}
@@ -216,7 +216,11 @@ sub updateXmlNodeWithDataFromBookmaker($$)
 	
 sub isLinkToEvent($)
 {
-	die "unimplemented yet";
+	my $stringToCheck = $_[0];
+	return ($stringToCheck =~ m|http://|);
+	
+	#print "stringToParse $stringToParse\n";
+	#die "unimplemented yet";
 
 }
 sub getRootNode($)
