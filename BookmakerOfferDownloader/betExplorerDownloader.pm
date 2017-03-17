@@ -242,6 +242,7 @@ sub addLinkToEventToOfferXml($$$)
 	my $parentNodeToUpdate = $document->findnodes($xpathToParent)->[0] or die $?;
 	
 	my $newNode = XML::LibXML::Element->new('event');
+	$newNode->setAttribute('url',$linkToEvent);
 	#my $lineBreakTextNode = XML::LibXML::Text->new("\n");
 	
 	$parentNodeToUpdate->addChild($newNode);	

@@ -14,7 +14,7 @@ sub getsLinksForAllEventsFromSubCategory($$);
 sub pickupTableWithEventsFromWeburl($);
 sub pickupLinksToEventFromTable($);
 sub getRawDataOfEvent($);
-sub checkNumberOfBookmaker($);
+sub checkHowManyBookmakerOffersContainsInHtml($);
 
 
 ############# SUBS DEFINITIONS ################################
@@ -128,9 +128,8 @@ sub pickupLinksToEventFromTable($)
 		if($lineWithData =~ /a href="(.*?)"/)
 		{
 			my $linkToEvent = $1;
-			die "finished here: 2 problems identifed: 1.checkHowManyBookmakeroffersContainsLink 2.picking up the links seems to works but URL links can't be inserted to valid xml file  "
-			die 'something like <event url="https://dog.com/fcretriever.gif" /> must be applied';
-			if(checkHowManyBookmakeroffersContainsLink($lineWithData) > 0)
+			
+			if(checkHowManyBookmakerOffersContainsInHtml($lineWithData) > 0)
 			{
 				push @linksToEvents, "http://www.betexplorer.com$1";
 			
@@ -149,16 +148,17 @@ sub eventInLinkAlreadyPlayed($)
 
 }
 
-sub checkHowManyBookmakerOffersContainsLink($)
+sub checkHowManyBookmakerOffersContainsInHtml($)
 {	
 	my $rowToAnalize = $_[0];
 	
 	if($rowToAnalize =~ /td class="bs">(\d?\d)/)
 	{
-		return $1;
+		#return $1;
 	}
-
-	return 0;
+	
+	print "NOT IMPLEMENTED YET: BetexplorerParser::checkHowManyBookmakerOffersContainsLink  \n";
+	return 2;
 
 }
 
