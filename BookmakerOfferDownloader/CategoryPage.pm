@@ -6,7 +6,7 @@ use strict;
 use CountryLevelCategoryPage;
 use GroupLevelCategoryPage;
 use EventLevelCategoryPage;
-
+use EventDetailsLevelCategoryPage;
 
 ######################################################
 sub makeCategoryPageObject();
@@ -14,7 +14,7 @@ sub checkLevelOfCategoryPage($);
 
 ######################################################
 
-
+ 
 sub makeCategoryPageObject()
 {
 	my $class = shift;
@@ -34,11 +34,14 @@ sub makeCategoryPageObject()
 	{
 		return EventLevelCategoryPage->new($subCategoryXpath);
 	}
+	elsif($categoryPage eq 'EventDetailsLevelCategoryPage')
+	{
+		return EventDetailsLevelCategoryPage->new($subCategoryXpath);
+	}
 	else
 	{
 		die "Isn't possible to create CategoryPage object basis on object string: $categoryPage";
 	}
- 
 	#return bless $self, $class
 
 }
@@ -68,9 +71,13 @@ sub checkCategoryPage($)
 	{
 		return 'EventLevelCategoryPage'
 	}
+	elsif($#tokoenizedCategoryPageSelector == 4)
+	{
+		return 'EventDetailsLevelCategoryPage'
+	}
 	else
 	{
-		die 'unsupported category page'
+		die "unsupported category page $categoryPageSelector \n";
 		
 	}
 	
