@@ -49,31 +49,33 @@ sub makeCategoryPageObject()
 sub checkCategoryPage($)
 {
 	my $categoryPageSelector = shift;
-	my @tokoenizedCategoryPageSelector = split('/',$categoryPageSelector);
-	if ($tokoenizedCategoryPageSelector[$#tokoenizedCategoryPageSelector] eq '')
+		
+	my @tokenizedCategoryPageSelector = split('/',$categoryPageSelector);
+	if ($tokenizedCategoryPageSelector[$#tokenizedCategoryPageSelector] eq '')
 	{
-		pop @tokoenizedCategoryPageSelector;
+		pop @tokenizedCategoryPageSelector;
 	}
-	if ($tokoenizedCategoryPageSelector[0] eq '')
+	if ($tokenizedCategoryPageSelector[0] eq '')
 	{
-		shift @tokoenizedCategoryPageSelector;
+		shift @tokenizedCategoryPageSelector;
 	}
 	
-	if($#tokoenizedCategoryPageSelector == 1)
+	if($#tokenizedCategoryPageSelector == 1)
 	{
 		return 'CountryLevelCategoryPage';
 	}
-	elsif($#tokoenizedCategoryPageSelector == 2)
+	elsif($#tokenizedCategoryPageSelector == 2)
 	{
-		return 'GroupLevelCategoryPage'
+		return 'GroupLevelCategoryPage';
 	}
-	elsif($#tokoenizedCategoryPageSelector == 3)
+	elsif($categoryPageSelector =~  m|http|)
 	{
-		return 'EventLevelCategoryPage'
+		return 'EventLevelCategoryPage';
 	}
-	elsif($#tokoenizedCategoryPageSelector == 4)
+	elsif($#tokenizedCategoryPageSelector == 4)
 	{
-		return 'EventDetailsLevelCategoryPage'
+		die "propably an unused fragment";
+		return 'EventDetailsLevelCategoryPage';
 	}
 	else
 	{
