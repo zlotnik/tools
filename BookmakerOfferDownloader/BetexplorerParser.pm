@@ -8,6 +8,8 @@ use strict;
 use POSIX ":sys_wait_h";
 use 5.010;
 use WojtekToolbox;
+############ TODO ###################################
+#
 
 ############ SUB PROTOTYPES ###################################
 sub getsLinksForAllEventsFromSubCategory($$);
@@ -15,9 +17,9 @@ sub pickupTableWithEventsFromWeburl($);
 sub pickupLinksToEventFromTable($);
 sub getRawDataOfEvent($);
 sub checkHowManyBookmakerOffersContainsInHtml($);
-
-
 ############# SUBS DEFINITIONS ################################
+
+
 
 
 sub getRawDataOfEvent($)
@@ -119,27 +121,29 @@ sub pickupLinksToEventFromTable($)
 
 
 	my $tableWithEvents = $_[0];
+	#print $tableWithEvents;
+	
 	#open OUTPUT, '>', "output.txt" or die "Can't create filehandle: $!";
 	#select OUTPUT;
 	my @linksToEvents;
 	foreach (split("\n",$tableWithEvents))
 	{
 		my $lineWithData = $_;
-		if($lineWithData =~ /a href="(.*?)"/)
-		{
+		if($lineWithData =~ /a href="(.*?)" class="in-match"/)
+		{			
 			my $linkToEvent = $1;
 			
 			if(checkHowManyBookmakerOffersContainsInHtml($lineWithData) > 0)
 			{
 				push @linksToEvents, "http://www.betexplorer.com$1";
-			
 			}
-			
-			
 		} 
 	}
 	return @linksToEvents;
 }
+	
+			
+			
 
 sub eventInLinkAlreadyPlayed($)
 {
