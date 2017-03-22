@@ -9,7 +9,7 @@ use POSIX ":sys_wait_h";
 use 5.010;
 use WojtekToolbox;
 ############ TODO ###################################
-#
+#- sub checkHowManyBookmakerOffersContainsInHtml($)
 
 ############ SUB PROTOTYPES ###################################
 sub getsLinksForAllEventsFromSubCategory($$);
@@ -126,19 +126,25 @@ sub pickupLinksToEventFromTable($)
 	#open OUTPUT, '>', "output.txt" or die "Can't create filehandle: $!";
 	#select OUTPUT;
 	my @linksToEvents;
-	die "below problem shoudn't be matched line by line but using iterative scaning regexp"
-	foreach (split("\n",$tableWithEvents))
+	#foreach (split("\n",$tableWithEvents))
+	while ($tableWithEvents =~ /a href="(.*?)"( class="in-match"[\s\S]*?)(<td class="table-main__bs">)(\d+)/mg)
 	{
-		my $lineWithData = $_;
-		if($lineWithData =~ /a href="(.*?)" class="in-match"(.*)/s)
-		{			
-			my $linkToEvent = $1;
+		my $linkToEvent = $1;
+		my $numberOfBookmaker = $4;
+		#my $lineWithData = $_;
+		#if($lineWithData =~ /a href="(.*?)" class="in-match"(.*)/s)
+		#{			
+		#	my $linkToEvent = $1;
 			
-			if(checkHowManyBookmakerOffersContainsInHtml($lineWithData) > 0)
-			{
-				push @linksToEvents, "http://www.betexplorer.com$1";
-			}
-		} 
+		#	if(checkHowManyBookmakerOffersContainsInHtml($lineWithData) > 0)
+		#	{
+		die "#to check how looks events without any data from bookmaker maybe such if isn't needed";
+		if($numberOfBookmaker > 0) 
+		{
+			push @linksToEvents, "http://www.betexplorer.com$1";
+		}
+		#	}
+		#} 
 	}
 	return @linksToEvents;
 }
