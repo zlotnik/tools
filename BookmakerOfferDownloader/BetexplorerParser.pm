@@ -126,10 +126,11 @@ sub pickupLinksToEventFromTable($)
 	#open OUTPUT, '>', "output.txt" or die "Can't create filehandle: $!";
 	#select OUTPUT;
 	my @linksToEvents;
+	die "below problem shoudn't be matched line by line but using iterative scaning regexp"
 	foreach (split("\n",$tableWithEvents))
 	{
 		my $lineWithData = $_;
-		if($lineWithData =~ /a href="(.*?)" class="in-match"/)
+		if($lineWithData =~ /a href="(.*?)" class="in-match"(.*)/s)
 		{			
 			my $linkToEvent = $1;
 			
@@ -155,7 +156,8 @@ sub eventInLinkAlreadyPlayed($)
 sub checkHowManyBookmakerOffersContainsInHtml($)
 {	
 	my $rowToAnalize = $_[0];
-	
+	print $rowToAnalize;
+	die;
 	if($rowToAnalize =~ /td class="bs">(\d?\d)/)
 	{
 		#return $1;
