@@ -10,6 +10,7 @@ use 5.010;
 use WojtekToolbox;
 ############ TODO ###################################
 #- sub checkHowManyBookmakerOffersContainsInHtml($)
+# check if ignoring event links without any bookmaker data works
 
 ############ SUB PROTOTYPES ###################################
 sub getsLinksForAllEventsFromSubCategory($$);
@@ -119,32 +120,19 @@ sub getsLinksForAllEventsFromSubCategory($$)
 sub pickupLinksToEventFromTable($)
 {
 
-
 	my $tableWithEvents = $_[0];
-	#print $tableWithEvents;
+	my @linksToEvents;	
+
 	
-	#open OUTPUT, '>', "output.txt" or die "Can't create filehandle: $!";
-	#select OUTPUT;
-	my @linksToEvents;
-	#foreach (split("\n",$tableWithEvents))
 	while ($tableWithEvents =~ /a href="(.*?)"( class="in-match"[\s\S]*?)(<td class="table-main__bs">)(\d+)/mg)
 	{
 		my $linkToEvent = $1;
 		my $numberOfBookmaker = $4;
-		#my $lineWithData = $_;
-		#if($lineWithData =~ /a href="(.*?)" class="in-match"(.*)/s)
-		#{			
-		#	my $linkToEvent = $1;
-			
-		#	if(checkHowManyBookmakerOffersContainsInHtml($lineWithData) > 0)
-		#	{
-		die "#to check how looks events without any data from bookmaker maybe such if isn't needed";
+		
 		if($numberOfBookmaker > 0) 
-		{
+		{			
 			push @linksToEvents, "http://www.betexplorer.com$1";
-		}
-		#	}
-		#} 
+		}		 
 	}
 	return @linksToEvents;
 }
