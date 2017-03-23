@@ -6,9 +6,7 @@ use strict;
 use CountryLevelCategoryPage;
 use GroupLevelCategoryPage;
 use EventLevelCategoryPage;
-use EventDetailsLevelCategoryPage;
 #############TODO#####################################
-# - EventDetailsLevelCategoryPage
 
 ######################################################
 sub makeCategoryPageObject();
@@ -35,10 +33,6 @@ sub makeCategoryPageObject()
 	elsif($categoryPage eq 'EventLevelCategoryPage')
 	{
 		return EventLevelCategoryPage->new($subCategoryXpath);
-	}
-	elsif($categoryPage eq 'EventDetailsLevelCategoryPage')
-	{
-		return EventDetailsLevelCategoryPage->new($subCategoryXpath);
 	}
 	else
 	{
@@ -73,11 +67,6 @@ sub checkCategoryPage($)
 	elsif($categoryPageSelector =~  m|http|)
 	{
 		return 'EventLevelCategoryPage';
-	}
-	elsif($#tokenizedCategoryPageSelector == 4)
-	{
-		die "propably an unused fragment";
-		return 'EventDetailsLevelCategoryPage';
 	}
 	else
 	{

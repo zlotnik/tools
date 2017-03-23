@@ -9,7 +9,6 @@ use POSIX ":sys_wait_h";
 use 5.010;
 use WojtekToolbox;
 ############ TODO ###################################
-#- sub checkHowManyBookmakerOffersContainsInHtml($)
 # check if ignoring event links without any bookmaker data works
 
 ############ SUB PROTOTYPES ###################################
@@ -17,10 +16,7 @@ sub getsLinksForAllEventsFromSubCategory($$);
 sub pickupTableWithEventsFromWeburl($);
 sub pickupLinksToEventFromTable($);
 sub getRawDataOfEvent($);
-sub checkHowManyBookmakerOffersContainsInHtml($);
 ############# SUBS DEFINITIONS ################################
-
-
 
 
 sub getRawDataOfEvent($)
@@ -146,23 +142,6 @@ sub eventInLinkAlreadyPlayed($)
 	my $linkToEvent = $_[0];
 
 }
-
-sub checkHowManyBookmakerOffersContainsInHtml($)
-{	
-	my $rowToAnalize = $_[0];
-	print $rowToAnalize;
-	die;
-	if($rowToAnalize =~ /td class="bs">(\d?\d)/)
-	{
-		#return $1;
-	}
-	
-	print "NOT IMPLEMENTED YET: BetexplorerParser::checkHowManyBookmakerOffersContainsLink  \n";
-	return 2;
-
-}
-
-
 
 sub pickupTableWithEventsFromWeburl($)
 {
