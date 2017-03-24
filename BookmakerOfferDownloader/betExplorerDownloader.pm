@@ -177,6 +177,22 @@ sub correctFormatXmlDocument($)
 
 sub updateEventListXMLWithEventDetails($)
 {
+	my ($pathToXmlWithEventsLinks) = @_;
+	my @eventsLinks = pickupLinksToFromXml($pathToXmlWithEventsLinks);
+	
+	my @fileNamesWithAnEventDetails;  
+	
+	for(@eventsLinks) 	
+	{
+		my $anEventLink = $_;
+		my $anFileNameWithEventDetails = startCreatingXmlPartWithAnEventDetail($anEventLink)
+		push @fileNamesWithAnEventDetails, $anFileNameWithEventDetails ;
+		merging xml element with main xml
+		if there are more than 10 process wait
+	}
+	
+	
+	
 	die "updateEventListXMLWithEventDetails: Not implemented yet\n"
 
 }
@@ -185,7 +201,6 @@ sub updateEventListXMLWithEventDetails($)
 sub updateEventListXMLWithBookmakerOffer($)
 {
 	die "updateEventListXMLWithBookmakerOffer: Not implemented yet\n"
-
 }
 
 
