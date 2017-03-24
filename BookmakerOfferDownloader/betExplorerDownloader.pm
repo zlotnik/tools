@@ -45,6 +45,7 @@ sub correctFormatXmlDocument($);
 sub xmlDocumentHasNodeWithoutLineBreaks($);
 sub validateSelectorFile();
 sub isLinkToEvent($);
+sub startCreatingXmlPartWithAnEventDetail($);
 #################DICTIONARY##############################################
 #choosen bookmaker offer - choosen part of bookmakers offer by appling an offert selector eg. all German, soccer, matches  
 #offer selector - a xml file used choose which data will be downloadedDataRawText
@@ -72,7 +73,8 @@ sub isLinkToEvent($);
 
 ############################MAIN##############################################
 
-
+startCreatingXmlPartWithAnEventDetail("");
+die "finished here";
 my $pathToXmlSelector = $ARGV[0];
 $pathToXmlSelector = "input/parameters/polandEkstraklasaSelector.xml";                                       
 #generateOutputXML($pathToXmlSelector);
@@ -187,8 +189,8 @@ sub updateEventListXMLWithEventDetails($)
 		my $anEventLink = $_;
 		my $anFileNameWithEventDetails = startCreatingXmlPartWithAnEventDetail($anEventLink)
 		push @fileNamesWithAnEventDetails, $anFileNameWithEventDetails ;
-		merging xml element with main xml
-		if there are more than 10 process wait
+		die "TODO: merging xml element with main xml";
+		die "TODO: if there are more than 10 process wait";
 	}
 	
 	
