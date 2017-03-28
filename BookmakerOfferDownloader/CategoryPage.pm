@@ -1,5 +1,4 @@
 package CategoryPage;
-#our @ISA = qw(BookmakerParser);
 
 use warnings;
 use strict;

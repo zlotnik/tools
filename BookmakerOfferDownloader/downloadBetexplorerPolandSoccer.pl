@@ -13,8 +13,10 @@ use BetExplorerDownloader;
 #################MAIN           #######################################################
 
 my $selectorFile = 'input/parameters/polandEkstraklasaSelector.xml';
+my $outputFile = "output/downloadedPolandEkstraklasa.xml";
+
 my $theBookMakerDownloader =  BetExplorerDownloader->new();  
 $theBookMakerDownloader->loadSelectorFile($selectorFile);
-$theBookMakerDownloader->generateOutputXML();
+$theBookMakerDownloader->generateOutputXML($outputFile);
 
 #################SUB DEFINITIONS #######################################################

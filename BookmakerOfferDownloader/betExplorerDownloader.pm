@@ -11,7 +11,7 @@ use XML::LibXML;
 use CategoryPage;
 use File::Copy qw(copy);
 use WojtekToolbox;
-
+our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml generateOutputXML);
 
 #($#ARGV +1) == 1 or die 'usage surebet.pl inputFile';
 
@@ -25,7 +25,7 @@ sub getsLinksForAllEventsFromSubCategory($$);
 sub getTableWithEvents($);
 sub getLinksToEventFromTable($);
 sub findTheBestOddInLinkToEvent($);
-sub generateOutputXML();
+sub generateOutputXML($);
 sub downloadRawDataOfChoosenOfert(\%);
 sub generateReportLine($);
 sub getRawDataOfEvent($);
@@ -46,6 +46,7 @@ sub xmlDocumentHasNodeWithoutLineBreaks($);
 sub validateSelectorFile();
 sub isLinkToEvent($);
 sub startCreatingXmlPartWithAnEventDetail($);
+sub pickupLinksFromXml($);
 #################DICTIONARY##############################################
 #choosen bookmaker offer - choosen part of bookmakers offer by appling an offert selector eg. all German, soccer, matches  
 #offer selector - a xml file used choose which data will be downloadedDataRawText
@@ -73,8 +74,6 @@ sub startCreatingXmlPartWithAnEventDetail($);
 
 ############################MAIN##############################################
 
-startCreatingXmlPartWithAnEventDetail("");
-die "finished here";
 my $pathToXmlSelector = $ARGV[0];
 $pathToXmlSelector = "input/parameters/polandEkstraklasaSelector.xml";                                       
 #generateOutputXML($pathToXmlSelector);
@@ -135,23 +134,19 @@ sub findTheBestOddInLinkToEvent($)
 }
 
 
-sub generateOutputXML()
+sub generateOutputXML($)
 {
-	my $self = shift;
-	
+	my ($self, $outputXmlPath) = @_;
 	
 	defined  $self->{mSelectorFile} or die "The selector file didn't loaded\n";
 	my $pathToXmlSelector = $self->{mSelectorFile};
 	
-	my $xmlParser = XML::LibXML->new; 
-	my $outputXmlPath = "output/fetchedData.xml";
+	my $xmlParser = XML::LibXML->new;
+	unlink $outputXmlPath;
 	copy $pathToXmlSelector, $outputXmlPath or die $?; 
 	my $doc = $xmlParser->parse_file($pathToXmlSelector);
-	my $xpath = "/dataChoosenToDownload";
-	$xpath = "/note/dataChoosenToDownload";
-	$xpath = "";
-	my @rootXmlNode = $doc->findnodes("/");
-	
+	my $xpath = "";
+	my @rootXmlNode = $doc->findnodes("/");	
 	
 	createEventListXML($rootXmlNode[0], $xpath, $outputXmlPath);
 	correctFormatXmlDocument($outputXmlPath);
@@ -163,9 +158,8 @@ sub generateOutputXML()
 sub correctFormatXmlDocument($)
 {
 
-	my $pathToXmlDocumentToCorrect = shift;
- # create new   XML::Tidy object from         MainFile.xml
-  my $tidy_obj = XML::Tidy->new('filename' => $pathToXmlDocumentToCorrect);
+   my $pathToXmlDocumentToCorrect = shift;
+   my $tidy_obj = XML::Tidy->new('filename' => $pathToXmlDocumentToCorrect);
 
   # Tidy up the indenting
      $tidy_obj->tidy();
@@ -180,25 +174,27 @@ sub correctFormatXmlDocument($)
 sub updateEventListXMLWithEventDetails($)
 {
 	my ($pathToXmlWithEventsLinks) = @_;
-	my @eventsLinks = pickupLinksToFromXml($pathToXmlWithEventsLinks);
+	my @eventsLinks = pickupLinksFromXml($pathToXmlWithEventsLinks);
 	
 	my @fileNamesWithAnEventDetails;  
 	
 	for(@eventsLinks) 	
 	{
 		my $anEventLink = $_;
-		my $anFileNameWithEventDetails = startCreatingXmlPartWithAnEventDetail($anEventLink)
+		my $anFileNameWithEventDetails = startCreatingXmlPartWithAnEventDetail($anEventLink);
 		push @fileNamesWithAnEventDetails, $anFileNameWithEventDetails ;
 		die "TODO: merging xml element with main xml";
 		die "TODO: if there are more than 10 process wait";
 	}
-	
-	
-	
-	die "updateEventListXMLWithEventDetails: Not implemented yet\n"
-
+		
+		
 }
 
+sub pickupLinksFromXml($)
+{
+
+
+}
 
 sub updateEventListXMLWithBookmakerOffer($)
 {
