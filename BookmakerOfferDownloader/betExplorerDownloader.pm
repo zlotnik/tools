@@ -133,7 +133,7 @@ sub findTheBestOddInLinkToEvent($)
 	print $content;
 }
 
-
+#weak name VV
 sub generateOutputXML($)
 {
 	my ($self, $outputXmlPath) = @_;
@@ -142,11 +142,12 @@ sub generateOutputXML($)
 	my $pathToXmlSelector = $self->{mSelectorFile};
 	
 	my $xmlParser = XML::LibXML->new;
-	unlink $outputXmlPath;
+	unlink $outputXmlPath; #does it needed?
 	copy $pathToXmlSelector, $outputXmlPath or die $?; 
 	my $doc = $xmlParser->parse_file($pathToXmlSelector);
 	my $xpath = "";
 	my @rootXmlNode = $doc->findnodes("/");	
+	#my $rootXmlNode = $doc->findnodes("/")[0]; maybe this is better	
 	
 	createEventListXML($rootXmlNode[0], $xpath, $outputXmlPath);
 	correctFormatXmlDocument($outputXmlPath);
@@ -303,9 +304,6 @@ sub createEventListXML($$$)
 			#updateXmlNodeWithDataFromBookmaker($node, "${xpath}/${nodeName}", $outputXmlPath);
 			updateXmlNodeWithDataFromBookmaker("${xpath}/${nodeName}", $outputXmlPath);				
 		}
-		
-	
-		#print "END OF RECURENCE 2 $xpath\n"
 	}
 			
 

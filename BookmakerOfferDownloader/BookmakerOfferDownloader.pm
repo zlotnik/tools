@@ -2,24 +2,20 @@ package BookmakerOfferDownloader;
 
 use MarathonParser;
 use BetexplorerParser;
-
+use BookmakerXmlDataParser;
 
 
 sub new
 {
 	my $class = shift;
 	my $self = {
-			m_parsersList => undef,
+			m_BookmakerParsersList => undef,
 			m_downloadedOffer => undef
 	
 		   };
-
-
+		   
 	my @listOfParser = @{(shift)};
 	
-#	print "\$class $class \n";
-#	print @listOfParser ;
-
 	bless $self, $class;
 	$self->initialize(\@listOfParser);
 
@@ -33,19 +29,20 @@ sub initialize(@)
 	my @listOfParser = @{$_[1]};
 
 
-	$self->{m_parsersList} = []; 
-
+	$self->{m_BookmakerParsersList} = []; 
+	$self->{m_BookmakerXmlDataParser} = BookmakerXmlDataParser->new();  
+	
 	for(@listOfParser)
 	{
 		my $parser = $_;
 		if( $parser eq 'Marathon')
 		{
-			push  @{$self->{m_parsersList}},  MarathonParser->new() ; 
+			push  @{$self->{m_BookmakerParsersList}},  MarathonParser->new() ; 
 		}
 		elsif( $parser eq 'Betexplorer')
 		{
 			
-			push  @{$self->{m_parsersList}},  BetexplorerParser->new() ; 
+			push  @{$self->{m_BookmakerParsersList}},  BetexplorerParser->new() ; 
 		}
 		else
 		{
@@ -54,8 +51,6 @@ sub initialize(@)
 	
 	}
 
-
-
 }
 
 sub downloadOffer(@)
@@ -63,7 +58,7 @@ sub downloadOffer(@)
 	
 	my $self = $_[0];
 
-	for(@{$self->{m_parsersList}}) 
+	for(@{$self->{m_BookmakerParsersList}}) 
 	{
 		my $currentParser = $_;
 		$currentParser->downloadOffer();
