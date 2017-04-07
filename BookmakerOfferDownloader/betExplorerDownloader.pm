@@ -107,6 +107,7 @@ sub validateSelectorFile()
 	
 }
 
+#above could be moved to parser
 sub isItCorrectXmlFile($)
 {
 	my $xmlParser = XML::LibXML->new; 

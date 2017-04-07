@@ -4,9 +4,9 @@ use Test::More tests => 7;
 use lib '..';
 use BetExplorerDownloader;
 use BookmakerXmlDataParser;
-#use Test::More skip_all => '$skip_reason';
 #TODO think about split tests
 #nice would be to have some bin directory with tools eg. parsing file for comments others tools
+#TODO nice will be to have a hooks checking format of commits
 
 my $correctBookmakerSelectorFile = "dataExamples/dataSelector.xml";
 my $correctBookmakerOfferFile = "dataExamples/bookMakersOffer.xml";
