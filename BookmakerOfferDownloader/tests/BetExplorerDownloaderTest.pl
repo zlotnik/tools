@@ -4,6 +4,9 @@ use Test::More tests => 7;
 use lib '..';
 use BetExplorerDownloader;
 use BookmakerXmlDataParser;
+#use Test::More skip_all => '$skip_reason';
+#TODO think about split tests
+#nice would be to have some bin directory with tools eg. parsing file for comments others tools
 
 my $correctBookmakerSelectorFile = "dataExamples/dataSelector.xml";
 my $correctBookmakerOfferFile = "dataExamples/bookMakersOffer.xml";
@@ -17,14 +20,16 @@ my $outputFile = "output/downloadedPolandEkstraklasa.xml";
 my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
 my $theBookMakerDownloader =  BetExplorerDownloader->new(); 
 
-ok($aBookmakerXmlDataParser->isCorectBookmakerSelectorFile($correctBookmakerSelectorFile),'BookmakerXmlDataParser->isCorectBookmakerSelectorFile');
-ok($aBookmakerXmlDataParser->isCorrectEventListFile($correctBookmakerOfferFile),'BookmakerXmlDataParser->isCorrectEventListFile');
-ok($aBookmakerXmlDataParser->isCorectBookmakerSelectorFile($correctBookmakerEventList),'BookmakerXmlDataParser->isCorectBookmakerSelectorFile');
+ok($aBookmakerXmlDataParser->isCorectBookmakerSelectorFile($correctBookmakerSelectorFile),'BookmakerXmlDataParser->isCorectBookmakerSelectorFile') or die;
+
+
+ok($aBookmakerXmlDataParser->isCorrectEventListFile($correctBookmakerOfferFile),'BookmakerXmlDataParser->isCorrectEventListFile') or die;
+ok($aBookmakerXmlDataParser->isCorectBookmakerSelectorFile($correctBookmakerEventList),'BookmakerXmlDataParser->isCorectBookmakerSelectorFile')or die;
 
 
 my $isCorectBookmakerSelectorFile = $aBookmakerXmlDataParser->isCorectBookmakerSelectorFile($selectorFile);
 my ($got, $expected, $testname) = ($isCorectBookmakerSelectorFile, 1, "Corectness of bookmaker selector file : $outputFile");
-ok($got eq $expected, $testname);
+ok($got eq $expected, $testname) or die;
 
 
 if(-e $outputFile)
@@ -44,7 +49,7 @@ BookMakerDownloader->isCorrectEventListFile($outputFile);
 
 BookMakerDownloader->createEventListXML($rootXmlNode[0], $xpath, $outputFile);
 my $isCreateEventListXMLCorrect = BookMakerDownloader->isCorrectEventListFile($outputFile); 
-ok($isCreateEventListXMLCorrect, "BookMakerDownloader->createEventListXML");
+ok($isCreateEventListXMLCorrect, "BookMakerDownloader->createEventListXML") or die;
 
 
 $theBookMakerDownloader->loadSelectorFile($selectorFile);
@@ -52,9 +57,9 @@ $theBookMakerDownloader->generateOutputXML($outputFile);
 
 my $isOutputXmlFileExist = (-e $outputFile);
 ($got, $expected, $testname) = ($isOutputXmlFileExist, 1, "BookMakerDownloader->generateOutputXML($outputFile)");
-ok($isOutputXmlFileExist, $testname);
+ok($isOutputXmlFileExist, $testname) or die;
 
 my $isCorectBookmakerOfferFile = $aBookmakerXmlDataParser->isCorectBookmakerOfferFile($outputFile);
 ($got,$expected, $testname) = ($isCorectBookmakerOfferFile, 1, "Checking if the output file $outputFile is a correct file with bookamker offer");
-ok($got, $testname); 
+ok($got, $testname) or die; 
 
