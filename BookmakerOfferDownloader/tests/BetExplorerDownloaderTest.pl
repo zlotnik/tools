@@ -4,13 +4,15 @@ use Test::More tests => 7;
 use lib '..';
 use BetExplorerDownloader;
 use BookmakerXmlDataParser;
+use FindBin;
 #TODO think about split tests
 #nice would be to have some bin directory with tools eg. parsing file for comments others tools
 #TODO nice will be to have a hooks checking format of commits
 
-my $correctBookmakerSelectorFile = "dataExamples/dataSelector.xml";
+my $correctBookmakerSelectorFile = "$FindBin::Bin/../input/parameters/examples/ekstraklasaSelector.xml";
 my $correctBookmakerOfferFile = "dataExamples/bookMakersOffer.xml";
 my $correctBookmakerEventList = "dataExamples/eventList.xml";
+
 
  
 my $selectorFile = 'input/parameters/polandEkstraklasaSelector.xml';
@@ -20,10 +22,15 @@ my $outputFile = "output/downloadedPolandEkstraklasa.xml";
 my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
 my $theBookMakerDownloader =  BetExplorerDownloader->new(); 
 
+
+(-e $correctBookmakerSelectorFile) or die "File doesn't exist $correctBookmakerSelectorFile\n";
 ok($aBookmakerXmlDataParser->isCorectBookmakerSelectorFile($correctBookmakerSelectorFile),'BookmakerXmlDataParser->isCorectBookmakerSelectorFile') or die;
 
 
+(-e $correctBookmakerOfferFile) or die "File doesn't exist $correctBookmakerOfferFile\n";
 ok($aBookmakerXmlDataParser->isCorrectEventListFile($correctBookmakerOfferFile),'BookmakerXmlDataParser->isCorrectEventListFile') or die;
+
+(-e $correctBookmakerEventList) or die "File doesn't exist $correctBookmakerEventList\n";
 ok($aBookmakerXmlDataParser->isCorectBookmakerSelectorFile($correctBookmakerEventList),'BookmakerXmlDataParser->isCorectBookmakerSelectorFile')or die;
 
 

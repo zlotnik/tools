@@ -22,10 +22,12 @@ sub new()
 
 sub isCorectBookmakerSelectorFile($)
 {
+	my $self = shift;
 	my $pathToXmlSelector = $_[0];
 	my $xmlParser = XML::LibXML->new; 
 	my $isCorrectXmlFile = $xmlParser->parse_file($pathToXmlSelector); 
-			
+	
+	#$self->xmlSelectorContainsAllNeededData($pathToXmlSelector) #instead of invoking classs without reference to object
 	if ( $isCorrectXmlFile and xmlSelectorContainsAllNeededData($pathToXmlSelector) )
 	{
 		return 1;
@@ -35,25 +37,29 @@ sub isCorectBookmakerSelectorFile($)
 
 sub isCorectBookmakerOfferFile($)
 {
+	my $self = shift;
 };
 
 sub isCorrectEventListFile($)
 {
+	my $self = shift;
 	return 0;
 };
 
 sub xmlSelectorContainsAllNeededData($)
 {
-	my $xmlSelector = $_[0];
-	return (isOneOrMoreBookmakersSpecifiedInXmlSelector($xmlSelector) and isOneOrMoreDyscyplineSpecified($xmlSelector));
+	#my $self = shift;
+	my $xmlSelectorPath = $_[0];
+	return (isOneOrMoreBookmakersSpecifiedInXmlSelector($xmlSelectorPath) and isOneOrMoreDyscyplineSpecified($xmlSelectorPath));
 
 };
 
 sub isOneOrMoreBookmakersSpecifiedInXmlSelector($)
 {
-	my $xmlDoc = $_[0];
-	
-	if(countHowManyBookmakerIsChoosedInXmlSelector($xmlDoc) > 0)
+	#my $self = shift;
+	my $xmlSelectorPath = $_[0];
+		
+	if(countHowManyBookmakerIsChoosedInXmlSelector($xmlSelectorPath) > 0)
 	{
 		return 1;
 	}
@@ -63,7 +69,14 @@ sub isOneOrMoreBookmakersSpecifiedInXmlSelector($)
 
 sub countHowManyBookmakerIsChoosedInXmlSelector($)
 {
-	my $choosenBookmakers = $doc->findnodes("/note/dataSources")->[0];
+	#my $self = shift;
+	
+	my $pathToXmlSelector = $_[0];
+	my $xmlParser = XML::LibXML->new; 
+	my $xmlParserDoc = $xmlParser->parse_file($pathToXmlSelector); 
+	
+	
+	my $choosenBookmakers = $xmlParserDoc->findnodes("/note/dataSources")->[0];
 	
 	
 	if (not defined($choosenBookmakers))
@@ -75,6 +88,7 @@ sub countHowManyBookmakerIsChoosedInXmlSelector($)
 	my $bookmakerCounter = 0;
 	foreach($choosenBookmakers->nonBlankChildNodes())
 	{
+		die "here a problem because there <betexplorer/> expected betexplorer";
 		my $disciplineName = $_;
 		if(isCorrectBookmakerName($disciplineName))
 		{
@@ -92,6 +106,7 @@ sub countHowManyBookmakerIsChoosedInXmlSelector($)
 
 sub isCorrectBookmakerName($)
 {
+	#my $self = shift;
 	my $bookmakerNamer = $_;
 	if( 'betexplorer' eq $bookmakerNamer)
 	{
@@ -102,6 +117,7 @@ sub isCorrectBookmakerName($)
 
 sub isCorrectDisciplineName($)
 {
+	#my $self = shift;
 	my $disciplineName = $_;
 	my @supportedDisciplines = ('soccer'); 
 	if ( grep( /^$disciplineName$/, $supportedDisciplines ) )
@@ -113,10 +129,13 @@ sub isCorrectDisciplineName($)
 
 sub isOneOrMoreDyscyplineSpecified($)
 {
-	my $xmlDoc = $_[0];	
+	#my $self = shift;
+	my $pathToXmlSelector = $_[0];
+	#my $xmlParser = XML::LibXML->new; 
+	#my $xmlParserDoc = $xmlParser->parse_file($pathToXmlSelector); 
 	
 	
-	if(countHowManyDisciplinesToDownloadIsDefinedInXmlSelector() > 0)
+	if(countHowManyDisciplinesToDownloadIsDefinedInXmlSelector($pathToXmlSelector) > 0)
 	{
 		return 1;
 	}
@@ -126,7 +145,11 @@ sub isOneOrMoreDyscyplineSpecified($)
 
 sub countHowManyDisciplinesToDownloadIsDefinedInXmlSelector()
 {
-	my $dataChoosenToDownloadXmlNode = $doc->findnodes("/note/dataChoosenToDownload")->[0];
+	#my $self = shift;
+	my $pathToXmlSelector = $_[0];
+	my $xmlParser = XML::LibXML->new; 
+	my $xmlParserDoc = $xmlParser->parse_file($pathToXmlSelector); 
+	my $dataChoosenToDownloadXmlNode = $xmlParserDoc->findnodes("/note/dataChoosenToDownload")->[0];
 	
 	
 	if (not defined($dataChoosenToDownloadXmlNode))
@@ -150,6 +173,5 @@ sub countHowManyDisciplinesToDownloadIsDefinedInXmlSelector()
 	}
 	return $bookmakerCounter++;
 }
-
 
 1;
