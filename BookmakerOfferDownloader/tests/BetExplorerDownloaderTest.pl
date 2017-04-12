@@ -8,10 +8,11 @@ use FindBin;
 #TODO think about split tests
 #nice would be to have some bin directory with tools eg. parsing file for comments others tools
 #TODO nice will be to have a hooks checking format of commits
+#atest run mode to consider 1.debug, 2.run all  3.stop on first 4.Categorize tests
 
 my $correctBookmakerSelectorFile = "$FindBin::Bin/../input/parameters/examples/ekstraklasaSelector.xml";
 my $correctBookmakerOfferFile = "dataExamples/bookMakersOffer.xml";
-my $correctBookmakerEventList = "dataExamples/eventList.xml";
+my $correctBookmakerEventList = "$FindBin::Bin/../output/example/downloadedEventList.xml";
 
 
  
@@ -24,18 +25,18 @@ my $theBookMakerDownloader =  BetExplorerDownloader->new();
 
 
 (-e $correctBookmakerSelectorFile) or die "File doesn't exist $correctBookmakerSelectorFile\n";
-ok($aBookmakerXmlDataParser->isCorectBookmakerSelectorFile($correctBookmakerSelectorFile),'BookmakerXmlDataParser->isCorectBookmakerSelectorFile') or die;
+ok($aBookmakerXmlDataParser->isCorectBookmakerDataSelectorFile($correctBookmakerSelectorFile),'BookmakerXmlDataParser->isCorectBookmakerDataSelectorFile') or die;
 
-
-(-e $correctBookmakerOfferFile) or die "File doesn't exist $correctBookmakerOfferFile\n";
-ok($aBookmakerXmlDataParser->isCorrectEventListFile($correctBookmakerOfferFile),'BookmakerXmlDataParser->isCorrectEventListFile') or die;
 
 (-e $correctBookmakerEventList) or die "File doesn't exist $correctBookmakerEventList\n";
-ok($aBookmakerXmlDataParser->isCorectBookmakerSelectorFile($correctBookmakerEventList),'BookmakerXmlDataParser->isCorectBookmakerSelectorFile')or die;
+ok($aBookmakerXmlDataParser->isCorrectEventListFile($correctBookmakerEventList),'BookmakerXmlDataParser->isCorrectEventListFile') or die;
+
+(-e $correctBookmakerEventList) or die "File doesn't exist $correctBookmakerEventList\n";
+ok($aBookmakerXmlDataParser->isCorectBookmakerDataSelectorFile($correctBookmakerEventList),'BookmakerXmlDataParser->isCorectBookmakerDataSelectorFile')or die;
 
 
-my $isCorectBookmakerSelectorFile = $aBookmakerXmlDataParser->isCorectBookmakerSelectorFile($selectorFile);
-my ($got, $expected, $testname) = ($isCorectBookmakerSelectorFile, 1, "Corectness of bookmaker selector file : $outputFile");
+my $isCorectBookmakerDataSelectorFile = $aBookmakerXmlDataParser->isCorectBookmakerDataSelectorFile($selectorFile);
+my ($got, $expected, $testname) = ($isCorectBookmakerDataSelectorFile, 1, "Corectness of bookmaker selector file : $outputFile");
 ok($got eq $expected, $testname) or die;
 
 

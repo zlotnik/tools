@@ -1,16 +1,16 @@
 package BookmakerXmlDataParser;
 use base 'Exporter';
-our @EXPORT = qw(isCorectBookmakerOfferFile isCorectBookmakerSelectorFile);
+our @EXPORT = qw(isCorectBookmakersOfferFile isCorectBookmakerDataSelectorFile);
 #nice to have; tool to create templates for files .pm, .pl   
 #move all parsers to new directory
 #think about code coverage
 #incorrect inputs should be
 ##################DECLARATION##################################
 sub new();
-sub isCorectBookmakerSelectorFile($);
-sub isCorectBookmakerOfferFile($);
+sub isCorectBookmakerDataSelectorFile($);
+sub isCorectBookmakersOfferFile($);
 sub xmlSelectorContainsAllNeededData($);
-sub isCorrectBookmakerName($);
+sub isCorrectBookmakerDataSourceName($);
 sub isCorrectDisciplineName($);
 #################DEFINITION####################################
 sub new()
@@ -20,7 +20,7 @@ sub new()
 	return $self;
 };
 
-sub isCorectBookmakerSelectorFile($)
+sub isCorectBookmakerDataSelectorFile($)
 {
 	my $self = shift;
 	my $pathToXmlSelector = $_[0];
@@ -35,7 +35,7 @@ sub isCorectBookmakerSelectorFile($)
 	return 0;
 };
 
-sub isCorectBookmakerOfferFile($)
+sub isCorectBookmakersOfferFile($)
 {
 	my $self = shift;
 };
@@ -85,42 +85,44 @@ sub countHowManyBookmakerIsChoosedInXmlSelector($)
 		#'Iam not sure if it is correct formula';
 	}
 
-	my $bookmakerCounter = 0;
+	my $dataSource = 0;
 	foreach($choosenBookmakers->nonBlankChildNodes())
 	{
-		die "here a problem because there <betexplorer/> expected betexplorer";
-		my $disciplineName = $_;
-		if(isCorrectBookmakerName($disciplineName))
+		
+		my $dataSourceNameXmlNode = $_;
+		my $dataSourceName = $dataSourceNameXmlNode->nodeName;
+		if(isCorrectBookmakerDataSourceName($dataSourceName))
 		{
-			$bookmakerCounter++;			
+			$dataSource++;			
 		}
 		else
 		{
 			return 0; #instead of returning 0 should be parser validating all bookmakers and requirement that all bookmaker name must be 'legal'
 		}
 	}
-	return $bookmakerCounter++;
-	
+	return $dataSource;
 }
 
-
-sub isCorrectBookmakerName($)
+sub isCorrectBookmakerDataSourceName($)
 {
 	#my $self = shift;
-	my $bookmakerNamer = $_;
+	my $bookmakerNamer = $_[0];
 	if( 'betexplorer' eq $bookmakerNamer)
 	{
 		return 1;
 	}
 	return 0;
 }
+	
+
 
 sub isCorrectDisciplineName($)
 {
 	#my $self = shift;
-	my $disciplineName = $_;
+	
+	my $disciplineName = $_[0];
 	my @supportedDisciplines = ('soccer'); 
-	if ( grep( /^$disciplineName$/, $supportedDisciplines ) )
+	if ( grep( /^$disciplineName$/, @supportedDisciplines ) )
 	{
 		return 1;
 	}
@@ -158,20 +160,23 @@ sub countHowManyDisciplinesToDownloadIsDefinedInXmlSelector()
 		#'Iam not sure if it is correct formula';
 	}
 
-	my $bookmakerCounter = 0;
+	my $dataSource = 0;
 	foreach($dataChoosenToDownloadXmlNode->nonBlankChildNodes())
 	{
-		my $disciplineName = $_;
+		
+		my $dataSourceNameXmlNode = $_;
+		my $disciplineName = $dataSourceNameXmlNode->nodeName;
+		
 		if(isCorrectDisciplineName($disciplineName))
 		{
-			$bookmakerCounter++;			
+			$dataSource++;			
 		}
 		else
 		{
 			return 0; #instead of returning 0 should be parser validating all disciplnes and requirement that all bookmaker name must be 'legal'
 		}
 	}
-	return $bookmakerCounter++;
+	return $dataSource++;
 }
 
 1;
