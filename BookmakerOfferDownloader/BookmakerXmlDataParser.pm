@@ -2,7 +2,7 @@ package BookmakerXmlDataParser;
 use strict;
 use warnings;
 use base 'Exporter';
-our @EXPORT = qw(isCorectBookmakersOfferFile isCorectBookmakerDataSelectorFile);
+our @EXPORT = qw(isCorectDownloadedBookmakerOfferFile isCorectBookmakerDataSelectorFile);
 #nice to have; tool to create templates for files .pm, .pl   
 #move all parsers to new directory
 #think about code coverage
@@ -10,7 +10,7 @@ our @EXPORT = qw(isCorectBookmakersOfferFile isCorectBookmakerDataSelectorFile);
 ##################DECLARATION##################################
 sub new();
 sub isCorectBookmakerDataSelectorFile($);
-sub isCorectBookmakersOfferFile($);
+sub isCorectDownloadedBookmakerOfferFile($);
 sub xmlSelectorContainsAllNeededData($);
 sub isCorrectBookmakerDataSourceName($);
 sub isCorrectDisciplineName($);
@@ -41,12 +41,7 @@ sub isCorectBookmakerDataSelectorFile($)
 	return 0;
 };
 
-sub isCorectBookmakersOfferFile($)
-{
-	my $self = shift;
-};
-
-sub isCorrectEventListFile($)
+sub isCorectDownloadedBookmakerOfferFile($)
 {
 	my $self = shift;
 	my $xmlSelectorPath = $_[0];
