@@ -1,4 +1,6 @@
 package BookmakerXmlDataParser;
+use strict;
+use warnings;
 use base 'Exporter';
 our @EXPORT = qw(isCorectBookmakersOfferFile isCorectBookmakerDataSelectorFile);
 #nice to have; tool to create templates for files .pm, .pl   
@@ -12,6 +14,10 @@ sub isCorectBookmakersOfferFile($);
 sub xmlSelectorContainsAllNeededData($);
 sub isCorrectBookmakerDataSourceName($);
 sub isCorrectDisciplineName($);
+sub isLegalNameOfCountryCategory($);
+sub isCorrectEventXmlNode($);
+sub xmlNodeContainsAllNeededData($);
+sub extractFirstEventXmlNodeFromCountryCategoryXmlNode($);
 #################DEFINITION####################################
 sub new()
 {
@@ -43,8 +49,67 @@ sub isCorectBookmakersOfferFile($)
 sub isCorrectEventListFile($)
 {
 	my $self = shift;
+	my $xmlSelectorPath = $_[0];
+	my $xmlParser = XML::LibXML->new; 
+	my $xmlParserDoc = $xmlParser->parse_file($xmlSelectorPath) or return 0; 
+	my $downloadedOfferXmlNode = $xmlParserDoc->findnodes("downloadedOffer")->[0] or return 0;
+	my $disciplineXmlNode = $downloadedOfferXmlNode->nonBlankChildNodes->[0];
+	
+	if(isCorrectDisciplineName($disciplineXmlNode->nodeName))
+	{
+		my $countryCategoryXmlNode = $disciplineXmlNode->nonBlankChildNodes->[0];
+		my $countryCategoryName = $countryCategoryXmlNode->nodeName; 
+		isLegalNameOfCountryCategory($countryCategoryName) or return 0;
+		my $eventXmlNode = extractFirstEventXmlNodeFromCountryCategoryXmlNode($countryCategoryXmlNode) or return 0;
+		if(isCorrectEventXmlNode($eventXmlNode))
+		{
+			return 1;
+		}
+	}
+	
 	return 0;
 };
+	
+sub extractFirstEventXmlNodeFromCountryCategoryXmlNode($)
+{
+	my $countryCategoryXmlNode = $_[0];
+
+	my $groupCategoryXmlNode = $countryCategoryXmlNode->nonBlankChildNodes->[0];
+	#$groupCategoryXmlNodeName = $groupCategoryXmlNode->nodeName;
+	my $eventsList = $groupCategoryXmlNode->nonBlankChildNodes->[0];
+	
+	if($eventsList->nodeName eq "Events")
+	{
+		my $eventXmlNode = $eventsList->nonBlankChildNodes->[0];
+		if($eventXmlNode->nodeName eq "event")
+		{
+			return $eventXmlNode; 
+		}
+	}
+}
+
+sub isCorrectEventXmlNode($)
+{
+	my $eventXmlNode = $_[0];
+	my $eventXmlNodeName = $eventXmlNode->nodeName;
+	$eventXmlNodeName eq 'event' or return 0;
+	
+	if(xmlNodeContainsAllNeededData($eventXmlNodeName))
+	{
+		return 1;
+	}
+	return 0;
+}
+
+sub xmlNodeContainsAllNeededData($)
+{
+	return 1; #missing implementation
+}
+
+sub isLegalNameOfCountryCategory($)
+{
+	return 1;	#missing implementation
+}
 
 sub xmlSelectorContainsAllNeededData($)
 {
@@ -113,8 +178,6 @@ sub isCorrectBookmakerDataSourceName($)
 	}
 	return 0;
 }
-	
-
 
 sub isCorrectDisciplineName($)
 {
@@ -128,6 +191,8 @@ sub isCorrectDisciplineName($)
 	}
 	return 0;
 }
+	
+
 
 sub isOneOrMoreDyscyplineSpecified($)
 {

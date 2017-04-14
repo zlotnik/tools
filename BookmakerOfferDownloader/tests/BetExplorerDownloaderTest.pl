@@ -27,12 +27,12 @@ my $theBookMakerDownloader =  BetExplorerDownloader->new();
 (-e $correctBookmakerSelectorFile) or die "File doesn't exist $correctBookmakerSelectorFile\n";
 ok($aBookmakerXmlDataParser->isCorectBookmakerDataSelectorFile($correctBookmakerSelectorFile),'BookmakerXmlDataParser->isCorectBookmakerDataSelectorFile') or die;
 
+(-e $correctBookmakerEventList) or die "File doesn't exist $correctBookmakerEventList\n";
+ok($aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($correctBookmakerEventList),'BookmakerXmlDataParser->isCorectBookmakerDataSelectorFile')or die;
 
 (-e $correctBookmakerEventList) or die "File doesn't exist $correctBookmakerEventList\n";
 ok($aBookmakerXmlDataParser->isCorrectEventListFile($correctBookmakerEventList),'BookmakerXmlDataParser->isCorrectEventListFile') or die;
 
-(-e $correctBookmakerEventList) or die "File doesn't exist $correctBookmakerEventList\n";
-ok($aBookmakerXmlDataParser->isCorectBookmakerDataSelectorFile($correctBookmakerEventList),'BookmakerXmlDataParser->isCorectBookmakerDataSelectorFile')or die;
 
 
 my $isCorectBookmakerDataSelectorFile = $aBookmakerXmlDataParser->isCorectBookmakerDataSelectorFile($selectorFile);
