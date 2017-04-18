@@ -3,17 +3,21 @@
 <soccer>
   <poland>
     <ekstraklasa>
-      <event url="http://www.betexplorer.com/soccer/poland/ekstraklasa/arka-gdynia-plock/8nLJPPdG/" />
-      <event url="http://www.betexplorer.com/soccer/poland/ekstraklasa/cracovia-legia/MkPNOqCM/" />
-      <event url="http://www.betexplorer.com/soccer/poland/ekstraklasa/korona-kielce-termalica-b-b/nXWARoS3/" />
-      <event url="http://www.betexplorer.com/soccer/poland/ekstraklasa/lech-poznan-ruch/v7T2T7ci/" />
-      <event url="http://www.betexplorer.com/soccer/poland/ekstraklasa/leczna-wisla/IcS6SRCc/" />
-      <event url="http://www.betexplorer.com/soccer/poland/ekstraklasa/piast-gliwice-jagiellonia/QNVEQ5sA/" />
-      <event url="http://www.betexplorer.com/soccer/poland/ekstraklasa/pogon-szczecin-lechia-gdansk/GCORN3RS/" />
-      <event url="http://www.betexplorer.com/soccer/poland/ekstraklasa/zaglebie-slask-wroclaw/x2kK4OKj/" />
+	  <Events>
+		  <event url="http://www.betexplorer.com/soccer/poland/ekstraklasa/arka-gdynia-plock/8nLJPPdG/" />
+		  <event url="http://www.betexplorer.com/soccer/poland/ekstraklasa/cracovia-legia/MkPNOqCM/" />
+		  <event url="http://www.betexplorer.com/soccer/poland/ekstraklasa/korona-kielce-termalica-b-b/nXWARoS3/" />
+		  <event url="http://www.betexplorer.com/soccer/poland/ekstraklasa/lech-poznan-ruch/v7T2T7ci/" />
+		  <event url="http://www.betexplorer.com/soccer/poland/ekstraklasa/leczna-wisla/IcS6SRCc/" />
+		  <event url="http://www.betexplorer.com/soccer/poland/ekstraklasa/piast-gliwice-jagiellonia/QNVEQ5sA/" />
+		  <event url="http://www.betexplorer.com/soccer/poland/ekstraklasa/pogon-szczecin-lechia-gdansk/GCORN3RS/" />
+		  <event url="http://www.betexplorer.com/soccer/poland/ekstraklasa/zaglebie-slask-wroclaw/x2kK4OKj/" />
+	  </Events>
     </ekstraklasa>
     <division-1>
-      <event url="http://www.betexplorer.com/soccer/poland/division-1/sandecja-nowy-s-stal-mielec/MabP3K1N/" />
+	  <Events>
+			<event url="http://www.betexplorer.com/soccer/poland/division-1/sandecja-nowy-s-stal-mielec/MabP3K1N/" />
+	  </Events>
     </division-1>
   </poland>
 </soccer>

@@ -2,7 +2,7 @@ package BookmakerXmlDataParser;
 use strict;
 use warnings;
 use base 'Exporter';
-our @EXPORT = qw(isCorectDownloadedBookmakerOfferFile isCorectBookmakerDataSelectorFile);
+our @EXPORT = qw(isCorectDownloadedBookmakerOfferFile isCorectBookmakerDataSelectorFile isCorrectEventListFile);
 #nice to have; tool to create templates for files .pm, .pl   
 #move all parsers to new directory
 #think about code coverage
@@ -18,6 +18,7 @@ sub isLegalNameOfCountryCategory($);
 sub isCorrectEventXmlNode($);
 sub xmlNodeContainsAllNeededData($);
 sub extractFirstEventXmlNodeFromCountryCategoryXmlNode($);
+sub isCorrectEventListFile($);
 #################DEFINITION####################################
 sub new()
 {
@@ -64,6 +65,31 @@ sub isCorectDownloadedBookmakerOfferFile($)
 	
 	return 0;
 };
+
+sub isCorrectEventListFile($)
+{
+	my $self = shift;
+	my $xmlSelectorPath = $_[0];
+	my $xmlParser = XML::LibXML->new; 
+	my $xmlParserDoc = $xmlParser->parse_file($xmlSelectorPath) or return 0; 
+	my $downloadedOfferXmlNode = $xmlParserDoc->findnodes("downloadedOffer")->[0] or return 0;
+	my $disciplineXmlNode = $downloadedOfferXmlNode->nonBlankChildNodes->[0];
+	return 0 ; die "unimplemented yet but seems to be very simmilar isCorectDownloadedBookmakerOfferFile"
+	if(isCorrectDisciplineName($disciplineXmlNode->nodeName))
+	{
+		my $countryCategoryXmlNode = $disciplineXmlNode->nonBlankChildNodes->[0];
+		my $countryCategoryName = $countryCategoryXmlNode->nodeName; 
+		isLegalNameOfCountryCategory($countryCategoryName) or return 0;
+		my $eventXmlNode = extractFirstEventXmlNodeFromCountryCategoryXmlNode($countryCategoryXmlNode) or return 0;
+		if(isCorrectEventXmlNode($eventXmlNode))
+		{
+			return 1;
+		}
+	}
+	
+	return 0;
+};
+
 	
 sub extractFirstEventXmlNodeFromCountryCategoryXmlNode($)
 {

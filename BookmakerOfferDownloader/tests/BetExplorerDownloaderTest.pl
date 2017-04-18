@@ -43,12 +43,11 @@ if(-e $outputFile)
 }
 
 my $xmlParser = XML::LibXML->new;
-copy $selectorFile, $outputFile or die $?; #does it needed?
-my $doc = $xmlParser->parse_file($selectorFile);
+copy $correctBookmakerSelectorFile, $outputFile or die $?; #does it needed?
+my $doc = $xmlParser->parse_file($correctBookmakerSelectorFile);
 my $xpath = "";
 my @rootXmlNode = $doc->findnodes("/");	
 #my $rootXmlNode = $doc->findnodes("/")[0]; maybe this is better		
-#BookMakerDownloader->isCorrectEventListFile($outputFile); 
 
 
 BookMakerDownloader->createEventListXML($rootXmlNode[0], $xpath, $outputFile);
