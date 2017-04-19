@@ -150,7 +150,7 @@ sub generateOutputXML($)
 	my @rootXmlNode = $doc->findnodes("/");	
 	#my $rootXmlNode = $doc->findnodes("/")[0]; maybe this is better	
 	
-	createEventListXML($rootXmlNode[0], $xpath, $outputXmlPath);
+	$self->createEventListXML($rootXmlNode[0], $xpath, $outputXmlPath);
 	correctFormatXmlDocument($outputXmlPath);
 	updateEventListXMLWithEventDetails($outputXmlPath);
 	updateEventListXMLWithBookmakerOffer($outputXmlPath);
@@ -283,21 +283,18 @@ sub addChildSubcategoryNodeToOfferXml($$$)
 		
 sub createEventListXML($$$)
 {
-	my $xmlNode = $_[0];
-	my $xpath = $_[1];
-	my $outputXmlPath = $_[2];
-	
+	my ($self, $xmlNode, $xpath, $outputXmlPath) = @_;
+		
 	#foreach (getAllSubCategories($xmlDoc, $xpath))
 	foreach ($xmlNode->nonBlankChildNodes())
 	{
-		my $node = $_;				
-		
+		my $node = $_;						
 		my $nodeName = $node->nodeName;
 			
 		if($node->hasChildNodes() )
 		{
 			my $childNode = $_;
-			createEventListXML($node,"$xpath/$nodeName", $outputXmlPath);
+			$self->createEventListXML($node,"$xpath/$nodeName", $outputXmlPath);
 		}
 		else
 		{

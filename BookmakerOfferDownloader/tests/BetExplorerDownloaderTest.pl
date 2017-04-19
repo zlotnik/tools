@@ -50,7 +50,12 @@ my @rootXmlNode = $doc->findnodes("/");
 #my $rootXmlNode = $doc->findnodes("/")[0]; maybe this is better		
 
 
-BookMakerDownloader->createEventListXML($rootXmlNode[0], $xpath, $outputFile);
+my $theBookMakerDownloader =  BetExplorerDownloader->new();
+$theBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
+$theBookMakerDownloader->createEventListXML($rootXmlNode[0], $xpath, $outputFile);
+
+$theBookMakerDownloader->generateOutputXML($outputFile);
+
 my $isCreateEventListXMLCorrect = BookMakerDownloader->isCorrectEventListFile($outputFile); 
 ok($isCreateEventListXMLCorrect, "BookMakerDownloader->createEventListXML") or die;
 
