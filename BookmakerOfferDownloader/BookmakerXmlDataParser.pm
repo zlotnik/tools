@@ -3,6 +3,8 @@ use strict;
 use warnings;
 use base 'Exporter';
 our @EXPORT = qw(isCorectDownloadedBookmakerOfferFile isCorectBookmakerDataSelectorFile isCorrectEventListFile);
+
+use LWP::Simple;
 #nice to have; tool to create templates for files .pm, .pl   
 #move all parsers to new directory
 #think about code coverage
@@ -91,12 +93,17 @@ sub isCorrectEventListFile($)
 	return 0;
 };
 
-
 sub isCorrectLinkToEventXmlNode($)
 {
 	my $eventNode = $_[0];
 	$eventNode =~ m|event url="(.*)"|;
-	die "finished here check if REXP is correct and the link can be accesible 1/3 times";
+	my $urlToEvent = $1; 
+	my $htmlContent = get($urlToEvent);
+	if(defined $htmlContent)
+	{
+		return 1;
+	}
+	return 0;
 	
 	
 }
