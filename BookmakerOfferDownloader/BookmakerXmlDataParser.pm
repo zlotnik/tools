@@ -19,6 +19,7 @@ sub isCorrectEventXmlNode($);
 sub xmlNodeContainsAllNeededData($);
 sub extractFirstEventXmlNodeFromCountryCategoryXmlNode($);
 sub isCorrectEventListFile($);
+sub isCorrectLinkToEventXmlNode($);
 #################DEFINITION####################################
 sub new()
 {
@@ -72,16 +73,16 @@ sub isCorrectEventListFile($)
 	my $xmlSelectorPath = $_[0];
 	my $xmlParser = XML::LibXML->new; 
 	my $xmlParserDoc = $xmlParser->parse_file($xmlSelectorPath) or return 0; 
-	my $downloadedOfferXmlNode = $xmlParserDoc->findnodes("downloadedOffer")->[0] or return 0;
+	my $downloadedOfferXmlNode = $xmlParserDoc->findnodes("eventList")->[0] or return 0;
 	my $disciplineXmlNode = $downloadedOfferXmlNode->nonBlankChildNodes->[0];
-	return 0 ; die "unimplemented yet but seems to be very simmilar isCorectDownloadedBookmakerOfferFile"
+	
 	if(isCorrectDisciplineName($disciplineXmlNode->nodeName))
 	{
 		my $countryCategoryXmlNode = $disciplineXmlNode->nonBlankChildNodes->[0];
 		my $countryCategoryName = $countryCategoryXmlNode->nodeName; 
 		isLegalNameOfCountryCategory($countryCategoryName) or return 0;
 		my $eventXmlNode = extractFirstEventXmlNodeFromCountryCategoryXmlNode($countryCategoryXmlNode) or return 0;
-		if(isCorrectEventXmlNode($eventXmlNode))
+		if(isCorrectLinkToEventXmlNode($eventXmlNode))
 		{
 			return 1;
 		}
@@ -89,6 +90,16 @@ sub isCorrectEventListFile($)
 	
 	return 0;
 };
+
+
+sub isCorrectLinkToEventXmlNode($)
+{
+	my $eventNode = $_[0];
+	$eventNode =~ m|event url="(.*)"|;
+	die "finished here check if REXP is correct and the link can be accesible 1/3 times";
+	
+	
+}
 
 	
 sub extractFirstEventXmlNodeFromCountryCategoryXmlNode($)
