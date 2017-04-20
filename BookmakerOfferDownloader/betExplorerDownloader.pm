@@ -17,6 +17,8 @@ our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml genera
 
 #my $inputFileName = $ARGV[0];
 
+#would be nice to have something to check some code clean metrics eg. code width, code length, number of sub in class 
+
 #open(INPUT, "<", $inputFileName) or die "Unable to open file"; 
 ###############SUB PROTOTYPES############################################
 sub new();
@@ -206,8 +208,8 @@ sub updateEventListXMLWithBookmakerOffer($)
 
 sub updateXmlNodeWithDataFromBookmaker($$)
 {
-	#my $currentlyUpdatedNode = $_[0]; # not sure if it is needed maybe better to load every time from $outputXmlPath
-	my ($xsubPath, $outputXmlPath) = @_; 
+	
+	my ($self,$xsubPath, $outputXmlPath) = @_; 
 	
 		
 	my $rootNode = getRootNode($outputXmlPath); 
@@ -286,6 +288,13 @@ sub createEventListXML($$$)
 	my ($self, $xmlNode, $xpath, $outputXmlPath) = @_;
 		
 	#foreach (getAllSubCategories($xmlDoc, $xpath))
+	if($xpath eq '')
+	{
+		$xmlNode = $xmlNode->findnodes("/note/dataChoosenToDownload")->[0]->nonBlankChildNodes()->[0];
+	}
+	
+	
+	
 	foreach ($xmlNode->nonBlankChildNodes())
 	{
 		my $node = $_;						
@@ -295,12 +304,13 @@ sub createEventListXML($$$)
 		{
 			my $childNode = $_;
 			$self->createEventListXML($node,"$xpath/$nodeName", $outputXmlPath);
+			#enclose in some sub like seekXmlNodeWithDataTofetch or something better ...  
 		}
 		else
 		{
 			print "END OF RECURENCE $xpath/$nodeName\n";
 			#updateXmlNodeWithDataFromBookmaker($node, "${xpath}/${nodeName}", $outputXmlPath);
-			updateXmlNodeWithDataFromBookmaker("${xpath}/${nodeName}", $outputXmlPath);				
+			$self->updateXmlNodeWithDataFromBookmaker("${xpath}/${nodeName}", $outputXmlPath);				
 		}
 	}
 			
