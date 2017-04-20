@@ -11,6 +11,7 @@ use File::Copy;
 #TODO nice would be to have hooks checking format of commits
 #atest run mode to consider 1.debug, 2.run all  3.stop on first 4.Categorize tests
 #todo: add to the desing a picture describing stages of creating output xml
+#testing script should check partial corectness first	
 
 my $correctBookmakerSelectorFile = "$FindBin::Bin/../input/parameters/examples/ekstraklasaSelector.xml";
 my $correctDownloadedBookmakerOfferFile = "$FindBin::Bin/../output/example/downloadedBookMakersOffer.xml";
@@ -50,7 +51,7 @@ my @rootXmlNode = $doc->findnodes("/");
 #my $rootXmlNode = $doc->findnodes("/")[0]; maybe this is better		
 
 
-my $theBookMakerDownloader =  BetExplorerDownloader->new();
+
 $theBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
 $theBookMakerDownloader->createEventListXML($rootXmlNode[0], $xpath, $outputFile);
 

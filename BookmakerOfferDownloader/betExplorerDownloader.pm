@@ -18,6 +18,9 @@ our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml genera
 #my $inputFileName = $ARGV[0];
 
 #would be nice to have something to check some code clean metrics eg. code width, code length, number of sub in class 
+#change capitalization of this file
+#nice to have time login with every git pull ,git push command for cost measuring purposes
+
 
 #open(INPUT, "<", $inputFileName) or die "Unable to open file"; 
 ###############SUB PROTOTYPES############################################
@@ -209,11 +212,15 @@ sub updateEventListXMLWithBookmakerOffer($)
 sub updateXmlNodeWithDataFromBookmaker($$)
 {
 	
-	my ($self,$xsubPath, $outputXmlPath) = @_; 
+	my ($self,$xsubPath, $outputXmlPath) = @_;  die "here i finished, something wrong with arguments"
+	my $pathToXmlSelector = shift;
 	
-		
-	my $rootNode = getRootNode($outputXmlPath); 
-	for(getAllSubCategories($rootNode, $xsubPath))
+	my $xmlParser = XML::LibXML->new; #global parser will improve optialization
+	my $xmlDoc = $xmlParser->parse_file($pathToXmlSelector) or die $?;
+	
+	my $betsDataXmlNode = seekBetsDataXmlSelectorNode($xmlDoc);
+	
+	for(getAllSubCategories($betsDataXmlNode, $xsubPath))
 	{
 		my $subCategoryName = $_;
 		my $xpathToNewChildNode = "${xsubPath}/${subCategoryName}";
@@ -240,7 +247,8 @@ sub isLinkToEvent($)
 	#die "unimplemented yet";
 
 }
-sub getRootNode($)
+
+sub getRootNode($) #doesn't used anymore?
 {
 	my $pathToXmlSelector = shift;
 	
@@ -249,6 +257,16 @@ sub getRootNode($)
 	my @rootXmlNode = $doc->findnodes("/");#$doc->findnodes("/")->[0];
 	return $rootXmlNode[0];
 }
+#coverity test
+sub seekBetsDataXmlSelectorNode($)
+{
+
+	my $wholeXmlDocument = shift;		
+	
+	my $betsDataXmlNode = $wholeXmlDocument->findnodes("/note/dataChoosenToDownload")->[0];#->nonBlankChildNodes()->[0];
+	return $betsDataXmlNode;
+}
+
 
 sub addLinkToEventToOfferXml($$$)
 {
@@ -289,10 +307,9 @@ sub createEventListXML($$$)
 		
 	#foreach (getAllSubCategories($xmlDoc, $xpath))
 	if($xpath eq '')
-	{
-		$xmlNode = $xmlNode->findnodes("/note/dataChoosenToDownload")->[0]->nonBlankChildNodes()->[0];
-	}
-	
+	{		
+		$xmlNode = seekBetsDataXmlSelectorNode($xmlNode);
+	}	
 	
 	
 	foreach ($xmlNode->nonBlankChildNodes())
