@@ -47,6 +47,7 @@ my $xmlParser = XML::LibXML->new;
 copy $correctBookmakerSelectorFile, $outputFile or die $?; #does it needed?
 my $doc = $xmlParser->parse_file($correctBookmakerSelectorFile);
 my $xpath = "";
+
 my @rootXmlNode = $doc->findnodes("/");	
 #my $rootXmlNode = $doc->findnodes("/")[0]; maybe this is better		
 
@@ -55,9 +56,9 @@ my @rootXmlNode = $doc->findnodes("/");
 $theBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
 $theBookMakerDownloader->createEventListXML($rootXmlNode[0], $xpath, $outputFile);
 
-$theBookMakerDownloader->generateOutputXML($outputFile);
+#$theBookMakerDownloader->generateOutputXML($outputFile);
 
-my $isCreateEventListXMLCorrect = BookMakerDownloader->isCorrectEventListFile($outputFile); 
+my $isCreateEventListXMLCorrect = $aBookmakerXmlDataParser->isCorrectEventListFile($outputFile); 
 ok($isCreateEventListXMLCorrect, "BookMakerDownloader->createEventListXML") or die;
 
 

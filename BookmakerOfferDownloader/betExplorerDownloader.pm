@@ -139,8 +139,8 @@ sub findTheBestOddInLinkToEvent($)
 	print $content;
 }
 
-#weak name VV
-sub generateOutputXML($)
+
+sub generateOutputXML($) #weak name
 {
 	my ($self, $outputXmlPath) = @_;
 	
@@ -205,17 +205,17 @@ sub pickupLinksFromXml($)
 
 sub updateEventListXMLWithBookmakerOffer($)
 {
-	die "updateEventListXMLWithBookmakerOffer: Not implemented yet\n"
+	
 }
 
 
 sub updateXmlNodeWithDataFromBookmaker($$)
 {
 	
-	my ($self,$xsubPath, $outputXmlPath) = @_;  die "here i finished, something wrong with arguments"
-	my $pathToXmlSelector = shift;
+	#my $pathToXmlSelector = shift;
+	my ($self,$xsubPath, $pathToXmlSelector) = @_;  
 	
-	my $xmlParser = XML::LibXML->new; #global parser will improve optialization
+	my $xmlParser = XML::LibXML->new; #global parser will improve optimalization
 	my $xmlDoc = $xmlParser->parse_file($pathToXmlSelector) or die $?;
 	
 	my $betsDataXmlNode = seekBetsDataXmlSelectorNode($xmlDoc);
@@ -227,13 +227,13 @@ sub updateXmlNodeWithDataFromBookmaker($$)
 		
 		if(isLinkToEvent($subCategoryName))
 		{
-			addLinkToEventToOfferXml($xsubPath,  $subCategoryName, $outputXmlPath);
+			addLinkToEventToOfferXml($xsubPath,  $subCategoryName, $pathToXmlSelector);
 		}
 		else
 		{
-			addChildSubcategoryNodeToOfferXml($xsubPath,  $subCategoryName, $outputXmlPath);
+			addChildSubcategoryNodeToOfferXml($xsubPath,  $subCategoryName, $pathToXmlSelector);
 		}
-		updateXmlNodeWithDataFromBookmaker($xpathToNewChildNode,$outputXmlPath);
+		updateXmlNodeWithDataFromBookmaker($xpathToNewChildNode,$pathToXmlSelector);
 	}
 	
 }
@@ -293,7 +293,7 @@ sub addChildSubcategoryNodeToOfferXml($$$)
 	
 	my $xmlParser = XML::LibXML->new;
 	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
-	my $parentNodeToUpdate = $document->findnodes($xpathToParent)->[0] or die $?;
+	my $parentNodeToUpdate = $document->findnodes($xpathToParent)->[0] or die "Can't find xml node specify by xpath:$xpathToParent in xml\n $document\n";
 	my $newNode = XML::LibXML::Element->new($nameOfNewChildNode);
 	my $lineBreakTextNode = XML::LibXML::Text->new("\n");	
 	$parentNodeToUpdate->addChild($newNode);	
@@ -325,13 +325,12 @@ sub createEventListXML($$$)
 		}
 		else
 		{
+			#create a 'verbosity' switch
 			print "END OF RECURENCE $xpath/$nodeName\n";
 			#updateXmlNodeWithDataFromBookmaker($node, "${xpath}/${nodeName}", $outputXmlPath);
 			$self->updateXmlNodeWithDataFromBookmaker("${xpath}/${nodeName}", $outputXmlPath);				
 		}
 	}
-			
-
 };
 
 

@@ -31,20 +31,13 @@ sub getAllSubCategories()
 	
 	my $linkToCategory = 'http://www.betexplorer.com/' ;
 	my $contentOfSubcategoryPage  = get($linkToCategory) or die "unable to get $linkToCategory \n"; # move it to CategoryPage objects 
-	
-	
-	while($contentOfSubcategoryPage =~ m|${mSubCategoryXpath}/(.*?)/|g)
+		
+	while($contentOfSubcategoryPage =~ m|${mSubCategoryXpath}/(.*?)/|gi)
 	{
 			push @toReturn, $1;
 	}
-	
-	
-	
-	
 	return @toReturn;
-
 }
-
 
 1;
 
