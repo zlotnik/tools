@@ -233,7 +233,7 @@ sub updateXmlNodeWithDataFromBookmaker($$)
 		{
 			addChildSubcategoryNodeToOfferXml($xsubPath,  $subCategoryName, $pathToXmlSelector);
 		}
-		updateXmlNodeWithDataFromBookmaker($xpathToNewChildNode,$pathToXmlSelector);
+		$self->updateXmlNodeWithDataFromBookmaker($xpathToNewChildNode,$pathToXmlSelector);
 	}
 	
 }
@@ -270,11 +270,13 @@ sub seekBetsDataXmlSelectorNode($)
 
 sub addLinkToEventToOfferXml($$$)
 {
-	my ($xpathToParent, $linkToEvent, $outputXmlFilePath) = @_;
+	my ($relativeXpathToParent, $linkToEvent, $outputXmlFilePath) = @_;
+	my $absolutePathToNodeNeededUpdate =  '/note/dataChoosenToDownload' . $relativeXpathToParent; 
+	
 	
 	my $xmlParser = XML::LibXML->new;
 	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
-	my $parentNodeToUpdate = $document->findnodes($xpathToParent)->[0] or die $?;
+	my $parentNodeToUpdate = $document->findnodes($absolutePathToNodeNeededUpdate)->[0] or die $?;
 	
 	my $newNode = XML::LibXML::Element->new('event');
 	$newNode->setAttribute('url',$linkToEvent);
@@ -289,11 +291,13 @@ sub addLinkToEventToOfferXml($$$)
 sub addChildSubcategoryNodeToOfferXml($$$)
 {
 
-	my ($xpathToParent, $nameOfNewChildNode, $outputXmlFilePath) = @_;
+	my ($relativeXpathToParent, $nameOfNewChildNode, $outputXmlFilePath) = @_;
+	my $absolutePathToNodeNeededUpdate =  '/note/dataChoosenToDownload' . $relativeXpathToParent; 
+	
 	
 	my $xmlParser = XML::LibXML->new;
 	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
-	my $parentNodeToUpdate = $document->findnodes($xpathToParent)->[0] or die "Can't find xml node specify by xpath:$xpathToParent in xml\n $document\n";
+	my $parentNodeToUpdate = $document->findnodes($absolutePathToNodeNeededUpdate)->[0] or die "Can't find xml node specify by xpath:$absolutePathToNodeNeededUpdate in xml\n $document\n";
 	my $newNode = XML::LibXML::Element->new($nameOfNewChildNode);
 	my $lineBreakTextNode = XML::LibXML::Text->new("\n");	
 	$parentNodeToUpdate->addChild($newNode);	
