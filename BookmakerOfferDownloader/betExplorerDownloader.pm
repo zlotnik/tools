@@ -156,7 +156,7 @@ sub generateOutputXML($) #weak name
 	#my $rootXmlNode = $doc->findnodes("/")[0]; maybe this is better	
 	
 	$self->createEventListXML($rootXmlNode[0], $xpath, $outputXmlPath);
-	correctFormatXmlDocument($outputXmlPath);
+	
 	updateEventListXMLWithEventDetails($outputXmlPath);
 	updateEventListXMLWithBookmakerOffer($outputXmlPath);
 	
@@ -335,6 +335,7 @@ sub createEventListXML($$$)
 			$self->updateXmlNodeWithDataFromBookmaker("${xpath}/${nodeName}", $outputXmlPath);				
 		}
 	}
+	correctFormatXmlDocument($outputXmlPath);
 };
 
 
