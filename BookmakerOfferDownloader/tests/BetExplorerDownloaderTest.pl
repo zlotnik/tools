@@ -54,7 +54,7 @@ my @rootXmlNode = $doc->findnodes("/");
 
 
 $theBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
-$theBookMakerDownloader->createEventListXML($rootXmlNode[0], $xpath, $outputFile);
+$theBookMakerDownloader->createEventListXML($xpath, $outputFile);
 
 #$theBookMakerDownloader->generateOutputXML($outputFile);
 

@@ -38,7 +38,7 @@ sub findBestOdds($);
 sub calculateProfit(\%);
 sub checkNumberOfBookmaker($);
 sub convertRawDownloadedDataToHash($);
-sub createEventListXML($$$);
+sub createEventListXML($$);
 sub getAllSubCategories($$);
 sub updateXmlNodeWithDataFromBookmaker($$);
 sub getRootNode($);
@@ -155,7 +155,7 @@ sub generateOutputXML($) #weak name
 	my @rootXmlNode = $doc->findnodes("/");	
 	#my $rootXmlNode = $doc->findnodes("/")[0]; maybe this is better	
 	
-	$self->createEventListXML($rootXmlNode[0], $xpath, $outputXmlPath);
+	$self->createEventListXML($xpath, $outputXmlPath);
 	
 	updateEventListXMLWithEventDetails($outputXmlPath);
 	updateEventListXMLWithBookmakerOffer($outputXmlPath);
@@ -285,7 +285,6 @@ sub addLinkToEventToOfferXml($$$)
 	$parentNodeToUpdate->addChild($newNode);	
 	$document->toFile($outputXmlFilePath) or die $?;	
 
-
 };
 
 sub addChildSubcategoryNodeToOfferXml($$$)
@@ -305,15 +304,19 @@ sub addChildSubcategoryNodeToOfferXml($$$)
 }
 		
 		
-sub createEventListXML($$$)
+sub createEventListXML($$)
 {
-	my ($self, $xmlNode, $xpath, $outputXmlPath) = @_;
+	my ($self, $xpath, $outputXmlPath) = @_;
+
+	my $xmlParser = XML::LibXML->new;
 		
-	#foreach (getAllSubCategories($xmlDoc, $xpath))
-	if($xpath eq '')
-	{		
-		$xmlNode = seekBetsDataXmlSelectorNode($xmlNode);
-	}	
+	my $xmlNode = $xmlParser->parse_file($outputXmlPath);
+	
+	my $rootPathToEventXMLNode = '/note/dataChoosenToDownload';
+	my $absolutePathToNode = "$rootPathToEventXMLNode${xpath}";
+	
+	$xmlNode = $xmlNode->findnodes($absolutePathToNode)->[0];
+	
 	
 	
 	foreach ($xmlNode->nonBlankChildNodes())
@@ -324,7 +327,7 @@ sub createEventListXML($$$)
 		if($node->hasChildNodes() )
 		{
 			my $childNode = $_;
-			$self->createEventListXML($node,"$xpath/$nodeName", $outputXmlPath);
+			$self->createEventListXML("$xpath/$nodeName", $outputXmlPath);
 			#enclose in some sub like seekXmlNodeWithDataTofetch or something better ...  
 		}
 		else
