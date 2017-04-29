@@ -218,7 +218,7 @@ sub updateXmlNodeWithDataFromBookmaker($$)
 	my $xmlParser = XML::LibXML->new; #global parser will improve optimalization
 	my $xmlDoc = $xmlParser->parse_file($pathToXmlSelector) or die $?;
 	
-	my $betsDataXmlNode = seekBetsDataXmlSelectorNode($xmlDoc);
+	my $betsDataXmlNode = seekBetsDataInXmlEventFile($xmlDoc); #maybe this method isn't needed and its name could be not adequate
 	
 	for(getAllSubCategories($betsDataXmlNode, $xsubPath))
 	{
@@ -258,12 +258,12 @@ sub getRootNode($) #doesn't used anymore?
 	return $rootXmlNode[0];
 }
 #coverity test
-sub seekBetsDataXmlSelectorNode($)
+sub seekBetsDataInXmlEventFile($)
 {
 
 	my $wholeXmlDocument = shift;		
 	
-	my $betsDataXmlNode = $wholeXmlDocument->findnodes("/note/dataChoosenToDownload")->[0];#->nonBlankChildNodes()->[0];
+	my $betsDataXmlNode = $wholeXmlDocument->findnodes("/note/eventList")->[0];#->nonBlankChildNodes()->[0];
 	return $betsDataXmlNode;
 }
 
@@ -271,8 +271,7 @@ sub seekBetsDataXmlSelectorNode($)
 sub addLinkToEventToOfferXml($$$)
 {
 	my ($relativeXpathToParent, $linkToEvent, $outputXmlFilePath) = @_;
-	my $absolutePathToNodeNeededUpdate =  '/note/dataChoosenToDownload' . $relativeXpathToParent; 
-	
+	my $absolutePathToNodeNeededUpdate =  '/note/eventList' . $relativeXpathToParent;	
 	
 	my $xmlParser = XML::LibXML->new;
 	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
@@ -291,7 +290,7 @@ sub addChildSubcategoryNodeToOfferXml($$$)
 {
 
 	my ($relativeXpathToParent, $nameOfNewChildNode, $outputXmlFilePath) = @_;
-	my $absolutePathToNodeNeededUpdate =  '/note/dataChoosenToDownload' . $relativeXpathToParent; 
+	my $absolutePathToNodeNeededUpdate =  '/note/eventList' . $relativeXpathToParent; 
 	
 	
 	my $xmlParser = XML::LibXML->new;
@@ -312,13 +311,18 @@ sub createEventListXML($$)
 		
 	my $xmlNode = $xmlParser->parse_file($outputXmlPath);
 	
-	my $rootPathToEventXMLNode = '/note/dataChoosenToDownload';
+	if($xpath eq '')
+	{
+		my $nodeToRename = $xmlNode->findnodes('/note/dataChoosenToDownload')->[0];
+		$nodeToRename->setNodeName('eventList');
+		$xmlNode->toFile($outputXmlPath) or die $?; 
+	}
+	
+	my $rootPathToEventXMLNode = '/note/eventList';
 	my $absolutePathToNode = "$rootPathToEventXMLNode${xpath}";
 	
 	$xmlNode = $xmlNode->findnodes($absolutePathToNode)->[0];
-	
-	
-	
+		
 	foreach ($xmlNode->nonBlankChildNodes())
 	{
 		my $node = $_;						
@@ -337,7 +341,7 @@ sub createEventListXML($$)
 			#updateXmlNodeWithDataFromBookmaker($node, "${xpath}/${nodeName}", $outputXmlPath);
 			$self->updateXmlNodeWithDataFromBookmaker("${xpath}/${nodeName}", $outputXmlPath);				
 		}
-	}
+	}	
 	correctFormatXmlDocument($outputXmlPath);
 };
 

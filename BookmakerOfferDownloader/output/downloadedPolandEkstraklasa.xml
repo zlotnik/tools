@@ -4,12 +4,10 @@
   <dataSources>
     <betexplorer />
   </dataSources>
-  <dataChoosenToDownload>
+  <eventList>
     <soccer>
       <Poland>
         <ekstraklasa>
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/arka-gdynia-piast-gliwice/8MJWinD8/&quot; data-live-cell=&quot;matchlink" />
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/lech-poznan-korona-kielce/plYyW4jk/" />
           <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/plock-ruch/nDIzi6SE/" />
           <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/slask-wroclaw-leczna/Uy8ujQsL/" />
           <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/lechia-gdansk-termalica-b-b/bixtVO5e/" />
@@ -18,9 +16,6 @@
           <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/zaglebie-cracovia/SMQrkpcR/" />
         </ekstraklasa>
         <division-1>
-          <event url="http://www.betexplorer.com/soccer/Poland/division-1/chrobry-glogow-gornik-z/C033SIdE/&quot; data-live-cell=&quot;matchlink" />
-          <event url="http://www.betexplorer.com/soccer/Poland/division-1/pruszkow-stal-mielec/CQbJMS8e/&quot; data-live-cell=&quot;matchlink" />
-          <event url="http://www.betexplorer.com/soccer/Poland/division-1/podbeskidzie-legnica/bNfFN8gk/" />
           <event url="http://www.betexplorer.com/soccer/Poland/division-1/gks-katowice-tychy/6mbNLnO1/" />
           <event url="http://www.betexplorer.com/soccer/Poland/division-1/chojniczanka-sandecja-nowy-s/Y94aTbs8/" />
           <event url="http://www.betexplorer.com/soccer/Poland/division-1/drutex-bytovia-ol-grudziadz/IaVzAAtm/" />
@@ -29,8 +24,6 @@
           <event url="http://www.betexplorer.com/soccer/Poland/division-1/suwalki-kluczbork/4dRWAjRt/" />
         </division-1>
         <division-2>
-          <event url="http://www.betexplorer.com/soccer/Poland/division-2/polonia-bytom-rozwoj-katowice/EgD5oeif/&quot; data-live-cell=&quot;matchlink" />
-          <event url="http://www.betexplorer.com/soccer/Poland/division-2/polonia-warszawa-radomiak-radom/6T9cmHMs/&quot; data-live-cell=&quot;matchlink" />
           <event url="http://www.betexplorer.com/soccer/Poland/division-2/rakow-blekitni-stargard/dI2ApF60/" />
           <event url="http://www.betexplorer.com/soccer/Poland/division-2/warta-poznan-row-rybnik/nqTQhwaK/" />
           <event url="http://www.betexplorer.com/soccer/Poland/division-2/odra-opole-puszcza/0j91nyxl/" />
@@ -44,5 +37,5 @@
         </polish-cup>
       </Poland>
     </soccer>
-  </dataChoosenToDownload>
+  </eventList>
 </note>
