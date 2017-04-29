@@ -75,7 +75,7 @@ sub isCorrectEventListFile($)
 	my $xmlSelectorPath = $_[0];
 	my $xmlParser = XML::LibXML->new; 
 	my $xmlParserDoc = $xmlParser->parse_file($xmlSelectorPath) or return 0; 
-	my $downloadedOfferXmlNode = $xmlParserDoc->findnodes("eventList")->[0] or return 0;
+	my $downloadedOfferXmlNode = $xmlParserDoc->findnodes("/note/eventList")->[0] or return 0;
 	my $disciplineXmlNode = $downloadedOfferXmlNode->nonBlankChildNodes->[0];
 	
 	if(isCorrectDisciplineName($disciplineXmlNode->nodeName))
