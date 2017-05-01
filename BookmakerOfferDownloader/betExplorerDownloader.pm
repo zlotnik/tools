@@ -274,7 +274,7 @@ sub addEventNodeToXmlEventList($)
 	
 }
 
-sub addLinkToEventToOfferXml($$$)
+sub addLinkToEventToOfferXml($$$)# this sub must refactorized because it can be reached using less amount of code lines 
 {
 	my ($relativeXpathToParent, $linkToEvent, $outputXmlFilePath) = @_;
 	my $absolutePathToNodeNeededUpdate =  '/note/eventList' . $relativeXpathToParent ;
@@ -284,7 +284,7 @@ sub addLinkToEventToOfferXml($$$)
 	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
 	my $parentNodeToUpdate = $document->findnodes($absolutePathToNodeNeededUpdate)->[0] or die $?;
 	
-	my $absolutePathToNodeNeededUpdate .= $absolutePathToNodeNeededUpdate . '/Events';
+	$absolutePathToNodeNeededUpdate = $absolutePathToNodeNeededUpdate . '/Events';
 	if(not $document->findnodes($absolutePathToNodeNeededUpdate) )
 	{
 		addEventNodeToXmlEventList($parentNodeToUpdate);
@@ -292,11 +292,9 @@ sub addLinkToEventToOfferXml($$$)
 		$document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
 		$parentNodeToUpdate = $document->findnodes($absolutePathToNodeNeededUpdate)->[0] or die; 
 	}
-	
-	
+		
 	my $newNode = XML::LibXML::Element->new('event');
 	$newNode->setAttribute('url',$linkToEvent);
-	#my $lineBreakTextNode = XML::LibXML::Text->new("\n");
 	
 	$parentNodeToUpdate->addChild($newNode);	
 	$document->toFile($outputXmlFilePath) or die $?;	

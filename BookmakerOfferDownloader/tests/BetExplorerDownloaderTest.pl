@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 7;
+use Test::More tests => 6;
 use lib '..';
 use BetExplorerDownloader;
 use BookmakerXmlDataParser;
@@ -67,6 +67,6 @@ my $isOutputXmlFileExist = (-e $outputFile);
 ($got, $expected, $testname) = ($isOutputXmlFileExist, 1, "BookMakerDownloader->generateOutputXML($outputFile)");
 ok($isOutputXmlFileExist, $testname) or die;
 
-my $isCorectBookmakerOfferFile = $aBookmakerXmlDataParser->isCorectBookmakerOfferFile($outputFile);
-($got,$expected, $testname) = ($isCorectBookmakerOfferFile, 1, "Checking if the output file $outputFile is a correct file with bookamker offer");
-ok($got, $testname) or die; 
+my $isCorectBookmakerOfferFile = $aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($outputFile);
+($got,$expected, $testname) = ($isCorectBookmakerOfferFile, 1, "BookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile");
+ok($got, $testname) or die "Output file with bookmaker offer $outputFile hasn't correct format "; 
