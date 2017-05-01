@@ -267,15 +267,32 @@ sub seekBetsDataInXmlEventFile($)
 	return $betsDataXmlNode;
 }
 
+sub addEventNodeToXmlEventList($)
+{
+	my $xmlNodeNeededUpdate = shift;
+	$xmlNodeNeededUpdate->addNewChild('','Events');
+	
+}
 
 sub addLinkToEventToOfferXml($$$)
 {
 	my ($relativeXpathToParent, $linkToEvent, $outputXmlFilePath) = @_;
-	my $absolutePathToNodeNeededUpdate =  '/note/eventList' . $relativeXpathToParent;	
+	my $absolutePathToNodeNeededUpdate =  '/note/eventList' . $relativeXpathToParent ;
+
 	
 	my $xmlParser = XML::LibXML->new;
 	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
 	my $parentNodeToUpdate = $document->findnodes($absolutePathToNodeNeededUpdate)->[0] or die $?;
+	
+	my $absolutePathToNodeNeededUpdate .= $absolutePathToNodeNeededUpdate . '/Events';
+	if(not $document->findnodes($absolutePathToNodeNeededUpdate) )
+	{
+		addEventNodeToXmlEventList($parentNodeToUpdate);
+		$document->toFile($outputXmlFilePath) or die $?;	
+		$document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
+		$parentNodeToUpdate = $document->findnodes($absolutePathToNodeNeededUpdate)->[0] or die; 
+	}
+	
 	
 	my $newNode = XML::LibXML::Element->new('event');
 	$newNode->setAttribute('url',$linkToEvent);
@@ -288,10 +305,8 @@ sub addLinkToEventToOfferXml($$$)
 
 sub addChildSubcategoryNodeToOfferXml($$$)
 {
-
 	my ($relativeXpathToParent, $nameOfNewChildNode, $outputXmlFilePath) = @_;
 	my $absolutePathToNodeNeededUpdate =  '/note/eventList' . $relativeXpathToParent; 
-	
 	
 	my $xmlParser = XML::LibXML->new;
 	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;

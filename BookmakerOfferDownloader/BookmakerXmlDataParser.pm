@@ -107,7 +107,6 @@ sub isCorrectLinkToEventXmlNode($)
 	
 	
 }
-
 	
 sub extractFirstEventXmlNodeFromCountryCategoryXmlNode($)
 {

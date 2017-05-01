@@ -51,8 +51,6 @@ my $xpath = "";
 my @rootXmlNode = $doc->findnodes("/");	
 #my $rootXmlNode = $doc->findnodes("/")[0]; maybe this is better		
 
-
-
 $theBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
 $theBookMakerDownloader->createEventListXML($xpath, $outputFile);
 
