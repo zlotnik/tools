@@ -11,7 +11,7 @@ use XML::LibXML;
 use CategoryPage;
 use File::Copy qw(copy);
 use WojtekToolbox;
-our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml generateOutputXML);
+our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml pullBookmakersOffer);
 
 #($#ARGV +1) == 1 or die 'usage surebet.pl inputFile';
 
@@ -30,7 +30,7 @@ sub getsLinksForAllEventsFromSubCategory($$);
 sub getTableWithEvents($);
 sub getLinksToEventFromTable($);
 sub findTheBestOddInLinkToEvent($);
-sub generateOutputXML($);
+sub pullBookmakersOffer($);
 sub downloadRawDataOfChoosenOfert(\%);
 sub generateReportLine($);
 sub getRawDataOfEvent($);
@@ -81,7 +81,7 @@ sub pickupLinksFromXml($);
 
 my $pathToXmlSelector = $ARGV[0];
 $pathToXmlSelector = "input/parameters/polandEkstraklasaSelector.xml";                                       
-#generateOutputXML($pathToXmlSelector);
+#pullBookmakersOffer($pathToXmlSelector);
 
 
 
@@ -140,7 +140,7 @@ sub findTheBestOddInLinkToEvent($)
 }
 
 
-sub generateOutputXML($) #weak name
+sub pullBookmakersOffer($) 
 {
 	my ($self, $outputXmlPath) = @_;
 	
@@ -205,6 +205,12 @@ sub pickupLinksFromXml($)
 
 sub updateEventListXMLWithBookmakerOffer($)
 {
+	my ($pathToBookmakerOfferXml) = @_;
+	my $xmlParser = XML::LibXML->new; #global parser will improve optimalization
+	my $xmlDoc = $xmlParser->parse_file($pathToXmlSelector) or die $?;
+	
+	
+	
 	
 }
 

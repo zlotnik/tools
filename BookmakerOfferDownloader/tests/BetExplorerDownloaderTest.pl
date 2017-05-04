@@ -54,17 +54,17 @@ my @rootXmlNode = $doc->findnodes("/");
 $theBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
 $theBookMakerDownloader->createEventListXML($xpath, $outputFile);
 
-#$theBookMakerDownloader->generateOutputXML($outputFile);
+#$theBookMakerDownloader->pullBookmakersOffer($outputFile);
 
 my $isCreateEventListXMLCorrect = $aBookmakerXmlDataParser->isCorrectEventListFile($outputFile); 
 ok($isCreateEventListXMLCorrect, "BookMakerDownloader->createEventListXML") or die;
 
 
 $theBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
-$theBookMakerDownloader->generateOutputXML($outputFile);
+$theBookMakerDownloader->pullBookmakersOffer($outputFile);
 
 my $isOutputXmlFileExist = (-e $outputFile);
-($got, $expected, $testname) = ($isOutputXmlFileExist, 1, "BookMakerDownloader->generateOutputXML($outputFile)");
+($got, $expected, $testname) = ($isOutputXmlFileExist, 1, "BookMakerDownloader->pullBookmakersOffer($outputFile)");
 ok($isOutputXmlFileExist, $testname) or die;
 
 my $isCorectBookmakerOfferFile = $aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($outputFile);
