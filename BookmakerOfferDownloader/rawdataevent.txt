@@ -1,9 +1,9 @@
 
-      class="set">1X2 Odds (24)
-      title="Over/Under">O/U (136)
-      title="Asian Handicap">AH (49)
-      title="Draw No Bet">DNB (12)
-      title="Double Chance">DC (17)
+      class="set">1X2 Odds (23)
+      title="Over/Under">O/U (96)
+      title="Asian Handicap">AH (38)
+      title="Draw No Bet">DNB (10)
+      title="Double Chance">DC (18)
       title="Both Teams To Score">BTS (16)
 
 
@@ -22,7 +22,7 @@ All bookmakers
 
 
 
-Bookmakers: 24Bookmakers: 241X2
+Bookmakers: 23Bookmakers: 231X2
 
 
 
@@ -30,177 +30,164 @@ Bookmakers: 24Bookmakers: 241X2
 
 
  
- 12.50
- 6.00
- 1.20
+ 2.35
+ 3.20
+ 3.05
 
 
 12BET
 
 
  
-13.00
-5.30
-1.24
+ 2.31
+3.10
+ 3.05
 
 
 188BET
 
 
  
- 10.50
- 5.80
- 1.23
+ 2.28
+ 3.10
+ 2.95
 
 
 888sport
 
 
  
- 13.00
- 6.00
- 1.25
-
+ 2.33
+ 3.15
+ 3.05
 
 
 bet-at-home
 
 
  
- 10.94
- 5.78
- 1.24
+ 2.35
+ 3.16
+ 2.97
 
 
 bet365
 
 
+ 
+ 2.40
 
-12.00
-6.00
-1.22
+ 3.25
+ 2.90
 
 
 Betclic
 
 
  
- 12.00
- 5.25
- 1.22
+ 2.30
+ 3.10
+ 3.00
 
 
 Betfair
 
 
  
- 17.00
-
- 5.50
- 1.22
+2.25
+3.00
+3.00
 
 
 Betsafe
 
 
  
- 14.50
- 6.80
- 1.21
+ 2.31
+ 3.20
+ 3.05
 
 
 Betsson
 
 
  
- 14.50
- 6.80
- 1.21
+ 2.30
+ 3.15
+ 3.00
 
 
 BetVictor
 
 
  
- 13.00
- 6.50
- 1.22
+ 2.30
+ 3.25
+ 3.10
 
 
 Betway
 
 
  
- 10.00
- 7.00
-
- 1.25
-
+ 2.30
+ 3.20
+ 3.10
 
 
 bwin
 
 
  
- 12.50
-6.50
- 1.20
+ 2.35
+ 3.00
+ 3.10
 
 
 ComeOn
 
 
  
- 12.75
- 6.10
- 1.21
+ 2.35
+ 3.20
+ 3.05
 
 
 Expekt
 
 
  
- 12.00
- 5.25
- 1.22
+ 2.30
+ 3.10
+ 3.00
 
 
 Interwetten
 
 
  
-11.00
-6.00
-1.25
-
-
-
-Ladbrokes
-
-
- 
- 12.00
- 6.00
- 1.25
-
+ 2.30
+ 3.05
+ 2.90
 
 
 mybet
 
 
  
- 11.50
-6.50
- 1.23
+ 2.35
+3.10
+ 3.00
 
 
 Pinnacle
 
 
  
- 13.44
- 6.77
- 1.25
+ 2.39
+ 3.38
+
+ 3.22
 
 
 
@@ -208,60 +195,49 @@ SBOBET
 
 
  
- 14.00
- 5.00
- 1.25
-
+ 2.34
+ 3.05
+ 3.05
 
 
 Sportingbet
 
 
  
- 13.00
- 6.50
- 1.22
-
-
-Tipico
-
-
- 
- 13.00
-6.50
- 1.22
+2.25
+3.00
+ 2.95
 
 
 Unibet
 
 
  
- 13.00
- 6.00
- 1.25
-
+ 2.35
+ 3.20
+ 3.10
 
 
 William Hill
 
 
  
-13.00
-6.00
-1.22
+2.25
+3.20
+3.10
 
 
 youwin
 
 
  
- 13.00
- 6.50
- 1.22
+2.25
+3.00
+ 2.95
 
 
 
-Average odds (exchanges not included in calculation)Average odds (exchanges not included in calculation)12.676.131.23
+Average odds (exchanges not included in calculation)Average odds (exchanges not included in calculation)2.323.143.03
 Add to my selections
 
 

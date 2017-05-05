@@ -153,7 +153,7 @@ sub pullBookmakersOffer($)
 	my $doc = $xmlParser->parse_file($pathToXmlSelector);
 	my $xpath = "";
 	my @rootXmlNode = $doc->findnodes("/");	
-	#my $rootXmlNode = $doc->findnodes("/")[0]; maybe this is better	
+	#my $rootXmlNode = $doc->findnodes("/")[0] or ->[0]; maybe this is better	
 	
 	$self->createEventListXML($xpath, $outputXmlPath);
 	
@@ -207,10 +207,30 @@ sub updateEventListXMLWithBookmakerOffer($)
 {
 	my ($pathToBookmakerOfferXml) = @_;
 	my $xmlParser = XML::LibXML->new; #global parser will improve optimalization
-	my $xmlDoc = $xmlParser->parse_file($pathToXmlSelector) or die $?;
+	my $xmlDoc = $xmlParser->parse_file($pathToBookmakerOfferXml) or die $?;
+	my @allEventXml = $xmlDoc->findnodes('/note/eventList//*//event'); 
 	
+	for(@allEventXml)
+	{
+		my $eventNode = $_;
+		$eventNode =~ m|event url="(.*)"| or die;
+		my $linkToEvent = $1;
+		my $dataWithBets = getRawDataOfEvent($linkToEvent);
+		
+		foreach(split("\n",$dataWithBets))
+		{
+			my $lineWithBetData = $_;
+			$lineWithBetData =~ s/[^\w\.]/#/g;
+			print $lineWithBetData ." NEXT LINE\n"; 
+			if($lineWithBetData =~/(\w+)#{0,2}(\d?\d\.\d\d)(\d?\d\.\d\d)(\d?\d\.\d\d)/ )
+			{
+			
+			}	
+		}
+	}
+	die;	
 	
-	
+	#BetExplorerDownloader::updateEventListXMLWithBookmakerOffer
 	
 }
 
@@ -494,11 +514,12 @@ sub getRawDataOfEvent($)
 	my $linkToEvent = $_[0];
 	createJavaScriptForDownload($linkToEvent);
 		
-	my $res = 0;
+	my $res = 0; #seems to be unused
 	my $retryIdx = 0; 
 	my $toReturn = '';
 	
 	my $pid = fork();
+	my $isParrentProcess = ($pid == 0); 
 	if(not $pid)
 	{
 		my $toReturnInChild = `phantomjs.exe download1x2Data.js`;

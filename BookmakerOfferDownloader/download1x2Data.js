@@ -2,7 +2,7 @@ var page = require('webpage').create();
 //console.log('The default user agent is ' + page.settings.userAgent);
 //console.log('s' + a);
 page.settings.userAgent = 'SpecialAgent';
-page.open('http://www.betexplorer.com/soccer/germany/bundesliga/augsburg-mainz/4OXZMVyo/', function(status) {
+page.open('http://www.betexplorer.com/soccer/Poland/ekstraklasa/leczna-plock/vLbdvr1a/', function(status) {
   if (status !== 'success') {
     console.log('Unable to access network');
   } else {

@@ -13,6 +13,8 @@ use File::Copy;
 #todo: add to the desing a picture describing stages of creating output xml
 #testing script should check partial corectness first	
 
+
+#todo: run only specific tests
 my $correctBookmakerSelectorFile = "$FindBin::Bin/../input/parameters/examples/ekstraklasaSelector.xml";
 my $correctDownloadedBookmakerOfferFile = "$FindBin::Bin/../output/example/downloadedBookMakersOffer.xml";
 my $correctBookmakerEventList = "$FindBin::Bin/../output/example/downloadedEventList.xml";
@@ -56,16 +58,17 @@ $theBookMakerDownloader->createEventListXML($xpath, $outputFile);
 
 #$theBookMakerDownloader->pullBookmakersOffer($outputFile);
 
-my $isCreateEventListXMLCorrect = $aBookmakerXmlDataParser->isCorrectEventListFile($outputFile); 
-ok($isCreateEventListXMLCorrect, "BookMakerDownloader->createEventListXML") or die;
-
-
-$theBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
-$theBookMakerDownloader->pullBookmakersOffer($outputFile);
-
+$theBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile); #temporary moved before "BookMakerDownloader->createEventListXML"
 my $isOutputXmlFileExist = (-e $outputFile);
 ($got, $expected, $testname) = ($isOutputXmlFileExist, 1, "BookMakerDownloader->pullBookmakersOffer($outputFile)");
 ok($isOutputXmlFileExist, $testname) or die;
+$theBookMakerDownloader->pullBookmakersOffer($outputFile);
+
+
+my $isCreateEventListXMLCorrect = $aBookmakerXmlDataParser->isCorrectEventListFile($outputFile); 
+ok($isCreateEventListXMLCorrect, "BookMakerDownloader->createEventListXML") or die;
+
+die("TODO: correct to early closing event node"); 
 
 my $isCorectBookmakerOfferFile = $aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($outputFile);
 ($got,$expected, $testname) = ($isCorectBookmakerOfferFile, 1, "BookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile");
