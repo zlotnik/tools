@@ -522,8 +522,8 @@ sub getRawDataOfEvent($)
 	my $isParrentProcess = ($pid == 0); 
 	if(not $pid)
 	{
-		my $toReturnInChild = `phantomjs.exe download1x2Data.js`;
-		open RAWDATA , ">", 'rawdataevent.txt' or die;
+		my $toReturnInChild = `phantomjs.exe tmp/download1x2Data.js`;
+		open RAWDATA , ">", 'tmp/rawdataevent.txt' or die;
 		print RAWDATA $toReturnInChild;
 		close RAWDATA or die;
 		#print STDOUT "before exit\n";		
@@ -549,7 +549,7 @@ sub getRawDataOfEvent($)
 	else 
 	{
 		#print STDOUT "process $pid finished\n";
-		open(my $fh, '<', 'rawdataevent.txt') or die "cannot open file rawdataevent.txt";
+		open(my $fh, '<', 'tmp/rawdataevent.txt') or die "cannot open file rawdataevent.txt";
 		{
 			local $/;
 			$toReturn = <$fh>;;
@@ -569,7 +569,7 @@ sub createJavaScriptForDownload($)
 	
 	open( TEMPLATE  , "<" , 'download1x2Data_template.js') or die;
 	
-	open( JAVASCRIPT  , ">" , 'download1x2Data.js') or die;
+	open( JAVASCRIPT  , ">" , 'tmp/download1x2Data.js') or die;
 	
 	while(<TEMPLATE>)
 	{
@@ -588,6 +588,7 @@ sub createJavaScriptForDownload($)
 
 }
 
+#maybe something more advanced for parsing files
 
 sub getsLinksForAllEventsFromSubCategory($$)
 {
