@@ -11,6 +11,7 @@ use XML::LibXML;
 use CategoryPage;
 use File::Copy qw(copy);
 use WojtekToolbox;
+use Cwd;
 our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml pullBookmakersOffer);
 
 #($#ARGV +1) == 1 or die 'usage surebet.pl inputFile';
@@ -148,8 +149,10 @@ sub pullBookmakersOffer($)
 	my $pathToXmlSelector = $self->{mSelectorFile};
 	
 	my $xmlParser = XML::LibXML->new;
-	unlink $outputXmlPath; #does it needed?
-	copy $pathToXmlSelector, $outputXmlPath or die $?; 
+	unlink $outputXmlPath or die; #does it needed?
+	
+	#below  name isn't adequate and Iam not sure if the fike isn't doubled somewhere
+	copy $pathToXmlSelector, $outputXmlPath or die "Can't copy file $pathToXmlSelector => $outputXmlPath current directory: ". getcwd() ; 
 	my $doc = $xmlParser->parse_file($pathToXmlSelector);
 	my $xpath = "";
 	my @rootXmlNode = $doc->findnodes("/");	
@@ -213,7 +216,9 @@ sub updateEventListXMLWithBookmakerOffer($)
 	for(@allEventXml)
 	{
 		my $eventNode = $_;
-		$eventNode =~ m|event url="(.*)"| or die;
+		
+		$eventNode =~ m{event url="(.*\/)((&quot.*")|("))} or die;
+		
 		my $linkToEvent = $1;
 		my $dataWithBets = getRawDataOfEvent($linkToEvent);
 		
@@ -227,6 +232,7 @@ sub updateEventListXMLWithBookmakerOffer($)
 			
 			}	
 		}
+		die;
 	}
 	die;	
 	
