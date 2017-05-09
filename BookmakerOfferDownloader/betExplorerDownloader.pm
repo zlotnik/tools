@@ -53,6 +53,7 @@ sub validateSelectorFile();
 sub isLinkToEvent($);
 sub startCreatingXmlPartWithAnEventDetail($);
 sub pickupLinksFromXml($);
+sub removeEmptyLines($);
 #################DICTIONARY##############################################
 #choosen bookmaker offer - choosen part of bookmakers offer by appling an offert selector eg. all German, soccer, matches  
 #offer selector - a xml file used choose which data will be downloadedDataRawText
@@ -208,6 +209,8 @@ sub pickupLinksFromXml($)
 
 sub updateEventListXMLWithBookmakerOffer($)
 {
+	#BetExplorerDownloader::updateEventListXMLWithBookmakerOffer
+	
 	my ($pathToBookmakerOfferXml) = @_;
 	my $xmlParser = XML::LibXML->new; #global parser will improve optimalization
 	my $xmlDoc = $xmlParser->parse_file($pathToBookmakerOfferXml) or die $?;
@@ -221,7 +224,10 @@ sub updateEventListXMLWithBookmakerOffer($)
 		
 		my $linkToEvent = $1;
 		my $dataWithBets = getRawDataOfEvent($linkToEvent);
+		$dataWithBets = removeEmptyLines($dataWithBets); #i think better would be do it on file or before creation file
+		die "finished above ";
 		
+		my $isLineWithNumberOfBookmakersOccured = 0;
 		foreach(split("\n",$dataWithBets))
 		{
 			my $lineWithBetData = $_;
@@ -236,10 +242,26 @@ sub updateEventListXMLWithBookmakerOffer($)
 	}
 	die;	
 	
-	#BetExplorerDownloader::updateEventListXMLWithBookmakerOffer
 	
 }
 
+
+sub removeEmptyLines($)#move to toolbox
+{
+	my $dataWithBets = $_[0];
+	my $theResult;
+	
+	foreach(split("\n",$dataWithBets))
+	{
+		my $lineWithBetData = $_;
+		if( $lineWithBetData =~ /^(\s*\d\.\d\d)|(.+)$/)
+		{
+			$theResult .= $lineWithBetData . "\n";
+		}	
+	}
+	return $theResult;
+
+}
 
 sub updateXmlNodeWithDataFromBookmaker($$)
 {
@@ -544,8 +566,7 @@ sub getRawDataOfEvent($)
 			$res = waitpid($pid, WNOHANG);
 			print STDOUT "no answer from $linkToEvent  attemp no $retryIdx/$numberOfAttempts\n";					
 		}
-	}
-	
+	}	
 	
 	if($res == 0)
 	{
@@ -560,11 +581,8 @@ sub getRawDataOfEvent($)
 			local $/;
 			$toReturn = <$fh>;;
 		}
-		close $fh or die;
-	
-	}
-	
-	
+		close $fh or die;	
+	}	
 	
 	return $toReturn;
 }
@@ -654,8 +672,6 @@ sub checkNumberOfBookmaker($)
 
 }
 
-
-
 sub getTableWithEvents($)
 {
 	my $htmlPageWithEvents = $_[0];
@@ -664,11 +680,5 @@ sub getTableWithEvents($)
 	(defined $1 and defined $1 and defined $1) or die "BetExplorerParser: Isn't possible to parse the table with events "; 
 	return $1.$2.$3;
 }
-
-
-
-
-
-
 
 1;
