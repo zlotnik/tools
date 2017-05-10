@@ -224,8 +224,9 @@ sub updateEventListXMLWithBookmakerOffer($)
 		
 		my $linkToEvent = $1;
 		my $dataWithBets = getRawDataOfEvent($linkToEvent);
-		$dataWithBets = removeEmptyLines($dataWithBets); #i think better would be do it on file or before creation file
-		die "finished above ";
+		
+		print $dataWithBets; 
+		die "finished above "; #i think better would be do it on file or before creation file
 		
 		my $isLineWithNumberOfBookmakersOccured = 0;
 		foreach(split("\n",$dataWithBets))
@@ -254,7 +255,7 @@ sub removeEmptyLines($)#move to toolbox
 	foreach(split("\n",$dataWithBets))
 	{
 		my $lineWithBetData = $_;
-		if( $lineWithBetData =~ /^(\s*\d\.\d\d)|(.+)$/)
+		if( $lineWithBetData =~ /^(\s*\d\.\d\d)|([a-zA-Z \d]+)$/)
 		{
 			$theResult .= $lineWithBetData . "\n";
 		}	
@@ -537,21 +538,22 @@ sub findBestOdds($)
 
 };
 
-sub getRawDataOfEvent($)
+sub getRawDataOfEvent($)# todo create synchronous version
 {
 	my $linkToEvent = $_[0];
 	createJavaScriptForDownload($linkToEvent);
 		
 	my $res = 0; #seems to be unused
 	my $retryIdx = 0; 
-	my $toReturn = '';
+	my $rawDataToReturn = '';
+	my $rawDataPath = 'tmp/rawdataevent.txt';
 	
 	my $pid = fork();
 	my $isParrentProcess = ($pid == 0); 
 	if(not $pid)
 	{
 		my $toReturnInChild = `phantomjs.exe tmp/download1x2Data.js`;
-		open RAWDATA , ">", 'tmp/rawdataevent.txt' or die;
+		open RAWDATA , ">", $rawDataPath or die;
 		print RAWDATA $toReturnInChild;
 		close RAWDATA or die;
 		#print STDOUT "before exit\n";		
@@ -576,16 +578,35 @@ sub getRawDataOfEvent($)
 	else 
 	{
 		#print STDOUT "process $pid finished\n";
-		open(my $fh, '<', 'tmp/rawdataevent.txt') or die "cannot open file rawdataevent.txt";
+		open(my $fh, '<', $rawDataPath) or die "cannot open file $rawDataPath";
 		{
 			local $/;
-			$toReturn = <$fh>;;
+			$rawDataToReturn = <$fh>;#doesn't needed
 		}
 		close $fh or die;	
 	}	
 	
-	return $toReturn;
+	simplifyFormatOfRawdataFile($rawDataPath); #i think better would be do it on file or before creation file	
+	open(my $fh, '<', $rawDataPath) or die ;
+	$rawDataToReturn = $fh;
+	close $fh or die;
+	
+	#save it back to File
+	return $rawDataToReturn;
 }
+
+sub simplifyFormatOfRawdataFile($)
+{
+	my $filePathToRawData = $_[0];
+	
+	removeEmptyLines($filePathToRawData);
+	leaveOnlyBetsStakesDataInRawdataFile($filePathToRawData);
+	die "finished above"
+	
+
+}
+
+
 
 sub createJavaScriptForDownload($)
 {
