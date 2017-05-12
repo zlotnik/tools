@@ -54,6 +54,7 @@ sub isLinkToEvent($);
 sub startCreatingXmlPartWithAnEventDetail($);
 sub pickupLinksFromXml($);
 sub removeEmptyLines($);
+sub leaveOnlyBetsStakesDataInRawdataFile($);
 #################DICTIONARY##############################################
 #choosen bookmaker offer - choosen part of bookmakers offer by appling an offert selector eg. all German, soccer, matches  
 #offer selector - a xml file used choose which data will be downloadedDataRawText
@@ -606,6 +607,42 @@ sub simplifyFormatOfRawdataFile($)
 
 }
 
+sub leaveOnlyBetsStakesDataInRawdataFile($)
+{
+	my $filePathToRawData = $_[0];
+	open(my $fh, '<', $filePathToRawData) or die ;
+	
+	my $rawDataContent = <$fh>;
+	
+	$rawDataContent =~ m{(Bookmakers:[\s\S]*?)Average odds}m or die;
+	
+	
+	my $rawDataContentFilteredOut;
+	while(split("\n",$rawDataContent))
+	{
+		my $lineOfRawData  = $_;
+		if($lineOfRawData =~ /[A-Za-z0-9].*/)
+		{
+			$rawDataContentFilteredOut .= "\n" . $0 ; 
+		}
+		elsif($lineOfRawData =~ /\s(\d{1..2}\.\d{2})/)
+		{
+			$rawDataContentFilteredOut .= $1 ; 
+		}
+		elsif($lineOfRawData =~ /^Bookmakers:/)
+		{
+			$rawDataContentFilteredOut .= $0 ; 
+		}
+		
+	
+	}
+	print $rawDataContentFilteredOut;
+	die "finished here";
+	
+	close $fh or die; 
+	
+
+}
 
 
 sub createJavaScriptForDownload($)
