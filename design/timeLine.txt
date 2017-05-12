@@ -1,0 +1,10 @@
+07.02.2016		rozpoczęcie grania surebetów
+11.02.2016		pierwszy prototyp surebet findera
+09.09.2016		przeniesienie kodu do gitlaba 
+08.11.2016		Trump zostaje prezydentem USA
+28.03.2017		wprowadzenie metodyki Test Driven Development
+01.04.2017		nowa ustawa o hazardzie
+04.04.2017		zakończenie gry surebetów
+24.01.2017		Brexit
+05.05.2017		100 commit w git labie
+07.05.2017		Macron wygrywa z Le Pen
