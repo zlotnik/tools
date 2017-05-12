@@ -607,40 +607,47 @@ sub simplifyFormatOfRawdataFile($)
 
 }
 
+#todo: mock net 
+
 sub leaveOnlyBetsStakesDataInRawdataFile($)
 {
 	my $filePathToRawData = $_[0];
-	open(my $fh, '<', $filePathToRawData) or die ;
 	
-	my $rawDataContent = <$fh>;
+	my $rawDataContent;
+	{
+		local $/ = undef;
+		open(my $fh, '<', $filePathToRawData) or die ;
+		$rawDataContent = <$fh>;
+		close $fh or die; 
+	}
 	
-	$rawDataContent =~ m{(Bookmakers:[\s\S]*?)Average odds}m or die;
+	$rawDataContent =~ m#(Bookmakers:[\s\S]*?)Average odds#m or die;
 	
 	
 	my $rawDataContentFilteredOut;
-	while(split("\n",$rawDataContent))
+	foreach(split("\n",$rawDataContent))
 	{
+
 		my $lineOfRawData  = $_;
-		if($lineOfRawData =~ /[A-Za-z0-9].*/)
+		if($lineOfRawData =~ /([A-Za-z0-9].*)/)
 		{
-			$rawDataContentFilteredOut .= "\n" . $0 ; 
+			$rawDataContentFilteredOut .= "\n" . $1 ; 
 		}
-		elsif($lineOfRawData =~ /\s(\d{1..2}\.\d{2})/)
+		elsif($lineOfRawData =~ m|\s(\d{1,2}\.\d{2})\n|)
 		{
-			$rawDataContentFilteredOut .= $1 ; 
-		}
-		elsif($lineOfRawData =~ /^Bookmakers:/)
-		{
-			$rawDataContentFilteredOut .= $0 ; 
-		}
+			chomp($1);
+			die "here is a problem because previous is matched instead of this one";#(^[A-Za-z0-9].*)
+			$rawDataContentFilteredOut = $rawDataContentFilteredOut . " $1"  ; 
 		
-	
+		}
+		elsif($lineOfRawData =~ /^(Bookmakers:.*)/)
+		{
+			$rawDataContentFilteredOut = $rawDataContentFilteredOut . "$1\n";
+		}	
 	}
+	
 	print $rawDataContentFilteredOut;
-	die "finished here";
-	
-	close $fh or die; 
-	
+	die "finished here";	
 
 }
 
