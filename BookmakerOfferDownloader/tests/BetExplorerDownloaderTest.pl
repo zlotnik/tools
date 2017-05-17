@@ -4,7 +4,8 @@ use Test::More tests => 6;
 use lib '..';
 use BetExplorerDownloader;
 use BookmakerXmlDataParser;
-use DataDownloader;
+use DataDownloader; #needed??
+use MockedDataDownloader;
 use FindBin;
 use File::Copy;
 #TODO think about split tests
@@ -20,23 +21,23 @@ use File::Copy;
 my $correctBookmakerSelectorFile = "$FindBin::Bin/../input/parameters/examples/ekstraklasaSelector.xml";
 my $correctDownloadedBookmakerOfferFile = "$FindBin::Bin/../output/example/downloadedBookMakersOffer.xml";
 my $correctBookmakerEventList = "$FindBin::Bin/../output/example/downloadedEventList.xml";
-my $rawDataMocked = "$FindBin::../tmp/rawDataMockFile";
+my $mockedRawDataPath = "$FindBin::Bin/../tmp/rawDataMockFile";
 
+my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
+my $theBookMakerDownloader =  BetExplorerDownloader->new(); 
 
 my $mockedDataDownloader =  MockedDataDownloader->new();
-open ($rawDataFileHandler, ">", $rawDataMocked) or die;
+open (my $rawDataFileHandler, ">", $mockedRawDataPath) or die;
 
-my $rawDataMocked = $mockedDataDownloader->getRawDataOfEvent('');
-print $rawDataFileHandler $rawDataMocked;
-ok($aBookmakerXmlDataParser->isCorrectRawDataFile(), 'mockedDataDownloader->getRawDataOfEvent' ) or die;
+$mockedRawDataPath = $mockedDataDownloader->getRawDataOfEvent('');
+print $rawDataFileHandler $mockedRawDataPath;
+ok($aBookmakerXmlDataParser->isCorrectRawDataFile($mockedRawDataPath), 'mockedDataDownloader->getRawDataOfEvent' ) or die;
 
  
 #my $selectorFile = 'input/parameters/polandEkstraklasaSelector.xml';
 my $outputFile = "output/downloadedPolandEkstraklasa.xml";
 
 #BetExplorerDownloader::updateEventListXMLWithEventDetails('');
-my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
-my $theBookMakerDownloader =  BetExplorerDownloader->new(); 
 
 
 (-e $correctBookmakerSelectorFile) or die "File doesn't exist $correctBookmakerSelectorFile\n";

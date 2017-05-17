@@ -22,6 +22,7 @@ sub xmlNodeContainsAllNeededData($);
 sub extractFirstEventXmlNodeFromCountryCategoryXmlNode($);
 sub isCorrectEventListFile($);
 sub isCorrectLinkToEventXmlNode($);
+sub isCorrectRawDataFile($);
 #################DEFINITION####################################
 sub new()
 {
@@ -29,6 +30,31 @@ sub new()
 	my $self = bless {}, $class;
 	return $self;
 };
+
+sub isCorrectRawDataFile($)
+{
+	my ($self,$rawDataPath ) = @_;
+	my $rawDataFileContent;
+	
+	open (my $rawDataFilehandler, "<", $rawDataPath) or die "$! $rawDataPath" ; 
+	
+	{
+		local $/ = undef;
+		$rawDataFileContent = <$rawDataFilehandler>;
+	}
+	
+	if($rawDataFileContent =~ m|Show:[\s\S]*My Bookmakers \(settings\)[\s\S]*Bookmakers: \d[\s\S]*?\d\.\d\d|m)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	};
+	
+	close $rawDataFilehandler or die;
+
+}
 
 sub isCorectBookmakerDataSelectorFile($)
 {

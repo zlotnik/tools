@@ -1,4 +1,4 @@
-package MockedDataDownloader
+package MockedDataDownloader;
 use strict;
 use warnings;
 
@@ -22,14 +22,16 @@ sub new()
 sub getRawDataOfEvent($)
 {
 	my $modelRawDataPath = "input/data/modelRawData";
-
-	open ($modelRawDataFileHandle, "<" , $modelRawDataPath) or die
+	my $modelRawDataFileHandler;
+	
+	open ($modelRawDataFileHandler, "<" , $modelRawDataPath) or die;
 	
 	{
 		$/ = undef;
-		return $modelRawDataFileHandle;
+		my $rawData = <$modelRawDataFileHandler>;
+		close $modelRawDataFileHandler or die;
+		return $rawData;
 	}
-	close $modelRawDataFileHandle or die;
 	
 	
 }
