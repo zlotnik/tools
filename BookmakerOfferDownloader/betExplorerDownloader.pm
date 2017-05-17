@@ -154,7 +154,7 @@ sub pullBookmakersOffer($)
 	unlink $outputXmlPath or die; #does it needed?
 	
 	#below  name isn't adequate and Iam not sure if the fike isn't doubled somewhere
-	copy $pathToXmlSelector, $outputXmlPath or die "Can't copy file $pathToXmlSelector => $outputXmlPath current directory: ". getcwd() ; 
+	copy $pathToXmlSelector, $outputXmlPath or die "Can't copy file $pathToXmlSelector => $outputXmlPath current directory: ". getcwd() . "ERR: $!" ; 
 	my $doc = $xmlParser->parse_file($pathToXmlSelector);
 	my $xpath = "";
 	my @rootXmlNode = $doc->findnodes("/");	
@@ -207,6 +207,7 @@ sub pickupLinksFromXml($)
 
 
 }
+
 
 sub updateEventListXMLWithBookmakerOffer($)
 {
@@ -539,46 +540,42 @@ sub findBestOdds($)
 
 };
 
-sub getRawDataOfEvent($)# todo create synchronous version
+sub getRawDataOfEvent($)# todo create synchronous-mocked version
 {
 	my $linkToEvent = $_[0];
 	createJavaScriptForDownload($linkToEvent);
 		
-	my $res = 0; #seems to be unused
+	my $isProcessFinished = 0; #seems to be unused
 	my $retryIdx = 0; 
 	my $rawDataToReturn = '';
 	my $rawDataPath = 'tmp/rawdataevent.txt';
 	
 	my $pid = fork();
 	my $isParrentProcess = ($pid == 0); 
-	if(not $pid)
+	if($isParrentProcess)
+	{
+		my $limitOfAttempts = 3;
+		sleep(1);
+		$isProcessFinished = (waitpid($pid, WNOHANG) > 0);
+		$retryIdx++;
+		while($isProcessFinished == 0 and $retryIdx++ < $limitOfAttempts)
+		{
+			sleep(26);			
+			$isProcessFinished = (waitpid($pid, WNOHANG) > 0);
+			print STDOUT "no answer from $linkToEvent  attemp no $retryIdx/$limitOfAttempts\n";					
+		}
+	}	
+	else
 	{
 		my $toReturnInChild = `phantomjs.exe tmp/download1x2Data.js`;
 		open RAWDATA , ">", $rawDataPath or die;
 		print RAWDATA $toReturnInChild;
-		close RAWDATA or die;
-		#print STDOUT "before exit\n";		
+		close RAWDATA or die;		
 		exit(1);
 	}
-	else
-	{
-		my $numberOfAttempts = 3;
-		while($res == 0 and $retryIdx++ < $numberOfAttempts)
-		{
-			sleep(26);
-			$res = waitpid($pid, WNOHANG);
-			print STDOUT "no answer from $linkToEvent  attemp no $retryIdx/$numberOfAttempts\n";					
-		}
-	}	
 	
-	if($res == 0)
+	if($isProcessFinished)
 	{
-		kill 9, $pid;
-		print STDOUT "UNABLE TO FETCH $linkToEvent PID $pid RESPONSE $res\n";
-	}
-	else 
-	{
-		#print STDOUT "process $pid finished\n";
 		open(my $fh, '<', $rawDataPath) or die "cannot open file $rawDataPath";
 		{
 			local $/;
@@ -586,13 +583,17 @@ sub getRawDataOfEvent($)# todo create synchronous version
 		}
 		close $fh or die;	
 	}	
+	else 
+	{
+		kill 9, $pid;
+		print STDOUT "UNABLE TO FETCH $linkToEvent PID $pid \n";
+	}
 	
 	simplifyFormatOfRawdataFile($rawDataPath); #i think better would be do it on file or before creation file	
 	open(my $fh, '<', $rawDataPath) or die ;
 	$rawDataToReturn = $fh;
 	close $fh or die;
 	
-	#save it back to File
 	return $rawDataToReturn;
 }
 
