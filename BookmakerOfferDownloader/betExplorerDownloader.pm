@@ -540,12 +540,13 @@ sub findBestOdds($)
 
 };
 
+#tod refactor getRawDataOfEvent 
 sub getRawDataOfEvent($)# todo create synchronous-mocked version
 {
 	my $linkToEvent = $_[0];
 	createJavaScriptForDownload($linkToEvent);
 		
-	my $isProcessFinished = 0; #seems to be unused
+	my $isProcessFinished = 0;
 	my $retryIdx = 0; 
 	my $rawDataToReturn = '';
 	my $rawDataPath = 'tmp/rawdataevent.txt';

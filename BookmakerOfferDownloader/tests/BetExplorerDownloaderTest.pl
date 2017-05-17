@@ -4,6 +4,7 @@ use Test::More tests => 6;
 use lib '..';
 use BetExplorerDownloader;
 use BookmakerXmlDataParser;
+use DataDownloader;
 use FindBin;
 use File::Copy;
 #TODO think about split tests
@@ -13,12 +14,21 @@ use File::Copy;
 #todo: add to the desing a picture describing stages of creating output xml
 #testing script should check partial corectness first	
 
+#maybe is a time to think about find out some real parsers
 
 #todo: run only specific tests
 my $correctBookmakerSelectorFile = "$FindBin::Bin/../input/parameters/examples/ekstraklasaSelector.xml";
 my $correctDownloadedBookmakerOfferFile = "$FindBin::Bin/../output/example/downloadedBookMakersOffer.xml";
 my $correctBookmakerEventList = "$FindBin::Bin/../output/example/downloadedEventList.xml";
+my $rawDataMocked = "$FindBin::../tmp/rawDataMockFile";
 
+
+my $mockedDataDownloader =  MockedDataDownloader->new();
+open ($rawDataFileHandler, ">", $rawDataMocked) or die;
+
+my $rawDataMocked = $mockedDataDownloader->getRawDataOfEvent('');
+print $rawDataFileHandler $rawDataMocked;
+ok($aBookmakerXmlDataParser->isCorrectRawDataFile(), 'mockedDataDownloader->getRawDataOfEvent' ) or die;
 
  
 #my $selectorFile = 'input/parameters/polandEkstraklasaSelector.xml';
