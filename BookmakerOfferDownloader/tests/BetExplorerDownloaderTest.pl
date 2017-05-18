@@ -29,7 +29,7 @@ my $theBookMakerDownloader =  BetExplorerDownloader->new();
 my $mockedDataDownloader =  MockedDataDownloader->new();
 open (my $rawDataFileHandler, ">", $mockedRawDataPath) or die;
 
-$mockedRawDataPath = $mockedDataDownloader->getRawDataOfEvent('');
+my $mockedRawData = $mockedDataDownloader->getRawDataOfEvent('');
 print $rawDataFileHandler $mockedRawDataPath;
 ok($aBookmakerXmlDataParser->isCorrectRawDataFile($mockedRawDataPath), 'mockedDataDownloader->getRawDataOfEvent' ) or die;
 

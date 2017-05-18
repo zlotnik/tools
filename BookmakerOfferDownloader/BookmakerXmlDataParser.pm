@@ -34,13 +34,13 @@ sub new()
 sub isCorrectRawDataFile($)
 {
 	my ($self,$rawDataPath ) = @_;
-	my $rawDataFileContent;
-	
-	open (my $rawDataFilehandler, "<", $rawDataPath) or die "$! $rawDataPath" ; 
+	my $rawDataFileContent = 'bzdury';
 	
 	{
 		local $/ = undef;
+		open (my $rawDataFilehandler, "<", $rawDataPath) or die "$! $rawDataPath" ; 
 		$rawDataFileContent = <$rawDataFilehandler>;
+		close $rawDataFilehandler or die;
 	}
 	
 	if($rawDataFileContent =~ m|Show:[\s\S]*My Bookmakers \(settings\)[\s\S]*Bookmakers: \d[\s\S]*?\d\.\d\d|m)
@@ -52,7 +52,6 @@ sub isCorrectRawDataFile($)
 		return 0;
 	};
 	
-	close $rawDataFilehandler or die;
 
 }
 
