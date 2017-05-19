@@ -21,10 +21,10 @@ sub new()
 
 sub getRawDataOfEvent($)
 {
-	my $modelRawDataPath = "input/data/modelRawData";
+	my $modelRawDataPath = "input/data/examples/modelRawData";
 	my $modelRawDataFileHandler;
 	
-	open ($modelRawDataFileHandler, "<" , $modelRawDataPath) or die;
+	open ($modelRawDataFileHandler, "<" , $modelRawDataPath) or die $!;
 	
 	{
 		$/ = undef;
