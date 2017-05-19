@@ -34,7 +34,7 @@ sub new()
 sub isCorrectRawDataFile($)
 {
 	my ($self,$rawDataPath ) = @_;
-	my $rawDataFileContent = 'bzdury';
+	my $rawDataFileContent ;
 	
 	{
 		local $/ = undef;

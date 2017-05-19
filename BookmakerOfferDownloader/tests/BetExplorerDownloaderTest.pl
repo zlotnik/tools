@@ -30,7 +30,7 @@ my $mockedDataDownloader =  MockedDataDownloader->new();
 open (my $rawDataFileHandler, ">", $mockedRawDataPath) or die;
 
 my $mockedRawData = $mockedDataDownloader->getRawDataOfEvent('');
-print $rawDataFileHandler $mockedRawDataPath;
+print $rawDataFileHandler $mockedRawData;
 ok($aBookmakerXmlDataParser->isCorrectRawDataFile($mockedRawDataPath), 'mockedDataDownloader->getRawDataOfEvent' ) or die;
 
  
