@@ -24,7 +24,8 @@ my $correctBookmakerEventList = "$FindBin::Bin/../output/example/downloadedEvent
 my $mockedRawDataPath = "$FindBin::Bin/../tmp/rawDataMockFile";
 
 my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
-my $theBookMakerDownloader =  BetExplorerDownloader->new(); 
+my $theMockedBookMakerDownloader =  BetExplorerDownloader->new('--mockednet'); 
+my $theRealBookMakerDownloader =  BetExplorerDownloader->new('--realnet'); 
 
 my $mockedDataDownloader =  MockedDataDownloader->new();
 open ( MOCKEDRAWDATA , ">", $mockedRawDataPath) or die;
@@ -65,16 +66,25 @@ my $xpath = "";
 my @rootXmlNode = $doc->findnodes("/");	
 #my $rootXmlNode = $doc->findnodes("/")[0]; maybe this is better		
 
-$theBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
-$theBookMakerDownloader->createEventListXML($xpath, $outputFile);
+$theMockedBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
+$theMockedBookMakerDownloader->createEventListXML($xpath, $outputFile);
 
-#$theBookMakerDownloader->pullBookmakersOffer($outputFile);
-
-$theBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile); #temporary moved before "BookMakerDownloader->createEventListXML"
+$theMockedBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile); #temporary moved before "BookMakerDownloader->createEventListXML"
 my $isOutputXmlFileExist = (-e $outputFile);
-($got, $expected, $testname) = ($isOutputXmlFileExist, 1, "BookMakerDownloader->pullBookmakersOffer($outputFile)");
+($got, $expected, $testname) = ($isOutputXmlFileExist, 1, "BookMakerDownloader->pullBookmakersOffer($outputFile) mocked net");
 ok($isOutputXmlFileExist, $testname) or die;
-$theBookMakerDownloader->pullBookmakersOffer($outputFile);
+$theMockedBookMakerDownloader->pullBookmakersOffer($outputFile);
+
+
+
+$theRealBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile); #temporary moved before "BookMakerDownloader->createEventListXML"
+my $isOutputXmlFileExist = (-e $outputFile);
+($got, $expected, $testname) = ($isOutputXmlFileExist, 1, "BookMakerDownloader->pullBookmakersOffer($outputFile) real net");
+ok($isOutputXmlFileExist, $testname) or die;
+$theRealBookMakerDownloader->pullBookmakersOffer($outputFile);
+
+
+
 
 
 my $isCreateEventListXMLCorrect = $aBookmakerXmlDataParser->isCorrectEventListFile($outputFile); 
