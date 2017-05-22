@@ -17,7 +17,9 @@ use File::Copy;
 
 #maybe is a time to think about find out some real parsers
 
-#todo: run only specific tests
+#todo: run only specific tests using their id's
+#todo: think about enwrap test in some class which will store also test properties
+
 my $correctBookmakerSelectorFile = "$FindBin::Bin/../input/parameters/examples/ekstraklasaSelector.xml";
 my $correctDownloadedBookmakerOfferFile = "$FindBin::Bin/../output/example/downloadedBookMakersOffer.xml";
 my $correctBookmakerEventList = "$FindBin::Bin/../output/example/downloadedEventList.xml";
