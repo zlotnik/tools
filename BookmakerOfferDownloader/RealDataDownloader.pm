@@ -1,4 +1,4 @@
-package MockedDataDownloader;
+package RealDataDownloader;
 use strict;
 use warnings;
 

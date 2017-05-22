@@ -94,15 +94,15 @@ sub new()
 {
 		
 	my ($class, $argument) = @_;
+	my $self;
 	
-	
-	if ($argument == '--mockednet')
+	if ($argument eq '--mockednet')
 	{
-		my $self = bless { m_DataDownloader => MockedDataDownloader->new()}, $class;
+		$self = bless { m_DataDownloader => MockedDataDownloader->new()}, $class;
 	}
-	elsif($argument == '--realnet')
+	elsif($argument eq '--realnet')
 	{
-		my $self = bless { m_DataDownloader => RealDataDownloader->new() }, $class;
+		$self = bless { m_DataDownloader => RealDataDownloader->new() }, $class;
 	}
 	else
 	{
@@ -187,7 +187,7 @@ sub pullBookmakersOffer($)
 	$self->createEventListXML($xpath, $outputXmlPath);
 	
 	updateEventListXMLWithEventDetails($outputXmlPath);
-	updateEventListXMLWithBookmakerOffer($outputXmlPath);
+	$self->updateEventListXMLWithBookmakerOffer($outputXmlPath);
 	
 }
 
@@ -237,7 +237,7 @@ sub updateEventListXMLWithBookmakerOffer($)
 {
 	#BetExplorerDownloader::updateEventListXMLWithBookmakerOffer
 	
-	my ($pathToBookmakerOfferXml) = @_;
+	my ($self, $pathToBookmakerOfferXml) = @_;
 	my $xmlParser = XML::LibXML->new; #global parser will improve optimalization
 	my $xmlDoc = $xmlParser->parse_file($pathToBookmakerOfferXml) or die $?;
 	my @allEventXml = $xmlDoc->findnodes('/note/eventList//*//event'); 
@@ -249,7 +249,7 @@ sub updateEventListXMLWithBookmakerOffer($)
 		$eventNode =~ m{event url="(.*\/)((&quot.*")|("))} or die;
 		
 		my $linkToEvent = $1;
-		my $dataWithBets = m_DataDownloader->getRawDataOfEvent($linkToEvent);
+		my $dataWithBets = $self->{m_DataDownloader}->getRawDataOfEvent($linkToEvent);
 		
 		print $dataWithBets; 
 		die "finished above "; #i think better would be do it on file or before creation file

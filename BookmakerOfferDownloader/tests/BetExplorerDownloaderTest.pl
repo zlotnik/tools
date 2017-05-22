@@ -5,6 +5,7 @@ use lib '..';
 use BetExplorerDownloader;
 use BookmakerXmlDataParser;
 use DataDownloader; #needed??
+use RealDataDownloader;
 use MockedDataDownloader;
 use FindBin;
 use File::Copy;
@@ -80,7 +81,7 @@ $theMockedBookMakerDownloader->pullBookmakersOffer($outputFile);
 
 
 $theRealBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile); #temporary moved before "BookMakerDownloader->createEventListXML"
-my $isOutputXmlFileExist = (-e $outputFile);
+$isOutputXmlFileExist = (-e $outputFile);
 ($got, $expected, $testname) = ($isOutputXmlFileExist, 1, "BookMakerDownloader->pullBookmakersOffer($outputFile) real net");
 ok($isOutputXmlFileExist, $testname) or die;
 $theRealBookMakerDownloader->pullBookmakersOffer($outputFile);

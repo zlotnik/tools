@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <note>
   <dataSources>
     <betexplorer />
@@ -9,22 +8,29 @@
       <Poland>
         <ekstraklasa>
           <Events>
-            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/cracovia-arka-gdynia/IBc0w2G5/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/termalica-b-b-korona-kielce/hjLFR4Hg/" />
           </Events>
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/zaglebie-piast-gliwice/nRLNf3ot/" />
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/lech-poznan-pogon-szczecin/xGOvQitk/" />
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/legia-termalica-b-b/d47sRXQr/" />
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/cracovia-arka-gdynia/IBc0w2G5/" />
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/zaglebie-piast-gliwice/nRLNf3ot/" />
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/lech-poznan-pogon-szczecin/xGOvQitk/" />
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/legia-termalica-b-b/d47sRXQr/" />
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/cracovia-arka-gdynia/IBc0w2G5/" />
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/zaglebie-piast-gliwice/nRLNf3ot/" />
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/lech-poznan-pogon-szczecin/xGOvQitk/" />
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/legia-termalica-b-b/d47sRXQr/" />
+          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/arka-gdynia-ruch/WzaA4vF4/" />
+          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/leczna-zaglebie/hp065Kab/" />
+          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/piast-gliwice-plock/Ysp57tVo/" />
+          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/slask-wroclaw-cracovia/CYr960ph/" />
+          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-legia/xvNRO21C/" />
+          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/lechia-gdansk-pogon-szczecin/fFHWNMGI/" />
+          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/lech-poznan-wisla/bmONPrn6/" />
+          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/termalica-b-b-jagiellonia/4QOJQOWa/" />
         </ekstraklasa>
-        <ekstraklasa />
-        <ekstraklasa />
+        <division-1>
+          <Events>
+            <event url="http://www.betexplorer.com/soccer/Poland/division-1/wisla-pulawy-pogon-siedlce/GYyrn4g4/" />
+          </Events>
+        </division-1>
+        <division-2 />
+        <iii-liga-group-i>
+          <Events>
+            <event url="http://www.betexplorer.com/soccer/Poland/iii-liga-group-i/widzew-lodz-huragan-moraq/tUWwVFJO/&quot; data-live-cell=&quot;matchlink" />
+          </Events>
+        </iii-liga-group-i>
+        <iii-liga-group-iii />
       </Poland>
     </soccer>
   </eventList>
