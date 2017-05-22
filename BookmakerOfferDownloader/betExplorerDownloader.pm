@@ -55,6 +55,7 @@ sub startCreatingXmlPartWithAnEventDetail($);
 sub pickupLinksFromXml($);
 sub removeEmptyLines($);
 sub leaveOnlyBetsStakesDataInRawdataFile($);
+sub showUsage();
 #################DICTIONARY##############################################
 #choosen bookmaker offer - choosen part of bookmakers offer by appling an offert selector eg. all German, soccer, matches  
 #offer selector - a xml file used choose which data will be downloadedDataRawText
@@ -92,10 +93,33 @@ $pathToXmlSelector = "input/parameters/polandEkstraklasaSelector.xml";
 sub new()
 {
 		
-	my $class = shift;
-	my $self = bless {}, $class;
+	my ($class, $argument) = @_;
+	
+	
+	if ($argument == '--mockednet')
+	{
+		my $self = bless { m_DataDownloader => MockedDataDownloader->new()}, $class;
+	}
+	elsif($argument == '--realnet')
+	{
+		my $self = bless { m_DataDownloader => RealDataDownloader->new() }, $class;
+	}
+	else
+	{
+		showUsage();
+		die;
+	}
+		
 	return $self; 
 }
+
+
+sub showUsage()
+{
+	#implement it
+}
+
+
 
 sub loadSelectorFile($)
 {
@@ -225,7 +249,7 @@ sub updateEventListXMLWithBookmakerOffer($)
 		$eventNode =~ m{event url="(.*\/)((&quot.*")|("))} or die;
 		
 		my $linkToEvent = $1;
-		my $dataWithBets = getRawDataOfEvent($linkToEvent);
+		my $dataWithBets = m_DataDownloader->getRawDataOfEvent($linkToEvent);
 		
 		print $dataWithBets; 
 		die "finished above "; #i think better would be do it on file or before creation file
