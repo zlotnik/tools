@@ -21,6 +21,8 @@ use File::Copy;
 #todo: run only specific tests using their id's
 #todo: think about enwrap test in some class which will store also test properties
 
+die "finished here: needing of ordering test cases which will be next step!"
+
 my $correctBookmakerSelectorFile = "$FindBin::Bin/../input/parameters/examples/ekstraklasaSelector.xml";
 my $correctDownloadedBookmakerOfferFile = "$FindBin::Bin/../output/example/downloadedBookMakersOffer.xml";
 my $correctBookmakerEventList = "$FindBin::Bin/../output/example/downloadedEventList.xml";
