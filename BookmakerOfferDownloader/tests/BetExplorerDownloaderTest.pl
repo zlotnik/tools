@@ -21,7 +21,6 @@ use File::Copy;
 #todo: run only specific tests using their id's
 #todo: think about enwrap test in some class which will store also test properties
 
-die "finished here: needing of ordering test cases which will be next step!"
 
 my $correctBookmakerSelectorFile = "$FindBin::Bin/../input/parameters/examples/ekstraklasaSelector.xml";
 my $correctDownloadedBookmakerOfferFile = "$FindBin::Bin/../output/example/downloadedBookMakersOffer.xml";
@@ -41,62 +40,66 @@ close MOCKEDRAWDATA or die $!;
 ok($aBookmakerXmlDataParser->isCorrectRawDataFile($mockedRawDataPath), 'mockedDataDownloader->getRawDataOfEvent' ) or die;
 
  
-#my $selectorFile = 'input/parameters/polandEkstraklasaSelector.xml';
-my $outputFile = "output/downloadedPolandEkstraklasa.xml";
 
-#BetExplorerDownloader::updateEventListXMLWithEventDetails('');
+my $resulXMLtFileWithDownloadedData = "output/downloadedPolandEkstraklasa.xml";
 
 
+
+#checking parsers
 (-e $correctBookmakerSelectorFile) or die "File doesn't exist $correctBookmakerSelectorFile\n";
-ok($aBookmakerXmlDataParser->isCorectBookmakerDataSelectorFile($correctBookmakerSelectorFile),'BookmakerXmlDataParser->isCorectBookmakerDataSelectorFile') or die;
+ok($aBookmakerXmlDataParser->isCorectBookmakerDataSelectorFile($correctBookmakerSelectorFile),'Checking bookmaker data selector parser') or die;
 
 (-e $correctDownloadedBookmakerOfferFile) or die "File doesn't exist $correctDownloadedBookmakerOfferFile\n";
-ok($aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($correctDownloadedBookmakerOfferFile),'BookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile')or die;
+ok($aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($correctDownloadedBookmakerOfferFile),'Checking bookmaker downloaded offert file parser')or die;
 
 (-e $correctBookmakerEventList) or die "File doesn't exist $correctBookmakerEventList\n";
-ok($aBookmakerXmlDataParser->isCorrectEventListFile($correctBookmakerEventList),'BookmakerXmlDataParser->isCorrectEventListFile');
+ok($aBookmakerXmlDataParser->isCorrectEventListFile($correctBookmakerEventList),'Checking bookmaker downloaded events list file parser');
 
 my ($got, $expected, $testname);
 
-if(-e $outputFile)
+if(-e $resulXMLtFileWithDownloadedData)
 {
-	unlink $outputFile or  die $?; 
+	unlink $resulXMLtFileWithDownloadedData or  die $?; 
 }
 
 my $xmlParser = XML::LibXML->new;
-copy $correctBookmakerSelectorFile, $outputFile or die $?; #does it needed?
-my $doc = $xmlParser->parse_file($correctBookmakerSelectorFile);
+copy $correctBookmakerSelectorFile, $resulXMLtFileWithDownloadedData or die $?; #does it needed?
+
+my $xmlDocWithDownloadedData = $xmlParser->parse_file($correctBookmakerSelectorFile);
 my $xpath = "";
 
-my @rootXmlNode = $doc->findnodes("/");	
-#my $rootXmlNode = $doc->findnodes("/")[0]; maybe this is better		
+my @rootXmlNode = $xmlDocWithDownloadedData->findnodes("/");	
 
+
+#checking mechanism stage  creating Event list 1
 $theMockedBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
-$theMockedBookMakerDownloader->createEventListXML($xpath, $outputFile);
-
-$theMockedBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile); #temporary moved before "BookMakerDownloader->createEventListXML"
-my $isOutputXmlFileExist = (-e $outputFile);
-($got, $expected, $testname) = ($isOutputXmlFileExist, 1, "BookMakerDownloader->pullBookmakersOffer($outputFile) mocked net");
-ok($isOutputXmlFileExist, $testname) or die;
-$theMockedBookMakerDownloader->pullBookmakersOffer($outputFile);
-
-
-
-$theRealBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile); #temporary moved before "BookMakerDownloader->createEventListXML"
-$isOutputXmlFileExist = (-e $outputFile);
-($got, $expected, $testname) = ($isOutputXmlFileExist, 1, "BookMakerDownloader->pullBookmakersOffer($outputFile) real net");
-ok($isOutputXmlFileExist, $testname) or die;
-$theRealBookMakerDownloader->pullBookmakersOffer($outputFile);
-
-
-
-
-
-my $isCreateEventListXMLCorrect = $aBookmakerXmlDataParser->isCorrectEventListFile($outputFile); 
+$theMockedBookMakerDownloader->createEventListXML($xpath, $resulXMLtFileWithDownloadedData);
+my $isCreateEventListXMLCorrect = $aBookmakerXmlDataParser->isCorrectEventListFile($resulXMLtFileWithDownloadedData); 
 ok($isCreateEventListXMLCorrect, "BookMakerDownloader->createEventListXML") or die;
 
-die("TODO: correct to early closing event node"); 
 
-my $isCorectBookmakerOfferFile = $aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($outputFile);
-($got,$expected, $testname) = ($isCorectBookmakerOfferFile, 1, "BookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile");
-ok($got, $testname) or die "Output file with bookmaker offer $outputFile hasn't correct format "; 
+#checking mechanism stage  filling up bookmaker offer  data concerning events(mocked version)
+$theMockedBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile); #temporary moved before "BookMakerDownloader->createEventListXML"
+my $isOutputXmlFileExist = (-e $resulXMLtFileWithDownloadedData);
+($got, $expected, $testname) = ($isOutputXmlFileExist, 1, "BookMakerDownloader->pullBookmakersOffer($resulXMLtFileWithDownloadedData) mocked net");
+ok($isOutputXmlFileExist, $testname) or die;
+$theMockedBookMakerDownloader->pullBookmakersOffer($resulXMLtFileWithDownloadedData);
+my $isCorectBookmakerOfferFile = $aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($resulXMLtFileWithDownloadedData);
+ok($got, $testname) or die "Output file with bookmaker offer $resulXMLtFileWithDownloadedData hasn't correct format "; 
+
+
+#checking mechanism stage  filling up bookmaker offer  data concerning events(online/not mocked version)
+$theRealBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile); #temporary moved before "BookMakerDownloader->createEventListXML"
+$isOutputXmlFileExist = (-e $resulXMLtFileWithDownloadedData);
+($got, $expected, $testname) = ($isOutputXmlFileExist, 1, "BookMakerDownloader->pullBookmakersOffer($resulXMLtFileWithDownloadedData) real net");
+ok($isOutputXmlFileExist, $testname) or die;# this one is needed I suppose .. 
+$theRealBookMakerDownloader->pullBookmakersOffer($resulXMLtFileWithDownloadedData);
+
+my $isCorectBookmakerOfferFile = $aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($resulXMLtFileWithDownloadedData);
+ok($got, $testname) or die "Output file with bookmaker offer $resulXMLtFileWithDownloadedData hasn't correct format "; 
+
+
+
+
+
+
