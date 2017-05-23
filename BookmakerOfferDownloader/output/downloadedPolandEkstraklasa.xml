@@ -8,9 +8,8 @@
       <Poland>
         <ekstraklasa>
           <Events>
-            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/termalica-b-b-korona-kielce/hjLFR4Hg/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/arka-gdynia-ruch/WzaA4vF4/" />
           </Events>
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/arka-gdynia-ruch/WzaA4vF4/" />
           <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/leczna-zaglebie/hp065Kab/" />
           <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/piast-gliwice-plock/Ysp57tVo/" />
           <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/slask-wroclaw-cracovia/CYr960ph/" />
@@ -21,16 +20,23 @@
         </ekstraklasa>
         <division-1>
           <Events>
-            <event url="http://www.betexplorer.com/soccer/Poland/division-1/wisla-pulawy-pogon-siedlce/GYyrn4g4/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/division-1/tychy-wisla-pulawy/h0jmQMWp/" />
           </Events>
+          <event url="http://www.betexplorer.com/soccer/Poland/division-1/chrobry-glogow-zaglebie-sosnowiec/txL51qgi/" />
+          <event url="http://www.betexplorer.com/soccer/Poland/division-1/drutex-bytovia-olsztyn/l2ODaNN3/" />
+          <event url="http://www.betexplorer.com/soccer/Poland/division-1/gornik-z-podbeskidzie/KQvjtZMr/" />
+          <event url="http://www.betexplorer.com/soccer/Poland/division-1/kluczbork-pruszkow/AHCMc1hG/" />
+          <event url="http://www.betexplorer.com/soccer/Poland/division-1/legnica-pogon-siedlce/hvwbvDie/" />
+          <event url="http://www.betexplorer.com/soccer/Poland/division-1/sandecja-nowy-s-wisla-pulawy/Emvfugxk/" />
+          <event url="http://www.betexplorer.com/soccer/Poland/division-1/suwalki-chojniczanka/KSJ9038c/" />
+          <event url="http://www.betexplorer.com/soccer/Poland/division-1/tychy-stal-mielec/AFX2wX61/" />
         </division-1>
-        <division-2 />
-        <iii-liga-group-i>
+        <iii-liga-group-i />
+        <iii-liga-group-iii>
           <Events>
-            <event url="http://www.betexplorer.com/soccer/Poland/iii-liga-group-i/widzew-lodz-huragan-moraq/tUWwVFJO/&quot; data-live-cell=&quot;matchlink" />
+            <event url="http://www.betexplorer.com/soccer/Poland/iii-liga-group-iii/sleza-wroclaw-walbrzych/xO6SjLHH/" />
           </Events>
-        </iii-liga-group-i>
-        <iii-liga-group-iii />
+        </iii-liga-group-iii>
       </Poland>
     </soccer>
   </eventList>
