@@ -16,7 +16,7 @@ use File::Copy;
 #todo: add to the desing a picture describing stages of creating output xml
 #testing script should check partial corectness first	
 
-#maybe is a time to think about find out some real parsers
+#maybe it is a time to think about find out some real parsers
 
 #todo: run only specific tests using their id's
 #todo: think about enwrap test in some class which will store also test properties

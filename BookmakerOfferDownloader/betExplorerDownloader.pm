@@ -431,7 +431,7 @@ sub createEventListXML($$)
 		else
 		{
 			#create a 'verbosity' switch
-			print "END OF RECURENCE $xpath/$nodeName\n";
+			#print "END OF RECURENCE $xpath/$nodeName\n"; #move to some trace function
 			#updateXmlNodeWithDataFromBookmaker($node, "${xpath}/${nodeName}", $outputXmlPath);
 			$self->updateXmlNodeWithDataFromBookmaker("${xpath}/${nodeName}", $outputXmlPath);				
 		}
