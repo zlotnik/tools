@@ -53,9 +53,10 @@ sub validateSelectorFile();
 sub isLinkToEvent($);
 sub startCreatingXmlPartWithAnEventDetail($);
 sub pickupLinksFromXml($);
-sub removeEmptyLines($);
-sub leaveOnlyBetsStakesDataInRawdataFile($);
+sub removeEmptyLines(\$);
 sub showUsage();
+sub simplifyFormatOfRawdata(\$);
+sub leaveOnlyBetsStakesDataInRawdataFile(\$);
 #################DICTIONARY##############################################
 #choosen bookmaker offer - choosen part of bookmakers offer by appling an offert selector eg. all German, soccer, matches  
 #offer selector - a xml file used choose which data will be downloadedDataRawText
@@ -249,10 +250,10 @@ sub updateEventListXMLWithBookmakerOffer($)
 		$eventNode =~ m{event url="(.*\/)((&quot.*")|("))} or die;
 		
 		my $linkToEvent = $1;
-		my $dataWithBets = $self->{m_DataDownloader}->getRawDataOfEvent($linkToEvent);
-		
-		print $dataWithBets; 
-		die "finished above "; #i think better would be do it on file or before creation file
+		my $dataWithBets = $self->{m_DataDownloader}->getRawDataOfEvent($linkToEvent);		
+		simplifyFormatOfRawdata($dataWithBets);
+		print $dataWithBets;
+		die "finished above "; #i think better would be do it on file or before creation file# not so sure
 		
 		my $isLineWithNumberOfBookmakersOccured = 0;
 		foreach(split("\n",$dataWithBets))
@@ -268,14 +269,12 @@ sub updateEventListXMLWithBookmakerOffer($)
 		die;
 	}
 	die;	
-	
-	
 }
 
 
-sub removeEmptyLines($)#move to toolbox
+sub removeEmptyLines(\$)#move to toolbox
 {
-	my $dataWithBets = $_[0];
+	my $dataWithBets = ${$_[0]};
 	my $theResult;
 	
 	foreach(split("\n",$dataWithBets))
@@ -286,8 +285,9 @@ sub removeEmptyLines($)#move to toolbox
 			$theResult .= $lineWithBetData . "\n";
 		}	
 	}
-	return $theResult;
-
+	#$dataWithBets = $theResult;
+	${$_[0]} = $theResult
+	
 }
 
 sub updateXmlNodeWithDataFromBookmaker($$)
@@ -614,7 +614,7 @@ sub getRawDataOfEvent($)# todo create synchronous-mocked version
 		print STDOUT "UNABLE TO FETCH $linkToEvent PID $pid \n";
 	}
 	
-	simplifyFormatOfRawdataFile($rawDataPath); #i think better would be do it on file or before creation file	
+	#simplifyFormatOfRawdata($rawDataPath); #i think better would be do it on file or before creation file	
 	open(my $fh, '<', $rawDataPath) or die ;
 	$rawDataToReturn = $fh;
 	close $fh or die;
@@ -622,30 +622,23 @@ sub getRawDataOfEvent($)# todo create synchronous-mocked version
 	return $rawDataToReturn;
 }
 
-sub simplifyFormatOfRawdataFile($)
+sub simplifyFormatOfRawdata(\$)
 {
-	my $filePathToRawData = $_[0];
+	my $rawDataContent = ${$_[0]};
 	
-	removeEmptyLines($filePathToRawData);
-	leaveOnlyBetsStakesDataInRawdataFile($filePathToRawData);
-	die "finished above"
+	removeEmptyLines($rawDataContent);
+	leaveOnlyBetsStakesDataInRawdataFile($rawDataContent);
+	${$_[0]} = $rawDataContent; 
 	
-
+	
 }
 
 #todo: mock net 
 
-sub leaveOnlyBetsStakesDataInRawdataFile($)
+sub leaveOnlyBetsStakesDataInRawdataFile(\$)
 {
-	my $filePathToRawData = $_[0];
+	my $rawDataContent = ${$_[0]};
 	
-	my $rawDataContent;
-	{
-		local $/ = undef;
-		open(my $fh, '<', $filePathToRawData) or die ;
-		$rawDataContent = <$fh>;
-		close $fh or die; 
-	}
 	
 	$rawDataContent =~ m#(Bookmakers:[\s\S]*?)Average odds#m or die;
 	
@@ -655,15 +648,15 @@ sub leaveOnlyBetsStakesDataInRawdataFile($)
 	{
 
 		my $lineOfRawData  = $_;
-		if($lineOfRawData =~ /([A-Za-z0-9].*)/)
+		if($lineOfRawData =~ m|(\d{1,2}\.\d{2})|)
 		{
-			$rawDataContentFilteredOut .= "\n" . $1 ; 
+			$rawDataContentFilteredOut .=  " ".$1 ; 
 		}
-		elsif($lineOfRawData =~ m|\s(\d{1,2}\.\d{2})\n|)
+		elsif($lineOfRawData =~ /([A-Za-z0-9].*)/)
 		{
 			chomp($1);
-			die "here is a problem because previous is matched instead of this one";#(^[A-Za-z0-9].*)
-			$rawDataContentFilteredOut = $rawDataContentFilteredOut . " $1"  ; 
+			#tr die "here is a problem because previous is matched instead of this one";#(^[A-Za-z0-9].*)
+			$rawDataContentFilteredOut = $rawDataContentFilteredOut . "\n$1"  ; 
 		
 		}
 		elsif($lineOfRawData =~ /^(Bookmakers:.*)/)
@@ -672,8 +665,7 @@ sub leaveOnlyBetsStakesDataInRawdataFile($)
 		}	
 	}
 	
-	print $rawDataContentFilteredOut;
-	die "finished here";	
+	${$_[0]} = $rawDataContentFilteredOut;	
 
 }
 
