@@ -239,7 +239,7 @@ sub updateEventListXMLWithBookmakerOffer($)
 	#BetExplorerDownloader::updateEventListXMLWithBookmakerOffer
 	
 	my ($self, $pathToBookmakerOfferXml) = @_;
-	my $xmlParser = XML::LibXML->new; #global parser will improve optimalization
+	my $xmlParser = XML::LibXML->new; #parser in properties will improve optimalization
 	my $xmlDoc = $xmlParser->parse_file($pathToBookmakerOfferXml) or die $?;
 	my @allEventXml = $xmlDoc->findnodes('/note/eventList//*//event'); 
 	
@@ -253,20 +253,20 @@ sub updateEventListXMLWithBookmakerOffer($)
 		my $dataWithBets = $self->{m_DataDownloader}->getRawDataOfEvent($linkToEvent);		
 		simplifyFormatOfRawdata($dataWithBets);
 		print $dataWithBets;
-		die "finished above "; #i think better would be do it on file or before creation file# not so sure
+		
 		
 		my $isLineWithNumberOfBookmakersOccured = 0;
 		foreach(split("\n",$dataWithBets))
 		{
 			my $lineWithBetData = $_;
-			$lineWithBetData =~ s/[^\w\.]/#/g;
+			#$lineWithBetData =~ s/[^\w\.]/#/g;
 			print $lineWithBetData ." NEXT LINE\n"; 
-			if($lineWithBetData =~/(\w+)#{0,2}(\d?\d\.\d\d)(\d?\d\.\d\d)(\d?\d\.\d\d)/ )
+			if($lineWithBetData =~ m|(\w*) (\d?\d\.\d\d) (\d?\d\.\d\d) (\d?\d\.\d\d)| )
 			{
-			
+				print "LINE WITH DATA $1 $2 $3\n"
 			}	
 		}
-		die;
+		die "finished here above functionality seems to work next to think how to iject data into xml";
 	}
 	die;	
 }
@@ -654,8 +654,7 @@ sub leaveOnlyBetsStakesDataInRawdataFile(\$)
 		}
 		elsif($lineOfRawData =~ /([A-Za-z0-9].*)/)
 		{
-			chomp($1);
-			#tr die "here is a problem because previous is matched instead of this one";#(^[A-Za-z0-9].*)
+			chomp($1);			
 			$rawDataContentFilteredOut = $rawDataContentFilteredOut . "\n$1"  ; 
 		
 		}
