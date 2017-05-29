@@ -2,8 +2,9 @@
 package BetExplorerDownloader;
 use strict;
 use warnings;
-
 use XML::Tidy;
+use XML::Simply;
+use Data::Dumper;
 use POSIX ":sys_wait_h";
 use 5.010;
 use Data::Dumper;
@@ -21,6 +22,8 @@ our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml pullBo
 #would be nice to have something to check some code clean metrics eg. code width, code length, number of sub in class 
 #change capitalization of this file
 #nice to have time login with every git pull ,git push command for cost measuring purposes
+#change capitalization of this file
+
 
 
 #open(INPUT, "<", $inputFileName) or die "Unable to open file"; 
@@ -57,6 +60,7 @@ sub removeEmptyLines(\$);
 sub showUsage();
 sub simplifyFormatOfRawdata(\$);
 sub leaveOnlyBetsStakesDataInRawdataFile(\$);
+sub addBookmakerOfferToEventListXml(\%$);
 #################DICTIONARY##############################################
 #choosen bookmaker offer - choosen part of bookmakers offer by appling an offert selector eg. all German, soccer, matches  
 #offer selector - a xml file used choose which data will be downloadedDataRawText
@@ -238,10 +242,11 @@ sub updateEventListXMLWithBookmakerOffer($)
 {
 	#BetExplorerDownloader::updateEventListXMLWithBookmakerOffer
 	
-	my ($self, $pathToBookmakerOfferXml) = @_;
+	my ($self, $pathToEventListXML) = @_;
 	my $xmlParser = XML::LibXML->new; #parser in properties will improve optimalization
-	my $xmlDoc = $xmlParser->parse_file($pathToBookmakerOfferXml) or die $?;
+	my $xmlDoc = $xmlParser->parse_file($pathToEventListXML) or die $?;
 	my @allEventXml = $xmlDoc->findnodes('/note/eventList//*//event'); 
+	my %eventXmlBetsData = {};
 	
 	for(@allEventXml)
 	{
@@ -253,23 +258,35 @@ sub updateEventListXMLWithBookmakerOffer($)
 		my $dataWithBets = $self->{m_DataDownloader}->getRawDataOfEvent($linkToEvent);		
 		simplifyFormatOfRawdata($dataWithBets);
 		print $dataWithBets;
-		
+		#my $eventName = .. #todo
 		
 		my $isLineWithNumberOfBookmakersOccured = 0;
 		foreach(split("\n",$dataWithBets))
 		{
 			my $lineWithBetData = $_;
+			my ($bookmakerName, $price_1, $price_X, $price_2);
 			#$lineWithBetData =~ s/[^\w\.]/#/g;
 			print $lineWithBetData ." NEXT LINE\n"; 
 			if($lineWithBetData =~ m|(\w*) (\d?\d\.\d\d) (\d?\d\.\d\d) (\d?\d\.\d\d)| )
 			{
-				print "LINE WITH DATA $1 $2 $3\n"
+				($bookmakerName, $price_1, $price_X, $price_2) = ($1, $2, $3,$4 );
+				$eventXmlBetsData{$bookmakerName}{'stake_1'} = $price_1;
+				$eventXmlBetsData{$bookmakerName}{'stake_1'} = $price_1;
+				$eventXmlBetsData{$bookmakerName}{'stake_1'} = $price_1;				
 			}	
 		}
 		die "finished here above functionality seems to work next to think how to iject data into xml";
 	}
-	die;	
+	addBookmakerOfferToEventListXml(%eventXmlBetsData,$pathToEventListXML);	
+	die "above todo";	
 }
+
+
+sub addBookmakerOfferToEventListXml(\%$)
+{
+
+};	
+
 
 
 sub removeEmptyLines(\$)#move to toolbox
