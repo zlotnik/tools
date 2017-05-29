@@ -3,7 +3,7 @@ package BetExplorerDownloader;
 use strict;
 use warnings;
 use XML::Tidy;
-use XML::Simply;
+use XML::Simple;
 use Data::Dumper;
 use POSIX ":sys_wait_h";
 use 5.010;
