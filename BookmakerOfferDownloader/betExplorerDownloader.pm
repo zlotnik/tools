@@ -13,6 +13,8 @@ use CategoryPage;
 use File::Copy qw(copy);
 use WojtekToolbox;
 use Cwd;
+use feature 'say';
+
 our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml pullBookmakersOffer);
 
 #($#ARGV +1) == 1 or die 'usage surebet.pl inputFile';
@@ -258,7 +260,7 @@ sub updateEventListXMLWithBookmakerOffer($)
 		my $dataWithBets = $self->{m_DataDownloader}->getRawDataOfEvent($linkToEvent);		
 		simplifyFormatOfRawdata($dataWithBets);
 		print $dataWithBets;
-		#my $eventName = .. #todo
+		#my $eventName = '' #todo
 		
 		my $isLineWithNumberOfBookmakersOccured = 0;
 		foreach(split("\n",$dataWithBets))
@@ -271,11 +273,11 @@ sub updateEventListXMLWithBookmakerOffer($)
 			{
 				($bookmakerName, $price_1, $price_X, $price_2) = ($1, $2, $3,$4 );
 				$eventXmlBetsData{$bookmakerName}{'stake_1'} = $price_1;
-				$eventXmlBetsData{$bookmakerName}{'stake_1'} = $price_1;
-				$eventXmlBetsData{$bookmakerName}{'stake_1'} = $price_1;				
+				$eventXmlBetsData{$bookmakerName}{'stake_X'} = $price_X;
+				$eventXmlBetsData{$bookmakerName}{'stake_2'} = $price_2;				
 			}	
 		}
-		die "finished here above functionality seems to work next to think how to iject data into xml";
+		
 	}
 	addBookmakerOfferToEventListXml(%eventXmlBetsData,$pathToEventListXML);	
 	die "above todo";	
@@ -284,7 +286,23 @@ sub updateEventListXMLWithBookmakerOffer($)
 
 sub addBookmakerOfferToEventListXml(\%$)
 {
-
+	my ($bookmakersBetDataRef, $eventListXmlFilePath)  = @_; 
+		
+		
+	#print BOOKMAKEROFFERDATA_FILEHANDLER XMLout($_[0], RootName => "books" );
+	$eventList_hashref =  XMLin($eventListXmlFilePath) or die;
+	
+	die "finished here";
+	${$eventList_hashref}{'Events'} =  %{$bookmakersBetDataRef};
+	#or 
+	push ${$eventList_hashref}{'Events'}, %{$bookmakersBetDataRef};
+	
+	#below check 
+	open BOOKMAKEROFFERDATA_FILEHANDLER , ">", "tmp/bookmakerOffert.xml" or die $! ;
+	print BOOKMAKEROFFERDATA_FILEHANDLER XMLout($eventList_hashref );
+		
+	close BOOKMAKEROFFERDATA_FILEHANDLER or die;
+	
 };	
 
 
