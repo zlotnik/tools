@@ -290,12 +290,16 @@ sub addBookmakerOfferToEventListXml(\%$)
 		
 		
 	#print BOOKMAKEROFFERDATA_FILEHANDLER XMLout($_[0], RootName => "books" );
-	$eventList_hashref =  XMLin($eventListXmlFilePath) or die;
+	my $eventList_hashref =  XMLin($eventListXmlFilePath) or die;
 	
-	die "finished here";
-	${$eventList_hashref}{'Events'} =  %{$bookmakersBetDataRef};
+	#die "finished here";
+	#${$eventList_hashref}{'Events'} =  %{$bookmakersBetDataRef};
 	#or 
-	push ${$eventList_hashref}{'Events'}, %{$bookmakersBetDataRef};
+	
+	
+	print Dumper->Dump($eventList_hashref);
+	die;
+	#push ${$eventList_hashref}{'Events'}, %{$bookmakersBetDataRef};
 	
 	#below check 
 	open BOOKMAKEROFFERDATA_FILEHANDLER , ">", "tmp/bookmakerOffert.xml" or die $! ;
