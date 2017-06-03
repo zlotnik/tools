@@ -35,7 +35,6 @@ sub loadSelectorFile($);
 sub getsLinksForAllEventsFromSubCategory($$);
 sub getTableWithEvents($);
 sub getLinksToEventFromTable($);
-sub findTheBestOddInLinkToEvent($);
 sub pullBookmakersOffer($);
 sub downloadRawDataOfChoosenOfert(\%);
 sub generateReportLine($);
@@ -86,7 +85,6 @@ sub addBookmakerOfferToEventListXml(\%$);
 #select OUTPUT; 
 #$| = 1;  # make unbuffered
 
-#findTheBestOddInLinkToEvent('http://www.betexplorer.com/soccer/germany/bundesliga/mainz-schalke/GEcPMEM6/#1x2');
 
 ############################MAIN##############################################
 
@@ -160,18 +158,6 @@ sub isItCorrectXmlFile($)
 	}
 }
 
-sub findTheBestOddInLinkToEvent($)
-{
-	open OUTPUT, '>', "output.html" or die "Can't create filehandle: $!";
-	select OUTPUT; 
-	my $linkToEvent = $_[0];
-	my $content  = tryToGetUrl($linkToEvent,3) or die "BetExplorerDownloader: unable to get $linkToEvent \n";
-	my $best1odd;
-	
-	#$content =~ /td class="course best-betrate arrow-up" data-odd=(.)/m;
-	#$content =~ /course best-betra(te)/m;
-	print $content;
-}
 
 
 sub pullBookmakersOffer($) 
@@ -235,7 +221,7 @@ sub updateEventListXMLWithEventDetails($)
 
 sub pickupLinksFromXml($)
 {
-
+	#??
 
 }
 
@@ -249,7 +235,7 @@ sub updateEventListXMLWithBookmakerOffer($)
 	my $xmlDoc = $xmlParser->parse_file($pathToEventListXML) or die $?;
 	my @allEventXml = $xmlDoc->findnodes('/note/eventList//*//event'); 
 	my %eventXmlBetsData = {};
-	
+	my $target_xpath; #todo
 	for(@allEventXml)
 	{
 		my $eventNode = $_;
@@ -279,7 +265,7 @@ sub updateEventListXMLWithBookmakerOffer($)
 		}
 		
 	}
-	addBookmakerOfferToEventListXml(%eventXmlBetsData,$pathToEventListXML);	
+	addBookmakerOfferToEventListXml(%eventXmlBetsData,$pathToEventListXML, $target_xpath);	
 	die "above todo";	
 }
 
@@ -288,16 +274,16 @@ sub addBookmakerOfferToEventListXml(\%$)
 {
 	my ($bookmakersBetDataRef, $eventListXmlFilePath)  = @_; 
 		
-		
 	#print BOOKMAKEROFFERDATA_FILEHANDLER XMLout($_[0], RootName => "books" );
 	my $eventList_hashref =  XMLin($eventListXmlFilePath) or die;
-	
-	#die "finished here";
+	#BetExplorerDownloader::addBookmakerOfferToEventListXml
+
 	#${$eventList_hashref}{'Events'} =  %{$bookmakersBetDataRef};
-	#or 
+
+	#my %hash = ('abc' => 123, 'def' => [4,5,6]);
+	#print Dumper(\%hash);
 	
-	
-	print Dumper->Dump($eventList_hashref);
+	print Dumper($eventList_hashref);
 	die;
 	#push ${$eventList_hashref}{'Events'}, %{$bookmakersBetDataRef};
 	
@@ -335,7 +321,7 @@ sub updateXmlNodeWithDataFromBookmaker($$)
 	#my $pathToXmlSelector = shift;
 	my ($self,$xsubPath, $pathToXmlSelector) = @_;  
 	
-	my $xmlParser = XML::LibXML->new; #global parser will improve optimalization
+	my $xmlParser = XML::LibXML->new; #global parser would improve optimalization
 	my $xmlDoc = $xmlParser->parse_file($pathToXmlSelector) or die $?;
 	
 	my $betsDataXmlNode = seekBetsDataInXmlEventFile($xmlDoc); #maybe this method isn't needed and its name could be not adequate
