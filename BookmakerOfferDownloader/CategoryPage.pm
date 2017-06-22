@@ -21,7 +21,7 @@ sub makeCategoryPageObject()
 	my $self = {};
 	
 	
-	die "here finished CountryLevelCategoryPageREal and CountryLevelCategoryPageMocked difference in get  method"
+	die "here finished CountryLevelCategoryPageREal and CountryLevelCategoryPageMocked difference in get  method";
 	my $categoryPage = checkCategoryPage($subCategoryXpath);
 	if ($categoryPage eq 'CountryLevelCategoryPage')
 	{

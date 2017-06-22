@@ -61,7 +61,7 @@ sub removeEmptyLines(\$);
 sub showUsage();
 sub simplifyFormatOfRawdata(\$);
 sub leaveOnlyBetsStakesDataInRawdataFile(\$);
-sub addBookmakerOfferToEventListXml(\%$);
+sub addBookmakerOfferToEventListXml(\%$$);
 #################DICTIONARY##############################################
 #choosen bookmaker offer - choosen part of bookmakers offer by appling an offert selector eg. all German, soccer, matches  
 #offer selector - a xml file used choose which data will be downloadedDataRawText
@@ -270,7 +270,7 @@ sub updateEventListXMLWithBookmakerOffer($)
 }
 
 
-sub addBookmakerOfferToEventListXml(\%$)
+sub addBookmakerOfferToEventListXml(\%$$)
 {
 	my ($bookmakersBetDataRef, $eventListXmlFilePath)  = @_; 
 		
