@@ -9,7 +9,7 @@ use POSIX ":sys_wait_h";
 use 5.010;
 use Data::Dumper;
 use XML::LibXML;
-use CategoryPage;
+use BookmakerPageCrawler;
 use File::Copy qw(copy);
 use WojtekToolbox;
 use Cwd;
@@ -472,9 +472,9 @@ sub getAllSubCategories($$)
 	my $xmlNode = $_[0];
 	my $subCategoryXpath = $_[1];
 	
-	my $categoryPage = CategoryPage->makeCategoryPageObject($subCategoryXpath);
+	my $BookmakerPageCrawler = BookmakerPageCrawler->makeBookmakerPageCrawlerObject($subCategoryXpath);
 	
-	my @subCategories  = $categoryPage->getAllSubCategories();
+	my @subCategories  = $BookmakerPageCrawler->getAllSubCategories();
 	return @subCategories;
 }
 	

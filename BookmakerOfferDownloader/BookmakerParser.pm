@@ -20,14 +20,14 @@ sub new()
 
 sub makeParser($)
 {
-	my ($objectOfClassCategoryPage) = @_;
-	if(ref $objectOfClassCategoryPage eq 'GroupLevelCategoryPage')
+	my ($objectOfClassBookmakerPageCrawler) = @_;
+	if(ref $objectOfClassBookmakerPageCrawler eq 'GroupLevelCategoryPage')
 	{
 		return GroupLevelCategoryPageParser->new();
 	}
 	else
 	{
-		die "unsupported CategoryPage objext"
+		die "unsupported CategoryPage object"
 	}
 
 }

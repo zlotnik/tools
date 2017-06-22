@@ -1,5 +1,5 @@
 package CountryLevelCategoryPage;
-use CategoryPage;
+use BookmakerPageCrawler;
 use warnings;
 use strict;
 use LWP::Simple;
@@ -9,7 +9,7 @@ use LWP::Simple;
 #
 
 
-our @ISA = qw(CategoryPage);
+our @ISA = qw(BookmakerPageCrawler);
 
 
 sub new($)

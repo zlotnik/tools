@@ -1,4 +1,4 @@
-package CategoryPage;
+package BookmakerPageCrawler;
 
 use warnings;
 use strict;
@@ -21,7 +21,7 @@ sub makeCategoryPageObject()
 	my $self = {};
 	
 	
-	die "here finished CountryLevelCategoryPageREal and CountryLevelCategoryPageMocked difference in get  method";
+	die "here finished CountryLevelCategoryPageReal and CountryLevelCategoryPageMocked difference in get  method";
 	my $categoryPage = checkCategoryPage($subCategoryXpath);
 	if ($categoryPage eq 'CountryLevelCategoryPage')
 	{
@@ -62,7 +62,7 @@ sub checkCategoryPage($)
 		return 'CountryLevelCategoryPage';
 	}
 	elsif($#tokenizedCategoryPageSelector == 2)
-	{
+	{	
 		return 'GroupLevelCategoryPage';
 	}
 	elsif($categoryPageSelector =~  m|http|)

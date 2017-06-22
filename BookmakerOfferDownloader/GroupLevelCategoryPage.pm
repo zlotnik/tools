@@ -1,12 +1,12 @@
 package GroupLevelCategoryPage;
 
-use CategoryPage;
+use BookmakerPageCrawler;
 use warnings;
 use strict;
 use LWP::Simple;
 use BetexplorerParser;
 
-our @ISA = qw(CategoryPage);
+our @ISA = qw(BookmakerPageCrawler);
 
 sub new();
 

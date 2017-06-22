@@ -1,10 +1,10 @@
 package EventLevelCategoryPage;
 
-use CategoryPage;
+use BookmakerPageCrawler;
 use warnings;
 use strict;
 
-our @ISA = qw(CategoryPage);
+our @ISA = qw(BookmakerPageCrawler);
 
 sub getAllSubCategories($)
 {
