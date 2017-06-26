@@ -7,7 +7,7 @@ use Class::Interface;
 &interface; 
 
 
-die "Im not sure if all below subs must be implemented in child"
+#Im not sure if all below subs must be implemented in child
 sub makeParser($);
 sub downloadOffer;
 sub new($);

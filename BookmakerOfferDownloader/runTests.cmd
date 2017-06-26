@@ -1,1 +1,1 @@
-tests\BetExplorerDownloaderTest.pl
+tests\legacyTests.pl

@@ -1,1 +1,1 @@
-perl -d tests\BetExplorerDownloaderTest.pl
+perl -d tests\legacyTests.pl

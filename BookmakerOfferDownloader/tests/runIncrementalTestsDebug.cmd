@@ -1,0 +1,1 @@
+perl -d tests\incrementalTests.pl
