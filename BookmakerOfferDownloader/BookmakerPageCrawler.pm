@@ -5,6 +5,7 @@ use strict;
 use CountryLevelCategoryPage;
 use GroupLevelCategoryPage;
 use EventLevelCategoryPage;
+use MockedBookmakerPage;
 #############TODO#####################################
 
 ######################################################
@@ -82,9 +83,31 @@ sub checkCategoryPage($)
 
 sub new($)
 {
-	my $class = shift;
-	my ($mSubCategoryXpath) = @_;
-	my $self = bless { mSubCategoryXpath => $mSubCategoryXpath }, $class;	
+	my ($class, $mockedOrRealWWW_argument) = @_;
+	
+	
+	
+	#my $self = bless { mSubCategoryXpath => $mSubCategoryXpath }, $class;	
+	#mSubCategoryXpath seems that doesn't need anymore	
+	
+	my $self = bless {}, $class;
+	
+	
+	if ($mockedOrRealWWW_argument eq '--realnet')
+	{
+		$self->{m_BookmakerPage} = WWWBookmakerPage->new();
+	}
+	elsif($mockedOrRealWWW_argument eq '--mockednet')
+	{
+		$self->{ m_BookmakerPage} = MockedBookmakerPage->new();
+	}
+	else
+	{
+		die;
+	}
+	
+	$self->{ m_CategoryPage} = CategoryPage->new();	
+	
 	return $self;
 
 }

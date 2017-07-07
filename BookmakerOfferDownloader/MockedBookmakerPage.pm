@@ -1,11 +1,10 @@
-package MockedDataDownloader;
+package MockedBookmakerPage;
 use strict;
 use warnings;
+use Class::Interface;
+&implements( 'BookmakerPageIf' );
 
-use DataDownloader;
-
-our @EXPORT = qw(getRawDataOfEvent);
-our @ISA = qw(DataDownloader);
+our @EXPORT = qw(getRawDataOfEvent new);
 
 sub getRawDataOfEvent($);
 sub new();
@@ -15,7 +14,7 @@ sub new()
 {		
 	my $class = shift;
 	
-	my $self = $class->SUPER::new();
+	my $self = bless {}, $class;
 	return $self; 
 }
 

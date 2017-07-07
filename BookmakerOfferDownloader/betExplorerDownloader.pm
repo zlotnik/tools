@@ -96,25 +96,14 @@ $pathToXmlSelector = "input/parameters/polandEkstraklasaSelector.xml";
 
 ####################SUB DEFINITIONS############################################
 sub new()
-{
-		
-	my ($class, $argument) = @_;
+{		
+	my ($class, $mockedOrRealWWW_argument) = @_;
 	my $self;
-	
-	if ($argument eq '--mockednet')
-	{
-		$self = bless { m_DataDownloader => MockedDataDownloader->new()}, $class;
-	}
-	elsif($argument eq '--realnet')
-	{
-		$self = bless { m_DataDownloader => RealDataDownloader->new() }, $class;
-	}
-	else
-	{
-		showUsage();
-		die;
-	}
 		
+	$self = bless {
+					m_BookmakerPageCrawler => BookmakerPageCrawler->new($mockedOrRealWWW_argument)
+				  },$class;
+	
 	return $self; 
 }
 
@@ -243,7 +232,7 @@ sub updateEventListXMLWithBookmakerOffer($)
 		$eventNode =~ m{event url="(.*\/)((&quot.*")|("))} or die;
 		
 		my $linkToEvent = $1;
-		my $dataWithBets = $self->{m_DataDownloader}->getRawDataOfEvent($linkToEvent);		
+		my $dataWithBets = $self->{m_BookmakerPageCrawler}->getRawDataOfEvent($linkToEvent);		
 		simplifyFormatOfRawdata($dataWithBets);
 		print $dataWithBets;
 		#my $eventName = '' #todo
@@ -326,7 +315,7 @@ sub updateXmlNodeWithDataFromBookmaker($$)
 	
 	my $betsDataXmlNode = seekBetsDataInXmlEventFile($xmlDoc); #maybe this method isn't needed and its name could be not adequate
 	
-	for(getAllSubCategories($betsDataXmlNode, $xsubPath))
+	for($self->getAllSubCategories($betsDataXmlNode, $xsubPath))
 	{
 		my $subCategoryName = $_;
 		my $xpathToNewChildNode = "${xsubPath}/${subCategoryName}";
@@ -469,12 +458,15 @@ sub getAllSubCategories($$)
 {
 	#IN:  "soccer/Portugal"
 	#Out arra: ["LaLiga","LaLiga", "and so on"];
-	my $xmlNode = $_[0];
-	my $subCategoryXpath = $_[1];
+	my ($self, $xmlNode, $subCategoryXpath) = @_;
 	
-	my $BookmakerPageCrawler = BookmakerPageCrawler->makeBookmakerPageCrawlerObject($subCategoryXpath);
+	#my $BookmakerPageCrawler = BookmakerPageCrawler->makeBookmakerPageCrawlerObject($subCategoryXpath);
 	
-	my @subCategories  = $BookmakerPageCrawler->getAllSubCategories();
+	#my @subCategories  = $BookmakerPageCrawler->getAllSubCategories();
+	
+	
+	my @subCategories = $self->{m_bookmakerPageCrawler}->getAllSubCategories($subCategoryXpath);
+	
 	return @subCategories;
 }
 	

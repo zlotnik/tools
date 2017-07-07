@@ -6,7 +6,7 @@ use BetExplorerDownloader;
 use BookmakerXmlDataParser;
 use DataDownloader; #needed??
 use RealDataDownloader;
-use MockedDataDownloader;
+#use MockedBookmakerPage;
 use FindBin;
 use File::Copy;
 #TODO think about split tests
