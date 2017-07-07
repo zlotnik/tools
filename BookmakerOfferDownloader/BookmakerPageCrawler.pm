@@ -6,14 +6,22 @@ use CountryLevelCategoryPage;
 use GroupLevelCategoryPage;
 use EventLevelCategoryPage;
 use MockedBookmakerPage;
+use CategoryPage;
 #############TODO#####################################
 
 ######################################################
 sub makeCategoryPageObject();
 sub checkLevelOfCategoryPage($);
+sub getAllSubCategories($);
 
 ######################################################
 
+sub getAllSubCategories($)
+{
+	my ($self, $subCategoryXpath) = @_;	
+	my @toReturn = $self->{m_CategoryPage}->getAllSubCategories($subCategoryXpath);
+	return @toReturn;
+};
  
 sub makeCategoryPageObject()
 {
@@ -80,7 +88,7 @@ sub checkCategoryPage($)
 
 }
 
-
+#BookmakerPageCrawler::new
 sub new($)
 {
 	my ($class, $mockedOrRealWWW_argument) = @_;
@@ -111,7 +119,5 @@ sub new($)
 	return $self;
 
 }
-
-#requires 'getAllSubCategories';
 
 1;

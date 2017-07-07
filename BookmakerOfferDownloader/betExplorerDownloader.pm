@@ -465,7 +465,7 @@ sub getAllSubCategories($$)
 	#my @subCategories  = $BookmakerPageCrawler->getAllSubCategories();
 	
 	
-	my @subCategories = $self->{m_bookmakerPageCrawler}->getAllSubCategories($subCategoryXpath);
+	my @subCategories = $self->{m_BookmakerPageCrawler}->getAllSubCategories($subCategoryXpath);
 	
 	return @subCategories;
 }

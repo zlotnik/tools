@@ -1,5 +1,6 @@
 package CountryLevelCategoryPage;
 use BookmakerPageCrawler;
+use CategoryPage;
 use warnings;
 use strict;
 use LWP::Simple;

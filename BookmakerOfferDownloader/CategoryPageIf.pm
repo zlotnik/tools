@@ -8,12 +8,12 @@ use Class::Interface;
 
 
 #Im not sure if all below subs must be implemented in child
-sub makeParser($);
+sub makeParser;#($);
 sub downloadOffer;
-sub new($);
-sub getAllSubCategories();
-sub checkCategoryPage($);
-sub checkLevelOfCategoryPage($);
+#sub new($);
+sub getAllSubCategories;#();
+sub checkCategoryPage;#($);
+sub checkLevelOfCategoryPage;#($);
 
 
 1;
