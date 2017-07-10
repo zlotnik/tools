@@ -1,41 +1,46 @@
 package CategoryPage;
-
+use Data::Dumper;
 use warnings;
 use strict;
 use Class::Interface;
 &implements( 'CategoryPageIf' );
 #our @ISA = qw(CategoryPageIf);
 
+sub getAllSubCategories($);
+
 #Im not sure if all below subs must be implemented in child
 sub makeParser($){};# maybe there is a more elegant way; inheriting without implementation
 sub downloadOffer{};
 sub new($)
 {
-	die "here a problem"
+	#CategoryPage::new
 	my $class = $_[0];
-	my $self = bless{},$class;
+	my $self = bless {}, $class;
 	
-	$self->{m_CategoryPagesHandlers}  = \(CountryLevelCategoryPage->new(),
+	CountryLevelCategoryPage->new();
+	GroupLevelCategoryPage->new();
+	my $test = EventLevelCategoryPage->new();
+	$self->{m_ddd};
+	
+	$self->{m_CategoryPagesHandlers}  = [CountryLevelCategoryPage->new(),
 										  GroupLevelCategoryPage->new(),
 										  EventLevelCategoryPage->new()
-										  );
-
+										  ];
+	return $self;
 };
-sub getAllSubCategories()
+
+sub getAllSubCategories($)
 {
-	my $self = $_[0];
+	#CategoryPage::getAllSubCategories
+	my ($self, $xpatToSubcategory) = @_;
 
 	for(@{$self->{m_CategoryPagesHandlers}})
 	{
-		print $_;
-	
+		print $_;	
 	}
-	die;
-	
-	
+	die;		
 };
+
 sub checkCategoryPage($){};
 sub checkLevelOfCategoryPage($){};
-
-
 1;

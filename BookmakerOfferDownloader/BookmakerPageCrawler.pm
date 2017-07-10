@@ -18,6 +18,7 @@ sub getAllSubCategories($);
 
 sub getAllSubCategories($)
 {
+	#BookmakerPageCrawler::getAllSubCategories
 	my ($self, $subCategoryXpath) = @_;	
 	my @toReturn = $self->{m_CategoryPage}->getAllSubCategories($subCategoryXpath);
 	return @toReturn;

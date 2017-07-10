@@ -9,17 +9,17 @@ use LWP::Simple;
 #-hardcoded category list
 #
 
+our @ISA = qw(CategoryPage);
 
-our @ISA = qw(BookmakerPageCrawler);
+sub new();
 
-
-sub new($)
+sub new()
 {
 	my $class = shift;
-	my ($mSubCategoryXpath) = @_;
-	my $self = $class->SUPER::new($mSubCategoryXpath);
-		
-	$self->{mlinkToCategory} = 'http://www.betexplorer.com/';
+	#my ($mSubCategoryXpath) = @_;
+	#my $self = $class->SUPER::new($mSubCategoryXpath);
+	my $self = bless {}, $class;		
+	#$self->{mlinkToCategory} = 'http://www.betexplorer.com/';
 	return $self;
 
 }
