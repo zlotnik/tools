@@ -21,6 +21,31 @@ sub new()
 
 }
 
+sub couldYouHandleThatXPath($)
+{	
+	
+	my ($self,$categoryPageSelector) = @_;
+		
+	my @tokenizedCategoryPageSelector = split('/',$categoryPageSelector);
+	if ($tokenizedCategoryPageSelector[$#tokenizedCategoryPageSelector] eq '')
+	{
+		pop @tokenizedCategoryPageSelector;
+	}
+	if ($tokenizedCategoryPageSelector[0] eq '')
+	{
+		shift @tokenizedCategoryPageSelector;
+	}
+	
+	if($#tokenizedCategoryPageSelector == 2)
+	{
+		return 1;
+	}
+	
+	return 0;
+	
+};
+
+
 sub getAllSubCategories($)
 {
 	my $self = shift;

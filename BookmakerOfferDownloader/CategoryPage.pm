@@ -38,7 +38,7 @@ sub getAllSubCategories($)
 			return $aCategoryPageHandler->getAllSubCategories($xpatToSubcategory);			
 		}; 	
 	}
-	die "This xpath can not be handled by any CategoryPage\n";	
+	die "This xpath can not be handled by any CategoryPage";	
 };
 
 sub checkCategoryPage($){};
