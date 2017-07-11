@@ -13,6 +13,12 @@ our @ISA = qw(CategoryPage);
 
 sub new();
 
+sub couldYouHandleThatXPath($)
+{
+	print "country side\n";
+};
+
+
 sub new()
 {
 	my $class = shift;
@@ -26,7 +32,7 @@ sub new()
 
 sub getAllSubCategories()
 {
-	my $self = shift;
+	my ($self) = @_;
 	my $mSubCategoryXpath = $self->{mSubCategoryXpath}; 
 	my @toReturn = ();
 	

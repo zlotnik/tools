@@ -14,6 +14,7 @@ sub downloadOffer;
 sub getAllSubCategories;#();
 sub checkCategoryPage;#($);
 sub checkLevelOfCategoryPage;#($);
+sub couldYouHandleThatXPath;#($);
 
 
 1;

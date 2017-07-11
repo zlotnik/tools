@@ -11,17 +11,13 @@ sub getAllSubCategories($);
 #Im not sure if all below subs must be implemented in child
 sub makeParser($){};# maybe there is a more elegant way; inheriting without implementation
 sub downloadOffer{};
+sub couldYouHandleThatXPath($){};
 sub new($)
 {
 	#CategoryPage::new
 	my $class = $_[0];
-	my $self = bless {}, $class;
-	
-	CountryLevelCategoryPage->new();
-	GroupLevelCategoryPage->new();
-	my $test = EventLevelCategoryPage->new();
-	$self->{m_ddd};
-	
+	my $self = bless {}, $class;	
+		
 	$self->{m_CategoryPagesHandlers}  = [CountryLevelCategoryPage->new(),
 										  GroupLevelCategoryPage->new(),
 										  EventLevelCategoryPage->new()
@@ -36,9 +32,13 @@ sub getAllSubCategories($)
 
 	for(@{$self->{m_CategoryPagesHandlers}})
 	{
-		print $_;	
+		my $aCategoryPageHandler = $_;
+		if($aCategoryPageHandler->couldYouHandleThatXPath($xpatToSubcategory))
+		{
+			return $aCategoryPageHandler->getAllSubCategories($xpatToSubcategory);			
+		}; 	
 	}
-	die;		
+	die "This xpath can not be handled by any CategoryPage\n";	
 };
 
 sub checkCategoryPage($){};
