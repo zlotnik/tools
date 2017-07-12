@@ -51,14 +51,13 @@ sub new()
 
 sub getAllSubCategories()
 {
-	my ($self) = @_;
-	my $mSubCategoryXpath = $self->{mSubCategoryXpath}; 
+	my ($self, $subCategoryXpath ) = @_;
 	my @toReturn = ();
 	
 	my $linkToCategory = 'http://www.betexplorer.com/' ;
 	my $contentOfSubcategoryPage  = get($linkToCategory) or die "unable to get $linkToCategory \n"; # move it to CategoryPage objects 
 		
-	while($contentOfSubcategoryPage =~ m|${mSubCategoryXpath}/(.*?)/|gi)
+	while($contentOfSubcategoryPage =~ m|${subCategoryXpath}/(.*?)/|gi)
 	{
 			push @toReturn, $1;
 	}

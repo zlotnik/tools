@@ -12,8 +12,7 @@ sub new();
 sub new()
 {
 	my $class = shift;
-	#my ($subCategoryXpath) = @_;
-	
+	#my ($subCategoryXpath) = @_;	
 	#my $self = $class->SUPER::new($subCategoryXpath);
 	my $self = bless {}, $class;
 	#$self->{mlinkToCategory} = 'http://www.betexplorer.com/' . $self->{mSubCategoryXpath};	
@@ -45,12 +44,12 @@ sub couldYouHandleThatXPath($)
 	
 };
 
-
 sub getAllSubCategories($)
 {
-	my $self = shift;
+	my ($self,$subCategoryXpath ) = @_;
 	#BetexplorerParser::pickupLinksToEventFromTable("");
-	my @toReturn = BetexplorerParser::pickupLinksToEventFromTable(BetexplorerParser::pickupTableWithEventsFromWeburl($self->{mlinkToCategory}));	
+	my $linkToCategory = 'http://www.betexplorer.com/' . $subCategoryXpath;	
+	my @toReturn = BetexplorerParser::pickupLinksToEventFromTable(BetexplorerParser::pickupTableWithEventsFromWeburl($linkToCategory));	
 	return @toReturn;
 }
 
