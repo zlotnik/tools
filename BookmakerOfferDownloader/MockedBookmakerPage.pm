@@ -8,7 +8,7 @@ our @EXPORT = qw(getRawDataOfEvent new);
 
 sub getRawDataOfEvent($);
 sub new();
-
+sub get($);
 
 sub new()
 {		
@@ -17,6 +17,13 @@ sub new()
 	my $self = bless {}, $class;
 	return $self; 
 }
+
+
+sub get($)
+{
+	die "implementation missing"
+};
+
 
 sub getRawDataOfEvent($)
 {
@@ -30,9 +37,7 @@ sub getRawDataOfEvent($)
 		my $rawData = <$modelRawDataFileHandler>;
 		close $modelRawDataFileHandler or die;
 		return $rawData;
-	}
-	
-	
+	}	
 }
 ;
 

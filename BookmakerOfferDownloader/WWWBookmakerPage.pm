@@ -1,15 +1,17 @@
-package RealDataDownloader;
+package WWWBookmakerPage;
 use strict;
 use warnings;
+use Class::Interface;
+use LWP::Simple;
 
-use DataDownloader;
+&implements( 'BookmakerPageIf' );
 
-our @EXPORT = qw(getRawDataOfEvent);
-our @ISA = qw(DataDownloader);
+our @EXPORT = qw(getRawDataOfEvent new);
+
 
 sub getRawDataOfEvent($);
 sub new();
-
+sub get($);
 
 sub new()
 {		
@@ -35,6 +37,13 @@ sub getRawDataOfEvent($)
 	
 	
 }
-;
+
+sub get($)
+{
+	my ($self, $linkToGet) = @_;
+
+	get($linkToGet) or die "unable to get $linkToCategory \n";  
+};
+
 
 1;

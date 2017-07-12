@@ -23,7 +23,9 @@ sub getAllSubCategories($)
 	my @toReturn = $self->{m_CategoryPage}->getAllSubCategories($subCategoryXpath);
 	return @toReturn;
 };
- 
+
+
+#V propably unused; remove it V
 sub makeCategoryPageObject()
 {
 	my $class = shift;
@@ -92,30 +94,11 @@ sub checkCategoryPage($)
 #BookmakerPageCrawler::new
 sub new($)
 {
-	my ($class, $mockedOrRealWWW_argument) = @_;
+	my ($class, $mockedOrRealWWW_argument) = @_;	
+		
+	my $self = bless {}, $class;	
 	
-	
-	
-	#my $self = bless { mSubCategoryXpath => $mSubCategoryXpath }, $class;	
-	#mSubCategoryXpath seems that doesn't need anymore	
-	
-	my $self = bless {}, $class;
-	
-	
-	if ($mockedOrRealWWW_argument eq '--realnet')
-	{
-		$self->{m_BookmakerPage} = WWWBookmakerPage->new();
-	}
-	elsif($mockedOrRealWWW_argument eq '--mockednet')
-	{
-		$self->{ m_BookmakerPage} = MockedBookmakerPage->new();
-	}
-	else
-	{
-		die;
-	}
-	
-	$self->{ m_CategoryPage} = CategoryPage->new();	
+	$self->{ m_CategoryPage} = CategoryPage->new($mockedOrRealWWW_argument);	
 	
 	return $self;
 

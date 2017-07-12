@@ -3,7 +3,7 @@ use BookmakerPageCrawler;
 use CategoryPage;
 use warnings;
 use strict;
-use LWP::Simple;
+
 
 #############TODO#########################
 #-hardcoded category list
@@ -55,8 +55,10 @@ sub getAllSubCategories()
 	my @toReturn = ();
 	
 	my $linkToCategory = 'http://www.betexplorer.com/' ;
-	my $contentOfSubcategoryPage  = get($linkToCategory) or die "unable to get $linkToCategory \n"; # move it to CategoryPage objects 
-		
+	my $contentOfSubcategoryPage  = $self->get($linkToCategory); 
+	
+	
+	
 	while($contentOfSubcategoryPage =~ m|${subCategoryXpath}/(.*?)/|gi)
 	{
 			push @toReturn, $1;

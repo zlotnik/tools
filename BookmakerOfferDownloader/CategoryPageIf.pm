@@ -15,6 +15,7 @@ sub getAllSubCategories;#();
 sub checkCategoryPage;#($);
 sub checkLevelOfCategoryPage;#($);
 sub couldYouHandleThatXPath;#($);
+sub setStrategy;#($);
 
 
 1;
