@@ -1,4 +1,4 @@
-package BookmakerPageIf;
+package SourceOfBookmakerPageIf;
 
 use warnings;
 use strict;

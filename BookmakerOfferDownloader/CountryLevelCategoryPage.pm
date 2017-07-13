@@ -4,7 +4,6 @@ use CategoryPage;
 use warnings;
 use strict;
 
-
 #############TODO#########################
 #-hardcoded category list
 #
@@ -15,7 +14,6 @@ sub new();
 
 sub couldYouHandleThatXPath($)
 {
-	
 	
 	my ($self,$categoryPageSelector) = @_;
 		
@@ -37,7 +35,6 @@ sub couldYouHandleThatXPath($)
 	
 };
 
-
 sub new()
 {
 	my $class = shift;
@@ -46,7 +43,6 @@ sub new()
 	my $self = bless {}, $class;		
 	#$self->{mlinkToCategory} = 'http://www.betexplorer.com/';
 	return $self;
-
 }
 
 sub getAllSubCategories()
@@ -56,8 +52,6 @@ sub getAllSubCategories()
 	
 	my $linkToCategory = 'http://www.betexplorer.com/' ;
 	my $contentOfSubcategoryPage  = $self->get($linkToCategory); 
-	
-	
 	
 	while($contentOfSubcategoryPage =~ m|${subCategoryXpath}/(.*?)/|gi)
 	{

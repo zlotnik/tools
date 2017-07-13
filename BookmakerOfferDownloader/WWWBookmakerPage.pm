@@ -4,7 +4,7 @@ use warnings;
 use Class::Interface;
 use LWP::Simple;
 
-&implements( 'BookmakerPageIf' );
+our @ISA = qw(SourceOfBookmakerPage);
 
 our @EXPORT = qw(getRawDataOfEvent new);
 

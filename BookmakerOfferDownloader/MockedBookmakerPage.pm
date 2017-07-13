@@ -2,8 +2,9 @@ package MockedBookmakerPage;
 use strict;
 use warnings;
 use Class::Interface;
-&implements( 'BookmakerPageIf' );
+use SourceOfBookmakerPage;
 
+our @ISA = qw(SourceOfBookmakerPage);
 our @EXPORT = qw(getRawDataOfEvent new);
 
 sub getRawDataOfEvent($);

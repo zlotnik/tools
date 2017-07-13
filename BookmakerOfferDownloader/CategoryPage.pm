@@ -2,6 +2,10 @@ package CategoryPage;
 use Data::Dumper;
 use warnings;
 use strict;
+use MockedBookmakerPage;
+use SourceOfBookmakerPageIf;
+
+
 use Class::Interface;
 &implements( 'CategoryPageIf' );
 #our @ISA = qw(CategoryPageIf);
