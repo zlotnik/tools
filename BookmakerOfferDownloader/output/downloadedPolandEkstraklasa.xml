@@ -1,25 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <note>
   <dataSources>
-    <betexplorer />
+  <betexplorer/>  
   </dataSources>
   <eventList>
-    <soccer>
-      <Poland>
-        <ekstraklasa>
-          <Events>
-            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/plock-lechia-gdansk/pfTkeiH6/" />
-          </Events>
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/pogon-szczecin-wisla/WjPodX10/" />
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/cracovia-piast-gliwice/t2WYbZHs/" />
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/gornik-z-legia/AyywbgXm/" />
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/arka-gdynia-slask-wroclaw/vgp73F9Q/" />
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/termalica-b-b-jagiellonia/vHSgfBWC/" />
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/lech-poznan-sandecja-nowy-s/I7RcgVoJ/" />
-          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-zaglebie/lSZtcDnf/" />
-        </ekstraklasa>
-      </Poland>
-    </soccer>
+  <soccer>
+  <Poland/>
+  </soccer>
   </eventList>
+  
 </note>

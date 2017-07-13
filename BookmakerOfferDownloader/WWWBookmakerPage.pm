@@ -34,15 +34,13 @@ sub getRawDataOfEvent($)
 		close $modelRawDataFileHandler or die;
 		return $rawData;
 	}
-	
-	
 }
 
 sub get($)
 {
 	my ($self, $linkToGet) = @_;
 
-	get($linkToGet) or die "unable to get $linkToCategory \n";  
+	get($linkToGet) or die "unable to get $linkToGet";  
 };
 
 

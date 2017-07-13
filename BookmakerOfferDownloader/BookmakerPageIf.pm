@@ -16,6 +16,6 @@ use Class::Interface;
 #sub checkLevelOfCategoryPage($); #needed ?
 #sub getRawDataOfEvent($);
 sub getRawDataOfEvent;
-sub get#($);
+sub get;#($);
 
 1;
