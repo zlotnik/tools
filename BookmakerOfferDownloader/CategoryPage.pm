@@ -3,7 +3,7 @@ use Data::Dumper;
 use warnings;
 use strict;
 use MockedBookmakerPage;
-use SourceOfBookmakerPageIf;
+#use SourceOfBookmakerPageIf;
 
 
 use Class::Interface;
@@ -49,9 +49,9 @@ sub new($)
 		
 	$self->setStrategy($mockedOrRealWWW_argument);									  
 	
-	$self->{m_CategoryPagesHandlers}  = [CountryLevelCategoryPage->new(),
-										  GroupLevelCategoryPage->new(),
-										  EventLevelCategoryPage->new()
+	$self->{m_CategoryPagesHandlers}  = [CountryLevelCategoryPage->new($self->{m_strategyOfObtainingBookmakerData}),
+										  GroupLevelCategoryPage->new($self->{m_strategyOfObtainingBookmakerData}),
+										  EventLevelCategoryPage->new($self->{m_strategyOfObtainingBookmakerData})
 										  ];
 	return $self;
 };

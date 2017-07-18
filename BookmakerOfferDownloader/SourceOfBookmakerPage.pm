@@ -10,6 +10,6 @@ use Class::Interface;
 &implements( 'SourceOfBookmakerPageIf' );
 
 sub getRawDataOfEvent(){};
-
+sub get($){};
 
 1;

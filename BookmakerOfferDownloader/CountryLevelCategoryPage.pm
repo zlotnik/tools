@@ -37,10 +37,11 @@ sub couldYouHandleThatXPath($)
 
 sub new()
 {
-	my $class = shift;
+	my ($class, $referenceToStrategyOfObtainingBookmakerData) = @_;
 	#my ($mSubCategoryXpath) = @_;
 	#my $self = $class->SUPER::new($mSubCategoryXpath);
 	my $self = bless {}, $class;		
+	$self->{m_strategyOfObtainingBookmakerData} = $referenceToStrategyOfObtainingBookmakerData;
 	#$self->{mlinkToCategory} = 'http://www.betexplorer.com/';
 	return $self;
 }
@@ -51,7 +52,7 @@ sub getAllSubCategories()
 	my @toReturn = ();
 	
 	my $linkToCategory = 'http://www.betexplorer.com/' ;
-	my $contentOfSubcategoryPage  = $self->get($linkToCategory); 
+	my $contentOfSubcategoryPage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToCategory); 
 	
 	while($contentOfSubcategoryPage =~ m|${subCategoryXpath}/(.*?)/|gi)
 	{
