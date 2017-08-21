@@ -51,7 +51,7 @@ sub getAllSubCategories()
 	my ($self, $subCategoryXpath ) = @_;
 	my @toReturn = ();
 	
-	my $linkToCategory = 'http://www.betexplorer.com/' ;
+	my $linkToCategory = 'http://www.betexplorer.com/soccer/' ;
 	my $contentOfSubcategoryPage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToCategory); 
 	
 	while($contentOfSubcategoryPage =~ m|${subCategoryXpath}/(.*?)/|gi)
