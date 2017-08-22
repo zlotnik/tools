@@ -22,7 +22,15 @@ sub new()
 
 sub get($)
 {
-	die "implementation missing"
+	my ($class, $pathToDownload) = @_;
+	my $pathToMockedFile;
+	$pathToMockedFile = 'input/mockedWWW/' . $pathToDownload . 'index.html';
+	
+
+	open my $mockedFilefh, "<", $pathToDownload or die "Unable to open mocked file ${pathToDownload}";
+	die 'to be continued!!!' ;
+	die "implementation missing";
+
 };
 
 
