@@ -24,12 +24,20 @@ sub get($)
 {
 	my ($class, $pathToDownload) = @_;
 	my $pathToMockedFile;
+	my $toReturn;
+	$pathToMockedFile =~ s/www/qqq/g;
 	$pathToMockedFile = 'input/mockedWWW/' . $pathToDownload . 'index.html';
 	
 
-	open my $mockedFilefh, "<", $pathToDownload or die "Unable to open mocked file ${pathToDownload}";
-	die 'to be continued!!!' ;
-	die "implementation missing";
+	open my $mockedFilefh, "<", $pathToMockedFile or die "Unable to open mocked file ${pathToMockedFile}";
+	{
+		local $/;
+		$toReturn = <$mockedFilefh>;
+
+	
+	}
+	close $mockedFilefh or die;
+	return $toReturn;
 
 };
 
