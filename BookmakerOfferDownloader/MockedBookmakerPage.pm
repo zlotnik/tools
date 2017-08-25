@@ -25,7 +25,7 @@ sub get($)
 	my ($class, $pathToDownload) = @_;
 	my $pathToMockedFile;
 	my $toReturn;
-	$pathToMockedFile =~ s/www/qqq/g;
+	$pathToDownload =~ s|http://www.betexplorer.com||;
 	$pathToMockedFile = 'input/mockedWWW/' . $pathToDownload . 'index.html';
 	
 
