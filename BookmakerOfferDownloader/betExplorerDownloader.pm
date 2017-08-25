@@ -304,6 +304,9 @@ sub removeEmptyLines(\$)#move to toolbox
 	
 }
 
+
+my $justForDebug ;#remove it
+
 sub updateXmlNodeWithDataFromBookmaker($$)
 {
 	
@@ -311,7 +314,7 @@ sub updateXmlNodeWithDataFromBookmaker($$)
 	my ($self,$xsubPath, $pathToXmlSelector) = @_;  
 	
 	my $xmlParser = XML::LibXML->new; #global parser would improve optimalization
-	my $xmlDoc = $xmlParser->parse_file($pathToXmlSelector) or die $?;
+	my $xmlDoc = $xmlParser->parse_file($pathToXmlSelector) or die "Can't parse xmlFile";
 	
 	my $betsDataXmlNode = seekBetsDataInXmlEventFile($xmlDoc); #maybe this method isn't needed and its name could be not adequate
 	
@@ -330,7 +333,13 @@ sub updateXmlNodeWithDataFromBookmaker($$)
 		}
 		$self->updateXmlNodeWithDataFromBookmaker($xpathToNewChildNode,$pathToXmlSelector);
 	}
-	
+	print $justForDebug++ . "\n";	
+	print $xsubPath . "\n";
+	if($justForDebug == 10)
+	{
+		print "STOP\n";
+	}
+
 }
 	
 sub isLinkToEvent($)
