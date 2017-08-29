@@ -54,8 +54,9 @@ sub getAllSubCategories()
 	my $linkToCategory = 'http://www.betexplorer.com/soccer/' ;
 	my $contentOfSubcategoryPage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToCategory); 
 	
-	die "below there is problem; incorrect returned results"
-	while($contentOfSubcategoryPage =~ m|${subCategoryXpath}/(.*?)/|gi)
+	#die "below there is problem; incorrect returned results";
+	#while($contentOfSubcategoryPage =~ m|${subCategoryXpath}/(.*?)/|gi)
+	while($contentOfSubcategoryPage =~ m|<a href="${subCategoryXpath}/(.*?)/|gi)
 	{
 			push @toReturn, $1;
 	}
