@@ -305,19 +305,16 @@ sub removeEmptyLines(\$)#move to toolbox
 }
 
 
-my $justForDebug ;#remove it
-
 sub updateXmlNodeWithDataFromBookmaker($$)
 {
 	
-	#my $pathToXmlSelector = shift;
 	my ($self,$xsubPath, $pathToXmlSelector) = @_;  
 	
 	my $xmlParser = XML::LibXML->new; #global parser would improve optimalization
 	my $xmlDoc = $xmlParser->parse_file($pathToXmlSelector) or die "Can't parse xmlFile";
 	
 	my $betsDataXmlNode = seekBetsDataInXmlEventFile($xmlDoc); #maybe this method isn't needed and its name could be not adequate
-	
+		
 	for($self->getAllSubCategories($betsDataXmlNode, $xsubPath))
 	{
 		my $subCategoryName = $_;
@@ -333,13 +330,6 @@ sub updateXmlNodeWithDataFromBookmaker($$)
 		}
 		$self->updateXmlNodeWithDataFromBookmaker($xpathToNewChildNode,$pathToXmlSelector);
 	}
-	print $justForDebug++ . "\n";	
-	print $xsubPath . "\n";
-	if($justForDebug == 10)
-	{
-		print "STOP\n";
-	}
-
 }
 	
 sub isLinkToEvent($)
@@ -466,14 +456,9 @@ sub createEventListXML($$)
 sub getAllSubCategories($$)
 {
 	#IN:  "soccer/Portugal"
-	#Out arra: ["LaLiga","LaLiga", "and so on"];
+	#Out array: ["LaLiga","LaLiga", "and so on"];
 	my ($self, $xmlNode, $subCategoryXpath) = @_;
-	
-	#my $BookmakerPageCrawler = BookmakerPageCrawler->makeBookmakerPageCrawlerObject($subCategoryXpath);
-	
-	#my @subCategories  = $BookmakerPageCrawler->getAllSubCategories();
-	
-	
+		
 	my @subCategories = $self->{m_BookmakerPageCrawler}->getAllSubCategories($subCategoryXpath);
 	
 	return @subCategories;
