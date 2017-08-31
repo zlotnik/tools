@@ -3,6 +3,7 @@ use Data::Dumper;
 use warnings;
 use strict;
 use MockedBookmakerPage;
+use WWWBookmakerPage;
 #use SourceOfBookmakerPageIf;
 
 

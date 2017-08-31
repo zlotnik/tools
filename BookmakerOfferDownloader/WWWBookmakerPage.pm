@@ -2,7 +2,7 @@ package WWWBookmakerPage;
 use strict;
 use warnings;
 use Class::Interface;
-use LWP::Simple;
+use LWP::Simple ();
 
 our @ISA = qw(SourceOfBookmakerPage);
 
@@ -17,7 +17,8 @@ sub new()
 {		
 	my $class = shift;
 	
-	my $self = $class->SUPER::new();
+
+	my $self = bless {}, $class;
 	return $self; 
 }
 
@@ -40,7 +41,7 @@ sub get($)
 {
 	my ($self, $linkToGet) = @_;
 
-	get($linkToGet) or die "unable to get $linkToGet";  
+	LWP::Simple::get($linkToGet) or die "unable to get $linkToGet";  
 };
 
 

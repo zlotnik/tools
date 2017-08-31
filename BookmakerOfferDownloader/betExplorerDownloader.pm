@@ -101,8 +101,8 @@ sub new()
 	my $self;
 		
 	$self = bless {
-					m_BookmakerPageCrawler => BookmakerPageCrawler->new($mockedOrRealWWW_argument)
-				  },$class;
+			m_BookmakerPageCrawler => BookmakerPageCrawler->new($mockedOrRealWWW_argument)
+		      },$class;
 	
 	return $self; 
 }
