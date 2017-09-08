@@ -414,9 +414,10 @@ sub createEventListXML($$)
 {
 	my ($self, $xpath, $outputXmlPath) = @_;
 
-	my $xmlParser = XML::LibXML->new;
-		
-	my $xmlNode = $xmlParser->parse_file($outputXmlPath);
+	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
+	
+	my $xmlParser = XML::LibXML->new;		
+	my $xmlNode = $xmlParser->parse_file($outputXmlPath) or die;
 	
 	if($xpath eq '')
 	{
