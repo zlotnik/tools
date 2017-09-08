@@ -1,1 +1,1 @@
-perl -d tests\legacyTests.pl
+perl -d tests\legacy\legacyTests.pl

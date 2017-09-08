@@ -1,1 +1,1 @@
-tests\legacyTests.pl
+tests\legacy\legacyTests.pl

@@ -21,7 +21,7 @@ use File::Copy;
 #todo: think about enwrap test in some class which will store also test properties
 
 my $xpath = "";
-my $correctBookmakerSelectorFile = "$FindBin::Bin/../input/parameters/examples/ekstraklasaSelector.xml";
+my $correctBookmakerSelectorFile = "$FindBin::Bin/../../input/parameters/examples/ekstraklasaSelector.xml";
 
 my $theMockedBookMakerDownloader =  BetExplorerDownloader->new('--mockednet'); 
 my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
@@ -34,11 +34,11 @@ if(-e $resultXMLFileWithDownloadedData)
 }
 
 my $xmlParser = XML::LibXML->new;
-copy $correctBookmakerSelectorFile, $resultXMLFileWithDownloadedData or die $?; #does it needed?
 
-$theMockedBookMakerDownloader->createEventListXML($xpath, $resultXMLFileWithDownloadedData);
+
 $theMockedBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
+$theMockedBookMakerDownloader->createEventListXML($xpath, $resultXMLFileWithDownloadedData);
 my $isCreateEventListXMLCorrect = $aBookmakerXmlDataParser->isCorrectEventListFile($resultXMLFileWithDownloadedData); 
-ok($isCreateEventListXMLCorrect, "Stage 1: Creating event list xml") or die;
+ok($isCreateEventListXMLCorrect, "Mocked net stage: Creating event list xml") or die;
 
 
