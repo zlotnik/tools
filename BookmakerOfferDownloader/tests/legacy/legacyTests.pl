@@ -22,10 +22,10 @@ use File::Copy;
 #todo: think about enwrap test in some class which will store also test properties
 
 
-my $correctBookmakerSelectorFile = "$FindBin::Bin/../input/parameters/examples/ekstraklasaSelector.xml";
-my $correctDownloadedBookmakerOfferFile = "$FindBin::Bin/../output/example/downloadedBookMakersOffer.xml";
-my $correctBookmakerEventList = "$FindBin::Bin/../output/example/downloadedEventList.xml";
-my $mockedRawDataPath = "$FindBin::Bin/../tmp/rawDataMockFile";
+my $correctBookmakerSelectorFile = "$FindBin::Bin/../../input/parameters/examples/ekstraklasaSelector.xml";
+my $correctDownloadedBookmakerOfferFile = "$FindBin::Bin/../../output/example/downloadedBookMakersOffer.xml";
+my $correctBookmakerEventList = "$FindBin::Bin/../../output/example/downloadedEventList.xml";
+my $mockedRawDataPath = "$FindBin::Bin/../../tmp/rawDataMockFile";
 
 my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
 my $theRealBookMakerDownloader =  BetExplorerDownloader->new('--realnet'); 
