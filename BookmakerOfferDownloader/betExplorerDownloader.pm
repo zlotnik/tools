@@ -424,32 +424,36 @@ sub createEventListXML($$)
 		my $nodeToRename = $xmlNode->findnodes('/note/dataChoosenToDownload')->[0];
 		$nodeToRename->setNodeName('eventList');
 		$xmlNode->toFile($outputXmlPath) or die $?; 
+		#$xmlNode = $xmlParser->parse_file($outputXmlPath) or die;
 	}
 	
 	my $rootPathToEventXMLNode = '/note/eventList';
 	my $absolutePathToNode = "$rootPathToEventXMLNode${xpath}";
 	
 	$xmlNode = $xmlNode->findnodes($absolutePathToNode)->[0];
-		
-	foreach ($xmlNode->nonBlankChildNodes())
+	
+	if(defined $xmlNode) 
 	{
-		my $node = $_;						
-		my $nodeName = $node->nodeName;
-			
-		if($node->hasChildNodes() )
+		foreach ($xmlNode->nonBlankChildNodes())
 		{
-			my $childNode = $_;
-			$self->createEventListXML("$xpath/$nodeName", $outputXmlPath);
-			#enclose in some sub like seekXmlNodeWithDataTofetch or something better ...  
-		}
-		else
-		{
-			#create a 'verbosity' switch
-			#print "END OF RECURENCE $xpath/$nodeName\n"; #move to some trace function
-			#updateXmlNodeWithDataFromBookmaker($node, "${xpath}/${nodeName}", $outputXmlPath);
-			$self->updateXmlNodeWithDataFromBookmaker("${xpath}/${nodeName}", $outputXmlPath);				
-		}
-	}	
+			my $node = $_;						
+			my $nodeName = $node->nodeName;
+				
+			if($node->hasChildNodes() )
+			{
+				my $childNode = $_;
+				$self->createEventListXML("$xpath/$nodeName", $outputXmlPath);
+				#enclose in some sub like seekXmlNodeWithDataTofetch or something better ...  
+			}
+			else
+			{
+				#create a 'verbosity' switch
+				#print "END OF RECURENCE $xpath/$nodeName\n"; #move to some trace function
+				#updateXmlNodeWithDataFromBookmaker($node, "${xpath}/${nodeName}", $outputXmlPath);
+				$self->updateXmlNodeWithDataFromBookmaker("${xpath}/${nodeName}", $outputXmlPath);				
+			}
+		}	
+	}
 	correctFormatXmlDocument($outputXmlPath);
 };
 
