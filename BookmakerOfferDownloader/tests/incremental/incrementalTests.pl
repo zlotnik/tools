@@ -37,6 +37,7 @@ my $xmlParser = XML::LibXML->new;
 
 
 $theMockedBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
+$theMockedBookMakerDownloader->prepareTemplateForXmlFileWithResults($resultXMLFileWithDownloadedData);
 $theMockedBookMakerDownloader->createEventListXML($xpath, $resultXMLFileWithDownloadedData);
 my $isCreateEventListXMLCorrect = $aBookmakerXmlDataParser->isCorrectEventListFile($resultXMLFileWithDownloadedData); 
 ok($isCreateEventListXMLCorrect, "Mocked net stage: Creating event list xml") or die;

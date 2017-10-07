@@ -62,6 +62,7 @@ sub showUsage();
 sub simplifyFormatOfRawdata(\$);
 sub leaveOnlyBetsStakesDataInRawdataFile(\$);
 sub addBookmakerOfferToEventListXml(\%$$);
+sub prepareTemplateForXmlFileWithResults($);
 #################DICTIONARY##############################################
 #choosen bookmaker offer - choosen part of bookmakers offer by appling an offert selector eg. all German, soccer, matches  
 #offer selector - a xml file used choose which data will be downloadedDataRawText
@@ -166,6 +167,7 @@ sub pullBookmakersOffer($)
 	my @rootXmlNode = $doc->findnodes("/");	
 	#my $rootXmlNode = $doc->findnodes("/")[0] or ->[0]; maybe this is better	
 	
+	prepareTemplateForXmlFileWithResults($outputXmlPath);
 	$self->createEventListXML($xpath, $outputXmlPath);
 	
 	updateEventListXMLWithEventDetails($outputXmlPath);
@@ -409,23 +411,36 @@ sub addChildSubcategoryNodeToOfferXml($$$)
 	$document->toFile($outputXmlFilePath) or die $?;	
 }
 		
+	
+
+sub prepareTemplateForXmlFileWithResults($)
+{
+	my ($self,$outputXmlPath) = @_;
+	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
+	my $xmlParser = XML::LibXML->new;		
+	my $xmlNode = $xmlParser->parse_file($outputXmlPath) or die;
+	
+	my $nodeToRename = $xmlNode->findnodes('/note/dataChoosenToDownload')->[0];
+	$nodeToRename->setNodeName('eventList');
+	$xmlNode->toFile($outputXmlPath) or die $?; 
 		
+}	
+	
 sub createEventListXML($$)
 {
 	my ($self, $xpath, $outputXmlPath) = @_;
 
-	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
+	#copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
 	
 	my $xmlParser = XML::LibXML->new;		
 	my $xmlNode = $xmlParser->parse_file($outputXmlPath) or die;
 	
-	if($xpath eq '')
-	{
-		my $nodeToRename = $xmlNode->findnodes('/note/dataChoosenToDownload')->[0];
-		$nodeToRename->setNodeName('eventList');
-		$xmlNode->toFile($outputXmlPath) or die $?; 
-		#$xmlNode = $xmlParser->parse_file($outputXmlPath) or die;
-	}
+	#if($xpath eq '')
+	#{
+	#	my $nodeToRename = $xmlNode->findnodes('/note/dataChoosenToDownload')->[0];
+	#	$nodeToRename->setNodeName('eventList');
+	#	$xmlNode->toFile($outputXmlPath) or die $?; 
+	#}
 	
 	my $rootPathToEventXMLNode = '/note/eventList';
 	my $absolutePathToNode = "$rootPathToEventXMLNode${xpath}";

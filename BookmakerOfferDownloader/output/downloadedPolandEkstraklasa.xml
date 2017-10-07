@@ -4,9 +4,19 @@
   <dataSources>
     <betexplorer />
   </dataSources>
-  <dataChoosenToDownload>
+  <eventList>
     <soccer>
-      <Poland />
+      <Poland>
+        <ekstraklasa>
+          <Events>
+            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/" />
+          </Events>
+          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/" />
+          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/piast-gliwice-sandecja-nowy-s/2m133URG/" />
+          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/termalica-b-b-arka-gdynia/MX5r8hDo/" />
+          <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/slask-wroclaw-wisla/fqPWo2dq/" />
+        </ekstraklasa>
+      </Poland>
     </soccer>
-  </dataChoosenToDownload>
+  </eventList>
 </note>
