@@ -63,6 +63,8 @@ sub simplifyFormatOfRawdata(\$);
 sub leaveOnlyBetsStakesDataInRawdataFile(\$);
 sub addBookmakerOfferToEventListXml(\%$$);
 sub prepareTemplateForXmlFileWithResults($);
+sub isEventsNodeExists($$);
+sub addEventNodeToXmlEventList($$);
 #################DICTIONARY##############################################
 #choosen bookmaker offer - choosen part of bookmakers offer by appling an offert selector eg. all German, soccer, matches  
 #offer selector - a xml file used choose which data will be downloadedDataRawText
@@ -363,32 +365,61 @@ sub seekBetsDataInXmlEventFile($)
 	return $betsDataXmlNode;
 }
 
-sub addEventNodeToXmlEventList($)
+sub addEventNodeToXmlEventList($$)
 {
-	my $xmlNodeNeededUpdate = shift;
-	$xmlNodeNeededUpdate->addNewChild('','Events');
+	my ($relativeXpathToUpdate, $outputXmlFilePath) = @_;
 	
-}
-
-sub addLinkToEventToOfferXml($$$)# this sub must refactorized because it can be reached using less amount of code lines 
-{
-	my ($relativeXpathToParent, $linkToEvent, $outputXmlFilePath) = @_;
-	my $absolutePathToNodeNeededUpdate =  '/note/eventList' . $relativeXpathToParent ;
-
+	my $absolutePathToNodeNeededUpdate =  '/note/eventList' . $relativeXpathToUpdate ;
 	
 	my $xmlParser = XML::LibXML->new;
 	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
-	my $parentNodeToUpdate = $document->findnodes($absolutePathToNodeNeededUpdate)->[0] or die $?;
 	
-	$absolutePathToNodeNeededUpdate = $absolutePathToNodeNeededUpdate . '/Events';
-	if(not $document->findnodes($absolutePathToNodeNeededUpdate) )
+	my $parentNodeToUpdate = $document->findnodes($absolutePathToNodeNeededUpdate)->[0] ;
+	
+	$parentNodeToUpdate->addNewChild('','Events');
+	
+	$document->toFile($outputXmlFilePath) or die $?;
+}
+
+sub isEventsNodeExists($$)
+{
+	my ($relativeXpathToParent, $outputXmlFilePath) = @_;
+	my $xmlParser = XML::LibXML->new;
+	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
+	my $absolutePathTo_EventsNode =  '/note/eventList' . $relativeXpathToParent. '/Events' ;
+	
+	my $parentNodeToUpdate = $document->findnodes($absolutePathTo_EventsNode)->[0] ;
+	
+	if (defined $parentNodeToUpdate)
 	{
-		addEventNodeToXmlEventList($parentNodeToUpdate);
-		$document->toFile($outputXmlFilePath) or die $?;	
-		$document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
-		$parentNodeToUpdate = $document->findnodes($absolutePathToNodeNeededUpdate)->[0] or die; 
+		return 1;
 	}
-		
+	else
+	{
+		return 0;
+	}
+}
+
+
+
+sub addLinkToEventToOfferXml($$$)# this sub must refactorized because it can be reached using less amount of code lines 
+{
+	
+	my ($relativeXpathToParent, $linkToEvent, $outputXmlFilePath) = @_;
+	my $absolutePathToNodeNeededUpdate =  '/note/eventList' . $relativeXpathToParent . '/Events';
+	
+	my $xmlParser = XML::LibXML->new;
+	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
+	
+	if(not isEventsNodeExists($relativeXpathToParent,$outputXmlFilePath ))
+	{
+		addEventNodeToXmlEventList($relativeXpathToParent, $outputXmlFilePath);
+		$document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
+	}
+	
+	
+	my $parentNodeToUpdate = $document->findnodes($absolutePathToNodeNeededUpdate)->[0] or die; 	
+				
 	my $newNode = XML::LibXML::Element->new('event');
 	$newNode->setAttribute('url',$linkToEvent);
 	
@@ -435,13 +466,7 @@ sub createEventListXML($$)
 	my $xmlParser = XML::LibXML->new;		
 	my $xmlNode = $xmlParser->parse_file($outputXmlPath) or die;
 	
-	#if($xpath eq '')
-	#{
-	#	my $nodeToRename = $xmlNode->findnodes('/note/dataChoosenToDownload')->[0];
-	#	$nodeToRename->setNodeName('eventList');
-	#	$xmlNode->toFile($outputXmlPath) or die $?; 
-	#}
-	
+		
 	my $rootPathToEventXMLNode = '/note/eventList';
 	my $absolutePathToNode = "$rootPathToEventXMLNode${xpath}";
 	
