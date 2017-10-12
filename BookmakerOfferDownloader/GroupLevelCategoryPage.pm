@@ -11,11 +11,10 @@ sub new();
 
 sub new()
 {
-	my $class = shift;
-	#my ($subCategoryXpath) = @_;	
-	#my $self = $class->SUPER::new($subCategoryXpath);
-	my $self = bless {}, $class;
-	#$self->{mlinkToCategory} = 'http://www.betexplorer.com/' . $self->{mSubCategoryXpath};	
+	my ($class, $referenceToStrategyOfObtainingBookmakerData) = @_;
+	my $self = bless {}, $class;		
+	$self->{m_strategyOfObtainingBookmakerData} = $referenceToStrategyOfObtainingBookmakerData;
+	
 	return $self;
 
 }
@@ -46,14 +45,19 @@ sub couldYouHandleThatXPath($)
 
 sub getAllSubCategories($)
 {
+	
 	my ($self,$subCategoryXpath ) = @_;
-	#BetexplorerParser::pickupLinksToEventFromTable("");
-	my $linkToCategory = 'http://www.betexplorer.com/' . $subCategoryXpath;	
-	my @toReturn = BetexplorerParser::pickupLinksToEventFromTable(BetexplorerParser::pickupTableWithEventsFromWeburl($linkToCategory));	
+	
+	my $linkToCategory = 'http://www.betexplorer.com/' . $subCategoryXpath . "/";	
+	
+	my $contentOfSubcategoryPage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToCategory); 	
+	
+	$contentOfSubcategoryPage =~ m|(<td class=\"table-main__daysign\")([\s\S]*?)(</table>)|m or die "It hasn't been possible to parse table with events from given URL: $linkToCategory";	
+	my $htmlTableWithEvents = $1.$2.$3;
+	
+	my @toReturn = BetexplorerParser::pickupLinksToEventFromTable($htmlTableWithEvents);	
 	return @toReturn;
+	
 }
 
 1;
-
-
-
