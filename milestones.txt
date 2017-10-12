@@ -1,0 +1,5 @@
+1. Feature for downloading bet data working in real net mode and mocked mode as well
+2. Feature for finding surebet working 
+3. Front end created
+4. Deployment 
+5. Instaling adds
