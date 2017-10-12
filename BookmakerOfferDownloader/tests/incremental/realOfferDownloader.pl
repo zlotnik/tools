@@ -16,28 +16,7 @@ my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new();
 my $theRealBookMakerDownloader =  BetExplorerDownloader->new('--realnet'); 
 
 
-ok($aBookmakerXmlDataParser->isCorrectRawDataFile($mockedRawDataPath), 'Checking raw data parser' ) or die;
-
- 
-
 my $resultXMLFileWithDownloadedData = "output/downloadedPolandEkstraklasa.xml";
-
-
-
-#checking parsers
-(-e $correctBookmakerSelectorFile) or die "File doesn't exist $correctBookmakerSelectorFile\n";
-ok($aBookmakerXmlDataParser->isCorectBookmakerDataSelectorFile($correctBookmakerSelectorFile),'Checking bookmaker data selector parser') or die;
-
-(-e $correctDownloadedBookmakerOfferFile) or die "File doesn't exist $correctDownloadedBookmakerOfferFile\n";
-ok($aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($correctDownloadedBookmakerOfferFile),'Checking bookmaker downloaded offert file parser')or die;
-
-(-e $correctBookmakerEventList) or die "File doesn't exist $correctBookmakerEventList\n";
-ok($aBookmakerXmlDataParser->isCorrectEventListFile($correctBookmakerEventList),'Checking bookmaker downloaded events list file parser');
-
-if(-e $resultXMLFileWithDownloadedData)
-{
-	unlink $resultXMLFileWithDownloadedData or  die $?; 
-}
 
 my $xmlParser = XML::LibXML->new;
 copy $correctBookmakerSelectorFile, $resultXMLFileWithDownloadedData or die $?; #does it needed?
