@@ -169,7 +169,7 @@ sub pullBookmakersOffer($)
 	my @rootXmlNode = $doc->findnodes("/");	
 	#my $rootXmlNode = $doc->findnodes("/")[0] or ->[0]; maybe this is better	
 	
-	prepareTemplateForXmlFileWithResults($outputXmlPath);
+	$self->prepareTemplateForXmlFileWithResults($outputXmlPath);
 	$self->createEventListXML($xpath, $outputXmlPath);
 	
 	updateEventListXMLWithEventDetails($outputXmlPath);
@@ -227,7 +227,7 @@ sub updateEventListXMLWithBookmakerOffer($)
 	my $xmlParser = XML::LibXML->new; #parser in properties will improve optimalization
 	my $xmlDoc = $xmlParser->parse_file($pathToEventListXML) or die $?;
 	my @allEventXml = $xmlDoc->findnodes('/note/eventList//*//event'); 
-	my %eventXmlBetsData = {};
+	my %eventXmlBetsData ;
 	my $target_xpath; #todo
 	for(@allEventXml)
 	{
@@ -446,6 +446,7 @@ sub addChildSubcategoryNodeToOfferXml($$$)
 
 sub prepareTemplateForXmlFileWithResults($)
 {
+	#c BetExplorerDownloader::prepareTemplateForXmlFileWithResults
 	my ($self,$outputXmlPath) = @_;
 	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
 	my $xmlParser = XML::LibXML->new;		
