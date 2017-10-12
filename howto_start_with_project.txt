@@ -3,7 +3,7 @@
 download git from [..]
 git config --global user.name "Wojciech Marzec"
 git config --global user.email "wojomc81@gmail.com"
-
+git config --global core.ignorecase false
 
 2.Cloning repository
 git clone https://gitlab.com/wojomc/arrakis.git
