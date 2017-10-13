@@ -16,7 +16,7 @@ my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new();
 my $theRealBookMakerDownloader =  BetExplorerDownloader->new('--realnet'); 
 
 
-my $resultXMLFileWithDownloadedData = "output/downloadedPolandEkstraklasa.xml";
+my $resultXMLFileWithDownloadedData = "output/downloadedPolandEkstraklasa_realnet.xml";
 
 my $xmlParser = XML::LibXML->new;
 copy $correctBookmakerSelectorFile, $resultXMLFileWithDownloadedData or die $?; #does it needed?
