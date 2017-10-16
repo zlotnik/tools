@@ -14,7 +14,7 @@ my $correctBookmakerSelectorFile = "$FindBin::Bin/../../input/parameters/example
 
 my $theMockedBookMakerDownloader =  BetExplorerDownloader->new('--mockednet'); 
 my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
-my $resultXMLFileWithDownloadedData = "output/downloadedPolandEkstraklasa.xml";
+my $resultXMLFileWithDownloadedData = "output/downloadedPolandEkstraklasa_mockednet.xml";
 
 
 if(-e $resultXMLFileWithDownloadedData)
