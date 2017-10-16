@@ -12,8 +12,15 @@ use CategoryPage;
 sub makeCategoryPageObject();
 sub checkLevelOfCategoryPage($);
 sub getAllSubCategories($);
-
+sub getRawDataOfEvent($);
 ######################################################
+
+sub getRawDataOfEvent($)
+{
+	my ($self,$linkToEvent) = @_;	
+	$self->{m_CategoryPage}->getRawDataOfEvent($linkToEvent);
+	
+};
 
 sub getAllSubCategories($)
 {

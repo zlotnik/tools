@@ -19,6 +19,7 @@ sub setStrategy($);
 sub makeParser($){};# maybe there is a more elegant way; inheriting without implementation
 sub downloadOffer{};
 sub couldYouHandleThatXPath($){};
+sub getRawDataOfEvent($);
 
 sub setStrategy($)
 {
@@ -40,6 +41,13 @@ sub setStrategy($)
 	
 
 };
+
+sub getRawDataOfEvent($)
+{
+	my ($self, $linkToEvent) = @_;
+	$self->{m_strategyOfObtainingBookmakerData}->getRawDataOfEvent($linkToEvent);
+
+}
 
 
 sub new($)

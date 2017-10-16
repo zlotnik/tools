@@ -236,6 +236,7 @@ sub updateEventListXMLWithBookmakerOffer($)
 		$eventNode =~ m{event url="(.*\/)((&quot.*")|("))} or die;
 		
 		my $linkToEvent = $1;
+		
 		my $dataWithBets = $self->{m_BookmakerPageCrawler}->getRawDataOfEvent($linkToEvent);		
 		simplifyFormatOfRawdata($dataWithBets);
 		print $dataWithBets;
