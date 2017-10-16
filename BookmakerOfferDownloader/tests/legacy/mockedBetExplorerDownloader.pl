@@ -26,7 +26,7 @@ if(-e $resultXMLFileWithDownloadedData)
 $theMockedBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
 $theMockedBookMakerDownloader->prepareTemplateForXmlFileWithResults($resultXMLFileWithDownloadedData);
 $theMockedBookMakerDownloader->createEventListXML($xpath, $resultXMLFileWithDownloadedData);
-my $isCreateEventListXMLCorrect = $aBookmakerXmlDataParser->isEventListFileHasCorrectSyntax($resultXMLFileWithDownloadedData); 
+my $isCreateEventListXMLCorrect = $aBookmakerXmlDataParser->isCorrectEventListFile($resultXMLFileWithDownloadedData); 
 ok($isCreateEventListXMLCorrect, "Mocked net stage: Creating event list xml") or die;
 
 #TODO think about split tests

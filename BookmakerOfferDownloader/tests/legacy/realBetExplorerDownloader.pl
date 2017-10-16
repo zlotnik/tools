@@ -26,7 +26,7 @@ if(-e $resultXMLFileWithDownloadedData)
 $theRealBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
 $theRealBookMakerDownloader->prepareTemplateForXmlFileWithResults($resultXMLFileWithDownloadedData);
 $theRealBookMakerDownloader->createEventListXML($xpath, $resultXMLFileWithDownloadedData);
-my $isCreateEventListXMLCorrect = $aBookmakerXmlDataParser->isEventListFileHasCorrectSyntax($resultXMLFileWithDownloadedData); 
+my $isCreateEventListXMLCorrect = $aBookmakerXmlDataParser->isCorrectEventListFile($resultXMLFileWithDownloadedData); 
 ok($isCreateEventListXMLCorrect, "Creating event list xml on real net: $resultXMLFileWithDownloadedData") or die;
 
 
@@ -41,9 +41,3 @@ ok($isCreateEventListXMLCorrect, "Creating event list xml on real net: $resultXM
 
 #todo: run only specific tests using their id's
 #todo: think about enwrap test in some class which will store also test properties
-
-
-
-
-
-

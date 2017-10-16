@@ -143,6 +143,7 @@ sub isEventListFileHasCorrectSyntax($)
 
 sub isCorrectLinkToEventXmlNode($)
 {
+	# c BookmakerXmlDataParser::isCorrectLinkToEventXmlNode
 	my $eventNode = $_[0];
 	$eventNode =~ m|event url="(.*)"|;
 	my $urlToEvent = $1; 
@@ -151,9 +152,19 @@ sub isCorrectLinkToEventXmlNode($)
 	{
 		return 1;
 	}
+	
+	#http://www.betexplorer.com/soccer/argentina/superliga/lanus-union-de-santa-fe/fcQZl3E2/
+	$urlToEvent =~ /(.*www.betexplorer.com)(.*)/;
+	 
+	#input/mockedWWW/soccer//soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/
+	my $pathToMockDataOfEvent = "input/mockedWWW/" . $2 ; 
+	if(-e $pathToMockDataOfEvent)
+	{
+		return 1;
+	}
+	
 	return 0;
-	
-	
+		
 }
 	
 sub extractFirstEventXmlNodeFromCountryCategoryXmlNode($)
