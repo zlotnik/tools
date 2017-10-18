@@ -221,7 +221,7 @@ sub pickupLinksFromXml($)
 
 sub updateEventListXMLWithBookmakerOffer($)
 {
-	#BetExplorerDownloader::updateEventListXMLWithBookmakerOffer
+	#c BetExplorerDownloader::updateEventListXMLWithBookmakerOffer
 	
 	my ($self, $pathToEventListXML) = @_;
 	my $xmlParser = XML::LibXML->new; #parser in properties will improve optimalization
@@ -234,13 +234,11 @@ sub updateEventListXMLWithBookmakerOffer($)
 		my $eventNode = $_;
 		
 		$eventNode =~ m{event url="(.*\/)((&quot.*")|("))} or die;
-		
 		my $linkToEvent = $1;
 		
 		my $dataWithBets = $self->{m_BookmakerPageCrawler}->getRawDataOfEvent($linkToEvent);		
 		simplifyFormatOfRawdata($dataWithBets);
-		print $dataWithBets;
-		#my $eventName = '' #todo
+		
 		
 		my $isLineWithNumberOfBookmakersOccured = 0;
 		foreach(split("\n",$dataWithBets))
@@ -258,9 +256,16 @@ sub updateEventListXMLWithBookmakerOffer($)
 			}	
 		}
 		
+		my $xpathToFindEventNodeExpression = qq(//*[\@url='$linkToEvent']);
+		print "xxxx".$xpathToFindEventNodeExpression; 
+		die "finished here ";
+		#$xmlDoc->findnodes(qq|| );
+		#//*[@url= 'http://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/']
+		addBookmakerOfferToEventListXml(%eventXmlBetsData,$pathToEventListXML, $target_xpath);	
+		
 	}
-	addBookmakerOfferToEventListXml(%eventXmlBetsData,$pathToEventListXML, $target_xpath);	
-	die "above todo";	
+	#print Dumper %eventXmlBetsData;die;
+	#die "above todo";	
 }
 
 
