@@ -1,68 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <note>
   <dataSources>
-    <betexplorer />
+    <betexplorer/>
   </dataSources>
   <eventList>
     <soccer>
       <Poland>
         <ekstraklasa>
           <Events>
-            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/" />
-			<_1X2>
-			<_1>
-			<paddybet>
-			0.8
-			</paddybet>
-			<marathon>
-			0.5
-			</marathon>
-			</_1>
-			<_X>
-			<paddybet>
-			1.8
-			</paddybet>
-			<marathon>
-			2.5
-			</marathon>
-			</_X>
-			<_2>
-			<paddybet>
-			1.8
-			</paddybet>
-			<marathon>
-			0.7
-			</marathon>
-			</_2>
-			</_1X2>			
-            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/" />
-			<_1X2>
-			<_1>
-			<paddybet>
-			0.8
-			</paddybet>
-			<marathon>
-			0.5
-			</marathon>
-			</_1>
-			<_X>
-			<paddybet>
-			1.8
-			</paddybet>
-			<marathon>
-			2.5
-			</marathon>
-			</_X>
-			<_2>
-			<paddybet>
-			1.8
-			</paddybet>
-			<marathon>
-			0.7
-			</marathon>
-			</_2>
-			</_1X2>
+            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/"><_1X2><_1><10Bet>2.15</10Bet><12BET>2.17</12BET><188BET>2.12</188BET><888sport>2.28</888sport><home>2.17</home><bet365>2.15</bet365><Betclic>2.25</Betclic><Betfair>2.30</Betfair><Betsafe>2.15</Betsafe><Betsson>2.15</Betsson><BetVictor>2.15</BetVictor><Betway>2.15</Betway><bwin>2.25</bwin><ComeOn>2.15</ComeOn><Expekt>2.25</Expekt><Interwetten>2.20</Interwetten><Ladbrokes>2.20</Ladbrokes><mybet>2.30</mybet><Pinnacle>2.18</Pinnacle><SBOBET>2.18</SBOBET><Sportingbet>2.05</Sportingbet><Tipico>2.20</Tipico><Unibet>2.30</Unibet><Hill>2.20</Hill><youwin>2.05</youwin></_1><_X><10Bet>3.35</10Bet><12BET>3.30</12BET><188BET>3.40</188BET><888sport>3.20</888sport><home>3.34</home><bet365>3.30</bet365><Betclic>3.25</Betclic><Betfair>3.25</Betfair><Betsafe>3.30</Betsafe><Betsson>3.30</Betsson><BetVictor>3.30</BetVictor><Betway>3.30</Betway><bwin>3.20</bwin><ComeOn>3.35</ComeOn><Expekt>3.25</Expekt><Interwetten>3.20</Interwetten><Ladbrokes>3.25</Ladbrokes><mybet>3.30</mybet><Pinnacle>3.58</Pinnacle><SBOBET>3.25</SBOBET><Sportingbet>3.25</Sportingbet><Tipico>3.30</Tipico><Unibet>3.20</Unibet><Hill>3.40</Hill><youwin>3.25</youwin></_X><_2><10Bet>3.30</10Bet><12BET>3.20</12BET><188BET>3.20</188BET><888sport>3.10</888sport><home>3.13</home><bet365>3.40</bet365><Betclic>3.00</Betclic><Betfair>3.10</Betfair><Betsafe>3.10</Betsafe><Betsson>3.10</Betsson><BetVictor>3.40</BetVictor><Betway>3.30</Betway><bwin>3.10</bwin><ComeOn>3.30</ComeOn><Expekt>3.00</Expekt><Interwetten>2.95</Interwetten><Ladbrokes>2.90</Ladbrokes><mybet>2.90</mybet><Pinnacle>3.47</Pinnacle><SBOBET>3.20</SBOBET><Sportingbet>3.00</Sportingbet><Tipico>3.10</Tipico><Unibet>3.15</Unibet><Hill>3.00</Hill><youwin>3.00</youwin></_2></_1X2></event>
+            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/"><_1X2><_1><10Bet>2.15</10Bet><12BET>2.17</12BET><188BET>2.12</188BET><888sport>2.28</888sport><home>2.17</home><bet365>2.15</bet365><Betclic>2.25</Betclic><Betfair>2.30</Betfair><Betsafe>2.15</Betsafe><Betsson>2.15</Betsson><BetVictor>2.15</BetVictor><Betway>2.15</Betway><bwin>2.25</bwin><ComeOn>2.15</ComeOn><Expekt>2.25</Expekt><Interwetten>2.20</Interwetten><Ladbrokes>2.20</Ladbrokes><mybet>2.30</mybet><Pinnacle>2.18</Pinnacle><SBOBET>2.18</SBOBET><Sportingbet>2.05</Sportingbet><Tipico>2.20</Tipico><Unibet>2.30</Unibet><Hill>2.20</Hill><youwin>2.05</youwin></_1><_X><10Bet>3.35</10Bet><12BET>3.30</12BET><188BET>3.40</188BET><888sport>3.20</888sport><home>3.34</home><bet365>3.30</bet365><Betclic>3.25</Betclic><Betfair>3.25</Betfair><Betsafe>3.30</Betsafe><Betsson>3.30</Betsson><BetVictor>3.30</BetVictor><Betway>3.30</Betway><bwin>3.20</bwin><ComeOn>3.35</ComeOn><Expekt>3.25</Expekt><Interwetten>3.20</Interwetten><Ladbrokes>3.25</Ladbrokes><mybet>3.30</mybet><Pinnacle>3.58</Pinnacle><SBOBET>3.25</SBOBET><Sportingbet>3.25</Sportingbet><Tipico>3.30</Tipico><Unibet>3.20</Unibet><Hill>3.40</Hill><youwin>3.25</youwin></_X><_2><10Bet>3.30</10Bet><12BET>3.20</12BET><188BET>3.20</188BET><888sport>3.10</888sport><home>3.13</home><bet365>3.40</bet365><Betclic>3.00</Betclic><Betfair>3.10</Betfair><Betsafe>3.10</Betsafe><Betsson>3.10</Betsson><BetVictor>3.40</BetVictor><Betway>3.30</Betway><bwin>3.10</bwin><ComeOn>3.30</ComeOn><Expekt>3.00</Expekt><Interwetten>2.95</Interwetten><Ladbrokes>2.90</Ladbrokes><mybet>2.90</mybet><Pinnacle>3.47</Pinnacle><SBOBET>3.20</SBOBET><Sportingbet>3.00</Sportingbet><Tipico>3.10</Tipico><Unibet>3.15</Unibet><Hill>3.00</Hill><youwin>3.00</youwin></_2></_1X2></event>
           </Events>
         </ekstraklasa>
       </Poland>

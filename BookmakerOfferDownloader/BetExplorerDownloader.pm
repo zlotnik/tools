@@ -61,10 +61,11 @@ sub removeEmptyLines(\$);
 sub showUsage();
 sub simplifyFormatOfRawdata(\$);
 sub leaveOnlyBetsStakesDataInRawdataFile(\$);
-sub addBookmakerOfferToEventListXml(\%$$);
 sub prepareTemplateForXmlFileWithResults($);
 sub isEventsNodeExists($$);
 sub addEventNodeToXmlEventList($$);
+sub injectBookmakerEventOfferIntoXML($$);
+sub injectBookmakerProductEventOffertIntoXML($$$);
 #################DICTIONARY##############################################
 #choosen bookmaker offer - choosen part of bookmakers offer by appling an offert selector eg. all German, soccer, matches  
 #offer selector - a xml file used choose which data will be downloadedDataRawText
@@ -218,20 +219,53 @@ sub pickupLinksFromXml($)
 
 }
 
+sub injectBookmakerProductEventOffertIntoXML($$$)
+{
+	my($xmlNodePointOfInjection, $bookmakerName, $price) = @_;
+	my $bookMakerXMLNode = XML::LibXML::Element->new($bookmakerName);
+	my $bookmakerEventProductPriceXMLNode = XML::LibXML::Text->new($price);
+	$bookMakerXMLNode->addChild($bookmakerEventProductPriceXMLNode);
+	$xmlNodePointOfInjection->addChild($bookMakerXMLNode);
+}
+
+
+sub injectBookmakerEventOfferIntoXML($$)
+{
+	my ($dataWithBets, $nodeThatNeedUpdated) = @_;
+		
+	$nodeThatNeedUpdated->addChild( my $xmlNode_1 = XML::LibXML::Element->new("_1"));
+	$nodeThatNeedUpdated->addChild( my $xmlNode_X = XML::LibXML::Element->new("_X"));
+	$nodeThatNeedUpdated->addChild( my $xmlNode_2 = XML::LibXML::Element->new("_2"));
+	
+	foreach(split("\n",$dataWithBets))
+	{
+		my $lineWithBetData = $_;
+		my ($bookmakerName, $price_1, $price_X, $price_2);
+			 
+		if($lineWithBetData =~ m|(\w*) (\d?\d\.\d\d) (\d?\d\.\d\d) (\d?\d\.\d\d)| )
+		{
+			($bookmakerName, $price_1, $price_X, $price_2) = ($1, $2, $3,$4 );
+			
+			injectBookmakerProductEventOffertIntoXML($xmlNode_1, $bookmakerName,  $price_1);
+			injectBookmakerProductEventOffertIntoXML($xmlNode_X, $bookmakerName,  $price_X);
+			injectBookmakerProductEventOffertIntoXML($xmlNode_2, $bookmakerName,  $price_2);
+		}	
+	}		
+};
 
 sub updateEventListXMLWithBookmakerOffer($)
 {
-	#c BetExplorerDownloader::updateEventListXMLWithBookmakerOffer
-	
+		
 	my ($self, $pathToEventListXML) = @_;
 	my $xmlParser = XML::LibXML->new; #parser in properties will improve optimalization
 	my $xmlDoc = $xmlParser->parse_file($pathToEventListXML) or die $?;
 	my @allEventXml = $xmlDoc->findnodes('/note/eventList//*//event'); 
-	my %eventXmlBetsData ;
-	my $target_xpath; #todo
+	
 	for(@allEventXml)
 	{
 		my $eventNode = $_;
+		my $nodeThatNeedUpdated = XML::LibXML::Element->new("_1X2"); 
+		$eventNode->addChild( $nodeThatNeedUpdated );
 		
 		$eventNode =~ m{event url="(.*\/)((&quot.*")|("))} or die;
 		my $linkToEvent = $1;
@@ -239,62 +273,14 @@ sub updateEventListXMLWithBookmakerOffer($)
 		my $dataWithBets = $self->{m_BookmakerPageCrawler}->getRawDataOfEvent($linkToEvent);		
 		simplifyFormatOfRawdata($dataWithBets);
 		
-		
-		my $isLineWithNumberOfBookmakersOccured = 0;
-		foreach(split("\n",$dataWithBets))
-		{
-			my $lineWithBetData = $_;
-			my ($bookmakerName, $price_1, $price_X, $price_2);
-			#$lineWithBetData =~ s/[^\w\.]/#/g;
-			print $lineWithBetData ." NEXT LINE\n"; 
-			if($lineWithBetData =~ m|(\w*) (\d?\d\.\d\d) (\d?\d\.\d\d) (\d?\d\.\d\d)| )
-			{
-				($bookmakerName, $price_1, $price_X, $price_2) = ($1, $2, $3,$4 );
-				$eventXmlBetsData{$bookmakerName}{'stake_1'} = $price_1;
-				$eventXmlBetsData{$bookmakerName}{'stake_X'} = $price_X;
-				$eventXmlBetsData{$bookmakerName}{'stake_2'} = $price_2;				
-			}	
-		}
-		
-		my $xpathToFindEventNodeExpression = qq(//*[\@url='$linkToEvent']);
-		print "xxxx".$xpathToFindEventNodeExpression; 
-		die "finished here ";
-		#$xmlDoc->findnodes(qq|| );
-		#//*[@url= 'http://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/']
-		addBookmakerOfferToEventListXml(%eventXmlBetsData,$pathToEventListXML, $target_xpath);	
-		
+		injectBookmakerEventOfferIntoXML($dataWithBets, $nodeThatNeedUpdated);
 	}
-	#print Dumper %eventXmlBetsData;die;
-	#die "above todo";	
+		
+	open XML, ">$pathToEventListXML" or die;
+	print XML $xmlDoc->toString();
+	close XML;
+		
 }
-
-
-sub addBookmakerOfferToEventListXml(\%$$)
-{
-	my ($bookmakersBetDataRef, $eventListXmlFilePath)  = @_; 
-		
-	#print BOOKMAKEROFFERDATA_FILEHANDLER XMLout($_[0], RootName => "books" );
-	my $eventList_hashref =  XMLin($eventListXmlFilePath) or die;
-	#BetExplorerDownloader::addBookmakerOfferToEventListXml
-
-	#${$eventList_hashref}{'Events'} =  %{$bookmakersBetDataRef};
-
-	#my %hash = ('abc' => 123, 'def' => [4,5,6]);
-	#print Dumper(\%hash);
-	
-	print Dumper($eventList_hashref);
-	die;
-	#push ${$eventList_hashref}{'Events'}, %{$bookmakersBetDataRef};
-	
-	#below check 
-	open BOOKMAKEROFFERDATA_FILEHANDLER , ">", "tmp/bookmakerOffert.xml" or die $! ;
-	print BOOKMAKEROFFERDATA_FILEHANDLER XMLout($eventList_hashref );
-		
-	close BOOKMAKEROFFERDATA_FILEHANDLER or die;
-	
-};	
-
-
 
 sub removeEmptyLines(\$)#move to toolbox
 {
