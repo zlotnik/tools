@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<note>
+  <dataSources>
+    <betexplorer />
+  </dataSources>
+  <eventList>
+    <soccer>
+      <Poland>
+        <ekstraklasa>
+          <Events>
+            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/" />
+			<_1X2>
+			<_1>
+			<paddybet>
+			0.8
+			</paddybet>
+			<marathon>
+			0.5
+			</marathon>
+			<_1>
+			<_X>
+			<paddybet>
+			1.8
+			</paddybet>
+			<marathon>
+			2.5
+			</marathon>
+			<_X>
+			<_2>
+			<paddybet>
+			1.8
+			</paddybet>
+			<marathon>
+			0.7
+			</marathon>
+			<_2>
+			</_1X2>			
+            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/" />
+          </Events>
+        </ekstraklasa>
+      </Poland>
+    </soccer>
+  </eventList>
+</note>
