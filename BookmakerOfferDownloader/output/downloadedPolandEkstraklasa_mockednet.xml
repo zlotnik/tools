@@ -1,15 +1,183 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <note>
   <dataSources>
-    <betexplorer/>
+    <betexplorer />
   </dataSources>
   <eventList>
     <soccer>
       <Poland>
         <ekstraklasa>
           <Events>
-            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/"><_1X2><_1><10Bet>2.15</10Bet><12BET>2.17</12BET><188BET>2.12</188BET><888sport>2.28</888sport><home>2.17</home><bet365>2.15</bet365><Betclic>2.25</Betclic><Betfair>2.30</Betfair><Betsafe>2.15</Betsafe><Betsson>2.15</Betsson><BetVictor>2.15</BetVictor><Betway>2.15</Betway><bwin>2.25</bwin><ComeOn>2.15</ComeOn><Expekt>2.25</Expekt><Interwetten>2.20</Interwetten><Ladbrokes>2.20</Ladbrokes><mybet>2.30</mybet><Pinnacle>2.18</Pinnacle><SBOBET>2.18</SBOBET><Sportingbet>2.05</Sportingbet><Tipico>2.20</Tipico><Unibet>2.30</Unibet><Hill>2.20</Hill><youwin>2.05</youwin></_1><_X><10Bet>3.35</10Bet><12BET>3.30</12BET><188BET>3.40</188BET><888sport>3.20</888sport><home>3.34</home><bet365>3.30</bet365><Betclic>3.25</Betclic><Betfair>3.25</Betfair><Betsafe>3.30</Betsafe><Betsson>3.30</Betsson><BetVictor>3.30</BetVictor><Betway>3.30</Betway><bwin>3.20</bwin><ComeOn>3.35</ComeOn><Expekt>3.25</Expekt><Interwetten>3.20</Interwetten><Ladbrokes>3.25</Ladbrokes><mybet>3.30</mybet><Pinnacle>3.58</Pinnacle><SBOBET>3.25</SBOBET><Sportingbet>3.25</Sportingbet><Tipico>3.30</Tipico><Unibet>3.20</Unibet><Hill>3.40</Hill><youwin>3.25</youwin></_X><_2><10Bet>3.30</10Bet><12BET>3.20</12BET><188BET>3.20</188BET><888sport>3.10</888sport><home>3.13</home><bet365>3.40</bet365><Betclic>3.00</Betclic><Betfair>3.10</Betfair><Betsafe>3.10</Betsafe><Betsson>3.10</Betsson><BetVictor>3.40</BetVictor><Betway>3.30</Betway><bwin>3.10</bwin><ComeOn>3.30</ComeOn><Expekt>3.00</Expekt><Interwetten>2.95</Interwetten><Ladbrokes>2.90</Ladbrokes><mybet>2.90</mybet><Pinnacle>3.47</Pinnacle><SBOBET>3.20</SBOBET><Sportingbet>3.00</Sportingbet><Tipico>3.10</Tipico><Unibet>3.15</Unibet><Hill>3.00</Hill><youwin>3.00</youwin></_2></_1X2></event>
-            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/"><_1X2><_1><10Bet>2.15</10Bet><12BET>2.17</12BET><188BET>2.12</188BET><888sport>2.28</888sport><home>2.17</home><bet365>2.15</bet365><Betclic>2.25</Betclic><Betfair>2.30</Betfair><Betsafe>2.15</Betsafe><Betsson>2.15</Betsson><BetVictor>2.15</BetVictor><Betway>2.15</Betway><bwin>2.25</bwin><ComeOn>2.15</ComeOn><Expekt>2.25</Expekt><Interwetten>2.20</Interwetten><Ladbrokes>2.20</Ladbrokes><mybet>2.30</mybet><Pinnacle>2.18</Pinnacle><SBOBET>2.18</SBOBET><Sportingbet>2.05</Sportingbet><Tipico>2.20</Tipico><Unibet>2.30</Unibet><Hill>2.20</Hill><youwin>2.05</youwin></_1><_X><10Bet>3.35</10Bet><12BET>3.30</12BET><188BET>3.40</188BET><888sport>3.20</888sport><home>3.34</home><bet365>3.30</bet365><Betclic>3.25</Betclic><Betfair>3.25</Betfair><Betsafe>3.30</Betsafe><Betsson>3.30</Betsson><BetVictor>3.30</BetVictor><Betway>3.30</Betway><bwin>3.20</bwin><ComeOn>3.35</ComeOn><Expekt>3.25</Expekt><Interwetten>3.20</Interwetten><Ladbrokes>3.25</Ladbrokes><mybet>3.30</mybet><Pinnacle>3.58</Pinnacle><SBOBET>3.25</SBOBET><Sportingbet>3.25</Sportingbet><Tipico>3.30</Tipico><Unibet>3.20</Unibet><Hill>3.40</Hill><youwin>3.25</youwin></_X><_2><10Bet>3.30</10Bet><12BET>3.20</12BET><188BET>3.20</188BET><888sport>3.10</888sport><home>3.13</home><bet365>3.40</bet365><Betclic>3.00</Betclic><Betfair>3.10</Betfair><Betsafe>3.10</Betsafe><Betsson>3.10</Betsson><BetVictor>3.40</BetVictor><Betway>3.30</Betway><bwin>3.10</bwin><ComeOn>3.30</ComeOn><Expekt>3.00</Expekt><Interwetten>2.95</Interwetten><Ladbrokes>2.90</Ladbrokes><mybet>2.90</mybet><Pinnacle>3.47</Pinnacle><SBOBET>3.20</SBOBET><Sportingbet>3.00</Sportingbet><Tipico>3.10</Tipico><Unibet>3.15</Unibet><Hill>3.00</Hill><youwin>3.00</youwin></_2></_1X2></event>
+            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/">
+              <_1X2>
+                <_1>
+                  <_10Bet>2.15</_10Bet>
+                  <_12BET>2.17</_12BET>
+                  <_188BET>2.12</_188BET>
+                  <_888sport>2.28</_888sport>
+                  <_home>2.17</_home>
+                  <_bet365>2.15</_bet365>
+                  <_Betclic>2.25</_Betclic>
+                  <_Betfair>2.30</_Betfair>
+                  <_Betsafe>2.15</_Betsafe>
+                  <_Betsson>2.15</_Betsson>
+                  <_BetVictor>2.15</_BetVictor>
+                  <_Betway>2.15</_Betway>
+                  <_bwin>2.25</_bwin>
+                  <_ComeOn>2.15</_ComeOn>
+                  <_Expekt>2.25</_Expekt>
+                  <_Interwetten>2.20</_Interwetten>
+                  <_Ladbrokes>2.20</_Ladbrokes>
+                  <_mybet>2.30</_mybet>
+                  <_Pinnacle>2.18</_Pinnacle>
+                  <_SBOBET>2.18</_SBOBET>
+                  <_Sportingbet>2.05</_Sportingbet>
+                  <_Tipico>2.20</_Tipico>
+                  <_Unibet>2.30</_Unibet>
+                  <_Hill>2.20</_Hill>
+                  <_youwin>2.05</_youwin>
+                </_1>
+                <_X>
+                  <_10Bet>3.35</_10Bet>
+                  <_12BET>3.30</_12BET>
+                  <_188BET>3.40</_188BET>
+                  <_888sport>3.20</_888sport>
+                  <_home>3.34</_home>
+                  <_bet365>3.30</_bet365>
+                  <_Betclic>3.25</_Betclic>
+                  <_Betfair>3.25</_Betfair>
+                  <_Betsafe>3.30</_Betsafe>
+                  <_Betsson>3.30</_Betsson>
+                  <_BetVictor>3.30</_BetVictor>
+                  <_Betway>3.30</_Betway>
+                  <_bwin>3.20</_bwin>
+                  <_ComeOn>3.35</_ComeOn>
+                  <_Expekt>3.25</_Expekt>
+                  <_Interwetten>3.20</_Interwetten>
+                  <_Ladbrokes>3.25</_Ladbrokes>
+                  <_mybet>3.30</_mybet>
+                  <_Pinnacle>3.58</_Pinnacle>
+                  <_SBOBET>3.25</_SBOBET>
+                  <_Sportingbet>3.25</_Sportingbet>
+                  <_Tipico>3.30</_Tipico>
+                  <_Unibet>3.20</_Unibet>
+                  <_Hill>3.40</_Hill>
+                  <_youwin>3.25</_youwin>
+                </_X>
+                <_2>
+                  <_10Bet>3.30</_10Bet>
+                  <_12BET>3.20</_12BET>
+                  <_188BET>3.20</_188BET>
+                  <_888sport>3.10</_888sport>
+                  <_home>3.13</_home>
+                  <_bet365>3.40</_bet365>
+                  <_Betclic>3.00</_Betclic>
+                  <_Betfair>3.10</_Betfair>
+                  <_Betsafe>3.10</_Betsafe>
+                  <_Betsson>3.10</_Betsson>
+                  <_BetVictor>3.40</_BetVictor>
+                  <_Betway>3.30</_Betway>
+                  <_bwin>3.10</_bwin>
+                  <_ComeOn>3.30</_ComeOn>
+                  <_Expekt>3.00</_Expekt>
+                  <_Interwetten>2.95</_Interwetten>
+                  <_Ladbrokes>2.90</_Ladbrokes>
+                  <_mybet>2.90</_mybet>
+                  <_Pinnacle>3.47</_Pinnacle>
+                  <_SBOBET>3.20</_SBOBET>
+                  <_Sportingbet>3.00</_Sportingbet>
+                  <_Tipico>3.10</_Tipico>
+                  <_Unibet>3.15</_Unibet>
+                  <_Hill>3.00</_Hill>
+                  <_youwin>3.00</_youwin>
+                </_2>
+              </_1X2>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/">
+              <_1X2>
+                <_1>
+                  <_10Bet>2.15</_10Bet>
+                  <_12BET>2.17</_12BET>
+                  <_188BET>2.12</_188BET>
+                  <_888sport>2.28</_888sport>
+                  <_home>2.17</_home>
+                  <_bet365>2.15</_bet365>
+                  <_Betclic>2.25</_Betclic>
+                  <_Betfair>2.30</_Betfair>
+                  <_Betsafe>2.15</_Betsafe>
+                  <_Betsson>2.15</_Betsson>
+                  <_BetVictor>2.15</_BetVictor>
+                  <_Betway>2.15</_Betway>
+                  <_bwin>2.25</_bwin>
+                  <_ComeOn>2.15</_ComeOn>
+                  <_Expekt>2.25</_Expekt>
+                  <_Interwetten>2.20</_Interwetten>
+                  <_Ladbrokes>2.20</_Ladbrokes>
+                  <_mybet>2.30</_mybet>
+                  <_Pinnacle>2.18</_Pinnacle>
+                  <_SBOBET>2.18</_SBOBET>
+                  <_Sportingbet>2.05</_Sportingbet>
+                  <_Tipico>2.20</_Tipico>
+                  <_Unibet>2.30</_Unibet>
+                  <_Hill>2.20</_Hill>
+                  <_youwin>2.05</_youwin>
+                </_1>
+                <_X>
+                  <_10Bet>3.35</_10Bet>
+                  <_12BET>3.30</_12BET>
+                  <_188BET>3.40</_188BET>
+                  <_888sport>3.20</_888sport>
+                  <_home>3.34</_home>
+                  <_bet365>3.30</_bet365>
+                  <_Betclic>3.25</_Betclic>
+                  <_Betfair>3.25</_Betfair>
+                  <_Betsafe>3.30</_Betsafe>
+                  <_Betsson>3.30</_Betsson>
+                  <_BetVictor>3.30</_BetVictor>
+                  <_Betway>3.30</_Betway>
+                  <_bwin>3.20</_bwin>
+                  <_ComeOn>3.35</_ComeOn>
+                  <_Expekt>3.25</_Expekt>
+                  <_Interwetten>3.20</_Interwetten>
+                  <_Ladbrokes>3.25</_Ladbrokes>
+                  <_mybet>3.30</_mybet>
+                  <_Pinnacle>3.58</_Pinnacle>
+                  <_SBOBET>3.25</_SBOBET>
+                  <_Sportingbet>3.25</_Sportingbet>
+                  <_Tipico>3.30</_Tipico>
+                  <_Unibet>3.20</_Unibet>
+                  <_Hill>3.40</_Hill>
+                  <_youwin>3.25</_youwin>
+                </_X>
+                <_2>
+                  <_10Bet>3.30</_10Bet>
+                  <_12BET>3.20</_12BET>
+                  <_188BET>3.20</_188BET>
+                  <_888sport>3.10</_888sport>
+                  <_home>3.13</_home>
+                  <_bet365>3.40</_bet365>
+                  <_Betclic>3.00</_Betclic>
+                  <_Betfair>3.10</_Betfair>
+                  <_Betsafe>3.10</_Betsafe>
+                  <_Betsson>3.10</_Betsson>
+                  <_BetVictor>3.40</_BetVictor>
+                  <_Betway>3.30</_Betway>
+                  <_bwin>3.10</_bwin>
+                  <_ComeOn>3.30</_ComeOn>
+                  <_Expekt>3.00</_Expekt>
+                  <_Interwetten>2.95</_Interwetten>
+                  <_Ladbrokes>2.90</_Ladbrokes>
+                  <_mybet>2.90</_mybet>
+                  <_Pinnacle>3.47</_Pinnacle>
+                  <_SBOBET>3.20</_SBOBET>
+                  <_Sportingbet>3.00</_Sportingbet>
+                  <_Tipico>3.10</_Tipico>
+                  <_Unibet>3.15</_Unibet>
+                  <_Hill>3.00</_Hill>
+                  <_youwin>3.00</_youwin>
+                </_2>
+              </_1X2>
+            </event>
           </Events>
         </ekstraklasa>
       </Poland>

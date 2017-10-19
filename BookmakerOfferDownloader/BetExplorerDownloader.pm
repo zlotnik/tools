@@ -222,7 +222,7 @@ sub pickupLinksFromXml($)
 sub injectBookmakerProductEventOffertIntoXML($$$)
 {
 	my($xmlNodePointOfInjection, $bookmakerName, $price) = @_;
-	my $bookMakerXMLNode = XML::LibXML::Element->new($bookmakerName);
+	my $bookMakerXMLNode = XML::LibXML::Element->new("_${bookmakerName}");
 	my $bookmakerEventProductPriceXMLNode = XML::LibXML::Text->new($price);
 	$bookMakerXMLNode->addChild($bookmakerEventProductPriceXMLNode);
 	$xmlNodePointOfInjection->addChild($bookMakerXMLNode);
@@ -279,6 +279,8 @@ sub updateEventListXMLWithBookmakerOffer($)
 	open XML, ">$pathToEventListXML" or die;
 	print XML $xmlDoc->toString();
 	close XML;
+	
+	correctFormatXmlDocument($pathToEventListXML);
 		
 }
 
