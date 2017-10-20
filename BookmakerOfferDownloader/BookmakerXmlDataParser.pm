@@ -77,6 +77,24 @@ sub isCorectDownloadedBookmakerOfferFile($)
 	my $xmlSelectorPath = $_[0];
 	my $xmlParser = XML::LibXML->new; 
 	my $xmlParserDoc = $xmlParser->parse_file($xmlSelectorPath) or return 0; 
+
+	my $xmlToParse = $xmlParserDoc->toString();
+
+	my $isFileHasCorrectSyntax = ($xmlToParse =~ m{
+													^(<\?xml.version).*
+													(<note>.*
+													<dataSources>.*
+													<betexplorer />.*
+													</dataSources>.*
+													<eventList>.*
+													</eventList>.*
+													</note>)
+													}sx);
+	print $1;
+	
+	return $isFileHasCorrectSyntax;
+	
+	
 	my $downloadedOfferXmlNode = $xmlParserDoc->findnodes("downloadedOffer")->[0] or return 0;
 	my $disciplineXmlNode = $downloadedOfferXmlNode->nonBlankChildNodes->[0];
 	

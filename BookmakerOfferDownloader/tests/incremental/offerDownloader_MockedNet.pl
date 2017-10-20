@@ -22,7 +22,6 @@ my $xmlParser = XML::LibXML->new;
 copy $correctBookmakerSelectorFile, $resultXMLFileWithDownloadedData or die $?; #does it needed?
 
 my $xmlDocWithDownloadedData = $xmlParser->parse_file($correctBookmakerSelectorFile);
-my $xpath = "";
 
 my @rootXmlNode = $xmlDocWithDownloadedData->findnodes("/");	
 
@@ -36,10 +35,9 @@ $theMockBookMakerDownloader->pullBookmakersOffer($resultXMLFileWithDownloadedDat
 my $isCorectBookmakerOfferFile = $aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($resultXMLFileWithDownloadedData);
 ok($isCorectBookmakerOfferFile, "Stage 2 with mock net: Pulling bookmaker offer ") or die $/; 
 
-#TODO think about split tests
 #nice would be to have some bin directory with tools eg. parsing file for comments others tools
 #TODO nice would be to have hooks checking format of commits
-#atest run mode to consider 1.debug, 2.run all  3.stop on first 4.Categorize tests
+#test run mode to consider 1.debug, 2.run all  3.stop on first 4.Categorize tests
 #todo: add to the desing a picture describing stages of creating output xml
 #testing script should check partial corectness first	
 

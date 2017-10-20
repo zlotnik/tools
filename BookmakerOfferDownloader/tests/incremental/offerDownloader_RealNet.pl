@@ -22,7 +22,6 @@ my $xmlParser = XML::LibXML->new;
 copy $correctBookmakerSelectorFile, $resultXMLFileWithDownloadedData or die $?; #does it needed?
 
 my $xmlDocWithDownloadedData = $xmlParser->parse_file($correctBookmakerSelectorFile);
-my $xpath = "";
 
 my @rootXmlNode = $xmlDocWithDownloadedData->findnodes("/");	
 
