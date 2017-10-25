@@ -1,4 +1,5 @@
 package BookmakerXmlDataParser;
+use BookmakersRegexps;
 use strict;
 use warnings;
 use base 'Exporter';
@@ -71,6 +72,7 @@ sub isCorectBookmakerDataSelectorFile($)
 	return 0;
 };
 
+
 sub isCorectDownloadedBookmakerOfferFile($)
 {
 	my $self = shift;
@@ -81,17 +83,22 @@ sub isCorectDownloadedBookmakerOfferFile($)
 	my $xmlToParse = $xmlParserDoc->toString();
 
 	my $isFileHasCorrectSyntax = ($xmlToParse =~ m{
-													^(<\?xml.version).*
-													(<note>.*
+													^<\?xml.version="1.0".encoding="UTF-8"\?>.*
+													<note>.*
 													<dataSources>.*
 													<betexplorer />.*
 													</dataSources>.*
 													<eventList>.*
+													<($disciplineName_re)>.*
+													<Events>.*
+													<event.url="http://www.betexplorer.com/($disciplineName_re).*".?>.*
+													(</event>).*
+													</Events>.*
+													</($disciplineName_re)>.*
 													</eventList>.*
-													</note>)
+													</note>
 													}sx);
-	print $1;
-	
+		
 	return $isFileHasCorrectSyntax;
 	
 	
