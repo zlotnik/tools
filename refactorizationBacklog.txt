@@ -1,0 +1,2 @@
+*Git hooks: adding automatic test before commit +4 XS 	
+
