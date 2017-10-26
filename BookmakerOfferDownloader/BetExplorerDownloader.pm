@@ -17,18 +17,6 @@ use feature 'say';
 
 our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml pullBookmakersOffer);
 
-#($#ARGV +1) == 1 or die 'usage surebet.pl inputFile';
-
-#my $inputFileName = $ARGV[0];
-
-#would be nice to have something to check some code clean metrics eg. code width, code length, number of sub in class 
-#change capitalization of this file
-#nice to have time login with every git pull ,git push command for cost measuring purposes
-#change capitalization of this file
-
-
-
-#open(INPUT, "<", $inputFileName) or die "Unable to open file"; 
 ###############SUB PROTOTYPES############################################
 sub new();
 sub loadSelectorFile($);
@@ -67,9 +55,6 @@ sub addEventNodeToXmlEventList($$);
 sub injectBookmakerEventOfferIntoXML($$);
 sub injectBookmakerProductEventOffertIntoXML($$$);
 #################DICTIONARY##############################################
-#choosen bookmaker offer - choosen part of bookmakers offer by appling an offert selector eg. all German, soccer, matches  
-#offer selector - a xml file used choose which data will be downloadedDataRawText
-#offer xml - an output xml generated basis on the offer selector
 
 
 #################TODO####################################################
@@ -78,23 +63,15 @@ sub injectBookmakerProductEventOffertIntoXML($$$);
 # filter buchmacher z pliku
 # add show usage
 # add parse input file
-# 'clasify' this script
 # #updating nodes like <poland/> seems to not work
 # add to validateSelectorFile checking if it is a correct selector file so it means contains all needed data in good format needed by the program  
 
-#getsLinksForAllEventsFromSubCategory('germany','bundesliga');
-
-
-#open OUTPUT, '>', "output.txt" or die "Can't create filehandle: $!";
-#select OUTPUT; 
-#$| = 1;  # make unbuffered
 
 
 ############################MAIN##############################################
 
 my $pathToXmlSelector = $ARGV[0];
 $pathToXmlSelector = "input/parameters/polandEkstraklasaSelector.xml";                                       
-#pullBookmakersOffer($pathToXmlSelector);
 
 
 
@@ -181,18 +158,12 @@ sub pullBookmakersOffer($)
 sub correctFormatXmlDocument($)
 {
 
-   my $pathToXmlDocumentToCorrect = shift;
-   my $tidy_obj = XML::Tidy->new('filename' => $pathToXmlDocumentToCorrect);
+	my $pathToXmlDocumentToCorrect = shift;
+	my $tidy_obj = XML::Tidy->new('filename' => $pathToXmlDocumentToCorrect);
 
-  # Tidy up the indenting
-     $tidy_obj->tidy();
-
-  # Write out changes back to MainFile.xml
-     $tidy_obj->write();
-    
+	$tidy_obj->tidy();
+	$tidy_obj->write();
 }
-
-
 
 sub updateEventListXMLWithEventDetails($)
 {
@@ -257,7 +228,7 @@ sub updateEventListXMLWithBookmakerOffer($)
 {
 		
 	my ($self, $pathToEventListXML) = @_;
-	my $xmlParser = XML::LibXML->new; #parser in properties will improve optimalization
+	my $xmlParser = XML::LibXML->new; 
 	my $xmlDoc = $xmlParser->parse_file($pathToEventListXML) or die $?;
 	my @allEventXml = $xmlDoc->findnodes('/note/eventList//*//event'); 
 	
@@ -284,7 +255,7 @@ sub updateEventListXMLWithBookmakerOffer($)
 		
 }
 
-sub removeEmptyLines(\$)#move to toolbox
+sub removeEmptyLines(\$)
 {
 	my $dataWithBets = ${$_[0]};
 	my $theResult;
@@ -297,7 +268,7 @@ sub removeEmptyLines(\$)#move to toolbox
 			$theResult .= $lineWithBetData . "\n";
 		}	
 	}
-	#$dataWithBets = $theResult;
+	
 	${$_[0]} = $theResult
 	
 }
@@ -308,7 +279,7 @@ sub updateXmlNodeWithDataFromBookmaker($$)
 	
 	my ($self,$xsubPath, $pathToXmlSelector) = @_;  
 	
-	my $xmlParser = XML::LibXML->new; #global parser would improve optimalization
+	my $xmlParser = XML::LibXML->new; 
 	my $xmlDoc = $xmlParser->parse_file($pathToXmlSelector) or die "Can't parse xmlFile";
 	
 	my $betsDataXmlNode = seekBetsDataInXmlEventFile($xmlDoc); #maybe this method isn't needed and its name could be not adequate
@@ -335,9 +306,6 @@ sub isLinkToEvent($)
 	my $stringToCheck = $_[0];
 	return ($stringToCheck =~ m|http://|);
 	
-	#print "stringToParse $stringToParse\n";
-	#die "unimplemented yet";
-
 }
 
 sub getRootNode($) #doesn't used anymore?
@@ -349,10 +317,9 @@ sub getRootNode($) #doesn't used anymore?
 	my @rootXmlNode = $doc->findnodes("/");#$doc->findnodes("/")->[0];
 	return $rootXmlNode[0];
 }
-#coverity test
+
 sub seekBetsDataInXmlEventFile($)
 {
-
 	my $wholeXmlDocument = shift;		
 	
 	my $betsDataXmlNode = $wholeXmlDocument->findnodes("/note/eventList")->[0];#->nonBlankChildNodes()->[0];
@@ -396,7 +363,7 @@ sub isEventsNodeExists($$)
 
 
 
-sub addLinkToEventToOfferXml($$$)# this sub must refactorized because it can be reached using less amount of code lines 
+sub addLinkToEventToOfferXml($$$)
 {
 	
 	my ($relativeXpathToParent, $linkToEvent, $outputXmlFilePath) = @_;
@@ -440,7 +407,7 @@ sub addChildSubcategoryNodeToOfferXml($$$)
 
 sub prepareTemplateForXmlFileWithResults($)
 {
-	#c BetExplorerDownloader::prepareTemplateForXmlFileWithResults
+	
 	my ($self,$outputXmlPath) = @_;
 	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
 	my $xmlParser = XML::LibXML->new;		
@@ -456,8 +423,7 @@ sub createEventListXML($$)
 {
 	my ($self, $xpath, $outputXmlPath) = @_;
 
-	#copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
-	
+		
 	my $xmlParser = XML::LibXML->new;		
 	my $xmlNode = $xmlParser->parse_file($outputXmlPath) or die;
 	
@@ -482,9 +448,6 @@ sub createEventListXML($$)
 			}
 			else
 			{
-				#create a 'verbosity' switch
-				#print "END OF RECURENCE $xpath/$nodeName\n"; #move to some trace function
-				#updateXmlNodeWithDataFromBookmaker($node, "${xpath}/${nodeName}", $outputXmlPath);
 				$self->updateXmlNodeWithDataFromBookmaker("${xpath}/${nodeName}", $outputXmlPath);				
 			}
 		}	
@@ -577,8 +540,7 @@ sub calculateProfit(\%)
 
 sub findBestOdds($)
 {
-	my $dataWithBets  = $_[0];
-	#print $dataWithBets; die;
+	my $dataWithBets  = $_[0];	
 	my %bestOdds; 
 	$bestOdds{'1'}  = 0.1;
 	$bestOdds{'X'}  = 0.1;
@@ -593,7 +555,7 @@ sub findBestOdds($)
 		{
 			if ($1 eq 'Interwetten')
 			{
-				#print STDOUT "ignoring== $lineWithBetData\n";
+				
 				next;			
 			}
 			if($2 gt $bestOdds{'1'})
@@ -610,7 +572,6 @@ sub findBestOdds($)
 			}
 		}
 	}
-	#die;
 	return %bestOdds;
 
 };
@@ -681,15 +642,11 @@ sub simplifyFormatOfRawdata(\$)
 	leaveOnlyBetsStakesDataInRawdataFile($rawDataContent);
 	${$_[0]} = $rawDataContent; 
 	
-	
 }
-
-#todo: mock net 
 
 sub leaveOnlyBetsStakesDataInRawdataFile(\$)
 {
 	my $rawDataContent = ${$_[0]};
-	
 	
 	$rawDataContent =~ m#(Bookmakers:[\s\S]*?)Average odds#m or die;
 	
@@ -745,8 +702,6 @@ sub createJavaScriptForDownload($)
 
 }
 
-#maybe something more advanced for parsing files
-
 sub getsLinksForAllEventsFromSubCategory($$)
 {
 	my $categoryName = $_[0];
@@ -764,8 +719,6 @@ sub getsLinksForAllEventsFromSubCategory($$)
 sub getLinksToEventFromTable($)
 {
 	my $tableWithEvents = $_[0];
-	#open OUTPUT, '>', "output.txt" or die "Can't create filehandle: $!";
-	#select OUTPUT;
 	my @linksToEvents;
 	foreach (split("\n",$tableWithEvents))
 	{
@@ -773,12 +726,7 @@ sub getLinksToEventFromTable($)
 		if($lineWithData =~ /a href="(.*?)" class="in-match"/)
 		{
 			my $linkToEvent = "http://www.betexplorer.com$1";
-			#if(checkNumberOfBookmaker($lineWithData) > 0) #doesn't used anymore propably it was used to check how many bookmaker link contains
-			#{
 			push @linksToEvents, "http://www.betexplorer.com$1";			
-			#	print STDOUT "after link==$1 \n";
-			#}
-			#print STDOUT 'no of bookmakers ' . checkNumberOfBookmaker($lineWithData) ."\n";
 			
 		} 
 	}

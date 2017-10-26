@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<note>
+  <dataSources>
+    <betexplorer />
+  </dataSources>
+  <eventList>
+    <soccer>
+      <Poland>
+        <ekstraklasa>
+          <Events>
+            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/slask-wroclaw-pogon-szczecin/4hyLHKnR/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/lech-poznan-wisla/IoxNdJA1/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/piast-gliwice-plock/dSXCJtIE/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/cracovia-termalica-b-b/pYwFbutk/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/sandecja-nowy-s-gornik-z/Q1xHI0XK/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-zaglebie/OOxJcaee/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/legia-arka-gdynia/IyZ8KM28/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/lechia-gdansk-korona-kielce/GWfQewQ7/" />
+          </Events>
+        </ekstraklasa>
+        <division-1>
+          <Events>
+            <event url="http://www.betexplorer.com/soccer/Poland/division-1/podbeskidzie-zaglebie-sosnowiec/2ywCfGUm/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/division-1/leczna-puszcza/WGUSjYTC/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/division-1/olsztyn-suwalki/8Ew8edFs/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/division-1/pogon-siedlce-legnica/riYWkhqJ/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/division-1/tychy-gks-katowice/b3WKhfa0/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/division-1/drutex-bytovia-stal-mielec/Whnt0x7Q/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/division-1/ol-grudziadz-rakow/xfVOiEE6/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/division-1/chrobry-glogow-chojniczanka/lUdy1IiK/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/division-1/ruch-odra-opole/tSyGgzpf/" />
+          </Events>
+        </division-1>
+        <division-2>
+          <Events>
+            <event url="http://www.betexplorer.com/soccer/Poland/division-2/legionowo-gks-jastrzebie/v1j6awoJ/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/division-2/garbarnia-elblag/hplf2u10/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/division-2/siarka-tarnobrzeg-lks-lodz/6mhb1aG6/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/division-2/gwardia-koszalin-blekitni-stargard/hrcI6fhn/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/division-2/rozwoj-katowice-pruszkow/0Ai20JVC/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/division-2/wisla-pulawy-gks-belchatow/WUao41Wm/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/division-2/row-rybnik-s-wola/EibE7zwt/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/division-2/kluczbork-gryf-wejherowo/n5dM5E7h/" />
+            <event url="http://www.betexplorer.com/soccer/Poland/division-2/radomiak-radom-warta-poznan/ALbk3Lof/" />
+          </Events>
+        </division-2>
+        <iii-liga-group-i />
+        <iii-liga-group-ii />
+        <iii-liga-group-iii />
+        <polish-cup>
+          <Events>
+            <event url="http://www.betexplorer.com/soccer/Poland/polish-cup/zaglebie-korona-kielce/ldR4kJdp/" />
+          </Events>
+        </polish-cup>
+      </Poland>
+    </soccer>
+  </eventList>
+</note>

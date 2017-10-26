@@ -1,2 +1,18 @@
 *Git hooks: adding automatic test before commit +4 XS 	
+*add intructtion how to use,requirements and all ternminology used in project
+*a template used to create *.pl, *.pm, *.pm child, *.pm parrent
+*Git hooks: add a parser so as to parse commits 
+*would be nice to have something to check some code clean metrics eg. code width, code length, number of sub in class, code format
+*nice to have time login with every git pull ,git push command for cost measuring purposes
+*Add to manual:choosen bookmaker offer - choosen part of bookmakers offer by appling an offert selector eg. all German, soccer, matches  
+*Add to manual:offer selector - a xml file used choose which data will be downloadedDataRawText
+*Add to manual:offer xml - an output xml generated basis on the offer selector
+*Move diagrams to Visual paradigm
+*Maybe add to process a requirements than I can move on to the testing phase when refactorization backlog will be reduced to some size 
+*XML::LibXML->new; #parser in properties will improve optimalization 
+*sub removeEmptyLines(\$)#move to toolbox
+*add test coverity test
+*introduce expect so as to have more comfortable debug process
+*tracing system with 'verbosity' switch
+
 

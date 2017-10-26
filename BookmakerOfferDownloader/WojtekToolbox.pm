@@ -4,8 +4,6 @@ use base 'Exporter';
 
 
 our @EXPORT = ('tryToGetUrl');
-########TODO####################
-#Add an sub to log a message only once
 
 sub tryToGetUrl($$);
 
