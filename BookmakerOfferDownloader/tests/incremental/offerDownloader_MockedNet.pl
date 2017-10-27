@@ -33,7 +33,7 @@ copy $correctBookmakerSelectorFile, $resultXMLFileWithDownloadedData or die $?; 
 $theMockBookMakerDownloader->pullBookmakersOffer($resultXMLFileWithDownloadedData);
 
 my $isCorectBookmakerOfferFile = $aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($resultXMLFileWithDownloadedData);
-ok($isCorectBookmakerOfferFile, "Stage 2 with mock net: Pulling bookmaker offer ") or die $/; 
+ok($isCorectBookmakerOfferFile, "Stage 2 with mock net: Pulling bookmaker offer ") or die; 
 
 #nice would be to have some bin directory with tools eg. parsing file for comments others tools
 #TODO nice would be to have hooks checking format of commits
