@@ -11,11 +11,9 @@ sub new();
 sub new()
 {
 	my $class = shift;
-	#my ($subCategoryXpath) = @_;
-	
-	#my $self = $class->SUPER::new($subCategoryXpath);
+
 	my $self = bless {}, $class;
-	#$self->{mlinkToCategory} = 'http://www.betexplorer.com/' . $self->{mSubCategoryXpath};	
+
 	return $self;
 }
 
@@ -46,7 +44,6 @@ sub couldYouHandleThatXPath($)
 	return 0;
 	
 };
-
 
 
 1;

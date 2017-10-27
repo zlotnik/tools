@@ -9,7 +9,7 @@ sub getRawDataOfEvent($);
 sub new();
 
 
-#todo do a program to create template of package
+
 ###########################################################################################
 sub new()
 {		
