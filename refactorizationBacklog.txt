@@ -14,5 +14,5 @@
 *add test coverity test
 *introduce expect so as to have more comfortable debug process
 *tracing system with 'verbosity' switch
-
+*runing legacy and incremental test suite shouldn't be hardcoded
 
