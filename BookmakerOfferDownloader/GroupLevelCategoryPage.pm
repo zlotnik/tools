@@ -45,17 +45,26 @@ sub couldYouHandleThatXPath($)
 
 sub getAllSubCategories($)
 {
+	#c GroupLevelCategoryPage::getAllSubCategories
+	
 	
 	my ($self,$subCategoryXpath ) = @_;
 	
 	my $linkToCategory = 'http://www.betexplorer.com/' . $subCategoryXpath . "/";	
 	
 	my $contentOfSubcategoryPage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToCategory); 	
+	my @toReturn;
 	
-	$contentOfSubcategoryPage =~ m|(<td class=\"table-main__daysign\")([\s\S]*?)(</table>)|m or die "It hasn't been possible to parse table with events from given URL: $linkToCategory";	
-	my $htmlTableWithEvents = $1.$2.$3;
+	if(not $contentOfSubcategoryPage =~ m|(<td class=\"table-main__daysign\")([\s\S]*?)(</table>)|m )
+	{
+		print "There is no event for $linkToCategory\n";
+	}
+	else
+	{
+		my $htmlTableWithEvents = $1.$2.$3;
+		@toReturn = BetexplorerParser::pickupLinksToEventFromTable($htmlTableWithEvents);	
+	}
 	
-	my @toReturn = BetexplorerParser::pickupLinksToEventFromTable($htmlTableWithEvents);	
 	return @toReturn;
 	
 }
