@@ -15,4 +15,4 @@
 *introduce expect so as to have more comfortable debug process
 *tracing system with 'verbosity' switch
 *runing legacy and incremental test suite shouldn't be hardcoded
-
+*Git hooks: add a notification when counter of commit reach some round numbers
