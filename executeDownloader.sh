@@ -1,1 +1,0 @@
-perl  -IBookmakerOfferDownloader/ downloadBookmakerDataExecutor.pl
