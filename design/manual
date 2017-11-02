@@ -1,0 +1,30 @@
+USAGE:
+1.Find surebets 
+sureBetCrafter.pl xmlSelectorFile resultFile
+
+2. Print this instruction
+sureBetCrafter.pl 
+
+
+HELP:
+
+
+sureBetCrafter has modular structure and consist of following modules
+
+
+
+
+____________________________	     ________________________       ______________________    ________________________    _______________________
+| BookmakerOfferDownloader |	     |    DataFilter        |	    | TranslateData      |    | SurebetsFinder       |    | frontend::present   |
+|--------------------------|         |----------------------|       |--------------------|    |----------------------|    |---------------------|
+|                          |	     |                      |	    |                    |    |                      |    |                     |
+| IN:bookmaker sites       |-------->| IN:xml with events   |------>| IN:xml with events |--->| IN:xml with events   |--->| IN:xml with surebet |
+| OUT:xml with events      |         | IN:filter criterium  |	    | OUT:xml with events|    | OUT:xml with surebets|	  | OUT:www site        |
+|                          |	     | OUT: xml with events |	    |                    |    |                      |    |                     |
+----------------------------         ------------------------       ----------------------    ------------------------    -----------------------
+
+
+
+BookmakerOfferDownloader module 
+
+
