@@ -1,12 +1,4 @@
-USAGE:
-1.Find surebets 
-sureBetCrafter.pl xmlSelectorFile resultFile
-
-2. Print this instruction
-sureBetCrafter.pl 
-
-
-HELP:
+MANUAL:
 
 
 sureBetCrafter has modular structure and consist of following modules

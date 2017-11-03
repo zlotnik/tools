@@ -1,0 +1,9 @@
+
+
+USAGE:
+
+1. Find surebets 
+sureBetCrafter.pl xmlSelectorFile resultFile
+
+2. show manual
+sureBetCrafter.pl --help

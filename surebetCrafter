@@ -1,0 +1,107 @@
+#!/usr/bin/perl -w
+
+
+#SUBS DECLARATIONS
+sub parseArguments();
+sub printUsage();
+sub printManual();
+sub checkRunMode();
+sub findSureBet($$);
+
+
+###########MAIN#############
+if( parseArguments() )
+{
+	my $runMode = checkRunMode();
+
+	if($runMode eq 'SHOW_MANUAL_MODE')
+	{
+		printManual();
+	}
+	elsif($runMode eq 'FIND_SUREBET_MODE')
+	{
+		my $xmlSelectorFile = $_[0];
+		my $xmlResultFile = $_[1];
+		findSureBet($xmlSelectorFile, $xmlResultFile);
+	}	
+}
+else
+{
+	printUsage();
+}
+
+
+
+#########SUBS DEFINITIONS##############
+sub parseArguments()
+{
+	if ($#ARGV == -1)
+	{
+		return 0;
+	}
+	
+	my $allProgramArguments = join(' ',@ARGV);
+	
+	if ($allProgramArguments =~ /^(\w+) (\w+)$/)
+	{
+		return 1;
+	}
+	
+	if ($allProgramArguments =~ /^--help$/)
+	{
+		return 2;
+	}
+	
+	return 0;
+	
+	
+
+};
+
+
+sub printManual()
+{
+
+	open my $fh_manual , "<", "design/manual.txt" or die; 
+
+	{
+		local $/ = undef;
+		print <$fh_manual>;
+	}
+	
+	close $fh_manual or die;
+
+}
+
+sub printUsage()
+{
+	open my $fh_usageFile , "<", "design/usage.txt" or die;
+	{
+		local $/ = undef;
+		print <$fh_usageFile>;
+	}
+	
+	close $$fh_usageFile or die;
+		
+}
+
+sub checkRunMode()
+{
+	if($#ARGV == 0)
+	{
+		return 'SHOW_MANUAL_MODE' 
+	}
+	elsif($#ARGV == 1)
+	{
+		return 'FIND_SUREBET_MODE'
+	}
+
+	die;
+};
+
+sub findSureBet($$)
+{
+
+	die "NOT IMPLEMENTED YET";
+
+};
