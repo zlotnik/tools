@@ -1,8 +1,8 @@
 MANUAL:
 
+1. Overview
 
 sureBetCrafter has modular structure and consist of following modules
-
 
 
 
@@ -10,13 +10,33 @@ ____________________________	     ________________________       _______________
 | BookmakerOfferDownloader |	     |    DataFilter        |	    | TranslateData      |    | SurebetsFinder       |    | frontend::present   |
 |--------------------------|         |----------------------|       |--------------------|    |----------------------|    |---------------------|
 |                          |	     |                      |	    |                    |    |                      |    |                     |
-| IN:bookmaker sites       |-------->| IN:xml with events   |------>| IN:xml with events |--->| IN:xml with events   |--->| IN:xml with surebet |
+| IN:bookmaker sites       |-------->| IN:xml with events   |------>| tIN:xml with events |--->| IN:xml with events   |--->| IN:xml with surebet |
+| IN:xml file selector     |	     |                      |	    |                    |    |                      |    |                     |
 | OUT:xml with events      |         | IN:filter criterium  |	    | OUT:xml with events|    | OUT:xml with surebets|	  | OUT:www site        |
 |                          |	     | OUT: xml with events |	    |                    |    |                      |    |                     |
 ----------------------------         ------------------------       ----------------------    ------------------------    -----------------------
 
 
+2. Modules description
 
-BookmakerOfferDownloader module 
+2.1 BookmakerOfferDownloader module:
+ 
+This module gets offer selector file on input and returns bookmakers offer file based on content of bookmakers site . 
 
 
+BookmakerOfferDownloader module gets data in following steps:
+
+2.1.1 Generating bookmaker event list file. 
+Bookmaker event list file is a xml file contains list of grouped sports events fetched from BetExplorer web site. 
+Each event contains also a link to itself on BetExplorer site. 
+
+2.1.2 Generating bookmaker offer file
+Bookmaker offer file is a xml file contains an offer (or  part of offer) of Bookmakers from BetExplorer site. 
+Which part offer will be downloaded depends on the offer selector file.     
+
+3.Dictionary
+[I am not sure if it is needed]
+
+
+4.Data formats
+[cos o formatach plików]
