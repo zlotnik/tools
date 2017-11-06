@@ -5,6 +5,7 @@ use lib '..';
 use BetExplorerDownloader;
 use BookmakerXmlDataParser;
 use DataDownloader; #needed??
+use WojtekToolbox;
 
 use FindBin;
 use File::Copy;
@@ -31,6 +32,13 @@ ok($aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($correctDownlo
 															   "Parsing bookmaker downloaded offert file\n $correctDownloadedBookmakerOfferFile\n")or die;
 
 (-e $correctBookmakerEventList) or die "File doesn't exist $correctBookmakerEventList\n";
-ok($aBookmakerXmlDataParser->isCorrectEventListFile($correctBookmakerEventList),"Parsing event list file\n $correctBookmakerEventList\n");
 
+if(isConnectedToInternet())
+{
+	ok($aBookmakerXmlDataParser->isCorrectEventListFile($correctBookmakerEventList),"Parsing event list file\n $correctBookmakerEventList\n");
+}
+else
+{
+	print "Parsing event list file SKIPPED: NO INTERNET CONNECTION\n"
+}
 

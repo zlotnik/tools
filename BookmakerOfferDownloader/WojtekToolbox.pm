@@ -3,10 +3,10 @@ use LWP::Simple;
 use base 'Exporter';
 
 
-our @EXPORT = ('tryToGetUrl');
+our @EXPORT = qw(tryToGetUrl, isConnectedToInternet);
 
 sub tryToGetUrl($$);
-
+sub isConnectedToInternet();
 
 
 sub tryToGetUrl($$)
@@ -27,7 +27,15 @@ sub tryToGetUrl($$)
 		}
 		$triesCount++;
 	}
+}
 
+sub isConnectedToInternet()
+{
+	
+	my $ping_answer  = `ping 8.8.8.8 -n 1`;
+	
+	return ($ping_answer =~ /.*Reply from.*/);
+	
 }
 
 1;
