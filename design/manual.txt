@@ -1,3 +1,4 @@
+
 MANUAL:
 
 1. Overview
@@ -10,7 +11,7 @@ ____________________________	     ________________________       _______________
 | BookmakerOfferDownloader |	     |    DataFilter        |	    | TranslateData      |    | SurebetsFinder       |    | frontend::present   |
 |--------------------------|         |----------------------|       |--------------------|    |----------------------|    |---------------------|
 |                          |	     |                      |	    |                    |    |                      |    |                     |
-| IN:bookmaker sites       |-------->| IN:xml with events   |------>| tIN:xml with events |--->| IN:xml with events   |--->| IN:xml with surebet |
+| IN:bookmaker sites       |-------->| IN:xml with events   |------>| IN:xml with events |--->| IN:xml with events   |--->| IN:xml with surebet |
 | IN:xml file selector     |	     |                      |	    |                    |    |                      |    |                     |
 | OUT:xml with events      |         | IN:filter criterium  |	    | OUT:xml with events|    | OUT:xml with surebets|	  | OUT:www site        |
 |                          |	     | OUT: xml with events |	    |                    |    |                      |    |                     |
@@ -39,4 +40,5 @@ Which part offer will be downloaded depends on the offer selector file.
 
 
 4.Data formats
-[cos o formatach plików]
+[cos o formatach plikow]
+
