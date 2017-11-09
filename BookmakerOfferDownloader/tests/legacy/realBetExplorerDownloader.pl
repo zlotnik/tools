@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 1;
+use Test::More tests => 2;
 use lib '..';
 use BetExplorerDownloader;
 use BookmakerXmlDataParser;

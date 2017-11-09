@@ -2,7 +2,6 @@ use strict;
 use warnings;
 use Test::More tests => 4;
 use lib '..';
-use BetExplorerDownloader;
 use BookmakerXmlDataParser;
 use DataDownloader; #needed??
 use WojtekToolbox;

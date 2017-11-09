@@ -71,8 +71,6 @@ sub injectBookmakerProductEventOffertIntoXML($$$);
 ############################MAIN##############################################
 
 my $pathToXmlSelector = $ARGV[0];
-$pathToXmlSelector = "input/parameters/polandEkstraklasaSelector.xml";                                       
-
 
 
 ####################SUB DEFINITIONS############################################
@@ -97,12 +95,10 @@ sub showUsage()
 
 
 sub loadSelectorFile($)
-{
-	my $self = shift;
-	my ($selectorFilePath) = @_;
+{	
+	my ($self, $selectorFilePath) = @_;
 	$self->{mSelectorFile} = $selectorFilePath;
 	$self->validateSelectorFile();
-	
 }
 
 sub validateSelectorFile()
@@ -117,6 +113,7 @@ sub validateSelectorFile()
 #above could be moved to parser
 sub isItCorrectXmlFile($)
 {
+	my ($pathToXmlSelector) = @_;
 	my $xmlParser = XML::LibXML->new; 
 	if($xmlParser->parse_file($pathToXmlSelector))
 	{

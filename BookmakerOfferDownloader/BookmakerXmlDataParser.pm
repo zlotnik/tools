@@ -6,6 +6,7 @@ use base 'Exporter';
 our @EXPORT = qw(isCorectDownloadedBookmakerOfferFile isCorectBookmakerDataSelectorFile isCorrectEventListFile isEventListFileHasCorrectSyntax);
 
 use LWP::Simple;
+use XML::LibXML;
 #nice to have; tool to create templates for files .pm, .pl   
 #move all parsers to new directory
 #think about code coverage

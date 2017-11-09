@@ -6,7 +6,7 @@ sub parseArguments();
 sub printUsage();
 sub printManual();
 sub checkRunMode();
-sub findSureBet($$);
+sub findSureBets($$);
 
 
 ###########MAIN#############
@@ -22,7 +22,7 @@ if( parseArguments() )
 	{
 		my $xmlSelectorFile = $_[0];
 		my $xmlResultFile = $_[1];
-		findSureBet($xmlSelectorFile, $xmlResultFile);
+		findSureBets($xmlSelectorFile, $xmlResultFile);
 	}	
 }
 else
@@ -99,7 +99,7 @@ sub checkRunMode()
 	die;
 };
 
-sub findSureBet($$)
+sub findSureBets($$)
 {
 
 	die "NOT IMPLEMENTED YET";
