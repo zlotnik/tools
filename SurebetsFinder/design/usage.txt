@@ -1,0 +1,4 @@
+
+USAGE:
+
+surebetFinder.pl bookmakersOfferFile.xml sureBets.xml 
