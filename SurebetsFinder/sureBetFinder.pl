@@ -13,6 +13,7 @@ sub showUsage();
 if(!checkProgramArguments())
 {
 	showUsage();
+	die;
 }
 
 my ($bookmakerOfferFilename, $surebetsFile) = @ARGV;

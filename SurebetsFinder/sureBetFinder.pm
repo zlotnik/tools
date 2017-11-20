@@ -2,7 +2,7 @@
 use warnings;
 use strict;
 
-package SureBetFinder;
+package SurebetFinder;
 
 #########SUB DECLARATION#############
 
