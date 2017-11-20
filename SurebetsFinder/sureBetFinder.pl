@@ -1,6 +1,7 @@
 #!/usr/bin/perl -w
 use strict;
 use warnings;
+use SurebetFinder;
 
 ########################SUBS DECLARATIONS###############
 sub checkProgramArguments();
@@ -13,6 +14,15 @@ if(!checkProgramArguments())
 {
 	showUsage();
 }
+
+my ($bookmakerOfferFilename, $surebetsFile) = @ARGV;
+my $theSurebetFinder = SurebetFinder->new();
+
+#todo here should be copying bookmaker offer file from a lopcation inside BetExplorerDownloader
+
+$theSurebetFinder->loadBookmakersOfferFile($bookmakerOfferFilename);
+$theSurebetFinder->generateSurebetsFile($surebetsFile);
+
 
 
 #######################SUBS DEFINITIONS#################

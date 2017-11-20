@@ -1,4 +1,4 @@
 
 USAGE:
 
-surebetFinder.pl bookmakersOfferFile.xml sureBets.xml 
+surebetFinder.pl bookmakersOfferFile.xml sureBetsOutputFile.xml 
