@@ -110,7 +110,6 @@ sub validateSelectorFile()
 	
 }
 
-#above could be moved to parser
 sub isItCorrectXmlFile($)
 {
 	my ($pathToXmlSelector) = @_;
@@ -124,6 +123,7 @@ sub isItCorrectXmlFile($)
 		return 0;
 	}
 }
+#above could be moved to parser
 
 
 
