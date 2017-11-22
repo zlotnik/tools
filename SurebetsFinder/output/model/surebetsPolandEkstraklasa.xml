@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<note>
+  <surebetList>
+	<surebet url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/">		
+		<type>1X2</type>
+		<profit>1.1</profit>
+		<bets>
+		<type>1</type>		
+		<bookmakerName>10Bet</bookmakerName>
+		<price>1.2</price>
+		</bets>
+		<bets>
+		<type>X</type>
+		<bookmakerName>10Bet</bookmakerName>
+		<price>2.2</price>
+		</bets>
+		<bets>
+		<type>2</type>
+		<bookmakerName>Expect</bookmakerName>
+		<price>2.4</price>
+		</bets>
+	</surebet>
+		<surebet url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/">		
+		<type>1X2</type>
+		<profit>1.1</profit>
+		<bets>
+		<type>1</type>		
+		<bookmakerName>10Bet</bookmakerName>
+		<price>1.2</price>
+		</bets>
+		<bets>
+		<type>X</type>
+		<bookmakerName>10Bet</bookmakerName>
+		<price>2.2</price>
+		</bets>
+		<bets>
+		<type>2</type>
+		<bookmakerName>Expect</bookmakerName>
+		<price>2.4</price>
+		</bets>
+	</surebet>
+  </surebetList>
+</note>
