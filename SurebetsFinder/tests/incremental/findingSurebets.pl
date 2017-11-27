@@ -1,8 +1,9 @@
 use strict;
 use warnings;
 use Test::More tests => 2;
-use lib '..';
+use lib '../BookmakerOfferDownloader/';
 use BookmakerXmlDataParser;
+use SurebetFinder;
 use FindBin;
 use File::Copy;
 

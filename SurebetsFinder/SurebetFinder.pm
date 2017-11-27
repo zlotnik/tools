@@ -28,7 +28,7 @@ sub new()
 
 sub loadBookmakersOfferFile($)
 {
-	my ($self,$bookmakerOfferFilename);
+	my ($self,$bookmakerOfferFilename) = @_;
 
 	#todo validate $bookmakerOfferFilename
 	if (!isValidBookOfferFile($bookmakerOfferFilename))
@@ -41,7 +41,7 @@ sub loadBookmakersOfferFile($)
 
 sub isValidBookOfferFile($)
 {
-	my ($bookmakerOfferFilename) = @;
+	my ($bookmakerOfferFilename) = @_;
 	(-e $bookmakerOfferFilename) or die "File doesn't exist";
     
 	isItCorrectXmlFile($bookmakerOfferFilename) or die;
