@@ -6,10 +6,10 @@ use BookmakerXmlDataParser;
 use SurebetFinder;
 use FindBin;
 use File::Copy;
+use BookmakerXmlDataParser;
 
 
 print "****TEST MOCKED BETEXPLORER DOWNLOADER*****\n\n"; 
-
 
 #copy .. offer file
 #instead of creating advanced surebet parser maybe it is better to create model input and output data and compare their checksum in test(both input and output)
@@ -30,6 +30,7 @@ my $isSurebtsFileGeneratedCorrectly = $aBookmakerXmlDataParser->isCorrectSurebet
 ok($isSurebtsFileGeneratedCorrectly, "SurebetFinder: checking syntax of generated surebets file") or die;
 ok($amountOfSurebetsFound == 3, "SurebetFinder: checking amount of generated surebets");
 
+#maybe test files should have _test postfix
 
 
 

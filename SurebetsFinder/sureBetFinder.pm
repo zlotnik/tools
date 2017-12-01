@@ -2,6 +2,7 @@
 use warnings;
 use strict;
 use XML::LibXML;
+use BookmakerXmlDataParser;
 
 package SurebetFinder;
 
@@ -10,8 +11,6 @@ package SurebetFinder;
 sub new();
 sub loadBookmakersOfferFile($);
 sub generateSurebetsFile($);
-sub isValidBookOfferFile($);
-sub isItCorrectXmlFile($);
 
 ##########SUB DEFININTION############
 
@@ -31,42 +30,13 @@ sub loadBookmakersOfferFile($)
 	my ($self,$bookmakerOfferFilename) = @_;
 
 	#todo validate $bookmakerOfferFilename
-	if (!isValidBookOfferFile($bookmakerOfferFilename))
-	{
-		die;
-	}
+	my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new();
+	
+	$aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($bookmakerOfferFilename) or die "Incorrect format of bookmaker offer file";
+	
 	$self->{offerFile} = $bookmakerOfferFilename; 
 	
 };
-
-sub isValidBookOfferFile($)
-{
-	my ($bookmakerOfferFilename) = @_;
-	(-e $bookmakerOfferFilename) or die "File doesn't exist";
-    
-	isItCorrectXmlFile($bookmakerOfferFilename) or die;
-	
-	#TODO check if it is correct surebet file;
-	
-	die "finished here";
-	return 1;
-} 
-
-
-sub isItCorrectXmlFile($)
-{
-	my ($pathToXmlSelector) = @_;
-	my $xmlParser = XML::LibXML->new; 
-	if($xmlParser->parse_file($pathToXmlSelector))
-	{
-		return 1
-	}
-	else 
-	{
-		return 0;
-	}
-}
-#above should be moved to parser
 
 
 sub generateSurebetsFile($)
