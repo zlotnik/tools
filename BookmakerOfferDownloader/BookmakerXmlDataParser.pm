@@ -3,7 +3,7 @@ use BookmakersRegexps;
 use strict;
 use warnings;
 use base 'Exporter';
-our @EXPORT = qw(isCorectDownloadedBookmakerOfferFile isCorectBookmakerDataSelectorFile isCorrectEventListFile isEventListFileHasCorrectSyntax);
+our @EXPORT = qw(isCorrectSurebetsFile isCorectDownloadedBookmakerOfferFile isCorectBookmakerDataSelectorFile isCorrectEventListFile isEventListFileHasCorrectSyntax);
 
 use LWP::Simple;
 use XML::LibXML;
@@ -33,6 +33,12 @@ sub new()
 	my $self = bless {}, $class;
 	return $self;
 };
+
+sub isCorrectSurebetsFile($)
+{
+	die "unimplented yet";
+
+}
 
 sub isCorrectRawDataFile($)
 {

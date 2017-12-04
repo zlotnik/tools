@@ -11,7 +11,11 @@ package SurebetFinder;
 sub new();
 sub loadBookmakersOfferFile($);
 sub generateSurebetsFile($);
-
+sub addSurebetsToSurebetFile($$);
+sub pullSurebetsFromOffer($);
+sub getNOfferOfferFromBookmakerofferFile($);
+sub getAmountOfOffersInBookmakerOfferFile();
+sub initializeXMLSurebetFile($);
 ##########SUB DEFININTION############
 
 
@@ -38,11 +42,61 @@ sub loadBookmakersOfferFile($)
 	
 };
 
+sub getNOfferOfferFromBookmakerofferFile($)
+{
+	my ($self, $idx ) = @_;
+	
+	open my $bookmaker_fh, "<" , $self->{offerFile} or die;
+
+
+	close $bookmaker_fh or die;
+}
+
+sub getAmountOfOffersInBookmakerOfferFile()
+{
+	my ($self) = @_;
+
+}
+
+sub pullSurebetsFromOffer($)
+{
+	my ($offerXmlNode) = @_;
+
+}
+
+sub addSurebetsToSurebetFile($$)
+{
+	my($idx) = @_;
+
+}
+
+sub initializeXMLSurebetFile($)
+{
+	my($pathToSurebetFile) = @_;
+
+}
 
 sub generateSurebetsFile($)
 {
-	die 'unimplemented yet';
+	my ($self, $xmlSurebetOutputFilename) = @_;
+	
+	
+	initializeXMLSurebetFile($xmlSurebetOutputFilename);
 
+	my $idx = 0;
+	while($idx < $self->getAmountOfOffersInBookmakerOfferFile())
+	{
+		my $anOffer = $self->getNOfferOfferFromBookmakerofferFile( $idx);
+		 
+		my $surebetsXmlNodes;
+		if ($surebetsXmlNodes = pullSurebetsFromOffer($anOffer))
+		{
+			addSurebetsToSurebetFile($surebetsXmlNodes, $xmlSurebetOutputFilename);		
+		}
+		$idx++;
+	}
+
+	
 };
 
 
