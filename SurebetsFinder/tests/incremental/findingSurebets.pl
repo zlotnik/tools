@@ -6,7 +6,7 @@ use Test::More tests => 2;
 use lib '..';
 use SurebetFinder;
 use FindBin;
-
+use File::Copy;
 
 
 print "****TEST MOCKED BETEXPLORER DOWNLOADER*****\n\n"; 
@@ -17,6 +17,7 @@ print "****TEST MOCKED BETEXPLORER DOWNLOADER*****\n\n";
 #later create advanced surebet parser   
 
 
+copy "$FindBin::Bin/../../input/bookmakersOffers_generatedByMock.xml", 'input/bookmakersOffers_generatedByMock.xml' or die;
 my $pathToBookmakersOffeerFile = "$FindBin::Bin/../../input/bookmakersOffers_generatedByMock.xml";
 my $surebetsOutputFile = "$FindBin::Bin/../../output/test/surebetsPolandEkstraklasa.xml";
 my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
