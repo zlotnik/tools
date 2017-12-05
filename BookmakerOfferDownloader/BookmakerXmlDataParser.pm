@@ -36,7 +36,31 @@ sub new()
 
 sub isCorrectSurebetsFile($)
 {
-	die "unimplented yet";
+	my $self = shift;
+	my $xmlSelectorPath = $_[0];
+	my $xmlParser = XML::LibXML->new; 
+	my $xmlParserDoc = $xmlParser->parse_file($xmlSelectorPath) or return 0; 
+
+	my $xmlToParse = $xmlParserDoc->toString();
+
+	my $isFileHasCorrectSyntax = ($xmlToParse =~ m{
+													^<\?xml.version="1.0".encoding="(UTF|utf)-8"\?>.*
+													<note>.*
+													<dataSources>.*
+													<betexplorer />.*
+													</dataSources>.*
+													<eventList>.*
+													<($disciplineName_re)>.*
+													<Events>.*
+													<event.url="http://www.betexplorer.com/($disciplineName_re).*".?>.*
+													(</event>).*
+													</Events>.*
+													</($disciplineName_re)>.*
+													</eventList>.*
+													</note>
+													}sx);
+	return $isFileHasCorrectSyntax;
+	
 
 }
 
