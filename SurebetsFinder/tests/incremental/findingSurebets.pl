@@ -1,12 +1,12 @@
 use strict;
 use warnings;
 use Test::More tests => 2;
-use lib '../BookmakerOfferDownloader/';
-use BookmakerXmlDataParser;
+#use lib '../BookmakerOfferDownloader/';
+#use BookmakerXmlDataParser;
+use lib '..';
 use SurebetFinder;
 use FindBin;
-use File::Copy;
-use BookmakerXmlDataParser;
+
 
 
 print "****TEST MOCKED BETEXPLORER DOWNLOADER*****\n\n"; 
@@ -31,6 +31,7 @@ ok($isSurebtsFileGeneratedCorrectly, "SurebetFinder: checking syntax of generate
 ok($amountOfSurebetsFound == 3, "SurebetFinder: checking amount of generated surebets");
 
 #maybe test files should have _test postfix
+
 
 
 

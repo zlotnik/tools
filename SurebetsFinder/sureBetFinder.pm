@@ -2,9 +2,12 @@
 use warnings;
 use strict;
 use XML::LibXML;
+use lib '../BookmakerOfferDownloader/';
 use BookmakerXmlDataParser;
 
 package SurebetFinder;
+use File::Copy;
+
 
 #########SUB DECLARATION#############
 
@@ -17,6 +20,7 @@ sub getNOfferOfferFromBookmakerofferFile($);
 sub getAmountOfOffersInBookmakerOfferFile();
 sub initializeXMLSurebetFile($);
 ##########SUB DEFININTION############
+
 
 
 sub new()
@@ -70,10 +74,12 @@ sub addSurebetsToSurebetFile($$)
 
 }
 
+
 sub initializeXMLSurebetFile($)
 {
 	my($pathToSurebetFile) = @_;
-
+	copy("output/model/emptySurebetsFile.xml", $pathToSurebetFile) or die;
+	
 }
 
 sub generateSurebetsFile($)
