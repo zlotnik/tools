@@ -44,25 +44,24 @@ sub isCorrectSurebetsFile($)
 	my $xmlToParse = $xmlParserDoc->toString();
 
 	my $isFileHasCorrectSyntax = ($xmlToParse =~ m{
-													^<\?xml.version="1.0".encoding="(UTF|utf)-8"\?>.*
+													^<\?xml.version="1.0".encoding="(?:UTF|utf)-8"\?>.*
 													<note>.*
-													<dataSources>.*
-													<betexplorer />.*
-													</dataSources>.*
-													<eventList>.*
-													<($disciplineName_re)>.*
-													<Events>.*
-													<event.url="http://www.betexplorer.com/($disciplineName_re).*".?>.*
-													(</event>).*
-													</Events>.*
-													</($disciplineName_re)>.*
-													</eventList>.*
+													<surebetList>.*
+													<surebet.url="http://www.betexplorer.com/(?:$disciplineName_re).*".?>.*
+													<type>.*</type>.*
+													<profit>\d{1,2}\.\d{1,2}</profit>.*
+													<bets>.*
+													<type>.*</type>.*
+													<bookmakerName>.*</bookmakerName>.*
+													<price>\d{1,2}\.\d{1,2}</price>.*
+													</bets>.*
+													</surebet>.*
+													</surebetList>.*
 													</note>
 													}sx);
 	return $isFileHasCorrectSyntax;
-	
-
 }
+
 
 sub isCorrectRawDataFile($)
 {
