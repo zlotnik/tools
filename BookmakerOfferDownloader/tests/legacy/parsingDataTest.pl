@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 5;
+use Test::More tests => 6;
 use lib '..';
 use BookmakerXmlDataParser;
 use WojtekToolbox;
@@ -15,6 +15,7 @@ my $correctBookmakerSelectorFile = "$FindBin::Bin/../../input/parameters/example
 my $correctDownloadedBookmakerOfferFile = "$FindBin::Bin/../../output/example/downloadedBookMakersOffer.xml";
 my $correctBookmakerEventList = "$FindBin::Bin/../../output/example/downloadedEventList.xml";
 my $mockedRawDataPath = "$FindBin::Bin/../../tmp/rawDataMockFile";
+my $modelSurebetsFile = "$FindBin::Bin/../../../SurebetsFinder/output/model/surebetsPolandEkstraklasa.xml";
 
 my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
 
@@ -39,3 +40,5 @@ else
 	print "Parsing event list file SKIPPED: NO INTERNET CONNECTION\n"
 }
 
+ok($aBookmakerXmlDataParser->isCorrectSurebetsFile($modelSurebetsFile), 
+															  "Parsing surebet file\n $modelSurebetsFile\n" );
