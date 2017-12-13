@@ -101,7 +101,7 @@ sub generateSurebetsFile($)
 		}
 		$idx++;
 	}
-
+	#
 	
 };
 
