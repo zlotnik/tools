@@ -15,9 +15,9 @@ sub new();
 sub loadBookmakersOfferFile($);
 sub generateSurebetsFile($);
 sub addSurebetsToSurebetFile($$);
-sub findSurebetsInsideEvent($);
-sub getNthEventFromBookmakerofferFile($);
-sub getAmountOfEventsInBookmakerOfferFile();
+sub pullSurebetsFromOffer($);
+sub getNOfferOfferFromBookmakerofferFile($);
+sub getAmountOfOffersInBookmakerOfferFile();
 sub initializeXMLSurebetFile($);
 ##########SUB DEFININTION############
 
@@ -46,7 +46,7 @@ sub loadBookmakersOfferFile($)
 	
 };
 
-sub getNthEventFromBookmakerofferFile($)
+sub getNOfferOfferFromBookmakerofferFile($)
 {
 	my ($self, $idx ) = @_;
 	
@@ -56,13 +56,13 @@ sub getNthEventFromBookmakerofferFile($)
 	close $bookmaker_fh or die;
 }
 
-sub getAmountOfEventsInBookmakerOfferFile()
+sub getAmountOfOffersInBookmakerOfferFile()
 {
 	my ($self) = @_;
 
 }
 
-sub findSurebetsInsideEvent($)
+sub pullSurebetsFromOffer($)
 {
 	my ($offerXmlNode) = @_;
 
@@ -90,13 +90,12 @@ sub generateSurebetsFile($)
 	initializeXMLSurebetFile($xmlSurebetOutputFilename);
 
 	my $idx = 0;
-	while($idx < $self->getAmountOfEventsInBookmakerOfferFile())
+	while($idx < $self->getAmountOfOffersInBookmakerOfferFile())
 	{
-		
-		my $anEvent = $self->getNthEventFromBookmakerofferFile( $idx);
+		my $anOffer = $self->getNOfferOfferFromBookmakerofferFile( $idx);
 		 
-		my $surebetsXmlNodes;		
-		if ($surebetsXmlNodes = findSurebetsInsideEvent($anEvent))
+		my $surebetsXmlNodes;
+		if ($surebetsXmlNodes = pullSurebetsFromOffer($anOffer))
 		{
 			addSurebetsToSurebetFile($surebetsXmlNodes, $xmlSurebetOutputFilename);		
 		}
