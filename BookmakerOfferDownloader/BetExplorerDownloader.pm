@@ -183,7 +183,7 @@ sub updateEventListXMLWithEventDetails($)
 
 sub pickupLinksFromXml($)
 {
-	#??
+	#I am not sure but I suppose that isn't most important functionality so could be implemented later
 
 }
 

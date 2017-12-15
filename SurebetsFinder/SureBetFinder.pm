@@ -59,6 +59,7 @@ sub getNthEventFromBookmakerofferFile($)
 sub getAmountOfEventsInBookmakerOfferFile()
 {
 	my ($self) = @_;
+	return 1;#temporary
 
 }
 
@@ -85,7 +86,6 @@ sub initializeXMLSurebetFile($)
 sub generateSurebetsFile($)
 {
 	my ($self, $xmlSurebetOutputFilename) = @_;
-	
 	
 	initializeXMLSurebetFile($xmlSurebetOutputFilename);
 
