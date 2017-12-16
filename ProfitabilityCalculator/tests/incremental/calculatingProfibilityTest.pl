@@ -30,7 +30,9 @@ ok($isProfitabilityFileGeneratedCorrectly, "ProfitabilityCalculator: checking sy
 
 
 #here maybe copmparing by some checksum
-#ok($amountOfSurebetsFound == 3, "ProfitabilityCalculator: checking amount of generated surebets");
+my $isTheSameFiles = '';
+#$isTheSameFiles = compareFiles('output/offerProfitability_Example1_generated.xml', 'output/model/offerProfitability_Example1_expected.xml');
+ok($isTheSameFiles, "ProfitabilityCalculator: checking corectness of offer profitability data");
 
 
 
