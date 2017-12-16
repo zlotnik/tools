@@ -14,6 +14,7 @@ sub loadBookmakersOfferFile($);
 sub generateOfferProfitabilityFile($);
 sub initializeOfferProfitabilityFile($);
 sub addBestOption($);
+sub findBestBetCombination($);
 ##########SUB DEFININTION############
 
 sub new()
@@ -46,10 +47,15 @@ sub initializeOfferProfitabilityFile($)
 	#copy bookmaker offer file
 }
 
+sub findBestBetCombination($)
+{
+
+};
+
 sub addBestOption($)
 {
 	my ($eventNode) = @_;
-    findBestOptions($eventNode);
+    findBestBetCombination($eventNode);
 	#udpate node
 
 };
@@ -58,18 +64,17 @@ sub generateOfferProfitabilityFile($)
 {
 	my ($self, $offerProfitabilityOutputFilename) = @_;
 	
-	initializeOfferProfitabilityFile($xmlSurebetOutputFilename);
+	initializeOfferProfitabilityFile($offerProfitabilityOutputFilename);
 	
 	#load file
 	
-	@eventNode = findnodes("/note/eventList//*//event")
-	foreach(@eventNode)
+	#my @allEventNodes = findnodes("/note/eventList//*//event");
+	#foreach(@allEventNodes)
 	{
 		my $eventNode = $_;
-		addBestOption($eventNode);
-	
+		addBestOption($eventNode);	
 	}
-		
+	#save file
 };
 
 
