@@ -7,17 +7,17 @@ sureBetCrafter has modular structure and consist of following modules
 
 
 
-____________________________	     ________________________       ______________________     ______________________        _ _______________________    _______________________
-| BookmakerOfferDownloader |	     |    BookmakerFilter   |	    | TranslateData       |    |ProfibilityCalculator|        | SurebetsFilter       |    | frontend::present   |
-|--------------------------|         |----------------------|       |---------------------|    |---------------------|        |----------------------|    |---------------------|
-|                          |	     |                      |	    |                     |    |                     |        |                      |    |                     |
-| IN:bookmaker sites       |-------->| IN:bookmakers offer  |------>| IN:bookmaker offer  |--->|IN:bookmaker offer   |------->| IN:bookmakers offer  |--->| IN:xml with surebet |
-| IN:xml file selector     |	     |    file              |	    |    file             |    |   file              |        |    profibility file  |    |                     |
-| OUT:bookmakers offer file|         | IN:filter criterium  |	    | OUT:unified         |    |OUT:bookmaker offer  |        | OUT:xml with surebets|	  | OUT:www site        |
-|                          |	     | OUT: filtered        |	    |     bookmakers offer|    |    profibility      |        |                      |    |                     |
-|                          |         |      bookmakers offer|       |     file            |    |    file             |        |                      |    |                     |
-|                          |         |      file            |       |                     |    |                     |        |                      |    |                     |
-----------------------------         ------------------------       ----------------------     |_____________________|        ------------------------    -----------------------
+____________________________	    ________________________       ______________________     ______________________            _______________________    _______________________
+| BookmakerOfferDownloader |	    |    BookmakerFilter   |	   | TranslateData       |    |ProfitabilityCalculator|        | SurebetsFilter       |    | frontend::present   |
+|--------------------------|        |----------------------|       |---------------------|    |-----------------------|        |----------------------|    |---------------------|
+|                          |	    |                      |	   |                     |    |                       |        |                      |    |                     |
+| IN:bookmaker sites       |------->| IN:bookmakers offer  |------>| IN:bookmaker offer  |--->|IN:bookmaker offer     |------->| IN:bookmakers offer  |--->| IN:xml with surebet |
+| IN:xml file selector     |	    |    file              |	   |    file             |    |   file                |        |    profitability file|    |                     |
+| OUT:bookmakers offer file|        | IN:filter criterium  |	   | OUT:unified         |    |OUT:bookmaker offer    |        | OUT:xml with surebets|	  | OUT:www site        |
+|                          |	    | OUT: filtered        |	   |     bookmakers offer|    |    profitability      |        |                      |    |                     |
+|                          |        |      bookmakers offer|       |     file            |    |    file               |        |                      |    |                     |
+|                          |        |      file            |       |                     |    |                       |        |                      |    |                     |
+----------------------------        ------------------------       ----------------------     |_______________________|        ------------------------    -----------------------
 
 
 2. Modules description
@@ -41,7 +41,7 @@ Which part offer will be downloaded depends on the offer selector file.
 2.2 BookmakerFilter
 
 2.3 TranslateData [I am not sure if it should be separated module maybe it should be used in BookmakerOfferDownloader; TODO define its resposibilities]
-2.4 ProfibilityCalculator
+2.4 ProfitabilityCalculator
 2.5 SurebetsFilter
 
 2.6 frontend

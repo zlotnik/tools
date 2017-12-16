@@ -17,19 +17,20 @@ print "****TEST MOCKED BETEXPLORER DOWNLOADER*****\n\n";
 	
 copy "../BookmakerOfferDownloader/output/downloadedPolandEkstraklasa_mockednet.xml", 'input/bookmakersOffers_generatedByMock.xml' or die;
 my $pathToBookmakersOfferFile = "$FindBin::Bin/../../input/bookmakersOffers_generatedByMock.xml";
-my $surebetsOutputFile = "$FindBin::Bin/../../output/test/surebetsPolandEkstraklasa.xml";
+my $surebetsOutputFile = "$FindBin::Bin/../../output/test/offerProfitability_PolandEkstraklasa.xml";
 my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
 
-my $theSurebetFinder = SurebetFinder->new();
+my $theProfitabilityCalculator = ProfitabilityCalculator->new();
 
-$theSurebetFinder->loadBookmakersOfferFile($pathToBookmakersOfferFile);
+$theProfitabilityCalculator->loadBookmakersOfferFile($pathToBookmakersOfferFile);
 
-my $amountOfSurebetsFound = $theSurebetFinder->generateSurebetsFile($surebetsOutputFile);
-my $isSurebtsFileGeneratedCorrectly = $aBookmakerXmlDataParser->isCorrectSurebetsFile($surebetsOutputFile);
-ok($isSurebtsFileGeneratedCorrectly, "SurebetFinder: checking syntax of generated surebets file");
-ok($amountOfSurebetsFound == 3, "SurebetFinder: checking amount of generated surebets");
+$theProfitabilityCalculator->generateOfferProfitabilityFile($surebetsOutputFile);
+my $isProfitabilityFileGeneratedCorrectly = $aBookmakerXmlDataParser->isCorrectProfitabilityFile($surebetsOutputFile);
+ok($isProfitabilityFileGeneratedCorrectly, "ProfitabilityCalculator: checking syntax of generated surebets file");
 
-#maybe test files should have _test postfix
+
+#here maybe copmparing by some checksum
+#ok($amountOfSurebetsFound == 3, "ProfitabilityCalculator: checking amount of generated surebets");
 
 
 

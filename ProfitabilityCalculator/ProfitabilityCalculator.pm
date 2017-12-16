@@ -5,14 +5,14 @@ use XML::LibXML;
 use lib '../BookmakerOfferDownloader/';
 use BookmakerXmlDataParser;
 
-package ProfibilityCalculator;
+package ProfitabilityCalculator;
 use File::Copy;
 
 #########SUB DECLARATION#############
 sub new();
 sub loadBookmakersOfferFile($);
-sub generateOfferProfibilityFile($);
-sub initializeOfferProfibilityFile($);
+sub generateOfferProfitabilityFile($);
+sub initializeOfferProfitabilityFile($);
 sub addBestOption($);
 ##########SUB DEFININTION############
 
@@ -39,9 +39,9 @@ sub loadBookmakersOfferFile($)
 	
 };
 
-sub initializeOfferProfibilityFile($)
+sub initializeOfferProfitabilityFile($)
 {
-	my($pathToOfferProfibilityFile) = @_;
+	my($pathToOfferProfitabilityFile) = @_;
 	#copy("output/model/emptySurebetsFile.xml", $pathToSurebetFile) or die;
 	#copy bookmaker offer file
 }
@@ -54,11 +54,11 @@ sub addBestOption($)
 
 };
 
-sub generateOfferProfibilityFile($)
+sub generateOfferProfitabilityFile($)
 {
-	my ($self, $offerProfibilityOutputFilename) = @_;
+	my ($self, $offerProfitabilityOutputFilename) = @_;
 	
-	initializeOfferProfibilityFile($xmlSurebetOutputFilename);
+	initializeOfferProfitabilityFile($xmlSurebetOutputFilename);
 	
 	#load file
 	
