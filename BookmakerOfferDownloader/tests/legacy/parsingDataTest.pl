@@ -15,7 +15,7 @@ my $correctBookmakerSelectorFile = "$FindBin::Bin/../../input/parameters/example
 my $correctDownloadedBookmakerOfferFile = "$FindBin::Bin/../../output/example/downloadedBookMakersOffer.xml";
 my $correctBookmakerEventList = "$FindBin::Bin/../../output/example/downloadedEventList.xml";
 my $mockedRawDataPath = "$FindBin::Bin/../../tmp/rawDataMockFile";
-my $modelSurebetsFile = "$FindBin::Bin/../../../SurebetsFinder/output/model/surebetsPolandEkstraklasa.xml";
+my $modelSurebetsFile = "$FindBin::Bin/../../../ProfitabilityCalculator/output/model/surebetsPolandEkstraklasa.xml";
 
 my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
 
