@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 6;
+use Test::More tests => 7;
 use lib '..';
 use BookmakerXmlDataParser;
 use WojtekToolbox;
@@ -16,6 +16,7 @@ my $correctDownloadedBookmakerOfferFile = "$FindBin::Bin/../../output/example/do
 my $correctBookmakerEventList = "$FindBin::Bin/../../output/example/downloadedEventList.xml";
 my $mockedRawDataPath = "$FindBin::Bin/../../tmp/rawDataMockFile";
 my $modelSurebetsFile = "$FindBin::Bin/../../../ProfitabilityCalculator/output/model/surebetsPolandEkstraklasa.xml";
+my $offerProfitabilityFilePath = "$FindBin::Bin/../../../ProfitabilityCalculator/output/model/bookmakerOfferProfitabilityFile.xml"; 
 
 my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
 
@@ -42,3 +43,6 @@ else
 
 ok($aBookmakerXmlDataParser->isCorrectSurebetsFile($modelSurebetsFile), 
 															  "Parsing surebet file\n $modelSurebetsFile\n" );
+
+ok($aBookmakerXmlDataParser->isCorrectProfitabilityFile($offerProfitabilityFilePath), 
+															"Parsing offer profitability file\n $offerProfitabilityFilePath\n" ) or die;

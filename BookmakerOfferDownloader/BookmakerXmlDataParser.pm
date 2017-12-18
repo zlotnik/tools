@@ -38,8 +38,37 @@ sub new()
 
 sub isCorrectProfitabilityFile($)
 {
-	die "IMPLEMENT NEXT";
+	my $self = shift;
+	my $xmlSelectorPath = $_[0];
+	my $xmlParser = XML::LibXML->new; 
+	my $xmlParserDoc = $xmlParser->parse_file($xmlSelectorPath) or return 0; 
+
+	my $xmlToParse = $xmlParserDoc->toString();
+
+	my $isFileHasCorrectSyntax = ($xmlToParse =~ m{
+													^<\?xml.version="1.0".encoding="(UTF|utf)-8"\?>.*
+													<note>.*
+													<dataSources>.*
+													<betexplorer />.*
+													</dataSources>.*
+													<eventList>.*
+													<($disciplineName_re)>.*
+													<Events>.*
+													<event.url="http://www.betexplorer.com/($disciplineName_re).*".?>.*
+													<bestCombination>.*
+													<combinationType>_\w*</combinationType>.*
+													<profit>\d{1,2}\.\d{1,2}</profit>.*
+													</bestCombination>.*
+													(</event>).*
+													</Events>.*
+													</($disciplineName_re)>.*
+													</eventList>.*
+													</note>
+													}sx);
+		
+	return $isFileHasCorrectSyntax;
 };
+
 
 sub isCorrectSurebetsFile($)
 {
@@ -137,24 +166,6 @@ sub isCorectDownloadedBookmakerOfferFile($)
 													}sx);
 		
 	return $isFileHasCorrectSyntax;
-	
-	
-	my $downloadedOfferXmlNode = $xmlParserDoc->findnodes("downloadedOffer")->[0] or return 0;
-	my $disciplineXmlNode = $downloadedOfferXmlNode->nonBlankChildNodes->[0];
-	
-	if(isCorrectDisciplineName($disciplineXmlNode->nodeName))
-	{
-		my $countryCategoryXmlNode = $disciplineXmlNode->nonBlankChildNodes->[0];
-		my $countryCategoryName = $countryCategoryXmlNode->nodeName; 
-		isLegalNameOfCountryCategory($countryCategoryName) or return 0;
-		my $eventXmlNode = extractFirstEventXmlNodeFromCountryCategoryXmlNode($countryCategoryXmlNode) or return 0;
-		if(isCorrectEventXmlNode($eventXmlNode))
-		{
-			return 1;
-		}
-	}
-	
-	return 0;
 };
 
 sub isCorrectEventListFile($)
