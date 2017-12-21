@@ -38,8 +38,10 @@ sub new()
 
 sub isCorrectProfitabilityFile($)
 {
-	my $self = shift;
-	my $xmlSelectorPath = $_[0];
+	
+	my ($self, $xmlSelectorPath) = @_;
+	
+	(-e $xmlSelectorPath) or die "Incorrect path to offer profitability file\n";
 	my $xmlParser = XML::LibXML->new; 
 	my $xmlParserDoc = $xmlParser->parse_file($xmlSelectorPath) or return 0; 
 
