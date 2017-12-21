@@ -42,9 +42,8 @@ sub loadBookmakersOfferFile($)
 
 sub initializeOfferProfitabilityFile($)
 {
-	my($pathToOfferProfitabilityFile) = @_;
-	#copy("output/model/emptySurebetsFile.xml", $pathToSurebetFile) or die;
-	#copy bookmaker offer file
+	my($self, $pathToOfferProfitabilityFile) = @_;
+	copy $self->{offerFile}, $pathToOfferProfitabilityFile or die;	
 }
 
 sub findBestBetCombination($)
@@ -64,13 +63,14 @@ sub generateOfferProfitabilityFile($)
 {
 	my ($self, $offerProfitabilityOutputFilename) = @_;
 	
-	initializeOfferProfitabilityFile($offerProfitabilityOutputFilename);
+	$self->initializeOfferProfitabilityFile($offerProfitabilityOutputFilename);
 	
-	#load file
-	
-	#my @allEventNodes = findnodes("/note/eventList//*//event");
-	#foreach(@allEventNodes)
-	{
+	my $xmlParser = XML::LibXML->new; 
+	my $xmlParserDoc = $xmlParser->parse_file($offerProfitabilityOutputFilename) or return 0;
+		
+	my @allEventNodes = $xmlParserDoc->findnodes("/note/eventList//*//event");
+	foreach(@allEventNodes)
+	{		
 		my $eventNode = $_;
 		addBestOption($eventNode);	
 	}
