@@ -48,13 +48,32 @@ sub initializeOfferProfitabilityFile($)
 
 sub findBestBetCombination($)
 {
-
+	my ($eventNode) = @_;
+	
+	my $allBestOptionsXMLNode;
+	foreach(getEachOptionSubNodes($eventNode))
+	{
+		my $anOptionNode = $_;
+		my $bestPriceXMLNode = findBestPrice($anOptionNode);
+		#apply $bestPriceXMLNode  --> $allBestOptionsXMLNode
+	}
+	return $allBestOptionsXMLNode;
+	
 };
+
+
+sub updateBestOptionNodeWithProfitabilityData($)
+{
+	my ($bestOptionXMLNode) = @_;
+
+}
 
 sub addBestOption($)
 {
 	my ($eventNode) = @_;
-    findBestBetCombination($eventNode);
+    my $bestOptionXMLNode = findBestBetCombination($eventNode);
+	updateBestOptionNodeWithProfitabilityData($bestOptionXMLNode);
+	#apply bestOptionXMLNode to XML 
 	#udpate node
 
 };
