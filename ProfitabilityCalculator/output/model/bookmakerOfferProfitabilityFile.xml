@@ -9,8 +9,8 @@
         <ekstraklasa>
           <Events>
             <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/">
-			  <bestCombination>
-			  <combinationType>_1X2</combinationType>
+			  <bestCombinations>
+			  <_1X2>
 			  <profit>0.2</profit>
 			  <_1>
 			  <_10Bet>
@@ -30,7 +30,8 @@
 				<price>1.2</price>
 			  </_home>			  
 			  </_2>
-			  </bestCombination>			  
+			  </_1X2>
+			  </bestCombinations>			  
               <_1X2>
                 <_1>
                   <_10Bet>2.15</_10Bet>                  
@@ -47,8 +48,8 @@
               </_1X2>
             </event>
             <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/">
-			<bestCombination>
-			  <combinationType>_1X2</combinationType>
+			<bestCombinations>
+			  <_1X2>
 			  <profit>0.2</profit>
 			  <_1>
 			  <_10Bet>
@@ -68,7 +69,8 @@
 				<price>1.2</price>
 			  </_home>			  
 			  </_2>
-			  </bestCombination>
+			  </_1X2>
+			  </bestCombinations>
               <_1X2>
                 <_1>
                   <_10Bet>2.15</_10Bet>

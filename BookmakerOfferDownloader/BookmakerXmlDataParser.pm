@@ -57,10 +57,9 @@ sub isCorrectProfitabilityFile($)
 													<($disciplineName_re)>.*
 													<Events>.*
 													<event.url="http://www.betexplorer.com/($disciplineName_re).*".?>.*
-													<bestCombination>.*
-													<combinationType>_\w*</combinationType>.*
+													<bestCombinations>.*													
 													<profit>\d{1,2}\.\d{1,2}</profit>.*
-													</bestCombination>.*
+													</bestCombinations>.*
 													(</event>).*
 													</Events>.*
 													</($disciplineName_re)>.*
