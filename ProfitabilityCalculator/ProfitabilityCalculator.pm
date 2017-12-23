@@ -15,6 +15,7 @@ sub generateOfferProfitabilityFile($);
 sub initializeOfferProfitabilityFile($);
 sub addBestOption($);
 sub findBestBetCombination($);
+sub findBestPrice($);
 ##########SUB DEFININTION############
 
 sub new()
@@ -46,6 +47,24 @@ sub initializeOfferProfitabilityFile($)
 	copy $self->{offerFile}, $pathToOfferProfitabilityFile or die;	
 }
 
+
+
+sub findBestPrice($)
+{
+	my ($eventOfferForProductGroup) = @_;
+
+	my @products = splitToProducts($eventOfferForProductGroup);
+	
+	
+	foreach(@products)
+	{
+		my $productName = $_;
+		
+	
+	}
+	
+
+}
 sub findBestBetCombination($)
 {
 	my ($eventNode) = @_;
@@ -53,8 +72,10 @@ sub findBestBetCombination($)
 	my $allBestOptionsXMLNode;
 	foreach(getEachOptionSubNodes($eventNode))
 	{
-		my $anOptionNode = $_;
-		my $bestPriceXMLNode = findBestPrice($anOptionNode);
+		my $eventOfferForProductGroup = $_;
+		
+		 #add Product Group to documentation
+		my $bestPriceXMLNode = findBestPrice($eventOfferForProductGroup);
 		#apply $bestPriceXMLNode  --> $allBestOptionsXMLNode
 	}
 	return $allBestOptionsXMLNode;
@@ -78,6 +99,40 @@ sub addBestOption($)
 
 };
 
+
+addBestPricesForProduct($producNode)
+{
+	#gothrough each child and leave only best
+
+
+}
+
+sub addBestCombinationForEventGroup($$)
+{
+	my ($productGroupNode, $anProductGroup) = @_;
+
+	foreach(@products)
+	{
+		addBestPricesForProduct($producNode);
+		#instead of addBest filter best albo leave
+	}
+}
+
+
+sub updateEventNodeWithBestCombinations($)
+{
+	my ($eventNode) = @_;
+
+	#create empty $bestCombinationsNode node by cloning existing node
+	#go Throught each product groupt
+	foreach(@productGroups)
+	{
+		#$anProductGroup
+		addBestCombinationForProductGroup($productGroupNode, $anProductGroup)
+		
+	}
+}
+
 sub generateOfferProfitabilityFile($)
 {
 	my ($self, $offerProfitabilityOutputFilename) = @_;
@@ -92,6 +147,9 @@ sub generateOfferProfitabilityFile($)
 	{		
 		my $eventNode = $_;
 		addBestOption($eventNode);	
+		#
+		updateEventNodeWithBestCombinations($eventNode)
+		#
 	}
 	#save file
 };
