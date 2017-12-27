@@ -2,6 +2,7 @@
 use warnings;
 use strict;
 use XML::LibXML;
+use XML::Tidy;
 use lib '../BookmakerOfferDownloader/';
 use BookmakerXmlDataParser;
 
@@ -12,11 +13,11 @@ use File::Copy;
 sub new();
 sub loadBookmakersOfferFile($);
 sub generateOfferProfitabilityFile($);
-sub initializeOfferProfitabilityFile($);
+sub cloneBookmakerOfferFile($);
 sub addBestOption($);
 sub findBestBetCombination($);
 sub findBestPrice($);
-sub updateEventNodeWithBestCombinations($);
+sub updateEventNodeWithBestCombinationss($);
 sub updateBestOptionNodeWithProfitabilityData($);
 ##########SUB DEFININTIONS############
 
@@ -43,7 +44,7 @@ sub loadBookmakersOfferFile($)
 	
 };
 
-sub initializeOfferProfitabilityFile($)
+sub cloneBookmakerOfferFile($)
 {
 	my($self, $pathToOfferProfitabilityFile) = @_;
 	copy $self->{offerFile}, $pathToOfferProfitabilityFile or die;	
@@ -110,7 +111,7 @@ sub addBestPricesForProduct($) #unused
 
 }
 
-sub addBestCombinationForEventGroup($$) ##unused
+sub addBestCombinationsForEventGroup($$) ##unused
 {
 	my ($productGroupNode, $anProductGroup) = @_;
 
@@ -125,41 +126,75 @@ sub addBestCombinationForEventGroup($$) ##unused
 }
 
 
-sub updateEventNodeWithBestCombinations($)
+sub updateEventNodeWithBestCombinationss($)
 {
 	my ($eventNode) = @_;
 
-	#create empty $bestCombinationsNode node by cloning existing node
+	#create empty $BestCombinationssNode node by cloning existing node
 	#go Throught each product groupt
 	my @productGroups ; #how to initialize it??
 	foreach(@productGroups)
 	{
 		my $anProductGroup = $_;
 		my $productGroupNode; # = find product group node 
-		#$anProductGroup
-		addBestCombinationForProductGroup($productGroupNode, $anProductGroup)
+		addBestCombinationsForProductGroup($productGroupNode, $anProductGroup)
 		
 	}
 }
+
+
+sub injectBestCombinationsNodeAfterEventNodes($)
+{
+	my ($bookMakerOfferProfitabilityFilePath) = @_; 
+	
+	my $xmlParser = XML::LibXML->new; 
+	my $xmlParserDoc = $xmlParser->parse_file($bookMakerOfferProfitabilityFilePath) or return 0;
+	
+	
+	my @eventNodes = $xmlParserDoc->findnodes("/note/eventList//*//event/*");
+    
+	foreach(@eventNodes)
+	{
+		my $eventNode = $_;
+		my $new_parent= $xmlParserDoc->createElement("bestCombinations");
+		my $old_parent = $eventNode->parentNode;
+	
+		$new_parent->addChild($eventNode);
+		$old_parent->addChild($new_parent);	
+	}
+	
+	open my $bookMakerOfferProfitabilityFilePath_FH, '>:encoding(utf-8)', $bookMakerOfferProfitabilityFilePath;
+	print $bookMakerOfferProfitabilityFilePath_FH $xmlParserDoc->toString();
+	
+    my $tidy_obj = XML::Tidy->new('filename' => $bookMakerOfferProfitabilityFilePath); #copy paste from betexplorer sub correctFormatXmlDocument($) it will be good to move it into tools
+
+	$tidy_obj->tidy();
+	$tidy_obj->write();
+};
 
 sub generateOfferProfitabilityFile($)
 {
 	my ($self, $offerProfitabilityOutputFilename) = @_;
 	
-	$self->initializeOfferProfitabilityFile($offerProfitabilityOutputFilename);
+	$self->cloneBookmakerOfferFile($offerProfitabilityOutputFilename);
+	injectBestCombinationsNodeAfterEventNodes($offerProfitabilityOutputFilename);
+			
 	
 	my $xmlParser = XML::LibXML->new; 
 	my $xmlParserDoc = $xmlParser->parse_file($offerProfitabilityOutputFilename) or return 0;
-		
+	
 	my @allEventNodes = $xmlParserDoc->findnodes("/note/eventList//*//event");
+	
 	foreach(@allEventNodes)
 	{		
 		my $eventNode = $_;
 		addBestOption($eventNode);	
 		#
-		updateEventNodeWithBestCombinations($eventNode)
+		updateEventNodeWithBestCombinationss($eventNode)
 		#
 	}
 	#save file
 };
 
+
+1;

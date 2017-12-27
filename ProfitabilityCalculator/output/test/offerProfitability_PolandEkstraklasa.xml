@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <note>
   <dataSources>
-    <betexplorer />
+    <betexplorer/>
   </dataSources>
   <eventList>
     <soccer>
@@ -9,7 +9,8 @@
         <ekstraklasa>
           <Events>
             <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/">
-              <_1X2>
+              
+            <bestCombinations><_1X2>
                 <_1>
                   <_10Bet>2.15</_10Bet>
                   <_12BET>2.17</_12BET>
@@ -91,10 +92,10 @@
                   <_Hill>3.00</_Hill>
                   <_youwin>3.00</_youwin>
                 </_2>
-              </_1X2>
-            </event>
+              </_1X2></bestCombinations></event>
             <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/">
-              <_1X2>
+              
+            <bestCombinations><_1X2>
                 <_1>
                   <_10Bet>2.15</_10Bet>
                   <_12BET>2.17</_12BET>
@@ -176,8 +177,7 @@
                   <_Hill>3.00</_Hill>
                   <_youwin>3.00</_youwin>
                 </_2>
-              </_1X2>
-            </event>
+              </_1X2></bestCombinations></event>
           </Events>
         </ekstraklasa>
       </Poland>
