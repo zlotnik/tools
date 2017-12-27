@@ -16,7 +16,9 @@ sub initializeOfferProfitabilityFile($);
 sub addBestOption($);
 sub findBestBetCombination($);
 sub findBestPrice($);
-##########SUB DEFININTION############
+sub updateEventNodeWithBestCombinations($);
+sub updateBestOptionNodeWithProfitabilityData($);
+##########SUB DEFININTIONS############
 
 sub new()
 {
@@ -100,20 +102,24 @@ sub addBestOption($)
 };
 
 
-addBestPricesForProduct($producNode)
+sub addBestPricesForProduct($) #unused
 {
+	my ($producNode) = @_;
 	#gothrough each child and leave only best
 
 
 }
 
-sub addBestCombinationForEventGroup($$)
+sub addBestCombinationForEventGroup($$) ##unused
 {
 	my ($productGroupNode, $anProductGroup) = @_;
 
+	#split to product group 
+    #@products = findAllProduct($productGroupNode, $anProductGroup)	
+	my @products;
 	foreach(@products)
 	{
-		addBestPricesForProduct($producNode);
+		addBestPricesForProduct($productGroupNode);
 		#instead of addBest filter best albo leave
 	}
 }
@@ -125,8 +131,11 @@ sub updateEventNodeWithBestCombinations($)
 
 	#create empty $bestCombinationsNode node by cloning existing node
 	#go Throught each product groupt
+	my @productGroups ; #how to initialize it??
 	foreach(@productGroups)
 	{
+		my $anProductGroup = $_;
+		my $productGroupNode; # = find product group node 
 		#$anProductGroup
 		addBestCombinationForProductGroup($productGroupNode, $anProductGroup)
 		
@@ -154,5 +163,3 @@ sub generateOfferProfitabilityFile($)
 	#save file
 };
 
-
-1
