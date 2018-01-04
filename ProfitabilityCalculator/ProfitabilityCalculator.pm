@@ -19,6 +19,7 @@ sub findBestBetCombination($);
 sub findBestPrice($);
 sub updateEventNodeWithBestCombinationss($);
 sub updateBestOptionNodeWithProfitabilityData($);
+sub splitEventNodeToProductsGroupNodes($);
 ##########SUB DEFININTIONS############
 
 sub new()
@@ -68,12 +69,19 @@ sub findBestPrice($)
 	
 
 }
+
+sub splitEventNodeToProductsGroupNodes($)
+{
+	my ($eventNode) = @_;
+
+}
+
 sub findBestBetCombination($)
 {
 	my ($eventNode) = @_;
 	
 	my $allBestOptionsXMLNode;
-	foreach(getEachOptionSubNodes($eventNode))
+	foreach(splitEventNodeToProductsGroupNodes($eventNode))
 	{
 		my $eventOfferForProductGroup = $_;
 		
