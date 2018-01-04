@@ -163,8 +163,7 @@ sub injectBestCombinationsNodeAfterEventNodes($)
 		$old_parent->addChild($new_parent);	
 	}
 	
-	open my $bookMakerOfferProfitabilityFilePath_FH, '>:encoding(utf-8)', $bookMakerOfferProfitabilityFilePath;
-	print $bookMakerOfferProfitabilityFilePath_FH $xmlParserDoc->toString();
+	$xmlParserDoc->toFile($bookMakerOfferProfitabilityFilePath) or die;
 	
     my $tidy_obj = XML::Tidy->new('filename' => $bookMakerOfferProfitabilityFilePath); #copy paste from betexplorer sub correctFormatXmlDocument($) it will be good to move it into tools
 
