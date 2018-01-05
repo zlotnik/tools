@@ -48,7 +48,7 @@ Which part offer will be downloaded depends on the offer selector file.
 
 
 3.Dictionary
-[I am not sure if it is needed]
+Product group - set of products that can be assembled  into a surebet, for instance 1,X,2 is a product group
 
 
 4.Data formats
