@@ -16,10 +16,14 @@ sub generateOfferProfitabilityFile($);
 sub cloneBookmakerOfferFile($);
 sub addBestOption($);
 sub findBestBetCombination($);
-sub findBestPrice($);
-sub updateEventNodeWithBestCombinationss($);
+sub leaveInProfitabilityFileOnlyBestPrices($);
+sub updateEventNodeWithBestCombinations($);
 sub updateBestOptionNodeWithProfitabilityData($);
-sub splitEventNodeToProductsGroupNodes($);
+sub splitBestcombinationsNodeToProductsGroupNodes($);
+sub splitProductgroupNodeToProductsNodes($);
+sub splitEventNodeToBestCombinationNode($);
+sub leaveInProfitabilityFileOnlyBestPrices($);
+sub getAllProductNodes($);
 ##########SUB DEFININTIONS############
 
 sub new()
@@ -51,42 +55,59 @@ sub cloneBookmakerOfferFile($)
 	copy $self->{offerFile}, $pathToOfferProfitabilityFile or die;	
 }
 
-
-
-sub findBestPrice($)
+sub splitProductgroupNodeToProductsNodes($)
 {
 	my ($eventOfferForProductGroup) = @_;
+	die;
+}
 
-	my @products = splitToProducts($eventOfferForProductGroup);
+#sub leaveInProfitabilityFileOnlyBestPrices($)
+#{
+#	my ($eventOfferForProductGroup) = @_;
+
+#	my @products = splitProductgroupNodeToProductsNodes($eventOfferForProductGroup);
 	
 	
-	foreach(@products)
-	{
-		my $productName = $_;
+#	foreach(@products)
+#	{
+#		my $productName = $_;
 		
 	
-	}
+#	}
 	
 
-}
+#}
 
-sub splitEventNodeToProductsGroupNodes($)
+sub splitBestcombinationsNodeToProductsGroupNodes($)
 {
 	my ($eventNode) = @_;
-
+	
+	my @productGroupNodes = $eventNode->nonBlankChildNodes();
+	print $productGroupNodes[0];
+	
+	return @productGroupNodes;
+	
 }
+
+sub splitEventNodeToBestCombinationNode($)
+{
+	my ($eventNode) = @_;
+	return $eventNode->nonBlankChildNodes()->[0];
+	
+};
 
 sub findBestBetCombination($)
 {
 	my ($eventNode) = @_;
 	
 	my $allBestOptionsXMLNode;
-	foreach(splitEventNodeToProductsGroupNodes($eventNode))
+	my $bestCombinationNode = splitEventNodeToBestCombinationNode($eventNode); 
+	foreach(splitBestcombinationsNodeToProductsGroupNodes($bestCombinationNode))
 	{
 		my $eventOfferForProductGroup = $_;
 		
 		 #add Product Group to documentation
-		my $bestPriceXMLNode = findBestPrice($eventOfferForProductGroup);
+		my $bestPriceXMLNode = leaveInProfitabilityFileOnlyBestPrices($eventOfferForProductGroup);
 		#apply $bestPriceXMLNode  --> $allBestOptionsXMLNode
 	}
 	return $allBestOptionsXMLNode;
@@ -134,7 +155,7 @@ sub addBestCombinationsForEventGroup($$) ##unused
 }
 
 
-sub updateEventNodeWithBestCombinationss($)
+sub updateEventNodeWithBestCombinations($)
 {
 	my ($eventNode) = @_;
 
@@ -179,25 +200,107 @@ sub injectBestCombinationsNodeAfterEventNodes($)
 	$tidy_obj->write();
 };
 
+sub getAllProductNodes($)
+{
+	my ($rootNode) = @_;
+
+	my @allProductNodes = $rootNode->findnodes("/note/eventList//*//bestCombinations/*/*");
+	return @allProductNodes;
+	#create empty $BestCombinationssNode node by cloning existing node
+	#go Throught each product groupt
+	
+
+}
+
+sub leaveInProductNodeOnlyBestPrices($)
+{
+		my ($productNode) = @_;
+		my $maximumPrice = 0;
+		
+		foreach($productNode->nonBlankChildNodes())#better to encapsulate to some sub like findBestPrice
+		{
+			my $bookMakerOfferForProduct = $_;
+			($bookMakerOfferForProduct =~ /<(.*)>(\d{1,2}\.\d\d)</) or die;
+			my $bookMakerName = $1;
+			my $bookMakerOfferForProductPrice = $2;
+			if ($bookMakerOfferForProductPrice > $maximumPrice)
+			{
+				$maximumPrice = $bookMakerOfferForProductPrice;
+			}
+		}
+
+		foreach($productNode->nonBlankChildNodes())
+		{
+			my $bookMakerOfferForProduct = $_;
+			($bookMakerOfferForProduct =~ /<(.*)>(\d{1,2}\.\d\d)</) or die;
+			my $bookMakerName = $1;
+			my $bookMakerOfferForProductPrice = $2;
+			if($bookMakerOfferForProductPrice < $maximumPrice)
+			{
+				$productNode->removeChild($bookMakerOfferForProduct);
+			}
+					
+		}
+		print "";
+		
+}
+
+
+#todo remove unused subs
+sub leaveInProfitabilityFileOnlyBestPrices($)
+{
+	my ($offerProfitabilityOutputFilename) = @_;
+	
+	my $xmlParser = XML::LibXML->new; 
+	my $xmlParserDoc = $xmlParser->parse_file($offerProfitabilityOutputFilename) or return 0;
+    my @allProductNodes = getAllProductNodes($xmlParserDoc);
+	
+	foreach(@allProductNodes)
+	{
+		my $productNode = $_;
+		leaveInProductNodeOnlyBestPrices($productNode);
+		
+	};
+	
+	$xmlParserDoc->toFile($offerProfitabilityOutputFilename);
+	my $tidy_obj = XML::Tidy->new('filename' => $offerProfitabilityOutputFilename); #copy paste from betexplorer sub correctFormatXmlDocument($) it will be good to move it into tools
+
+	$tidy_obj->tidy();
+	$tidy_obj->write();
+	#getAllProductNodes()
+	#splitEventNodeToBestCombinationNode();
+	
+
+}
+
 sub generateOfferProfitabilityFile($)
 {
 	my ($self, $offerProfitabilityOutputFilename) = @_;
 	
 	$self->cloneBookmakerOfferFile($offerProfitabilityOutputFilename);
-	injectBestCombinationsNodeAfterEventNodes($offerProfitabilityOutputFilename);
 			
 	
-	my $xmlParser = XML::LibXML->new; 
-	my $xmlParserDoc = $xmlParser->parse_file($offerProfitabilityOutputFilename) or return 0;
+	#my $xmlParser = XML::LibXML->new; 
+	#my $xmlParserDoc = $xmlParser->parse_file($offerProfitabilityOutputFilename) or return 0;
 	
-	my @allEventNodes = $xmlParserDoc->findnodes("/note/eventList//*//event");
+	#my @allEventNodes = $xmlParserDoc->findnodes("/note/eventList//*//event");
 	
-	foreach(@allEventNodes)
+	
+	injectBestCombinationsNodeAfterEventNodes($offerProfitabilityOutputFilename);
+	leaveInProfitabilityFileOnlyBestPrices($offerProfitabilityOutputFilename);
+	#updateWithProfitabilityData();
+	
+	die;
+	
+	
+	#to removeVVV left just to know which sub remove
+	#foreach(@allEventNodes)
 	{		
-		my $eventNode = $_;
-		addBestOption($eventNode);	
+	#	my $eventNode = $_;
+			
+	#	addBestOption($eventNode);	
 		#
-		updateEventNodeWithBestCombinationss($eventNode)
+	#	updateEventNodeWithBestCombinations($eventNode)
 		#
 	}
 	#save file
