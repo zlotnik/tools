@@ -320,12 +320,6 @@ sub calculateProfitForThreeWaysBet(\@)
 	my ($prices) = @_;
 	my ($optionA, $optionB, $optionC) = @{$prices};
 	
-	foreach(@{$prices})
-	{
-		
-		print $_."\n";
-	}
-	
 	my $profit1 = $optionA * 100;  
 	my $betX  = $profit1 / $optionB;  
 	my $bet2  = $profit1 / $optionC;
@@ -361,10 +355,7 @@ sub calculateProfit(\@)
 	{
 		die;
 	}
-
 }
-
-
 
 sub moveProductGroupNodePrices2array($)
 {
@@ -376,12 +367,10 @@ sub moveProductGroupNodePrices2array($)
 	{
 		my $productNode = $_; 
 		my $bookmakerProductOffer =  $productNode->nonBlankChildNodes()->[0];
-		#print $bookmakerProductOffer;
 		my $bookmakerProductOfferPrice =   $bookmakerProductOffer->textContent;
 		push(@toReturn, $bookmakerProductOfferPrice);
 	}
 	return @toReturn;
-	#print $allProductNodes[0];
 	
 }
 
