@@ -7,6 +7,7 @@ use lib '..';
 use ProfitabilityCalculator;
 use FindBin;
 use File::Copy;
+use File::Compare;
 
 
 print "****TEST MOCKED BETEXPLORER DOWNLOADER*****\n\n"; 
@@ -17,7 +18,7 @@ print "****TEST MOCKED BETEXPLORER DOWNLOADER*****\n\n";
 	
 copy "../BookmakerOfferDownloader/output/downloadedPolandEkstraklasa_mockednet.xml", 'input/bookmakersOffers_generatedByMock.xml' or die;
 my $pathToBookmakersOfferFile = "$FindBin::Bin/../../input/bookmakersOffers_generatedByMock.xml";
-my $offerProfitabilityFile = "$FindBin::Bin/../../output/test/offerProfitability_PolandEkstraklasa.xml";
+my $offerProfitabilityFile = "$FindBin::Bin/../../output/test/offerProfitability_TestCase1_generated.xml";
 my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
 
 my $theProfitabilityCalculator = ProfitabilityCalculator->new();
@@ -31,7 +32,9 @@ ok($isProfitabilityFileGeneratedCorrectly, "ProfitabilityCalculator: checking sy
 
 #here maybe copmparing by some checksum
 my $isTheSameFiles = '';
-#$isTheSameFiles = compareFiles('output/offerProfitability_Example1_generated.xml', 'output/model/offerProfitability_Example1_expected.xml');
+$isTheSameFiles = (compare('output/test/offerProfitability_TestCase1_generated.xml', 
+								'output/model/offerProfitability_TestCase1_expected.xml') == 0 );
+
 ok($isTheSameFiles, "ProfitabilityCalculator: checking corectness of offer profitability data");
 
 
