@@ -28,6 +28,8 @@ sub updateWithProfitabilityData($);
 sub getAllProductGroupNodes($);
 sub createProfitNode($);
 sub tidyXml($);
+sub calculateProfit(\@);
+sub moveProductGroupNodePrices2array($);
 ##########SUB DEFININTIONS############
 sub new()
 {
@@ -295,13 +297,51 @@ sub getAllProductGroupNodes($)
 
 sub createProfitNode($)
 {
-	my $productGroupNode = @_; 
+	my ($productGroupNode) = @_; 
 	my $xmlParser = XML::LibXML->new;
 	
 	
 	my $profitNode = XML::LibXML::Element->new( 'profit' );
-	$profitNode->appendText('1.2');
+	
+	
+	my @prices = moveProductGroupNodePrices2array($productGroupNode);
+	
+	my $profit = calculateProfit(@prices);
+		
+    $profitNode->appendText($profit);
 	return $profitNode;
+	
+}
+
+sub calculateProfit(\@)
+{
+	my ($prices) = @_;
+	foreach(@{$prices})
+	{
+			print $_."\n";
+	}
+	return 1.88;
+	#print $prices;die;
+	
+	
+};
+
+sub moveProductGroupNodePrices2array($)
+{
+	my ($productGroupNode) = @_;
+	my @allProductNodes = $productGroupNode->findnodes("*");
+	my @toReturn; 
+	
+	foreach(@allProductNodes)
+	{
+		my $productNode = $_; 
+		my $bookmakerProductOffer =  $productNode->nonBlankChildNodes()->[0];
+		#print $bookmakerProductOffer;
+		my $bookmakerProductOfferPrice =   $bookmakerProductOffer->textContent;
+		push(@toReturn, $bookmakerProductOfferPrice);
+	}
+	return @toReturn;
+	#print $allProductNodes[0];
 	
 }
 
