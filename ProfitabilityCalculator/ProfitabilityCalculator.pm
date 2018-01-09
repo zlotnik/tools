@@ -29,6 +29,8 @@ sub getAllProductGroupNodes($);
 sub createProfitNode($);
 sub tidyXml($);
 sub calculateProfit(\@);
+sub calculateProfitForTwoWaysBet(\@);
+sub calculateProfitForThreeWaysBet(\@);
 sub moveProductGroupNodePrices2array($);
 ##########SUB DEFININTIONS############
 sub new()
@@ -313,18 +315,56 @@ sub createProfitNode($)
 	
 }
 
-sub calculateProfit(\@)
+sub calculateProfitForThreeWaysBet(\@)
 {
 	my ($prices) = @_;
+	my ($optionA, $optionB, $optionC) = @{$prices};
+	
 	foreach(@{$prices})
 	{
-			print $_."\n";
+		
+		print $_."\n";
 	}
-	return 1.88;
-	#print $prices;die;
 	
+	my $profit1 = $optionA * 100;  
+	my $betX  = $profit1 / $optionB;  
+	my $bet2  = $profit1 / $optionC;
 	
+	my $profit  =  ($optionA * 100) - (100 + $betX + $bet2) ;
+	my $profitPercent = ($profit / (100 + $betX + $bet2)) * 100;
+	return sprintf("%.2f",$profitPercent);
+	
+		
 };
+
+sub calculateProfitForTwoWaysBet(\@)
+{
+	my ($prices) = @_;
+	my ($optionA, $optionB) = @{$prices};
+	die 'unimplemented yet!';
+}
+
+sub calculateProfit(\@) 
+{
+	my ($pricesListRef) = @_;
+	my @pricesList = @{$pricesListRef};
+	my $numberOfPrices = $#pricesList+1;
+	if($numberOfPrices == 3)
+	{
+		return calculateProfitForThreeWaysBet(@pricesList);
+	}
+	elsif($numberOfPrices == 2)
+	{
+		return calculateProfitForTwoWaysBet(@pricesList);
+	}
+	else
+	{
+		die;
+	}
+
+}
+
+
 
 sub moveProductGroupNodePrices2array($)
 {
