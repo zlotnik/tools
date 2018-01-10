@@ -1,4 +1,8 @@
 #!/usr/bin/perl -w
+use strict;
+use warnings;
+use lib 'BookmakerOfferDownloader/';
+use BetExplorerDownloader;
 
 
 #SUBS DECLARATIONS
@@ -20,8 +24,8 @@ if( parseArguments() )
 	}
 	elsif($runMode eq 'FIND_SUREBET_MODE')
 	{
-		my $xmlSelectorFile = $_[0];
-		my $xmlResultFile = $_[1];
+		my $xmlSelectorFile = $ARGV[0];
+		my $xmlResultFile = $ARGV[1];
 		findSureBets($xmlSelectorFile, $xmlResultFile);
 	}	
 }
@@ -42,7 +46,7 @@ sub parseArguments()
 	
 	my $allProgramArguments = join(' ',@ARGV);
 	
-	if ($allProgramArguments =~ /^(\w+) (\w+)$/)
+	if ($allProgramArguments =~ /^([\w\\\.]+) ([\w\\\.]+)$/)
 	{
 		return 1;
 	}
@@ -101,7 +105,13 @@ sub checkRunMode()
 
 sub findSureBets($$)
 {
-
+	
+	my ($xmlSelectorFile , $xmlResultFile) = @_;
+	my $theRealBookMakerDownloader =  BetExplorerDownloader->new('--realnet');
+	$theRealBookMakerDownloader->loadSelectorFile($xmlSelectorFile); #temporary moved before "BookMakerDownloader->createEventListXML"
+	
+	$theRealBookMakerDownloader->pullBookmakersOffer($xmlResultFile);
+	
 	die "NOT IMPLEMENTED YET";
 
 };

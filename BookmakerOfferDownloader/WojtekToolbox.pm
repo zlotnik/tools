@@ -3,7 +3,7 @@ use LWP::Simple;
 use base 'Exporter';
 
 
-our @EXPORT = qw(tryToGetUrl, isConnectedToInternet);
+our @EXPORT = qw(tryToGetUrl isConnectedToInternet);
 
 sub tryToGetUrl($$);
 sub isConnectedToInternet();
