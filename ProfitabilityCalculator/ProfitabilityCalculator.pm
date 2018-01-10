@@ -24,8 +24,15 @@ sub splitProductgroupNodeToProductsNodes($);
 sub splitEventNodeToBestCombinationNode($);
 sub leaveInProfitabilityFileOnlyBestPrices($);
 sub getAllProductNodes($);
+sub updateWithProfitabilityData($);
+sub getAllProductGroupNodes($);
+sub createProfitNode($);
+sub tidyXml($);
+sub calculateProfit(\@);
+sub calculateProfitForTwoWaysBet(\@);
+sub calculateProfitForThreeWaysBet(\@);
+sub moveProductGroupNodePrices2array($);
 ##########SUB DEFININTIONS############
-
 sub new()
 {
 	my ($class) = @_;
@@ -208,9 +215,9 @@ sub getAllProductNodes($)
 	return @allProductNodes;
 	#create empty $BestCombinationssNode node by cloning existing node
 	#go Throught each product groupt
-	
 
 }
+
 
 sub leaveInProductNodeOnlyBestPrices($)
 {
@@ -263,16 +270,134 @@ sub leaveInProfitabilityFileOnlyBestPrices($)
 	};
 	
 	$xmlParserDoc->toFile($offerProfitabilityOutputFilename);
-	my $tidy_obj = XML::Tidy->new('filename' => $offerProfitabilityOutputFilename); #copy paste from betexplorer sub correctFormatXmlDocument($) it will be good to move it into tools
-
-	$tidy_obj->tidy();
-	$tidy_obj->write();
+	tidyXml($offerProfitabilityOutputFilename);
 	#getAllProductNodes()
 	#splitEventNodeToBestCombinationNode();
 	
 
 }
 
+sub tidyXml($)
+{
+	my ($pathToXml) = @_;
+	my $tidy_obj = XML::Tidy->new('filename' => $pathToXml); #copy paste from betexplorer sub correctFormatXmlDocument($) it will be good to move it into tools
+
+	$tidy_obj->tidy();
+	$tidy_obj->write();
+
+}
+
+sub getAllProductGroupNodes($)
+{
+
+	my ($rootNode) = @_;
+
+	my @allProductNodes = $rootNode->findnodes("/note/eventList//*//bestCombinations/*");
+	return @allProductNodes;
+
+}
+
+sub createProfitNode($)
+{
+	my ($productGroupNode) = @_; 
+	my $xmlParser = XML::LibXML->new;
+	
+	
+	my $profitNode = XML::LibXML::Element->new( 'profit' );
+	
+	
+	my @prices = moveProductGroupNodePrices2array($productGroupNode);
+	
+	my $profit = calculateProfit(@prices);
+		
+    $profitNode->appendText($profit);
+	return $profitNode;
+	
+}
+
+sub calculateProfitForThreeWaysBet(\@)
+{
+	my ($prices) = @_;
+	my ($optionA, $optionB, $optionC) = @{$prices};
+	
+	my $profit1 = $optionA * 100;  
+	my $betX  = $profit1 / $optionB;  
+	my $bet2  = $profit1 / $optionC;
+	
+	my $profit  =  ($optionA * 100) - (100 + $betX + $bet2) ;
+	my $profitPercent = ($profit / (100 + $betX + $bet2)) * 100;
+	return sprintf("%.2f",$profitPercent);
+	
+		
+};
+
+sub calculateProfitForTwoWaysBet(\@)
+{
+	my ($prices) = @_;
+	my ($optionA, $optionB) = @{$prices};
+	die 'unimplemented yet!';
+}
+
+sub calculateProfit(\@) 
+{
+	my ($pricesListRef) = @_;
+	my @pricesList = @{$pricesListRef};
+	my $numberOfPrices = $#pricesList+1;
+	if($numberOfPrices == 3)
+	{
+		return calculateProfitForThreeWaysBet(@pricesList);
+	}
+	elsif($numberOfPrices == 2)
+	{
+		return calculateProfitForTwoWaysBet(@pricesList);
+	}
+	else
+	{
+		die;
+	}
+}
+
+sub moveProductGroupNodePrices2array($)
+{
+	my ($productGroupNode) = @_;
+	my @allProductNodes = $productGroupNode->findnodes("*");
+	my @toReturn; 
+	
+	foreach(@allProductNodes)
+	{
+		my $productNode = $_; 
+		my $bookmakerProductOffer =  $productNode->nonBlankChildNodes()->[0];
+		my $bookmakerProductOfferPrice =   $bookmakerProductOffer->textContent;
+		push(@toReturn, $bookmakerProductOfferPrice);
+	}
+	return @toReturn;
+	
+}
+
+sub updateWithProfitabilityData($)
+{
+	
+	my ($bookMakerOfferProfitabilityFilePath) = @_; 
+	
+	my $xmlParser = XML::LibXML->new; 
+	my $offerProfitabilityDoc = $xmlParser->parse_file($bookMakerOfferProfitabilityFilePath) or return 0;
+	
+	my @productGroupNodes = getAllProductGroupNodes($offerProfitabilityDoc);
+	
+	foreach(@productGroupNodes)
+	{
+		my $productGroupNode = $_;
+		my $profitNode = createProfitNode($productGroupNode);
+		$productGroupNode->insertBefore($profitNode, $productGroupNode->getFirstChild());		
+		#add profitNode		
+	}
+	
+	$offerProfitabilityDoc->toFile($bookMakerOfferProfitabilityFilePath) or die;
+	tidyXml($bookMakerOfferProfitabilityFilePath);
+	
+}
+
+#todo maybe remove some  xml::tidy invokes in order to  improve efficiency   
 sub generateOfferProfitabilityFile($)
 {
 	my ($self, $offerProfitabilityOutputFilename) = @_;
@@ -286,12 +411,12 @@ sub generateOfferProfitabilityFile($)
 	#my @allEventNodes = $xmlParserDoc->findnodes("/note/eventList//*//event");
 	
 	
+	
 	injectBestCombinationsNodeAfterEventNodes($offerProfitabilityOutputFilename);
 	leaveInProfitabilityFileOnlyBestPrices($offerProfitabilityOutputFilename);
-	#updateWithProfitabilityData();
+	updateWithProfitabilityData($offerProfitabilityOutputFilename);
 	
-	die;
-	
+
 	
 	#to removeVVV left just to know which sub remove
 	#foreach(@allEventNodes)
