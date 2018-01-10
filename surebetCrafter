@@ -3,7 +3,9 @@ use strict;
 use warnings;
 use lib 'BookmakerOfferDownloader/';
 use BetExplorerDownloader;
-
+use File::Basename;
+use Cwd 'abs_path';
+    
 
 #SUBS DECLARATIONS
 sub parseArguments();
@@ -107,9 +109,14 @@ sub findSureBets($$)
 {
 	
 	my ($xmlSelectorFile , $xmlResultFile) = @_;
+    $xmlSelectorFile = abs_path($xmlSelectorFile); 
+	$xmlResultFile = abs_path($xmlResultFile);
+	
+	
+	chdir 'BookmakerOfferDownloader';
 	my $theRealBookMakerDownloader =  BetExplorerDownloader->new('--realnet');
 	$theRealBookMakerDownloader->loadSelectorFile($xmlSelectorFile); #temporary moved before "BookMakerDownloader->createEventListXML"
-	
+	#chdir 'BookmakerOfferDownloader' or die;
 	$theRealBookMakerDownloader->pullBookmakersOffer($xmlResultFile);
 	
 	die "NOT IMPLEMENTED YET";

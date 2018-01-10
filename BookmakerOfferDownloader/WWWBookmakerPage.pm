@@ -1,8 +1,12 @@
 package WWWBookmakerPage;
 use strict;
 use warnings;
+use FindBin;
 use Class::Interface;
 use LWP::Simple ();
+use File::Basename ();
+use File::Spec ();
+
 
 our @ISA = qw(SourceOfBookmakerPage);
 
@@ -24,8 +28,11 @@ sub new()
 
 sub getRawDataOfEvent($)
 {
+	
 	my $modelRawDataPath = "input/data/examples/modelRawData";
 	my $modelRawDataFileHandler;
+	
+	#chdir 'BookmakerOfferDownloader';	#very dirty but i don't know how it works 
 	
 	open ($modelRawDataFileHandler, "<" , $modelRawDataPath) or die $!;
 	
@@ -35,6 +42,8 @@ sub getRawDataOfEvent($)
 		close $modelRawDataFileHandler or die;
 		return $rawData;
 	}
+	
+	#chdir '..'; #very dirty but i don't know how it works
 }
 
 sub get($)
@@ -43,6 +52,7 @@ sub get($)
 
 	LWP::Simple::get($linkToGet) or die "unable to get $linkToGet";  
 };
+
 
 
 1;

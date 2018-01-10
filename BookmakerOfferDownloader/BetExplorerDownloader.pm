@@ -137,8 +137,7 @@ sub pullBookmakersOffer($)
 	my $pathToXmlSelector = $self->{mSelectorFile};
 	
 	my $xmlParser = XML::LibXML->new;
-	unlink $outputXmlPath or die; #does it needed?
-	
+		
 	#below  name isn't adequate and Iam not sure if the fike isn't doubled somewhere
 	copy $pathToXmlSelector, $outputXmlPath or die "Can't copy file $pathToXmlSelector => $outputXmlPath current directory: ". getcwd() . "ERR: $!" ; 
 	my $doc = $xmlParser->parse_file($pathToXmlSelector);
