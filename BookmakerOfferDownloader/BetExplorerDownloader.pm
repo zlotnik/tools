@@ -66,6 +66,8 @@ sub injectBookmakerProductEventOffertIntoXML($$$);
 # #updating nodes like <poland/> seems to not work
 # add to validateSelectorFile checking if it is a correct selector file so it means contains all needed data in good format needed by the program  
 
+#handling cases when event list is empty
+#in this situation parser dies instead of retruning false
 
 
 ############################MAIN##############################################

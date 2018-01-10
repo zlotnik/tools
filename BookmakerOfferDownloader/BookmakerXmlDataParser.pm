@@ -240,6 +240,8 @@ sub isCorrectLinkToEventXmlNode($)
 	return 0;
 		
 }
+
+#todo add executing all tests before commits or before push in hooks 
 	
 sub extractFirstEventXmlNodeFromCountryCategoryXmlNode($)
 {
