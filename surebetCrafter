@@ -2,7 +2,9 @@
 use strict;
 use warnings;
 use lib 'BookmakerOfferDownloader/';
+use lib 'ProfitabilityCalculator/';
 use BetExplorerDownloader;
+use ProfitabilityCalculator;
 use File::Basename;
 use Cwd 'abs_path';
     
@@ -108,17 +110,29 @@ sub checkRunMode()
 sub findSureBets($$)
 {
 	
+	#todo bug when input and output i sthe same file
+	#todo add to argument verification that we except only *.xml file
 	my ($xmlSelectorFile , $xmlResultFile) = @_;
     $xmlSelectorFile = abs_path($xmlSelectorFile); 
-	$xmlResultFile = abs_path($xmlResultFile);
+	$xmlResultFile = abs_path($xmlResultFile); #bug here doesn't work when file doesn't exist	
 	
+	my $xmlTemporaryResultFile = $xmlResultFile;
+	$xmlTemporaryResultFile =~  s/\.xml/_tmp\.xml/;  
 	
+		
 	chdir 'BookmakerOfferDownloader';
 	my $theRealBookMakerDownloader =  BetExplorerDownloader->new('--realnet');
 	$theRealBookMakerDownloader->loadSelectorFile($xmlSelectorFile); #temporary moved before "BookMakerDownloader->createEventListXML"
-	#chdir 'BookmakerOfferDownloader' or die;
-	$theRealBookMakerDownloader->pullBookmakersOffer($xmlResultFile);
 	
-	die "NOT IMPLEMENTED YET";
+	$theRealBookMakerDownloader->pullBookmakersOffer($xmlTemporaryResultFile);
+	my $theProfitabilityCalculator = ProfitabilityCalculator->new();
+	
+	chdir '..';
+	chdir 'ProfitabilityCalculator';
+	$theProfitabilityCalculator->loadBookmakersOfferFile($xmlTemporaryResultFile);
+
+	$theProfitabilityCalculator->generateOfferProfitabilityFile($xmlResultFile);
+	
+	
 
 };

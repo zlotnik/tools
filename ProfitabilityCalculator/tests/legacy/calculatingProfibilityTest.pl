@@ -39,4 +39,4 @@ ok($isTheSameFiles, "ProfitabilityCalculator: checking corectness of offer profi
 
 
 
-
+#todo add postfixes to other test files
