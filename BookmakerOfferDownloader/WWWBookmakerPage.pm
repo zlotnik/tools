@@ -45,7 +45,7 @@ sub getRawDataOfEvent($)
 		
 		
 		{
-			$/ = undef;
+			local $/ = undef;
 			my $rawData = <$rawDataFileHandler>;
 			close $rawDataFileHandler or die; #todo all die should have message
 			return $rawData;
@@ -58,7 +58,7 @@ sub getRawDataOfEvent($)
 }
 
 
-sub createRawDataFileOfEvent($)
+sub createRawDataFileOfEventForked($)
 {
 	my ($linkToEvent) = @_;
 	createJavaScriptForDownload($linkToEvent);
@@ -110,6 +110,62 @@ sub createRawDataFileOfEvent($)
 	
 	
 	return $toReturn;
+}
+
+
+#WWWBookmakerPage::createRawDataFileOfEvent
+sub createRawDataFileOfEvent($)
+{
+	my ($linkToEvent) = @_;
+	createJavaScriptForDownload($linkToEvent);
+		
+	my $res = 0;
+	my $retryIdx = 0; 
+	my $toReturn = ''; #todo clean up here
+	my $limitOfTrying = 4;
+	
+	while($res == 0 and $retryIdx++ < $limitOfTrying)
+	{
+	
+		my $rawData = `phantomjs.exe download1x2Data.js`;
+		my $isDownloadingSuccesfull = 1;
+		if ($rawData =~ /Unable to access network/)
+		{
+			$isDownloadingSuccesfull = 0;
+		}
+		
+
+		if($isDownloadingSuccesfull)
+		{
+			open RAWDATA , ">", 'rawdataevent.txt' or die; #todo parameter instead of hardcoded name
+			print RAWDATA $rawData;
+			close RAWDATA or die;
+			return 1;
+		}
+				
+	}
+	return '';
+	
+	if($res != 0)
+	{
+		#print STDOUT "process $pid finished\n";
+		open(my $fh, '<', 'rawdataevent.txt') or die "cannot open file rawdataevent.txt";
+		{
+			local $/;
+			$toReturn = <$fh>;;
+		}
+		close $fh or die;
+		return 1;
+	}
+	else 
+	{
+		print STDOUT "UNABLE TO FETCH $linkToEvent  RESPONSE $res\n";
+		return 0;
+	}
+	
+	
+	
+	#return $toReturn;
 }
 
 
