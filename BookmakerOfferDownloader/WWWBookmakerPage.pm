@@ -6,6 +6,7 @@ use Class::Interface;
 use LWP::Simple ();
 use File::Basename ();
 use File::Spec ();
+use String::Random;
 use POSIX ":sys_wait_h";
 
 
@@ -20,6 +21,8 @@ sub get($);
 sub createJavaScriptForDownload($);
 sub createRawDataFileOfEvent($);
 
+
+#todo change module name to RealWWWBookmakerPage
 sub new()
 {		
 	my $class = shift;
@@ -34,14 +37,13 @@ sub getRawDataOfEvent($)
 	
 	my ($self, $linkToEvent) = @_;
 	
-	my $modelRawDataPath = "rawdataevent.txt";
 	
-	my $isUploadingOfDataSuccessfull = createRawDataFileOfEvent($linkToEvent); 
+	my $modelRawDataPath = createRawDataFileOfEvent($linkToEvent); 
 	
-	if( $isUploadingOfDataSuccessfull )
+	if( $modelRawDataPath )
 	{
 		
-		open (my $rawDataFileHandler, "<" , $modelRawDataPath) or die $!;
+		open (my $rawDataFileHandler, "<" , $modelRawDataPath) or die "error during reading from $modelRawDataPath";
 		
 		
 		{
@@ -58,59 +60,6 @@ sub getRawDataOfEvent($)
 }
 
 
-sub createRawDataFileOfEventForked($)
-{
-	my ($linkToEvent) = @_;
-	createJavaScriptForDownload($linkToEvent);
-		
-	my $res = 0;
-	my $retryIdx = 0; 
-	my $toReturn = '';
-	
-	my $pid = fork();
-	if(not $pid)
-	{
-		my $toReturnInChild = `phantomjs.exe download1x2Data.js`;
-		open RAWDATA , ">", 'rawdataevent.txt' or die; #todo parameter instead of hardcoded name
-		print RAWDATA $toReturnInChild;
-		close RAWDATA or die;
-		#print STDOUT "before exit\n";		
-		exit(1);
-	}
-	else
-	{
-		my $numberOfAttempts = 6;
-		while($res == 0 and $retryIdx++ < $numberOfAttempts)
-		{
-			sleep(26);
-			$res = waitpid($pid, WNOHANG);
-			print STDOUT "no answer from $linkToEvent  attemp no $retryIdx/$numberOfAttempts\n";					
-		}
-	}
-	
-	
-	if($res == 0)
-	{
-		kill 9, $pid;
-		print STDOUT "UNABLE TO FETCH $linkToEvent PID $pid RESPONSE $res\n";
-		return;
-	}
-	else 
-	{
-		#print STDOUT "process $pid finished\n";
-		open(my $fh, '<', 'rawdataevent.txt') or die "cannot open file rawdataevent.txt";
-		{
-			local $/;
-			$toReturn = <$fh>;;
-		}
-		close $fh or die;
-	
-	}
-	
-	
-	
-	return $toReturn;
-}
 
 
 #WWWBookmakerPage::createRawDataFileOfEvent
@@ -124,6 +73,7 @@ sub createRawDataFileOfEvent($)
 	my $toReturn = ''; #todo clean up here
 	my $limitOfTrying = 4;
 	
+	my $rawDataFileName = ''; 
 	while($res == 0 and $retryIdx++ < $limitOfTrying)
 	{
 	
@@ -137,35 +87,18 @@ sub createRawDataFileOfEvent($)
 
 		if($isDownloadingSuccesfull)
 		{
-			open RAWDATA , ">", 'rawdataevent.txt' or die; #todo parameter instead of hardcoded name
+			my $randomPostfix = new String::Random;
+			$randomPostfix =  $randomPostfix->randregex('\w\w\w\w\w\w');
+			$rawDataFileName = "tmp/". 'rawdataevent_' . $randomPostfix . '.txt';
+			open RAWDATA , ">", $rawDataFileName or die "Error while writing to $rawDataFileName\n"; 
 			print RAWDATA $rawData;
 			close RAWDATA or die;
-			return 1;
+			return $rawDataFileName;
 		}
 				
 	}
-	return '';
+	return $rawDataFileName;
 	
-	if($res != 0)
-	{
-		#print STDOUT "process $pid finished\n";
-		open(my $fh, '<', 'rawdataevent.txt') or die "cannot open file rawdataevent.txt";
-		{
-			local $/;
-			$toReturn = <$fh>;;
-		}
-		close $fh or die;
-		return 1;
-	}
-	else 
-	{
-		print STDOUT "UNABLE TO FETCH $linkToEvent  RESPONSE $res\n";
-		return 0;
-	}
-	
-	
-	
-	#return $toReturn;
 }
 
 
