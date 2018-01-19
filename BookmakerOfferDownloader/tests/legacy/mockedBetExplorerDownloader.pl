@@ -31,7 +31,6 @@ ok($isCreateEventListXMLCorrect, "Mocked net stage 1: Creating event list xml") 
 
 #checking mechanism stage  filling up bookmaker offer  data concerning events(online/not mocked version)
 $theMockedBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile); #temporary moved before "BookMakerDownloader->createEventListXML"
-copy $correctBookmakerSelectorFile, $resultXMLFileWithDownloadedData or die $?; #does it needed?
 $theMockedBookMakerDownloader->pullBookmakersOffer($resultXMLFileWithDownloadedData);
 
 my $isCorectBookmakerOfferFile = $aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($resultXMLFileWithDownloadedData);
