@@ -272,7 +272,7 @@ sub removeEmptyLines(\$)
 }
 
 
-sub updateXmlNodeWithDataFromBookmaker($$)
+sub updateXmlNodeWithDataFromBookmaker($$) #todo use better name
 {
 	
 	my ($self,$xsubPath, $pathToXmlSelector) = @_;  

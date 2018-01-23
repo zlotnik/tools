@@ -58,6 +58,12 @@ sub getAllSubCategories()
 	{
 			push @toReturn, $1;
 	}
+	
+	if ($#toReturn)
+	{
+		print "There is no any avent for ${subCategoryXpath}\n";
+	}
+	
 	return @toReturn;
 }
 

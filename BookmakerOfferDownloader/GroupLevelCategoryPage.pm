@@ -42,7 +42,7 @@ sub couldYouHandleThatXPath($)
 	return 0;
 	
 };
-
+#GroupLevelCategoryPage::getAllSubCategories
 sub getAllSubCategories($)
 {
 	#c GroupLevelCategoryPage::getAllSubCategories
@@ -54,13 +54,15 @@ sub getAllSubCategories($)
 	
 	my $contentOfSubcategoryPage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToCategory); 	
 	my @toReturn;
-	
-	if(not $contentOfSubcategoryPage =~ m|(<td class=\"table-main__daysign\")([\s\S]*?)(</table>)|m )
+		
+	my $regexp = '(<td class=\"table-main__daysign\")([\s\S]*?)(</table>)';
+	if(not $contentOfSubcategoryPage =~ m|${regexp}|m )
 	{
 		print "There is no event for $linkToCategory\n";
+		print "DEBUG: Can't match expression ${regexp}\n";
 	}
-	else
-	{
+	else	{
+		
 		my $htmlTableWithEvents = $1.$2.$3;
 		@toReturn = BetexplorerParser::pickupLinksToEventFromTable($htmlTableWithEvents);	
 	}

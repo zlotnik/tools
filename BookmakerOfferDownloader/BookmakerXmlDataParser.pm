@@ -249,6 +249,8 @@ sub extractFirstEventXmlNodeFromCountryCategoryXmlNode($)
 
 	my $groupCategoryXmlNode = $countryCategoryXmlNode->nonBlankChildNodes->[0];
 	#$groupCategoryXmlNodeName = $groupCategoryXmlNode->nodeName;
+	
+	(defined $groupCategoryXmlNode ) or return 0;
 	my $eventsList = $groupCategoryXmlNode->nonBlankChildNodes->[0];
 	
 	if($eventsList->nodeName eq "Events")
