@@ -3,13 +3,13 @@ use warnings;
 
 use LWP::Simple ();
 
-sub get($);
+sub get($$);
 sub showUsage();
 
-if ($#ARGV == 0 )
+if ($#ARGV == 1 )
 {
-	my ($urlToDownload) = @ARGV;
-	get($urlToDownload);
+	my ($urlToDownload, $outputFile) = @ARGV;
+	get($urlToDownload, $outputFile);
 }
 else
 {
@@ -17,11 +17,17 @@ else
 }
 
 
-sub get($)
+sub get($$)
 {
-	my ($linkToGet) = @_;
+	my ($linkToGet, $outputFile) = @_;
 
-	print LWP::Simple::get($linkToGet) or die "unable to get $linkToGet";  
+	my $downloadedHtml =  LWP::Simple::get($linkToGet) or die "unable to get $linkToGet";  
+	my $outputHtml_FH;
+	open $outputHtml_FH, '>', $outputFile or die;   
+	
+	print $outputHtml_FH $downloadedHtml;
+	close $outputHtml_FH or die;
+	
 };
 
 sub showUsage()
