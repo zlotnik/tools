@@ -4,3 +4,4 @@ rawdataevent*.txt
 output/
 tmp/bookmakerOffert.xml
 *.swp
+BookmakerOfferDownloader/tools/*.html
