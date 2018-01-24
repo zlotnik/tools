@@ -9,6 +9,8 @@ use File::Copy;
 
 print "****TEST MOCKED BETEXPLORER DOWNLOADER*****\n\n"; 
 
+#todo: mock isn't enough close to real implementation creating javascripts isn't mocked 
+
 my $xpath = "";
 my $correctBookmakerSelectorFile = "$FindBin::Bin/../../input/parameters/examples/ekstraklasaSelector.xml";
 
