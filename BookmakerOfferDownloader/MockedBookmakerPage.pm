@@ -44,10 +44,17 @@ sub get($)
 
 sub getRawDataOfEvent($)
 {
-	my $modelRawDataPath = "input/data/examples/modelRawData";
+	my ($self, $linkToEvent) = @_;
+	
+	$linkToEvent =~ m|(http://www.betexplorer.com/)(.*)|; 
+	
+	my $relativePathToEvent = $2;
+	
+	my $modelRawDataPath = 'input/mockedWWW/' . $relativePathToEvent . 'rawdataevent.txt';  
+	
 	my $modelRawDataFileHandler;
 	
-	open ($modelRawDataFileHandler, "<" , $modelRawDataPath) or die $!;
+	open ($modelRawDataFileHandler, "<" , $modelRawDataPath) or die "Can't  open rawdata file for mock from path ${modelRawDataPath}";
 	
 	{
 		$/ = undef;
