@@ -1,3 +1,3 @@
-perl %1 tests\legacy\parsingDataTest.pl
-perl %1 tests\legacy\mockedBetExplorerDownloader.pl
-perl %1 tests\legacy\realBetExplorerDownloader.pl
+perl %1 tests\legacy\parsingData_test.pl
+perl %1 tests\legacy\mockedBetExplorerDownloader_test.pl
+perl %1 tests\legacy\realBetExplorerDownloader_test.pl
