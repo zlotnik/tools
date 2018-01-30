@@ -232,6 +232,7 @@ sub updateEventListXMLWithBookmakerOffer($)
 	
 	for(@allEventXml)
 	{
+		 
 		my $eventNode = $_;
 		my $nodeThatNeedUpdated = XML::LibXML::Element->new("_1X2"); 
 		$eventNode->addChild( $nodeThatNeedUpdated );
@@ -240,6 +241,7 @@ sub updateEventListXMLWithBookmakerOffer($)
 		my $linkToEvent = $1;
 		
 		my $dataWithBets = $self->{m_BookmakerPageCrawler}->getRawDataOfEvent($linkToEvent);		
+		print "downloading $linkToEvent \n";
 		simplifyFormatOfRawdata($dataWithBets);
 		
 		injectBookmakerEventOfferIntoXML($dataWithBets, $nodeThatNeedUpdated);
