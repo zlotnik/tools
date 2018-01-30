@@ -5,3 +5,4 @@ output/
 tmp/bookmakerOffert.xml
 *.swp
 BookmakerOfferDownloader/tools/*.html
+download1x2Data_*_tmp.js

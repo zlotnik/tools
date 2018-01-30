@@ -8,6 +8,7 @@ use File::Basename ();
 use File::Spec ();
 use String::Random;
 use POSIX ":sys_wait_h";
+use Digest::MD5 qw(md5 md5_hex md5_base64);
 
 
 our @ISA = qw(SourceOfBookmakerPage);
@@ -66,7 +67,7 @@ sub getRawDataOfEvent($)
 sub createRawDataFileOfEvent($)
 {
 	my ($linkToEvent) = @_;
-	createJavaScriptForDownload($linkToEvent);
+	my $javaScriptToRun = createJavaScriptForDownload($linkToEvent);
 		
 	my $res = 0;
 	my $retryIdx = 0; 
@@ -77,7 +78,8 @@ sub createRawDataFileOfEvent($)
 	while($res == 0 and $retryIdx++ < $limitOfTrying)
 	{
 	
-		my $rawData = `phantomjs.exe download1x2Data.js`;
+		my $commandDownloadingRawData = "phantomjs.exe $javaScriptToRun";
+		my $rawData = `$commandDownloadingRawData`;
 		my $isDownloadingSuccesfull = 1;
 		if ($rawData =~ /Unable to access network/)
 		{
@@ -89,7 +91,7 @@ sub createRawDataFileOfEvent($)
 		{
 			my $randomPostfix = new String::Random;
 			$randomPostfix =  $randomPostfix->randregex('\w\w\w\w\w\w');
-			$rawDataFileName = "tmp/". 'rawdataevent_' . $randomPostfix . '.txt';
+			$rawDataFileName = "tmp/". 'rawdataevent_' . $randomPostfix . '.txt'; #todo rawdata should have the same postfix as javascript used to download
 			open RAWDATA , ">", $rawDataFileName or die "Error while writing to $rawDataFileName\n"; 
 			print RAWDATA $rawData;
 			close RAWDATA or die;
@@ -106,9 +108,12 @@ sub createJavaScriptForDownload($)
 {
 	my $linkToReplace = $_[0];
 	
+	my $md5sum = md5_hex($linkToReplace);
+	my $resultFile = "download1x2Data_${md5sum}_tmp.js";
+	
 	open( TEMPLATE  , "<" , 'download1x2Data_template.js') or die;
 	
-	open( JAVASCRIPT  , ">" , 'download1x2Data.js') or die;
+	open( JAVASCRIPT  , ">" , $resultFile) or die "Can't open $resultFile\n";
 	
 	while(<TEMPLATE>)
 	{
@@ -124,6 +129,7 @@ sub createJavaScriptForDownload($)
 	}
 	close(JAVASCRIPT)or die;
 	close(TEMPLATE)or die;
+	return $resultFile;
 
 }
 
