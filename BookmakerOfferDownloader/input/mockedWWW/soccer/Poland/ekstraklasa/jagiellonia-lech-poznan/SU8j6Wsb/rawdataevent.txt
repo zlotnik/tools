@@ -1,0 +1,329 @@
+ReferenceError: Can't find variable: $
+
+  http://www.betexplorer.com/soccer/Qatar/premier-league/al-ahli-doha-al-khor/vH4lOy8o/:1 in global code
+  :0 in insertBefore
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:27
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:30 in c
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:54 in Tf
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:125
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:120 in Ml
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:127 in Hg
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:68 in Tg
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:68 in Ug
+ReferenceError: Can't find variable: $
+
+  http://www.betexplorer.com/soccer/Qatar/premier-league/al-ahli-doha-al-khor/vH4lOy8o/:1 in global code
+  :0 in insertBefore
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:27
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:30 in c
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:54 in Tf
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:125
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:120 in Ml
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:127 in Hg
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:68 in Tg
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:68 in Ug
+ReferenceError: Can't find variable: $
+
+  http://www.betexplorer.com/soccer/Qatar/premier-league/al-ahli-doha-al-khor/vH4lOy8o/:1 in global code
+  :0 in insertBefore
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:27
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:30 in c
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:54 in Tf
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:125
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:120 in Ml
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:127 in Hg
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:68 in Tg
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:68 in Ug
+
+1X2 Odds (26)
+O/U (112)
+AH (32)
+DNB (13)
+DC (23)
+BTS (18)
+
+
+Show: 
+
+
+
+My Bookmakers (settings)
+
+
+
+All bookmakers
+
+
+
+
+
+
+Bookmakers: 26Bookmakers: 261X2
+
+
+
+10Bet
+
+
+ 
+ 2.50
+ 3.25
+ 2.55
+
+
+12BET
+
+
+ 
+ 2.40
+ 3.40
+ 2.44
+
+
+188BET
+
+
+ 
+ 2.46
+ 3.50
+
+ 2.46
+
+
+1xBet
+
+
+ 
+ 2.54
+ 3.46
+ 2.80
+
+
+
+888sport
+
+
+ 
+ 2.32
+ 3.15
+ 2.70
+
+
+bet-at-home
+
+
+ 
+ 2.39
+ 3.20
+ 2.50
+
+
+bet365
+
+
+ 
+ 2.60
+
+ 3.29
+ 2.45
+
+
+Betclic
+
+
+ 
+ 2.40
+ 3.20
+ 2.60
+
+
+Betfair
+
+
+ 
+ 2.50
+ 3.30
+ 2.63
+
+
+Betsafe
+
+
+ 
+ 2.40
+ 3.35
+ 2.60
+
+
+Betsson
+
+
+ 
+ 2.40
+ 3.35
+ 2.60
+
+
+BetVictor
+
+
+ 
+ 2.50
+ 3.40
+ 2.60
+
+
+Betway
+
+
+ 
+ 2.50
+ 3.30
+ 2.50
+
+
+bwin
+
+
+ 
+2.25
+3.25
+2.80
+
+
+
+ComeOn
+
+
+ 
+ 2.50
+ 3.25
+ 2.55
+
+
+Expekt
+
+
+ 
+ 2.40
+ 3.20
+ 2.60
+
+
+Interwetten
+
+
+ 
+ 2.45
+ 3.25
+ 2.55
+
+
+mybet
+
+
+ 
+ 2.45
+ 3.25
+ 2.55
+
+
+Paddy Power
+
+
+ 
+ 2.40
+ 3.20
+ 2.50
+
+
+SBOBET
+
+
+ 
+ 2.51
+ 3.10
+ 2.49
+
+
+Sportingbet
+
+
+ 
+2.25
+3.25
+2.80
+
+
+
+Tipico
+
+
+ 
+ 2.40
+3.30
+ 2.60
+
+
+Unibet
+
+
+ 
+ 2.32
+ 3.15
+ 2.70
+
+
+William Hill
+
+
+ 
+ 2.38
+ 3.40
+ 2.60
+
+
+youwin
+
+
+ 
+2.20
+3.20
+2.75
+
+
+Betfair Exchange
+
+
+ 
+ 2.48
+ 3.38
+ 2.71
+
+
+
+Average odds (exchanges not included in calculation)Average odds (exchanges not included in calculation)2.423.282.60
+Add to My Selections
+
+
+
+
+
+
+Archive odds
+
+
+
+
+
+
+
+
+
+
+ReferenceError: Can't find variable: Criteo
+
+  http://www.betexplorer.com/soccer/Qatar/premier-league/al-ahli-doha-al-khor/vH4lOy8o/:2 in global code
+  :0 in exit
+  phantomjs://code/download1x2Data.js:15
+  phantomjs://platform/webpage.js:286 in _onPageOpenFinished

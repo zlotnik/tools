@@ -1,0 +1,267 @@
+ReferenceError: Can't find variable: $
+
+  http://www.betexplorer.com/soccer/Qatar/premier-league/al-arabi-al-duhail/I73hNeNi/:1 in global code
+  :0 in insertBefore
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:27
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:30 in c
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:54 in Tf
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:125
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:120 in Ml
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:127 in Hg
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:68 in Tg
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:68 in Ug
+ReferenceError: Can't find variable: $
+
+  http://www.betexplorer.com/soccer/Qatar/premier-league/al-arabi-al-duhail/I73hNeNi/:1 in global code
+  :0 in insertBefore
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:27
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:30 in c
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:54 in Tf
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:125
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:120 in Ml
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:127 in Hg
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:68 in Tg
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:68 in Ug
+ReferenceError: Can't find variable: $
+
+  http://www.betexplorer.com/soccer/Qatar/premier-league/al-arabi-al-duhail/I73hNeNi/:1 in global code
+  :0 in insertBefore
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:27
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:30 in c
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:54 in Tf
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:125
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:120 in Ml
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:127 in Hg
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:68 in Tg
+  http://www.googletagmanager.com/gtm.js?id=GTM-M5QNL7:68 in Ug
+
+1X2 Odds (20)
+O/U (69)
+AH (17)
+DNB (11)
+DC (19)
+BTS (13)
+
+
+Show: 
+
+
+
+My Bookmakers (settings)
+
+
+
+All bookmakers
+
+
+
+
+
+
+Bookmakers: 20Bookmakers: 201X2
+
+
+
+10Bet
+
+
+ 
+ 9.00
+ 5.80
+ 1.22
+
+
+1xBet
+
+
+ 
+ 9.60
+ 6.65
+
+ 1.28
+
+
+
+888sport
+
+
+ 
+8.00
+6.00
+1.20
+
+
+bet-at-home
+
+
+ 
+8.65
+5.33
+1.21
+
+
+bet365
+
+
+ 
+9.00
+5.50
+1.22
+
+
+Betclic
+
+
+ 
+ 9.00
+ 5.75
+ 1.22
+
+
+Betfair
+
+
+ 
+ 10.50
+
+ 6.50
+1.20
+
+
+Betsafe
+
+
+ 
+ 9.85
+ 6.30
+ 1.21
+
+
+Betsson
+
+
+ 
+ 9.85
+ 6.30
+ 1.21
+
+
+bwin
+
+
+ 
+8.75
+6.00
+1.20
+
+
+ComeOn
+
+
+ 
+ 9.00
+ 5.80
+ 1.22
+
+
+Expekt
+
+
+ 
+ 9.00
+ 5.75
+ 1.22
+
+
+Interwetten
+
+
+ 
+9.00
+ 5.50
+1.22
+
+
+mybet
+
+
+ 
+ 9.00
+ 5.50
+ 1.22
+
+
+Paddy Power
+
+
+ 
+ 10.00
+ 6.00
+ 1.17
+
+
+Sportingbet
+
+
+ 
+8.50
+6.00
+1.22
+
+
+Tipico
+
+
+ 
+9.00
+5.80
+1.22
+
+
+Unibet
+
+
+ 
+8.00
+6.00
+1.20
+
+
+youwin
+
+
+ 
+8.25
+6.00
+1.20
+
+
+Betfair Exchange
+
+
+ 
+ 7.08
+ 4.71
+ 1.17
+
+
+
+Average odds (exchanges not included in calculation)Average odds (exchanges not included in calculation)9.055.921.21
+Add to My Selections
+
+
+
+
+
+
+Archive odds
+
+
+
+
+
+
+
+
+
+
