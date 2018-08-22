@@ -61,7 +61,7 @@ sub getAllSubCategories()
 	
 	if ($#toReturn)
 	{
-		print "There is no any avent for ${subCategoryXpath}\n";
+		print "There is no any event for ${subCategoryXpath}\n";
 	}
 	
 	return @toReturn;
