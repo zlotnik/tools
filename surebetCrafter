@@ -6,7 +6,7 @@ use lib 'ProfitabilityCalculator/';
 use BetExplorerDownloader;
 use ProfitabilityCalculator;
 use File::Basename;
-use Cwd 'abs_path';
+use Cwd;
     
 
 #SUBS DECLARATIONS
@@ -113,8 +113,8 @@ sub findSureBets($$)
 	#todo bug when input and output i sthe same file
 	#todo add to argument verification that we except only *.xml file
 	my ($xmlSelectorFile , $xmlResultFile) = @_;
-    $xmlSelectorFile = abs_path($xmlSelectorFile); 
-	$xmlResultFile = abs_path($xmlResultFile); #bug here doesn't work when file doesn't exist	
+    $xmlSelectorFile = Cwd::abs_path($xmlSelectorFile); 
+	$xmlResultFile = getcwd . ($xmlResultFile); 
 	
 	my $xmlTemporaryResultFile = $xmlResultFile;
 	$xmlTemporaryResultFile =~  s/\.xml/_tmp\.xml/;  
