@@ -10,3 +10,13 @@ git clone https://gitlab.com/wojomc/arrakis.git
 
 3.Pushing to git
 git push -u origin master
+
+4. How to run tool 
+Tool isn't available for cygwin environment the only environment that works is Windows
+
+perl .\surebetCrafter .\input\ekstraklasaSelector.xml .\output\realData\ekstraKlasaResults.xml
+
+5. How to run tests
+5.1 
+
+6.Module responsibilities
