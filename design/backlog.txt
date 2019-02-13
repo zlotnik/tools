@@ -1,18 +1,26 @@
-*Git hooks: adding automatic test before commit +4 XS 	
-*add intructtion how to use,requirements and all ternminology used in project
-*a template used to create *.pl, *.pm, *.pm child, *.pm parrent
-*Git hooks: add a parser so as to parse commits 
-*would be nice to have something to check some code clean metrics eg. code width, code length, number of sub in class, code format
-*nice to have time login with every git pull ,git push command for cost measuring purposes
+#SPRINT BACKLOG#
+*Define/verify DoD for BookmakerOfferDownload
+*create script dedicated only for real/mocked net
+*runing legacy and incremental test suite shouldn't be hardcoded
+*clean up test define solid testing user cases
 *Add to manual:choosen bookmaker offer - choosen part of bookmakers offer by appling an offert selector eg. all German, soccer, matches  
 *Add to manual:offer selector - a xml file used choose which data will be downloadedDataRawText
 *Add to manual:offer xml - an output xml generated basis on the offer selector
+*add intruction how to use,requirements and all ternminology used in project
+
+#PRODUCT BACKLOG#
+*temporary js files makes mess in BookmakerOfferDownload directory
+*shorter hash in temp js files
+*Git hooks: adding automatic test before commit +4 XS 	
+*Git hooks: add a parser so as to parse commits 
+*a template used to create *.pl, *.pm, *.pm child, *.pm parrent
+*would be nice to have something to check some code clean metrics eg. code width, code length, number of sub in class, code format
 *Move diagrams to Visual paradigm
+*nice to have time login with every git pull ,git push command for cost measuring purposes
 *Maybe add to process a requirements than I can move on to the testing phase when refactorization backlog will be reduced to some size 
 *XML::LibXML->new; #parser in properties will improve optimalization 
 *sub removeEmptyLines(\$)#move to toolbox
 *add test coverity test
 *introduce expect so as to have more comfortable debug process
 *tracing system with 'verbosity' switch
-*runing legacy and incremental test suite shouldn't be hardcoded
 *Git hooks: add a notification when counter of commit reach some round numbers
