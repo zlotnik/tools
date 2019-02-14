@@ -1,7 +1,6 @@
 #SPRINT BACKLOG#
 *Define/verify DoD for BookmakerOfferDownload
 *create script dedicated only for real/mocked net
-*runing legacy and incremental test suite shouldn't be hardcoded
 *clean up test define solid testing user cases
 *Add to manual:choosen bookmaker offer - choosen part of bookmakers offer by appling an offert selector eg. all German, soccer, matches  
 *Add to manual:offer selector - a xml file used choose which data will be downloadedDataRawText

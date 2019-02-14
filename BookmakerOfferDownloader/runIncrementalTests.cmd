@@ -1,1 +1,1 @@
-perl %1 tests\incremental\realOfferDownloader.pl
+perl %1 runIncrementalTests.pl
