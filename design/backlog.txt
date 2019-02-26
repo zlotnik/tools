@@ -8,7 +8,7 @@
 *add intruction how to use,requirements and all ternminology used in project
 
 #PRODUCT BACKLOG#
-*temporary js files makes mess in BookmakerOfferDownload directory
+*there is a weak message There is no event for /soccer/Poland without information about source
 *shorter hash in temp js files
 *Git hooks: adding automatic test before commit +4 XS 	
 *Git hooks: add a parser so as to parse commits 
