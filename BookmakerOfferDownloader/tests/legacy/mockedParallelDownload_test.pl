@@ -1,17 +1,20 @@
 use strict;
 use warnings;
-use Test::More tests => 2;
+#use Test::More tests => 1;
 use lib '..';
 use BetExplorerDownloader;
 use BookmakerXmlDataParser;
 use FindBin;
 use File::Copy;
+use Test::More;
 
-print "****TEST MOCKED BETEXPLORER DOWNLOADER*****\n\n"; 
 
-sub runParallelOfferDownloadTest($$);
+my $testSuiteName = "PARALLEL DOWNLOAD TEST MOCKED NET";
 
-	
+print "****TEST SUITE NAME: $testSuiteName****\n\n"; 
+
+sub runParallelOfferDownloadTest(\@\@);
+sub downloadOffer($$);
 
 	
 my @childrensPIDs;	
@@ -19,36 +22,48 @@ my @listOfInputFiles = (
 						"$FindBin::Bin/../../input/parameters/examples/ekstraklasaSelector.xml",
 						"$FindBin::Bin/../../input/parameters/examples/qatarSelector.xml"
 						);
+
 my @listOfOutputFiles = (
 						"output/downloadedParallelPoland_mockednet.xml",
 						"output/downloadedParallelQatar_mockednet.xml"
 						);						
-my $idx =0;
-foreach(@listOfInputFiles)
+
+runParallelOfferDownloadTest(@listOfInputFiles, @listOfOutputFiles);
+
+sub runParallelOfferDownloadTest(\@\@)
 {
-	my $selectorFile = $_;
-	my $pidOfFirstChild = fork();
-	my $outputfile = $listOfOutputFiles[$idx];
-	
-	push(@childrensPIDs, $pidOfFirstChild);
-	if(not $pidOfFirstChild)
+	my @listOfInputFiles = @{$_[0]};
+
+	my @listOfOutputFiles = @{$_[1]}; 
+
+	my $idx =0;
+	foreach(@listOfInputFiles)
 	{
-		runParallelOfferDownloadTest( $selectorFile, $outputfile);
-		exit 0;
+		my $selectorFile = $_;
+		my $pidOfFirstChild = fork();
+		my $outputfile = $listOfOutputFiles[$idx];
+		
+		push(@childrensPIDs, $pidOfFirstChild);
+		my $isChildProcess = (not $pidOfFirstChild);  
+		if($isChildProcess)
+		{
+			downloadOffer( $selectorFile, $outputfile);
+			done_testing(1);		
+			exit 0;
+		}
+		$idx++;
+	}	
+
+	foreach(@childrensPIDs)
+	{
+		my $childPID = $_;
+		waitpid($childPID, 0 )
+
 	}
-	$idx++;
-}	
-
-foreach(@childrensPIDs)
-{
-	my $childPID = $_;
-	waitpid($childPID, 0 )
-
+	
 }
 
-
-
-sub runParallelOfferDownloadTest($$)
+sub downloadOffer($$)
 {
     my ($correctBookmakerSelectorFile, $resultXMLFileWithDownloadedData) = @_;  
 	

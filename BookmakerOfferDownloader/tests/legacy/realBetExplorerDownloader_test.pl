@@ -16,6 +16,8 @@ my $theRealBookMakerDownloader =  BetExplorerDownloader->new('--realnet');
 my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
 my $resultXMLFileWithDownloadedData = "output/downloadedPolandEkstraklasa_realnet.xml";
 
+print "Using xml selector $correctBookmakerSelectorFile\n";
+print "Output file $resultXMLFileWithDownloadedData\n";
 
 if(-e $resultXMLFileWithDownloadedData)
 {
