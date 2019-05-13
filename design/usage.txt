@@ -8,3 +8,7 @@ sureBetCrafter.pl xmlSelectorFile resultFile
 2. show manual
 sureBetCrafter.pl --help
 
+=============================================
+Example:
+
+.\surebetCrafter.cmd .\input\ekstraklasaSelector.xml .\tmp\ekstraklasaOutput.xml
