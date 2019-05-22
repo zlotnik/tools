@@ -70,7 +70,8 @@ sub parseArguments()
 sub printManual()
 {
 
-	open my $fh_manual , "<", "design/manual.txt" or die; 
+	my $manualFilePath = "docs/manual.txt";
+	open my $fh_manual , "<", $manualFilePath or die "Can't open manual file at $manualFilePath"; 
 
 	{
 		local $/ = undef;
@@ -83,7 +84,8 @@ sub printManual()
 
 sub printUsage()
 {
-	open my $fh_usageFile , "<", "design/usage.txt" or die;
+	my $usageFile_path = "docs/usage.txt";
+	open my $fh_usageFile , "<", $usageFile_path or die "Can't open usage filke at $usageFile_path";
 	{
 		local $/ = undef;
 		print <$fh_usageFile>;
