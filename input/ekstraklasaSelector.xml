@@ -5,7 +5,9 @@
   </dataSources>
   <dataChoosenToDownload>
   <soccer>
-  <Poland/>
+  <Poland>
+  <ekstraklasa/>
+  </Poland>
   </soccer>
   </dataChoosenToDownload>
   
