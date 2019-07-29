@@ -440,7 +440,7 @@ sub createEventListXML($$)
 			my $node = $_;						
 			my $nodeName = $node->nodeName;
 				
-			if($node->hasChildNodes() )
+			if($node->hasChildNodes() ) #[bug]because it returns true also for <poland></poland> 
 			{
 				my $childNode = $_;
 				$self->createEventListXML("$xpath/$nodeName", $outputXmlPath);
