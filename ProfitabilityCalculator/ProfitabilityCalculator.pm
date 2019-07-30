@@ -40,6 +40,7 @@ sub new()
 		
 	$self = bless { offerFile => undef },$class;
 	
+	print "Functional module: ProfitabilityCalculator\n";
 	return $self; 
 };
 

@@ -78,6 +78,7 @@ my $pathToXmlSelector = $ARGV[0];
 ####################SUB DEFINITIONS############################################
 sub new()
 {		
+	print "Functional module BookmakerOfferDownloader\n";
 	my ($class, $mockedOrRealWWW_argument) = @_;
 	my $self;
 		
