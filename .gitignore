@@ -8,3 +8,4 @@ BookmakerOfferDownloader/tools/*.html
 download1x2Data_*_tmp.js
 BookmakerOfferDownloader/output/downloadedPolandEkstraklasa_realnet.xml
 BookmakerOfferDownloader/output/downloadedQatar_realnet.xml
+tmp/*
