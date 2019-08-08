@@ -1,1 +1,1 @@
-perl %1 tests\incremental\findingSurebets.pl
+perl %1 runIncrementalTests.pl

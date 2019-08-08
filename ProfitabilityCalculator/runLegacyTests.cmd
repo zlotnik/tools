@@ -1,1 +1,1 @@
-perl %1 tests\legacy\findingSurebets.pl
+perl %1 runLegacyTests.pl
