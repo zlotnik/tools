@@ -8,10 +8,10 @@ use ProfitabilityCalculator;
 use FindBin;
 use File::Copy;
 use File::Compare;
-use File::Slurp
+use File::Slurp;
 
 
-print "****TEST MOCKED BETEXPLORER DOWNLOADER*****\n\n"; 
+ 
 
 #copy .. offer file
 #instead of creating advanced surebet parser maybe it is better to create model input and output data and compare their checksum in test(both input and output)
@@ -21,6 +21,8 @@ copy "../BookmakerOfferDownloader/output/downloadedPolandEkstraklasa_mockednet.x
 my $pathToBookmakersOfferFile = "$FindBin::Bin/../../input/bookmakersOffers_generatedByMock.xml";
 my $offerProfitabilityFile_actual = "$FindBin::Bin/../../output/test/offerProfitability_TestCase1_generated.xml";
 my $expectedProfitabiltyFile = "$FindBin::Bin/../../output/model/offerProfitability_TestCase1_expected.xml";
+
+print "****TEST MOCKED BETEXPLORER DOWNLOADER: Testing generating profitability file based on input file: $pathToBookmakersOfferFile*****\n\n";
 
 my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
 
