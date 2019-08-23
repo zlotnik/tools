@@ -8,6 +8,7 @@ use ProfitabilityCalculator;
 use FindBin;
 use File::Copy;
 use File::Compare;
+use File::Slurp
 
 
 print "****TEST MOCKED BETEXPLORER DOWNLOADER*****\n\n"; 
@@ -18,25 +19,38 @@ print "****TEST MOCKED BETEXPLORER DOWNLOADER*****\n\n";
 	
 copy "../BookmakerOfferDownloader/output/downloadedPolandEkstraklasa_mockednet.xml", 'input/bookmakersOffers_generatedByMock.xml' or die;
 my $pathToBookmakersOfferFile = "$FindBin::Bin/../../input/bookmakersOffers_generatedByMock.xml";
-my $offerProfitabilityFile = "$FindBin::Bin/../../output/test/offerProfitability_TestCase1_generated.xml";
+my $offerProfitabilityFile_actual = "$FindBin::Bin/../../output/test/offerProfitability_TestCase1_generated.xml";
+my $expectedProfitabiltyFile = "$FindBin::Bin/../../output/model/offerProfitability_TestCase1_expected.xml";
+
 my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
 
 my $theProfitabilityCalculator = ProfitabilityCalculator->new();
 
 $theProfitabilityCalculator->loadBookmakersOfferFile($pathToBookmakersOfferFile);
 
-$theProfitabilityCalculator->generateOfferProfitabilityFile($offerProfitabilityFile);
-my $isProfitabilityFileGeneratedCorrectly = $aBookmakerXmlDataParser->isCorrectProfitabilityFile($offerProfitabilityFile);
-ok($isProfitabilityFileGeneratedCorrectly, "ProfitabilityCalculator: checking syntax of generated offer profability file");
+$theProfitabilityCalculator->generateOfferProfitabilityFile($offerProfitabilityFile_actual);
+my $isProfitabilityFileGeneratedCorrectly = $aBookmakerXmlDataParser->isCorrectProfitabilityFile($offerProfitabilityFile_actual);
+ok($isProfitabilityFileGeneratedCorrectly, "ProfitabilityCalculator: checking syntax of generated offer profability file: $offerProfitabilityFile_actual");
 
 
-#here maybe copmparing by some checksum
 my $isTheSameFiles = '';
 $isTheSameFiles = (compare('output/test/offerProfitability_TestCase1_generated.xml', 
 								'output/model/offerProfitability_TestCase1_expected.xml') == 0 );
 
-ok($isTheSameFiles, "ProfitabilityCalculator: checking corectness of offer profitability data");
+my $actual_profibility_xml_FD;
+my $expected_profitability_xml_FD;
 
+
+my $offerProfitabilityText_actual = read_file($offerProfitabilityFile_actual) or die;
+my $offerProfitabilityText_expected = read_file($expectedProfitabiltyFile) or die;
+
+my $testName = "ProfitabilityCalculator: checking corectness of offer profitability data";
+my $testOK = is($offerProfitabilityText_actual, $offerProfitabilityText_expected, $testName	);
+
+if (! $testOK)
+{
+	print "Test $testName failed: result xml: $offerProfitabilityFile_actual isn't the same that expected: $expectedProfitabiltyFile\n";
+} 
 
 
 #todo add postfixes to other test files
