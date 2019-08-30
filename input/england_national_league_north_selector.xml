@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+  <dataSources>
+  <betexplorer/>  
+  </dataSources>
+  <dataChoosenToDownload>
+  <soccer>
+  <England>
+  <national-league-north/>
+  </England>
+  </soccer>
+  </dataChoosenToDownload>
+  
+</note> 
