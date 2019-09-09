@@ -50,9 +50,9 @@ sub getAllSubCategories($)
 	
 	my ($self,$subCategoryXpath ) = @_;
 	
-	my $linkToCategory = 'http://www.betexplorer.com/' . $subCategoryXpath . "/";	
+	my $linkToCategory = 'https://www.betexplorer.com/' . $subCategoryXpath . "/";	
 	
-	my $contentOfSubcategoryPage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToCategory); 	
+	my $contentOfSubcategoryPage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToCategory);
 	my @toReturn;
 		
 	my $regexp = '(<td class=\"table-main__daysign\")([\s\S]*?)(</table>)';
