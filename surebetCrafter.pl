@@ -7,6 +7,7 @@ use BetExplorerDownloader;
 use ProfitabilityCalculator;
 use File::Basename;
 use Cwd;
+use WojtekToolbox;
     
 
 #SUBS DECLARATIONS
@@ -50,7 +51,7 @@ sub parseArguments()
 	
 	my $allProgramArguments = join(' ',@ARGV);
 	
-	if ($allProgramArguments =~ /^([\w\\\.]+) ([\w\\\.]+)$/)
+	if ($allProgramArguments =~ /^([\w\\\.\/]+) ([\w\\\.\/]+)$/)
 	{
 		return 1;
 	}
@@ -115,9 +116,22 @@ sub findSureBets($$)
 	#todo bug when input and output i sthe same file
 	#todo add to argument verification that we except only *.xml file
 	my ($xmlSelectorFile , $xmlResultFile) = @_;
-    $xmlSelectorFile = Cwd::abs_path($xmlSelectorFile); 
-	$xmlResultFile = getcwd . ($xmlResultFile); 
+    	$xmlSelectorFile = Cwd::abs_path($xmlSelectorFile); 
 	
+	if(is_it_Windows())
+	{
+		$xmlResultFile = getcwd . ($xmlResultFile); 
+	}
+	elsif(is_it_Linux())
+	{
+		
+		$xmlResultFile = getcwd .'/'. ($xmlResultFile); 
+	}
+	else
+	{
+		die "unsupported Operation System"; 
+	}
+
 	my $xmlTemporaryResultFile = $xmlResultFile;
 	$xmlTemporaryResultFile =~  s/\.xml/_tmp\.xml/;  
 	
