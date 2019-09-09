@@ -1,1 +1,2 @@
-perl surebetCrafter.pl %1
+#!/bin/bash
+perl surebetCrafter.pl $@
