@@ -78,14 +78,18 @@ sub createRawDataFileOfEvent($)
 	while($res == 0 and $retryIdx++ < $limitOfTrying)
 	{
 	
-		my $commandDownloadingRawData = "phantomjs.exe $javaScriptToRun";
+		my $commandDownloadingRawData = "./phantomjs.elf $javaScriptToRun";
 		my $rawData = `$commandDownloadingRawData`;
 		my $isDownloadingSuccesfull = 1;
-		if ($rawData =~ /Unable to access network/)
+		if ($rawData =~ /Unable to access network/ )
 		{
 			$isDownloadingSuccesfull = 0;
 		}
-		
+		unless ($rawData =~ /ookmaker/)
+		{
+			$isDownloadingSuccesfull = 0;	
+		}	
+	
 
 		if($isDownloadingSuccesfull)
 		{
@@ -137,7 +141,9 @@ sub get($)
 {
 	my ($self, $linkToGet) = @_;
 
-	LWP::Simple::get($linkToGet) or die "unable to get $linkToGet";  
+	#my $result = LWP::Simple::get($linkToGet) or die "unable to get $linkToGet $? $0";  
+	my $result = `curl -A "Mozilla/5.0" $linkToGet`;
+	return $result;
 };
 
 

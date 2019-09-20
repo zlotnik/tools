@@ -12,6 +12,7 @@ use XML::LibXML;
 use BookmakerPageCrawler;
 use File::Copy qw(copy);
 use WojtekToolbox;
+use CommonFunctionalities;
 use Cwd;
 use feature 'say';
 
@@ -241,8 +242,9 @@ sub updateEventListXMLWithBookmakerOffer($)
 		$eventNode =~ m{event url="(.*\/)((&quot.*")|("))} or die;
 		my $linkToEvent = $1;
 		
-		my $dataWithBets = $self->{m_BookmakerPageCrawler}->getRawDataOfEvent($linkToEvent);		
 		print "downloading $linkToEvent \n";
+		my $dataWithBets = $self->{m_BookmakerPageCrawler}->getRawDataOfEvent($linkToEvent);		
+
 		simplifyFormatOfRawdata($dataWithBets);
 		
 		injectBookmakerEventOfferIntoXML($dataWithBets, $nodeThatNeedUpdated);
@@ -649,10 +651,13 @@ sub leaveOnlyBetsStakesDataInRawdataFile(\$)
 {
 	my $rawDataContent = ${$_[0]};
 	
-	$rawDataContent =~ m#(Bookmakers:[\s\S]*?)Average odds#m or die;
-	
-	
-	my $rawDataContentFilteredOut;
+	unless( $rawDataContent =~ m#(Bookmakers:[\s\S]*?)Average odds#m)
+	{
+ 		print "WARNING: problem during processing row data $rawDataContent x\n";
+	}
+
+	my $rawDataContentFilteredOut = '';	
+	$rawDataContent = $1;
 	foreach(split("\n",$rawDataContent))
 	{
 

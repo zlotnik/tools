@@ -51,8 +51,12 @@ sub loadBookmakersOfferFile($)
 	#todo validate $bookmakerOfferFilename
 	my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new();
 	
-	$aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($bookmakerOfferFilename) or die "Incorrect format of bookmaker offer file";
-	
+	if (! $aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($bookmakerOfferFilename))
+	{
+		print "WARNING: incorrect format of bookmaker offer file";
+	}
+
+
 	$self->{offerFile} = $bookmakerOfferFilename; 
 	
 };
@@ -354,7 +358,7 @@ sub calculateProfit(\@)
 	}
 	else
 	{
-		die;
+		print "WARNING: stake list is empty\n";	
 	}
 }
 
@@ -368,8 +372,15 @@ sub moveProductGroupNodePrices2array($)
 	{
 		my $productNode = $_; 
 		my $bookmakerProductOffer =  $productNode->nonBlankChildNodes()->[0];
-		my $bookmakerProductOfferPrice =   $bookmakerProductOffer->textContent;
-		push(@toReturn, $bookmakerProductOfferPrice);
+		if (defined $bookmakerProductOffer )
+		{
+			my $bookmakerProductOfferPrice =   $bookmakerProductOffer->textContent;
+			push(@toReturn, $bookmakerProductOfferPrice);
+		}
+		else
+		{
+			print "WARNING: There is no bookmaker offer for $productNode\n";
+		}
 	}
 	return @toReturn;
 	
