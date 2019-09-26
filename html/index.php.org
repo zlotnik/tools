@@ -1,0 +1,181 @@
+execution start Fri Sep 20 12:49:01 CEST 2019
+<BR>
+Sb:
+URL: http://www.betexplorer.com/soccer/England/championship/west-brom-huddersfield/f9K1LqID/ PROFIT: 0.15 
+URL: http://www.betexplorer.com/soccer/England/efl-cup/milton-keynes-dons-liverpool/SApSuhwD/ PROFIT: 1.15 
+URL: http://www.betexplorer.com/soccer/England/league-one/milton-keynes-dons-southend/zJYByo0k/ PROFIT: 0.03 
+URL: http://www.betexplorer.com/soccer/England/league-two/grimsby-macclesfield/6g75RKGE/ PROFIT: 0.24 
+URL: http://www.betexplorer.com/soccer/England/premier-league/chelsea-liverpool/GUPI3B4E/ PROFIT: 0.02 
+URL: http://www.betexplorer.com/soccer/Poland/iii-liga-group-i/tomaszow-mazowiecki-unia-skierniewice/YuB4QhSi/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/Poland/iii-liga-group-iii/ruch-zdzieszowice-row-rybnik/CbYBtY75/ PROFIT: 1 
+<BR>
+execution end Fri Sep 20 12:49:01 CEST 2019
+<BR>
+execution start Fri Sep 20 17:49:01 CEST 2019
+<BR>
+Sb:
+URL: http://www.betexplorer.com/soccer/England/championship/stoke-city-nottingham/rXXlQSKu/ PROFIT: 1.86 
+URL: http://www.betexplorer.com/soccer/England/efl-cup/milton-keynes-dons-liverpool/SApSuhwD/ PROFIT: 1.15 
+URL: http://www.betexplorer.com/soccer/England/league-one/accrington-blackpool/d8FrzYOp/ PROFIT: 0.46 
+URL: http://www.betexplorer.com/soccer/England/league-two/grimsby-macclesfield/6g75RKGE/ PROFIT: 1.23 
+URL: http://www.betexplorer.com/soccer/England/premier-league/burnley-norwich/Iq7F4ik8/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/England/professional-development-league/barnsley-u23-wigan-u23/8GQAsSiQ/&quot; data-live-cell=&quot;matchlink PROFIT: 1.28 
+URL: http://www.betexplorer.com/soccer/England/southern-league-central-division/nuneaton-alvechurch/rcaPRBRI/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/Poland/iii-liga-group-i/znicz-biala-piska-polonia-warszawa/GO2LMARG/ PROFIT: 3.45 
+<BR>
+execution end Fri Sep 20 17:49:01 CEST 2019
+<BR>
+execution start Sat Sep 21 03:49:01 CEST 2019
+<BR>
+Sb:
+URL: http://www.betexplorer.com/soccer/England/championship/swansea-reading/MJreBECd/ PROFIT: 0.77 
+URL: http://www.betexplorer.com/soccer/England/efl-cup/milton-keynes-dons-liverpool/SApSuhwD/ PROFIT: 1.15 
+URL: http://www.betexplorer.com/soccer/England/league-one/tranmere-burton/rqxKZOU1/ PROFIT: 0.02 
+URL: http://www.betexplorer.com/soccer/England/national-league/torquay-dagenham-red/bgLTd4hM/ PROFIT: 1.29 
+URL: http://www.betexplorer.com/soccer/England/premier-league/chelsea-brighton/Gj1gGllK/ PROFIT: 0.05 
+URL: http://www.betexplorer.com/soccer/Poland/iii-liga-group-i/znicz-biala-piska-polonia-warszawa/GO2LMARG/ PROFIT: 4.88 
+URL: http://www.betexplorer.com/soccer/Poland/iii-liga-group-ii/gwardia-koszalin-ks-mieszko-gniezno/IoUYzch4/ PROFIT: 1 
+<BR>
+execution end Sat Sep 21 03:49:01 CEST 2019
+<BR>
+execution start Sat Sep 21 12:49:01 CEST 2019
+<BR>
+Sb:
+URL: http://www.betexplorer.com/soccer/Poland/ekstraklasa/rakow-czestochowa-wisla-plock/nPnwngMO/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/England/efl-cup/milton-keynes-dons-liverpool/SApSuhwD/ PROFIT: 1.15 
+URL: http://www.betexplorer.com/soccer/England/league-one/gillingham-ipswich/GULwfgGG/ PROFIT: 0.31 
+URL: http://www.betexplorer.com/soccer/England/national-league/halifax-barnet/hjV81Swi/ PROFIT: 1.65 
+URL: http://www.betexplorer.com/soccer/England/premier-league/chelsea-brighton/Gj1gGllK/ PROFIT: 0.05 
+URL: http://www.betexplorer.com/soccer/Poland/iii-liga-group-ii/pogon-szczecin-ii-stezyca/b533LHhH/&quot; data-live-cell=&quot;matchlink PROFIT: 6.18 
+URL: http://www.betexplorer.com/soccer/Poland/division-1/podbeskidzie-tychy/88p7dqmp/ PROFIT: 1 
+<BR>
+execution end Sat Sep 21 12:49:01 CEST 2019
+<BR>
+execution start Sat Sep 21 17:49:01 CEST 2019
+<BR>
+Sb:
+URL: http://www.betexplorer.com/soccer/England/championship/swansea-reading/MJreBECd/ PROFIT: 1.30 
+URL: http://www.betexplorer.com/soccer/England/efl-cup/milton-keynes-dons-liverpool/SApSuhwD/ PROFIT: 1.15 
+URL: http://www.betexplorer.com/soccer/England/league-one/wycombe-portsmouth/plG2b872/&quot; data-live-cell=&quot;matchlink PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/England/league-two/port-vale-mansfield/Y7No7jVa/&quot; data-live-cell=&quot;matchlink PROFIT: 0.65 
+URL: http://www.betexplorer.com/soccer/England/national-league-north/alfreton-darlington-1883/h6NtkuR9/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/England/premier-league/wolves-watford/bwZp64QC/ PROFIT: 0.09 
+URL: http://www.betexplorer.com/soccer/Poland/iii-liga-group-ii/gwardia-koszalin-ks-mieszko-gniezno/IoUYzch4/&quot; data-live-cell=&quot;matchlink PROFIT: 1 
+<BR>
+execution end Sat Sep 21 17:49:01 CEST 2019
+<BR>
+execution start Sun Sep 22 03:49:01 CEST 2019
+<BR>
+Sb:
+URL: http://www.betexplorer.com/soccer/England/championship/swansea-reading/MJreBECd/ PROFIT: 0.90 
+URL: http://www.betexplorer.com/soccer/England/efl-cup/milton-keynes-dons-liverpool/SApSuhwD/ PROFIT: 1.15 
+URL: http://www.betexplorer.com/soccer/England/premier-league/leicester-newcastle-utd/UcsU9nRm/ PROFIT: 0.17 
+<BR>
+execution end Sun Sep 22 03:49:01 CEST 2019
+<BR>
+execution start Sun Sep 22 12:49:01 CEST 2019
+<BR>
+Sb:
+URL: http://www.betexplorer.com/soccer/England/efl-cup/milton-keynes-dons-liverpool/SApSuhwD/ PROFIT: 1.15 
+URL: http://www.betexplorer.com/soccer/England/national-league-north/alfreton-darlington-1883/h6NtkuR9/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/England/national-league/halifax-harrogate/IchfDPx3/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/Poland/division-2/garbarnia-stal-stalowa-wola/pbHrL8z7/ PROFIT: 1 
+<BR>
+execution end Sun Sep 22 12:49:01 CEST 2019
+<BR>
+execution start Sun Sep 22 17:49:01 CEST 2019
+<BR>
+Sb:
+URL: http://www.betexplorer.com/soccer/Poland/ekstraklasa/pogon-szczecin-gornik-z/0hd3ZFxJ/&quot; data-live-cell=&quot;matchlink PROFIT: 1.19 
+URL: http://www.betexplorer.com/soccer/England/championship/preston-bristol-city/SKcu6PZN/ PROFIT: 0.03 
+URL: http://www.betexplorer.com/soccer/England/efl-cup/manchester-united-rochdale/volWvChJ/ PROFIT: 0.68 
+URL: http://www.betexplorer.com/soccer/England/npl-premier-division/stafford-buxton/M5BEqbA2/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/England/premier-league/everton-manchester-city/nZiPASBs/ PROFIT: 0.72 
+URL: http://www.betexplorer.com/soccer/Poland/division-1/podbeskidzie-tychy/88p7dqmp/&quot; data-live-cell=&quot;matchlink PROFIT: 0.54 
+URL: http://www.betexplorer.com/soccer/Poland/division-2/garbarnia-stal-stalowa-wola/pbHrL8z7/ PROFIT: 1 
+<BR>
+execution end Sun Sep 22 17:49:01 CEST 2019
+<BR>
+execution start Mon Sep 23 03:49:02 CEST 2019
+<BR>
+Sb:
+URL: http://www.betexplorer.com/soccer/England/championship/blackburn-luton/4tDFBT5n/ PROFIT: 0.47 
+URL: http://www.betexplorer.com/soccer/England/efl-cup/milton-keynes-dons-liverpool/SApSuhwD/ PROFIT: 1.15 
+URL: http://www.betexplorer.com/soccer/England/league-one/portsmouth-bolton/vBibmra1/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/England/league-two/stevenage-cambridge-utd/thkyI7qI/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/England/npl-premier-division/stafford-buxton/M5BEqbA2/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/England/premier-league/manchester-united-arsenal/8ltY86tf/ PROFIT: 0.03 
+URL: http://www.betexplorer.com/soccer/Poland/division-2/garbarnia-stal-stalowa-wola/pbHrL8z7/ PROFIT: 1 
+<BR>
+execution end Mon Sep 23 03:49:02 CEST 2019
+<BR>
+execution start Mon Sep 23 12:49:01 CEST 2019
+<BR>
+Sb:
+URL: http://www.betexplorer.com/soccer/England/championship/middlesbrough-sheffield-wed/Aq3z75KH/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/England/efl-cup/oxford-utd-west-ham/tjSE3eVJ/ PROFIT: 0.45 
+URL: http://www.betexplorer.com/soccer/England/premier-league/everton-manchester-city/nZiPASBs/ PROFIT: 0.86 
+URL: http://www.betexplorer.com/soccer/Poland/division-2/garbarnia-stal-stalowa-wola/pbHrL8z7/ PROFIT: 1 
+<BR>
+execution end Mon Sep 23 12:49:01 CEST 2019
+<BR>
+execution start Mon Sep 23 17:49:01 CEST 2019
+<BR>
+Sb:
+URL: http://www.betexplorer.com/soccer/Poland/ekstraklasa/gornik-z-lech-poznan/feFQjH7g/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/England/championship/blackburn-luton/4tDFBT5n/ PROFIT: 1.38 
+URL: http://www.betexplorer.com/soccer/England/efl-cup/milton-keynes-dons-liverpool/SApSuhwD/ PROFIT: 0.72 
+URL: http://www.betexplorer.com/soccer/England/npl-premier-division/stafford-buxton/M5BEqbA2/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/England/premier-league-2/west-brom-u23-newcastle-utd-u23/MyAz1Gm6/ PROFIT: 6.68 
+URL: http://www.betexplorer.com/soccer/England/premier-league/everton-manchester-city/nZiPASBs/ PROFIT: 0.86 
+URL: http://www.betexplorer.com/soccer/England/professional-development-league/burnley-u23-nottingham-u23/lzb2XsUI/&quot; data-live-cell=&quot;matchlink PROFIT: 0.70 
+URL: http://www.betexplorer.com/soccer/Poland/division-2/garbarnia-stal-stalowa-wola/pbHrL8z7/ PROFIT: 1 
+<BR>
+execution end Mon Sep 23 17:49:01 CEST 2019
+<BR>
+execution start Tue Sep 24 03:49:01 CEST 2019
+<BR>
+Sb:
+URL: http://www.betexplorer.com/soccer/England/championship/barnsley-brentford/z78BC9jt/ PROFIT: 0.65 
+URL: http://www.betexplorer.com/soccer/England/efl-cup/luton-leicester/YmoOtYN6/ PROFIT: 0.01 
+URL: http://www.betexplorer.com/soccer/England/league-one/peterborough-afc-wimbledon/dn2glOqe/ PROFIT: 0.20 
+URL: http://www.betexplorer.com/soccer/England/league-two/exeter-grimsby/Ug3pSi7P/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/England/national-league/torquay-eastleigh/j7lW41pq/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/England/npl-premier-division/stafford-buxton/M5BEqbA2/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/England/premier-league/tottenham-southampton/GEqt7pB6/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/Poland/division-2/elana-torun-pogon-siedlce/GITVNAjl/ PROFIT: 1 
+<BR>
+execution end Tue Sep 24 03:49:02 CEST 2019
+<BR>
+execution start Tue Sep 24 12:49:01 CEST 2019
+<BR>
+Sb:
+URL: http://www.betexplorer.com/soccer/England/championship/blackburn-luton/4tDFBT5n/ PROFIT: 1.84 
+URL: http://www.betexplorer.com/soccer/England/efl-cup/portsmouth-southampton/KtRI2FpQ/ PROFIT: 1.70 
+URL: http://www.betexplorer.com/soccer/England/league-one/peterborough-afc-wimbledon/dn2glOqe/ PROFIT: 0.55 
+URL: http://www.betexplorer.com/soccer/England/league-two/stevenage-cambridge-utd/thkyI7qI/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/England/npl-premier-division/stafford-buxton/M5BEqbA2/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/England/premier-league/bournemouth-west-ham/x8dEhodD/ PROFIT: 0.05 
+URL: http://www.betexplorer.com/soccer/England/southern-league-central-division/kings-langley-hitchin/YH01CHxE/ PROFIT: 1 
+<BR>
+execution end Tue Sep 24 12:49:02 CEST 2019
+<BR>
+execution start Tue Sep 24 17:49:01 CEST 2019
+<BR>
+Sb:
+URL: http://www.betexplorer.com/soccer/England/championship/blackburn-luton/4tDFBT5n/ PROFIT: 0.47 
+URL: http://www.betexplorer.com/soccer/England/efl-cup/milton-keynes-dons-liverpool/SApSuhwD/ PROFIT: 0.14 
+URL: http://www.betexplorer.com/soccer/England/league-one/peterborough-afc-wimbledon/dn2glOqe/ PROFIT: 0.55 
+URL: http://www.betexplorer.com/soccer/England/national-league-north/brackley-bradford-pa/fXrNUAue/ PROFIT: 1 
+URL: http://www.betexplorer.com/soccer/England/npl-premier-division/stafford-buxton/M5BEqbA2/ PROFIT: 1 
+<BR>
+execution end Tue Sep 24 17:49:01 CEST 2019
+<BR>
+execution start Wed Sep 25 03:49:01 CEST 2019
+<BR>
+Sb:
+URL: http://www.betexplorer.com/soccer/England/championship/barnsley-brentford/z78BC9jt/ PROFIT: 0.84 
+URL: http://www.betexplorer.com/soccer/England/league-one/peterborough-afc-wimbledon/dn2glOqe/ PROFIT: 0.55 
+<BR>
+execution end Wed Sep 25 03:49:01 CEST 2019
+<BR>
