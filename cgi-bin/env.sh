@@ -1,2 +1,2 @@
-export PERL5LIB=/home/ec2-user/arrakis/modules/perl5
+export PERL5LIB=/var/www/cgi-bin/modules/perl5
 
