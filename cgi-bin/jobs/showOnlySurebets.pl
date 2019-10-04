@@ -22,8 +22,7 @@ sub showMySureBets($)
 {
 	my($bookMakerOffer_xml) = @_;
 	my $xpathSelectionPattern = "//event[./bestCombinations/_1X2/profit > 0 ]";
-	#$xpathSelectionPattern = "//event";
-	#$xpathSelectionPattern = "/note";
+	
 	my @sureBets_nodes = $bookMakerOffer_xml->findnodes($xpathSelectionPattern);
 
 	my $toReturn = '';
@@ -32,9 +31,14 @@ sub showMySureBets($)
 		my $surebet_node = $_;
 		$surebet_node =~ /(http.*?)\"/;
 		my $event_url = $1;
-		$surebet_node =~ /\<profit\>(.*?)\</;		
+
+		$surebet_node =~ /\<profit\>(.*?)\</;				
 		my $profit = $1;
-		$toReturn = "URL: $event_url PROFIT: $profit \n";
+
+		$surebet_node =~ /(http.*)\/(.*?)(\/.*?\/)\"/;
+		my $event_name = $2;
+
+		$toReturn = "EventName: $event_name PROFIT: $profit \n";
 	}
 
 	return $toReturn;
