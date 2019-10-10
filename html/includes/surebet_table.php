@@ -1,3 +1,10 @@
+<?php 
+function generateSurebetTable()
+{
+	echo "test " .getcwd();
+
+};
+?>
 <table id="box-table-b" summary="Surebets table">
     <thead>
         <tr>

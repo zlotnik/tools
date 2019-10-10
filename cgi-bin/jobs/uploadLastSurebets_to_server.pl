@@ -6,24 +6,23 @@ use warnings;
 sub pushBreakLine();
 
 
-my $webPageLocation = '/var/www/html/index.php';
+my $dataLocation = '/var/www/data/last_surebets';
 
 my @list = `ls -t ../results`;
 my $newestDirectory = $list[0];
 chomp($newestDirectory);
 
-system("echo execution start `date` >>/var/www/html/index.php");
+system("echo execution start `date` >>$dataLocation");
 pushBreakLine();
-my $surebets = `perl showOnlySurebets.pl ../results/$newestDirectory >>/var/www/html/index.php`;
+my $surebets = `perl showOnlySurebets.pl ../results/$newestDirectory >$dataLocation`;
 print $surebets;
 pushBreakLine();
-system("echo execution end `date`  >>/var/www/html/index.php ");
+system("echo execution end `date`  >>$dataLocation ");
 pushBreakLine();
-#((system ("echo $surebets >>/var/www/html/index.php")) == 0 ) or die;
 
 
 
 sub pushBreakLine()
 {
-	system(qq|echo '<BR>' >>$webPageLocation |);
+	system(qq|echo '<BR>' >>$dataLocation |);
 }

@@ -15,7 +15,9 @@
 			<div class="span6">
 	  			<h2><strong>Bootstrap <span class="highlight primary">business theme</span></strong></h2>
 	  			<p class="lead">
-				<?php include("includes/surebet_table.php");?>
+				<?php include("includes/surebet_table.php");
+				generateSurebetTable();
+				?>
          			</p>
           			<ul class="list list-ok strong bigger">
             				<li>100% Compatible with twitter bootstrap</li>
