@@ -16,7 +16,7 @@
 	  			<h2><strong>Bootstrap <span class="highlight primary">business theme</span></strong></h2>
 	  			<p class="lead">
 				<?php include("includes/surebet_table.php");
-				generateSurebetTable();
+				generateSurebetTable('/var/www/data/last_surebets');
 				?>
          			</p>
           			<ul class="list list-ok strong bigger">

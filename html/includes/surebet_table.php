@@ -1,11 +1,28 @@
 <?php 
-function generateSurebetTable()
+function generateSurebetTable($surebetData_path)
 {
-	echo "test " .getcwd();
+	
+    $surebetsData = file($surebetData_path);
+
+    generateTable_Header();
+
+    generateTable_rows();
+    
+    foreach ($surebetsData as $line_num => $lineWithData) 
+    {
+        echo "Line $line";
+        generateSingle_table_row();
+        // echo "Line #<b>{$line_num}</b> : " . htmlspecialchars($line) . "<br />\n";
+    }
+
+    generateTable_Footer();
 
 };
-?>
-<table id="box-table-b" summary="Surebets table">
+
+function generateTable_Header()
+{
+    print <<< END
+    <table id="box-table-b" summary="Surebets table">
     <thead>
         <tr>
             <th scope="col">Profit</th>
@@ -21,6 +38,19 @@ function generateSurebetTable()
         </tr>
     </thead>
     <tbody>
+END;
+};
+
+function generateTable_Footer()
+{
+    echo '</tbody>';
+    echo '</table>';
+}
+
+
+function generateTable_rows()
+{
+    print <<< END
         <tr align="center" >
             <td align="center"> 2.2</td>
             <td>Soccer</td>
@@ -54,18 +84,28 @@ function generateSurebetTable()
             <td>36.7</td>
             <td>23.5</td>
             <td>40.3</td>
-        </tr>
-        <tr align="center"  >
-            <td>0.8</td>
+        </tr>      
+END;
+}
+function generateSingle_table_row($singleSurebetData)
+{
+    print <<< END
+    <tr align="center" >
+            <td align="center"> 2.2</td>
             <td>Soccer</td>
-            <td>Wisla - Cracovia</td>
-            <td>BetSafe</td>
-            <td>STS</td>
-            <td>SuperBet</td>
-            <td>29.3</td>
-            <td>29.3</td>
-            <td>29.3</td>
-        </tr>
-    </tbody>
-</table>
- 
+END;
+    
+    
+    preg_match('/EventName: () PROFIT: (\d+|\d+\.\d+)/', $singleSurebetData, $matches, PREG_OFFSET_CAPTURE);
+
+        //     <td>Wisla Krakow - Cracovia Krakow</td>
+        //     <td>bet365</td>
+        //     <td>Marathon</td>
+        //     <td>ComeOn</td>
+        //     <td>40.3</td>
+        //     <td>23.5</td>
+        //     <td>40.3</td>
+        // </tr>
+
+}
+?>
