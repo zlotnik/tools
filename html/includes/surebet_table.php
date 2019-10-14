@@ -6,12 +6,12 @@ function generateSurebetTable($surebetData_path)
 
     generateTable_Header();
 
-    generateTable_rows();
+    //generateTable_rows();
     
     foreach ($surebetsData as $line_num => $lineWithData) 
     {
-        echo "Line $line";
-        generateSingle_table_row();
+        //echo "Line $line";
+        generateSingle_table_row($lineWithData);
         // echo "Line #<b>{$line_num}</b> : " . htmlspecialchars($line) . "<br />\n";
     }
 
@@ -87,25 +87,31 @@ function generateTable_rows()
         </tr>      
 END;
 }
+
 function generateSingle_table_row($singleSurebetData)
 {
-    print <<< END
-    <tr align="center" >
-            <td align="center"> 2.2</td>
-            <td>Soccer</td>
-END;
+    print '<tr align="center" >';
     
     
-    preg_match('/EventName: () PROFIT: (\d+|\d+\.\d+)/', $singleSurebetData, $matches, PREG_OFFSET_CAPTURE);
+    preg_match('/EventName: (.*) PROFIT: (\d+\.\d+|\d+)/', $singleSurebetData, $matches);
+    //preg_match('/EventName(.*)/', $singleSurebetData, $matches, PREG_OFFSET_CAPTURE);
+    $eventName = $matches[1];
+    $profit = $matches[2];
+    print_r($matches);
+    //print $singleSurebetData . "END";
+    //print $profit;
+    //exit();
 
-        //     <td>Wisla Krakow - Cracovia Krakow</td>
-        //     <td>bet365</td>
-        //     <td>Marathon</td>
-        //     <td>ComeOn</td>
-        //     <td>40.3</td>
-        //     <td>23.5</td>
-        //     <td>40.3</td>
-        // </tr>
+    print '<td align="center">' . $profit . '</td>';
+    print "<td>Soccer</td>";
+    print "<td>$eventName</td>";
+    print "<td>TODO</td>";
+    print "<td>TODO</td>";
+    print "<td>ComeOn</td>";
+    print "<td>40.3</td>";
+    print "<td>23.5</td>";
+    print "<td>40.3</td>";
+    print "</tr>";
 
 }
 ?>
