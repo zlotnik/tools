@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+  <dataSources>
+    <betexplorer />
+  </dataSources>
+  <eventList>
+    <soccer>
+      <England>
+        <isthmian-league-premier-division>
+          <Events>
+            <event url="http://www.betexplorer.com/soccer/England/isthmian-league-premier-division/bowers-pitsea-corinthian-casuals/CQOltcYD/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>1</profit>
+                  <_1 />
+                  <_X />
+                  <_2 />
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/England/isthmian-league-premier-division/folkestone-bognor-regis/YuDcvy3Q/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-3.98</profit>
+                  <_1>
+                    <_1xBet>1.60</_1xBet>
+                  </_1>
+                  <_X>
+                    <_youwin>4.50</_youwin>
+                  </_X>
+                  <_2>
+                    <_1xBet>5.15</_1xBet>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/England/isthmian-league-premier-division/horsham-merstham/A14PZfBs/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-6.32</profit>
+                  <_1>
+                    <_1xBet>1.63</_1xBet>
+                  </_1>
+                  <_X>
+                    <_1xBet>4.10</_1xBet>
+                  </_X>
+                  <_2>
+                    <_1xBet>4.76</_1xBet>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/England/isthmian-league-premier-division/kingstonian-east-thurrock-utd/4O3TYEQm/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>1</profit>
+                  <_1 />
+                  <_X />
+                  <_2 />
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/England/isthmian-league-premier-division/lewes-cray/0jcxXhe0/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-6.27</profit>
+                  <_1>
+                    <_1xBet>2.51</_1xBet>
+                  </_1>
+                  <_X>
+                    <_1xBet>3.66</_1xBet>
+                  </_X>
+                  <_2>
+                    <_1xBet>2.53</_1xBet>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/England/isthmian-league-premier-division/margate-stortford/vsdtWCA6/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>1</profit>
+                  <_1 />
+                  <_X />
+                  <_2 />
+                </_1X2>
+              </bestCombinations>
+            </event>
+          </Events>
+        </isthmian-league-premier-division>
+      </England>
+    </soccer>
+  </eventList>
+</note>

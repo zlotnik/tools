@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+  <dataSources>
+    <betexplorer />
+  </dataSources>
+  <eventList>
+    <soccer>
+      <England>
+        <national-league-south>
+          <Events>
+            <event url="http://www.betexplorer.com/soccer/England/national-league-south/billericay-wealdstone/h6LLpb4R/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>1</profit>
+                  <_1 />
+                  <_X />
+                  <_2 />
+                </_1X2>
+              </bestCombinations>
+            </event>
+          </Events>
+        </national-league-south>
+      </England>
+    </soccer>
+  </eventList>
+</note>

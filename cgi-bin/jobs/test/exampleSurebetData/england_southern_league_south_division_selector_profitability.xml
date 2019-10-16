@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+  <dataSources>
+    <betexplorer />
+  </dataSources>
+  <eventList>
+    <soccer>
+      <England>
+        <southern-league-south-division>
+          <Events>
+            <event url="http://www.betexplorer.com/soccer/England/southern-league-south-division/farnborough-wimborne/CzKoDvrM/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-0.56</profit>
+                  <_1>
+                    <_Exchange>2.81</_Exchange>
+                  </_1>
+                  <_X>
+                    <_bwin>3.75</_bwin>
+                  </_X>
+                  <_2>
+                    <_1xBet>2.61</_1xBet>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/England/southern-league-south-division/tiverton-yate/jRIkCbcS/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-4.01</profit>
+                  <_1>
+                    <_Betway>1.43</_Betway>
+                  </_1>
+                  <_X>
+                    <_1xBet>5.30</_1xBet>
+                  </_X>
+                  <_2>
+                    <_Betfair>6.50</_Betfair>
+                    <_BetVictor>6.50</_BetVictor>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/England/southern-league-south-division/beaconsfield-town-merthyr-town/rZbBazWC/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>1</profit>
+                  <_1 />
+                  <_X />
+                  <_2 />
+                </_1X2>
+              </bestCombinations>
+            </event>
+          </Events>
+        </southern-league-south-division>
+      </England>
+    </soccer>
+  </eventList>
+</note>

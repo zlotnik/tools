@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+  <dataSources>
+    <betexplorer />
+  </dataSources>
+  <eventList>
+    <soccer>
+      <England>
+        <southern-league-central-division>
+          <Events>
+            <event url="http://www.betexplorer.com/soccer/England/southern-league-central-division/lowestoft-needham-market/fVTDBayL/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>1</profit>
+                  <_1 />
+                  <_X />
+                  <_2 />
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/England/southern-league-central-division/banbury-biggleswade-town/zkkmQbjE/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-10.11</profit>
+                  <_1>
+                    <_1xBet>2.39</_1xBet>
+                  </_1>
+                  <_X>
+                    <_1xBet>3.40</_1xBet>
+                  </_X>
+                  <_2>
+                    <_1xBet>2.50</_1xBet>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/England/southern-league-central-division/bromsgrove-nuneaton/nPhiPI5K/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-9.81</profit>
+                  <_1>
+                    <_1xBet>2.50</_1xBet>
+                  </_1>
+                  <_X>
+                    <_1xBet>3.60</_1xBet>
+                  </_X>
+                  <_2>
+                    <_1xBet>2.32</_1xBet>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+          </Events>
+        </southern-league-central-division>
+      </England>
+    </soccer>
+  </eventList>
+</note>

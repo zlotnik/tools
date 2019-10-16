@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+  <dataSources>
+    <betexplorer />
+  </dataSources>
+  <eventList>
+    <soccer>
+      <Poland>
+        <iii-liga-group-iii>
+          <Events>
+            <event url="http://www.betexplorer.com/soccer/Poland/iii-liga-group-iii/brzeg-pniowek-pawlowice/MVImawK1/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-5.67</profit>
+                  <_1>
+                    <_1xBet>5.65</_1xBet>
+                  </_1>
+                  <_X>
+                    <_1xBet>4.82</_1xBet>
+                  </_X>
+                  <_2>
+                    <_Betclic>1.48</_Betclic>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/Poland/iii-liga-group-iii/gwarek-tarnowskie-gory-rekord-bielsko-biala/2T2n1akk/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-6.95</profit>
+                  <_1>
+                    <_1xBet>2.28</_1xBet>
+                  </_1>
+                  <_X>
+                    <_1xBet>4.00</_1xBet>
+                    <_Betclic>4.00</_Betclic>
+                  </_X>
+                  <_2>
+                    <_Betclic>2.59</_Betclic>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/Poland/iii-liga-group-iii/legnica-2-zaglebie-2/tK1j0J4e/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-6.58</profit>
+                  <_1>
+                    <_1xBet>1.59</_1xBet>
+                  </_1>
+                  <_X>
+                    <_1xBet>4.54</_1xBet>
+                  </_X>
+                  <_2>
+                    <_Betclic>4.52</_Betclic>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/Poland/iii-liga-group-iii/piast-zmigrod-foto-higiena-blyskawica-gac/863r2uzq/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>1</profit>
+                  <_1 />
+                  <_X />
+                  <_2 />
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/Poland/iii-liga-group-iii/row-rybnik-ruch/EP5ZMtC8/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-6.95</profit>
+                  <_1>
+                    <_Betclic>2.59</_Betclic>
+                  </_1>
+                  <_X>
+                    <_1xBet>4.00</_1xBet>
+                    <_Betclic>4.00</_Betclic>
+                  </_X>
+                  <_2>
+                    <_1xBet>2.28</_1xBet>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/Poland/iii-liga-group-iii/ruch-zdzieszowice-starowice-dolne/0MHibcZ7/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-5.92</profit>
+                  <_1>
+                    <_Betclic>1.17</_Betclic>
+                  </_1>
+                  <_X>
+                    <_1xBet>7.80</_1xBet>
+                  </_X>
+                  <_2>
+                    <_1xBet>12.50</_1xBet>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/Poland/iii-liga-group-iii/slask-wroclaw-2-kluczbork/lMMB71CL/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-6.95</profit>
+                  <_1>
+                    <_1xBet>1.80</_1xBet>
+                  </_1>
+                  <_X>
+                    <_Betclic>4.17</_Betclic>
+                  </_X>
+                  <_2>
+                    <_Betclic>3.58</_Betclic>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/Poland/iii-liga-group-iii/gornik-z-2-sleza-wroclaw/WpCG6LRR/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-7.03</profit>
+                  <_1>
+                    <_Betclic>2.66</_Betclic>
+                  </_1>
+                  <_X>
+                    <_1xBet>3.98</_1xBet>
+                    <_Betclic>3.98</_Betclic>
+                  </_X>
+                  <_2>
+                    <_1xBet>2.23</_1xBet>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+          </Events>
+        </iii-liga-group-iii>
+      </Poland>
+    </soccer>
+  </eventList>
+</note>

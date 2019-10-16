@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+  <dataSources>
+    <betexplorer />
+  </dataSources>
+  <eventList>
+    <soccer>
+      <England>
+        <isthmian-league-premier-division>
+          <Events>
+            <event url="http://www.betexplorer.com/soccer/England/isthmian-league-premier-division/bowers-pitsea-corinthian-casuals/CQOltcYD/">
+              <_1X2>
+                <_1 />
+                <_X />
+                <_2 />
+              </_1X2>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/England/isthmian-league-premier-division/folkestone-bognor-regis/YuDcvy3Q/">
+              <_1X2>
+                <_1>
+                  <_10Bet>1.49</_10Bet>
+                  <_1xBet>1.60</_1xBet>
+                  <_home>1.51</_home>
+                  <_Betfair>1.53</_Betfair>
+                  <_Betsafe>1.50</_Betsafe>
+                  <_Betsson>1.50</_Betsson>
+                  <_BetVictor>1.50</_BetVictor>
+                  <_bwin>1.50</_bwin>
+                  <_ComeOn>1.50</_ComeOn>
+                  <_Interwetten>1.55</_Interwetten>
+                  <_youwin>1.50</_youwin>
+                </_1>
+                <_X>
+                  <_10Bet>3.90</_10Bet>
+                  <_1xBet>4.04</_1xBet>
+                  <_home>3.93</_home>
+                  <_Betfair>4.00</_Betfair>
+                  <_Betsafe>4.10</_Betsafe>
+                  <_Betsson>4.10</_Betsson>
+                  <_BetVictor>4.00</_BetVictor>
+                  <_bwin>4.40</_bwin>
+                  <_ComeOn>3.95</_ComeOn>
+                  <_Interwetten>4.10</_Interwetten>
+                  <_youwin>4.50</_youwin>
+                </_X>
+                <_2>
+                  <_10Bet>4.80</_10Bet>
+                  <_1xBet>5.15</_1xBet>
+                  <_home>4.66</_home>
+                  <_Betfair>5.00</_Betfair>
+                  <_Betsafe>4.90</_Betsafe>
+                  <_Betsson>4.90</_Betsson>
+                  <_BetVictor>5.00</_BetVictor>
+                  <_bwin>4.40</_bwin>
+                  <_ComeOn>4.85</_ComeOn>
+                  <_Interwetten>4.85</_Interwetten>
+                  <_youwin>4.50</_youwin>
+                </_2>
+              </_1X2>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/England/isthmian-league-premier-division/horsham-merstham/A14PZfBs/">
+              <_1X2>
+                <_1>
+                  <_10Bet>1.54</_10Bet>
+                  <_1xBet>1.63</_1xBet>
+                  <_home>1.55</_home>
+                  <_Betfair>1.57</_Betfair>
+                  <_Betsafe>1.56</_Betsafe>
+                  <_Betsson>1.56</_Betsson>
+                  <_BetVictor>1.55</_BetVictor>
+                  <_bwin>1.57</_bwin>
+                  <_ComeOn>1.56</_ComeOn>
+                  <_Interwetten>1.60</_Interwetten>
+                  <_youwin>1.57</_youwin>
+                </_1>
+                <_X>
+                  <_10Bet>3.80</_10Bet>
+                  <_1xBet>4.10</_1xBet>
+                  <_home>3.85</_home>
+                  <_Betfair>4.00</_Betfair>
+                  <_Betsafe>3.90</_Betsafe>
+                  <_Betsson>3.90</_Betsson>
+                  <_BetVictor>4.00</_BetVictor>
+                  <_bwin>4.00</_bwin>
+                  <_ComeOn>3.85</_ComeOn>
+                  <_Interwetten>4.00</_Interwetten>
+                  <_youwin>3.90</_youwin>
+                </_X>
+                <_2>
+                  <_10Bet>4.45</_10Bet>
+                  <_1xBet>4.76</_1xBet>
+                  <_home>4.40</_home>
+                  <_Betfair>4.60</_Betfair>
+                  <_Betsafe>4.60</_Betsafe>
+                  <_Betsson>4.60</_Betsson>
+                  <_BetVictor>4.60</_BetVictor>
+                  <_bwin>4.25</_bwin>
+                  <_ComeOn>4.55</_ComeOn>
+                  <_Interwetten>4.60</_Interwetten>
+                  <_youwin>4.20</_youwin>
+                </_2>
+              </_1X2>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/England/isthmian-league-premier-division/kingstonian-east-thurrock-utd/4O3TYEQm/">
+              <_1X2>
+                <_1 />
+                <_X />
+                <_2 />
+              </_1X2>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/England/isthmian-league-premier-division/lewes-cray/0jcxXhe0/">
+              <_1X2>
+                <_1>
+                  <_10Bet>2.35</_10Bet>
+                  <_1xBet>2.51</_1xBet>
+                  <_home>2.38</_home>
+                  <_Betfair>2.40</_Betfair>
+                  <_Betsafe>2.40</_Betsafe>
+                  <_Betsson>2.40</_Betsson>
+                  <_BetVictor>2.40</_BetVictor>
+                  <_bwin>2.40</_bwin>
+                  <_ComeOn>2.40</_ComeOn>
+                  <_Interwetten>2.45</_Interwetten>
+                  <_youwin>2.40</_youwin>
+                </_1>
+                <_X>
+                  <_10Bet>3.45</_10Bet>
+                  <_1xBet>3.66</_1xBet>
+                  <_home>3.45</_home>
+                  <_Betfair>3.60</_Betfair>
+                  <_Betsafe>3.55</_Betsafe>
+                  <_Betsson>3.55</_Betsson>
+                  <_BetVictor>3.60</_BetVictor>
+                  <_bwin>3.50</_bwin>
+                  <_ComeOn>3.50</_ComeOn>
+                  <_Interwetten>3.55</_Interwetten>
+                  <_youwin>3.40</_youwin>
+                </_X>
+                <_2>
+                  <_10Bet>2.35</_10Bet>
+                  <_1xBet>2.53</_1xBet>
+                  <_home>2.38</_home>
+                  <_Betfair>2.40</_Betfair>
+                  <_Betsafe>2.40</_Betsafe>
+                  <_Betsson>2.40</_Betsson>
+                  <_BetVictor>2.40</_BetVictor>
+                  <_bwin>2.40</_bwin>
+                  <_ComeOn>2.40</_ComeOn>
+                  <_Interwetten>2.45</_Interwetten>
+                  <_youwin>2.40</_youwin>
+                </_2>
+              </_1X2>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/England/isthmian-league-premier-division/margate-stortford/vsdtWCA6/">
+              <_1X2>
+                <_1 />
+                <_X />
+                <_2 />
+              </_1X2>
+            </event>
+          </Events>
+        </isthmian-league-premier-division>
+      </England>
+    </soccer>
+  </eventList>
+</note>

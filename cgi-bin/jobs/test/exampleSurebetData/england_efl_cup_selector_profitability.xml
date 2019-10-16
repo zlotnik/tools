@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+  <dataSources>
+    <betexplorer />
+  </dataSources>
+  <eventList>
+    <soccer>
+      <England>
+        <efl-cup>
+          <Events>
+            <event url="http://www.betexplorer.com/soccer/England/efl-cup/burton-leicester/KzpybCMS/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-1.48</profit>
+                  <_1>
+                    <_Betclic>6.05</_Betclic>
+                  </_1>
+                  <_X>
+                    <_1xBet>4.70</_1xBet>
+                  </_X>
+                  <_2>
+                    <_1xBet>1.57</_1xBet>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/England/efl-cup/crawley-town-colchester/MqW2gWUq/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-1.47</profit>
+                  <_1>
+                    <_888sport>2.70</_888sport>
+                    <_Unibet>2.70</_Unibet>
+                  </_1>
+                  <_X>
+                    <_1xBet>3.48</_1xBet>
+                  </_X>
+                  <_2>
+                    <_1xBet>2.80</_1xBet>
+                    <_bet365>2.80</_bet365>
+                    <_bwin>2.80</_bwin>
+                    <_youwin>2.80</_youwin>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/England/efl-cup/everton-watford/UoiO0ExA/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-1.57</profit>
+                  <_1>
+                    <_1xBet>1.88</_1xBet>
+                  </_1>
+                  <_X>
+                    <_1xBet>3.82</_1xBet>
+                  </_X>
+                  <_2>
+                    <_888sport>4.50</_888sport>
+                    <_Unibet>4.50</_Unibet>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/England/efl-cup/manchester-city-southampton/QDpXbh7M/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-0.50</profit>
+                  <_1>
+                    <_1xBet>1.24</_1xBet>
+                  </_1>
+                  <_X>
+                    <_Betsafe>7.35</_Betsafe>
+                    <_Betsson>7.35</_Betsson>
+                  </_X>
+                  <_2>
+                    <_Unibet>16.00</_Unibet>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/England/efl-cup/oxford-utd-sunderland/Sd13iAad/">
+              <bestCombinations>
+                <_1X2>
+                  <profit>-1.71</profit>
+                  <_1>
+                    <_1xBet>3.04</_1xBet>
+                  </_1>
+                  <_X>
+                    <_1xBet>3.68</_1xBet>
+                  </_X>
+                  <_2>
+                    <_888sport>2.40</_888sport>
+                    <_Unibet>2.40</_Unibet>
+                  </_2>
+                </_1X2>
+              </bestCombinations>
+            </event>
+          </Events>
+        </efl-cup>
+      </England>
+    </soccer>
+  </eventList>
+</note>
