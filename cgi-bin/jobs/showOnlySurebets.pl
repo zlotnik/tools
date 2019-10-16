@@ -39,7 +39,9 @@ sub showMySureBets($)
 		my $surebet_node = $_;
 	
 
-		my $profit = fetch_profit_fromEventBestCombinationNode($surebet_node); 	
+		my $profit = fetch_profit_fromEventBestCombinationNode($surebet_node);
+		
+		
 		my $event_name = fetch_EventName_fromEventBestCombinationNode($surebet_node);
 		my $price_1 = fetch_1_Price_fromEventBestCombinationNode($surebet_node);
 		my $price_X = fetch_X_Price_fromEventBestCombinationNode($surebet_node);
@@ -48,9 +50,14 @@ sub showMySureBets($)
 		my $bookmaker_X = fetch_Bookmaker_X_fromEventBestCombinationNode($surebet_node);
 		my $bookmaker_2 = fetch_Bookmaker_2_fromEventBestCombinationNode($surebet_node);
 		
-		$toReturn = "EventName: $event_name PROFIT: $profit ";
-		$toReturn .= "bookmaker_1 $bookmaker_1 bookmaker_x $bookmaker_X bookmaker_2 $bookmaker_2 ";
-		$toReturn .= "price_1 $price_1 price_X $price_X price_2 $price_2\n"
+		if($profit != 1) #temporary workaround untill issue with empty nodes will be solved in backend functionality
+		{
+			$toReturn = "EventName: $event_name PROFIT: $profit ";
+			$toReturn .= "bookmaker_1 $bookmaker_1 bookmaker_x $bookmaker_X bookmaker_2 $bookmaker_2 ";
+			$toReturn .= "price_1 $price_1 price_X $price_X price_2 $price_2\n"
+		}
+
+		
 	}
 
 	return $toReturn;
