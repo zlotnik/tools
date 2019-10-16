@@ -10,3 +10,4 @@ cgi-bin/rawdataevent_*.txt
 cgi-bin/results/*
 cgi-bin/tmp/*
 cgi-bin/tmp/bookmakerOffert.xml
+data/*
