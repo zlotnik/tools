@@ -6,13 +6,9 @@ function generateSurebetTable($surebetData_path)
 
     generateTable_Header();
 
-    //generateTable_rows();
-    
     foreach ($surebetsData as $line_num => $lineWithData) 
     {
-        //echo "Line $line";
         generateSingle_table_row($lineWithData);
-        // echo "Line #<b>{$line_num}</b> : " . htmlspecialchars($line) . "<br />\n";
     }
 
     generateTable_Footer();
@@ -94,13 +90,8 @@ function generateSingle_table_row($singleSurebetData)
     
     
     preg_match('/EventName: (.*) PROFIT: (\d+\.\d+|\d+)/', $singleSurebetData, $matches);
-    //preg_match('/EventName(.*)/', $singleSurebetData, $matches, PREG_OFFSET_CAPTURE);
     $eventName = $matches[1];
     $profit = $matches[2];
-    print_r($matches);
-    //print $singleSurebetData . "END";
-    //print $profit;
-    //exit();
 
     print '<td align="center">' . $profit . '</td>';
     print "<td>Soccer</td>";
