@@ -25,12 +25,11 @@ function generateTable_Header()
             <th scope="col">Discipline</th>
             <th scope="col">Event name</th>
             <th scope="col">Bookmaker 1</th>
+            <th scope="col">Bookmaker X</th>
             <th scope="col">Bookmaker 2</th>
-            <th scope="col">Bookmaker 3</th>
+            <th scope="col">Price 1</th>
+            <th scope="col">Price X</th>
             <th scope="col">Price 2</th>
-            <th scope="col">Bookmaker 3</th>
-            <th scope="col">Price 3</th>
-
         </tr>
     </thead>
     <tbody>
@@ -43,66 +42,31 @@ function generateTable_Footer()
     echo '</table>';
 }
 
-
-function generateTable_rows()
-{
-    print <<< END
-        <tr align="center" >
-            <td align="center"> 2.2</td>
-            <td>Soccer</td>
-            <td>Wisla Krakow - Cracovia Krakow</td>
-            <td>bet365</td>
-            <td>Marathon</td>
-            <td>ComeOn</td>
-            <td>40.3</td>
-            <td>23.5</td>
-            <td>40.3</td>
-        </tr>
-        <tr  align="center"  >
-            <td>2.0</td>
-            <td>Soccer</td>
-            <td>Amica Wronki - Legia Warszawa</td>
-            <td>Unibet</td>
-            <td>William Hill</td>
-            <td>Pinnacle</td>
-            <td>39.3</td>
-            <td>23.5</td>
-            <td>40.3</td>
-
-        </tr>
-        <tr  align="center"  >
-            <td>1.2</td>
-            <td>Soccer</td>
-            <td>Ruch Chorzow - Legia Warszawa</td>
-            <td>Interwetten</td>
-            <td>YouWin</td>
-            <td>Marathon</td>
-            <td>36.7</td>
-            <td>23.5</td>
-            <td>40.3</td>
-        </tr>      
-END;
-}
-
 function generateSingle_table_row($singleSurebetData)
 {
     print '<tr align="center" >';
     
     
-    preg_match('/EventName: (.*) PROFIT: (\d+\.\d+|\d+)/', $singleSurebetData, $matches);
+    preg_match('/EventName: (.*) PROFIT: (\d+\.\d+|\d+) bookmaker_1 (\w+) bookmaker_x (\w+) bookmaker_2 (\w+) price_1 (\d+\.\d+|\d+) price_X (\d+\.\d+|\d+) price_2 (\d+\.\d+|\d+)/', $singleSurebetData, $matches);
     $eventName = $matches[1];
     $profit = $matches[2];
+    $bookmakerName_1 = $matches[3];
+    $bookmakerName_x = $matches[4];
+    $bookmakerName_2 = $matches[5];
+    $price_1 = $matches[6];
+    $price_x = $matches[7];
+    $price_2 = $matches[8];
 
     print '<td align="center">' . $profit . '</td>';
     print "<td>Soccer</td>";
     print "<td>$eventName</td>";
-    print "<td>TODO</td>";
-    print "<td>TODO</td>";
-    print "<td>ComeOn</td>";
-    print "<td>40.3</td>";
-    print "<td>23.5</td>";
-    print "<td>40.3</td>";
+    print "<td>$bookmakerName_1</td>";
+    print "<td>$bookmakerName_x</td>";    
+    print "<td>$bookmakerName_2</td>";
+    print "<td>$price_1</td>";    
+    print "<td>$price_x</td>";
+    print "<td>$price_2</td>";
     print "</tr>";
-
+    
 }
 ?>
