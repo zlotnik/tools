@@ -41,9 +41,14 @@ foreach(@selectorFiles)
 	}
 	
 	my $commandToExecute = "./surebetCrafter.sh $selectorFileName $outputFilePath";  
-	(system($commandToExecute) == 0) or die $!;	
+	if(system($commandToExecute) != 0 )
+	{
+		print "WARNNG: AN ERROR DURING PROCESSING SELECTOR FILE ${selectorFileName}\n";
+		print "$!\n";
+	}
+	
+		
 }
-
 
 sub randomSecond_Delay($$)
 {
