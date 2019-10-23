@@ -1,7 +1,7 @@
 <meta charset="utf-8">
-<title>Plato - Clean responsive bootstrap website template</title>
+<title>Surebet Harvest - Your way to become filthy reach</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Clean responsive bootstrap website template">
+<meta name="description" content="Surebet Harvest - Your way to become filthy reach">
 <meta name="author" content="">
 <!-- styles -->
 <link href="assets/css/bootstrap.css" rel="stylesheet">
