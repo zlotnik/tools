@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+  <dataSources>
+  <betexplorer/>  
+  </dataSources>
+  <dataChoosenToDownload>
+  <soccer>
+  <Norway>
+  <eliteserien/>
+  <obos-ligaen/>
+  <division-2-group-1/>
+  <division-2-group-2/>
+  <division-3-group-1/>
+  <division-3-group-2/>
+  <division-3-group-3/>
+  <division-3-group-4/>
+  <division-3-group-5/>
+  <division-3-group-6/>
+  <nm-cup/>
+  <norway-cup-women/>
+  </Norway>
+  </soccer>
+  </dataChoosenToDownload>
+  
+</note> 
