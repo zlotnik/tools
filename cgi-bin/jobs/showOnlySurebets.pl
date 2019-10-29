@@ -18,6 +18,7 @@ sub fetch_BookmakerName_2_fromEventBestCombinationNode($);
 sub fetch_profit_fromEventBestCombinationNode($);
 sub fetch_Price_fromEventBestCombinationNode($$);
 sub fetch_BookmakerName_fromEventBestCombinationNode($$);
+sub remove_ampersandPart_ofURL($);
 
 defined $ARGV[0] or die "You must specify a path to directory with bookmaker offer files"; 
 
@@ -69,15 +70,35 @@ sub fetch_profit_fromEventBestCombinationNode($)
 
 }
 
+sub remove_ampersandPart_ofURL($)
+{
+	my ($url) = @_;
+
+	if($url =~ /(\S*)(\&\S*)/)
+	{
+		return $1;
+	}
+	else
+	{
+		return $url;
+	}
+}
+
 sub fetch_EventName_fromEventBestCombinationNode($)
 {
 	my ($surebet_node ) = @_;
 
 	$surebet_node =~ /(http.*?)\"/;
 	my $event_url = $1;
+	my $event_name;
 
-	$surebet_node =~ /(http.*)\/(.*?)(\/.*?\/)\"/;
-	my $event_name = $2;
+	$event_url = remove_ampersandPart_ofURL($event_url); #this should be done earlier at downloading stage
+
+	if ($event_url =~ /(http:\/\/www.betexplorer.com.*)\/(.*?)(\/.*?\/)/)
+	{
+		$event_name = $2;	
+	}
+	
 	return $event_name
 
 };
