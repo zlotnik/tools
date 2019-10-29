@@ -11,3 +11,4 @@ cgi-bin/results/*
 cgi-bin/tmp/*
 cgi-bin/tmp/bookmakerOffert.xml
 data/*
+*.code-workspace.code-workspace
