@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+  <dataSources>
+  <betexplorer/>  
+  </dataSources>
+  <dataChoosenToDownload>
+  <soccer>
+  <Argentina>
+  <torneo-federal-a/>
+  <primera-nacional/>
+  <superliga/>
+  <primera-c-metropolitanamex/>
+  </Argentina>
+  </soccer>
+  </dataChoosenToDownload>  
+</note> 
