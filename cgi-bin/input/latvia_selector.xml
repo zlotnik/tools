@@ -5,10 +5,9 @@
   </dataSources>
   <dataChoosenToDownload>
   <soccer>
-  <Colombia>
-  <liga-aguila/>
-  <torneo-aguila/>
-  </Colombia>
+  <Latvia>
+  <optibet-virsliga/>  
+  </Latvia>
   </soccer>
   </dataChoosenToDownload>  
 </note> 
