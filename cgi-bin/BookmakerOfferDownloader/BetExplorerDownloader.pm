@@ -14,6 +14,7 @@ use File::Copy qw(copy);
 use WojtekToolbox;
 use CommonFunctionalities;
 use Cwd;
+use HTML_1X2_Events_Parser;
 use feature 'say';
 
 our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml pullBookmakersOffer);
@@ -48,8 +49,6 @@ sub startCreatingXmlPartWithAnEventDetail($);
 sub pickupLinksFromXml($);
 sub removeEmptyLines(\$);
 sub showUsage();
-sub simplifyFormatOfRawdata(\$);
-sub leaveOnlyBetsStakesDataInRawdataFile(\$);
 sub prepareTemplateForXmlFileWithResults($);
 sub isEventsNodeExists($$);
 sub addEventNodeToXmlEventList($$);
@@ -203,7 +202,7 @@ sub injectBookmakerProductEventOffertIntoXML($$$)
 sub injectBookmakerEventOfferIntoXML($$)
 {
 	my ($dataWithBets, $nodeThatNeedUpdated) = @_;
-		
+	
 	$nodeThatNeedUpdated->addChild( my $xmlNode_1 = XML::LibXML::Element->new("_1"));
 	$nodeThatNeedUpdated->addChild( my $xmlNode_X = XML::LibXML::Element->new("_X"));
 	$nodeThatNeedUpdated->addChild( my $xmlNode_2 = XML::LibXML::Element->new("_2"));
@@ -212,7 +211,7 @@ sub injectBookmakerEventOfferIntoXML($$)
 	{
 		my $lineWithBetData = $_;
 		my ($bookmakerName, $price_1, $price_X, $price_2);
-			 
+			
 		if($lineWithBetData =~ m|(\w*) (\d?\d\.\d\d) (\d?\d\.\d\d) (\d?\d\.\d\d)| )
 		{
 			($bookmakerName, $price_1, $price_X, $price_2) = ($1, $2, $3,$4 );
@@ -221,7 +220,8 @@ sub injectBookmakerEventOfferIntoXML($$)
 			injectBookmakerProductEventOffertIntoXML($xmlNode_X, $bookmakerName,  $price_X);
 			injectBookmakerProductEventOffertIntoXML($xmlNode_2, $bookmakerName,  $price_2);
 		}	
-	}		
+	}
+		
 };
 
 sub updateEventListXMLWithBookmakerOffer($)
@@ -243,10 +243,12 @@ sub updateEventListXMLWithBookmakerOffer($)
 		my $linkToEvent = $1;
 		
 		print "downloading $linkToEvent \n";
-		my $dataWithBets = $self->{m_BookmakerPageCrawler}->getRawDataOfEvent($linkToEvent);		
+		my $dataWithBets = $self->{m_BookmakerPageCrawler}->getRawDataOfEvent($linkToEvent); #raw data doesn't correspont to its functionality anymore because it download data in html form
+	
+		my $eventParser = HTML_1X2_Events_Parser->new();
 
-		simplifyFormatOfRawdata($dataWithBets);
-		
+		$dataWithBets = $eventParser->parse($dataWithBets);
+
 		injectBookmakerEventOfferIntoXML($dataWithBets, $nodeThatNeedUpdated);
 	}
 		
@@ -579,6 +581,7 @@ sub findBestOdds($)
 
 };
 
+#todo rename sub; raw data doesn't correspont to its functionality anymore because it download data in html form
 #tod refactor getRawDataOfEvent 
 sub getRawDataOfEvent($)# todo create synchronous-mocked version
 {
@@ -628,60 +631,13 @@ sub getRawDataOfEvent($)# todo create synchronous-mocked version
 		kill 9, $pid;
 		print STDOUT "UNABLE TO FETCH $linkToEvent PID $pid \n";
 	}
-	
-	#simplifyFormatOfRawdata($rawDataPath); #i think better would be do it on file or before creation file	
+		
 	open(my $fh, '<', $rawDataPath) or die ;
 	$rawDataToReturn = $fh;
 	close $fh or die;
 	
 	return $rawDataToReturn;
 }
-
-sub simplifyFormatOfRawdata(\$)
-{
-	my $rawDataContent = ${$_[0]};
-	
-	removeEmptyLines($rawDataContent);
-	leaveOnlyBetsStakesDataInRawdataFile($rawDataContent);
-	${$_[0]} = $rawDataContent; 
-	
-}
-
-sub leaveOnlyBetsStakesDataInRawdataFile(\$)
-{
-	my $rawDataContent = ${$_[0]};
-	
-	unless( $rawDataContent =~ m#(Bookmakers:[\s\S]*?)Average odds#m)
-	{
- 		print "WARNING: problem during processing row data $rawDataContent x\n";
-	}
-
-	my $rawDataContentFilteredOut = '';	
-	$rawDataContent = $1;
-	foreach(split("\n",$rawDataContent))
-	{
-
-		my $lineOfRawData  = $_;
-		if($lineOfRawData =~ m|(\d{1,2}\.\d{2})|)
-		{
-			$rawDataContentFilteredOut .=  " ".$1 ; 
-		}
-		elsif($lineOfRawData =~ /([A-Za-z0-9].*)/)
-		{
-			chomp($1);			
-			$rawDataContentFilteredOut = $rawDataContentFilteredOut . "\n$1"  ; 
-		
-		}
-		elsif($lineOfRawData =~ /^(Bookmakers:.*)/)
-		{
-			$rawDataContentFilteredOut = $rawDataContentFilteredOut . "$1\n";
-		}	
-	}
-	
-	${$_[0]} = $rawDataContentFilteredOut;	
-
-}
-
 
 sub createJavaScriptForDownload($)
 {

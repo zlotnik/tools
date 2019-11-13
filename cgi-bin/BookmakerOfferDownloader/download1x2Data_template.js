@@ -8,7 +8,7 @@ page.open('__URL_TO_FILL__', function(status) {
     console.log('Unable to access network');
   } else {
     var ua = page.evaluate(function() {
-      return document.getElementById('odds-all').textContent;
+      return document.getElementById('odds-all').innerHTML;
     });
     console.log(ua);
   }
