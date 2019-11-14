@@ -92,7 +92,7 @@ sub start
 				$self->append_to_parsingResults("${price_X} ")				
 			}		
 			
-			if($self->{td_number_in_tr_STATE} == 6)
+			if($self->{td_number_in_tr_STATE} == 7)
 			{
 				my $price_2 = ${$attr}{'data-odd'};
 				$self->append_to_parsingResults("${price_2}\n")				
