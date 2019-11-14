@@ -1,5 +1,7 @@
 package HTML_1X2_Events_Parser;
-use base qw(HTML::Parser);
+# use parent qw(HTML::Parser);
+use HTML::Parser;
+our @ISA = qw(HTML::Parser);
 
 sub new();
 
@@ -13,25 +15,50 @@ sub unsetState_inside_td();
 sub setState_inside_td();
 sub setState_inside_td_with1_price();
 sub unsetState_inside_td_with1_price();
-
+sub append_to_parsingResults($);
 sub set_1_price();
+sub isInside_tbody();
+
+
+sub append_to_parsingResults($)
+{
+	my ($self, $parsingResults) = @_;
+	$self->{parsing_results} .= $parsingResults; 
+
+};
+
+sub get_parsingResults()
+{
+	
+	return $self->{parsing_results};
+}
 
 sub setState_inside_tbody()
 {	
 	
 }
 
-my $tr_counter_debug = 0; 
+sub isInside_tbody()
+{
+	return ($self->{inside_tbody_STATE} != 0);
+
+}
 
 sub new()
 {
-	print "Functional module BookmakerOfferDownloader\n";
+	
 	my ($class) = @_;
-	my $self;
-		
+	
+	
 	$self = bless {}, $class;
-
-	#set default()
+	
+	$self->{htmlParser} = HTML::Parser->new(	api_version => 3,
+                        			start_h => [\&start, "tagname, attr"],
+                        			end_h   => [\&end,   "tagname"],
+                        			marked_sections => 1,
+                      			);
+	
+	$self->{parsing_results} = '';
 	$self->{inside_tbody_STATE} = 0;
 	$self->{td_number_in_tr_STATE} = 0;
 	$self->{inside_td_STATE} = 0;
@@ -42,11 +69,7 @@ sub new()
 
 sub start 
 { 
-	if($tr_counter_debug == 2)
-	{
-		print '';
-	}
-
+	
 	my ($tagname, $attr, $attrseq, $origtext) = @_;
 	if ($tagname eq 'tbody') 
 	{
@@ -62,7 +85,8 @@ sub start
 		
 			my $onclick = ${$attr}{'onclick'};
 			$onclick =~ /'event-name'\: '(\w+?)'/;
-			print $1." ";
+			my $bookMakerName = $1;
+			$self->append_to_parsingResults("${bookMakerName} ");			
 		}				
 	}
 
@@ -72,28 +96,34 @@ sub start
 		{						
 			$self->{td_number_in_tr_STATE}++;
 		}
-				
-		if($self->{td_number_in_tr_STATE} == 5)
-		{
-			print ${$attr}{'data-odd'}; 
-		}
-		if($self->{td_number_in_tr_STATE} == 6)
-		{
-			print ' '.${$attr}{'data-odd'};
-		}		
-		
-		if($self->{td_number_in_tr_STATE} == 6)
-		{
-			print ' '.${$attr}{'data-odd'};
-		}
 
-		# print "found td\n";		
+		if(isInside_tbody())
+		{
+			if($self->{td_number_in_tr_STATE} == 5)
+			{				
+				# print ${$attr}{'data-odd'};
+				my $price_1 = ${$attr}{'data-odd'};
+				$self->append_to_parsingResults("${price_1} ")				
+			}
+			if($self->{td_number_in_tr_STATE} == 6)
+			{
+				my $price_X = ${$attr}{'data-odd'};
+				$self->append_to_parsingResults("${price_X} ")				
+			}		
+			
+			if($self->{td_number_in_tr_STATE} == 7)
+			{
+				my $price_2 = ${$attr}{'data-odd'};
+				$self->append_to_parsingResults("${price_2}\n")				
+			}
+		}			
+		
+
 	}
 
 	if ($tagname eq 'tr') 
-	{
-		$tr_counter_debug++;
-		print "\n";
+	{		
+		# print "\n";
 		$self->{inside_tr_STATE} = 1;		
 	}
 }
@@ -106,6 +136,11 @@ sub end
 	{
 		$self->{inside_tr_STATE} = 0;
 		$self->{td_number_in_tr_STATE} = 0;
+	}
+	
+	if ($tagname eq 'tbody')
+	{
+		$self->{inside_tbody_STATE} = $self->{inside_tbody_STATE} - 1;  
 	}
 }
 # package main;
@@ -135,17 +170,26 @@ my $html = <<EOHTML;
 		<td class="table-main__detail-odds" data-odd="6.00" data-created="02,11,2019,20,19"><i class="icon icon__increasing table-main__icon"></i> <span class="table-main__detail-odds--hasarchive" title="Click to see odds movements" onclick="load_odds_archive(this, '3lhd1xv464x0x9h2rq', 16);">6.00</span></td>
 	</tr>
 </tbody>
+<tr>
+	<td>Average odds</td>
+	<td>Average odds</td>
+	<td>1.60</td>
+	<td>3</td>
+	<td class="table-main__detail-odds" data-odd="5.45">5.44</td>
+</tr>
 EOHTML
 
 
-my $parser = HTML::Parser->new( api_version => 3,
-                        start_h => [\&start, "tagname, attr"],
-                        end_h   => [\&end,   "tagname"],
-                        marked_sections => 1,
-                      );
-sub parse()
+sub parse($)
 {
-	$parser->parse( $html );
+	my ($self, $htmlEvent) = @_;
+	
+	# $parser->parse_file( $path_htmlEventFile );
+	# $parser->parse( $htmlEvent );
+	# $self->SUPER::parse($html);
+	$self->{htmlParser}->parse($html);
+	# $self->SUPER::parse_file('exampleOfOut.html');	
+	return 	$self->get_parsingResults()
 }
 
 
