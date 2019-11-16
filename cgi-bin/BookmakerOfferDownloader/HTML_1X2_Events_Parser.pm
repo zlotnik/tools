@@ -65,8 +65,9 @@ sub start
 		{
 		
 			my $onclick = ${$attr}{'onclick'};
-			$onclick =~ /'event-name'\: '(\w+?)'/;
+			$onclick =~ /'event-name'\: '(.+?)'/;
 			my $bookMakerName = $1;
+			$bookMakerName =~ tr/- //d;
 			$self->append_to_parsingResults("${bookMakerName} ");			
 		}				
 	}
