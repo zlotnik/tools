@@ -36,9 +36,9 @@ sub tryToGetUrl($$)
 sub isConnectedToInternet()
 {
 	
-	my $ping_answer  = `ping 8.8.8.8 -n 1`;
+	my $ping_answer  = `ping 8.8.8.8 -c 1 -w 2`;
 	
-	return ($ping_answer =~ /.*Reply from.*/);
+	return ($ping_answer =~ /.*1 packets transmitted, 1 received, 0% packet loss.*/);
 	
 }
 
