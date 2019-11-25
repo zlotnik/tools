@@ -11,12 +11,14 @@ use File::Copy;
 #TODO: parsers should be moved to separated directory outside this module
 
 print "****TEST SUITE PARSING DATA*****\n\n"; 
-my $correctBookmakerSelectorFile = "$FindBin::Bin/../../input/parameters/examples/ekstraklasaSelector.xml";
-my $correctDownloadedBookmakerOfferFile = "$FindBin::Bin/../../output/example/downloadedBookMakersOffer.xml";
-my $correctBookmakerEventList = "$FindBin::Bin/../../output/example/downloadedEventList.xml";
-my $mockedRawDataPath = "$FindBin::Bin/../../tmp/rawDataMockFile";
-my $modelSurebetsFile = "$FindBin::Bin/../../../ProfitabilityCalculator/output/model/surebetsPolandEkstraklasa.xml";
-my $offerProfitabilityFilePath = "$FindBin::Bin/../../../ProfitabilityCalculator/output/model/bookmakerOfferProfitabilityFile.xml"; 
+my $bookmakerOfferDownloader_directoryPath = $ENV{BACKEND_ROOT_DIRECTORY}.'/BookmakerOfferDownloader';
+
+my $correctBookmakerSelectorFile = "${bookmakerOfferDownloader_directoryPath}/input/parameters/examples/ekstraklasaSelector.xml";
+my $correctDownloadedBookmakerOfferFile = "${bookmakerOfferDownloader_directoryPath}/output/example/downloadedBookMakersOffer.xml";
+my $correctBookmakerEventList = "${bookmakerOfferDownloader_directoryPath}/output/example/downloadedEventList.xml";
+my $mockedRawDataPath = "${bookmakerOfferDownloader_directoryPath}/tmp/rawDataMockFile";
+my $modelSurebetsFile = "${bookmakerOfferDownloader_directoryPath}/../ProfitabilityCalculator/output/model/surebetsPolandEkstraklasa.xml";
+my $offerProfitabilityFilePath = "${bookmakerOfferDownloader_directoryPath}/../ProfitabilityCalculator/output/model/bookmakerOfferProfitabilityFile.xml"; 
 
 my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
 
