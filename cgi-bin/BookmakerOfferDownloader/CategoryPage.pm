@@ -67,7 +67,7 @@ sub new($)
 
 sub getAllSubCategories($)
 {
-	#CategoryPage::getAllSubCategories
+	
 	my ($self, $xpatToSubcategory) = @_;
 
 	for(@{$self->{m_CategoryPagesHandlers}})

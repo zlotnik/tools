@@ -309,7 +309,7 @@ sub updateXmlNodeWithDataFromBookmaker($$) #todo use better name
 sub isLinkToEvent($)
 {
 	my $stringToCheck = $_[0];
-	return ($stringToCheck =~ m|http://|);
+	return ($stringToCheck =~ m|https://|);
 	
 }
 

@@ -127,7 +127,7 @@ sub pickupLinksToEventFromTable($)
 		
 		if($numberOfBookmaker > 0) 
 		{			
-			push @linksToEvents, "http://www.betexplorer.com$1";
+			push @linksToEvents, "https://www.betexplorer.com$1";
 		}		 
 	}
 	return @linksToEvents;

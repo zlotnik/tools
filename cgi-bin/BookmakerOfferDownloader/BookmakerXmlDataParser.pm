@@ -174,11 +174,25 @@ sub isCorrectEventListFile($)
 	my $self = shift;
 	my $xmlSelectorPath = $_[0];
 	my $xmlParser = XML::LibXML->new; 
-	my $xmlParserDoc = $xmlParser->parse_file($xmlSelectorPath) or return 0; 
-	my $downloadedOfferXmlNode = $xmlParserDoc->findnodes("/note/eventList")->[0] or return 0;
-	my $disciplineXmlNode = $downloadedOfferXmlNode->nonBlankChildNodes->[0];
+	my $xmlParserDoc = $xmlParser->parse_file($xmlSelectorPath); 
 	
-	if(isCorrectDisciplineName($disciplineXmlNode->nodeName))
+	if(not $xmlParserDoc)
+	{
+		print "BookmakerXmlDataParser::ERROR: file ${xmlSelectorPath} isn't a correct XML file\n";
+		return 0;	
+	} 
+	
+	my $downloadedOfferXmlNode = $xmlParserDoc->findnodes("/note/eventList")->[0];
+	if(not $downloadedOfferXmlNode)
+	{
+		print "BookmakerXmlDataParser::ERROR Unable to find node /note/eventList in ${xmlSelectorPath} \n";
+		return 0;
+	}
+	
+	my $disciplineXmlNode = $downloadedOfferXmlNode->nonBlankChildNodes->[0];
+	my $disciplineName = $disciplineXmlNode->nodeName;
+
+	if(isCorrectDisciplineName($disciplineName))
 	{
 		my $countryCategoryXmlNode = $disciplineXmlNode->nonBlankChildNodes->[0];
 		my $countryCategoryName = $countryCategoryXmlNode->nodeName; 
@@ -188,9 +202,18 @@ sub isCorrectEventListFile($)
 		{
 			return 1;
 		}
+		else
+		{
+			return 0;	
+		} 
+
+	}
+	else
+	{
+		print "BookmakerXmlDataParser::ERROR discipline ${disciplineName} isn't correct discipline name\n";
+		return 0;
 	}
 	
-	return 0;
 };
 
 sub isEventListFileHasCorrectSyntax($)
@@ -217,26 +240,29 @@ sub isEventListFileHasCorrectSyntax($)
 
 sub isCorrectLinkToEventXmlNode($)
 {
-	# c BookmakerXmlDataParser::isCorrectLinkToEventXmlNode
+	
 	my $eventNode = $_[0];
 	$eventNode =~ m|event url="(.*)"|;
-	my $urlToEvent = $1; 
-	my $htmlContent = get($urlToEvent);
-	if(defined $htmlContent)
+	my $urlToEvent = $1;
+	my $curlQuery = qq(curl -A "Mozilla/5.0" ${urlToEvent} >/dev/null);
+	`$curlQuery`;
+		
+	if($? == 0)
 	{
 		return 1;
 	}
 	
-	#http://www.betexplorer.com/soccer/argentina/superliga/lanus-union-de-santa-fe/fcQZl3E2/
+	
 	$urlToEvent =~ /(.*www.betexplorer.com)(.*)/;
 	 
-	#input/mockedWWW/soccer//soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/
+	
 	my $pathToMockDataOfEvent = "input/mockedWWW/" . $2 ; 
 	if(-e $pathToMockDataOfEvent)
 	{
 		return 1;
 	}
 	
+	print "BookmakerXmlDataParser ERROR: incorrect link to event: ${urlToEvent}\n";
 	return 0;
 		
 }

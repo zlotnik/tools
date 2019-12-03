@@ -47,7 +47,7 @@ sub new()
 sub getAllSubCategories()
 {
 	my ($self, $subCategoryXpath ) = @_;
-	my @toReturn = ();
+	my @toReturn;
 	
 	my $linkToCategory = 'https://www.betexplorer.com/soccer/' ;
 	my $contentOfSubcategoryPage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToCategory); 
@@ -57,7 +57,7 @@ sub getAllSubCategories()
 			push @toReturn, $1;
 	}
 	
-	if ($#toReturn)
+	if ($#toReturn == -1)
 	{
 		print "There is no any event for ${subCategoryXpath}\n";
 	}

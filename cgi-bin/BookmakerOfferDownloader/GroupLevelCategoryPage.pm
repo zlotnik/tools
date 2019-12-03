@@ -61,7 +61,8 @@ sub getAllSubCategories($)
 		print "There is no event for $linkToCategory\n";
 		print "DEBUG: Can't match expression ${regexp}\n";
 	}
-	else	{
+	else	
+	{
 		
 		my $htmlTableWithEvents = $1.$2.$3;
 		@toReturn = BetexplorerParser::pickupLinksToEventFromTable($htmlTableWithEvents);	

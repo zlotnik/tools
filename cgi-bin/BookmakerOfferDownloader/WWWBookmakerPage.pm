@@ -140,7 +140,7 @@ sub createJavaScriptForDownload($)
 sub get($)
 {
 	my ($self, $linkToGet) = @_;
-
+	print "curl command: curl -A \"Mozilla/5.0\" $linkToGet\n";
 	#my $result = LWP::Simple::get($linkToGet) or die "unable to get $linkToGet $? $0";  
 	my $result = `curl -A "Mozilla/5.0" $linkToGet`;
 	return $result;
