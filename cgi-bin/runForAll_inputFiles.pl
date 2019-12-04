@@ -20,6 +20,18 @@ if(defined $ARGV[0])
 
 
 ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime();
+
+if ($mday < 10)
+{
+	$mday = "0" . $mday; 
+}
+
+$mon = $mon+1; 
+if($mon < 10)
+{
+	$mon = "0" . $mon; 
+} 
+
 my $timeStamp = $year +1900 . $mon+1 . $mday . '_' . $hour . '_' . $min . '_' .$sec ;	
 
 my $outputDirectory = "results/${timeStamp}";
