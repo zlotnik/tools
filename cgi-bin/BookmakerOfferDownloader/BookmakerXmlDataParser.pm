@@ -56,7 +56,7 @@ sub isCorrectProfitabilityFile($)
 													<eventList>.*
 													<($disciplineName_re)>.*
 													<Events>.*
-													<event.url="http://www.betexplorer.com/($disciplineName_re).*".?>.*
+													<event.url="https://www.betexplorer.com/($disciplineName_re).*".?>.*
 													<bestCombinations>.*													
 													<profit>-?\d{1,2}\.\d{1,2}</profit>.*
 													</bestCombinations>.*
@@ -84,7 +84,7 @@ sub isCorrectSurebetsFile($)
 													^<\?xml.version="1.0".encoding="(?:UTF|utf)-8"\?>.*
 													<note>.*
 													<surebetList>.*
-													<surebet.url="http://www.betexplorer.com/(?:$disciplineName_re).*".?>.*
+													<surebet.url="https://www.betexplorer.com/(?:$disciplineName_re).*".?>.*
 													<type>.*</type>.*
 													<profit>\d{1,2}\.\d{1,2}</profit>.*
 													<bets>.*
@@ -158,7 +158,7 @@ sub isCorectDownloadedBookmakerOfferFile($)
 													<eventList>.*
 													<($disciplineName_re)>.*
 													<Events>.*
-													<event.url="http://www.betexplorer.com/($disciplineName_re).*".?>.*
+													<event.url="https://www.betexplorer.com/($disciplineName_re).*".?>.*
 													(</event>).*
 													</Events>.*
 													</($disciplineName_re)>.*

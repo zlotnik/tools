@@ -50,11 +50,11 @@ sub getRawDataOfEvent($)
 {
 	my ($self, $linkToEvent) = @_;
 	
-	$linkToEvent =~ m|(http://www.betexplorer.com/)(.*)|; 
+	$linkToEvent =~ m|(https://www.betexplorer.com/)(.*)|; 
 	
 	my $relativePathToEvent = $2;
 	
-	my $modelRawDataPath = 'input/mockedWWW/' . $relativePathToEvent . 'rawdataevent.txt';  
+	my $modelRawDataPath = 'input/mockedWWW/' . $relativePathToEvent . 'data_event.html';  
 	
 	my $modelRawDataFileHandler;
 	

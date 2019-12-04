@@ -144,7 +144,6 @@ sub pullBookmakersOffer($)
 	my $doc = $xmlParser->parse_file($pathToXmlSelector);
 	my $xpath = "";
 	my @rootXmlNode = $doc->findnodes("/");	
-	#my $rootXmlNode = $doc->findnodes("/")[0] or ->[0]; maybe this is better	
 	
 	$self->prepareTemplateForXmlFileWithResults($outputXmlPath);
 	$self->createEventListXML($xpath, $outputXmlPath);
@@ -365,8 +364,6 @@ sub isEventsNodeExists($$)
 		return 0;
 	}
 }
-
-
 
 sub addLinkToEventToOfferXml($$$)
 {
