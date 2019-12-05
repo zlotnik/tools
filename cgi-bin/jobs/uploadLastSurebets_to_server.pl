@@ -12,7 +12,7 @@ my @list = `ls -t ../results`;
 my $newestDirectory = $list[0];
 chomp($newestDirectory);
 
-my $surebets = `perl showOnlySurebets.pl ../results/$newestDirectory >$dataLocation`;
+my $surebets = `./showOnlySurebets.sh ../results/$newestDirectory >$dataLocation`;
 print $surebets;
 
 
