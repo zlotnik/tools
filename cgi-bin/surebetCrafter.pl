@@ -148,6 +148,12 @@ sub findSureBets($$)
 	$theProfitabilityCalculator->loadBookmakersOfferFile($xmlTemporaryResultFile);
 
 	$theProfitabilityCalculator->generateOfferProfitabilityFile($xmlResultFile);
+
+	my $isFileDeletionSucceed = unlink $xmlTemporaryResultFile;	
+	if(not $isFileDeletionSucceed)
+	{
+		print "ERROR: Cannot delete a file ${isFileDeletionSucceed}\n";
+	}
 	
 	
 
