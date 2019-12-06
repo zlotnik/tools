@@ -10,7 +10,9 @@ use File::Copy;
 print "****TEST REAL BETEXPLORER DOWNLOADER*****\n\n"; 
 
 my $xpath = "";
-my $correctBookmakerSelectorFile = "$FindBin::Bin/../../input/parameters/examples/ekstraklasaSelector.xml";
+
+my $bookMakerOfferDownloader_path = $ENV{BACKEND_ROOT_DIRECTORY}. "/BookmakerOfferDownloader"; 
+my $correctBookmakerSelectorFile = $bookMakerOfferDownloader_path. "/input/parameters/examples/ekstraklasaSelector.xml";
 
 my $theRealBookMakerDownloader =  BetExplorerDownloader->new('--realnet'); 
 my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 

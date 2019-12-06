@@ -107,8 +107,9 @@ sub loadSelectorFile($)
 sub validateSelectorFile()
 {
 	my $self = shift;
-	(-e $self->{mSelectorFile}) or die $?;
-	isItCorrectXmlFile($self->{mSelectorFile}) or die "the selector file isn't a correct xml file\n";  
+	my $selectorFile = $self->{mSelectorFile};
+	(-e ${selectorFile}) or die "selector file: ${selectorFile} doesn't exist";
+	isItCorrectXmlFile(${selectorFile}) or die "selector file: ${selectorFile} isn't a correct xml file\n";  
 	
 	
 }

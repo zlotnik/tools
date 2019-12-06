@@ -12,7 +12,8 @@ print "****TEST MOCKED BETEXPLORER DOWNLOADER*****\n\n";
 #todo: mock isn't enough close to real implementation creating javascripts isn't mocked 
 
 my $xpath = "";
-my $correctBookmakerSelectorFile = "$FindBin::Bin/../../input/parameters/examples/ekstraklasaSelector.xml";
+my $bookMakerOfferDownloader_path = $ENV{BACKEND_ROOT_DIRECTORY}. "/BookmakerOfferDownloader"; 
+my $correctBookmakerSelectorFile = "${bookMakerOfferDownloader_path}/input/parameters/examples/ekstraklasaSelector.xml";
 
 my $theMockedBookMakerDownloader =  BetExplorerDownloader->new('--mockednet'); 
 my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 

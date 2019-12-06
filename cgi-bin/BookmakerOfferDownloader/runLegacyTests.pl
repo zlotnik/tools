@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-my $legacyTestDirectory = "tests/legacy"; 
+my $legacyTestDirectory = "tests/functional_tests/legacy"; 
 
 opendir(my $dh, $legacyTestDirectory) or die;
 while(my $filename = readdir $dh)

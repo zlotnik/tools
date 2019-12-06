@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-#use Test::More tests => 1;
+use Test::More tests => 1;
 use lib '..';
 use BetExplorerDownloader;
 use BookmakerXmlDataParser;
@@ -16,11 +16,12 @@ print "****TEST SUITE NAME: $testSuiteName****\n\n";
 sub runParallelOfferDownloadTest(\@\@);
 sub downloadOffer($$);
 
-	
+my $bookMakerOfferDownloader_path = $ENV{BACKEND_ROOT_DIRECTORY}. "/BookmakerOfferDownloader";
+
 my @childrensPIDs;	
 my @listOfInputFiles = (
-						"$FindBin::Bin/../../input/parameters/examples/ekstraklasaSelector.xml",
-						"$FindBin::Bin/../../input/parameters/examples/qatarSelector.xml"
+						"${bookMakerOfferDownloader_path}/input/parameters/examples/ekstraklasaSelector.xml",
+						"${bookMakerOfferDownloader_path}/input/parameters/examples/qatarSelector.xml"
 						);
 
 my @listOfOutputFiles = (
