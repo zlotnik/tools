@@ -88,13 +88,13 @@ sub fetch_EventName_fromEventBestCombinationNode($)
 {
 	my ($surebet_node ) = @_;
 
-	$surebet_node =~ /(http.*?)\"/;
+	$surebet_node =~ /(https.*?)\"/;
 	my $event_url = $1;
 	my $event_name;
 
 	$event_url = remove_ampersandPart_ofURL($event_url); #this should be done earlier at downloading stage
 
-	if ($event_url =~ /(http:\/\/www.betexplorer.com.*)\/(.*?)(\/.*?\/)/)
+	if ($event_url =~ /(https:\/\/www.betexplorer.com.*)\/(.*?)(\/.*?\/)/)
 	{
 		$event_name = $2;	
 	}
