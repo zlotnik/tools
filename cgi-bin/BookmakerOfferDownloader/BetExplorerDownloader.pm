@@ -15,9 +15,9 @@ use WojtekToolbox;
 use CommonFunctionalities;
 use Cwd;
 use HTML_1X2_Events_Parser;
-use feature 'say';
 
-our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml pullBookmakersOffer);
+
+our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml pullBookmakersOffer add_bookmakerOffers_to_xmlWithSportEvents);
 
 ###############SUB PROTOTYPES############################################
 sub new();
@@ -40,7 +40,7 @@ sub getRootNode($);
 sub addChildSubcategoryNodeToOfferXml($$$);
 sub addLinkToEventToOfferXml($$$);
 sub updateEventListXMLWithEventDetails($);
-sub updateEventListXMLWithBookmakerOffer($);
+sub add_bookmakerOffers_to_xmlWithSportEvents($);
 sub correctFormatXmlDocument($);
 sub xmlDocumentHasNodeWithoutLineBreaks($);
 sub validateSelectorFile();
@@ -54,6 +54,8 @@ sub isEventsNodeExists($$);
 sub addEventNodeToXmlEventList($$);
 sub injectBookmakerEventOfferIntoXML($$);
 sub injectBookmakerProductEventOffertIntoXML($$$);
+sub add_UnderOver_offers($);
+sub add_1X2_offers($);
 #################DICTIONARY##############################################
 
 
@@ -150,7 +152,7 @@ sub pullBookmakersOffer($)
 	$self->createEventListXML($xpath, $outputXmlPath);
 	
 	updateEventListXMLWithEventDetails($outputXmlPath);
-	$self->updateEventListXMLWithBookmakerOffer($outputXmlPath);
+	$self->add_bookmakerOffers_to_xmlWithSportEvents($outputXmlPath);
 	
 }
 
@@ -224,7 +226,18 @@ sub injectBookmakerEventOfferIntoXML($$)
 		
 };
 
-sub updateEventListXMLWithBookmakerOffer($)
+
+sub add_UnderOver_offers($)
+{
+
+}
+
+sub add_1X2_offers($)
+{
+
+}
+
+sub add_bookmakerOffers_to_xmlWithSportEvents($)
 {
 		
 	my ($self, $pathToEventListXML) = @_;
@@ -233,9 +246,13 @@ sub updateEventListXMLWithBookmakerOffer($)
 	my @allEventXml = $xmlDoc->findnodes('/note/eventList//*//event'); 
 	
 	for(@allEventXml)
-	{
-		 
+	{		
 		my $eventNode = $_;
+
+		# add_1X2_offers($eventNode);#not implemented just draft 
+
+		# add_UnderOver_offers($eventNode);
+
 		my $nodeThatNeedUpdated = XML::LibXML::Element->new("_1X2"); 
 		$eventNode->addChild( $nodeThatNeedUpdated );
 		
@@ -585,50 +602,16 @@ sub getRawDataOfEvent($)# todo create synchronous-mocked version
 {
 	my $linkToEvent = $_[0];
 	createJavaScriptForDownload($linkToEvent);
+	
+	#my $javaScriptPath = createJavaScriptForDownload_1X2_events($linkToEvent);
 		
-	my $isProcessFinished = 0;
-	my $retryIdx = 0; 
 	my $rawDataToReturn = '';
 	my $rawDataPath = 'tmp/rawdataevent.txt';
 	
-	my $pid = fork();
-	my $isParrentProcess = ($pid == 0); 
-	if($isParrentProcess)
-	{
-		my $limitOfAttempts = 3;
-		sleep(1);
-		$isProcessFinished = (waitpid($pid, WNOHANG) > 0);
-		$retryIdx++;
-		while($isProcessFinished == 0 and $retryIdx++ < $limitOfAttempts)
-		{
-			sleep(26);			
-			$isProcessFinished = (waitpid($pid, WNOHANG) > 0);
-			print STDOUT "no answer from $linkToEvent  attemp no $retryIdx/$limitOfAttempts\n";					
-		}
-	}	
-	else
-	{
-		my $toReturnInChild = `phantomjs.exe tmp/download1x2Data.js`;
-		open RAWDATA , ">", $rawDataPath or die;
-		print RAWDATA $toReturnInChild;
-		close RAWDATA or die;		
-		exit(1);
-	}
-	
-	if($isProcessFinished)
-	{
-		open(my $fh, '<', $rawDataPath) or die "cannot open file $rawDataPath";
-		{
-			local $/;
-			$rawDataToReturn = <$fh>;#doesn't needed
-		}
-		close $fh or die;	
-	}	
-	else 
-	{
-		kill 9, $pid;
-		print STDOUT "UNABLE TO FETCH $linkToEvent PID $pid \n";
-	}
+	my $downloadedRawData = `phantomjs.exe tmp/download1x2Data.js`;
+	open RAWDATA , ">", $rawDataPath or die;
+	print RAWDATA $downloadedRawData;
+	close RAWDATA or die;		
 		
 	open(my $fh, '<', $rawDataPath) or die ;
 	$rawDataToReturn = $fh;
