@@ -415,32 +415,11 @@ sub generateOfferProfitabilityFile($)
 	my ($self, $offerProfitabilityOutputFilename) = @_;
 	
 	$self->cloneBookmakerOfferFile($offerProfitabilityOutputFilename);
-			
-	
-	#my $xmlParser = XML::LibXML->new; 
-	#my $xmlParserDoc = $xmlParser->parse_file($offerProfitabilityOutputFilename) or return 0;
-	
-	#my @allEventNodes = $xmlParserDoc->findnodes("/note/eventList//*//event");
-	
-	
 	
 	injectBestCombinationsNodeAfterEventNodes($offerProfitabilityOutputFilename);
 	leaveInProfitabilityFileOnlyBestPrices($offerProfitabilityOutputFilename);
 	updateWithProfitabilityData($offerProfitabilityOutputFilename);
 	
-
-	
-	#to removeVVV left just to know which sub remove
-	#foreach(@allEventNodes)
-	{		
-	#	my $eventNode = $_;
-			
-	#	addBestOption($eventNode);	
-		#
-	#	updateEventNodeWithBestCombinations($eventNode)
-		#
-	}
-	#save file
 };
 
 

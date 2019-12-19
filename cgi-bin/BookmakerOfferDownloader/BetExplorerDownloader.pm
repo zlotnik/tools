@@ -27,10 +27,6 @@ sub getTableWithEvents($);
 sub getLinksToEventFromTable($);
 sub pullBookmakersOffer($);
 sub downloadRawDataOfChoosenOfert(\%);
-sub generateReportLine($);
-sub getRawDataOfEvent($);
-sub findBestOdds($);
-sub calculateProfit(\%);
 sub checkNumberOfBookmaker($);
 sub convertRawDownloadedDataToHash($);
 sub createEventListXML($$);
@@ -112,8 +108,7 @@ sub validateSelectorFile()
 	my $selectorFile = $self->{mSelectorFile};
 	(-e ${selectorFile}) or die "selector file: ${selectorFile} doesn't exist";
 	isItCorrectXmlFile(${selectorFile}) or die "selector file: ${selectorFile} isn't a correct xml file\n";  
-	
-	
+		
 }
 
 sub isItCorrectXmlFile($)
@@ -130,7 +125,6 @@ sub isItCorrectXmlFile($)
 	}
 }
 #above could be moved to parser
-
 
 
 sub pullBookmakersOffer($) 
@@ -261,8 +255,8 @@ sub add_bookmakerOffers_to_xmlWithSportEvents($)
 		
 		print "downloading $linkToEvent \n";
 		my $dataWithBets = $self->{m_BookmakerPageCrawler}->getRawDataOfEvent($linkToEvent); #raw data doesn't correspont to its functionality anymore because it download data in html form
-	
-		my $eventParser = HTML_1X2_Events_Parser->new();
+			
+		my $eventParser = HTML_1X2_Events_Parser->new();		
 
 		$dataWithBets = $eventParser->parse($dataWithBets);
 
@@ -512,113 +506,6 @@ sub downloadRawDataOfChoosenOfert(\%)
 		die;
 	}
 };
-	
-
-sub generateReportLine($)
-{	
-	my $linkToEvent = $_[0];
-	my $resultLine = '';
-	my $rowDataForReport = getRawDataOfEvent($linkToEvent);
-	
-	if($rowDataForReport)
-	{
-		my %bestOdds  = findBestOdds($rowDataForReport);	
-		my $profit = calculateProfit(%bestOdds);
-			
-		$resultLine = $linkToEvent . ' ' . $bestOdds{'1'} .' ' . $bestOdds{'X'} .' ' . $bestOdds{'2'}  .' ' . $profit."\n"; 	
-		print STDOUT $resultLine; 	
-		if($profit > 0)
-		{
-			return $resultLine;
-		}
-		else
-		{
-			return '';
-		}
-	}
-	return '';
-}
-
-sub calculateProfit(\%)
-{
-	my %bestOdds = %{$_[0]};
-
-	my $best1  = $bestOdds{'1'};
-	my $bestX  = $bestOdds{'X'};
-	my $best2  = $bestOdds{'2'};
-	
-	my $profit1 = $best1 * 100;  
-	my $betX  = $profit1 / $bestX;  
-	my $bet2  = $profit1 / $best2;
-	
-	my $profit  =  ($best1 * 100) - (100 + $betX + $bet2) ;
-	my $profitPercent = ($profit / (100 + $betX + $bet2)) * 100;
-	return $profitPercent;
-}
-	
-
-
-sub findBestOdds($)
-{
-	my $dataWithBets  = $_[0];	
-	my %bestOdds; 
-	$bestOdds{'1'}  = 0.1;
-	$bestOdds{'X'}  = 0.1;
-	$bestOdds{'2'}  = 0.1;
-	
-	foreach(split("\n",$dataWithBets))
-	{
-		my $lineWithBetData = $_;
-		$lineWithBetData =~ s/[^\w\.]/#/g;
-		
-		if($lineWithBetData =~/(\w+)#{0,2}(\d?\d\.\d\d)(\d?\d\.\d\d)(\d?\d\.\d\d)/ )
-		{
-			if ($1 eq 'Interwetten')
-			{
-				
-				next;			
-			}
-			if($2 gt $bestOdds{'1'})
-			{
-				$bestOdds{'1'}  = $2;
-			}
-			if($3 gt $bestOdds{'X'})
-			{
-				$bestOdds{'X'}  = $3;
-			}
-			if($4 gt $bestOdds{'2'})
-			{
-				$bestOdds{'2'}  = $4;
-			}
-		}
-	}
-	return %bestOdds;
-
-};
-
-#todo rename sub; raw data doesn't correspont to its functionality anymore because it download data in html form
-#tod refactor getRawDataOfEvent 
-sub getRawDataOfEvent($)# todo create synchronous-mocked version
-{
-	my $linkToEvent = $_[0];
-	createJavaScriptForDownload($linkToEvent);
-	
-	#my $javaScriptPath = createJavaScriptForDownload_1X2_events($linkToEvent);
-		
-	my $rawDataToReturn = '';
-	my $rawDataPath = 'tmp/rawdataevent.txt';
-	
-	my $downloadedRawData = `phantomjs.exe tmp/download1x2Data.js`;
-	open RAWDATA , ">", $rawDataPath or die;
-	print RAWDATA $downloadedRawData;
-	close RAWDATA or die;		
-		
-	open(my $fh, '<', $rawDataPath) or die ;
-	$rawDataToReturn = $fh;
-	close $fh or die;
-	
-	return $rawDataToReturn;
-}
 
 sub createJavaScriptForDownload($)
 {

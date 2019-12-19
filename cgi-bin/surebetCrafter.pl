@@ -116,21 +116,11 @@ sub findSureBets($$)
 	#todo bug when input and output i sthe same file
 	#todo add to argument verification that we except only *.xml file
 	my ($xmlSelectorFile , $xmlResultFile) = @_;
-    	$xmlSelectorFile = Cwd::abs_path($xmlSelectorFile); 
+    $xmlSelectorFile = Cwd::abs_path($xmlSelectorFile); 
 	
-	if(is_it_Windows())
-	{
-		$xmlResultFile = getcwd . ($xmlResultFile); 
-	}
-	elsif(is_it_Linux())
-	{
-		
-		$xmlResultFile = getcwd .'/'. ($xmlResultFile); 
-	}
-	else
-	{
-		die "unsupported Operation System"; 
-	}
+	
+	$xmlResultFile = getcwd .'/'. ($xmlResultFile); 
+	
 
 	my $xmlTemporaryResultFile = $xmlResultFile;
 	$xmlTemporaryResultFile =~  s/\.xml/_tmp\.xml/;  
@@ -153,8 +143,6 @@ sub findSureBets($$)
 	if(not $isFileDeletionSucceed)
 	{
 		print "ERROR: Cannot delete a file ${isFileDeletionSucceed}\n";
-	}
-	
-	
+	}	
 
 };
