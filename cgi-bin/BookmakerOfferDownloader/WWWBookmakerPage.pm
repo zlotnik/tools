@@ -62,47 +62,24 @@ sub getRawDataOfEvent($)
 
 
 
-
-#WWWBookmakerPage::createRawDataFileOfEvent
 sub createRawDataFileOfEvent($)
 {
 	my ($linkToEvent) = @_;
 	my $javaScriptToRun = createJavaScriptForDownload($linkToEvent);
-		
-	my $res = 0;
-	my $retryIdx = 0; 
-	my $toReturn = ''; #todo clean up here
-	my $limitOfTrying = 4;
-	
-	my $rawDataFileName = ''; 
-	while($res == 0 and $retryIdx++ < $limitOfTrying)
-	{
-	
-		my $commandDownloadingRawData = "./phantomjs.elf $javaScriptToRun";
-		my $rawData = `$commandDownloadingRawData`;
-		my $isDownloadingSuccesfull = 1;
-		if ($rawData =~ /Unable to access network/ )
-		{
-			$isDownloadingSuccesfull = 0;
-		}
-		unless ($rawData =~ /ookmaker/)
-		{
-			$isDownloadingSuccesfull = 0;	
-		}	
-	
 
-		if($isDownloadingSuccesfull)
-		{
-			my $randomPostfix = new String::Random;
-			$randomPostfix =  $randomPostfix->randregex('\w\w\w\w\w\w');
-			$rawDataFileName = "tmp/". 'rawdataevent_' . $randomPostfix . '.txt'; #todo rawdata should have the same postfix as javascript used to download
-			open RAWDATA , ">", $rawDataFileName or die "Error while writing to $rawDataFileName\n"; 
-			print RAWDATA $rawData;
-			close RAWDATA or die;
-			return $rawDataFileName;
-		}
-				
-	}
+	my $commandDownloadingRawData = "./phantomjs.elf $javaScriptToRun";
+	my $rawData = `$commandDownloadingRawData`;
+	
+	
+	my $randomPostfix = new String::Random;
+	$randomPostfix =  $randomPostfix->randregex('\w\w\w\w\w\w');
+	my $rawDataFileName = "tmp/". 'rawdataevent_' . $randomPostfix . '.txt';
+
+
+	open RAWDATA , ">", $rawDataFileName or die "Error while writing to $rawDataFileName\n"; 
+	print RAWDATA $rawData;
+	close RAWDATA or die;
+			
 	return $rawDataFileName;
 	
 }
