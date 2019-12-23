@@ -37,7 +37,7 @@ ok($isCreateEventListXMLCorrect, "Real net stage 1: Creating event list xml: $re
 #checking mechanism stage  filling up bookmaker offer  data concerning events(online/not mocked version)
 $theRealBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile); #temporary moved before "BookMakerDownloader->createEventListXML"
 copy $correctBookmakerSelectorFile, $resultXMLFileWithDownloadedData or die $?; #does it needed?
-$theRealBookMakerDownloader->pullBookmakersOffer($resultXMLFileWithDownloadedData);
+$theRealBookMakerDownloader->create_BookmakersOfferFile($resultXMLFileWithDownloadedData);
 
 my $isCorectBookmakerOfferFile = $aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($resultXMLFileWithDownloadedData);
 ok($isCorectBookmakerOfferFile, "Real net stage 2: Pulling bookmakers offer ") or die; 

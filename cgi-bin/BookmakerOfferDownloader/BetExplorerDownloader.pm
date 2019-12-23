@@ -17,7 +17,7 @@ use Cwd;
 use HTML_1X2_Events_Parser;
 
 
-our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml pullBookmakersOffer add_bookmakerOffers_to_xmlWithSportEvents);
+our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml create_BookmakersOfferFile add_bookmakerOffers_to_xmlWithSportEvents);
 
 ###############SUB PROTOTYPES############################################
 sub new();
@@ -25,7 +25,7 @@ sub loadSelectorFile($);
 sub getsLinksForAllEventsFromSubCategory($$);
 sub getTableWithEvents($);
 sub getLinksToEventFromTable($);
-sub pullBookmakersOffer($);
+sub create_BookmakersOfferFile($);
 sub downloadRawDataOfChoosenOfert(\%);
 sub checkNumberOfBookmaker($);
 sub convertRawDownloadedDataToHash($);
@@ -44,7 +44,6 @@ sub isLinkToEvent($);
 sub startCreatingXmlPartWithAnEventDetail($);
 sub pickupLinksFromXml($);
 sub removeEmptyLines(\$);
-sub showUsage();
 sub prepareTemplateForXmlFileWithResults($);
 sub isEventsNodeExists($$);
 sub addEventNodeToXmlEventList($$);
@@ -87,14 +86,6 @@ sub new()
 	return $self; 
 }
 
-
-sub showUsage()
-{
-	#implement it
-}
-
-
-
 sub loadSelectorFile($)
 {	
 	my ($self, $selectorFilePath) = @_;
@@ -127,7 +118,7 @@ sub isItCorrectXmlFile($)
 #above could be moved to parser
 
 
-sub pullBookmakersOffer($) 
+sub create_BookmakersOfferFile($) 
 {
 	my ($self, $outputXmlPath) = @_;
 	
@@ -148,6 +139,13 @@ sub pullBookmakersOffer($)
 	updateEventListXMLWithEventDetails($outputXmlPath);
 	$self->add_bookmakerOffers_to_xmlWithSportEvents($outputXmlPath);
 	
+
+	# 1.  sport events selector
+	# 2.  xml with sport events
+	# 3.  xml with bookmaker offer
+	# 4.  profitability xml
+
+
 }
 
 sub correctFormatXmlDocument($)

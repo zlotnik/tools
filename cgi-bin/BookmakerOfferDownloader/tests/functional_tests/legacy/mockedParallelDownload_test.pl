@@ -81,7 +81,7 @@ sub downloadOffer($$)
 	#checking mechanism stage  filling up bookmaker offer  data concerning events(online/not mocked version)
 	$theMockedBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile); #temporary moved before "BookMakerDownloader->createEventListXML"
 	copy $correctBookmakerSelectorFile, $resultXMLFileWithDownloadedData or die $?; #does it needed?
-	$theMockedBookMakerDownloader->pullBookmakersOffer($resultXMLFileWithDownloadedData);
+	$theMockedBookMakerDownloader->create_BookmakersOfferFile($resultXMLFileWithDownloadedData);
 
 	my $isCorectBookmakerOfferFile = $aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($resultXMLFileWithDownloadedData);
 	ok($isCorectBookmakerOfferFile, "Mocked net stage parallel pulling bookmakers offer input file $correctBookmakerSelectorFile") or die; 
