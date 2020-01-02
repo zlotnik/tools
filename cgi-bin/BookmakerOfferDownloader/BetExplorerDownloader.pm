@@ -124,21 +124,13 @@ sub create_BookmakersOfferFile($)
 	
 	defined  $self->{mSelectorFile} or die "The selector file didn't loaded\n";
 	my $pathToXmlSelector = $self->{mSelectorFile};
-	
-	my $xmlParser = XML::LibXML->new;
-		
-	#below  name isn't adequate and Iam not sure if the fike isn't doubled somewhere
-	copy $pathToXmlSelector, $outputXmlPath or die "Can't copy file $pathToXmlSelector => $outputXmlPath current directory: ". getcwd() . "ERR: $!" ; 
-	my $doc = $xmlParser->parse_file($pathToXmlSelector);
-	my $xpath = "";
-	my @rootXmlNode = $doc->findnodes("/");	
-	
+
+	my $xpath = ""; 
 	$self->prepareTemplateForXmlFileWithResults($outputXmlPath);
 	$self->createEventListXML($xpath, $outputXmlPath);
 	
 	updateEventListXMLWithEventDetails($outputXmlPath);
 	$self->add_bookmakerOffers_to_xmlWithSportEvents($outputXmlPath);
-	
 
 	# 1.  sport events selector
 	# 2.  xml with sport events
