@@ -41,13 +41,33 @@ use BetExplorerDownloader;
 # sub injectBookmakerProductEventOffertIntoXML($$$);
 sub add_bookmakerOffers_to_xmlWithSportEvents();
 sub create_BookmakersOfferFile();
+sub createEventListXML();
 ############################MAIN##############################################
 
 #add_bookmakerOffers_to_xmlWithSportEvents();
 create_BookmakersOfferFile();
+createEventListXML();
+
 done_testing();
 
 ####################SUB DEFINITIONS############################################
+sub createEventListXML()
+{
+	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests";
+	my $subroutineName = 'createEventListXML'; #there should be subroutine to determine subroutine name  
+	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
+
+	my $examplarySelectorFile = "${subroutine_unitTest_directory}/selectorFile_example.xml";
+	my $sportEventList_actual = "${subroutine_unitTest_directory}/sportEventList_actual.xml" ;
+	my $sportEventList_expected = "${subroutine_unitTest_directory}/sportEventList_expected.xml";
+	unlink $sportEventList_actual;
+
+	$a_betExplorerDownloader->{mSelectorFile} = $examplarySelectorFile;
+	$a_betExplorerDownloader->create_BookmakersOfferFile($sportEventList_actual);
+	files_eq $sportEventList_actual , $sportEventList_expected , 'creating event list';
+}
+
 
 sub add_bookmakerOffers_to_xmlWithSportEvents()
 {
