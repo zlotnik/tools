@@ -68,9 +68,10 @@ sub create_BookmakersOfferFile()
 	my $bookMakerOfferFile_actual = "${subroutine_unitTest_directory}/bookmakerOfferFile_actual.xml" ;
 	my $bookMakerOfferFile_expected = "${subroutine_unitTest_directory}/bookmakerOfferFile_expected.xml";
 
+
+	unlink $bookMakerOfferFile_actual;
 	$a_betExplorerDownloader->{mSelectorFile} = $examplarySelectorFile;
 	$a_betExplorerDownloader->create_BookmakersOfferFile($bookMakerOfferFile_actual);
 	files_eq $bookMakerOfferFile_actual , $bookMakerOfferFile_expected , 'basic test selector file => bookmaker offer file';
-	unlink $bookMakerOfferFile_actual or die;
 
 }
