@@ -34,7 +34,7 @@ use BetExplorerDownloader;
 # sub pickupLinksFromXml($);
 # sub removeEmptyLines(\$);
 # sub showUsage();
-# sub prepareTemplateForXmlFileWithResults($);
+# sub prepareTemplateFor_SportEventsFile($);
 # sub isEventsNodeExists($$);
 # sub addEventNodeToXmlEventList($$);
 # sub injectBookmakerEventOfferIntoXML($$);
@@ -71,5 +71,6 @@ sub create_BookmakersOfferFile()
 	$a_betExplorerDownloader->{mSelectorFile} = $examplarySelectorFile;
 	$a_betExplorerDownloader->create_BookmakersOfferFile($bookMakerOfferFile_actual);
 	files_eq $bookMakerOfferFile_actual , $bookMakerOfferFile_expected , 'basic test selector file => bookmaker offer file';
+	unlink $bookMakerOfferFile_actual or die;
 
 }

@@ -27,7 +27,7 @@ if(-e $resultXMLFileWithDownloadedData)
 
 
 $theMockedBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
-$theMockedBookMakerDownloader->prepareTemplateForXmlFileWithResults($resultXMLFileWithDownloadedData); #this should be inside createEventListXML
+$theMockedBookMakerDownloader->prepareTemplateFor_SportEventsFile($resultXMLFileWithDownloadedData); #this should be inside createEventListXML
 $theMockedBookMakerDownloader->createEventListXML($xpath, $resultXMLFileWithDownloadedData);
 my $isCreateEventListXMLCorrect = $aBookmakerXmlDataParser->isCorrectEventListFile($resultXMLFileWithDownloadedData); 
 ok($isCreateEventListXMLCorrect, "Mocked net stage 1: Creating event list xml") or die;

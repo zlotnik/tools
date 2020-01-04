@@ -28,7 +28,7 @@ if(-e $resultXMLFileWithDownloadedData)
 
 
 $theRealBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
-$theRealBookMakerDownloader->prepareTemplateForXmlFileWithResults($resultXMLFileWithDownloadedData);
+$theRealBookMakerDownloader->prepareTemplateFor_SportEventsFile($resultXMLFileWithDownloadedData);
 $theRealBookMakerDownloader->createEventListXML($xpath, $resultXMLFileWithDownloadedData);
 my $isCreateEventListXMLCorrect = $aBookmakerXmlDataParser->isCorrectEventListFile($resultXMLFileWithDownloadedData); 
 ok($isCreateEventListXMLCorrect, "Real net stage 1: Creating event list xml: $resultXMLFileWithDownloadedData") or die;

@@ -44,7 +44,7 @@ sub isLinkToEvent($);
 sub startCreatingXmlPartWithAnEventDetail($);
 sub pickupLinksFromXml($);
 sub removeEmptyLines(\$);
-sub prepareTemplateForXmlFileWithResults($);
+sub prepareTemplateFor_SportEventsFile($);
 sub isEventsNodeExists($$);
 sub addEventNodeToXmlEventList($$);
 sub injectBookmakerEventOfferIntoXML($$);
@@ -126,7 +126,6 @@ sub create_BookmakersOfferFile($)
 	my $pathToXmlSelector = $self->{mSelectorFile};
 
 	my $xpath = ""; 
-	$self->prepareTemplateForXmlFileWithResults($outputXmlPath);
 	$self->createEventListXML($xpath, $outputXmlPath);
 	
 	updateEventListXMLWithEventDetails($outputXmlPath);
@@ -409,7 +408,7 @@ sub addChildSubcategoryNodeToOfferXml($$$)
 		
 	
 
-sub prepareTemplateForXmlFileWithResults($)
+sub prepareTemplateFor_SportEventsFile($)
 {
 	
 	my ($self,$outputXmlPath) = @_;
@@ -426,11 +425,14 @@ sub prepareTemplateForXmlFileWithResults($)
 sub createEventListXML($$)
 {
 	my ($self, $xpath, $outputXmlPath) = @_;
-
-		
-	my $xmlParser = XML::LibXML->new;		
-	my $xmlNode = $xmlParser->parse_file($outputXmlPath) or die;
 	
+	if(not $xpath) #temporary solution until recurency will be removed
+	{
+		$self->prepareTemplateFor_SportEventsFile($outputXmlPath);
+	}
+	
+	my $xmlParser = XML::LibXML->new;		
+	my $xmlNode = $xmlParser->parse_file($outputXmlPath) or die;	
 		
 	my $rootPathToEventXMLNode = '/note/eventList';
 	my $absolutePathToNode = "$rootPathToEventXMLNode${xpath}";
