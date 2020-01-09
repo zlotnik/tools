@@ -17,7 +17,8 @@ use Cwd;
 use HTML_1X2_Events_Parser;
 
 
-our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml create_BookmakersOfferFile add_bookmakerOffers_to_xmlWithSportEvents);
+our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml 
+				 create_BookmakersOfferFile add_bookmakerOffers_to_xmlWithSportEvents);
 
 ###############SUB PROTOTYPES############################################
 sub new();
@@ -51,6 +52,7 @@ sub injectBookmakerEventOfferIntoXML($$);
 sub injectBookmakerProductEventOffertIntoXML($$$);
 sub add_UnderOver_offers($);
 sub add_1X2_offers($);
+sub add_country_leagues($);
 #################DICTIONARY##############################################
 
 
@@ -128,7 +130,7 @@ sub create_BookmakersOfferFile($)
 	my $xpath = ""; 
 	$self->createEventListXML($xpath, $outputXmlPath);
 	
-	updateEventListXMLWithEventDetails($outputXmlPath);
+	updateEventListXMLWithEventDetails($outputXmlPath);#not implemented yet
 	$self->add_bookmakerOffers_to_xmlWithSportEvents($outputXmlPath);
 
 	# 1.  sport events selector
@@ -466,6 +468,14 @@ sub createEventListXML($$)
 	correctFormatXmlDocument($outputXmlPath);
 
 };
+
+sub add_country_leagues($)
+{
+	my $self = shift;
+	my ($selectorFile) = @_;
+	
+
+}
 
 
 sub getAllSubCategories($$)

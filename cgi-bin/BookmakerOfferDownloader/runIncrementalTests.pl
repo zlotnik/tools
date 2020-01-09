@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-my $incrementalTestsDirectory = "tests/incremental"; 
+my $incrementalTestsDirectory = "tests/functional_tests/incremental"; 
 
 opendir(my $dh, $incrementalTestsDirectory) or die;
 while(my $filename = readdir $dh)

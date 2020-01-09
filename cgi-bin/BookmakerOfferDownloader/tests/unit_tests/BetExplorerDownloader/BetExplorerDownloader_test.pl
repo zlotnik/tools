@@ -42,32 +42,56 @@ use BetExplorerDownloader;
 sub add_bookmakerOffers_to_xmlWithSportEvents();
 sub create_BookmakersOfferFile();
 sub createEventListXML();
+sub add_country_leagues();
 ############################MAIN##############################################
 
 #add_bookmakerOffers_to_xmlWithSportEvents();
 create_BookmakersOfferFile();
+add_country_leagues();
+# add_leagues_events();
 createEventListXML();
 
 done_testing();
 
 ####################SUB DEFINITIONS############################################
-sub createEventListXML()
+sub create_BookmakersOfferFile()
 {
+	my $subroutineName = get_subroutineName();
+	print "\nTESTING SUBROUTINE: $subroutineName\n";
+	
 	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
-	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests";
-	my $subroutineName = 'createEventListXML'; #there should be subroutine to determine subroutine name  
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
 
 	my $examplarySelectorFile = "${subroutine_unitTest_directory}/selectorFile_example.xml";
-	my $sportEventList_actual = "${subroutine_unitTest_directory}/sportEventList_actual.xml" ;
-	my $sportEventList_expected = "${subroutine_unitTest_directory}/sportEventList_expected.xml";
-	unlink $sportEventList_actual;
+	my $bookmakerOfferFile_actual = "${subroutine_unitTest_directory}/bookmakerOfferFile_actual.xml" ;
+	my $bookmakerOfferFile_expected = "${subroutine_unitTest_directory}/bookmakerOfferFile_expected.xml";
+	unlink $bookmakerOfferFile_actual;
 
 	$a_betExplorerDownloader->{mSelectorFile} = $examplarySelectorFile;
-	$a_betExplorerDownloader->create_BookmakersOfferFile($sportEventList_actual);
-	files_eq $sportEventList_actual , $sportEventList_expected , 'creating event list';
+	$a_betExplorerDownloader->create_BookmakersOfferFile($bookmakerOfferFile_actual);
+	files_eq $bookmakerOfferFile_actual , $bookmakerOfferFile_expected , 'creating the bookmaker offer file';
 }
 
+sub createEventListXML()
+{
+	my $subroutineName = get_subroutineName();
+	print "\nTESTING SUBROUTINE: $subroutineName\n";
+	
+	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
+
+	my $examplarySelectorFile = "${subroutine_unitTest_directory}/selectorFile_example.xml";
+	my $bookmakerEventList_actual = "${subroutine_unitTest_directory}/sportEventList_actual.xml" ;
+	my $bookmakerEventList_expected = "${subroutine_unitTest_directory}/sportEventList_expected.xml";
+	unlink $bookmakerEventList_actual;
+
+	$a_betExplorerDownloader->{mSelectorFile} = $examplarySelectorFile;
+	$a_betExplorerDownloader->createEventListXML('',$bookmakerEventList_actual);
+	files_eq $bookmakerEventList_actual , $bookmakerEventList_expected , 'creating the bookmaker offer file';
+
+}
 
 sub add_bookmakerOffers_to_xmlWithSportEvents()
 {
@@ -77,21 +101,33 @@ sub add_bookmakerOffers_to_xmlWithSportEvents()
 	$a_betExplorerDownloader->add_bookmakerOffers_to_xmlWithSportEvents($path2Xml_with_events);
 }
 
-sub create_BookmakersOfferFile()
+sub add_country_leagues()
 {
+	my $subroutineName = get_subroutineName();
+	print "\nTESTING SUBROUTINE: $subroutineName\n";
+
 	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
-	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests";
-	my $subroutineName = 'create_BookmakersOfferFile'; #there should be subroutine to determine subroutine name  
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+	
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
 
-	my $examplarySelectorFile = "${subroutine_unitTest_directory}/selectorFile_example.xml";
-	my $bookMakerOfferFile_actual = "${subroutine_unitTest_directory}/bookmakerOfferFile_actual.xml" ;
-	my $bookMakerOfferFile_expected = "${subroutine_unitTest_directory}/bookmakerOfferFile_expected.xml";
+	
+	my $examplarySelectorFile = "${subroutine_unitTest_directory}/sport_event_list_template.xml";
+	my $bookMakerOfferFile_actual = "${subroutine_unitTest_directory}/sport_event_leagues_list_actual.xml" ;
+
+	my $bookMakerOfferFile_expected = "${subroutine_unitTest_directory}/sport_event_leagues_list_expected.xml";
 
 
 	unlink $bookMakerOfferFile_actual;
 	$a_betExplorerDownloader->{mSelectorFile} = $examplarySelectorFile;
-	$a_betExplorerDownloader->create_BookmakersOfferFile($bookMakerOfferFile_actual);
+	$a_betExplorerDownloader->add_country_leagues($bookMakerOfferFile_actual);
 	files_eq $bookMakerOfferFile_actual , $bookMakerOfferFile_expected , 'basic test selector file => bookmaker offer file';
 
+}
+
+sub get_subroutineName()
+{	
+	my $calingFunctionName = (caller(1))[3] ;
+	$calingFunctionName =~ /main::(.*)/;
+	return  $1 ;
 }
