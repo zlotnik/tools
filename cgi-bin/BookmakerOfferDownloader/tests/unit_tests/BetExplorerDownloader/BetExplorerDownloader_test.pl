@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 use Test::File::Contents;
+use File::Copy 'cp'; 
 use BetExplorerDownloader;
 
 ###############SUB PROTOTYPES############################################
@@ -43,8 +44,11 @@ sub add_bookmakerOffers_to_xmlWithSportEvents();
 sub create_BookmakersOfferFile();
 sub createEventListXML();
 sub add_country_leagues();
+sub find_countries_xpaths();
+
 ############################MAIN##############################################
 
+find_countries_xpaths();
 #add_bookmakerOffers_to_xmlWithSportEvents();
 create_BookmakersOfferFile();
 add_country_leagues();
@@ -54,6 +58,12 @@ createEventListXML();
 done_testing();
 
 ####################SUB DEFINITIONS############################################
+
+sub find_countries_xpaths() 
+{
+
+} 
+
 sub create_BookmakersOfferFile()
 {
 	my $subroutineName = get_subroutineName();
@@ -108,20 +118,20 @@ sub add_country_leagues()
 
 	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
 	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
-	
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
 
-	
-	my $examplarySelectorFile = "${subroutine_unitTest_directory}/sport_event_list_template.xml";
+	my $surebetTemplateFile = "${subroutine_unitTest_directory}/sport_event_list_template.xml";
 	my $bookMakerOfferFile_actual = "${subroutine_unitTest_directory}/sport_event_leagues_list_actual.xml" ;
+	cp ( $surebetTemplateFile, $bookMakerOfferFile_actual ) or die $!;
 
 	my $bookMakerOfferFile_expected = "${subroutine_unitTest_directory}/sport_event_leagues_list_expected.xml";
 
-
-	unlink $bookMakerOfferFile_actual;
-	$a_betExplorerDownloader->{mSelectorFile} = $examplarySelectorFile;
+	
+#	$a_betExplorerDownloader->{mSelectorFile} = $examplarySelectorFile;
 	$a_betExplorerDownloader->add_country_leagues($bookMakerOfferFile_actual);
 	files_eq $bookMakerOfferFile_actual , $bookMakerOfferFile_expected , 'basic test selector file => bookmaker offer file';
+
+	unlink $bookMakerOfferFile_actual;
 
 }
 

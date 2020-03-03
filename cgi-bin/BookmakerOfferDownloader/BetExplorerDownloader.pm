@@ -53,6 +53,7 @@ sub injectBookmakerProductEventOffertIntoXML($$$);
 sub add_UnderOver_offers($);
 sub add_1X2_offers($);
 sub add_country_leagues($);
+sub find_countries_xpaths($);
 #################DICTIONARY##############################################
 
 
@@ -321,7 +322,7 @@ sub getRootNode($) #doesn't used anymore?
 	
 	my $xmlParser = XML::LibXML->new;
 	my $doc = $xmlParser->parse_file($pathToXmlSelector) or die $?;
-	my @rootXmlNode = $doc->findnodes("/");#$doc->findnodes("/")->[0];
+	my @rootXmlNode = $doc->findnodes("/");
 	return $rootXmlNode[0];
 }
 
@@ -461,8 +462,7 @@ sub createEventListXML($$)
 		}	
 	}
 	
-
-
+	# $self->prepareTemplateFor_SportEventsFile($selectorFile);
 	# add_country_leagues($xmlFile);
 	# add_league_events($xmlFile);
 	correctFormatXmlDocument($outputXmlPath);
@@ -472,11 +472,35 @@ sub createEventListXML($$)
 sub add_country_leagues($)
 {
 	my $self = shift;
-	my ($selectorFile) = @_;
+	my ($templateFile) = @_;
+	my @countries_xpaths = find_countries_xpaths($templateFile); #here problem $templateFile doesn't exists should be used mSelectorFile instead
 	
-
+	foreach(@countries_xpaths)
+	{
+		my $country_xpath = $_;
+		my @country_leagues = $self->getAllSubCategories($templateFile, $country_xpath);
+		#here add 
+	}
 }
 
+sub find_countries_xpaths($)
+{
+	my ($templateFile) = @_; 
+	my $xmlParser = XML::LibXML->new;		
+	my $xmlDoc = $xmlParser->parse_file($templateFile) or die;
+	my $soccerXpath = '/note/eventList/soccer';
+	my @allLeagues = $xmlDoc->findnodes($soccerXpath);
+	my @toReturn;
+
+	foreach(@allLeagues)
+	{
+		my $aLeagueNode = $_;
+		my $aLeagueXPath = $aLeagueNode->nodePath();
+		push @toReturn, $aLeagueXPath;
+	}
+	return @toReturn;
+
+}
 
 sub getAllSubCategories($$)
 {
