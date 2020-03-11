@@ -13,7 +13,6 @@ use File::Copy;
 sub new();
 sub loadBookmakersOfferFile($);
 sub generateOfferProfitabilityFile($);
-sub cloneBookmakerOfferFile($);
 sub addBestOption($);
 sub findBestBetCombination($);
 sub leaveInProfitabilityFileOnlyBestPrices($);
@@ -61,11 +60,6 @@ sub loadBookmakersOfferFile($)
 	
 };
 
-sub cloneBookmakerOfferFile($)
-{
-	my($self, $pathToOfferProfitabilityFile) = @_;
-	copy $self->{offerFile}, $pathToOfferProfitabilityFile or die;	
-}
 
 sub splitProductgroupNodeToProductsNodes($)
 {
@@ -413,8 +407,6 @@ sub updateWithProfitabilityData($)
 sub generateOfferProfitabilityFile($)
 {
 	my ($self, $offerProfitabilityOutputFilename) = @_;
-	
-	$self->cloneBookmakerOfferFile($offerProfitabilityOutputFilename);
 	
 	injectBestCombinationsNodeAfterEventNodes($offerProfitabilityOutputFilename);
 	leaveInProfitabilityFileOnlyBestPrices($offerProfitabilityOutputFilename);

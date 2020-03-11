@@ -120,29 +120,20 @@ sub findSureBets($$)
 	
 	
 	$xmlResultFile = getcwd .'/'. ($xmlResultFile); 
-	
-
-	my $xmlTemporaryResultFile = $xmlResultFile;
-	$xmlTemporaryResultFile =~  s/\.xml/_tmp\.xml/;  
-	
 		
 	chdir 'BookmakerOfferDownloader';
 	my $theRealBookMakerDownloader =  BetExplorerDownloader->new('--realnet');
-	$theRealBookMakerDownloader->loadSelectorFile($xmlSelectorFile); #temporary moved before "BookMakerDownloader->createEventListXML"
+	$theRealBookMakerDownloader->loadSelectorFile( $xmlSelectorFile ); #temporary moved before "BookMakerDownloader->createEventListXML"
+#	$theRealBookMakerDownloader->set_ResultsFile( $xml  );
 	
-	$theRealBookMakerDownloader->create_BookmakersOfferFile($xmlTemporaryResultFile);
+	$theRealBookMakerDownloader->create_BookmakersOfferFile($xmlResultFile);
 	my $theProfitabilityCalculator = ProfitabilityCalculator->new();
 	
 	chdir '..';
 	chdir 'ProfitabilityCalculator';
-	$theProfitabilityCalculator->loadBookmakersOfferFile($xmlTemporaryResultFile);
+	$theProfitabilityCalculator->loadBookmakersOfferFile($xmlResultFile);
 
 	$theProfitabilityCalculator->generateOfferProfitabilityFile($xmlResultFile);
 
-	my $isFileDeletionSucceed = unlink $xmlTemporaryResultFile;	
-	if(not $isFileDeletionSucceed)
-	{
-		print "ERROR: Cannot delete a file ${isFileDeletionSucceed}\n";
-	}	
 
 };
