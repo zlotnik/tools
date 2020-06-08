@@ -473,7 +473,7 @@ sub add_country_leagues($)
 {
 	my $self = shift;
 	my ($templateFile) = @_;
-	my @countries_xpaths = find_countries_xpaths($templateFile); #here problem $templateFile doesn't exists should be used mSelectorFile instead
+	my @countries_xpaths = $self->find_countries_xpaths($templateFile); #here problem $templateFile doesn't exists should be used mSelectorFile instead
 	
 	foreach(@countries_xpaths)
 	{
@@ -485,17 +485,19 @@ sub add_country_leagues($)
 
 sub find_countries_xpaths($)
 {
+	my $self = shift;
 	my ($templateFile) = @_; 
 	my $xmlParser = XML::LibXML->new;		
 	my $xmlDoc = $xmlParser->parse_file($templateFile) or die;
-	my $soccerXpath = '/note/eventList/soccer';
-	my @allLeagues = $xmlDoc->findnodes($soccerXpath);
+	my $countriesXpath = '/note/eventList/*/*';
+	my @allLeagues = $xmlDoc->findnodes( $countriesXpath );
 	my @toReturn;
 
 	foreach(@allLeagues)
 	{
 		my $aLeagueNode = $_;
 		my $aLeagueXPath = $aLeagueNode->nodePath();
+#		$aLeagueNode = '/note/eventList/' . $aLeagueNode;
 		push @toReturn, $aLeagueXPath;
 	}
 	return @toReturn;

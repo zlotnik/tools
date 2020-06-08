@@ -49,9 +49,9 @@ sub find_countries_xpaths();
 ############################MAIN##############################################
 
 find_countries_xpaths();
+add_country_leagues();
 #add_bookmakerOffers_to_xmlWithSportEvents();
 create_BookmakersOfferFile();
-add_country_leagues();
 # add_leagues_events();
 createEventListXML();
 
@@ -61,7 +61,20 @@ done_testing();
 
 sub find_countries_xpaths() 
 {
+	my $subroutineName = get_subroutineName();
+	print "\nTESTING SUBROUTINE: $subroutineName\n";
 
+	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
+
+	my $surebetTemplateFile = "${subroutine_unitTest_directory}/surebet_template_file.xml";
+	my @expected = ('/note/eventList/soccer/Poland','/note/eventList/soccer/Germany','/note/eventList/soccer/Sweden' ); 
+	my $testName = "Testing finding xpath in surebet template file";
+#	$a_betExplorerDownloader->{};# here probable should be name of propertie with path to selector
+	my @got = $a_betExplorerDownloader->find_countries_xpaths( $surebetTemplateFile );
+    is_deeply( \@got, \@expected, $testName );
+	
 } 
 
 sub create_BookmakersOfferFile()
@@ -126,9 +139,7 @@ sub add_country_leagues()
 
 	my $bookMakerOfferFile_expected = "${subroutine_unitTest_directory}/sport_event_leagues_list_expected.xml";
 
-	
-#	$a_betExplorerDownloader->{mSelectorFile} = $examplarySelectorFile;
-	$a_betExplorerDownloader->add_country_leagues($bookMakerOfferFile_actual);
+	$a_betExplorerDownloader->add_country_leagues( $bookMakerOfferFile_actual );
 	files_eq $bookMakerOfferFile_actual , $bookMakerOfferFile_expected , 'basic test selector file => bookmaker offer file';
 
 	unlink $bookMakerOfferFile_actual;
