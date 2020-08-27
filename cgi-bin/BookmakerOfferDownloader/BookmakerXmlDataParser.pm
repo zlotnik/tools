@@ -417,17 +417,17 @@ sub countHowManyDisciplinesToDownloadIsDefinedInXmlSelector()
 	my $pathToXmlSelector = $_[0];
 	my $xmlParser = XML::LibXML->new; 
 	my $xmlParserDoc = $xmlParser->parse_file($pathToXmlSelector); 
-	my $dataChoosenToDownloadXmlNode = $xmlParserDoc->findnodes("/note/dataChoosenToDownload")->[0];
+	my $dataXmlNode = $xmlParserDoc->findnodes("/note/data")->[0];
 	
 	
-	if (not defined($dataChoosenToDownloadXmlNode))
+	if (not defined($dataXmlNode))
 	{
 		return 0 ;
 		#'Iam not sure if it is correct formula';
 	}
 
 	my $dataSource = 0;
-	foreach($dataChoosenToDownloadXmlNode->nonBlankChildNodes())
+	foreach($dataXmlNode->nonBlankChildNodes())
 	{
 		
 		my $dataSourceNameXmlNode = $_;

@@ -3,11 +3,11 @@
   <dataSources>
   <betexplorer/>  
   </dataSources>
-  <dataChoosenToDownload>
+  <data>
   <soccer>
   <Africa>
   <caf-confederations-cup/>  
   </Africa>
   </soccer>
-  </dataChoosenToDownload>  
+  </data>  
 </note> 

@@ -3,7 +3,7 @@
   <dataSources>
   <betexplorer/>  
   </dataSources>
-  <dataChoosenToDownload>
+  <data>
   <soccer>
   <Norway>
   <eliteserien/>
@@ -20,6 +20,6 @@
   <norway-cup-women/>
   </Norway>
   </soccer>
-  </dataChoosenToDownload>
+  </data>
   
 </note> 

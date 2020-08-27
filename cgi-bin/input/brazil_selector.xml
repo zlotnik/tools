@@ -3,7 +3,7 @@
   <dataSources>
   <betexplorer/>  
   </dataSources>
-  <dataChoosenToDownload>
+  <data>
   <soccer>
   <Brazil>
   <serie-a/>
@@ -11,5 +11,5 @@
   <brasileiro-u20/>  
   </Brazil>
   </soccer>
-  </dataChoosenToDownload>  
+  </data>  
 </note> 

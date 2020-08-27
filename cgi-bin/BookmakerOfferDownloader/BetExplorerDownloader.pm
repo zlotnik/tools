@@ -419,7 +419,7 @@ sub prepareTemplateFor_SportEventsFile($)
 	my $xmlParser = XML::LibXML->new;		
 	my $xmlNode = $xmlParser->parse_file($outputXmlPath) or die;
 	
-	my $nodeToRename = $xmlNode->findnodes('/note/dataChoosenToDownload')->[0];
+	my $nodeToRename = $xmlNode->findnodes('/note/data')->[0];
 	$nodeToRename->setNodeName('eventList');
 	$xmlNode->toFile($outputXmlPath) or die $?; 
 		
@@ -464,7 +464,7 @@ sub createEventListXML($$)
 	
 	# $self->prepareTemplateFor_SportEventsFile($selectorFile);
 	# add_country_leagues($xmlFile);
-	# add_league_events($xmlFile);
+	# add_leagues_events($xmlFile);
 	correctFormatXmlDocument($outputXmlPath);
 
 };

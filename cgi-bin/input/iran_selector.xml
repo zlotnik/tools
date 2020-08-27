@@ -3,11 +3,11 @@
   <dataSources>
   <betexplorer/>  
   </dataSources>
-  <dataChoosenToDownload>
+  <data>
   <soccer>
   <Iran>
   <persian-gulf-pro-league/>  
   </Iran>
   </soccer>
-  </dataChoosenToDownload>  
+  </data>  
 </note> 

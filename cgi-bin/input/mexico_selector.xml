@@ -3,7 +3,7 @@
   <dataSources>
   <betexplorer/>  
   </dataSources>
-  <dataChoosenToDownload>
+  <data>
   <soccer>
   <Mexico>
   <liga-mx-women/>
@@ -12,6 +12,6 @@
   <liga-mx/>
   </Mexico>
   </soccer>
-  </dataChoosenToDownload>
+  </data>
   
 </note> 

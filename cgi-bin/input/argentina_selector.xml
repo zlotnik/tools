@@ -3,7 +3,7 @@
   <dataSources>
   <betexplorer/>  
   </dataSources>
-  <dataChoosenToDownload>
+  <data>
   <soccer>
   <Argentina>
   <torneo-federal-a/>
@@ -12,5 +12,5 @@
   <primera-c-metropolitanamex/>
   </Argentina>
   </soccer>
-  </dataChoosenToDownload>  
+  </data>  
 </note> 

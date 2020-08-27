@@ -3,12 +3,12 @@
   <dataSources>
   <betexplorer/>  
   </dataSources>
-  <dataChoosenToDownload>
+  <data>
   <soccer>
   <Germany>
   <oberliga-hessen/>
   </Germany>
   </soccer>
-  </dataChoosenToDownload>
+  </data>
   
 </note> 

@@ -3,12 +3,12 @@
   <dataSources>
   <betexplorer/>  
   </dataSources>
-  <dataChoosenToDownload>
+  <data>
   <soccer>
   <England>
   <league-one/>
   </England>
   </soccer>
-  </dataChoosenToDownload>
+  </data>
   
 </note> 

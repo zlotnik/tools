@@ -3,12 +3,12 @@
   <dataSources>
   <betexplorer/>  
   </dataSources>
-  <dataChoosenToDownload>
+  <data>
   <soccer>
   <Germany>
   <junioren-bundesliga-north/>
   </Germany>
   </soccer>
-  </dataChoosenToDownload>
+  </data>
   
 </note> 

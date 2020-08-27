@@ -3,13 +3,13 @@
   <dataSources>
   <betexplorer/>  
   </dataSources>
-  <dataChoosenToDownload>
+  <data>
   <soccer>
   <Sweden>
   <allsvenskan/>
   <superettan/>
   </Sweden>
   </soccer>
-  </dataChoosenToDownload>
+  </data>
   
 </note> 

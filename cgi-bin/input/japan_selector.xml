@@ -3,7 +3,7 @@
   <dataSources>
   <betexplorer/>  
   </dataSources>
-  <dataChoosenToDownload>
+  <data>
   <soccer>
   <Japan>
   <j1-league/>
@@ -11,5 +11,5 @@
   <nadeshiko-league-women/>    
   </Japan>
   </soccer>
-  </dataChoosenToDownload>  
+  </data>  
 </note> 

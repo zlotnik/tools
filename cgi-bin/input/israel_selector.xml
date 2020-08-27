@@ -3,7 +3,7 @@
   <dataSources>
   <betexplorer/>  
   </dataSources>
-  <dataChoosenToDownload>
+  <data>
   <soccer>
   <Israel>
   <ligat-ha-al/>
@@ -12,5 +12,5 @@
   <state-cup/>  
   </Israel>
   </soccer>
-  </dataChoosenToDownload>  
+  </data>  
 </note> 

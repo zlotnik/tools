@@ -3,11 +3,11 @@
   <dataSources>
   <betexplorer/>  
   </dataSources>
-  <dataChoosenToDownload>
+  <data>
   <soccer>
   <Latvia>
   <optibet-virsliga/>  
   </Latvia>
   </soccer>
-  </dataChoosenToDownload>  
+  </data>  
 </note> 
