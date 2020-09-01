@@ -1,5 +1,10 @@
+#vim temporaryry files
 *.swp
 *.swo
+*.swn
+*.swm
+
+
 cgi-bin/BookmakerOfferDownloader/output/downloadedPolandEkstraklasa_realnet.xml
 cgi-bin/BookmakerOfferDownloader/output/downloadedQatar_realnet.xml
 cgi-bin/BookmakerOfferDownloader/tmp/*
