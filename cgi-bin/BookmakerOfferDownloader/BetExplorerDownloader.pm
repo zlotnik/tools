@@ -52,8 +52,9 @@ sub injectBookmakerEventOfferIntoXML($$);
 sub injectBookmakerProductEventOffertIntoXML($$$);
 sub add_UnderOver_offers($);
 sub add_1X2_offers($);
-sub add_country_leagues($);
+sub addLeaguesToXML($);
 sub find_countries_xpaths($);
+sub fetchLeaguesNames($);
 #################DICTIONARY##############################################
 
 
@@ -83,7 +84,7 @@ sub new()
 	my $self;
 		
 	$self = bless {
-			m_BookmakerPageCrawler => BookmakerPageCrawler->new($mockedOrRealWWW_argument)
+					m_BookmakerPageCrawler => BookmakerPageCrawler->new($mockedOrRealWWW_argument)
 		      },$class;
 	
 	return $self; 
@@ -462,25 +463,47 @@ sub createEventListXML($$)
 		}	
 	}
 	
-	# $self->prepareTemplateFor_SportEventsFile($selectorFile);
-	# add_country_leagues($xmlFile);
+	# add_country_leagues($xmlile);#seems to need anymore
+	
+	# addCountriesToXML( $outputXmlFile ); #not implemented yet
+	# addLeaguesToXML( $outputXmlFile );
+	# addSportEventsToXML( $outputXmlFile );
+	#
+	
 	# add_leagues_events($xmlFile);
 	correctFormatXmlDocument($outputXmlPath);
 
 };
 
-sub add_country_leagues($)
+sub addCountriesToXML($);
+sub addCountriesToXML($)
+{
+	my ( $xmlSelectorFile ) = @_;
+
+
+}
+
+sub addLeaguesToXML($)
 {
 	my $self = shift;
-	my ($templateFile) = @_;
-	my @countries_xpaths = $self->find_countries_xpaths($templateFile); #here problem $templateFile doesn't exists should be used mSelectorFile instead
+	my ( $fileWithCountriesList ) = @_;
+	my @countries_xpaths = $self->find_countries_xpaths( $fileWithCountriesList ); #here problem $fileWithCountriesList doesn't exists should be used mSelectorFile instead
 	
-	foreach(@countries_xpaths)
+	foreach( @countries_xpaths )
 	{
 		my $country_xpath = $_;
-		my @country_leagues = $self->getAllSubCategories($templateFile, $country_xpath);
-		#here add 
+		my @country_leagues = $self->getAllSubCategories( $fileWithCountriesList, $country_xpath ); #fetch all leagues names
+		my @country_leagues2 = $self->fetchLeaguesNames( $country_xpath ); #not implemented yet	
 	}
+}
+
+sub fetchLeaguesNames($)
+{
+	my $self = shift;
+	my ( $xpathToCountry ) = @_;
+#	my $countryLevelCategoryPage = CountryLevelCategoryPage->new($self->{m_strategyOfObtainingBookmakerData};	 
+#	$countryLevelCategoryPage->getAllSubCategories($xpathToCountry);
+
 }
 
 sub find_countries_xpaths($)
@@ -489,7 +512,7 @@ sub find_countries_xpaths($)
 	my ($templateFile) = @_; 
 	my $xmlParser = XML::LibXML->new;		
 	my $xmlDoc = $xmlParser->parse_file($templateFile) or die;
-	my $countriesXpath = '/note/eventList/*/*';
+	my $countriesXpath = '/note/data/*/*';
 	my @allLeagues = $xmlDoc->findnodes( $countriesXpath );
 	my @toReturn;
 

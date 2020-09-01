@@ -43,21 +43,43 @@ use BetExplorerDownloader;
 sub add_bookmakerOffers_to_xmlWithSportEvents();
 sub create_BookmakersOfferFile();
 sub createEventListXML();
-sub add_country_leagues();
+sub addLeaguesToXML();
 sub find_countries_xpaths();
+sub fetchLeaguesNames();
 
 ############################MAIN##############################################
+fetchLeaguesNames();
+exit;
+addLeaguesToXML();
+
 
 find_countries_xpaths();
-add_country_leagues();
+addLeaguesToXML();
 #add_bookmakerOffers_to_xmlWithSportEvents();
-create_BookmakersOfferFile();
+#create_BookmakersOfferFile();
 # add_leagues_events();
-createEventListXML();
+#createEventListXML();
 
 done_testing();
 
 ####################SUB DEFINITIONS############################################
+
+sub fetchLeaguesNames()
+{
+
+	my $subroutineName = get_subroutineName();
+	print "\nTESTING SUBROUTINE: $subroutineName\n";
+
+	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
+
+	my @expected = ('ekstraklasa');
+	my @actual = $a_betExplorerDownloader->fetchLeaguesNames ( '/note/data/soccer/Poland' );
+	my $testName = 'fetching leagues list';
+	
+	is_deeply( \@actual, \@expected, $testName );
+	#my @actual = $a_betExplorerDownloader->fetchLeaguesNames ( '/note/data/soccer/Poland' )
+
+}
 
 sub find_countries_xpaths() 
 {
@@ -124,7 +146,7 @@ sub add_bookmakerOffers_to_xmlWithSportEvents()
 	$a_betExplorerDownloader->add_bookmakerOffers_to_xmlWithSportEvents($path2Xml_with_events);
 }
 
-sub add_country_leagues()
+sub addLeaguesToXML()
 {
 	my $subroutineName = get_subroutineName();
 	print "\nTESTING SUBROUTINE: $subroutineName\n";
@@ -139,10 +161,10 @@ sub add_country_leagues()
 
 	my $bookMakerOfferFile_expected = "${subroutine_unitTest_directory}/sport_event_leagues_list_expected.xml";
 
-	$a_betExplorerDownloader->add_country_leagues( $bookMakerOfferFile_actual );
+	$a_betExplorerDownloader->addLeaguesToXML( $bookMakerOfferFile_actual );
 	files_eq $bookMakerOfferFile_actual , $bookMakerOfferFile_expected , 'basic test selector file => bookmaker offer file';
 
-	unlink $bookMakerOfferFile_actual;
+	#unlink $bookMakerOfferFile_actual;
 
 }
 
