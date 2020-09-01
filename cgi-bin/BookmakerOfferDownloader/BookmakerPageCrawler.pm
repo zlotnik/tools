@@ -9,7 +9,6 @@ use CategoryPage;
 #############TODO#####################################
 
 ######################################################
-sub makeCategoryPageObject();
 sub checkLevelOfCategoryPage($);
 sub getAllSubCategories($);
 sub getRawDataOfEvent($);
@@ -29,37 +28,6 @@ sub getAllSubCategories($)
 	my @toReturn = $self->{m_CategoryPage}->getAllSubCategories($subCategoryXpath);
 	return @toReturn;
 };
-
-
-#V propably unused; remove it V
-sub makeCategoryPageObject()
-{
-	my $class = shift;
-	my $subCategoryXpath = shift;
-	my $self = {};
-	
-	
-	die "here finished CountryLevelCategoryPageReal and CountryLevelCategoryPageMocked difference in get  method";
-	my $categoryPage = checkCategoryPage($subCategoryXpath);
-	if ($categoryPage eq 'CountryLevelCategoryPage')
-	{
-		return CountryLevelCategoryPage->new($subCategoryXpath);
-	}
-	elsif($categoryPage eq 'GroupLevelCategoryPage')
-	{
-		return GroupLevelCategoryPage->new($subCategoryXpath);
-	}
-	elsif($categoryPage eq 'EventLevelCategoryPage')
-	{
-		return EventLevelCategoryPage->new($subCategoryXpath);
-	}
-	else
-	{
-		die "Isn't possible to create CategoryPage object basis on object string: $categoryPage";
-	}
-	#return bless $self, $class
-
-}
 
 sub checkCategoryPage($)
 {
