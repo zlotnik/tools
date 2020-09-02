@@ -73,7 +73,7 @@ sub fetchLeaguesNames()
 	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
 
 	my @expected = ('ekstraklasa');
-	my @actual = $a_betExplorerDownloader->fetchLeaguesNames ( '/note/data/soccer/Poland' );
+	my @actual = $a_betExplorerDownloader->fetchLeaguesNames ( '/soccer/Poland' );
 	my $testName = 'fetching leagues list';
 	
 	is_deeply( \@actual, \@expected, $testName );

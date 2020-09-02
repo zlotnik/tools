@@ -10,6 +10,7 @@ use 5.010;
 use Data::Dumper;
 use XML::LibXML;
 use BookmakerPageCrawler;
+use CountryLevelCategoryPage;
 use File::Copy qw(copy);
 use WojtekToolbox;
 use CommonFunctionalities;
@@ -82,11 +83,26 @@ sub new()
 	print "Functional module BookmakerOfferDownloader\n";
 	my ($class, $mockedOrRealWWW_argument) = @_;
 	my $self;
-		
+	
+
 	$self = bless {
 					m_BookmakerPageCrawler => BookmakerPageCrawler->new($mockedOrRealWWW_argument)
 		      },$class;
 	
+	if ($mockedOrRealWWW_argument eq '--realnet')
+	{
+	
+		$self->{m_strategyOfObtainingBookmakerData} = WWWBookmakerPage->new();		
+	}
+	elsif($mockedOrRealWWW_argument eq '--mockednet')
+	{
+		$self->{m_strategyOfObtainingBookmakerData} = MockedBookmakerPage->new();
+	}
+	else
+	{
+		die;
+	}
+
 	return $self; 
 }
 
@@ -501,9 +517,12 @@ sub fetchLeaguesNames($)
 {
 	my $self = shift;
 	my ( $xpathToCountry ) = @_;
-#	my $countryLevelCategoryPage = CountryLevelCategoryPage->new($self->{m_strategyOfObtainingBookmakerData};	 
-#	$countryLevelCategoryPage->getAllSubCategories($xpathToCountry);
+	my @toReturn = ();
 
+	my $countryLevelCategoryPage = CountryLevelCategoryPage->new( $self->{m_strategyOfObtainingBookmakerData} );	 
+	@toReturn = $countryLevelCategoryPage->getAllSubCategories($xpathToCountry);
+
+	return @toReturn;
 }
 
 sub find_countries_xpaths($)
