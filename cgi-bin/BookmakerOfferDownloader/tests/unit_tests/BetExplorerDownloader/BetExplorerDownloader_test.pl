@@ -43,18 +43,17 @@ use BetExplorerDownloader;
 sub add_bookmakerOffers_to_xmlWithSportEvents();
 sub create_BookmakersOfferFile();
 sub createEventListXML();
-sub addLeaguesToXML();
+sub updateOutputFileWithLeagues();
 sub find_countries_xpaths();
-sub fetchLeaguesNames();
+sub downloadLeaguesNames();
 
 ############################MAIN##############################################
-fetchLeaguesNames();
+
+downloadLeaguesNames();
+updateOutputFileWithLeagues();
 exit;
-addLeaguesToXML();
-
-
 find_countries_xpaths();
-addLeaguesToXML();
+
 #add_bookmakerOffers_to_xmlWithSportEvents();
 #create_BookmakersOfferFile();
 # add_leagues_events();
@@ -64,7 +63,7 @@ done_testing();
 
 ####################SUB DEFINITIONS############################################
 
-sub fetchLeaguesNames()
+sub downloadLeaguesNames()
 {
 
 	my $subroutineName = get_subroutineName();
@@ -72,12 +71,12 @@ sub fetchLeaguesNames()
 
 	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
 
-	my @expected = ('ekstraklasa');
-	my @actual = $a_betExplorerDownloader->fetchLeaguesNames ( '/soccer/Poland' );
-	my $testName = 'fetching leagues list';
+	my @expected = ('super-liga', 'prva-liga');
+	my @actual = $a_betExplorerDownloader->downloadLeaguesNames ( '/soccer/Serbia' );
+	my $testName = 'fetching leagues list from stubed website';
 	
 	is_deeply( \@actual, \@expected, $testName );
-	#my @actual = $a_betExplorerDownloader->fetchLeaguesNames ( '/note/data/soccer/Poland' )
+	#my @actual = $a_betExplorerDownloader->downloadLeaguesNames ( '/note/data/soccer/Poland' )
 
 }
 
@@ -90,11 +89,11 @@ sub find_countries_xpaths()
 	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
 
-	my $surebetTemplateFile = "${subroutine_unitTest_directory}/surebet_template_file.xml";
-	my @expected = ('/note/eventList/soccer/Poland','/note/eventList/soccer/Germany','/note/eventList/soccer/Sweden' ); 
+	my $selectorFile = "${subroutine_unitTest_directory}/surebet_template_file.xml";
+	my @expected = ('/note/data/soccer/Poland','/note/data/soccer/Germany','/note/data/soccer/Sweden' ); 
 	my $testName = "Testing finding xpath in surebet template file";
 #	$a_betExplorerDownloader->{};# here probable should be name of propertie with path to selector
-	my @got = $a_betExplorerDownloader->find_countries_xpaths( $surebetTemplateFile );
+	my @got = $a_betExplorerDownloader->find_countries_xpaths( $selectorFile );
     is_deeply( \@got, \@expected, $testName );
 	
 } 
@@ -146,7 +145,7 @@ sub add_bookmakerOffers_to_xmlWithSportEvents()
 	$a_betExplorerDownloader->add_bookmakerOffers_to_xmlWithSportEvents($path2Xml_with_events);
 }
 
-sub addLeaguesToXML()
+sub updateOutputFileWithLeagues()
 {
 	my $subroutineName = get_subroutineName();
 	print "\nTESTING SUBROUTINE: $subroutineName\n";
@@ -155,13 +154,14 @@ sub addLeaguesToXML()
 	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
 
-	my $surebetTemplateFile = "${subroutine_unitTest_directory}/sport_event_list_template.xml";
+	my $selectorFile = "${subroutine_unitTest_directory}/sport_event_list_template.xml";
 	my $bookMakerOfferFile_actual = "${subroutine_unitTest_directory}/sport_event_leagues_list_actual.xml" ;
-	cp ( $surebetTemplateFile, $bookMakerOfferFile_actual ) or die $!;
-
 	my $bookMakerOfferFile_expected = "${subroutine_unitTest_directory}/sport_event_leagues_list_expected.xml";
 
-	$a_betExplorerDownloader->addLeaguesToXML( $bookMakerOfferFile_actual );
+#	cp ( $selectorFile, $bookMakerOfferFile_actual ) or die $!;
+#		
+	$a_betExplorerDownloader->loadSelectorFile( $selectorFile );
+	$a_betExplorerDownloader->updateOutputFileWithLeagues( $bookMakerOfferFile_actual );
 	files_eq $bookMakerOfferFile_actual , $bookMakerOfferFile_expected , 'basic test selector file => bookmaker offer file';
 
 	#unlink $bookMakerOfferFile_actual;

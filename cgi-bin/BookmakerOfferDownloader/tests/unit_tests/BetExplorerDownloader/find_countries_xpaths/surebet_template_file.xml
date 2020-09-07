@@ -3,7 +3,7 @@
   <dataSources>
   <betexplorer/>  
   </dataSources>
-  <eventList>
+  <data>
   <soccer>
   <Poland>
   </Poland>
@@ -11,6 +11,6 @@
   </Germany>
   <Sweden/>
   </soccer>
-  </eventList>
+  </data>
   
 </note> 

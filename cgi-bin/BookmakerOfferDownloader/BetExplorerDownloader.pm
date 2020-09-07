@@ -16,6 +16,7 @@ use WojtekToolbox;
 use CommonFunctionalities;
 use Cwd;
 use HTML_1X2_Events_Parser;
+use Xpath;
 
 
 our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml 
@@ -53,9 +54,13 @@ sub injectBookmakerEventOfferIntoXML($$);
 sub injectBookmakerProductEventOffertIntoXML($$$);
 sub add_UnderOver_offers($);
 sub add_1X2_offers($);
-sub addLeaguesToXML($);
+sub updateOutputFileWithLeagues();
 sub find_countries_xpaths($);
-sub fetchLeaguesNames($);
+sub downloadLeaguesNames($);
+sub set_OutputFile($);
+sub get_OutputFile();
+sub addLeaguesToOutputFile($\@);
+sub addCountriesToXML($);
 #################DICTIONARY##############################################
 
 
@@ -145,6 +150,11 @@ sub create_BookmakersOfferFile($)
 	defined  $self->{mSelectorFile} or die "The selector file didn't loaded\n";
 	my $pathToXmlSelector = $self->{mSelectorFile};
 
+
+	$self->set_OutputFile( $outputXmlPath );
+	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
+
+
 	my $xpath = ""; 
 	$self->createEventListXML($xpath, $outputXmlPath);
 	
@@ -158,6 +168,21 @@ sub create_BookmakersOfferFile($)
 
 
 }
+
+sub set_OutputFile($)
+{
+	my $self = shift;
+	my ( $outputFilePath ) = @_;
+	$self->{outputFilePath} = $outputFilePath;
+
+}
+
+sub get_OutputFile()
+{
+	my $self = shift;
+	return $self->{outputFilePath}; 
+}
+
 
 sub correctFormatXmlDocument($)
 {
@@ -482,7 +507,7 @@ sub createEventListXML($$)
 	# add_country_leagues($xmlile);#seems to need anymore
 	
 	# addCountriesToXML( $outputXmlFile ); #not implemented yet
-	# addLeaguesToXML( $outputXmlFile );
+	# updateOutputFileWithLeagues();
 	# addSportEventsToXML( $outputXmlFile );
 	#
 	
@@ -491,7 +516,6 @@ sub createEventListXML($$)
 
 };
 
-sub addCountriesToXML($);
 sub addCountriesToXML($)
 {
 	my ( $xmlSelectorFile ) = @_;
@@ -499,28 +523,40 @@ sub addCountriesToXML($)
 
 }
 
-sub addLeaguesToXML($)
+sub updateOutputFileWithLeagues($)
 {
 	my $self = shift;
-	my ( $fileWithCountriesList ) = @_;
-	my @countries_xpaths = $self->find_countries_xpaths( $fileWithCountriesList ); #here problem $fileWithCountriesList doesn't exists should be used mSelectorFile instead
+	my ( $selectorFileWithCountries ) = @_;
+	my @countries_xpaths = $self->find_countries_xpaths( $selectorFileWithCountries ); #here problem $selectorFileWithCountries doesn't exists should be used mSelectorFile instead
 	
 	foreach( @countries_xpaths )
 	{
 		my $country_xpath = $_;
-		my @country_leagues = $self->getAllSubCategories( $fileWithCountriesList, $country_xpath ); #fetch all leagues names
-		my @country_leagues2 = $self->fetchLeaguesNames( $country_xpath ); #not implemented yet	
+		my @leagues_names = $self->downloadLeaguesNames( $country_xpath );
+		$self->addLeaguesToOutputFile( $country_xpath , \@leagues_names );
 	}
 }
 
-sub fetchLeaguesNames($)
+sub addLeaguesToOutputFile($\@)
+{
+	my $self = shift;
+	my ( $country_xpath, $leagues_names_ref )  = @_;
+	my @leagues_list = @{$leagues_names_ref}; 
+	print "dummy";
+
+
+}
+
+sub downloadLeaguesNames($)
 {
 	my $self = shift;
 	my ( $xpathToCountry ) = @_;
-	my @toReturn = ();
+	my @toReturn;
 
+	my $path2country_onWebsite = Xpath::trimBeginning( '/note/data', $xpathToCountry );
 	my $countryLevelCategoryPage = CountryLevelCategoryPage->new( $self->{m_strategyOfObtainingBookmakerData} );	 
-	@toReturn = $countryLevelCategoryPage->getAllSubCategories($xpathToCountry);
+
+	@toReturn = $countryLevelCategoryPage->getAllSubCategories( $path2country_onWebsite );
 
 	return @toReturn;
 }
