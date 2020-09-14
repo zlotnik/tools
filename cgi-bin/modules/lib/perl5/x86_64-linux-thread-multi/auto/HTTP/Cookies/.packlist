@@ -1,0 +1,6 @@
+/var/www/cgi-bin/modules/lib/perl5/HTTP/Cookies.pm
+/var/www/cgi-bin/modules/lib/perl5/HTTP/Cookies/Microsoft.pm
+/var/www/cgi-bin/modules/lib/perl5/HTTP/Cookies/Netscape.pm
+/var/www/cgi-bin/modules/man/man3/HTTP::Cookies.3pm
+/var/www/cgi-bin/modules/man/man3/HTTP::Cookies::Microsoft.3pm
+/var/www/cgi-bin/modules/man/man3/HTTP::Cookies::Netscape.3pm

@@ -1,0 +1,9 @@
+/var/www/cgi-bin/modules/bin/pod_cover
+/var/www/cgi-bin/modules/lib/perl5/Pod/Coverage.pm
+/var/www/cgi-bin/modules/lib/perl5/Pod/Coverage/CountParents.pm
+/var/www/cgi-bin/modules/lib/perl5/Pod/Coverage/ExportOnly.pm
+/var/www/cgi-bin/modules/lib/perl5/Pod/Coverage/Overloader.pm
+/var/www/cgi-bin/modules/man/man3/Pod::Coverage.3pm
+/var/www/cgi-bin/modules/man/man3/Pod::Coverage::CountParents.3pm
+/var/www/cgi-bin/modules/man/man3/Pod::Coverage::ExportOnly.3pm
+/var/www/cgi-bin/modules/man/man3/Pod::Coverage::Overloader.3pm

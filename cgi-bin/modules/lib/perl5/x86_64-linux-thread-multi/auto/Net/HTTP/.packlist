@@ -1,0 +1,8 @@
+/var/www/cgi-bin/modules/lib/perl5/Net/HTTP.pm
+/var/www/cgi-bin/modules/lib/perl5/Net/HTTP/Methods.pm
+/var/www/cgi-bin/modules/lib/perl5/Net/HTTP/NB.pm
+/var/www/cgi-bin/modules/lib/perl5/Net/HTTPS.pm
+/var/www/cgi-bin/modules/man/man3/Net::HTTP.3pm
+/var/www/cgi-bin/modules/man/man3/Net::HTTP::Methods.3pm
+/var/www/cgi-bin/modules/man/man3/Net::HTTP::NB.3pm
+/var/www/cgi-bin/modules/man/man3/Net::HTTPS.3pm
