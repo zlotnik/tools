@@ -636,3 +636,25 @@ C<EXE_FILES: bin/xmltidy>
 
 =back
 
+=head2 Tue Sep 15 08:20:46 2020: C<Module> L<Sub::Identify|Sub::Identify>
+
+=over 4
+
+=item *
+
+C<installed into: /var/www/cgi-bin/modules/lib/perl5>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 0.14>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+

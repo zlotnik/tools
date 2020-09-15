@@ -6,6 +6,7 @@ use Test::More;
 use Test::File::Contents;
 use File::Copy 'cp'; 
 use BetExplorerDownloader;
+use Test::MockModule;
 
 ###############SUB PROTOTYPES############################################
 # sub new();
