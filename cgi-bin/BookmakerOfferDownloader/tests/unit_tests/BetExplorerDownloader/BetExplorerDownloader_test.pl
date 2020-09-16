@@ -47,9 +47,9 @@ sub createEventListXML();
 sub updateOutputFileWithLeagues();
 sub find_countries_xpaths();
 sub downloadLeaguesNames();
-
+sub addLeaguesToOutputFile();
 ############################MAIN##############################################
-
+addLeaguesToOutputFile();
 updateOutputFileWithLeagues();
 find_countries_xpaths();
 downloadLeaguesNames();
@@ -150,14 +150,34 @@ sub add_bookmakerOffers_to_xmlWithSportEvents()
 sub addLeaguesToOutputFile_mock  #todo mock should be in separated module
 {
         my $self = shift;
-        my $outputFileName = $self->get_OutputFile();
 	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
-
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/addLeaguesToOutputFile";
+
+        my $outputFileName = $self->get_OutputFile();
         my $sourceFile = "${subroutine_unitTest_directory}/serbia_leagues_list_expected.xml";
         cp $sourceFile, $outputFileName or die "Can't copy file $sourceFile -> $outputFileName";
 
 }
+
+sub addLeaguesToOutputFile()
+{
+        my $subroutineName = get_subroutineName();
+        print "\nTESTING SUBROUTINE: $subroutineName\n";
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
+        
+	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
+        my $actualXml = "${subroutine_unitTest_directory}/serbia_leagues_list_actual.xml";
+        my $expectedXml = "${subroutine_unitTest_directory}/serbia_leagues_list_expected.xml";
+
+        $a_betExplorerDownloader->set_OutputFile($actualXml);
+        my $countriesXpath = '/note/data/soccer/Serbia'; 
+        my @league_list = ('super-liga', 'prva-liga' );
+        $a_betExplorerDownloader->addLeaguesToOutputFile( $countriesXpath, \@league_list );
+        files_eq($actualXml, $expectedXml, "Testing if the output file is updated with league list");
+
+}
+
 
 sub downloadLeaguesNames_mock()
 {

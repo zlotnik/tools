@@ -544,9 +544,7 @@ sub addLeaguesToOutputFile($\@)
 	my @leagues_list = @{$leagues_names_ref}; 
         my $outputFileName  = $self->get_OutputFile();
         
-
-	print "dummy";
-
+        `touch $outputFileName`;
 
 }
 
