@@ -54,7 +54,7 @@ sub injectBookmakerEventOfferIntoXML($$);
 sub injectBookmakerProductEventOffertIntoXML($$$);
 sub add_UnderOver_offers($);
 sub add_1X2_offers($);
-sub updateOutputFileWithLeagues();
+sub updateOutputFileWithLeagues($);
 sub find_countries_xpaths($);
 sub downloadLeaguesNames($);
 sub set_OutputFile($);
@@ -169,7 +169,7 @@ sub create_BookmakersOfferFile($)
 
 }
 
-sub set_OutputFile($)
+sub set_OutputFile($) #maybe better would be setResultFilename()
 {
 	my $self = shift;
 	my ( $outputFilePath ) = @_;
@@ -542,6 +542,9 @@ sub addLeaguesToOutputFile($\@)
 	my $self = shift;
 	my ( $country_xpath, $leagues_names_ref )  = @_;
 	my @leagues_list = @{$leagues_names_ref}; 
+        my $outputFileName  = $self->get_OutputFile();
+        
+
 	print "dummy";
 
 
