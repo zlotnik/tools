@@ -47,9 +47,9 @@ sub createEventListXML();
 sub updateOutputFileWithLeagues();
 sub find_countries_xpaths();
 sub downloadLeaguesNames();
-sub addLeaguesToOutputFile();
+sub insertLeagues_intoCountryNode();
 ############################MAIN##############################################
-addLeaguesToOutputFile();
+insertLeagues_intoCountryNode();
 updateOutputFileWithLeagues();
 find_countries_xpaths();
 downloadLeaguesNames();
@@ -147,11 +147,11 @@ sub add_bookmakerOffers_to_xmlWithSportEvents()
 }
 
 
-sub addLeaguesToOutputFile_mock  #todo mock should be in separated module
+sub insertLeagues_intoCountryNode_mock  #todo mock should be in separated module
 {
         my $self = shift;
 	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
-	my $subroutine_unitTest_directory = "${unit_testDirectory}/addLeaguesToOutputFile";
+	my $subroutine_unitTest_directory = "${unit_testDirectory}/insertLeagues_intoCountryNode";
 
         my $outputFileName = $self->get_OutputFile();
         my $sourceFile = "${subroutine_unitTest_directory}/serbia_leagues_list_expected.xml";
@@ -159,7 +159,10 @@ sub addLeaguesToOutputFile_mock  #todo mock should be in separated module
 
 }
 
-sub addLeaguesToOutputFile()
+#responsibility: get selelector file and xpath to country and add leagues
+#insertLeagues_intoCountryNode
+#so there should be separate class like SportBetsXML -> XML
+sub insertLeagues_intoCountryNode()
 {
         my $subroutineName = get_subroutineName();
         print "\nTESTING SUBROUTINE: $subroutineName\n";
@@ -167,13 +170,18 @@ sub addLeaguesToOutputFile()
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
         
 	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
+
+        my $inputFile = "${subroutine_unitTest_directory}/selector_serbia.xml";
         my $actualXml = "${subroutine_unitTest_directory}/serbia_leagues_list_actual.xml";
         my $expectedXml = "${subroutine_unitTest_directory}/serbia_leagues_list_expected.xml";
 
+        
+        cp $inputFile, $actualXml or die;
         $a_betExplorerDownloader->set_OutputFile($actualXml);
         my $countriesXpath = '/note/data/soccer/Serbia'; 
         my @league_list = ('super-liga', 'prva-liga' );
-        $a_betExplorerDownloader->addLeaguesToOutputFile( $countriesXpath, \@league_list );
+
+        $a_betExplorerDownloader->insertLeagues_intoCountryNode( $countriesXpath, \@league_list );
         files_eq($actualXml, $expectedXml, "Testing if the output file is updated with league list");
 
 }
@@ -207,7 +215,7 @@ sub updateOutputFileWithLeagues()
 
 	my $betExplorerDownloader_mock = Test::MockModule->new('BetExplorerDownloader');
 
-	$betExplorerDownloader_mock->redefine( 'addLeaguesToOutputFile', \&addLeaguesToOutputFile_mock );
+	$betExplorerDownloader_mock->redefine( 'insertLeagues_intoCountryNode', \&insertLeagues_intoCountryNode_mock );
 	$betExplorerDownloader_mock->redefine( 'downloadLeaguesNames', \&downloadLeaguesNames_mock);
 	$betExplorerDownloader_mock->redefine( 'find_countries_xpaths', \&find_countries_xpaths_mock );
 

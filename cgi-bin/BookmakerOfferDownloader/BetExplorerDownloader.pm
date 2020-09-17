@@ -59,7 +59,7 @@ sub find_countries_xpaths($);
 sub downloadLeaguesNames($);
 sub set_OutputFile($);
 sub get_OutputFile();
-sub addLeaguesToOutputFile($\@);
+sub insertLeagues_intoCountryNode($\@);
 sub addCountriesToXML($);
 #################DICTIONARY##############################################
 
@@ -533,11 +533,11 @@ sub updateOutputFileWithLeagues($)
 	{
 		my $country_xpath = $_;
 		my @leagues_names = $self->downloadLeaguesNames( $country_xpath );
-		$self->addLeaguesToOutputFile( $country_xpath , \@leagues_names );
+		$self->insertLeagues_intoCountryNode( $country_xpath , \@leagues_names );
 	}
 }
 
-sub addLeaguesToOutputFile($\@)
+sub insertLeagues_intoCountryNode($\@)
 {
 	my $self = shift;
 	my ( $country_xpath, $leagues_names_ref )  = @_;
