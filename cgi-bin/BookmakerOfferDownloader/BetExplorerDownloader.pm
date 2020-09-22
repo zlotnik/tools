@@ -446,7 +446,7 @@ sub addChildSubcategoryNodeToOfferXml($$$)
 	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
 	my $parentNodeToUpdate = $document->findnodes($absolutePathToNodeNeededUpdate)->[0] or die "Can't find xml node specify by xpath:$absolutePathToNodeNeededUpdate in xml\n $document\n";
 	my $newNode = XML::LibXML::Element->new($nameOfNewChildNode);
-	my $lineBreakTextNode = XML::LibXML::Text->new("\n");	
+	my $lineBreakTextNode = XML::LibXML::Text->new("\n");
 	$parentNodeToUpdate->addChild($newNode);	
 	$document->toFile($outputXmlFilePath) or die $?;	
 }
@@ -543,8 +543,22 @@ sub insertLeagues_intoCountryNode($\@)
 	my ( $country_xpath, $leagues_names_ref )  = @_;
 	my @leagues_list = @{$leagues_names_ref}; 
         my $outputFileName  = $self->get_OutputFile();
+        my $xmlParser = XML::LibXML->new;
+	my $document = $xmlParser->parse_file( $outputFileName ) or die $?;
+
+	my $countryNode = $document->findnodes( $country_xpath )->[0] or die "Can't find xml node specify by xpath:$country_xpath in xml\n $document\n";
         
-        `touch $outputFileName`;
+        foreach( @leagues_list )
+        {
+                my $leagueName = $_;
+	        my $newChildNode = XML::LibXML::Element->new( $leagueName );
+	        #my $lineBreakTextNode = XML::LibXML::Text->new("\n");	
+                #$newChildNode->addChild( $lineBreakTextNode );
+	        $countryNode->addChild( $newChildNode );	
+        }
+
+	$document->toFile( $outputFileName ) or die $?;	
+        correctFormatXmlDocument( $outputFileName );
 
 }
 
@@ -567,7 +581,7 @@ sub find_countries_xpaths($)
 	my $self = shift;
 	my ($templateFile) = @_; 
 	my $xmlParser = XML::LibXML->new;		
-	my $xmlDoc = $xmlParser->parse_file($templateFile) or die;
+	my $xmlDoc = $xmlParser->parse_file($templateFile) or die;  #xmlDoc should be stored in object
 	my $countriesXpath = '/note/data/*/*';
 	my @allLeagues = $xmlDoc->findnodes( $countriesXpath );
 	my @toReturn;

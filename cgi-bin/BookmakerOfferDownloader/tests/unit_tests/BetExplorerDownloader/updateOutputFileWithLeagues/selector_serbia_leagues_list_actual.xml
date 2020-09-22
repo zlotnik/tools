@@ -5,10 +5,10 @@
   </dataSources>
   <data>
     <soccer>
-      <Poland>
-        <ekstraklasa>
-        </ekstraklasa>
-      </Poland>
+      <Serbia>
+        <super-liga />
+        <prva-liga />
+      </Serbia>
     </soccer>
   </data>
 </note>
