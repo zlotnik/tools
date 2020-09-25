@@ -54,7 +54,7 @@ sub injectBookmakerEventOfferIntoXML($$);
 sub injectBookmakerProductEventOffertIntoXML($$$);
 sub add_UnderOver_offers($);
 sub add_1X2_offers($);
-sub updateOutputFileWithLeagues($);
+sub updateOutputFileWithLeagues();
 sub find_countries_xpaths($);
 sub downloadLeaguesNames($);
 sub set_OutputFile($);
@@ -508,11 +508,10 @@ sub createEventListXML($$)
 	
 	# addCountriesToXML( $outputXmlFile ); #not implemented yet
 	# updateOutputFileWithLeagues();
-	# addSportEventsToXML( $outputXmlFile );
-	#
+	# updateOutputFileWithSportEvents();
+	# updateOutputFileWithBookmakersOffer();  
 	
-	# add_leagues_events($xmlFile);
-	correctFormatXmlDocument($outputXmlPath);
+	correctFormatXmlDocument($outputXmlPath); 
 
 };
 
@@ -523,10 +522,19 @@ sub addCountriesToXML($)
 
 }
 
-sub updateOutputFileWithLeagues($)
+sub updateOutputFileWithSportEvents();
+sub updateOutputFileWithSportEvents()
+{
+
+
+
+}
+
+sub updateOutputFileWithLeagues()
 {
 	my $self = shift;
-	my ( $selectorFileWithCountries ) = @_;
+        my $selectorFileWithCountries  = $self->get_OutputFile();
+
 	my @countries_xpaths = $self->find_countries_xpaths( $selectorFileWithCountries ); #here problem $selectorFileWithCountries doesn't exists should be used mSelectorFile instead
 	
 	foreach( @countries_xpaths )

@@ -53,8 +53,7 @@ insertLeagues_intoCountryNode();
 updateOutputFileWithLeagues();
 find_countries_xpaths();
 downloadLeaguesNames();
-exit;
-
+updateOutputFileWithSportEvents();
 #add_bookmakerOffers_to_xmlWithSportEvents();
 #create_BookmakersOfferFile();
 # add_leagues_events();
@@ -213,19 +212,63 @@ sub updateOutputFileWithLeagues()
 	my $bookMakerOfferFile_expected = "${subroutine_unitTest_directory}/selector_serbia_leagues_list_expected.xml";
         $a_betExplorerDownloader->set_OutputFile( $bookMakerOfferFile_actual );        
 
+        cp $selectorFile, $bookMakerOfferFile_actual or die;
 	my $betExplorerDownloader_mock = Test::MockModule->new('BetExplorerDownloader');
 
+	$betExplorerDownloader_mock->redefine( 'find_countries_xpaths', \&find_countries_xpaths_mock );
 	$betExplorerDownloader_mock->redefine( 'insertLeagues_intoCountryNode', \&insertLeagues_intoCountryNode_mock );
 	$betExplorerDownloader_mock->redefine( 'downloadLeaguesNames', \&downloadLeaguesNames_mock);
-	$betExplorerDownloader_mock->redefine( 'find_countries_xpaths', \&find_countries_xpaths_mock );
 
 	$a_betExplorerDownloader->loadSelectorFile( $selectorFile );
-	$a_betExplorerDownloader->updateOutputFileWithLeagues( $bookMakerOfferFile_actual );
+	$a_betExplorerDownloader->updateOutputFileWithLeagues();
 	files_eq $bookMakerOfferFile_actual , $bookMakerOfferFile_expected , 'Testing if output file is updated with leagues list';
+}
 
-	#unlink $bookMakerOfferFile_actual;
+
+sub find_leagues_xpaths_mock
+{
 
 }
+
+sub insertEvents_intoLeagueNode_mock
+{
+
+}
+
+sub downloadEventURLs_mock
+{
+
+}
+
+sub updateOutputFileWithSportEvents()
+{
+	my $subroutineName = get_subroutineName();
+	print "\nTESTING SUBROUTINE: $subroutineName\n";
+
+	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
+
+	my $selectorFile = "${subroutine_unitTest_directory}/selector_poland_leagues_list.xml";
+
+	my $selector_events_list_actual = "${subroutine_unitTest_directory}/selector_poland_events_list_actual.xml" ;
+	my $selector_event_list_expected = "${subroutine_unitTest_directory}/selector_poland_events_list_expected.xml";
+        $a_betExplorerDownloader->set_OutputFile( $selector_events_list_actual );        
+
+        cp $selectorFile, $selector_events_list_actual or die;
+	my $betExplorerDownloader_mock = Test::MockModule->new('BetExplorerDownloader');
+
+	$betExplorerDownloader_mock->redefine( 'find_leagues_xpaths', \&find_leagues_xpaths_mock );
+	$betExplorerDownloader_mock->redefine( 'insertEvents_intoLeagueNode', \&insertEvents_intoLeagueNode_mock );
+	$betExplorerDownloader_mock->redefine( 'downloadEventURLs', \&downloadEventURLs_mock);
+
+	$a_betExplorerDownloader->loadSelectorFile( $selectorFile );
+	$a_betExplorerDownloader->updateOutputFileWithSportEvents();
+	files_eq $selector_events_list_actual , $selector_event_list_expected , 'Testing if output file is updated with events list';
+
+}
+
+
 
 sub get_subroutineName()
 {	
