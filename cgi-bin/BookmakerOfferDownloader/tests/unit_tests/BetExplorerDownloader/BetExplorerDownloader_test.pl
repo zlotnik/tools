@@ -48,12 +48,15 @@ sub updateOutputFileWithLeagues();
 sub find_countries_xpaths();
 sub downloadLeaguesNames();
 sub insertLeagues_intoCountryNode();
+sub find_leagues_xpaths();
+sub updateOutputFileWithSportEvents();
 ############################MAIN##############################################
 insertLeagues_intoCountryNode();
 updateOutputFileWithLeagues();
 find_countries_xpaths();
 downloadLeaguesNames();
 updateOutputFileWithSportEvents();
+find_leagues_xpaths();
 #add_bookmakerOffers_to_xmlWithSportEvents();
 #create_BookmakersOfferFile();
 # add_leagues_events();
@@ -94,7 +97,7 @@ sub find_countries_xpaths()
 	my $testName = "Testing finding xpath in surebet template file";
 #	$a_betExplorerDownloader->{};# here probable should be name of propertie with path to selector
 	my @got = $a_betExplorerDownloader->find_countries_xpaths( $selectorFile );
-    is_deeply( \@got, \@expected, $testName );
+        is_deeply( \@got, \@expected, $testName );
 	
 } 
 
@@ -249,6 +252,25 @@ sub downloadEventURLs_mock
 {
         return('https://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/',
                'https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/');
+}
+
+sub find_leagues_xpaths()
+{
+	my $subroutineName = get_subroutineName();
+	print "\nTESTING SUBROUTINE: $subroutineName\n";
+
+	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
+
+	my $selectorFile = "${subroutine_unitTest_directory}/serbia_leagues_list_actual.xml";
+	my @expected = ('/note/data/soccer/Serbia/super-liga','/note/data/soccer/Serbia/prva-liga' ); 
+
+	my $testName = "Testing finding leagues xpath in surebet template file";
+
+	my @got = $a_betExplorerDownloader->find_leagues_xpaths( $selectorFile );
+        is_deeply( \@got, \@expected, $testName );
+	
 }
 
 sub updateOutputFileWithSportEvents()
