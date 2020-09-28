@@ -227,17 +227,28 @@ sub updateOutputFileWithLeagues()
 
 sub find_leagues_xpaths_mock
 {
-
+        return('/note/data/soccer/Poland/ekstraklasa'); 
 }
 
-sub insertEvents_intoLeagueNode_mock
+sub insertEvents_intoLeagueNode_mock($\@);
+sub insertEvents_intoLeagueNode_mock($\@)
 {
+        my $self = shift;
+        my ( $league_xpath , $event_URLs_ref ) = @_;
+        my @eventsURLs = @{$event_URLs_ref};
 
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+	my $subroutine_unitTest_directory = "${unit_testDirectory}/insertEvents_intoLeagueNode";
+
+        my $outputFileName = $self->get_OutputFile();
+        my $sourceFile = "${subroutine_unitTest_directory}/poland_events_list_expected.xml";
+        cp $sourceFile, $outputFileName or die "Can't copy file $sourceFile -> $outputFileName";
 }
 
 sub downloadEventURLs_mock
 {
-
+        return('https://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/',
+               'https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/');
 }
 
 sub updateOutputFileWithSportEvents()

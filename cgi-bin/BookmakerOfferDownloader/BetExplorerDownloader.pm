@@ -61,6 +61,7 @@ sub set_OutputFile($);
 sub get_OutputFile();
 sub insertLeagues_intoCountryNode($\@);
 sub addCountriesToXML($);
+sub updateOutputFileWithSportEvents();
 #################DICTIONARY##############################################
 
 
@@ -522,12 +523,35 @@ sub addCountriesToXML($)
 
 }
 
-sub updateOutputFileWithSportEvents();
-sub updateOutputFileWithSportEvents()
+sub find_leagues_xpaths($);
+sub find_leagues_xpaths($)
+{
+}
+
+sub insertEvents_intoLeagueNode($\@);
+sub insertEvents_intoLeagueNode($\@)
+{
+}
+
+sub downloadEventURLs($);
+sub downloadEventURLs($)
 {
 
+}
 
+sub updateOutputFileWithSportEvents()
+{
+	my $self = shift;
+        my $selectorFileWithLeagues  = $self->get_OutputFile();
 
+	my @leagues_xpaths = $self->find_leagues_xpaths( $selectorFileWithLeagues );
+	
+	foreach( @leagues_xpaths )
+	{
+		my $league_xpath = $_;
+		my @event_URLs = $self->downloadEventURLs( $league_xpath );
+		$self->insertEvents_intoLeagueNode( $league_xpath , \@event_URLs );
+	}
 }
 
 sub updateOutputFileWithLeagues()
