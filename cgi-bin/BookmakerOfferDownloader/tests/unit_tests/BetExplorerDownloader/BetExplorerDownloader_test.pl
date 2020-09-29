@@ -57,6 +57,7 @@ find_countries_xpaths();
 downloadLeaguesNames();
 updateOutputFileWithSportEvents();
 find_leagues_xpaths();
+insertEvents_intoLeagueNode();
 #add_bookmakerOffers_to_xmlWithSportEvents();
 #create_BookmakersOfferFile();
 # add_leagues_events();
@@ -164,6 +165,36 @@ sub insertLeagues_intoCountryNode_mock  #todo mock should be in separated module
 #responsibility: get selelector file and xpath to country and add leagues
 #insertLeagues_intoCountryNode
 #so there should be separate class like SportBetsXML -> XML
+
+sub insertEvents_intoLeagueNode()
+{
+        my $subroutineName = get_subroutineName();
+        print "\nTESTING SUBROUTINE: $subroutineName\n";
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
+        
+	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
+
+        my $inputFile = "${subroutine_unitTest_directory}/leagues_list_Poland.xml";
+
+        my $eventList_actual = "${subroutine_unitTest_directory}/event_list_actual.xml";
+        my $eventList_expected = "${subroutine_unitTest_directory}/poland_events_list_expected.xml";
+
+        cp $inputFile, $eventList_actual or die;
+        $a_betExplorerDownloader->set_OutputFile( $eventList_actual );
+        my $leagueXpath = '/note/data/soccer/Poland/ekstraklasa'; 
+
+        my @league_list = ( 
+                                'https://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/', 
+                                'https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/'
+                          );
+
+
+        $a_betExplorerDownloader->insertEvents_intoLeagueNode( $leagueXpath, \@league_list );
+        files_eq( $eventList_actual, $eventList_expected, "Testing if the output file is updated with event list");
+
+}
+
 sub insertLeagues_intoCountryNode()
 {
         my $subroutineName = get_subroutineName();

@@ -524,13 +524,51 @@ sub addCountriesToXML($)
 }
 
 sub find_leagues_xpaths($);
-sub find_leagues_xpaths($)
+sub find_leagues_xpaths($) ##copy paste sub think how to reuse the same fragment
 {
+	my $self = shift;
+	my ($templateFile) = @_; 
+	my $xmlParser = XML::LibXML->new;		
+	my $xmlDoc = $xmlParser->parse_file($templateFile) or die;  #xmlDoc should be stored in object
+	my $countriesXpath = '/note/data/*/*/*';
+	my @allLeagues = $xmlDoc->findnodes( $countriesXpath );
+	my @toReturn;
+
+	foreach(@allLeagues)
+	{
+		my $aLeagueNode = $_;
+		my $aLeagueXPath = $aLeagueNode->nodePath();
+		push @toReturn, $aLeagueXPath;
+	}
+	return @toReturn;
+
 }
 
 sub insertEvents_intoLeagueNode($\@);
 sub insertEvents_intoLeagueNode($\@)
 {
+	my $self = shift;
+	my ( $country_xpath, $leagues_names_ref )  = @_;
+	my @leagues_list = @{$leagues_names_ref}; 
+        my $outputFileName  = $self->get_OutputFile();
+        my $xmlParser = XML::LibXML->new;
+	my $document = $xmlParser->parse_file( $outputFileName ) or die $?;
+
+	my $countryNode = $document->findnodes( $country_xpath )->[0] or die "Can't find xml node specify by xpath:$country_xpath in xml\n $document\n";
+        
+        my $events_ParentNode = XML::LibXML::Element->new( 'events' );
+        $countryNode->addChild($events_ParentNode);
+
+        foreach( @leagues_list )
+        {
+                my $leagueName = $_;
+	        my $newChildNode = XML::LibXML::Element->new( 'event' ); #change name to more adequate because it just copied from insertLeagues_intoCountryNode
+                $newChildNode->setAttribute( 'url', $_ );
+	        $events_ParentNode->addChild( $newChildNode );	
+        }
+
+	$document->toFile( $outputFileName ) or die $?;	
+        correctFormatXmlDocument( $outputFileName );
 }
 
 sub downloadEventURLs($);
@@ -622,7 +660,6 @@ sub find_countries_xpaths($)
 	{
 		my $aLeagueNode = $_;
 		my $aLeagueXPath = $aLeagueNode->nodePath();
-#		$aLeagueNode = '/note/eventList/' . $aLeagueNode;
 		push @toReturn, $aLeagueXPath;
 	}
 	return @toReturn;
