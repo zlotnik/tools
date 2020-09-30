@@ -18,4 +18,5 @@ cgi-bin/tmp/*
 cgi-bin/tmp/bookmakerOffert.xml
 cgi-bin/BookmakerOfferDownloader/tests/unit_tests/create_BookmakersOfferFile/bookmakerOfferFile_actual.xml
 data/*
+*_actual.xml
 *.code-workspace.code-workspace
