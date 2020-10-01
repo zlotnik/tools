@@ -20,7 +20,6 @@ use Test::MockModule;
 # sub getRawDataOfEvent($);
 # sub checkNumberOfBookmaker($);
 # sub convertRawDownloadedDataToHash($);
-# sub createEventListXML($$);
 # sub getAllSubCategories($$);
 # sub updateXmlNodeWithDataFromBookmaker($$);
 # sub getRootNode($);
@@ -50,6 +49,8 @@ sub downloadLeaguesNames();
 sub insertLeagues_intoCountryNode();
 sub find_leagues_xpaths();
 sub updateOutputFileWithSportEvents();
+sub insertEvents_intoLeagueNode_mock($\@);
+sub downloadEventURLs();
 ############################MAIN##############################################
 insertLeagues_intoCountryNode();
 updateOutputFileWithLeagues();
@@ -61,7 +62,8 @@ insertEvents_intoLeagueNode();
 #add_bookmakerOffers_to_xmlWithSportEvents();
 #create_BookmakersOfferFile();
 # add_leagues_events();
-#createEventListXML();
+downloadEventURLs();
+createEventListXML();
 
 done_testing();
 
@@ -165,6 +167,23 @@ sub insertLeagues_intoCountryNode_mock  #todo mock should be in separated module
 #responsibility: get selelector file and xpath to country and add leagues
 #insertLeagues_intoCountryNode
 #so there should be separate class like SportBetsXML -> XML
+#sub createEventListXML()
+#{
+#        my $subroutineName = get_subroutineName();
+#        print "\nTESTING SUBROUTINE: $subroutineName\n";
+#	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+#	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
+#	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
+	
+#	my $selectorFile = "${subroutine_unitTest_directory}/selector_poland_leagues_list.xml";
+
+#        $theMockedBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
+#        $theMockedBookMakerDownloader->prepareTemplateFor_SportEventsFile($resultXMLFileWithDownloadedData); #this should be inside createEventListXML
+#        $theMockedBookMakerDownloader->createEventListXML($xpath, $resultXMLFileWithDownloadedData);
+#        my $isCreateEventListXMLCorrect = $aBookmakerXmlDataParser->isCorrectEventListFile($resultXMLFileWithDownloadedData); 
+#        ok($isCreateEventListXMLCorrect, "Mocked net stage 1: Creating event list xml") or die;
+
+#}
 
 sub insertEvents_intoLeagueNode()
 {
@@ -172,7 +191,6 @@ sub insertEvents_intoLeagueNode()
         print "\nTESTING SUBROUTINE: $subroutineName\n";
 	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
-        
 	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
 
         my $inputFile = "${subroutine_unitTest_directory}/leagues_list_Poland.xml";
@@ -219,6 +237,23 @@ sub insertLeagues_intoCountryNode()
 
 }
 
+sub downloadEventURLs()
+{
+
+        my $subroutineName = get_subroutineName();
+        print "\nTESTING SUBROUTINE: $subroutineName\n";
+
+        my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
+
+        my @expected = ('https://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/',
+                        'https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/');
+
+        my @actual = $a_betExplorerDownloader->downloadEventURLs( '/soccer/Poland/ekstraklasa' );
+        my $testName = 'fetching event list from stubed website';
+
+        is_deeply( \@actual, \@expected, $testName );
+
+}
 
 sub downloadLeaguesNames_mock()
 {
@@ -264,7 +299,6 @@ sub find_leagues_xpaths_mock
         return('/note/data/soccer/Poland/ekstraklasa'); 
 }
 
-sub insertEvents_intoLeagueNode_mock($\@);
 sub insertEvents_intoLeagueNode_mock($\@)
 {
         my $self = shift;

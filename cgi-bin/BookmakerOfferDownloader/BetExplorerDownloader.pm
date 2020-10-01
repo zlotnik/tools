@@ -474,9 +474,11 @@ sub createEventListXML($$)
 	
 	if(not $xpath) #temporary solution until recurency will be removed
 	{
-		$self->prepareTemplateFor_SportEventsFile($outputXmlPath);
+	#	$self->prepareTemplateFor_SportEventsFile($outputXmlPath);
 	}
 	
+	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
+
 	my $xmlParser = XML::LibXML->new;		
 	my $xmlNode = $xmlParser->parse_file($outputXmlPath) or die;	
 		
@@ -495,12 +497,12 @@ sub createEventListXML($$)
 			if($node->hasChildNodes() ) #[bug]because it returns true also for <poland></poland> 
 			{
 				my $childNode = $_;
-				$self->createEventListXML("$xpath/$nodeName", $outputXmlPath);
+			#	$self->createEventListXML("$xpath/$nodeName", $outputXmlPath);
 				#enclose in some sub like seekXmlNodeWithDataTofetch or something better ...  
 			}
 			else
 			{
-				$self->updateXmlNodeWithDataFromBookmaker("${xpath}/${nodeName}", $outputXmlPath);				
+	#			$self->updateXmlNodeWithDataFromBookmaker("${xpath}/${nodeName}", $outputXmlPath);				
 			}
 		}	
 	}
@@ -509,7 +511,10 @@ sub createEventListXML($$)
 	
 	# addCountriesToXML( $outputXmlFile ); #not implemented yet
 	# updateOutputFileWithLeagues();
-	# updateOutputFileWithSportEvents();
+	
+        $self->set_OutputFile($outputXmlPath);#this should be invoked earlier todo in R phase
+	print "AAA" . $self->get_OutputFile();
+	$self->updateOutputFileWithSportEvents();
 	# updateOutputFileWithBookmakersOffer();  
 	
 	correctFormatXmlDocument($outputXmlPath); 
@@ -574,7 +579,29 @@ sub insertEvents_intoLeagueNode($\@)
 sub downloadEventURLs($);
 sub downloadEventURLs($)
 {
-
+	
+	my ($self,$subCategoryXpath ) = @_;
+	
+	my $linkToCategory = 'https://www.betexplorer.com/' . $subCategoryXpath . "/";	
+	
+	my $contentOfSubcategoryPage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToCategory);
+	my @toReturn;
+		
+	my $regexp = '(<td class=\"table-main__daysign\")([\s\S]*?)(</table>)';
+	if(not $contentOfSubcategoryPage =~ m|${regexp}|m )
+	{
+		print "There is no event for $linkToCategory\n";
+		print "DEBUG: Can't match expression ${regexp}\n";
+	}
+	else	
+	{
+		
+		my $htmlTableWithEvents = $1.$2.$3;
+		@toReturn = BetexplorerParser::pickupLinksToEventFromTable($htmlTableWithEvents);	
+	}
+	
+	return @toReturn;
+	
 }
 
 sub updateOutputFileWithSportEvents()
