@@ -32,7 +32,7 @@ sub create_BookmakersOfferFile($);
 sub downloadRawDataOfChoosenOfert(\%);
 sub checkNumberOfBookmaker($);
 sub convertRawDownloadedDataToHash($);
-sub createEventListXML($$);
+sub createEventListXML($);
 sub getAllSubCategories($$);
 sub updateXmlNodeWithDataFromBookmaker($$);
 sub getRootNode($);
@@ -162,8 +162,7 @@ sub create_BookmakersOfferFile($)
 	$self->set_OutputFile( $outputXmlPath );
 	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
 
-	my $xpath = ""; 
-	$self->createEventListXML($xpath, $outputXmlPath);
+	$self->createEventListXML( $outputXmlPath);
 	
 	updateEventListXMLWithEventDetails($outputXmlPath);#not implemented yet
 	$self->add_bookmakerOffers_to_xmlWithSportEvents($outputXmlPath);
@@ -474,11 +473,12 @@ sub prepareTemplateFor_SportEventsFile($)
 		
 }	
 	
-sub createEventListXML($$)
+sub createEventListXML($)
 {
-	my ($self, $xpath, $outputXmlPath) = @_;
+	my ($self, $outputXmlPath) = @_; #output file should be embeded into prioperties not passe top down
 	
-	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
+         
+	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}"; #maybe it should be copied prior?
 	
         $self->set_OutputFile($outputXmlPath);#this should be invoked earlier todo in R phase
 

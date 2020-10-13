@@ -138,7 +138,7 @@ sub createEventListXML()
 	unlink $bookmakerEventList_actual;
 
 	$a_betExplorerDownloader->{mSelectorFile} = $examplarySelectorFile;
-	$a_betExplorerDownloader->createEventListXML('',$bookmakerEventList_actual);
+	$a_betExplorerDownloader->createEventListXML( $bookmakerEventList_actual );
 	files_eq $bookmakerEventList_actual , $bookmakerEventList_expected , 'creating a sport events file';
 
 }
