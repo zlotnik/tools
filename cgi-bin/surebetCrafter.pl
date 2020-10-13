@@ -112,7 +112,6 @@ sub checkRunMode()
 
 sub findSureBets($$)
 {
-	
 	#todo bug when input and output i sthe same file
 	#todo add to argument verification that we except only *.xml file
 	my ($xmlSelectorFile , $xmlResultFile) = @_;

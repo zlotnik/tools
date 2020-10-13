@@ -151,7 +151,6 @@ sub isItCorrectXmlFile($)
 }
 #above could be moved to parser
 
-
 sub create_BookmakersOfferFile($) 
 {
 	my ($self, $outputXmlPath) = @_;
@@ -476,15 +475,12 @@ sub prepareTemplateFor_SportEventsFile($)
 sub createEventListXML()
 {
 	my ( $self ) = shift;
-	
-         
-        my $outputXmlPath = $self->get_OutputFile();
-	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}"; #maybe it should be copied prior?
 
 	$self->updateOutputFileWithLeagues();
 	
 	$self->updateOutputFileWithSportEvents();
 	
+        my $outputXmlPath = $self->get_OutputFile();
 	correctFormatXmlDocument($outputXmlPath); 
 
 };

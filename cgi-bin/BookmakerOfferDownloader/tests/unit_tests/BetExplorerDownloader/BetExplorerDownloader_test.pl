@@ -138,6 +138,7 @@ sub createEventListXML()
 
 	$a_betExplorerDownloader->{mSelectorFile} = $examplarySelectorFile;
         $a_betExplorerDownloader->set_OutputFile( $bookmakerEventList_actual );
+        cp ( $a_betExplorerDownloader->get_selectorFile, $a_betExplorerDownloader->get_OutputFile() ) or die "Can't load selector file"; 
 	$a_betExplorerDownloader->createEventListXML();
 	files_eq $bookmakerEventList_actual , $bookmakerEventList_expected , 'creating a sport events file';
 
