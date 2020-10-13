@@ -1,8 +1,9 @@
-#vim temporaryry files
+#vim temporary files
 *.swp
 *.swo
 *.swn
 *.swm
+*.swl
 
 
 cgi-bin/BookmakerOfferDownloader/output/downloadedPolandEkstraklasa_realnet.xml
