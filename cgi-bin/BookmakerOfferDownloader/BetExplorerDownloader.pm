@@ -32,7 +32,7 @@ sub create_BookmakersOfferFile($);
 sub downloadRawDataOfChoosenOfert(\%);
 sub checkNumberOfBookmaker($);
 sub convertRawDownloadedDataToHash($);
-sub createEventListXML($);
+sub createEventListXML();
 sub getAllSubCategories($$);
 sub updateXmlNodeWithDataFromBookmaker($$);
 sub getRootNode($);
@@ -159,10 +159,10 @@ sub create_BookmakersOfferFile($)
 	my $pathToXmlSelector = $self->get_selectorFile();
 	defined  $self->{mSelectorFile} or die "The selector file didn't loaded\n";
 
-        $outputXmlPath = $self->get_OutputFile(); #output file name
+	$self->set_OutputFile( $outputXmlPath );
 	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
 
-	$self->createEventListXML( $outputXmlPath);
+	$self->createEventListXML();
 	
 	updateEventListXMLWithEventDetails($outputXmlPath);#not implemented yet
 	$self->add_bookmakerOffers_to_xmlWithSportEvents($outputXmlPath);
@@ -473,19 +473,17 @@ sub prepareTemplateFor_SportEventsFile($)
 		
 }	
 	
-sub createEventListXML($)
+sub createEventListXML()
 {
-	my ($self, $outputXmlPath) = @_; #output file should be embeded into prioperties not passe top down
+	my ( $self ) = shift;
 	
          
+        my $outputXmlPath = $self->get_OutputFile();
 	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}"; #maybe it should be copied prior?
-	
-        $self->set_OutputFile($outputXmlPath);#this should be invoked earlier todo in R phase
 
 	$self->updateOutputFileWithLeagues();
 	
 	$self->updateOutputFileWithSportEvents();
-	# updateOutputFileWithBookmakersOffer();  
 	
 	correctFormatXmlDocument($outputXmlPath); 
 

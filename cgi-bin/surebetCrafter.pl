@@ -126,7 +126,7 @@ sub findSureBets($$)
 	$theRealBookMakerDownloader->loadSelectorFile( $xmlSelectorFile ); #temporary moved before "BookMakerDownloader->createEventListXML"
 	$theRealBookMakerDownloader->set_OutputFile( $xmlResultFile  );
 	
-	$theRealBookMakerDownloader->create_BookmakersOfferFile($xmlResultFile);
+	$theRealBookMakerDownloader->create_BookmakersOfferFile( $xmlResultFile );
 	my $theProfitabilityCalculator = ProfitabilityCalculator->new();
 	
 	chdir '..';

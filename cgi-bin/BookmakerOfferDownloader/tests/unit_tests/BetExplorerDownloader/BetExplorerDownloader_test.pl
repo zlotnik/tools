@@ -14,7 +14,6 @@ use Test::MockModule;
 # sub getsLinksForAllEventsFromSubCategory($$);
 # sub getTableWithEvents($);
 # sub getLinksToEventFromTable($);
-# sub create_BookmakersOfferFile($);
 # sub downloadRawDataOfChoosenOfert(\%);
 # sub generateReportLine($);
 # sub getRawDataOfEvent($);
@@ -138,7 +137,8 @@ sub createEventListXML()
 	unlink $bookmakerEventList_actual;
 
 	$a_betExplorerDownloader->{mSelectorFile} = $examplarySelectorFile;
-	$a_betExplorerDownloader->createEventListXML( $bookmakerEventList_actual );
+        $a_betExplorerDownloader->set_OutputFile( $bookmakerEventList_actual );
+	$a_betExplorerDownloader->createEventListXML();
 	files_eq $bookmakerEventList_actual , $bookmakerEventList_expected , 'creating a sport events file';
 
 }
@@ -163,27 +163,6 @@ sub insertLeagues_intoCountryNode_mock  #todo mock should be in separated module
         cp $sourceFile, $outputFileName or die "Can't copy file $sourceFile -> $outputFileName";
 
 }
-
-#responsibility: get selelector file and xpath to country and add leagues
-#insertLeagues_intoCountryNode
-#so there should be separate class like SportBetsXML -> XML
-#sub createEventListXML()
-#{
-#        my $subroutineName = get_subroutineName();
-#        print "\nTESTING SUBROUTINE: $subroutineName\n";
-#	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
-#	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
-#	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
-	
-#	my $selectorFile = "${subroutine_unitTest_directory}/selector_poland_leagues_list.xml";
-
-#        $theMockedBookMakerDownloader->loadSelectorFile($correctBookmakerSelectorFile);
-#        $theMockedBookMakerDownloader->prepareTemplateFor_SportEventsFile($resultXMLFileWithDownloadedData); #this should be inside createEventListXML
-#        $theMockedBookMakerDownloader->createEventListXML($xpath, $resultXMLFileWithDownloadedData);
-#        my $isCreateEventListXMLCorrect = $aBookmakerXmlDataParser->isCorrectEventListFile($resultXMLFileWithDownloadedData); 
-#        ok($isCreateEventListXMLCorrect, "Mocked net stage 1: Creating event list xml") or die;
-
-#}
 
 sub insertEvents_intoLeagueNode()
 {
