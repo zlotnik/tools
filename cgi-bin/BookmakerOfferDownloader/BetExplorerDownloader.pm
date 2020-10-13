@@ -472,48 +472,12 @@ sub createEventListXML($$)
 {
 	my ($self, $xpath, $outputXmlPath) = @_;
 	
-	if(not $xpath) #temporary solution until recurency will be removed
-	{
-	#	$self->prepareTemplateFor_SportEventsFile($outputXmlPath);
-	}
-	
 	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
-
-	my $xmlParser = XML::LibXML->new;		
-	my $xmlNode = $xmlParser->parse_file($outputXmlPath) or die;	
-		
-	my $rootPathToEventXMLNode = '/note/eventList';
-	my $absolutePathToNode = "$rootPathToEventXMLNode${xpath}";
-	
-	$xmlNode = $xmlNode->findnodes($absolutePathToNode)->[0];
-	
-	if(defined $xmlNode) 
-	{
-		foreach ($xmlNode->nonBlankChildNodes())
-		{
-			my $node = $_;						
-			my $nodeName = $node->nodeName;
-				
-			if($node->hasChildNodes() ) #[bug]because it returns true also for <poland></poland> 
-			{
-				my $childNode = $_;
-			#	$self->createEventListXML("$xpath/$nodeName", $outputXmlPath);
-				#enclose in some sub like seekXmlNodeWithDataTofetch or something better ...  
-			}
-			else
-			{
-	#			$self->updateXmlNodeWithDataFromBookmaker("${xpath}/${nodeName}", $outputXmlPath);				
-			}
-		}	
-	}
-	
-	# add_country_leagues($xmlile);#seems to need anymore
-	
-	# addCountriesToXML( $outputXmlFile ); #not implemented yet
-	# updateOutputFileWithLeagues();
 	
         $self->set_OutputFile($outputXmlPath);#this should be invoked earlier todo in R phase
-	print "AAA" . $self->get_OutputFile();
+
+	$self->updateOutputFileWithLeagues();
+	
 	$self->updateOutputFileWithSportEvents();
 	# updateOutputFileWithBookmakersOffer();  
 	
@@ -610,11 +574,13 @@ sub updateOutputFileWithSportEvents()
         my $selectorFileWithLeagues  = $self->get_OutputFile();
 
 	my @leagues_xpaths = $self->find_leagues_xpaths( $selectorFileWithLeagues );
-	
+        
 	foreach( @leagues_xpaths )
 	{
 		my $league_xpath = $_;
-		my @event_URLs = $self->downloadEventURLs( $league_xpath );
+                my $league_URL_path = $_;
+                $league_URL_path =~ s|/note/data||g;
+		my @event_URLs = $self->downloadEventURLs( $league_URL_path );
 		$self->insertEvents_intoLeagueNode( $league_xpath , \@event_URLs );
 	}
 }
