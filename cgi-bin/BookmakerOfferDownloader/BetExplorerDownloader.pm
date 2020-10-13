@@ -62,6 +62,8 @@ sub get_OutputFile();
 sub insertLeagues_intoCountryNode($\@);
 sub addCountriesToXML($);
 sub updateOutputFileWithSportEvents();
+sub find_leagues_xpaths($);
+sub get_selectorFile();
 #################DICTIONARY##############################################
 
 
@@ -119,6 +121,12 @@ sub loadSelectorFile($)
 	$self->validateSelectorFile();
 }
 
+sub get_selectorFile()
+{
+        my ($self) = @_;
+        return $self->{mSelectorFile};
+}
+
 sub validateSelectorFile()
 {
 	my $self = shift;
@@ -148,13 +156,11 @@ sub create_BookmakersOfferFile($)
 {
 	my ($self, $outputXmlPath) = @_;
 	
+	my $pathToXmlSelector = $self->get_selectorFile();
 	defined  $self->{mSelectorFile} or die "The selector file didn't loaded\n";
-	my $pathToXmlSelector = $self->{mSelectorFile};
-
 
 	$self->set_OutputFile( $outputXmlPath );
 	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
-
 
 	my $xpath = ""; 
 	$self->createEventListXML($xpath, $outputXmlPath);
@@ -492,7 +498,6 @@ sub addCountriesToXML($)
 
 }
 
-sub find_leagues_xpaths($);
 sub find_leagues_xpaths($) ##copy paste sub think how to reuse the same fragment
 {
 	my $self = shift;
