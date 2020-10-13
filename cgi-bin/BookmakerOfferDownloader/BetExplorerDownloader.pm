@@ -159,7 +159,7 @@ sub create_BookmakersOfferFile($)
 	my $pathToXmlSelector = $self->get_selectorFile();
 	defined  $self->{mSelectorFile} or die "The selector file didn't loaded\n";
 
-	$self->set_OutputFile( $outputXmlPath );
+        $outputXmlPath = $self->get_OutputFile(); #output file name
 	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
 
 	$self->createEventListXML( $outputXmlPath);
