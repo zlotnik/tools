@@ -40,7 +40,7 @@ sub addChildSubcategoryNodeToOfferXml($$$);
 sub addLinkToEventToOfferXml($$$);
 sub updateEventListXMLWithEventDetails($);
 sub add_bookmakerOffers_to_xmlWithSportEvents($);
-sub correctFormatXmlDocument($);
+sub correctFormatXmlDocument();
 sub xmlDocumentHasNodeWithoutLineBreaks($);
 sub validateSelectorFile();
 sub isLinkToEvent($);
@@ -189,10 +189,12 @@ sub get_OutputFile()
 }
 
 
-sub correctFormatXmlDocument($)
+sub correctFormatXmlDocument()
 {
 
-	my $pathToXmlDocumentToCorrect = shift;
+	my $self = shift;
+
+        my $pathToXmlDocumentToCorrect = $self->get_OutputFile();
 	my $tidy_obj = XML::Tidy->new('filename' => $pathToXmlDocumentToCorrect);
 
 	$tidy_obj->tidy();
@@ -306,7 +308,7 @@ sub add_bookmakerOffers_to_xmlWithSportEvents($)
 	print XML $xmlDoc->toString();
 	close XML;
 	
-	correctFormatXmlDocument($pathToEventListXML);
+	$self->correctFormatXmlDocument();
 		
 }
 
@@ -477,12 +479,9 @@ sub createEventListXML()
 	my ( $self ) = shift;
 
 	$self->updateOutputFileWithLeagues();
-	
 	$self->updateOutputFileWithSportEvents();
-	
         my $outputXmlPath = $self->get_OutputFile();
-	correctFormatXmlDocument($outputXmlPath); 
-
+	$self->correctFormatXmlDocument(); 
 };
 
 sub addCountriesToXML($)
@@ -536,7 +535,7 @@ sub insertEvents_intoLeagueNode($\@)
         }
 
 	$document->toFile( $outputFileName ) or die $?;	
-        correctFormatXmlDocument( $outputFileName );
+        $self->correctFormatXmlDocument();
 }
 
 sub downloadEventURLs($);
@@ -620,7 +619,7 @@ sub insertLeagues_intoCountryNode($\@)
         }
 
 	$document->toFile( $outputFileName ) or die $?;	
-        correctFormatXmlDocument( $outputFileName );
+        $self->correctFormatXmlDocument();
 
 }
 
