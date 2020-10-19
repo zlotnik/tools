@@ -115,24 +115,14 @@ sub findSureBets($$)
 	#todo bug when input and output i sthe same file
 	#todo add to argument verification that we except only *.xml file
 	my ($xmlSelectorFile , $xmlResultFile) = @_;
-        $xmlSelectorFile = Cwd::abs_path($xmlSelectorFile); 
 	
-	
-	$xmlResultFile = getcwd .'/'. ($xmlResultFile); 
-		
-	chdir 'BookmakerOfferDownloader';
 	my $theRealBookMakerDownloader =  BetExplorerDownloader->new('--realnet');
 	$theRealBookMakerDownloader->loadSelectorFile( $xmlSelectorFile ); #temporary moved before "BookMakerDownloader->createEventListXML"
 	$theRealBookMakerDownloader->set_OutputFile( $xmlResultFile  );
-	
 	$theRealBookMakerDownloader->create_BookmakersOfferFile( $xmlResultFile );
+
 	my $theProfitabilityCalculator = ProfitabilityCalculator->new();
-	
-	chdir '..';
-	chdir 'ProfitabilityCalculator';
 	$theProfitabilityCalculator->loadBookmakersOfferFile($xmlResultFile);
-
 	$theProfitabilityCalculator->generateOfferProfitabilityFile($xmlResultFile);
-
 
 };
