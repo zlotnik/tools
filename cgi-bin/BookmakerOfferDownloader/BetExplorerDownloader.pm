@@ -273,7 +273,7 @@ sub add_bookmakerOffer($)
 	my ($self, $pathToEventListXML) = @_;
 	my $xmlParser = XML::LibXML->new; 
 	my $xmlDoc = $xmlParser->parse_file($pathToEventListXML) or die $?;
-	my @allEventXml = $xmlDoc->findnodes('/note/eventList//*//event'); 
+	my @allEventXml = $xmlDoc->findnodes('/note/data/*/*/*/*/*'); 
 	
 	for(@allEventXml)
 	{		

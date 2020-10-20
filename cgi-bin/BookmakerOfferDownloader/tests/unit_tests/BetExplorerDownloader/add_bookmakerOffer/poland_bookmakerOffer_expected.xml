@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <note>
   <dataSources>
     <betexplorer />
@@ -8,9 +9,68 @@
       <Poland>
         <ekstraklasa>
           <events>
-            <event url="https://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/" />
-                        <>
-            <event url="https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/" />
+            <event url="https://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/">
+              <_1X2>
+                <_1>
+                  <_1xBet>1.67</_1xBet>
+                  <_bet365>1.50</_bet365>
+                  <_Betclic>2.31</_Betclic>
+                  <_Betfair>1.55</_Betfair>
+                  <_bwin>1.65</_bwin>
+                  <_Interwetten>1.55</_Interwetten>
+                  <_youwin>1.65</_youwin>
+                </_1>
+                <_X>
+                  <_1xBet>3.38</_1xBet>
+                  <_bet365>3.50</_bet365>
+                  <_Betclic>3.35</_Betclic>
+                  <_Betfair>3.70</_Betfair>
+                  <_bwin>3.40</_bwin>
+                  <_Interwetten>3.50</_Interwetten>
+                  <_youwin>3.30</_youwin>
+                </_X>
+                <_2>
+                  <_1xBet>5.15</_1xBet>
+                  <_bet365>6.00</_bet365>
+                  <_Betclic>2.87</_Betclic>
+                  <_Betfair>6.50</_Betfair>
+                  <_bwin>4.50</_bwin>
+                  <_Interwetten>6.00</_Interwetten>
+                  <_youwin>4.50</_youwin>
+                </_2>
+              </_1X2>
+            </event>
+            <event url="https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/">
+              <_1X2>
+                <_1>
+                  <_1xBet>1.67</_1xBet>
+                  <_bet365>1.50</_bet365>
+                  <_Betclic>1.31</_Betclic>
+                  <_Betfair>1.55</_Betfair>
+                  <_bwin>1.65</_bwin>
+                  <_Interwetten>1.55</_Interwetten>
+                  <_youwin>1.65</_youwin>
+                </_1>
+                <_X>
+                  <_1xBet>3.38</_1xBet>
+                  <_bet365>3.50</_bet365>
+                  <_Betclic>3.35</_Betclic>
+                  <_Betfair>3.70</_Betfair>
+                  <_bwin>3.40</_bwin>
+                  <_Interwetten>3.50</_Interwetten>
+                  <_youwin>3.30</_youwin>
+                </_X>
+                <_2>
+                  <_1xBet>5.15</_1xBet>
+                  <_bet365>6.00</_bet365>
+                  <_Betclic>2.87</_Betclic>
+                  <_Betfair>6.50</_Betfair>
+                  <_bwin>4.50</_bwin>
+                  <_Interwetten>6.00</_Interwetten>
+                  <_youwin>4.50</_youwin>
+                </_2>
+              </_1X2>
+            </event>
           </events>
         </ekstraklasa>
       </Poland>
