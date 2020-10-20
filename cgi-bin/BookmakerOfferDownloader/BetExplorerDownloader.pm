@@ -20,7 +20,7 @@ use Xpath;
 
 
 our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml 
-				 create_BookmakersOfferFile add_bookmakerOffers_to_xmlWithSportEvents);
+				 create_BookmakersOfferFile add_bookmakerOffer);
 
 ###############SUB PROTOTYPES############################################
 sub new();
@@ -39,7 +39,7 @@ sub getRootNode($);
 sub addChildSubcategoryNodeToOfferXml($$$);
 sub addLinkToEventToOfferXml($$$);
 sub updateEventListXMLWithEventDetails($);
-sub add_bookmakerOffers_to_xmlWithSportEvents($);
+sub add_bookmakerOffer($);
 sub correctFormatXmlDocument();
 sub xmlDocumentHasNodeWithoutLineBreaks($);
 sub validateSelectorFile();
@@ -163,13 +163,8 @@ sub create_BookmakersOfferFile($)
 
 	$self->createEventListXML();
 	
-	updateEventListXMLWithEventDetails($outputXmlPath);#not implemented yet
-	$self->add_bookmakerOffers_to_xmlWithSportEvents($outputXmlPath);
-
-	# 1.  sport events selector
-	# 2.  xml with sport events
-	# 3.  xml with bookmaker offer
-	# 4.  profitability xml
+	updateEventListXMLWithEventDetails($outputXmlPath);#NOT IMPLEMENTED YET
+	$self->add_bookmakerOffer( $outputXmlPath );
 
 
 }
@@ -272,7 +267,7 @@ sub add_1X2_offers($)
 
 }
 
-sub add_bookmakerOffers_to_xmlWithSportEvents($)
+sub add_bookmakerOffer($)
 {
 		
 	my ($self, $pathToEventListXML) = @_;

@@ -25,7 +25,7 @@ use Test::MockModule;
 # sub addChildSubcategoryNodeToOfferXml($$$);
 # sub addLinkToEventToOfferXml($$$);
 # sub updateEventListXMLWithEventDetails($);
-# sub add_bookmakerOffers_to_xmlWithSportEvents($);
+# sub add_bookmakerOffer($);
 # sub correctFormatXmlDocument($);
 # sub xmlDocumentHasNodeWithoutLineBreaks($);
 # sub validateSelectorFile();
@@ -39,7 +39,7 @@ use Test::MockModule;
 # sub addEventNodeToXmlEventList($$);
 # sub injectBookmakerEventOfferIntoXML($$);
 # sub injectBookmakerProductEventOffertIntoXML($$$);
-sub add_bookmakerOffers_to_xmlWithSportEvents();
+sub add_bookmakerOffer();
 sub create_BookmakersOfferFile();
 sub createEventListXML();
 sub updateOutputFileWithLeagues();
@@ -58,11 +58,11 @@ downloadLeaguesNames();
 updateOutputFileWithSportEvents();
 find_leagues_xpaths();
 insertEvents_intoLeagueNode();
-#add_bookmakerOffers_to_xmlWithSportEvents();
 #create_BookmakersOfferFile();
 # add_leagues_events();
 downloadEventURLs();
 createEventListXML();
+add_bookmakerOffer();
 
 done_testing();
 
@@ -144,12 +144,24 @@ sub createEventListXML()
 
 }
 
-sub add_bookmakerOffers_to_xmlWithSportEvents()
+sub add_bookmakerOffer()
 {
-	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet'); #isn't readable what to pass especially that real decision is taken to level down
+	my $subroutineName = get_subroutineName();
+        print "\nTESTING SUBROUTINE: $subroutineName\n";
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
 	
-	my $path2Xml_with_events = 'soccerEvents.xml';
-	$a_betExplorerDownloader->add_bookmakerOffers_to_xmlWithSportEvents($path2Xml_with_events);
+	my $path2Xml_with_events = "${subroutine_unitTest_directory}/poland_events_list.xml";
+	my $bookmakerOfferFile_expected = "${subroutine_unitTest_directory}/poland_bookmakerOffer_expected.xml";
+	my $bookmakerOfferFile_actual = "${subroutine_unitTest_directory}/poland_bookmakerOffer_actual.xml";
+        cp ( $path2Xml_with_events, $bookmakerOfferFile_actual ) or die $!;
+
+	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet'); #isn't readable what to pass especially that real decision is taken to level down
+	$a_betExplorerDownloader->{mSelectorFile} = $path2Xml_with_events;
+        $a_betExplorerDownloader->set_OutputFile( $bookmakerOfferFile_actual );       
+	$a_betExplorerDownloader->add_bookmakerOffer( $path2Xml_with_events );
+	files_eq ( $bookmakerOfferFile_actual, $bookmakerOfferFile_expected , 'creating a sport events file') ;
+
 }
 
 

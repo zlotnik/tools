@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+  <dataSources>
+    <betexplorer/>
+  </dataSources>
+  <data>
+    <soccer>
+      <Poland>
+        <ekstraklasa>
+          <events>
+            <event url="https://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/"/>
+            <event url="https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/"/>
+          </events>
+        </ekstraklasa>
+      </Poland>
+    </soccer>
+  </data>
+</note>
