@@ -159,7 +159,8 @@ sub add_bookmakerOffer()
 	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet'); #isn't readable what to pass especially that real decision is taken to level down
 	$a_betExplorerDownloader->{mSelectorFile} = $path2Xml_with_events;
         $a_betExplorerDownloader->set_OutputFile( $bookmakerOfferFile_actual );       
-	$a_betExplorerDownloader->add_bookmakerOffer( $bookmakerOfferFile_actual ); #this argument should be deleted
+
+	$a_betExplorerDownloader->add_bookmakerOffer(); #this argument should be deleted
 	files_eq ( $bookmakerOfferFile_actual, $bookmakerOfferFile_expected , 'creating a sport events file' );
 
 }

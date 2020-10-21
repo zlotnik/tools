@@ -39,7 +39,7 @@ sub getRootNode($);
 sub addChildSubcategoryNodeToOfferXml($$$);
 sub addLinkToEventToOfferXml($$$);
 sub updateEventListXMLWithEventDetails($);
-sub add_bookmakerOffer($);
+sub add_bookmakerOffer();
 sub correctFormatXmlDocument();
 sub xmlDocumentHasNodeWithoutLineBreaks($);
 sub validateSelectorFile();
@@ -164,7 +164,7 @@ sub create_BookmakersOfferFile($)
 	$self->createEventListXML();
 	
 	updateEventListXMLWithEventDetails($outputXmlPath);#NOT IMPLEMENTED YET
-	$self->add_bookmakerOffer( $outputXmlPath );
+	$self->add_bookmakerOffer();
 
 
 }
@@ -267,13 +267,16 @@ sub add_1X2_offers($)
 
 }
 
-sub add_bookmakerOffer($)
+sub add_bookmakerOffer()
 {
 		
-	my ($self, $pathToEventListXML) = @_;
+	my ( $self ) = @_;
+        
+        my $pathToEventListXML = $self->get_OutputFile();
+
 	my $xmlParser = XML::LibXML->new; 
 	my $xmlDoc = $xmlParser->parse_file($pathToEventListXML) or die $?;
-	my @allEventXml = $xmlDoc->findnodes('/note/data/*/*/*/*/*'); 
+	my @allEventXml = $xmlDoc->findnodes('/note/data/*/*/*/events/event'); 
 	
 	for(@allEventXml)
 	{		
