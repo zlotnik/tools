@@ -4,9 +4,9 @@ use warnings;
 use FindBin;
 use Class::Interface;
 use LWP::Simple ();
-use File::Basename ();
 use File::Spec ();
 use String::Random;
+use File::Basename;
 use POSIX ":sys_wait_h";
 use Digest::MD5 qw(md5 md5_hex md5_base64);
 
@@ -66,8 +66,9 @@ sub createRawDataFileOfEvent($)
 {
 	my ($linkToEvent) = @_;
 	my $javaScriptToRun = createJavaScriptForDownload($linkToEvent);
+        my $moduleDirPath = dirname( $INC{"WWWBookmakerPage.pm"} );
 
-	my $commandDownloadingRawData = "./phantomjs.elf $javaScriptToRun";
+	my $commandDownloadingRawData = "${moduleDirPath}/phantomjs.elf $javaScriptToRun";
 	my $rawData = `$commandDownloadingRawData`;
 	
 	
@@ -92,7 +93,10 @@ sub createJavaScriptForDownload($)
 	my $md5sum = md5_hex($linkToReplace);
 	my $resultFile = "tmp/download1x2Data_${md5sum}_tmp.js";
 	
-	open( TEMPLATE  , "<" , 'download1x2Data_template.js') or die;
+        my $moduleDirPath = dirname( $INC{"WWWBookmakerPage.pm"} );
+
+
+	open( TEMPLATE  , "<" , "${moduleDirPath}/download1x2Data_template.js") or die $!;
 	
 	open( JAVASCRIPT  , ">" , $resultFile) or die "Can't open $resultFile\n";
 	
