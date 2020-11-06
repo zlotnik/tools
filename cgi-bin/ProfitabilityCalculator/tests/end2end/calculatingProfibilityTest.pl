@@ -17,7 +17,7 @@ use File::Slurp;
 #instead of creating advanced surebet parser maybe it is better to create model input and output data and compare their checksum in test(both input and output)
 #later create advanced surebet parser   
 	
-copy "../BookmakerOfferDownloader/output/downloadedPolandEkstraklasa_mockednet.xml", 'input/bookmakersOffers_generatedByMock.xml' or die;
+#copy "../BookmakerOfferDownloader/output/downloadedPolandEkstraklasa_mockednet.xml", 'input/bookmakersOffers_generatedByMock.xml' or die;
 my $pathToBookmakersOfferFile = "$FindBin::Bin/../../input/bookmakersOffers_generatedByMock.xml";
 my $offerProfitabilityFile_actual = "$FindBin::Bin/../../output/test/offerProfitability_TestCase1_generated.xml";
 my $expectedProfitabiltyFile = "$FindBin::Bin/../../output/model/offerProfitability_TestCase1_expected.xml";
