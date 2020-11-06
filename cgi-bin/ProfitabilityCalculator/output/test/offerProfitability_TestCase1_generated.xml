@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <note>
   <dataSources>
     <betexplorer />
@@ -9,40 +8,50 @@
       <Poland>
         <ekstraklasa>
           <Events>
-            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/">
+            <event url="https://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/">
               <bestCombinations>
-                <_1X2>
-                  <profit>-0.23</profit>
-                  <_1>
-                    <_Betfair>2.30</_Betfair>
-                    <_mybet>2.30</_mybet>
-                    <_Unibet>2.30</_Unibet>
-                  </_1>
-                  <_X>
-                    <_Pinnacle>3.58</_Pinnacle>
-                  </_X>
-                  <_2>
-                    <_Pinnacle>3.47</_Pinnacle>
-                  </_2>
-                </_1X2>
-              </bestCombinations>
-            </event>
-            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/">
-              <bestCombinations>
-                <_1X2>
-                  <profit>-0.23</profit>
-                  <_1>
-                    <_Betfair>2.30</_Betfair>
-                    <_mybet>2.30</_mybet>
-                    <_Unibet>2.30</_Unibet>
-                  </_1>
-                  <_X>
-                    <_Pinnacle>3.58</_Pinnacle>
-                  </_X>
-                  <_2>
-                    <_Pinnacle>3.47</_Pinnacle>
-                  </_2>
-                </_1X2>
+                <bestCombinations>
+                  <bestCombinations>
+                    <bestCombinations>
+                      <bestCombinations>
+                        <bestCombinations>
+                          <bestCombinations>
+                            <bestCombinations>
+                              <bestCombinations>
+                                <bestCombinations>
+                                  <bestCombinations>
+                                    <bestCombinations>
+                                      <bestCombinations>
+                                        <bestCombinations>
+                                          <bestCombinations>
+                                            <bestCombinations>
+                                              <_1X2>
+                                                <profit>12.96</profit>
+                                                <_1>
+                                                  <_Betclic>2.31</_Betclic>
+                                                </_1>
+                                                <_X>
+                                                  <_Interwetten>3.50</_Interwetten>
+                                                </_X>
+                                                <_2>
+                                                  <_Interwetten>6.00</_Interwetten>
+                                                </_2>
+                                              </_1X2>
+                                            </bestCombinations>
+                                          </bestCombinations>
+                                        </bestCombinations>
+                                      </bestCombinations>
+                                    </bestCombinations>
+                                  </bestCombinations>
+                                </bestCombinations>
+                              </bestCombinations>
+                            </bestCombinations>
+                          </bestCombinations>
+                        </bestCombinations>
+                      </bestCombinations>
+                    </bestCombinations>
+                  </bestCombinations>
+                </bestCombinations>
               </bestCombinations>
             </event>
           </Events>

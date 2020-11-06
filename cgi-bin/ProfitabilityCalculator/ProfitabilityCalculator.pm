@@ -226,7 +226,7 @@ sub leaveInProductNodeOnlyBestPrices($)
 		foreach($productNode->nonBlankChildNodes())#better to encapsulate to some sub like findBestPrice
 		{
 			my $bookMakerOfferForProduct = $_;
-			($bookMakerOfferForProduct =~ /<(.*)>(\d{1,2}\.\d\d)</) or die;
+			($bookMakerOfferForProduct =~ /<(.*)>(-?\d{1,2}\.\d\d)</) or die "Can not match bookmaker offer: $bookMakerOfferForProduct\n";
 			my $bookMakerName = $1;
 			my $bookMakerOfferForProductPrice = $2;
 			if ($bookMakerOfferForProductPrice > $maximumPrice)
@@ -238,7 +238,7 @@ sub leaveInProductNodeOnlyBestPrices($)
 		foreach($productNode->nonBlankChildNodes())
 		{
 			my $bookMakerOfferForProduct = $_;
-			($bookMakerOfferForProduct =~ /<(.*)>(\d{1,2}\.\d\d)</) or die;
+			($bookMakerOfferForProduct =~ /<(.*)>(-?\d{1,2}\.\d\d)</) or die;
 			my $bookMakerName = $1;
 			my $bookMakerOfferForProductPrice = $2;
 			if($bookMakerOfferForProductPrice < $maximumPrice)
