@@ -1,0 +1,5 @@
+/var/www/cgi-bin/modules/lib/perl5/File/ShareDir.pm
+/var/www/cgi-bin/modules/lib/perl5/auto/share/dist/File-ShareDir/sample.txt
+/var/www/cgi-bin/modules/lib/perl5/auto/share/dist/File-ShareDir/subdir/sample.txt
+/var/www/cgi-bin/modules/lib/perl5/auto/share/module/File-ShareDir/test_file.txt
+/var/www/cgi-bin/modules/man/man3/File::ShareDir.3pm

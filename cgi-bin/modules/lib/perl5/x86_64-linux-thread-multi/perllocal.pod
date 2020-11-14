@@ -658,3 +658,91 @@ C<EXE_FILES: >
 
 =back
 
+=head2 Thu Oct 22 10:49:34 2020: C<Module> L<File::ShareDir::Install|File::ShareDir::Install>
+
+=over 4
+
+=item *
+
+C<installed into: /var/www/cgi-bin/modules/lib/perl5>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 0.13>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+
+=head2 Thu Oct 22 10:49:36 2020: C<Module> L<Class::Inspector|Class::Inspector>
+
+=over 4
+
+=item *
+
+C<installed into: /var/www/cgi-bin/modules/lib/perl5>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 1.36>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+
+=head2 Thu Oct 22 10:49:37 2020: C<Module> L<File::ShareDir|File::ShareDir>
+
+=over 4
+
+=item *
+
+C<installed into: /var/www/cgi-bin/modules/lib/perl5>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 1.118>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+
+=head2 Fri Oct 30 12:07:44 2020: C<Module> L<File::Slurp|File::Slurp>
+
+=over 4
+
+=item *
+
+C<installed into: /var/www/cgi-bin/modules/lib/perl5>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 9999.32>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+

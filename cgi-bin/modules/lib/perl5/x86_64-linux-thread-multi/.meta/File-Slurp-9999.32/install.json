@@ -1,0 +1,1 @@
+{"target":"File::Slurp","pathname":"C/CA/CAPOEIRAB/File-Slurp-9999.32.tar.gz","version":"9999.32","dist":"File-Slurp-9999.32","provides":{"File::Slurp":{"version":"9999.32","file":"lib/File/Slurp.pm"}},"name":"File::Slurp"}
