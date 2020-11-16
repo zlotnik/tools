@@ -1,8 +1,6 @@
 use strict;
 use warnings;
 use Test::More tests => 2;
-#use lib '../BookmakerOfferDownloader/';
-#use BookmakerXmlDataParser;
 use lib '..';
 use ProfitabilityCalculator;
 use FindBin;
@@ -18,9 +16,9 @@ use File::Slurp;
 #later create advanced surebet parser   
 	
 #copy "../BookmakerOfferDownloader/output/downloadedPolandEkstraklasa_mockednet.xml", 'input/bookmakersOffers_generatedByMock.xml' or die;
-my $pathToBookmakersOfferFile = "$FindBin::Bin/../../input/bookmakersOffers_generatedByMock.xml";
-my $offerProfitabilityFile_actual = "$FindBin::Bin/../../output/test/offerProfitability_TestCase1_generated.xml";
-my $expectedProfitabiltyFile = "$FindBin::Bin/../../output/model/offerProfitability_TestCase1_expected.xml";
+my $pathToBookmakersOfferFile = $ENV{PROFITABILITY_MODULE_DIRECTORY}."/input/bookmakersOffers_generatedByMock.xml";
+my $offerProfitabilityFile_actual = $ENV{PROFITABILITY_MODULE_DIRECTORY}."/output/test/offerProfitability_TestCase1_generated.xml";
+my $expectedProfitabiltyFile = $ENV{PROFITABILITY_MODULE_DIRECTORY}."/output/model/offerProfitability_TestCase1_expected.xml";
 
 print "****TEST MOCKED BETEXPLORER DOWNLOADER: Testing generating profitability file based on input file: $pathToBookmakersOfferFile*****\n\n";
 
