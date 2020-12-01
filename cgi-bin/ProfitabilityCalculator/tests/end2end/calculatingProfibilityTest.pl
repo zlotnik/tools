@@ -28,14 +28,14 @@ my $theProfitabilityCalculator = ProfitabilityCalculator->new();
 
 $theProfitabilityCalculator->loadBookmakersOfferFile($pathToBookmakersOfferFile);
 
+unlink $offerProfitabilityFile_actual;
 $theProfitabilityCalculator->generateOfferProfitabilityFile($offerProfitabilityFile_actual);
 my $isProfitabilityFileGeneratedCorrectly = $aBookmakerXmlDataParser->isCorrectProfitabilityFile($offerProfitabilityFile_actual);
 ok($isProfitabilityFileGeneratedCorrectly, "ProfitabilityCalculator: checking syntax of generated offer profability file: $offerProfitabilityFile_actual");
 
 
 my $isTheSameFiles = '';
-$isTheSameFiles = (compare('output/test/offerProfitability_TestCase1_generated.xml', 
-								'output/model/offerProfitability_TestCase1_expected.xml') == 0 );
+$isTheSameFiles = (compare($offerProfitabilityFile_actual, $expectedProfitabiltyFile) == 0 );
 
 my $actual_profibility_xml_FD;
 my $expected_profitability_xml_FD;
