@@ -52,7 +52,8 @@ sub loadBookmakersOfferFile($)
 	
 	if (! $aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($bookmakerOfferFilename))
 	{
-		print "WARNING: incorrect format of bookmaker offer file";
+                #this must be fixed
+		print "WARNING: incorrect format of bookmaker offer file\n";
 	}
 
 
@@ -66,23 +67,6 @@ sub splitProductgroupNodeToProductsNodes($)
 	my ($eventOfferForProductGroup) = @_;
 	die;
 }
-
-#sub leaveInProfitabilityFileOnlyBestPrices($)
-#{
-#	my ($eventOfferForProductGroup) = @_;
-
-#	my @products = splitProductgroupNodeToProductsNodes($eventOfferForProductGroup);
-	
-	
-#	foreach(@products)
-#	{
-#		my $productName = $_;
-		
-	
-#	}
-	
-
-#}
 
 sub splitBestcombinationsNodeToProductsGroupNodes($)
 {
@@ -186,16 +170,16 @@ sub injectBestCombinationsNodeAfterEventNodes($)
 	my $xmlParserDoc = $xmlParser->parse_file($bookMakerOfferProfitabilityFilePath) or return 0;
 	
 	
-	my @eventNodes = $xmlParserDoc->findnodes("/note/eventList//*//event/*");
+	my @eventNodes = $xmlParserDoc->findnodes("/note/data/*/*/*/events/event");
     
 	foreach(@eventNodes)
 	{
 		my $eventNode = $_;
-		my $new_parent= $xmlParserDoc->createElement("bestCombinations");
-		my $old_parent = $eventNode->parentNode;
-	
-		$new_parent->addChild($eventNode);
-		$old_parent->addChild($new_parent);	
+
+                my $eventNodeChildren = $eventNode->nonBlankChildNodes()->get_node(1);
+		my $best_combination_node = $xmlParserDoc->createElement("bestCombinations");
+		$best_combination_node->addChild($eventNodeChildren);
+		$eventNode->addChild($best_combination_node);	
 	}
 	
 	$xmlParserDoc->toFile($bookMakerOfferProfitabilityFilePath) or die;
@@ -210,7 +194,7 @@ sub getAllProductNodes($)
 {
 	my ($rootNode) = @_;
 
-	my @allProductNodes = $rootNode->findnodes("/note/eventList//*//bestCombinations/*/*");
+	my @allProductNodes = $rootNode->findnodes("/note/data/*/*/*/events/event/bestCombinations/*/*");
 	return @allProductNodes;
 	#create empty $BestCombinationssNode node by cloning existing node
 	#go Throught each product groupt
@@ -226,7 +210,12 @@ sub leaveInProductNodeOnlyBestPrices($)
 		foreach($productNode->nonBlankChildNodes())#better to encapsulate to some sub like findBestPrice
 		{
 			my $bookMakerOfferForProduct = $_;
-			($bookMakerOfferForProduct =~ /<(.*)>(-?\d{1,2}\.\d\d)</) or die "Can not match bookmaker offer: $bookMakerOfferForProduct\n";
+			unless($bookMakerOfferForProduct =~ /<(.*)>(-?\d{1,2}\.\d\d)</)
+                        {
+                                print "xyz";
+                                die "Can not match bookmaker offer: $bookMakerOfferForProduct\n";
+                        }
+
 			my $bookMakerName = $1;
 			my $bookMakerOfferForProductPrice = $2;
 			if ($bookMakerOfferForProductPrice > $maximumPrice)
@@ -259,7 +248,7 @@ sub leaveInProfitabilityFileOnlyBestPrices($)
 	
 	my $xmlParser = XML::LibXML->new; 
 	my $xmlParserDoc = $xmlParser->parse_file($offerProfitabilityOutputFilename) or return 0;
-    my @allProductNodes = getAllProductNodes($xmlParserDoc);
+        my @allProductNodes = getAllProductNodes($xmlParserDoc);
 	
 	foreach(@allProductNodes)
 	{
@@ -291,7 +280,7 @@ sub getAllProductGroupNodes($)
 
 	my ($rootNode) = @_;
 
-	my @allProductNodes = $rootNode->findnodes("/note/eventList//*//bestCombinations/*");
+	my @allProductNodes = $rootNode->findnodes("/note/data/*/*/*/events/event/bestCombinations/*");
 	return @allProductNodes;
 
 }
@@ -406,9 +395,15 @@ sub updateWithProfitabilityData($)
 #todo maybe remove some  xml::tidy invokes in order to  improve efficiency   
 sub generateOfferProfitabilityFile($)
 {
+        
 	my ($self, $offerProfitabilityOutputFilename) = @_;
+       
+        if( $self->{offerFile} ne $offerProfitabilityOutputFilename ) 
+        {
+                copy( $self->{offerFile}, $offerProfitabilityOutputFilename ) or die;
+        }
 	
-	injectBestCombinationsNodeAfterEventNodes($offerProfitabilityOutputFilename);
+	injectBestCombinationsNodeAfterEventNodes($offerProfitabilityOutputFilename); #the name isn't applied to functionality anymore
 	leaveInProfitabilityFileOnlyBestPrices($offerProfitabilityOutputFilename);
 	updateWithProfitabilityData($offerProfitabilityOutputFilename);
 	

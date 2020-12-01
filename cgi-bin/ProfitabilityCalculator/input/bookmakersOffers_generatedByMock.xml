@@ -4,11 +4,11 @@
   <dataSources>
     <betexplorer />
   </dataSources>
-  <eventList>
+  <data>
     <soccer>
       <Poland>
         <ekstraklasa>
-          <Events>
+          <events>
             <event url="https://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/">
               <_1X2>
                 <_1>
@@ -25,9 +25,9 @@
                 </_2>
               </_1X2>
             </event>
-          </Events>
+          </events>
         </ekstraklasa>
       </Poland>
     </soccer>
-  </eventList>
+  </data>
 </note>

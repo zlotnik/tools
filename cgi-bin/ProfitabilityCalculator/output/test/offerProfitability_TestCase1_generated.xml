@@ -3,60 +3,30 @@
   <dataSources>
     <betexplorer />
   </dataSources>
-  <eventList>
+  <data>
     <soccer>
       <Poland>
         <ekstraklasa>
-          <Events>
+          <events>
             <event url="https://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/">
               <bestCombinations>
-                <bestCombinations>
-                  <bestCombinations>
-                    <bestCombinations>
-                      <bestCombinations>
-                        <bestCombinations>
-                          <bestCombinations>
-                            <bestCombinations>
-                              <bestCombinations>
-                                <bestCombinations>
-                                  <bestCombinations>
-                                    <bestCombinations>
-                                      <bestCombinations>
-                                        <bestCombinations>
-                                          <bestCombinations>
-                                            <bestCombinations>
-                                              <_1X2>
-                                                <profit>12.96</profit>
-                                                <_1>
-                                                  <_Betclic>2.31</_Betclic>
-                                                </_1>
-                                                <_X>
-                                                  <_Interwetten>3.50</_Interwetten>
-                                                </_X>
-                                                <_2>
-                                                  <_Interwetten>6.00</_Interwetten>
-                                                </_2>
-                                              </_1X2>
-                                            </bestCombinations>
-                                          </bestCombinations>
-                                        </bestCombinations>
-                                      </bestCombinations>
-                                    </bestCombinations>
-                                  </bestCombinations>
-                                </bestCombinations>
-                              </bestCombinations>
-                            </bestCombinations>
-                          </bestCombinations>
-                        </bestCombinations>
-                      </bestCombinations>
-                    </bestCombinations>
-                  </bestCombinations>
-                </bestCombinations>
+                <_1X2>
+                  <profit>-7.30</profit>
+                  <_1>
+                    <_1xBet>1.67</_1xBet>
+                  </_1>
+                  <_X>
+                    <_Interwetten>3.50</_Interwetten>
+                  </_X>
+                  <_2>
+                    <_1xBet>5.15</_1xBet>
+                  </_2>
+                </_1X2>
               </bestCombinations>
             </event>
-          </Events>
+          </events>
         </ekstraklasa>
       </Poland>
     </soccer>
-  </eventList>
+  </data>
 </note>

@@ -1,51 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <note>
   <dataSources>
     <betexplorer />
   </dataSources>
-  <eventList>
+  <data>
     <soccer>
       <Poland>
         <ekstraklasa>
-          <Events>
-            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/">
+          <events>
+            <event url="https://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/">
               <bestCombinations>
                 <_1X2>
-                  <profit>-3.68</profit>
+                  <profit>-7.30</profit>
                   <_1>
-                    <_1xBet>2.61</_1xBet>
+                    <_1xBet>1.67</_1xBet>
                   </_1>
                   <_X>
-                    <_1xBet>3.62</_1xBet>
+                    <_Interwetten>3.50</_Interwetten>
                   </_X>
                   <_2>
-                    <_1xBet>2.64</_1xBet>
+                    <_1xBet>5.15</_1xBet>
                   </_2>
                 </_1X2>
               </bestCombinations>
             </event>
-            <event url="http://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/">
-              <bestCombinations>
-                <_1X2>
-                  <profit>-2.67</profit>
-                  <_1>
-                    <_bet365>2.60</_bet365>
-                  </_1>
-                  <_X>
-                    <_188BET>3.50</_188BET>
-                  </_X>
-                  <_2>
-                    <_1xBet>2.80</_1xBet>
-                    <_bwin>2.80</_bwin>
-                    <_Sportingbet>2.80</_Sportingbet>
-                  </_2>
-                </_1X2>
-              </bestCombinations>
-            </event>
-          </Events>
+          </events>
         </ekstraklasa>
       </Poland>
     </soccer>
-  </eventList>
+  </data>
 </note>
