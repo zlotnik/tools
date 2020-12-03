@@ -1,8 +1,6 @@
 #!/usr/bin/perl -w
 use strict;
 use warnings;
-use lib 'BookmakerOfferDownloader/';
-use lib 'ProfitabilityCalculator/';
 use BetExplorerDownloader;
 use ProfitabilityCalculator;
 use File::Basename;
