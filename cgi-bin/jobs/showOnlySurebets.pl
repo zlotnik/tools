@@ -4,6 +4,7 @@
 use strict;
 use warnings;
 use XML::LibXML;
+use XML::Simple;
 
 
 sub showAllSurrebetsInDirectory($);
@@ -175,9 +176,12 @@ sub showAllSurrebetsInDirectory($)
 	{
 		my $bookMakerOfferFilePath = $directoryPathWith_bookmakerOfferFiles . "/"  .  $_;
 
-		my $xmlWith_bookmakerOffer = XML::LibXML->new();		
-		if( $xmlWith_bookmakerOffer =  $xmlWith_bookmakerOffer->parse_file($bookMakerOfferFilePath ) )
+                my $xmlOK =  eval {XMLin($bookMakerOfferFilePath)};
+
+		if( $xmlOK )
 		{
+		        my $xmlWith_bookmakerOffer = XML::LibXML->new();		
+                        $xmlWith_bookmakerOffer = $xmlWith_bookmakerOffer->parse_file($bookMakerOfferFilePath);
 			$allSurebets .= showMySureBets($xmlWith_bookmakerOffer); 	
 		}
 		else
