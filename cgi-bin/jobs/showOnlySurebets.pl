@@ -186,7 +186,7 @@ sub showAllSurrebetsInDirectory($)
 		}
 		else
 		{
-			print "WARNING: File $bookMakerOfferFilePath isn't correct xml file\n";
+			print STDERR "WARNING: File $bookMakerOfferFilePath isn't correct xml file\n";
 		}
 	}
 	return $allSurebets;

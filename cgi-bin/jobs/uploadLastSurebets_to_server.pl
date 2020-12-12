@@ -13,7 +13,7 @@ my $newestDirectory = $list[0];
 chomp($newestDirectory);
 
 print "$ENV{BACKEND_ROOT_DIRECTORY}/jobs/showOnlySurebets.sh $ENV{BACKEND_ROOT_DIRECTORY}/results/$newestDirectory >$dataLocation" . "\n"; 
-my $surebets = `$ENV{BACKEND_ROOT_DIRECTORY}/jobs/showOnlySurebets.sh $ENV{BACKEND_ROOT_DIRECTORY}/results/$newestDirectory >$dataLocation`;
+my $surebets = `$ENV{BACKEND_ROOT_DIRECTORY}/jobs/showOnlySurebets.sh $ENV{BACKEND_ROOT_DIRECTORY}/results/$newestDirectory >$dataLocation 2>/dev/null`;
 print $surebets;
 
 
