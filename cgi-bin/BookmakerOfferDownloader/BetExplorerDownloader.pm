@@ -5,9 +5,6 @@ use warnings;
 use XML::Tidy;
 use XML::Simple;
 use Data::Dumper;
-use POSIX ":sys_wait_h";
-use 5.010;
-use Data::Dumper;
 use XML::LibXML;
 use BookmakerPageCrawler;
 use CountryLevelCategoryPage;
@@ -35,7 +32,6 @@ sub convertRawDownloadedDataToHash($);
 sub createEventListXML();
 sub getAllSubCategories($$);
 sub updateXmlNodeWithDataFromBookmaker($$);
-sub getRootNode($);
 sub addChildSubcategoryNodeToOfferXml($$$);
 sub addLinkToEventToOfferXml($$$);
 sub updateEventListXMLWithEventDetails($);
@@ -64,6 +60,7 @@ sub addCountriesToXML($);
 sub updateOutputFileWithSportEvents();
 sub find_leagues_xpaths($);
 sub get_selectorFile();
+sub parseFile($);
 #################DICTIONARY##############################################
 
 
@@ -267,6 +264,16 @@ sub add_1X2_offers($)
 
 }
 
+sub parseFile($)
+{
+        my $self = shift;
+        my ( $pathToXml ) = @_;
+ 
+	my $xmlParser = XML::LibXML->new; 
+	my $xmlDoc = $xmlParser->parse_file( $pathToXml ) or die $?;
+        return $xmlDoc;
+}
+
 sub add_bookmakerOffer()
 {
 		
@@ -274,8 +281,7 @@ sub add_bookmakerOffer()
         
         my $pathToEventListXML = $self->get_OutputFile();
 
-	my $xmlParser = XML::LibXML->new; 
-	my $xmlDoc = $xmlParser->parse_file($pathToEventListXML) or die $?;
+	my $xmlDoc = $self->parseFile( $pathToEventListXML ); 
 	my @allEventXml = $xmlDoc->findnodes('/note/data/*/*/*/events/event'); 
 	
 	for(@allEventXml)
@@ -334,8 +340,7 @@ sub updateXmlNodeWithDataFromBookmaker($$) #todo use better name
 	
 	my ($self,$xsubPath, $pathToXmlSelector) = @_;  
 	
-	my $xmlParser = XML::LibXML->new; 
-	my $xmlDoc = $xmlParser->parse_file($pathToXmlSelector) or die "Can't parse xmlFile";
+	my $xmlDoc = $self->parseFile($pathToXmlSelector) or die "Can't parse xmlFile";
 	
 	my $betsDataXmlNode = seekBetsDataInXmlEventFile($xmlDoc); #maybe this method isn't needed and its name could be not adequate
 		
@@ -346,7 +351,7 @@ sub updateXmlNodeWithDataFromBookmaker($$) #todo use better name
 		
 		if(isLinkToEvent($subCategoryName))
 		{
-			addLinkToEventToOfferXml($xsubPath,  $subCategoryName, $pathToXmlSelector);
+			$self->addLinkToEventToOfferXml($xsubPath,  $subCategoryName, $pathToXmlSelector);
 		}
 		else
 		{
@@ -363,15 +368,6 @@ sub isLinkToEvent($)
 	
 }
 
-sub getRootNode($) #doesn't used anymore?
-{
-	my $pathToXmlSelector = shift;
-	
-	my $xmlParser = XML::LibXML->new;
-	my $doc = $xmlParser->parse_file($pathToXmlSelector) or die $?;
-	my @rootXmlNode = $doc->findnodes("/");
-	return $rootXmlNode[0];
-}
 
 sub seekBetsDataInXmlEventFile($)
 {
@@ -383,12 +379,12 @@ sub seekBetsDataInXmlEventFile($)
 
 sub addEventNodeToXmlEventList($$)
 {
+        my $self = shift;
 	my ($relativeXpathToUpdate, $outputXmlFilePath) = @_;
 	
 	my $absolutePathToNodeNeededUpdate =  '/note/eventList' . $relativeXpathToUpdate ;
 	
-	my $xmlParser = XML::LibXML->new;
-	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
+	my $document = $self->parseFile($outputXmlFilePath) or die $?;
 	
 	my $parentNodeToUpdate = $document->findnodes($absolutePathToNodeNeededUpdate)->[0] ;
 	
@@ -399,9 +395,9 @@ sub addEventNodeToXmlEventList($$)
 
 sub isEventsNodeExists($$)
 {
+        my $self = shift;
 	my ($relativeXpathToParent, $outputXmlFilePath) = @_;
-	my $xmlParser = XML::LibXML->new;
-	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
+	my $document = $self->parseFile($outputXmlFilePath) or die $?;
 	my $absolutePathTo_EventsNode =  '/note/eventList' . $relativeXpathToParent. '/Events' ;
 	
 	my $parentNodeToUpdate = $document->findnodes($absolutePathTo_EventsNode)->[0] ;
@@ -418,17 +414,16 @@ sub isEventsNodeExists($$)
 
 sub addLinkToEventToOfferXml($$$)
 {
-	
+        my $self = shift;	
 	my ($relativeXpathToParent, $linkToEvent, $outputXmlFilePath) = @_;
 	my $absolutePathToNodeNeededUpdate =  '/note/eventList' . $relativeXpathToParent . '/Events';
 	
-	my $xmlParser = XML::LibXML->new;
-	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
+	my $document = $self->parseFile($outputXmlFilePath) or die $?;
 	
-	if(not isEventsNodeExists($relativeXpathToParent,$outputXmlFilePath ))
+	if(not $self->isEventsNodeExists($relativeXpathToParent,$outputXmlFilePath ))
 	{
-		addEventNodeToXmlEventList($relativeXpathToParent, $outputXmlFilePath);
-		$document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
+		$self->addEventNodeToXmlEventList($relativeXpathToParent, $outputXmlFilePath);
+		$document = $self->parseFile($outputXmlFilePath) or die $?;
 	}
 	
 	

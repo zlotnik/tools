@@ -212,7 +212,6 @@ sub leaveInProductNodeOnlyBestPrices($)
 			my $bookMakerOfferForProduct = $_;
 			unless($bookMakerOfferForProduct =~ /<(.*)>(-?\d{1,2}\.\d\d)</)
                         {
-                                print "xyz";
                                 die "Can not match bookmaker offer: $bookMakerOfferForProduct\n";
                         }
 
