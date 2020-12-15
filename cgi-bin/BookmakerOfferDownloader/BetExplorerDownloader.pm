@@ -61,6 +61,7 @@ sub updateOutputFileWithSportEvents();
 sub find_leagues_xpaths($);
 sub get_selectorFile();
 sub parseFile($);
+sub insertEvents_intoLeagueNode($\@);
 #################DICTIONARY##############################################
 
 
@@ -129,15 +130,17 @@ sub validateSelectorFile()
 	my $self = shift;
 	my $selectorFile = $self->{mSelectorFile};
 	(-e ${selectorFile}) or die "selector file: ${selectorFile} doesn't exist";
-	isItCorrectXmlFile(${selectorFile}) or die "selector file: ${selectorFile} isn't a correct xml file\n";  
+	$self->isItCorrectXmlFile(${selectorFile}) or die "selector file: ${selectorFile} isn't a correct xml file\n";  
 		
 }
 
 sub isItCorrectXmlFile($)
 {
+        my $self = shift;        
+
 	my ($pathToXmlSelector) = @_;
 	my $xmlParser = XML::LibXML->new; 
-	if($xmlParser->parse_file($pathToXmlSelector))
+	if($self->parseFile($pathToXmlSelector))
 	{
 		return 1
 	}
@@ -355,7 +358,7 @@ sub updateXmlNodeWithDataFromBookmaker($$) #todo use better name
 		}
 		else
 		{
-			addChildSubcategoryNodeToOfferXml($xsubPath,  $subCategoryName, $pathToXmlSelector);
+			$self->addChildSubcategoryNodeToOfferXml($xsubPath,  $subCategoryName, $pathToXmlSelector);
 		}
 		$self->updateXmlNodeWithDataFromBookmaker($xpathToNewChildNode,$pathToXmlSelector);
 	}
@@ -439,11 +442,11 @@ sub addLinkToEventToOfferXml($$$)
 
 sub addChildSubcategoryNodeToOfferXml($$$)
 {
+        my $self = shift;
 	my ($relativeXpathToParent, $nameOfNewChildNode, $outputXmlFilePath) = @_;
 	my $absolutePathToNodeNeededUpdate =  '/note/eventList' . $relativeXpathToParent; 
 	
-	my $xmlParser = XML::LibXML->new;
-	my $document = $xmlParser->parse_file($outputXmlFilePath) or die $?;
+	my $document = $self->parseFile($outputXmlFilePath) or die $?;
 	my $parentNodeToUpdate = $document->findnodes($absolutePathToNodeNeededUpdate)->[0] or die "Can't find xml node specify by xpath:$absolutePathToNodeNeededUpdate in xml\n $document\n";
 	my $newNode = XML::LibXML::Element->new($nameOfNewChildNode);
 	my $lineBreakTextNode = XML::LibXML::Text->new("\n");
@@ -458,8 +461,7 @@ sub prepareTemplateFor_SportEventsFile($)
 	
 	my ($self,$outputXmlPath) = @_;
 	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
-	my $xmlParser = XML::LibXML->new;		
-	my $xmlNode = $xmlParser->parse_file($outputXmlPath) or die;
+	my $xmlNode = $self->parseFile($outputXmlPath) or die;
 	
 	my $nodeToRename = $xmlNode->findnodes('/note/data')->[0];
 	$nodeToRename->setNodeName('eventList');
@@ -488,8 +490,7 @@ sub find_leagues_xpaths($) ##copy paste sub think how to reuse the same fragment
 {
 	my $self = shift;
 	my ($templateFile) = @_; 
-	my $xmlParser = XML::LibXML->new;		
-	my $xmlDoc = $xmlParser->parse_file($templateFile) or die;  #xmlDoc should be stored in object
+	my $xmlDoc = $self->parseFile($templateFile) or die;  #xmlDoc should be stored in object
 	my $countriesXpath = '/note/data/*/*/*';
 	my @allLeagues = $xmlDoc->findnodes( $countriesXpath );
 	my @toReturn;
@@ -504,15 +505,13 @@ sub find_leagues_xpaths($) ##copy paste sub think how to reuse the same fragment
 
 }
 
-sub insertEvents_intoLeagueNode($\@);
 sub insertEvents_intoLeagueNode($\@)
 {
 	my $self = shift;
 	my ( $country_xpath, $leagues_names_ref )  = @_;
 	my @leagues_list = @{$leagues_names_ref}; 
         my $outputFileName  = $self->get_OutputFile();
-        my $xmlParser = XML::LibXML->new;
-	my $document = $xmlParser->parse_file( $outputFileName ) or die $?;
+	my $document = $self->parseFile( $outputFileName ) or die $?;
 
 	my $countryNode = $document->findnodes( $country_xpath )->[0] or die "Can't find xml node specify by xpath:$country_xpath in xml\n $document\n";
         
@@ -597,8 +596,7 @@ sub insertLeagues_intoCountryNode($\@)
 	my ( $country_xpath, $leagues_names_ref )  = @_;
 	my @leagues_list = @{$leagues_names_ref}; 
         my $outputFileName  = $self->get_OutputFile();
-        my $xmlParser = XML::LibXML->new;
-	my $document = $xmlParser->parse_file( $outputFileName ) or die $?;
+	my $document = $self->parseFile( $outputFileName ) or die $?;
 
 	my $countryNode = $document->findnodes( $country_xpath )->[0] or die "Can't find xml node specify by xpath:$country_xpath in xml\n $document\n";
         
@@ -634,8 +632,7 @@ sub find_countries_xpaths($)
 {
 	my $self = shift;
 	my ($templateFile) = @_; 
-	my $xmlParser = XML::LibXML->new;		
-	my $xmlDoc = $xmlParser->parse_file($templateFile) or die;  #xmlDoc should be stored in object
+	my $xmlDoc = $self->parseFile($templateFile) or die;  #xmlDoc should be stored in object
 	my $countriesXpath = '/note/data/*/*';
 	my @allLeagues = $xmlDoc->findnodes( $countriesXpath );
 	my @toReturn;
