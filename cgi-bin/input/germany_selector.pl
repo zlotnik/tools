@@ -6,7 +6,6 @@
   <data>
   <soccer>
   <Germany>
-  <3-liga/>
   </Germany>
   </soccer>
   </data>
