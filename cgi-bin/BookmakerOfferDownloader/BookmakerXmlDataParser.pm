@@ -28,6 +28,7 @@ sub isCorrectLinkToEventXmlNode($);
 sub isCorrectRawDataFile($);
 sub isEventListFileHasCorrectSyntax($);
 sub isCorrectProfitabilityFile($);
+sub parse_file($);
 #################DEFINITION####################################
 sub new()
 {
@@ -36,14 +37,24 @@ sub new()
 	return $self;
 };
 
+sub parseFile($)
+{
+        my $self = shift;
+        my ( $xmlFile ) = @_;
+       	my $xmlParser = XML::LibXML->new; 
+	my $xmlParserDoc = $xmlParser->parse_file($xmlFile); 
+        return $xmlParserDoc;	
+         
+
+}
+
 sub isCorrectProfitabilityFile($)
 {
 	
 	my ($self, $xmlSelectorPath) = @_;
 	
 	(-e $xmlSelectorPath) or die "Incorrect path to offer profitability file\n";
-	my $xmlParser = XML::LibXML->new; 
-	my $xmlParserDoc = $xmlParser->parse_file($xmlSelectorPath) or return 0; 
+	my $xmlParserDoc = $self->parseFile( $xmlSelectorPath ) or return 0; 
 
 	my $xmlToParse = $xmlParserDoc->toString();
 
@@ -75,8 +86,7 @@ sub isCorrectSurebetsFile($)
 {
 	my $self = shift;
 	my $xmlSelectorPath = $_[0];
-	my $xmlParser = XML::LibXML->new; 
-	my $xmlParserDoc = $xmlParser->parse_file($xmlSelectorPath) or return 0; 
+	my $xmlParserDoc = $self->parseFile($xmlSelectorPath) or return 0; 
 
 	my $xmlToParse = $xmlParserDoc->toString();
 
@@ -128,11 +138,11 @@ sub isCorectBookmakerDataSelectorFile($)
 {
 	my $self = shift;
 	my $pathToXmlSelector = $_[0];
-	my $xmlParser = XML::LibXML->new; 
-	my $isCorrectXmlFile = $xmlParser->parse_file($pathToXmlSelector); 
+	my $isCorrectXmlFile = $self->parseFile($pathToXmlSelector); 
 	
-	#$self->xmlSelectorContainsAllNeededData($pathToXmlSelector) #instead of invoking classs without reference to object
-	if ( $isCorrectXmlFile and xmlSelectorContainsAllNeededData($pathToXmlSelector) )
+	my $xmlHasAllNeededData = $self->xmlSelectorContainsAllNeededData($pathToXmlSelector);
+
+	if ( $isCorrectXmlFile and $xmlHasAllNeededData )
 	{
 		return 1;
 	}
@@ -144,8 +154,7 @@ sub isCorectDownloadedBookmakerOfferFile($)
 {
 	my $self = shift;
 	my $xmlSelectorPath = $_[0];
-	my $xmlParser = XML::LibXML->new; 
-	my $xmlParserDoc = $xmlParser->parse_file($xmlSelectorPath) or return 0; 
+	my $xmlParserDoc = $self->parseFile($xmlSelectorPath) or return 0; 
 
 	my $xmlToParse = $xmlParserDoc->toString();
 
@@ -173,8 +182,7 @@ sub isCorrectEventListFile($)
 {
 	my $self = shift;
 	my $xmlSelectorPath = $_[0];
-	my $xmlParser = XML::LibXML->new; 
-	my $xmlParserDoc = $xmlParser->parse_file($xmlSelectorPath); 
+	my $xmlParserDoc = $self->parseFile($xmlSelectorPath); 
 	
 	if(not $xmlParserDoc)
 	{
@@ -220,8 +228,7 @@ sub isEventListFileHasCorrectSyntax($)
 {
 	my $self = shift;
 	my $xmlSelectorPath = $_[0];
-	my $xmlParser = XML::LibXML->new; 
-	my $xmlParserDoc = $xmlParser->parse_file($xmlSelectorPath) or return 0; 
+	my $xmlParserDoc = $self->parseFile($xmlSelectorPath) or return 0; 
 	my $downloadedOfferXmlNode = $xmlParserDoc->findnodes("/note/eventList")->[0] or return 0;
 	my $disciplineXmlNode = $downloadedOfferXmlNode->nonBlankChildNodes->[0];
 	
@@ -314,7 +321,7 @@ sub isLegalNameOfCountryCategory($)
 
 sub xmlSelectorContainsAllNeededData($)
 {
-	#my $self = shift;
+	my $self = shift;
 	my $xmlSelectorPath = $_[0];
 	return (isOneOrMoreBookmakersSpecifiedInXmlSelector($xmlSelectorPath) and isOneOrMoreDyscyplineSpecified($xmlSelectorPath));
 
@@ -322,7 +329,7 @@ sub xmlSelectorContainsAllNeededData($)
 
 sub isOneOrMoreBookmakersSpecifiedInXmlSelector($)
 {
-	#my $self = shift;
+	my $self = shift;
 	my $xmlSelectorPath = $_[0];
 		
 	if(countHowManyBookmakerIsChoosedInXmlSelector($xmlSelectorPath) > 0)
@@ -335,11 +342,10 @@ sub isOneOrMoreBookmakersSpecifiedInXmlSelector($)
 
 sub countHowManyBookmakerIsChoosedInXmlSelector($)
 {
-	#my $self = shift;
+	my $self = shift;
 	
 	my $pathToXmlSelector = $_[0];
-	my $xmlParser = XML::LibXML->new; 
-	my $xmlParserDoc = $xmlParser->parse_file($pathToXmlSelector); 
+	my $xmlParserDoc = $self->parseFile($pathToXmlSelector); 
 	
 	
 	my $choosenBookmakers = $xmlParserDoc->findnodes("/note/dataSources")->[0];
@@ -397,11 +403,8 @@ sub isCorrectDisciplineName($)
 
 sub isOneOrMoreDyscyplineSpecified($)
 {
-	#my $self = shift;
+	my $self = shift;
 	my $pathToXmlSelector = $_[0];
-	#my $xmlParser = XML::LibXML->new; 
-	#my $xmlParserDoc = $xmlParser->parse_file($pathToXmlSelector); 
-	
 	
 	if(countHowManyDisciplinesToDownloadIsDefinedInXmlSelector($pathToXmlSelector) > 0)
 	{
@@ -413,10 +416,9 @@ sub isOneOrMoreDyscyplineSpecified($)
 
 sub countHowManyDisciplinesToDownloadIsDefinedInXmlSelector()
 {
-	#my $self = shift;
+	my $self = shift;
 	my $pathToXmlSelector = $_[0];
-	my $xmlParser = XML::LibXML->new; 
-	my $xmlParserDoc = $xmlParser->parse_file($pathToXmlSelector); 
+	my $xmlParserDoc = $self->parseFile($pathToXmlSelector); 
 	my $dataXmlNode = $xmlParserDoc->findnodes("/note/data")->[0];
 	
 	
