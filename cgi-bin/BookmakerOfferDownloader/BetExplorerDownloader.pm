@@ -56,7 +56,6 @@ sub downloadLeaguesNames($);
 sub set_OutputFile($);
 sub get_OutputFile();
 sub insertLeagues_intoCountryNode($\@);
-sub addCountriesToXML($);
 sub updateOutputFileWithSportEvents();
 sub find_leagues_xpaths($);
 sub get_selectorFile();
@@ -336,139 +335,13 @@ sub removeEmptyLines(\$)
 	${$_[0]} = $theResult
 	
 }
-
-
-sub updateXmlNodeWithDataFromBookmaker($$) #todo use better name
-{
-	
-	my ($self,$xsubPath, $pathToXmlSelector) = @_;  
-	
-	my $xmlDoc = $self->parseFile($pathToXmlSelector) or die "Can't parse xmlFile";
-	
-	my $betsDataXmlNode = seekBetsDataInXmlEventFile($xmlDoc); #maybe this method isn't needed and its name could be not adequate
-		
-	for($self->getAllSubCategories($betsDataXmlNode, $xsubPath))
-	{
-		my $subCategoryName = $_;
-		my $xpathToNewChildNode = "${xsubPath}/${subCategoryName}";
-		
-		if(isLinkToEvent($subCategoryName))
-		{
-			$self->addLinkToEventToOfferXml($xsubPath,  $subCategoryName, $pathToXmlSelector);
-		}
-		else
-		{
-			$self->addChildSubcategoryNodeToOfferXml($xsubPath,  $subCategoryName, $pathToXmlSelector);
-		}
-		$self->updateXmlNodeWithDataFromBookmaker($xpathToNewChildNode,$pathToXmlSelector);
-	}
-}
 	
 sub isLinkToEvent($)
 {
 	my $stringToCheck = $_[0];
 	return ($stringToCheck =~ m|https://|);
-	
 }
 
-
-sub seekBetsDataInXmlEventFile($)
-{
-	my $wholeXmlDocument = shift;		
-	
-	my $betsDataXmlNode = $wholeXmlDocument->findnodes("/note/eventList")->[0];#->nonBlankChildNodes()->[0];
-	return $betsDataXmlNode;
-}
-
-sub addEventNodeToXmlEventList($$)
-{
-        my $self = shift;
-	my ($relativeXpathToUpdate, $outputXmlFilePath) = @_;
-	
-	my $absolutePathToNodeNeededUpdate =  '/note/eventList' . $relativeXpathToUpdate ;
-	
-	my $document = $self->parseFile($outputXmlFilePath) or die $?;
-	
-	my $parentNodeToUpdate = $document->findnodes($absolutePathToNodeNeededUpdate)->[0] ;
-	
-	$parentNodeToUpdate->addNewChild('','Events');
-	
-	$document->toFile($outputXmlFilePath) or die $?;
-}
-
-sub isEventsNodeExists($$)
-{
-        my $self = shift;
-	my ($relativeXpathToParent, $outputXmlFilePath) = @_;
-	my $document = $self->parseFile($outputXmlFilePath) or die $?;
-	my $absolutePathTo_EventsNode =  '/note/eventList' . $relativeXpathToParent. '/Events' ;
-	
-	my $parentNodeToUpdate = $document->findnodes($absolutePathTo_EventsNode)->[0] ;
-	
-	if (defined $parentNodeToUpdate)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
-}
-
-sub addLinkToEventToOfferXml($$$)
-{
-        my $self = shift;	
-	my ($relativeXpathToParent, $linkToEvent, $outputXmlFilePath) = @_;
-	my $absolutePathToNodeNeededUpdate =  '/note/eventList' . $relativeXpathToParent . '/Events';
-	
-	my $document = $self->parseFile($outputXmlFilePath) or die $?;
-	
-	if(not $self->isEventsNodeExists($relativeXpathToParent,$outputXmlFilePath ))
-	{
-		$self->addEventNodeToXmlEventList($relativeXpathToParent, $outputXmlFilePath);
-		$document = $self->parseFile($outputXmlFilePath) or die $?;
-	}
-	
-	
-	my $parentNodeToUpdate = $document->findnodes($absolutePathToNodeNeededUpdate)->[0] or die; 	
-				
-	my $newNode = XML::LibXML::Element->new('event');
-	$newNode->setAttribute('url',$linkToEvent);
-	
-	$parentNodeToUpdate->addChild($newNode);	
-	$document->toFile($outputXmlFilePath) or die $?;	
-
-};
-
-sub addChildSubcategoryNodeToOfferXml($$$)
-{
-        my $self = shift;
-	my ($relativeXpathToParent, $nameOfNewChildNode, $outputXmlFilePath) = @_;
-	my $absolutePathToNodeNeededUpdate =  '/note/eventList' . $relativeXpathToParent; 
-	
-	my $document = $self->parseFile($outputXmlFilePath) or die $?;
-	my $parentNodeToUpdate = $document->findnodes($absolutePathToNodeNeededUpdate)->[0] or die "Can't find xml node specify by xpath:$absolutePathToNodeNeededUpdate in xml\n $document\n";
-	my $newNode = XML::LibXML::Element->new($nameOfNewChildNode);
-	my $lineBreakTextNode = XML::LibXML::Text->new("\n");
-	$parentNodeToUpdate->addChild($newNode);	
-	$document->toFile($outputXmlFilePath) or die $?;	
-}
-		
-	
-
-sub prepareTemplateFor_SportEventsFile($)
-{
-	
-	my ($self,$outputXmlPath) = @_;
-	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
-	my $xmlNode = $self->parseFile($outputXmlPath) or die;
-	
-	my $nodeToRename = $xmlNode->findnodes('/note/data')->[0];
-	$nodeToRename->setNodeName('eventList');
-	$xmlNode->toFile($outputXmlPath) or die $?; 
-		
-}	
-	
 sub createEventListXML()
 {
 	my ( $self ) = shift;
@@ -479,16 +352,10 @@ sub createEventListXML()
 	$self->correctFormatXmlDocument(); 
 };
 
-sub addCountriesToXML($)
-{
-	my ( $xmlSelectorFile ) = @_;
-
-
-}
-
 sub find_leagues_xpaths($) ##copy paste sub think how to reuse the same fragment
 {
 	my $self = shift;
+
 	my ($templateFile) = @_; 
 	my $xmlDoc = $self->parseFile($templateFile) or die;  #xmlDoc should be stored in object
 	my $countriesXpath = '/note/data/*/*/*';
