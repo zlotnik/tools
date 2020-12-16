@@ -21,7 +21,6 @@ sub updateBestOptionNodeWithProfitabilityData($);
 sub splitBestcombinationsNodeToProductsGroupNodes($);
 sub splitProductgroupNodeToProductsNodes($);
 sub splitEventNodeToBestCombinationNode($);
-sub leaveInProfitabilityFileOnlyBestPrices($);
 sub getAllProductNodes($);
 sub updateWithProfitabilityData($);
 sub getAllProductGroupNodes($);
@@ -162,7 +161,7 @@ sub updateEventNodeWithBestCombinations($)
 }
 
 
-sub injectBestCombinationsNodeAfterEventNodes($)
+sub insertBestCombinationsNode($)
 {
 	my ($bookMakerOfferProfitabilityFilePath) = @_; 
 	
@@ -176,9 +175,9 @@ sub injectBestCombinationsNodeAfterEventNodes($)
 	{
 		my $eventNode = $_;
 
-                my $eventNodeChildren = $eventNode->nonBlankChildNodes()->get_node(1);
+                my $bookmakerBetType = $eventNode->nonBlankChildNodes()->get_node(1);
 		my $best_combination_node = $xmlParserDoc->createElement("bestCombinations");
-		$best_combination_node->addChild($eventNodeChildren);
+		$best_combination_node->addChild($bookmakerBetType);
 		$eventNode->addChild($best_combination_node);	
 	}
 	
@@ -402,7 +401,8 @@ sub generateOfferProfitabilityFile($)
                 copy( $self->{offerFile}, $offerProfitabilityOutputFilename ) or die;
         }
 	
-	injectBestCombinationsNodeAfterEventNodes($offerProfitabilityOutputFilename); #the name isn't applied to functionality anymore
+        #use self instead of arguments
+	insertBestCombinationsNode($offerProfitabilityOutputFilename);
 	leaveInProfitabilityFileOnlyBestPrices($offerProfitabilityOutputFilename);
 	updateWithProfitabilityData($offerProfitabilityOutputFilename);
 	

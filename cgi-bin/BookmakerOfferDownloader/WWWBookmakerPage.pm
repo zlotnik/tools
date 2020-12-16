@@ -1,20 +1,15 @@
 package WWWBookmakerPage;
 use strict;
 use warnings;
-use FindBin;
 use Class::Interface;
 use LWP::Simple ();
 use File::Spec ();
 use String::Random;
 use File::Basename;
-use POSIX ":sys_wait_h";
-use Digest::MD5 qw(md5 md5_hex md5_base64);
-
+use Digest::MD5 qw(md5_hex);
 
 our @ISA = qw(SourceOfBookmakerPage);
-
 our @EXPORT = qw(getRawDataOfEvent new);
-
 
 sub getRawDataOfEvent($);
 sub new();
