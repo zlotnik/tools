@@ -115,12 +115,13 @@ sub findSureBets($$)
 	my ($xmlSelectorFile , $xmlResultFile) = @_;
 	
 	my $theRealBookMakerDownloader =  BetExplorerDownloader->new('--realnet');
-	$theRealBookMakerDownloader->loadSelectorFile( $xmlSelectorFile ); #temporary moved before "BookMakerDownloader->createEventListXML"
+	$theRealBookMakerDownloader->loadSelectorFile( $xmlSelectorFile );
 	$theRealBookMakerDownloader->set_OutputFile( $xmlResultFile  );
-	$theRealBookMakerDownloader->create_BookmakersOfferFile( $xmlResultFile );
+	$theRealBookMakerDownloader->create_BookmakersOfferFile();
 
 	my $theProfitabilityCalculator = ProfitabilityCalculator->new();
 	$theProfitabilityCalculator->loadBookmakersOfferFile($xmlResultFile);
-	$theProfitabilityCalculator->generateOfferProfitabilityFile($xmlResultFile);
+        $theProfitabilityCalculator->set_OutputFile($xmlResultFile);
+	$theProfitabilityCalculator->generateOfferProfitabilityFile();
 
 };

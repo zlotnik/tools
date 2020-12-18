@@ -25,7 +25,7 @@ sub loadSelectorFile($);
 sub getsLinksForAllEventsFromSubCategory($$);
 sub getTableWithEvents($);
 sub getLinksToEventFromTable($);
-sub create_BookmakersOfferFile($);
+sub create_BookmakersOfferFile();
 sub downloadRawDataOfChoosenOfert(\%);
 sub checkNumberOfBookmaker($);
 sub convertRawDownloadedDataToHash($);
@@ -150,14 +150,15 @@ sub isItCorrectXmlFile($)
 }
 #above could be moved to parser
 
-sub create_BookmakersOfferFile($) 
+sub create_BookmakersOfferFile() 
 {
-	my ($self, $outputXmlPath) = @_;
-	
+        my $self = shift;
+
+        #this things might be encapsulated	
 	my $pathToXmlSelector = $self->get_selectorFile();
 	defined  $self->{mSelectorFile} or die "The selector file didn't loaded\n";
 
-	$self->set_OutputFile( $outputXmlPath );
+        my $outputXmlPath = $self->get_OutputFile();
 	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
 
 	$self->createEventListXML();
@@ -168,12 +169,11 @@ sub create_BookmakersOfferFile($)
 
 }
 
-sub set_OutputFile($) #maybe better would be setResultFilename()
+sub set_OutputFile($)
 {
 	my $self = shift;
 	my ( $outputFilePath ) = @_;
 	$self->{outputFilePath} = $outputFilePath;
-
 }
 
 sub get_OutputFile()
@@ -181,7 +181,6 @@ sub get_OutputFile()
 	my $self = shift;
 	return $self->{outputFilePath}; 
 }
-
 
 sub correctFormatXmlDocument()
 {

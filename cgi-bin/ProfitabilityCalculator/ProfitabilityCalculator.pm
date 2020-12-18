@@ -12,17 +12,15 @@ use File::Copy;
 #########SUB DECLARATION#############
 sub new();
 sub loadBookmakersOfferFile($);
-sub generateOfferProfitabilityFile($);
-sub addBestOption($);
+sub generateOfferProfitabilityFile();
 sub findBestBetCombination($);
-sub leaveInProfitabilityFileOnlyBestPrices($);
+sub leaveInProfitabilityFileOnlyBestPrices();
 sub updateEventNodeWithBestCombinations($);
-sub updateBestOptionNodeWithProfitabilityData($);
 sub splitBestcombinationsNodeToProductsGroupNodes($);
 sub splitProductgroupNodeToProductsNodes($);
 sub splitEventNodeToBestCombinationNode($);
 sub getAllProductNodes($);
-sub updateWithProfitabilityData($);
+sub updateWithProfitabilityData();
 sub getAllProductGroupNodes($);
 sub createProfitNode($);
 sub tidyXml($);
@@ -30,6 +28,9 @@ sub calculateProfit(\@);
 sub calculateProfitForTwoWaysBet(\@);
 sub calculateProfitForThreeWaysBet(\@);
 sub moveProductGroupNodePrices2array($);
+sub set_OutputFile($);
+sub get_OutputFile();
+sub insertBestCombinationsNode();
 ##########SUB DEFININTIONS############
 sub new()
 {
@@ -96,53 +97,12 @@ sub findBestBetCombination($)
 		my $eventOfferForProductGroup = $_;
 		
 		 #add Product Group to documentation
-		my $bestPriceXMLNode = leaveInProfitabilityFileOnlyBestPrices($eventOfferForProductGroup);
+		#my $bestPriceXMLNode = leaveInProfitabilityFileOnlyBestPrices($eventOfferForProductGroup);
 		#apply $bestPriceXMLNode  --> $allBestOptionsXMLNode
 	}
 	return $allBestOptionsXMLNode;
 	
 };
-
-
-sub updateBestOptionNodeWithProfitabilityData($)
-{
-	my ($bestOptionXMLNode) = @_;
-
-}
-
-sub addBestOption($)
-{
-	my ($eventNode) = @_;
-    my $bestOptionXMLNode = findBestBetCombination($eventNode);
-	updateBestOptionNodeWithProfitabilityData($bestOptionXMLNode);
-	#apply bestOptionXMLNode to XML 
-	#udpate node
-
-};
-
-
-sub addBestPricesForProduct($) #unused
-{
-	my ($producNode) = @_;
-	#gothrough each child and leave only best
-
-
-}
-
-sub addBestCombinationsForEventGroup($$) ##unused
-{
-	my ($productGroupNode, $anProductGroup) = @_;
-
-	#split to product group 
-    #@products = findAllProduct($productGroupNode, $anProductGroup)	
-	my @products;
-	foreach(@products)
-	{
-		addBestPricesForProduct($productGroupNode);
-		#instead of addBest filter best albo leave
-	}
-}
-
 
 sub updateEventNodeWithBestCombinations($)
 {
@@ -156,18 +116,18 @@ sub updateEventNodeWithBestCombinations($)
 		my $anProductGroup = $_;
 		my $productGroupNode; # = find product group node 
 		addBestCombinationsForProductGroup($productGroupNode, $anProductGroup)
-		
 	}
 }
 
 
-sub insertBestCombinationsNode($)
+sub insertBestCombinationsNode()
 {
-	my ($bookMakerOfferProfitabilityFilePath) = @_; 
-	
-	my $xmlParser = XML::LibXML->new; 
+        my $self = shift;
+        
+        my $bookMakerOfferProfitabilityFilePath = $self->get_OutputFile(); 
+		
+	my $xmlParser = XML::LibXML->new; #encapsulate it
 	my $xmlParserDoc = $xmlParser->parse_file($bookMakerOfferProfitabilityFilePath) or return 0;
-	
 	
 	my @eventNodes = $xmlParserDoc->findnodes("/note/data/*/*/*/events/event");
     
@@ -240,9 +200,10 @@ sub leaveInProductNodeOnlyBestPrices($)
 
 
 #todo remove unused subs
-sub leaveInProfitabilityFileOnlyBestPrices($)
+sub leaveInProfitabilityFileOnlyBestPrices()
 {
-	my ($offerProfitabilityOutputFilename) = @_;
+        my $self = shift;
+        my $offerProfitabilityOutputFilename = $self->get_OutputFile();
 	
 	my $xmlParser = XML::LibXML->new; 
 	my $xmlParserDoc = $xmlParser->parse_file($offerProfitabilityOutputFilename) or return 0;
@@ -367,11 +328,12 @@ sub moveProductGroupNodePrices2array($)
 	
 }
 
-sub updateWithProfitabilityData($)
+sub updateWithProfitabilityData()
 {
 	
-	my ($bookMakerOfferProfitabilityFilePath) = @_; 
+        my $self = shift;
 	
+        my $bookMakerOfferProfitabilityFilePath = $self->get_OutputFile();
 	my $xmlParser = XML::LibXML->new; 
 	my $offerProfitabilityDoc = $xmlParser->parse_file($bookMakerOfferProfitabilityFilePath) or return 0;
 	
@@ -390,11 +352,25 @@ sub updateWithProfitabilityData($)
 	
 }
 
+sub get_OutputFile()
+{
+	my $self = shift;
+	return $self->{outputFilePath}; 
+
+}
+sub set_OutputFile($)
+{
+	my $self = shift;
+	my ( $outputFilePath ) = @_;
+	$self->{outputFilePath} = $outputFilePath;
+}
+
 #todo maybe remove some  xml::tidy invokes in order to  improve efficiency   
-sub generateOfferProfitabilityFile($)
+sub generateOfferProfitabilityFile()
 {
         
-	my ($self, $offerProfitabilityOutputFilename) = @_;
+	my $self = shift;
+        my $offerProfitabilityOutputFilename = $self->get_OutputFile();
        
         if( $self->{offerFile} ne $offerProfitabilityOutputFilename ) 
         {
@@ -402,9 +378,9 @@ sub generateOfferProfitabilityFile($)
         }
 	
         #use self instead of arguments
-	insertBestCombinationsNode($offerProfitabilityOutputFilename);
-	leaveInProfitabilityFileOnlyBestPrices($offerProfitabilityOutputFilename);
-	updateWithProfitabilityData($offerProfitabilityOutputFilename);
+	$self->insertBestCombinationsNode();
+	$self->leaveInProfitabilityFileOnlyBestPrices();
+        $self->updateWithProfitabilityData();
 	
 };
 
