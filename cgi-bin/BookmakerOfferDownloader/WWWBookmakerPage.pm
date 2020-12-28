@@ -56,6 +56,22 @@ sub getRawDataOfEvent($)
 }
 
 
+sub downloadSuccesfull($)
+{
+        my ( $rawData ) = @_;
+
+        
+        if ($rawData =~ /div class/)
+        {
+                return 1;
+        }
+        else
+        {
+                return 0;
+        }
+
+}
+
 
 sub createRawDataFileOfEvent($)
 {
@@ -65,8 +81,19 @@ sub createRawDataFileOfEvent($)
 
 	my $commandDownloadingRawData = "${moduleDirPath}/phantomjs.elf $javaScriptToRun";
 	my $rawData = `$commandDownloadingRawData`;
-	
-	
+	my $isDownloadSuccesfull = downloadSuccesfull($rawData);
+ 
+        my $tryTime = 3;
+        while(!$isDownloadSuccesfull and $tryTime <= 12  )
+        {
+                print "try another time for $linkToEvent\n";
+                sleep($tryTime);
+                $rawData = `$commandDownloadingRawData`;
+	        $isDownloadSuccesfull = downloadSuccesfull($rawData);
+                $tryTime = $tryTime *2;
+        }
+
+        #print $rawData;	
 	my $randomPostfix = new String::Random;
 	$randomPostfix =  $randomPostfix->randregex('\w\w\w\w\w\w');
 	my $rawDataFileName = "tmp/". 'rawdataevent_' . $randomPostfix . '.txt';
