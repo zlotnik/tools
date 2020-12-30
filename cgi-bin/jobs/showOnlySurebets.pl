@@ -53,7 +53,7 @@ sub showMySureBets($)
 			my $bookmaker_1 = fetch_BookmakerName_1_fromEventBestCombinationNode($surebet_node);
 			my $bookmaker_X = fetch_BookmakerName_X_fromEventBestCombinationNode($surebet_node);
 			my $bookmaker_2 = fetch_BookmakerName_2_fromEventBestCombinationNode($surebet_node);			
-			$toReturn = "EventName: $event_name PROFIT: $profit ";
+			$toReturn .= "EventName: $event_name PROFIT: $profit ";
 			$toReturn .= "bookmaker_1 $bookmaker_1 bookmaker_x $bookmaker_X bookmaker_2 $bookmaker_2 ";
 			$toReturn .= "price_1 $price_1 price_X $price_X price_2 $price_2\n";
 		}		
