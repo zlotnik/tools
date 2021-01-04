@@ -13,7 +13,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="span6">
-	  			<h2><strong>Bootstrap <span class="highlight primary">business theme</span></strong></h2>
+	  			<h2><strong>The surebets <span class="highlight primary">list</span></strong></h2>
 	  			<p class="lead">
 				<?php include("includes/surebet_table.php");
 				generateSurebetTable('/var/www/data/last_surebets');
