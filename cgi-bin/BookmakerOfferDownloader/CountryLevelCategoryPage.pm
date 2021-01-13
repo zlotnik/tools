@@ -44,7 +44,8 @@ sub new()
 	return $self;
 }
 
-sub getAllSubCategories()
+sub downloadSoccerLeagueNames($);
+sub downloadSoccerLeagueNames($)
 {
 	my ($self, $subCategoryXpath ) = @_;
 	my @toReturn;
