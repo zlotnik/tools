@@ -406,6 +406,9 @@ sub downloadEventURLs($)
 	
 	my $contentOfSubcategoryPage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToCategory);
 	my @toReturn;
+ 
+        #here should be pickupTableWithEventsFromWebur
+        #LinksToEventFromTable
 		
 	my $regexp = '(<td class=\"table-main__daysign\")([\s\S]*?)(</table>)';
 	if(not $contentOfSubcategoryPage =~ m|${regexp}|m )
@@ -415,7 +418,6 @@ sub downloadEventURLs($)
 	}
 	else	
 	{
-		
 		my $htmlTableWithEvents = $1.$2.$3;
 		@toReturn = BetexplorerParser::pickupLinksToEventFromTable($htmlTableWithEvents);	
 	}

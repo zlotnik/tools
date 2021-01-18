@@ -96,8 +96,6 @@ sub createJavaScriptForDownload($)
 
 }
 
-
-
 sub getsLinksForAllEventsFromSubCategory($$)
 {
 	my $categoryName = $_[0];

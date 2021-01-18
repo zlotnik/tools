@@ -1,0 +1,1404 @@
+Functional module BookmakerOfferDownloader
+curl command: curl -A "Mozilla/5.0" https://www.betexplorer.com/soccer/
+curl command: curl -A "Mozilla/5.0" https://www.betexplorer.com//soccer/World/club-friendly/
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/navbahor-namangan-andijan/EDBQPgq1/" class="in-match"><span><strong>Navbahor Namangan</strong></span> - <span>Andijan</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">1</td>
+<td class="table-main__odds colored" data-oid="4jsg7xv464x0xc3j7c"><span><span><span data-odd="1.60"></span></span></span></td><td class="table-main__odds" data-oid="4jsg7xv498x0x0" data-odd="3.10"></td><td class="table-main__odds" data-oid="4jsg7xv464x0xc3j7d" data-odd="3.95"></td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>1:0</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/mtk-budapest-vasas/EFfML14d/" class="in-match"><span>MTK Budapest</span> - <span>Vasas</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="h-text-center">&nbsp;</td><td class="table-main__result"><strong><span title="Canceled">CAN.</span></strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/honved-ujpest/K4F2pZeA/" class="in-match"><span><strong>Honved</strong></span> - <span>Ujpest</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>3:2</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/kapfenberg-mura/McReGkQm/" class="in-match"><span>Kapfenberg</span> - <span><strong>Mura</strong></span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">19</td>
+<td class="table-main__odds" data-oid="4jr5uxv464x0xc3eqm" data-odd="2.75"></td><td class="table-main__odds" data-oid="4jr5uxv498x0x0" data-odd="3.86"></td><td class="table-main__odds colored" data-oid="4jr5uxv464x0xc3eqn"><span><span><span data-odd="2.10"></span></span></span></td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>1:5</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/lask-linz-fc-juniors-oo/QympM3Pg/" class="in-match"><span>LASK</span> - <span>FC Juniors</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">10</td>
+<td class="table-main__odds" data-oid="4jjqaxv464x0xc2nht" data-odd="1.13"></td><td class="table-main__odds colored" data-oid="4jjqaxv498x0x0"><span><span><span data-odd="7.80"></span></span></span></td><td class="table-main__odds" data-oid="4jjqaxv464x0xc2nhu" data-odd="10.65"></td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>4:4</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/medjimurje-sibenik/I7T25EMi/" class="in-match"><span>Medjimurje Cakovec</span> - <span><strong>Sibenik</strong></span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">13</td>
+<td class="table-main__odds" data-oid="4jribxv464x0xc3fu5" data-odd="6.33"></td><td class="table-main__odds" data-oid="4jribxv498x0x0" data-odd="4.75"></td><td class="table-main__odds colored" data-oid="4jribxv464x0xc3fu6"><span><span><span data-odd="1.35"></span></span></span></td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>0:5</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/radnik-surdulica-dubocica/SdDIRFEl/" class="in-match"><span>Radnik</span> - <span>Dubocica</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">13</td>
+<td class="table-main__odds" data-oid="4jsg5xv464x0xc3j78" data-odd="1.16"></td><td class="table-main__odds colored" data-oid="4jsg5xv498x0x0"><span><span><span data-odd="6.51"></span></span></span></td><td class="table-main__odds" data-oid="4jsg5xv464x0xc3j79" data-odd="12.48"></td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>1:1</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/paks-budaorsi-sc/EBf9E7JA/" class="in-match"><span><strong>Paks</strong></span> - <span>Budaorsi SC</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>8:0</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/senica-podbrezova/dA8Xswws/" class="in-match"><span>Senica</span> - <span><strong>Podbrezova</strong></span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">17</td>
+<td class="table-main__odds" data-oid="4j53uxv464x0xc1clu" data-odd="1.83"></td><td class="table-main__odds" data-oid="4j53uxv498x0x0" data-odd="3.94"></td><td class="table-main__odds colored" data-oid="4j53uxv464x0xc1clv"><span><span><span data-odd="3.32"></span></span></span></td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>1:4</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/wisla-podhale-nowy-targ/8jemBGIq/" class="in-match"><span><strong>Wisla</strong></span> - <span>Podhale Nowy Targ</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">18</td>
+<td class="table-main__odds colored" data-oid="4jiolxv464x0xc2ka2"><span><span><span data-odd="1.10"></span></span></span></td><td class="table-main__odds" data-oid="4jiolxv498x0x0" data-odd="8.32"></td><td class="table-main__odds" data-oid="4jiolxv464x0xc2ka3" data-odd="15.71"></td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>5:0</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/kazincbarcikai-kisvarda-fc/lhkkniMT/" class="in-match"><span>Kazincbarcikai</span> - <span><strong>Kisvarda</strong></span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>0:2</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/sered-dubnica/KWwyssji/" class="in-match"><span>Sered</span> - <span>Dubnica</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">15</td>
+<td class="table-main__odds" data-oid="4jelqxv464x0xc280d" data-odd="1.45"></td><td class="table-main__odds" data-oid="4jelqxv498x0x0" data-odd="4.44"></td><td class="table-main__odds" data-oid="4jelqxv464x0xc280e" data-odd="5.35"></td><td class="h-text-center">&nbsp;</td><td class="table-main__result"><strong><span title="Canceled">CAN.</span></strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/zalaegerszegi-siofok/zFYFIt9l/" class="in-match"><span>Zalaegerszegi</span> - <span>Siofok</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>0:0</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/genk-st-gilloise/QHEd8P3q/" class="in-match"><span>Genk</span> - <span>St. Gilloise</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>4:4</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/aarau-basel/8QDGsUrb/" class="in-match"><span>Aarau</span> - <span><strong>Basel</strong></span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">10</td>
+<td class="table-main__odds" data-oid="4j548xv464x0xc1cmi" data-odd="5.26"></td><td class="table-main__odds" data-oid="4j548xv498x0x0" data-odd="4.79"></td><td class="table-main__odds colored" data-oid="4j548xv464x0xc1cmj"><span><span><span data-odd="1.41"></span></span></span></td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>0:5</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/grasshoppers-luzern/CbK7qjEo/" class="in-match"><span>Grasshoppers</span> - <span>Luzern</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="h-text-center">&nbsp;</td><td class="table-main__result"><strong><span title="Canceled">CAN.</span></strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/mezokovesd-zsory-dorogi-fc/h0daAltl/" class="in-match"><span><strong>Mezokovesd-Zsory</strong></span> - <span>Dorogi</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">13</td>
+<td class="table-main__odds colored" data-oid="4jkscxv464x0xc2q7h"><span><span><span data-odd="1.34"></span></span></span></td><td class="table-main__odds" data-oid="4jkscxv498x0x0" data-odd="4.90"></td><td class="table-main__odds" data-oid="4jkscxv464x0xc2q7i" data-odd="6.61"></td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>4:0</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/nyiregyhaza-paks/t0scETf0/" class="in-match"><span><strong>Nyiregyhaza</strong></span> - <span>Paks</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>4:3</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/servette-lausanne-ouchy/YawCFm44/" class="in-match"><span>Servette</span> - <span><strong>Lausanne Ouchy</strong></span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>0:1</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/stal-mielec-cska-sofia/Me84Kb7L/" class="in-match"><span>Stal Mielec</span> - <span>CSKA Sofia</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">18</td>
+<td class="table-main__odds" data-oid="4jsfpxv464x0xc3j6g" data-odd="3.85"></td><td class="table-main__odds colored" data-oid="4jsfpxv498x0x0"><span><span><span data-odd="3.03"></span></span></span></td><td class="table-main__odds" data-oid="4jsfpxv464x0xc3j6h" data-odd="1.98"></td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>0:0</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/ujpest-gyor/25zkJ9N3/" class="in-match"><span>Ujpest</span> - <span><strong>Gyor</strong></span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>0:3</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/varazdin-rudes/KGHwuWmC/" class="in-match"><span><strong>Varazdin</strong></span> - <span>Rudes</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">17</td>
+<td class="table-main__odds colored" data-oid="4jselxv464x0xc3j3g"><span><span><span data-odd="1.93"></span></span></span></td><td class="table-main__odds" data-oid="4jselxv498x0x0" data-odd="3.94"></td><td class="table-main__odds" data-oid="4jselxv464x0xc3j3h" data-odd="3.06"></td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>4:0</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/istra-1961-lok-zagreb/z5PusL1F/" class="in-match"><span><strong>Istra 1961</strong></span> - <span>Lok. Zagreb</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">18</td>
+<td class="table-main__odds colored" data-oid="4jod4xv464x0xc36g3"><span><span><span data-odd="2.63"></span></span></span></td><td class="table-main__odds" data-oid="4jod4xv498x0x0" data-odd="3.39"></td><td class="table-main__odds" data-oid="4jod4xv464x0xc36g4" data-odd="2.33"></td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>1:0</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/zilina-podbeskidzie/dAn2Scwf/" class="in-match"><span>Zilina</span> - <span><strong>Podbeskidzie</strong></span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">20</td>
+<td class="table-main__odds" data-oid="4j53nxv464x0xc1clg" data-odd="1.80"></td><td class="table-main__odds" data-oid="4j53nxv498x0x0" data-odd="3.82"></td><td class="table-main__odds colored" data-oid="4j53nxv464x0xc1clh"><span><span><span data-odd="3.53"></span></span></span></td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>1:2</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/rijeka-nd-gorica/v3kQiehh/" class="in-match"><span><strong>Rijeka</strong></span> - <span>ND Gorica</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">17</td>
+<td class="table-main__odds colored" data-oid="4jri2xv464x0xc3ftj"><span><span><span data-odd="1.30"></span></span></span></td><td class="table-main__odds" data-oid="4jri2xv498x0x0" data-odd="5.11"></td><td class="table-main__odds" data-oid="4jri2xv464x0xc3ftk" data-odd="7.13"></td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>3:0</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/hartberg-amstetten/6VOxcveQ/" class="in-match"><span><strong>Hartberg</strong></span> - <span>Amstetten</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">19</td>
+<td class="table-main__odds colored" data-oid="4jdckxv464x0xc25e1"><span><span><span data-odd="1.42"></span></span></span></td><td class="table-main__odds" data-oid="4jdckxv498x0x0" data-odd="4.39"></td><td class="table-main__odds" data-oid="4jdckxv464x0xc25e2" data-odd="5.75"></td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>3:0</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/puskas-academy-csakvari/SzSiHVAs/" class="in-match"><span>Puskas Academy</span> - <span>Csakvari</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>1:1</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/algeciras-ferencvaros/ULXsYHyL/" class="in-match"><span>Algeciras</span> - <span><strong>Ferencvaros</strong></span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">16</td>
+<td class="table-main__odds" data-oid="4jsg2xv464x0xc3j73" data-odd="5.75"></td><td class="table-main__odds" data-oid="4jsg2xv498x0x0" data-odd="4.39"></td><td class="table-main__odds colored" data-oid="4jsg2xv464x0xc3j72"><span><span><span data-odd="1.42"></span></span></span></td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>1:3</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/cracovia-puszcza/jVC8JIMR/" class="in-match"><span><strong>Cracovia</strong></span> - <span>Puszcza</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">20</td>
+<td class="table-main__odds colored" data-oid="4jsfqxv464x0xc3j6i"><span><span><span data-odd="1.68"></span></span></span></td><td class="table-main__odds" data-oid="4jsfqxv498x0x0" data-odd="3.71"></td><td class="table-main__odds" data-oid="4jsfqxv464x0xc3j6j" data-odd="4.18"></td><td class="table-main__eventstage" title="Finished">FIN</td><td class="table-main__result"><strong>3:1</strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/hlucin-dolni-benesov/h2gDDRYG/" class="in-match"><span>Hlucin</span> - <span>Dolni Benesov</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="h-text-center">&nbsp;</td><td class="table-main__result"><strong><span title="Canceled">CAN.</span></strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/rozwoj-katowice-start-sierakowice/l6EESear/" class="in-match"><span>Rozwoj Katowice</span> - <span>Start Sierakowice</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">11</td>
+<td class="table-main__odds" data-oid="4jsg4xv464x0xc3j76" data-odd="1.18"></td><td class="table-main__odds" data-oid="4jsg4xv498x0x0" data-odd="6.96"></td><td class="table-main__odds" data-oid="4jsg4xv464x0xc3j77" data-odd="9.57"></td><td class="h-text-center">&nbsp;</td><td class="table-main__result"><strong><span title="Canceled">CAN.</span></strong></td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign" title="Today's match"><span class="in-point"></span></td>
+<td><a href="/soccer/World/club-friendly/young-africans-simba/Y3ZjIBD2/" class="in-match"><span>Young Africans</span> - <span>Simba</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">5</td>
+<td class="table-main__odds" data-oid="4jtk8xv464x0xc3lrt" data-odd="2.96"></td><td class="table-main__odds colored" data-oid="4jtk8xv498x0x0"><span><span><span data-odd="2.78"></span></span></span></td><td class="table-main__odds" data-oid="4jtk8xv464x0xc3lru" data-odd="2.42"></td><td class="table-main__eventstage" title="After Penalties">PEN.</td><td class="table-main__result"><strong>1:0 <span title="After Penalties">PEN.</span></strong></td>
+</tr>
+<tr>
+<td class="table-main__daysign" title="Tomorrow's match"><span class="in-point in-point--2"></span></td>
+<td><a href="/soccer/World/club-friendly/sonderjyske-odense/ENIWBJAR/" class="in-match"><span>Sonderjyske</span> - <span>Odense</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">14</td>
+<td class="table-main__odds" data-oid="4ilvaxv464x0xbvuer"><a href="javascript:void(0);" onclick="my_selections_click('1x2', 'soccer', 'action=3&matchid=ENIWBJAR&outcomeid=4ilvaxv464x0xbvuer&otheroutcomes=4ilvaxv498x0x0,4ilvaxv464x0xbvues');" title="Add to My Selections" data-odd="2.26"></a></td>
+<td class="table-main__odds" data-oid="4ilvaxv498x0x0"><a href="javascript:void(0);" onclick="my_selections_click('1x2', 'soccer', 'action=3&matchid=ENIWBJAR&outcomeid=4ilvaxv498x0x0&otheroutcomes=4ilvaxv464x0xbvuer,4ilvaxv464x0xbvues');" title="Add to My Selections" data-odd="3.51"></a></td>
+<td class="table-main__odds" data-oid="4ilvaxv464x0xbvues"><a href="javascript:void(0);" onclick="my_selections_click('1x2', 'soccer', 'action=3&matchid=ENIWBJAR&outcomeid=4ilvaxv464x0xbvues&otheroutcomes=4ilvaxv464x0xbvuer,4ilvaxv498x0x0');" title="Add to My Selections" data-odd="2.64"></a></td>
+<td class="h-text-right" colspan="2">Tomorrow 12:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign" title="Tomorrow's match"><span class="in-point in-point--2"></span></td>
+<td><a href="/soccer/World/club-friendly/din-zagreb-mol-fehervar-fc/pGtkj3pQ/" class="in-match"><span>D. Zagreb</span> - <span>MOL Fehervar</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">12</td>
+<td class="table-main__odds" data-oid="4jm4txv464x0xc2u3s"><a href="javascript:void(0);" onclick="my_selections_click('1x2', 'soccer', 'action=3&matchid=pGtkj3pQ&outcomeid=4jm4txv464x0xc2u3s&otheroutcomes=4jm4txv498x0x0,4jm4txv464x0xc2u3t');" title="Add to My Selections" data-odd="1.49"></a></td>
+<td class="table-main__odds" data-oid="4jm4txv498x0x0"><a href="javascript:void(0);" onclick="my_selections_click('1x2', 'soccer', 'action=3&matchid=pGtkj3pQ&outcomeid=4jm4txv498x0x0&otheroutcomes=4jm4txv464x0xc2u3s,4jm4txv464x0xc2u3t');" title="Add to My Selections" data-odd="4.16"></a></td>
+<td class="table-main__odds" data-oid="4jm4txv464x0xc2u3t"><a href="javascript:void(0);" onclick="my_selections_click('1x2', 'soccer', 'action=3&matchid=pGtkj3pQ&outcomeid=4jm4txv464x0xc2u3t&otheroutcomes=4jm4txv464x0xc2u3s,4jm4txv498x0x0');" title="Add to My Selections" data-odd="5.05"></a></td>
+<td class="h-text-right" colspan="2">Tomorrow 13:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign" title="Tomorrow's match"><span class="in-point in-point--2"></span></td>
+<td><a href="/soccer/World/club-friendly/lok-plovdiv-maritsa-plovdiv/8zwpFesd/" class="in-match"><span>Lok. Plovdiv</span> - <span>Maritsa Plovdiv</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">Tomorrow 13:30</td>
+</tr>
+<tr>
+<td class="table-main__daysign" title="Tomorrow's match"><span class="in-point in-point--2"></span></td>
+<td><a href="/soccer/World/club-friendly/horsens-skive-ik/8Mw3JqX4/" class="in-match"><span>Horsens</span> - <span>Skive IK</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">Tomorrow 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign" title="Tomorrow's match"><span class="in-point in-point--2"></span></td>
+<td><a href="/soccer/World/club-friendly/jagiellonia-zaglebie/nRylEFd2/" class="in-match"><span>Jagiellonia</span> - <span>Zaglebie</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">Tomorrow 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign" title="Tomorrow's match"><span class="in-point in-point--2"></span></td>
+<td><a href="/soccer/World/club-friendly/neftci-baku-keshla/rPynXyiR/" class="in-match"><span>Neftci Baku</span> - <span>Keshla</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">6</td>
+<td class="table-main__odds" data-oid="4jsg3xv464x0xc3j74"><a href="javascript:void(0);" onclick="my_selections_click('1x2', 'soccer', 'action=3&matchid=rPynXyiR&outcomeid=4jsg3xv464x0xc3j74&otheroutcomes=4jsg3xv498x0x0,4jsg3xv464x0xc3j75');" title="Add to My Selections" data-odd="1.57"></a></td>
+<td class="table-main__odds" data-oid="4jsg3xv498x0x0"><a href="javascript:void(0);" onclick="my_selections_click('1x2', 'soccer', 'action=3&matchid=rPynXyiR&outcomeid=4jsg3xv498x0x0&otheroutcomes=4jsg3xv464x0xc3j74,4jsg3xv464x0xc3j75');" title="Add to My Selections" data-odd="3.77"></a></td>
+<td class="table-main__odds" data-oid="4jsg3xv464x0xc3j75"><a href="javascript:void(0);" onclick="my_selections_click('1x2', 'soccer', 'action=3&matchid=rPynXyiR&outcomeid=4jsg3xv464x0xc3j75&otheroutcomes=4jsg3xv464x0xc3j74,4jsg3xv498x0x0');" title="Add to My Selections" data-odd="4.71"></a></td>
+<td class="h-text-right" colspan="2">Tomorrow 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign" title="Day after tomorrow match"><span class="in-point in-point--3"></span></td>
+<td><a href="/soccer/World/club-friendly/fc-copenhagen-hvidovre-if/ptlogq2j/" class="in-match"><span>FC Copenhagen</span> - <span>Hvidovre IF</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">15.01. 11:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign" title="Day after tomorrow match"><span class="in-point in-point--3"></span></td>
+<td><a href="/soccer/World/club-friendly/tps-ilves/MD73Zpp8/" class="in-match"><span>TPS</span> - <span>Ilves</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">15.01. 12:30</td>
+</tr>
+<tr>
+<td class="table-main__daysign" title="Day after tomorrow match"><span class="in-point in-point--3"></span></td>
+<td><a href="/soccer/World/club-friendly/aarhus-viborg/CbhIFdh1/" class="in-match"><span>Aarhus</span> - <span>Viborg</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">15.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign" title="Day after tomorrow match"><span class="in-point in-point--3"></span></td>
+<td><a href="/soccer/World/club-friendly/osijek-koper/hIJUGser/" class="in-match"><span>Osijek</span> - <span>Koper</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">15.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign" title="Day after tomorrow match"><span class="in-point in-point--3"></span></td>
+<td><a href="/soccer/World/club-friendly/piast-gliwice-zorya/EBQCCNxe/" class="in-match"><span>Piast Gliwice</span> - <span>FK Zorya Luhansk</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">15.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign" title="Day after tomorrow match"><span class="in-point in-point--3"></span></td>
+<td><a href="/soccer/World/club-friendly/antwerp-lommel-sk/nL0YUdOo/" class="in-match"><span>Antwerp</span> - <span>Lommel SK</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">15.01. 14:30</td>
+</tr>
+<tr>
+<td class="table-main__daysign" title="Day after tomorrow match"><span class="in-point in-point--3"></span></td>
+<td><a href="/soccer/World/club-friendly/rijeka-budafoki-mte/KCcYkZM4/" class="in-match"><span>Rijeka</span> - <span>Budafoki</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">15.01. 14:30</td>
+</tr>
+<tr>
+<td class="table-main__daysign" title="Day after tomorrow match"><span class="in-point in-point--3"></span></td>
+<td><a href="/soccer/World/club-friendly/thun-lausanne/4YQXPejQ/" class="in-match"><span>Thun</span> - <span>Lausanne</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">15.01. 14:30</td>
+</tr>
+<tr>
+<td class="table-main__daysign" title="Day after tomorrow match"><span class="in-point in-point--3"></span></td>
+<td><a href="/soccer/World/club-friendly/pogon-szczecin-warta-poznan/zLR8D3Nl/" class="in-match"><span>Pogon Szczecin</span> - <span>Warta Poznan</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">15.01. 15:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign" title="Day after tomorrow match"><span class="in-point in-point--3"></span></td>
+<td><a href="/soccer/World/club-friendly/rapid-vienna-admira/jJEDMd4t/" class="in-match"><span>Rapid Vienna</span> - <span>Admira</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">15.01. 15:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign" title="Day after tomorrow match"><span class="in-point in-point--3"></span></td>
+<td><a href="/soccer/World/club-friendly/lechia-gdansk-sokol-ostroda/6oN4Eq8r/" class="in-match"><span>Lechia Gdansk</span> - <span>Ostroda</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">15.01. 15:30</td>
+</tr>
+<tr>
+<td class="table-main__daysign" title="Day after tomorrow match"><span class="in-point in-point--3"></span></td>
+<td><a href="/soccer/World/club-friendly/vaduz-dornbirn/rLcS23eD/" class="in-match"><span>Vaduz</span> - <span>Dornbirn</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">15.01. 18:30</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/ujpest-szeged-csanad-ga/G8vgITxA/" class="in-match"><span>Ujpest</span> - <span>Szeged</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 10:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/gks-belchatow-pruszkow/4xywJPaR/" class="in-match"><span>GKS Belchatow</span> - <span>Pruszkow</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 11:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/gyirmot-fc-gyor-zalaegerszegi/zw5ZuflC/" class="in-match"><span>Gyirmot</span> - <span>Zalaegerszegi</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 11:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/hodonin-znojmo/O46MCX8c/" class="in-match"><span>Hodonin</span> - <span>Znojmo</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 11:00</td>
+</tr>
+<tr class="table-main__played">
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/jihlava-zivanice/zB4SWPsR/" class="in-match"><span>Jihlava</span> - <span>Zivanice</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="h-text-center">&nbsp;</td><td class="table-main__result"><strong><span title="Canceled">CAN.</span></strong></td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/osijek-mol-fehervar-fc/W8IYF1Al/" class="in-match"><span>Osijek</span> - <span>MOL Fehervar</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 11:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/sibenik-lok-zagreb/EeOqtuHL/" class="in-match"><span>Sibenik</span> - <span>Lok. Zagreb</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 11:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/skra-czestochowa-wolka-pelkinska/tdT4qwR6/" class="in-match"><span>Skra</span> - <span>Wolka Pelkinska</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 11:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/vysehrad-chrudim/xWG4HUhk/" class="in-match"><span>Vysehrad</span> - <span>Chrudim</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 11:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/salzburg-vorwarts-steyr/Sr6GhIk0/" class="in-match"><span>Salzburg</span> - <span>Vorwarts Steyr</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 11:30</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/boldklubben-1893-roskilde/Ec5b6Juh/" class="in-match"><span>B.93</span> - <span>Roskilde</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 12:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/koge-holbaek/0pGfNZJP/" class="in-match"><span>Koge</span> - <span>Holbaek</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 12:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/nordsjaelland-helsingor/8pfvBV91/" class="in-match"><span>Nordsjaelland</span> - <span>Helsingor</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 12:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/schaffhausen-young-fellows-juventus/tvCOu8DA/" class="in-match"><span>Schaffhausen</span> - <span>YF Juventus</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 12:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/senica-lisen/ADCyschm/" class="in-match"><span>Senica</span> - <span>Lisen</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 12:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/widzew-lodz-elana-torun/Ua4wuE3I/" class="in-match"><span>Widzew Lodz</span> - <span>Elana Torun</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 12:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/naestved-if-slagelse/6RhNIgSt/" class="in-match"><span>Naestved</span> - <span>Slagelse</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 12:30</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/akademija-pandev-borec/EuQg0S1s/" class="in-match"><span>Akademija Pandev</span> - <span>Borec</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 13:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/fremad-amager-avarta/4CBQHDsm/" class="in-match"><span>F. Amager</span> - <span>Avarta</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 13:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/randers-fc-esbjerg/QVHk49Ai/" class="in-match"><span>Randers FC</span> - <span>Esbjerg</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 13:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/r-rzeszow-hutnik-nowa-huta/tz8svYIO/" class="in-match"><span>R. Rzeszow</span> - <span>Hutnik Krakow</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 13:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/sered-banska-bystrica/bNxut15c/" class="in-match"><span>Sered</span> - <span>Banska Bystrica</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 13:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/st-polten-bw-linz/8p4eQQ1b/" class="in-match"><span>St. Polten</span> - <span>BW Linz</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 13:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/wisla-zilina/vZy7RHh0/" class="in-match"><span>Wisla</span> - <span>Zilina</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 13:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/wisla-plock-suwalki/MDoYJ5pL/" class="in-match"><span>Wisla Plock</span> - <span>Suwalki</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 13:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/young-boys-lausanne-ouchy/IqT6f901/" class="in-match"><span>Young Boys</span> - <span>Lausanne Ouchy</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 13:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/ac-oulu-rops-rovaniemi/vcMWqxzm/" class="in-match"><span>AC Oulu</span> - <span>Rovaniemi</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 13:45</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/altach-st-gallen/4SolLNv0/" class="in-match"><span>Altach</span> - <span>St. Gallen</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/austria-vienna-horn/4Cc4O4WA/" class="in-match"><span>Austria Vienna</span> - <span>Horn</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/brondby-kolding-if/6XsVE6Wj/" class="in-match"><span>Brondby</span> - <span>Kolding IF</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/etar-spartak-pleven/0467Y4aE/" class="in-match"><span>Etar</span> - <span>Spartak Pleven</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/kriens-luzern/OGj5VkOa/" class="in-match"><span>Kriens</span> - <span>Luzern</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/lyngby-hellerup/t8HZaFz3/" class="in-match"><span>Lyngby</span> - <span>Hellerup</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/michalovce-mladost-kalsa/IR3KyxBs/" class="in-match"><span>Michalovce</span> - <span>Mladost Kalsa</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/nitra-msk-puchov/SlcUbgx1/" class="in-match"><span>Nitra</span> - <span>Puchov</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/puskas-academy-ujpest/plYiby4t/" class="in-match"><span>Puskas Academy</span> - <span>Ujpest</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/ried-fc-juniors-oo/hbkcmHUa/" class="in-match"><span>Ried</span> - <span>FC Juniors</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/ruzomberok-lipany/M1ewpHXG/" class="in-match"><span>Ruzomberok</span> - <span>Lipany</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/salzburg-amstetten/6Z4Kix56/" class="in-match"><span>Salzburg</span> - <span>Amstetten</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/servette-xamax/niygKsf6/" class="in-match"><span>Servette</span> - <span>Xamax</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/slask-wroclaw-slovan-bratislava/OGQvk3hR/" class="in-match"><span>Slask Wroclaw</span> - <span>Slovan Bratislava</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/vasas-paks/xp0YGnFq/" class="in-match"><span>Vasas</span> - <span>Paks</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/wil-zurich/beWPK6yo/" class="in-match"><span>Wil</span> - <span>Zurich</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/basel-chiasso/Wr1lkw0m/" class="in-match"><span>Basel</span> - <span>Chiasso</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:30</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/dvtk-mezokovesd-zsory/6cX5FRMS/" class="in-match"><span>DVTK</span> - <span>Mezokovesd-Zsory</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:30</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/hartberg-a-klagenfurt/8vB4hb3s/" class="in-match"><span>Hartberg</span> - <span>A. Klagenfurt</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:30</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/medjimurje-istra-1961/Iwj9U9w6/" class="in-match"><span>Medjimurje Cakovec</span> - <span>Istra 1961</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 14:30</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/fc-mariupol-rakow-czestochowa/YwO8aWRI/" class="in-match"><span>Mariupol</span> - <span>Rakow</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 15:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/grasshoppers-a-lustenau/jkJBrATi/" class="in-match"><span>Grasshoppers</span> - <span>A. Lustenau</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 15:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/lask-linz-lafnitz/0fucJ19C/" class="in-match"><span>LASK</span> - <span>Lafnitz</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 15:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/njs-pk-35-vantaa/GfLcFXYf/" class="in-match"><span>NJS</span> - <span>PK-35 Vantaa</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 15:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/sc-weiz-grazer-ak/runQ2HeP/" class="in-match"><span>SC Weiz</span> - <span>Grazer</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 16:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/young-boys-aarau/nHCKtlb4/" class="in-match"><span>Young Boys</span> - <span>Aarau</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 16:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/mtk-budapest-honved/SIr4posc/" class="in-match"><span>MTK Budapest</span> - <span>Honved</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">16.01. 17:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/lommel-sk-kv-mechelen/YHCj6Doo/" class="in-match"><span>Lommel SK</span> - <span>KV Mechelen</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">17.01. 11:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/vejle-aarhus-fremad/Wt2U0ggo/" class="in-match"><span>Vejle</span> - <span>Aarhus Fremad</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">17.01. 12:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/dynamo-moscow-lech-poznan/WWABrIsO/" class="in-match"><span>Dynamo Moscow</span> - <span>Lech Poznan</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">17.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/zurich-winterthur/0rqXK8Jr/" class="in-match"><span>Zurich</span> - <span>Winterthur</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">17.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/sturm-graz-kapfenberg/0ObSahZ7/" class="in-match"><span>Sturm Graz</span> - <span>Kapfenberg</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">18.01. 11:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/legia-dynamo-kyiv/EmrQLRF8/" class="in-match"><span>Legia</span> - <span>Dyn. Kyiv</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">18.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/krylya-sovetov-samara-spartak-subotica/foK1Eil1/" class="in-match"><span>FK Krylya Sovetov Samara</span> - <span>Sp. Subotica</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">18.01. 15:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/senica-fk-blansko/hx2ttH7g/" class="in-match"><span>Senica</span> - <span>Blansko</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">19.01. 12:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/wisla-plock-lublin/SUnAOyC8/" class="in-match"><span>Wisla Plock</span> - <span>Lublin</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">19.01. 13:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/midtjylland-aarhus/fHv1ILOI/" class="in-match"><span>Midtjylland</span> - <span>Aarhus</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">19.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/ruzomberok-banska-bystrica/jy0sqymN/" class="in-match"><span>Ruzomberok</span> - <span>Banska Bystrica</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">19.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/lafnitz-allerheiligen/6LoENeRE/" class="in-match"><span>Lafnitz</span> - <span>Allerheiligen</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">19.01. 17:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/borec-rabotnicki/CAYgt99T/" class="in-match"><span>Borec</span> - <span>Rabotnicki</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">20.01. 13:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/randers-fc-vejle/hr960R9G/" class="in-match"><span>Randers FC</span> - <span>Vejle</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">20.01. 13:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/sered-podbrezova/GbXquLK3/" class="in-match"><span>Sered</span> - <span>Podbrezova</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">20.01. 13:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/beroe-etar/dWaGWrUQ/" class="in-match"><span>Beroe</span> - <span>Etar</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">20.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/cukaricki-slovan-bratislava/Uc37pN0r/" class="in-match"><span>Cukaricki</span> - <span>Slovan Bratislava</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">20.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/fc-mariupol-rakow-czestochowa/8Y7rCZG9/" class="in-match"><span>Mariupol</span> - <span>Rakow</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">20.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/michalovce-l-mikulas/zyE6LS6S/" class="in-match"><span>Michalovce</span> - <span>L. Mikulas</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">20.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/silkeborg-sonderjyske/nDx7I3nB/" class="in-match"><span>Silkeborg</span> - <span>Sonderjyske</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">20.01. 14:00</td>
+</tr>
+<tr>
+<td class="table-main__daysign"></td>
+<td><a href="/soccer/World/club-friendly/zilina-fk-pohronie/j9uBQy86/" class="in-match"><span>Zilina</span> - <span>Pohronie</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="table-main__odds" data-oid="">&nbsp;</td>
+<td class="h-text-right" colspan="2">20.01. 14:30</td>
+</tr>
+</table>

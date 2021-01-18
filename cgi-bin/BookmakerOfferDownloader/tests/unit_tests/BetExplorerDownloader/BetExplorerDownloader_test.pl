@@ -359,8 +359,6 @@ sub updateOutputFileWithSportEvents()
 
 }
 
-
-
 sub get_subroutineName()
 {	
 	my $calingFunctionName = (caller(1))[3] ;
