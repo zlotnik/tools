@@ -33,23 +33,29 @@ sub pickupLinksToEventFromTable()
 
         #my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
 
-        my @expected = ('a',
-                        'q');
+        my @expected = ('https://www.betexplorer.com/soccer/World/club-friendly/cracovia-puszcza/jVC8JIMR/',
+                        'https://www.betexplorer.com/soccer/World/club-friendly/hlucin-dolni-benesov/h2gDDRYG/',
+                        'https://www.betexplorer.com/soccer/World/club-friendly/young-africans-simba/Y3ZjIBD2/',
+                        'https://www.betexplorer.com/soccer/World/club-friendly/sonderjyske-odense/ENIWBJAR/',
+                        'https://www.betexplorer.com/soccer/World/club-friendly/din-zagreb-mol-fehervar-fc/pGtkj3pQ/',
+                        'https://www.betexplorer.com/soccer/World/club-friendly/lok-plovdiv-maritsa-plovdiv/8zwpFesd/'
+                        
+                        );
 
 	my $betExplorerParser_mock = Test::MockModule->new('BetexplorerParser');#change capitalization of module
 
 	#return pickupLinksToEventFromTable(pickupTableWithEventsFromWeburl($link));
 	$betExplorerParser_mock->redefine( 'pickupTableWithEventsFromWeburl', \&BetexplorerParser_mock::pickupTableWithEventsFromWeburl );
-	$betExplorerParser_mock->define( 'pi', \&testMock);
         my $object = BetexplorerParser->new();
-        BetexplorerParser::pickupTableWithEventsFromWeburl('i'); 
-        #$object->pi('');
-        BetexplorerParser::pi('sssss');
 
-        #my @actual = $a_betExplorerDownloader->downloadEventURLs( '/soccer/Poland/ekstraklasa' );
-        #my $testName = 'fetching event list from stubed website';
+        my $unusedArgument = ('https://www.betexplorer.com/soccer/germany/bundesliga/');
+        
+        my $htmlTableWithSportEvents = BetexplorerParser::pickupTableWithEventsFromWeburl( $unusedArgument );
+        
+        my @actual = BetexplorerParser::pickupLinksToEventFromTable( $htmlTableWithSportEvents ); 
 
-        #is_deeply( \@actual, \@expected, $testName );
+        my $testName = "Testing pickup links to events with bookmaker offer from html event table";
+        is_deeply( \@actual, \@expected, $testName );
 
 }
 
