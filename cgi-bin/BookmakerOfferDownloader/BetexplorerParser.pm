@@ -1,11 +1,13 @@
 #!/usr/bin/perl -w
 package BetexplorerParser;
-use BookmakerParser;
-our @ISA = qw(BookmakerParser);
+
+use EventTableParser;
+
 our @EXPORT = qw(pickupLinksToEventFromTable pickupTableWithEventsFromWeburl);
 
 use strict;
-use POSIX ":sys_wait_h";
+use warnings;
+use POSIX ":sys_wait_h"; #isit needed?
 use 5.010;
 use WojtekToolbox;
 ############ TODO ###################################
@@ -117,18 +119,21 @@ sub pickupLinksToEventFromTable($)
 	my $tableWithEvents = $_[0];
 	my @linksToEvents;	
 
-	
-	while ($tableWithEvents =~ /a href="(.*?)"( class="in-match"[\s\S]*?)(<td class="table-main__bs">)(\d+)/mg)
-	{
-		my $linkToEvent = $1;
-		my $numberOfBookmaker = $4;
-		
-		if($numberOfBookmaker > 0) 
-		{			
-			push @linksToEvents, "https://www.betexplorer.com$1";
-		}		 
-	}
-	return @linksToEvents;
+        #parseEventsTable();
+        #getListOfLinksToEvent();
+        my $eventTableParser = EventTableParser->new();
+        #my @listOfLinksToEvents = $eventTableParser->findListOfLinksToEvent($tableWithEvents);
+        my @listOfLinksToEvents = $eventTableParser->giveMe_linksToEvents($tableWithEvents);
+        
+
+        my @toReturn;
+        foreach( @listOfLinksToEvents )
+        {
+                my $absolutePathToEvent = 'https://www.betexplorer.com' . $_ ; 
+                push @toReturn, $absolutePathToEvent;
+        }
+
+        return @toReturn;
 }
 	
 			

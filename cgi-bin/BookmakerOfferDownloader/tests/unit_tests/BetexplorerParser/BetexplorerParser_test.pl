@@ -39,14 +39,19 @@ sub pickupLinksToEventFromTable()
                         'https://www.betexplorer.com/soccer/World/club-friendly/sonderjyske-odense/ENIWBJAR/',
                         'https://www.betexplorer.com/soccer/World/club-friendly/din-zagreb-mol-fehervar-fc/pGtkj3pQ/',
                         'https://www.betexplorer.com/soccer/World/club-friendly/lok-plovdiv-maritsa-plovdiv/8zwpFesd/'
-                        
+                        );
+
+        @expected =     (
+                        'https://www.betexplorer.com/soccer/World/club-friendly/sonderjyske-odense/ENIWBJAR/',
+                        'https://www.betexplorer.com/soccer/World/club-friendly/din-zagreb-mol-fehervar-fc/pGtkj3pQ/',
+                        'https://www.betexplorer.com/soccer/World/club-friendly/neftci-baku-keshla/rPynXyiR/'
                         );
 
 	my $betExplorerParser_mock = Test::MockModule->new('BetexplorerParser');#change capitalization of module
 
 	#return pickupLinksToEventFromTable(pickupTableWithEventsFromWeburl($link));
 	$betExplorerParser_mock->redefine( 'pickupTableWithEventsFromWeburl', \&BetexplorerParser_mock::pickupTableWithEventsFromWeburl );
-        my $object = BetexplorerParser->new();
+        #my $object = BetexplorerParser->new();
 
         my $unusedArgument = ('https://www.betexplorer.com/soccer/germany/bundesliga/');
         
