@@ -1,8 +1,8 @@
 <meta charset="utf-8">
-<title>Surebet Harvest - Your way to become filthy reach</title>
+<title>Surebet Harvester - free tool used to seek for bookmaker's surebets</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Surebet Harvest - Your way to become filthy reach">
-<meta name="author" content="">
+<meta name="description" content="Surebet Harvester - free tool used to seek for bookmaker's surebets">
+<meta name="keywords" content="surebet, sport arbitrage, betting arbitrage">
 <!-- styles -->
 <link href="assets/css/bootstrap.css" rel="stylesheet">
 <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
@@ -17,7 +17,7 @@
 
 <link href="assets/css/style.css" rel="stylesheet">
 <link href="assets/color/default.css" rel="stylesheet">
-<style> td{background:#d0dafd;color:#339}#box-table-b{font-family:lucida sans unicode,lucida grande,Sans-Serif;font-size:12px;width:880px;text-align:center;border-collapse:collapse;border-top:7px solid #9baff1;border-bottom:7px solid #9baff1;margin:20px}#box-table-b th{font-size:13px;font-weight:400;background:#e8edff;border-right:1px solid #9baff1;border-left:1px solid #9baff1;color:#039;padding:8px}#box-table-b
+<style> td{background:#d0dafd;color:#339}#box-table-b{font-family:lucida sans unicode,lucida grande,Sans-Serif;font-size:20px;width:1400px;text-align:center;border-collapse:collapse;border-top:7px solid #9baff1;border-bottom:7px solid #9baff1;margin:20px}#box-table-b th{font-size:23px;font-weight:400;background:#e8edff;border-right:1px solid #9baff1;border-left:1px solid #9baff1;color:#039;padding:8px}#box-table-b
 </style>
 <!-- fav and touch icons -->
 <link rel="shortcut icon" href="assets/ico/favicon.ico">
