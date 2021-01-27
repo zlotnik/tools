@@ -10,9 +10,13 @@
 	</header>
 	<section id="intro">
 	<div class="container">
+                
+	        <div >
+                        <h3>Surebet (miraclebets, sports arbitrage, betting arbitrage) - in bookmakers bets a situation when stakes for a bet are high enough to guarantee profit regardless of the result of the sport event.</h3>
+	  		
+                </div>
 		<div class="row">
 			<div class="span6">
-                                <h5>Surebet (miraclebets, sports arbitrage, betting arbitrage) - in bookmakers bets a situation when stakes for a bet are high enough to guarantee profit regardless of the result of the sport event.</h5>
 	  			<h2><strong>The surebets <span class="highlight primary">list</span></strong></h2>
 	  			<p class="lead">
 				<?php include("includes/surebet_table.php");
