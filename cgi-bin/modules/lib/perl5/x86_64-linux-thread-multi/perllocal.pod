@@ -746,3 +746,25 @@ C<EXE_FILES: >
 
 =back
 
+=head2 Tue Feb  2 11:36:22 2021: C<Module> L<DBI|DBI>
+
+=over 4
+
+=item *
+
+C<installed into: /var/www/cgi-bin/modules/lib/perl5>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 1.643>
+
+=item *
+
+C<EXE_FILES: dbilogstrip dbiprof dbiproxy>
+
+=back
+
