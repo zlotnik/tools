@@ -2,13 +2,13 @@
 
 //delete old data
 $surebetsNodes = findAllSurebets('/var/www/cgi-bin/results/tmp/Poland_profitability.xml');
-print_r($surebetsNodes);
 export_surebetsToDB( $surebetsNodes, '/var/www/data/surebets.db' );
 
 
 function export_surebetsToDB( $surebetNodes, $pathToDB ) 
 {
-
+       // print_r($surebetNodes);
+        
         foreach( $surebetNodes as $aSurebetNode )
         {
                export_aSurebetToDB( $aSurebetNode, $pathToDB ); 
@@ -21,13 +21,16 @@ function export_aSurebetToDB( $surebetNode, $pathToDB )
 {
         $insertQuery = 'insert into surebet_1X2 (homeTeam, price_1, profit ) values ';
 
-        $insertQuery .= "('test', 1,". $surebetNode->profit . ")";
+        #name of fields can be inserted automaticly by key name
+        //$insertQuery .= "('test', 1,". $surebetNode->profit . ")";
         
-        $db = new SQLite3($pathToDB);
+        //$db = new SQLite3($pathToDB);
         
-        print_r ($insertQuery);
+        print_r ($surebetNode);
+        //print_r ($insertQuery);
+        exit;
         $results = $db->query($insertQuery);
-        print_r($results);
+        //print_r($results);
 }
 
 
@@ -39,17 +42,32 @@ function findAllSurebets()
 
         $surebetNodes = array();
 
-        foreach ($profitXml->xpath('//_1X2') as $node_1X2)
+        foreach ($profitXml->xpath('//event') as $event_node)
         {
+               //print_r($event_node ); 
                 //echo $node_1X2->profit, PHP_EOL;
-                if( $node_1X2->profit > 0 )
+                if( $event_node->bestCombinations->_1X2->profit > 0 )
                 {
-                        array_push( $surebetNodes, $node_1X2 );
+                        //$surebetInfo = array( 'eventUrl' =>  string($event_node['url']);
+
+                        $urlToEvent = (string)($event_node['url']);
+                        $surebetInfo[$urlToEvent] = array( 'home' => 'Wiarusy'
+                                                , 'visitor' => 'Clo'
+                                                , 'date' => '2000.01.01'
+                                                , '_1X2' =>  $event_node->bestCombinations->_1X2
+                                                );
+
+
+
+
+                        //print_r((string)$event_node['url']);
+                        //exit;
+                        //array_push( $surebetNodes, $node_1X2 );
                 }
         }
 
-        return $surebetNodes;
-
+        //print_r($surebetInfo);
+        return $surebetInfo;
 }
 
 
