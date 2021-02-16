@@ -17,18 +17,31 @@ function export_surebetsToDB( $surebetNodes, $pathToDB )
 }
 
 
-function export_aSurebetToDB( $surebetNode, $pathToDB )
+function export_aSurebetToDB( $surebetInfo, $pathToDB )
 {
-        $insertQuery = 'insert into surebet_1X2 (homeTeam, price_1, profit ) values ';
+        $insertQuery = 'insert into Surebets_1X2 (profit, homeTeam, visitingTeam, bookmaker_1, bookmaker_X, bookmaker_2, price_1, price_X, price_2) values ';
 
+        //print_r( $surebetInfo );
         #name of fields can be inserted automaticly by key name
-        //$insertQuery .= "('test', 1,". $surebetNode->profit . ")";
-        
-        //$db = new SQLite3($pathToDB);
-        
-        print_r ($surebetNode);
-        //print_r ($insertQuery);
-        exit;
+        $homeTeam = $surebetInfo['home'];
+
+        $visitingTeam = $surebetInfo['visitor'];
+        $bookmaker_1 = ($surebetInfo['_1X2']->_1->children()[0]->getName()) ; 
+        $bookmaker_X = ($surebetInfo['_1X2']->_X->children()[0]->getName()) ; 
+        $bookmaker_2 = ($surebetInfo['_1X2']->_2->children()[0]->getName()) ; 
+        $price_1 = $surebetInfo['_1X2']->_1->$bookmaker_1;
+        $price_X = $surebetInfo['_1X2']->_X->$bookmaker_X;
+        $price_2 = $surebetInfo['_1X2']->_2->$bookmaker_2;
+        $profit =  $surebetInfo['_1X2']->profit;
+
+
+        $insertQueryValues = sprintf( '(%f, "%s", "%s", "%s", "%s", "%s", %f, %f, %f );', $profit, $homeTeam, $visitingTeam, $bookmaker_1, $bookmaker_X, $bookmaker_2, $price_1, $price_X, $price_2 );
+       
+        $insertQuery .= $insertQueryValues;
+
+        print_r ($insertQuery);
+        $db = new SQLite3($pathToDB);
+        //print_r ($surebetNode);
         $results = $db->query($insertQuery);
         //print_r($results);
 }
