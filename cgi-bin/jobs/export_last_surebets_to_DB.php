@@ -25,7 +25,9 @@ foreach( $profitabilityFilesList as $profitabilityFile )
 
 function delete_old_surebets_data( $surebet_db_path )
 {
-    
+                $db = new SQLite3( $surebet_db_path );
+                $deleteQuery = "delete from Surebets_1X2;";
+                $db->query( $deleteQuery );
 }
 
 function find_last_profitability_files( $dir_with_results )
