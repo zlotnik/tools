@@ -1,19 +1,34 @@
-<?php 
-function generateSurebetTable($surebetData_path)
+<?php
+
+//generateSurebetTable('/var/www/data/surebets.db');
+function generateSurebetTable( $surebetDB_path )
 {
 	
-    $surebetsData = file($surebetData_path);
 
     generateTable_Header();
 
-    foreach ($surebetsData as $line_num => $lineWithData) 
+    $surebetsData = array();
+    $surebets_SQLiteResultsObject = giveMeSurebetDataFromDB( $surebetDB_path );
+
+    //print_r($surebets_SQLiteResultsObject);
+
+    while( $surebetRow = $surebets_SQLiteResultsObject->fetchArray() )
     {
-        generateSingle_table_row($lineWithData);
+        generateSingle_table_row($surebetRow);
     }
 
     generateTable_Footer();
 
-};
+}
+
+function giveMeSurebetDataFromDB( $pathToSurebetDB )
+{
+        $db = new SQLite3($pathToSurebetDB);
+        $selectQuery = "select * from Surebets_1X2;";
+        $results = $db->query( $selectQuery );
+        //print_r( $results->fetchArray() );
+        return $results;
+}
 
 function generateTable_Header()
 {
@@ -42,20 +57,29 @@ function generateTable_Footer()
     echo '</table>';
 }
 
-function generateSingle_table_row($singleSurebetData)
+function removeLeadingUndescore( $text )
+{
+
+    $pieces = explode('_',$text);
+    return $pieces[1];
+
+}
+
+function generateSingle_table_row($singleSurebet)
 {
     print '<tr align="center" >';
     
-    
-    preg_match('/EventName: (.*) PROFIT: (\d+\.\d+|\d+) bookmaker_1 (\w+) bookmaker_x (\w+) bookmaker_2 (\w+) price_1 (\d+\.\d+|\d+) price_X (\d+\.\d+|\d+) price_2 (\d+\.\d+|\d+)/', $singleSurebetData, $matches);
-    $eventName = $matches[1];
-    $profit = $matches[2];
-    $bookmakerName_1 = $matches[3];
-    $bookmakerName_x = $matches[4];
-    $bookmakerName_2 = $matches[5];
-    $price_1 = $matches[6];
-    $price_x = $matches[7];
-    $price_2 = $matches[8];
+    $profit = $singleSurebet['profit'];
+    $eventName = $singleSurebet['homeTeam'];
+    $bookmakerName_1 = removeLeadingUndescore( $singleSurebet['bookmaker_1'] );
+    $bookmakerName_x = removeLeadingUndescore( $singleSurebet['bookmaker_X'] );
+    $bookmakerName_2 = removeLeadingUndescore( $singleSurebet['bookmaker_2'] );
+    $price_1 = $singleSurebet['price_1'];
+    $price_x = $singleSurebet['price_X'];
+    $price_2 = $singleSurebet['price_2'];
+
+    $pieces = explode('/',$eventName);
+    $eventName = $pieces[6];
 
     print '<td align="center">' . $profit . '</td>';
     print "<td>Soccer</td>";

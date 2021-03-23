@@ -20,7 +20,7 @@
 	  			<h2><strong>The surebets <span class="highlight primary">list</span></strong></h2>
 	  			<p class="lead">
 				<?php include("includes/surebet_table.php");
-				generateSurebetTable('/var/www/data/last_surebets');
+                                generateSurebetTable('/var/www/data/surebets.db');
 				?>
          			</p>
           			<ul class="list list-ok strong bigger">
