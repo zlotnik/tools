@@ -7,6 +7,7 @@ use Test::File::Contents;
 use File::Copy 'cp'; 
 use BetExplorerDownloader;
 use Test::MockModule;
+use Data::Dumper;
 
 ###############SUB PROTOTYPES############################################
 # sub new();
@@ -50,6 +51,7 @@ sub find_leagues_xpaths();
 sub updateOutputFileWithSportEvents();
 sub insertEvents_intoLeagueNode_mock($\@);
 sub downloadEventURLs();
+sub insertEvents_intoLeagueNode();
 ############################MAIN##############################################
 insertLeagues_intoCountryNode();
 updateOutputFileWithLeagues();
@@ -242,6 +244,8 @@ sub downloadEventURLs()
                         'https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/');
 
         my @actual = $a_betExplorerDownloader->downloadEventURLs( '/soccer/Poland/ekstraklasa' );
+        #downloadEventURLs -> downloadEventsURLs
+
         my $testName = 'fetching event list from stubed website';
 
         is_deeply( \@actual, \@expected, $testName );

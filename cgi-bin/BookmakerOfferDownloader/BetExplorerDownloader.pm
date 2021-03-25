@@ -396,8 +396,8 @@ sub insertEvents_intoLeagueNode($\@)
         $self->correctFormatXmlDocument();
 }
 
-sub downloadEventURLs($);
-sub downloadEventURLs($)
+sub downloadEventsURLs($);
+sub downloadEventsURLs($)
 {
 	
 	my ($self,$subCategoryXpath ) = @_;
@@ -438,7 +438,7 @@ sub updateOutputFileWithSportEvents()
 		my $league_xpath = $_;
                 my $league_URL_path = $_;
                 $league_URL_path =~ s|/note/data||g;
-		my @event_URLs = $self->downloadEventURLs( $league_URL_path );
+		my @event_URLs = $self->downloadEventsURLs( $league_URL_path );
 		$self->insertEvents_intoLeagueNode( $league_xpath , \@event_URLs );
 	}
 }
