@@ -1,2 +1,8 @@
 source /var/www/cgi-bin/environment.sh
-perl $@ tests/unit_tests/BetExplorerDownloader/BetExplorerDownloader_test.pl
+perl $@ $BOOKMAKER_OFFER_DOWNLOADER_MODULE_DIRECTORY/tests/unit_tests/BetExplorerDownloader/BetExplorerDownloader_test.pl
+if [ $? == 0 ]
+then
+perl $@ $BOOKMAKER_OFFER_DOWNLOADER_MODULE_DIRECTORY/tests/unit_tests/BetexplorerParser/BetexplorerParser_test.pl
+fi
+
+
