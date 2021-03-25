@@ -13,6 +13,7 @@ use Test::MockModule;
 sub pickupLinksToEventFromTable();
 sub get_subroutineName(); #move it to some external package
 ############################MAIN##############################################
+print("\n##Testing module BetexplorerParser##\n\n");
 pickupLinksToEventFromTable();
 
 done_testing();

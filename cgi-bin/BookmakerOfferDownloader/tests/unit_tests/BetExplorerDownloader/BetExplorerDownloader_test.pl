@@ -53,6 +53,8 @@ sub insertEvents_intoLeagueNode_mock($\@);
 sub downloadEventURLs();
 sub insertEvents_intoLeagueNode();
 ############################MAIN##############################################
+print("\n##Testing module BetExplorerDownloader##\n\n");
+
 insertLeagues_intoCountryNode();
 updateOutputFileWithLeagues();
 find_countries_xpaths();
