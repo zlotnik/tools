@@ -50,7 +50,7 @@ sub insertLeagues_intoCountryNode();
 sub find_leagues_xpaths();
 sub updateOutputFileWithSportEvents();
 sub insertEvents_intoLeagueNode_mock($\@);
-sub downloadEventURLs();
+sub downloadEventsURLs();
 sub insertEvents_intoLeagueNode();
 ############################MAIN##############################################
 print("\n##Testing module BetExplorerDownloader##\n\n");
@@ -64,7 +64,7 @@ find_leagues_xpaths();
 insertEvents_intoLeagueNode();
 #create_BookmakersOfferFile();
 # add_leagues_events();
-downloadEventURLs();
+downloadEventsURLs();
 createEventListXML();
 add_bookmakerOffer();
 
@@ -234,7 +234,7 @@ sub insertLeagues_intoCountryNode()
 
 }
 
-sub downloadEventURLs()
+sub downloadEventsURLs()
 {
 
         my $subroutineName = get_subroutineName();
@@ -245,8 +245,7 @@ sub downloadEventURLs()
         my @expected = ('https://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/',
                         'https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/');
 
-        my @actual = $a_betExplorerDownloader->downloadEventURLs( '/soccer/Poland/ekstraklasa' );
-        #downloadEventURLs -> downloadEventsURLs
+        my @actual = $a_betExplorerDownloader->downloadEventsURLs( '/soccer/Poland/ekstraklasa' );
 
         my $testName = 'fetching event list from stubed website';
 
@@ -312,7 +311,7 @@ sub insertEvents_intoLeagueNode_mock($\@)
         cp $sourceFile, $outputFileName or die "Can't copy file $sourceFile -> $outputFileName";
 }
 
-sub downloadEventURLs_mock
+sub downloadEventsURLs_mock
 {
         return('https://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/',
                'https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/');
@@ -357,7 +356,7 @@ sub updateOutputFileWithSportEvents()
 
 	$betExplorerDownloader_mock->redefine( 'find_leagues_xpaths', \&find_leagues_xpaths_mock );
 	$betExplorerDownloader_mock->redefine( 'insertEvents_intoLeagueNode', \&insertEvents_intoLeagueNode_mock );
-	$betExplorerDownloader_mock->redefine( 'downloadEventURLs', \&downloadEventURLs_mock);
+	$betExplorerDownloader_mock->redefine( 'downloadEventsURLs', \&downloadEventsURLs_mock);
 
 	$a_betExplorerDownloader->loadSelectorFile( $selectorFile );
 	$a_betExplorerDownloader->updateOutputFileWithSportEvents();
