@@ -26,7 +26,8 @@ sub get($)
 	my $pathToMockedFile;
 	my $toReturn;
 	$pathToDownload =~ s|http(s?)://www.betexplorer.com||;
-	$pathToMockedFile = 'input/mockedWWW/' . $pathToDownload . 'index.html';
+        
+	$pathToMockedFile = $ENV{'MOCKED_WWW'}. '/' . $pathToDownload . 'index.html';
 	
 	my $mockedFilefh;
 	if(open $mockedFilefh, "<", $pathToMockedFile)
