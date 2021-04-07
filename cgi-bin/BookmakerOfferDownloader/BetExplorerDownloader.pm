@@ -61,6 +61,7 @@ sub find_leagues_xpaths($);
 sub get_selectorFile();
 sub parseFile($);
 sub insertEvents_intoLeagueNode($\@);
+sub downloadEventsURLs($);
 #################DICTIONARY##############################################
 
 
@@ -396,24 +397,20 @@ sub insertEvents_intoLeagueNode($\@)
         $self->correctFormatXmlDocument();
 }
 
-sub downloadEventsURLs($);
 sub downloadEventsURLs($)
 {
 	
-	my ($self,$subCategoryXpath ) = @_;
+	my ($self, $leagueXpath ) = @_;
 	
-	my $linkToCategory = 'https://www.betexplorer.com/' . $subCategoryXpath . "/";	
+	my $linkToLeague = 'https://www.betexplorer.com/' . $leagueXpath . "/";	
 	
-	my $contentOfSubcategoryPage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToCategory);
+	my $contentOfLeaguePage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToLeague);
 	my @toReturn;
  
-        #here should be pickupTableWithEventsFromWebur
-        #LinksToEventFromTable
-		
 	my $regexp = '(<td class=\"table-main__daysign\")([\s\S]*?)(</table>)';
-	if(not $contentOfSubcategoryPage =~ m|${regexp}|m )
+	if(not $contentOfLeaguePage =~ m|${regexp}|m )
 	{
-		print "There is no event for $linkToCategory\n";
+		print "There is no event for $linkToLeague\n";
 		print "DEBUG: Can't match expression ${regexp}\n";
 	}
 	else	
@@ -439,8 +436,71 @@ sub updateOutputFileWithSportEvents()
                 my $league_URL_path = $_;
                 $league_URL_path =~ s|/note/data||g;
 		my @event_URLs = $self->downloadEventsURLs( $league_URL_path );
+
+                my @sportEvents = $self->downloadSportEvents( $league_xpath );
+                $self->mergeEventsIntoSelectorFile( \@sportEvents );
+
 		$self->insertEvents_intoLeagueNode( $league_xpath , \@event_URLs );
 	}
+}
+
+sub mergeEventsIntoSelectorFile($);
+sub mergeEventsIntoSelectorFile($)
+{
+
+	my $self = shift;
+
+        my $selectorFileWithLeagues  = $self->get_OutputFile();
+        
+	my ( $sportEvents_ref ) = @_;
+	my @sportEvents = @{$sportEvents_ref}; 
+
+        foreach( @sportEvents )
+        {
+                my $sportEvent = $_;
+                $sportEvent->insertIntoSelectorFile( $selectorFileWithLeagues );
+        }
+
+}
+
+sub downloadSportEvents($);
+sub downloadSportEvents($)
+{
+
+        my $self = shift;
+	my ( $leagueXpath ) = @_;
+
+        my @toReturn;
+        return @toReturn; # temporary
+
+        my $league_URL_path = $_;
+        $league_URL_path =~ s|/note/data||g;
+	
+	my $linkToLeague = 'https://www.betexplorer.com/' . $leagueXpath . "/";	
+	
+	my $contentOfLeaguePage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToLeague);
+	my @linksToSportEvents;
+
+	my $regexp = '(<td class=\"table-main__daysign\")([\s\S]*?)(</table>)';
+	if(not $contentOfLeaguePage =~ m|${regexp}|m )
+	{
+		print "There is no event for $linkToLeague\n";
+		print "DEBUG: Can't match expression ${regexp}\n";
+	}
+	else	
+	{
+		my $htmlTableWithEvents = $1.$2.$3;
+		@linksToSportEvents = BetexplorerParser::pickupLinksToEventFromTable($htmlTableWithEvents);	
+	}
+
+        foreach(@linksToSportEvents)
+        {
+                my $linkToSportEvent = $_;
+                push @toReturn, SportEvent->new( $linkToSportEvent );
+        }	
+
+	return @toReturn;
+
 }
 
 sub updateOutputFileWithLeagues()

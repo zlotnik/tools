@@ -85,7 +85,6 @@ sub downloadLeaguesNames()
 	my $testName = 'fetching leagues list from stubed website';
 	
 	is_deeply( \@actual, \@expected, $testName );
-	#my @actual = $a_betExplorerDownloader->downloadLeaguesNames ( '/note/data/soccer/Poland' )
 
 }
 
