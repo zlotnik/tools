@@ -49,6 +49,12 @@ sub getRawDataOfEvent($)
 
 }
 
+sub get($)
+{
+	my ($self, $linkToEvent) = @_;
+	$self->{m_strategyOfObtainingBookmakerData}->get($linkToEvent);
+
+}
 
 sub new($)
 {

@@ -21,6 +21,14 @@ sub getRawDataOfEvent($)
 	
 };
 
+sub get($)
+{
+	my ($self,$linkToEvent) = @_;	
+	$self->{m_CategoryPage}->get($linkToEvent);
+	
+};
+
+
 sub getAllSubCategories($)
 {
 	#BookmakerPageCrawler::getAllSubCategories
