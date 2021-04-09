@@ -3,6 +3,7 @@ use strict;
 use warnings;
 
 sub new();
+sub insertIntoSelectorFile($);
 
 sub new()
 {
@@ -11,3 +12,12 @@ sub new()
         my $self = bless {}, $class;
         return $self;
 }
+
+sub insertIntoSelectorFile($)
+{
+        my $self = shift;
+        my ( $selectorFile ) = @_;
+
+}
+
+1;

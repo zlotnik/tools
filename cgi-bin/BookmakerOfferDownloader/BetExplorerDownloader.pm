@@ -14,6 +14,7 @@ use CommonFunctionalities;
 use Cwd;
 use HTML_1X2_Events_Parser;
 use Xpath;
+use SportEvent;
 
 
 our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml 
@@ -471,12 +472,12 @@ sub downloadSportEvents($)
 	my ( $leagueXpath ) = @_;
 
         my @toReturn;
-        return @toReturn; # temporary
+        #return @toReturn; # temporary
 
-        my $league_URL_path = $_;
+        my $league_URL_path = $leagueXpath;
         $league_URL_path =~ s|/note/data||g;
 	
-	my $linkToLeague = 'https://www.betexplorer.com/' . $leagueXpath . "/";	
+	my $linkToLeague = 'https://www.betexplorer.com/' . $league_URL_path . "/";	
 	
 	my $contentOfLeaguePage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToLeague);
 	my @linksToSportEvents;
