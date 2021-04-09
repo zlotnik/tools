@@ -497,7 +497,15 @@ sub downloadSportEvents($)
         foreach(@linksToSportEvents)
         {
                 my $linkToSportEvent = $_;
-                push @toReturn, SportEvent->new( $linkToSportEvent );
+                
+                my $sportEvent = SportEvent->new( $linkToSportEvent );
+                #$sportEvent->downloadEventData();
+                $sportEvent->set_useStubNet(); #temporary
+
+                if ( $sportEvent->isNotEmpty() )
+                {
+                        push @toReturn, $sportEvent ; 
+                }
         }	
 
 	return @toReturn;
