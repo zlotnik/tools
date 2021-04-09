@@ -55,7 +55,7 @@ sub getRawDataOfEvent($)
 	
 	my $relativePathToEvent = $2;
 	
-	my $modelRawDataPath = 'input/mockedWWW/' . $relativePathToEvent . 'data_event.html';  
+	my $modelRawDataPath = $ENV{'MOCKED_WWW'}. '/' . $relativePathToEvent . 'data_event.html';  
 	
 	my $modelRawDataFileHandler;
 	
