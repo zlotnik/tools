@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 package BetexplorerParser;
 
-use EventTableParser;
+use HTML_EventsTableParser;
 
 our @EXPORT = qw(pickupLinksToEventFromTable pickupTableWithEventsFromWeburl);
 
@@ -121,7 +121,7 @@ sub pickupLinksToEventFromTable($)
 
         #parseEventsTable();
         #getListOfLinksToEvent();
-        my $eventTableParser = EventTableParser->new();
+        my $eventTableParser = HTML_EventsTableParser->new();
         #my @listOfLinksToEvents = $eventTableParser->findListOfLinksToEvent($tableWithEvents);
         my @listOfLinksToEvents = $eventTableParser->giveMe_linksToEvents($tableWithEvents);
         
@@ -143,6 +143,22 @@ sub eventInLinkAlreadyPlayed($)
 {
 
 	my $linkToEvent = $_[0];
+
+}
+
+sub pickupHtmlEventsTableFromLeagueHtml($);
+sub pickupHtmlEventsTableFromLeagueHtml($)
+{
+        my ( $contentOfLeaguePage ) = @_;
+
+        my $htmlTableWithEvents = '';
+	my $regexp = '(<td class=\"table-main__daysign\")([\s\S]*?)(</table>)';
+	if( $contentOfLeaguePage =~ m|${regexp}|m )
+	{
+	        $htmlTableWithEvents = $1.$2.$3;
+	}
+
+        return $htmlTableWithEvents;
 
 }
 

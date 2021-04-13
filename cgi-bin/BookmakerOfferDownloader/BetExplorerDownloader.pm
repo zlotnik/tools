@@ -63,6 +63,7 @@ sub get_selectorFile();
 sub parseFile($);
 sub insertEvents_intoLeagueNode($\@);
 sub downloadEventsURLs($);
+sub downloadSportEvents($);
 #################DICTIONARY##############################################
 
 
@@ -408,18 +409,9 @@ sub downloadEventsURLs($)
 	my $contentOfLeaguePage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToLeague);
 	my @toReturn;
  
-	my $regexp = '(<td class=\"table-main__daysign\")([\s\S]*?)(</table>)';
-	if(not $contentOfLeaguePage =~ m|${regexp}|m )
-	{
-		print "There is no event for $linkToLeague\n";
-		print "DEBUG: Can't match expression ${regexp}\n";
-	}
-	else	
-	{
-		my $htmlTableWithEvents = $1.$2.$3;
-		@toReturn = BetexplorerParser::pickupLinksToEventFromTable($htmlTableWithEvents);	
-	}
-	
+        my $htmlTableWithEvents = BetexplorerParser::pickupHtmlEventsTableFromLeagueHtml( $contentOfLeaguePage );
+        @toReturn = BetexplorerParser::pickupLinksToEventFromTable($htmlTableWithEvents);	
+
 	return @toReturn;
 	
 }
@@ -464,7 +456,6 @@ sub mergeEventsIntoSelectorFile($)
 
 }
 
-sub downloadSportEvents($);
 sub downloadSportEvents($)
 {
 
@@ -472,7 +463,6 @@ sub downloadSportEvents($)
 	my ( $leagueXpath ) = @_;
 
         my @toReturn;
-        #return @toReturn; # temporary
 
         my $league_URL_path = $leagueXpath;
         $league_URL_path =~ s|/note/data||g;
@@ -482,18 +472,7 @@ sub downloadSportEvents($)
 	my $contentOfLeaguePage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToLeague);
 	my @linksToSportEvents;
 
-        my $htmlTableWithEvents;
-	my $regexp = '(<td class=\"table-main__daysign\")([\s\S]*?)(</table>)';
-	if(not $contentOfLeaguePage =~ m|${regexp}|m )
-	{
-		print "There is no event for $linkToLeague\n";
-		print "DEBUG: Can't match expression ${regexp}\n";
-	}
-	else	
-	{
-	        $htmlTableWithEvents = $1.$2.$3;
-		@linksToSportEvents = BetexplorerParser::pickupLinksToEventFromTable($htmlTableWithEvents);	
-	}
+        my $htmlTableWithEvents = BetexplorerParser::pickupHtmlEventsTableFromLeagueHtml( $contentOfLeaguePage );
 
         
         my $eventTableParser = HTML_EventsTableParser->new( $htmlTableWithEvents );
@@ -503,7 +482,6 @@ sub downloadSportEvents($)
                 $sportEvent->fillEventData();
                 push @toReturn, $sportEvent ; 
         }
-
 
 	return @toReturn;
 
