@@ -482,6 +482,7 @@ sub downloadSportEvents($)
 	my $contentOfLeaguePage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToLeague);
 	my @linksToSportEvents;
 
+        my $htmlTableWithEvents;
 	my $regexp = '(<td class=\"table-main__daysign\")([\s\S]*?)(</table>)';
 	if(not $contentOfLeaguePage =~ m|${regexp}|m )
 	{
@@ -490,23 +491,19 @@ sub downloadSportEvents($)
 	}
 	else	
 	{
-		my $htmlTableWithEvents = $1.$2.$3;
+	        $htmlTableWithEvents = $1.$2.$3;
 		@linksToSportEvents = BetexplorerParser::pickupLinksToEventFromTable($htmlTableWithEvents);	
 	}
 
-        foreach(@linksToSportEvents)
+        
+        my $eventTableParser = HTML_EventsTableParser->new( $htmlTableWithEvents );
+        while(my $htmlEventRow = $eventTableParser->giveMeNextEventRow() )
         {
-                my $linkToSportEvent = $_;
-                
-                my $sportEvent = SportEvent->new( $linkToSportEvent );
-                #$sportEvent->downloadEventData();
-                $sportEvent->set_useStubNet(); #temporary
+                my $sportEvent = SportEvent->new( $htmlEventRow );
+                $sportEvent->fillEventData();
+                push @toReturn, $sportEvent ; 
+        }
 
-                if ( $sportEvent->isNotEmpty() )
-                {
-                        push @toReturn, $sportEvent ; 
-                }
-        }	
 
 	return @toReturn;
 

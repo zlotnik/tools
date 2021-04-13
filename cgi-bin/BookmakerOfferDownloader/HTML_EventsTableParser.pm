@@ -1,4 +1,4 @@
-package EventTableParser;
+package HTML_EventsTableParser;
 
 use strict;
 use warnings;
@@ -13,6 +13,7 @@ sub isInside_tbody();
 sub giveMe_linksToEvents($);
 sub get_linksToEvents();
 sub addLinksToEvent($);
+sub giveMeNextEventRow();
 
 sub get_linksToEvents()
 {
@@ -20,6 +21,11 @@ sub get_linksToEvents()
         return @{$self->{eventLink_list}};
 
 }
+
+sub giveMeNextEventRow()
+{
+        return '';
+} 
 
 sub addLinksToEvent($)
 {

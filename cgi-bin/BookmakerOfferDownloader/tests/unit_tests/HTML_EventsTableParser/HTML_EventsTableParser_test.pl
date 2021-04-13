@@ -4,32 +4,33 @@ use strict;
 use warnings;
 use Test::More;
 use Test::File::Contents;
-use File::Copy 'cp'; 
-use SportEvent;
 use Test::MockModule;
 use Data::Dumper;
+use File::Copy 'cp'; 
+use HTML_EventsTableParser;
 
 ###############SUB PROTOTYPES############################################
-sub downloadEventData();
+sub giveMeNextEventRow();
 ############################MAIN##############################################
-print("\n##Testing module SportEvent##\n\n");
+print("\n##Testing MODULE: SportEvent##\n\n");
 
-downloadEventData();
+giveMeNextEventRow();
 done_testing();
 
 ####################SUB DEFINITIONS############################################
-
-sub downloadEventData()
+sub giveMeNextEventRow()
 {
 
 	my $subroutineName = get_subroutineName();
 	print "\nTESTING SUBROUTINE: $subroutineName\n";
 
-	my $a_SportEvent = SportEvent->new( 'https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-cracovia/fslbChRk/' ); 
-        $a_SportEvent->set_useStubNet();
-        $a_SportEvent->downloadEventData();
+        my $html_eventsTableUnusedArgument = '';# from mock
+
+	my $html_eventsTableParser = HTML_EventsTableParser->new( $html_eventsTableUnusedArgument ); 
+        #$html_eventsTableParser->set_useStubNet();
+        #$html_eventsTableParser->downloadEventData();
          
-        #my $a_SportEvent = SportEvent->new('--mockednet');
+        #my $html_eventsTableParser = SportEvent->new('--mockednet');
 
         #how data is downloaded
         #should be mocked
@@ -37,12 +38,12 @@ sub downloadEventData()
         my %expected = ( pathToEvent => 'https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-cracovia/fslbChRk/',
                          homeTeam => 'Jagiellonia',
                          visitingTeam => 'Cracovia',
-                         m_BookmakerPageCrawler => $a_SportEvent->{'m_BookmakerPageCrawler'}
+                         m_BookmakerPageCrawler => $html_eventsTableParser->{'m_BookmakerPageCrawler'}
                         );
 	#my @actual = $a_betExplorerDownloader->downloadLeaguesNames ( '/soccer/Serbia' );
 	#my $testName = 'fetching leagues list from stubed website';
 	
-	is_deeply( $a_SportEvent , \%expected, 'testName' );
+	is_deeply( $html_eventsTableParser , \%expected, 'testName' );
 
 }
 
