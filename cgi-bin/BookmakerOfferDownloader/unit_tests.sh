@@ -4,11 +4,15 @@ perl $@ $BOOKMAKER_OFFER_DOWNLOADER_MODULE_DIRECTORY/tests/unit_tests/BetExplore
 if [ $? == 0 ]
 then
 perl $@ $BOOKMAKER_OFFER_DOWNLOADER_MODULE_DIRECTORY/tests/unit_tests/BetexplorerParser/BetexplorerParser_test.pl
+else
+exit
 fi
 
 if [ $? == 0 ]
 then
 perl $@ $BOOKMAKER_OFFER_DOWNLOADER_MODULE_DIRECTORY/tests/unit_tests/HTML_EventsTableParser/HTML_EventsTableParser_test.pl
+else
+exit
 fi
 
 
