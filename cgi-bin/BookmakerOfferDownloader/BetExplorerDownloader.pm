@@ -430,8 +430,10 @@ sub updateOutputFileWithSportEvents()
                 $league_URL_path =~ s|/note/data||g;
 		my @event_URLs = $self->downloadEventsURLs( $league_URL_path );
 
-                my @sportEvents = $self->downloadSportEvents( $league_xpath );
-                $self->mergeEventsIntoSelectorFile( \@sportEvents );
+
+                #NEW FUNCTIONALITY TEMPORARY COMENTED OUT BECAUSE CAUSES FREEZE 
+                #my @sportEvents = $self->downloadSportEvents( $league_xpath );
+                #$self->mergeEventsIntoSelectorFile( \@sportEvents );
 
 		$self->insertEvents_intoLeagueNode( $league_xpath , \@event_URLs );
 	}
