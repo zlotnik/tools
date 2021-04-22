@@ -42,6 +42,11 @@ sub set_useStubNet()
 
 }
 
+sub fillEventData();
+sub fillEventData()
+{
+}
+
 sub downloadEventData()
 {
         my $self = shift;
@@ -52,13 +57,6 @@ sub downloadEventData()
         $self->{homeTeam} = 'wrongTeam';
         #findHomeTeamName()
         #findVisitorName()
-}
-
-sub insertIntoSelectorFile($)
-{
-        my $self = shift;
-        my ( $selectorFile ) = @_;
-
 }
 
 sub insertIntoSelectorFile($);
