@@ -7,40 +7,55 @@ use HTML::Parser;
 our @ISA = qw(HTML::Parser);
 
 sub new();
-
 sub append_to_parsingResults($);
 sub isInside_tbody();
-sub giveMe_linksToEvents($);
+sub giveMe_linksToEvents();
 sub get_linksToEvents();
 sub addLinksToEvent($);
 sub giveMeNextEventRow();
+sub addEventRow($);
+
+
+sub addEventRow($)
+{
+        my $self = shift;
+        my ($eventRow) = @_;
+        
+        push @{$self->{eventRow_list}}, $eventRow;
+}
 
 sub get_linksToEvents()
 {
         my $self = shift;
         return @{$self->{eventLink_list}};
-
 }
 
 sub giveMeNextEventRow()
 {
-        return '';
+        my $self = shift;
+
+        my $tableOfEvents = $self->{htmlTableWithEvents}; 
+        $self->parse($tableOfEvents);	
+         
+        #my @linksToEvents = $self->get_linksToEvents();
+        return ${$self->{eventRow_list}}[0];
 } 
 
 sub addLinksToEvent($)
 {
         my $self = shift;
         my ($linkToEvent) = @_;
-
+        
         push @{$self->{eventLink_list}}, $linkToEvent;
 
 }
 
-sub giveMe_linksToEvents($)
+sub giveMe_linksToEvents()
 {
         my $self = shift;
 
-        my ($tableOfEvents) = @_;
+        my $tableOfEvents = $self->{htmlTableWithEvents}; 
+
 	$self->parse($tableOfEvents);	
         my @linksToEvents = $self->get_linksToEvents();
         return @linksToEvents; 
@@ -50,12 +65,12 @@ sub giveMe_linksToEvents($)
 sub new()
 {
 	
-	my ($class) = @_;
+	my ($class, $eventTable_html) = @_;
 	
 	my $self = $class->SUPER::new( api_version => 3, marked_sections => 1 );
 
         $self->handler(start =>  "start", 'self, tagname, attr, text' );
-        $self->handler(end =>  "end", 'self, tagname' );
+        $self->handler(end =>  "end", 'self, tagname, text' );
         $self->handler(text =>  "text", 'self, text' );
         
 	#init members
@@ -63,12 +78,16 @@ sub new()
 	$self->{inside_td_STATE} = 0;
 	$self->{inside_tr_STATE} = 0;
         $self->{eventLink_list} = [];
+        $self->{eventRow_list} = [];
         $self->{linkToEventInCurrentRow} = '';
         $self->{numberOfBookmakersInCurrentRow} = 0;        
+        $self->{currentRowNumber} = 0;        
+        $self->{currentRowContent} = '';
+        $self->{lastFetchedRowNumber} = 0;
 
         bless $self, $class; 
-        	
-        #$self->handler(start =>  "start", 'self, tagname, attr' );
+            	
+        $self->{htmlTableWithEvents} = $eventTable_html; 
 	return $self;
 }
 
@@ -101,6 +120,10 @@ sub text
 
         }
 
+        if ($self->{inside_tr_STATE})
+        {
+               $self->{currentRowContent} .= $text;
+        }
 }
 
 
@@ -128,7 +151,7 @@ sub isItNumberOfBookmakersCell()
 sub start 
 { 
         my $self = shift; 
-	my ($tagname, $attr,  $origtext) = @_;
+	my ($tagname, $attr, $origtext) = @_;
         
 
 	if ($tagname eq 'a') 
@@ -148,30 +171,40 @@ sub start
 
 	if ($tagname eq 'tr') 
 	{		
+                $self->{currentRowNumber}++;
 		$self->{inside_tr_STATE} = 1;		
 	}
         
+        if ($self->{inside_tr_STATE})
+        {
+               $self->{currentRowContent} .= $origtext;
+        }
+       
 }
 
 sub end
 {
         my $self = shift; 
-	my ($tagname, $attr, $attrseq, $origtext) = @_;
+	my ($tagname, $origtext) = @_;
 
 	if ($tagname eq 'tr')
 	{
 		$self->{inside_tr_STATE} = 0;
 		$self->{numberOfCurrentTableColumn} = 0;
+                $self->{currentRowContent} .= "${origtext}\n";
 
                 if(not $self->{currentEventHasBeenPlayed} and $self->{numberOfBookmakersInCurrentRow} > 0 )
                 {
                         $self->addLinksToEvent( $self->{linkToEventInCurrentRow} ); 
+                        $self->addEventRow( $self->{currentRowContent} );
+                        
                 }
 
                 #set default values
                 $self->{currentEventHasBeenPlayed} = 0;
                 $self->{linkToEventInCurrentRow} = '';
                 $self->{numberOfBookmakersInCurrentRow} = 0;        
+                $self->{currentRowContent} = '';
 	}
 	
 	if ($tagname eq 'td')
@@ -179,6 +212,10 @@ sub end
                 $self->{inside_td_STATE} = 0;
         }
 
+	if ($tagname ne 'tr' and $self->{inside_tr_STATE} )
+        {
+                $self->{currentRowContent} .= $origtext;
+        }
 }
 
 

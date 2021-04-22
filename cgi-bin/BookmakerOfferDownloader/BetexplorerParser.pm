@@ -121,10 +121,8 @@ sub pickupLinksToEventFromTable($)
 
         #parseEventsTable();
         #getListOfLinksToEvent();
-        my $eventTableParser = HTML_EventsTableParser->new();
-        #my @listOfLinksToEvents = $eventTableParser->findListOfLinksToEvent($tableWithEvents);
-        my @listOfLinksToEvents = $eventTableParser->giveMe_linksToEvents($tableWithEvents);
-        
+        my $eventTableParser = HTML_EventsTableParser->new( $tableWithEvents );
+        my @listOfLinksToEvents = $eventTableParser->giveMe_linksToEvents();
 
         my @toReturn;
         foreach( @listOfLinksToEvents )
