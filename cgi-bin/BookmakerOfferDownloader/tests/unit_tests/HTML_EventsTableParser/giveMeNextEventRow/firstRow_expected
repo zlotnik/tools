@@ -1,0 +1,12 @@
+<tr>
+<td class="table-main__daysign" title="Tomorrow's match"><span class="in-point in-point--2"></span></td>
+<td><a href="/soccer/World/club-friendly/sonderjyske-odense/ENIWBJAR/" class="in-match"><span>Sonderjyske</span> - <span>Odense</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">14</td>
+<td class="table-main__odds" data-oid="4ilvaxv464x0xbvuer"><a href="javascript:void(0);" onclick="my_selections_click('1x2', 'soccer', 'action=3&matchid=ENIWBJAR&outcomeid=4ilvaxv464x0xbvuer&otheroutcomes=4ilvaxv498x0x0,4ilvaxv464x0xbvues');" title="Add to My Selections" data-odd="2.26"></a></td>
+<td class="table-main__odds" data-oid="4ilvaxv498x0x0"><a href="javascript:void(0);" onclick="my_selections_click('1x2', 'soccer', 'action=3&matchid=ENIWBJAR&outcomeid=4ilvaxv498x0x0&otheroutcomes=4ilvaxv464x0xbvuer,4ilvaxv464x0xbvues');" title="Add to My Selections" data-odd="3.51"></a></td>
+<td class="table-main__odds" data-oid="4ilvaxv464x0xbvues"><a href="javascript:void(0);" onclick="my_selections_click('1x2', 'soccer', 'action=3&matchid=ENIWBJAR&outcomeid=4ilvaxv464x0xbvues&otheroutcomes=4ilvaxv464x0xbvuer,4ilvaxv498x0x0');" title="Add to My Selections" data-odd="2.64"></a></td>
+<td class="h-text-right" colspan="2">Tomorrow 12:00</td>
+</tr>

@@ -7,13 +7,16 @@ use Test::File::Contents;
 use Test::MockModule;
 use Data::Dumper;
 use File::Copy 'cp'; 
+use File::Slurp;
 use HTML_EventsTableParser;
+use BetexplorerParser_mock;
 
 ###############SUB PROTOTYPES############################################
 sub giveMeNextEventRow();
 ############################MAIN##############################################
 print("\n##Testing MODULE: SportEvent##\n\n");
 
+#something wrong with name giveMeNextEventRowWithData giveMeNextEventRowWith
 giveMeNextEventRow();
 done_testing();
 
@@ -24,26 +27,23 @@ sub giveMeNextEventRow()
 	my $subroutineName = get_subroutineName();
 	print "\nTESTING SUBROUTINE: $subroutineName\n";
 
-        my $html_eventsTableUnusedArgument = '';# from mock
+	my $betExplorerParser_mock = Test::MockModule->new('BetexplorerParser');#change capitalization of module
+	$betExplorerParser_mock->redefine( 'pickupTableWithEventsFromWeburl', \&BetexplorerParser_mock::pickupTableWithEventsFromWeburl );
 
-	my $html_eventsTableParser = HTML_EventsTableParser->new( $html_eventsTableUnusedArgument ); 
-        #$html_eventsTableParser->set_useStubNet();
-        #$html_eventsTableParser->downloadEventData();
-         
-        #my $html_eventsTableParser = SportEvent->new('--mockednet');
+        my $webUrl_unused = 'https://www.betexplorer.com/soccer/germany/bundesliga/';  
+        my $html_eventsTable = BetexplorerParser::pickupTableWithEventsFromWeburl( $webUrl_unused );
 
-        #how data is downloaded
-        #should be mocked
+	my $html_eventsTableParser = HTML_EventsTableParser->new( $html_eventsTable ); 
+        
+        my $actual_firstRow = $html_eventsTableParser->giveMeNextEventRow();
 
-        my %expected = ( pathToEvent => 'https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-cracovia/fslbChRk/',
-                         homeTeam => 'Jagiellonia',
-                         visitingTeam => 'Cracovia',
-                         m_BookmakerPageCrawler => $html_eventsTableParser->{'m_BookmakerPageCrawler'}
-                        );
-	#my @actual = $a_betExplorerDownloader->downloadLeaguesNames ( '/soccer/Serbia' );
-	#my $testName = 'fetching leagues list from stubed website';
+        my $test_data_dir = "$ENV{'BOOKMAKER_OFFER_DOWNLOADER_UNIT_TEST_DIRECTORY'}/HTML_EventsTableParser/$subroutineName";
+        my $expected_firstRow = read_file( "${test_data_dir}/firstRow_expected" ); 
+ 
 	
-	is_deeply( $html_eventsTableParser , \%expected, 'testName' );
+	is( $actual_firstRow , $expected_firstRow, 'Testing if first row is picked up from event table html' );
+	#is( $actual_firstRow , $expected_firstRow, 'Testing if second row is picked up from event table html' );
+	#check empty row as well
 
 }
 
