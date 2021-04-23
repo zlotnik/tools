@@ -1,0 +1,12 @@
+<tr>
+<td class="table-main__daysign" title="Tomorrow's match"><span class="in-point in-point--2"></span></td>
+<td><a href="/soccer/World/club-friendly/din-zagreb-mol-fehervar-fc/pGtkj3pQ/" class="in-match"><span>D. Zagreb</span> - <span>MOL Fehervar</span></a></td>
+<td class="livebet">&nbsp;</td>
+<td class="h-text-center">
+</td>
+<td class="table-main__bs">12</td>
+<td class="table-main__odds" data-oid="4jm4txv464x0xc2u3s"><a href="javascript:void(0);" onclick="my_selections_click('1x2', 'soccer', 'action=3&matchid=pGtkj3pQ&outcomeid=4jm4txv464x0xc2u3s&otheroutcomes=4jm4txv498x0x0,4jm4txv464x0xc2u3t');" title="Add to My Selections" data-odd="1.49"></a></td>
+<td class="table-main__odds" data-oid="4jm4txv498x0x0"><a href="javascript:void(0);" onclick="my_selections_click('1x2', 'soccer', 'action=3&matchid=pGtkj3pQ&outcomeid=4jm4txv498x0x0&otheroutcomes=4jm4txv464x0xc2u3s,4jm4txv464x0xc2u3t');" title="Add to My Selections" data-odd="4.16"></a></td>
+<td class="table-main__odds" data-oid="4jm4txv464x0xc2u3t"><a href="javascript:void(0);" onclick="my_selections_click('1x2', 'soccer', 'action=3&matchid=pGtkj3pQ&outcomeid=4jm4txv464x0xc2u3t&otheroutcomes=4jm4txv464x0xc2u3s,4jm4txv498x0x0');" title="Add to My Selections" data-odd="5.05"></a></td>
+<td class="h-text-right" colspan="2">Tomorrow 13:00</td>
+</tr>

@@ -37,8 +37,19 @@ sub giveMeNextEventRow()
         my $tableOfEvents = $self->{htmlTableWithEvents}; 
         $self->parse($tableOfEvents);	
          
-        #my @linksToEvents = $self->get_linksToEvents();
-        return ${$self->{eventRow_list}}[0];
+        #here could be optimized - parse only once
+
+        my $rowNumberToGet = $self->{lastFetchedRowNumber} + 1;
+
+        if( defined  ${$self->{eventRow_list}}[$rowNumberToGet] )
+        {
+                $self->{lastFetchedRowNumber} = $rowNumberToGet;
+                return ${$self->{eventRow_list}}[$rowNumberToGet];
+        }
+        else
+        {
+                return '';
+        }
 } 
 
 sub addLinksToEvent($)
@@ -83,7 +94,7 @@ sub new()
         $self->{numberOfBookmakersInCurrentRow} = 0;        
         $self->{currentRowNumber} = 0;        
         $self->{currentRowContent} = '';
-        $self->{lastFetchedRowNumber} = 0;
+        $self->{lastFetchedRowNumber} = -1;
 
         bless $self, $class; 
             	
