@@ -47,6 +47,11 @@ sub giveMeNextEventRow()
         my $secondRow_expected = read_file( "${test_data_dir}/secondRow_expected" ); 
 	is( $secondRow_actual, $secondRow_expected, 'Testing if second row is picked up from event table html' );
 
+        $html_eventsTableParser->giveMeNextEventRow();
+        my $emptyRow_actual = $html_eventsTableParser->giveMeNextEventRow();
+        my $emptyRow_expected = '';
+
+	is( $emptyRow_actual, $emptyRow_expected, 'Testing no existing row' );
 	#is( $actual_firstRow , $expected_firstRow, 'Testing if second row is picked up from event table html' );
 	#check empty row as well
 
