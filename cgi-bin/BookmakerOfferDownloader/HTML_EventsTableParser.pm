@@ -35,10 +35,7 @@ sub giveMeNextEventRow()
         my $self = shift;
 
         my $tableOfEvents = $self->{htmlTableWithEvents}; 
-        $self->parse($tableOfEvents);	
          
-        #here could be optimized - parse only once
-
         my $rowNumberToGet = $self->{lastFetchedRowNumber} + 1;
 
         if( defined  ${$self->{eventRow_list}}[$rowNumberToGet] )
@@ -67,7 +64,6 @@ sub giveMe_linksToEvents()
 
         my $tableOfEvents = $self->{htmlTableWithEvents}; 
 
-	$self->parse($tableOfEvents);	
         my @linksToEvents = $self->get_linksToEvents();
         return @linksToEvents; 
 }
@@ -99,6 +95,8 @@ sub new()
         bless $self, $class; 
             	
         $self->{htmlTableWithEvents} = $eventTable_html; 
+	$self->parse( $eventTable_html );	
+
 	return $self;
 }
 
