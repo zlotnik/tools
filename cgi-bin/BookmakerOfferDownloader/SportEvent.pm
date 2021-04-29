@@ -1,7 +1,7 @@
 package SportEvent;
 use strict;
 use warnings;
-use BookmakerPageCrawler;
+#use BookmakerPageCrawler;
 
 sub new($);
 sub insertIntoSelectorFile($);
@@ -21,13 +21,14 @@ sub new($)
 
         my $class = shift;
 
-        my ( $pathToEvent ) = @_;
+        my ( $eventDataHtmlRow ) = @_;
         my $self = bless {}, $class;
         
-        $self->{pathToEvent} = $pathToEvent;
+        $self->{eventDataHtmlRow} = $eventDataHtmlRow;
 
-	my $mockedOrRealWWW_argument = '--realnet';
-        $self->{m_BookmakerPageCrawler} = BookmakerPageCrawler->new($mockedOrRealWWW_argument);
+        #$self->{pathToEvent} = $pathToEvent;
+	#my $mockedOrRealWWW_argument = '--realnet';
+        #$self->{m_BookmakerPageCrawler} = BookmakerPageCrawler->new($mockedOrRealWWW_argument);
 
         #$self->downloadEventData();
         return $self;
