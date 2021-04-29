@@ -22,31 +22,20 @@ done_testing();
 
 sub fillEventData()
 {
-
 	my $subroutineName = get_subroutineName();
 	print "\nTESTING SUBROUTINE: $subroutineName\n";
-
-        my $htmlEventRow = '';#here mock 
-	my $a_SportEvent = SportEvent->new( 'https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-cracovia/fslbChRk/' ); 
-        #$a_SportEvent->set_useStubNet();
-        #$a_SportEvent->downloadEventData();
          
-        #my $a_SportEvent = SportEvent->new('--mockednet');
         my  $html_EventsTableParser_mock = Test::MockModule->new('HTML_EventsTableParser');
         $html_EventsTableParser_mock->redefine( 'giveMeNextEventRow', \&HTML_EventsTableParser_mock::giveMeNextEventRow );
-        #$html_EventsTableParser_mock->redefine( 'giveMeNextEventRow', sub {print 'iiiii';} );
-
         my $eventTableParser = HTML_EventsTableParser->new('');
-        $eventTableParser->giveMeNextEventRow();
-        #$html_EventsTableParser_mock->mock( giveMeNextEventRow )
-        #$html_EventsTableParser_mock->redefine( 'giveMeNextEventRow', sub {print ;} );
+        my $eventRowFromMock = $eventTableParser->giveMeNextEventRow();
+        
+	my $sportEvent = SportEvent->new( $eventRowFromMock ); 
 
-        #my $eventRowHtml = $html_EventsTableParser_mock->giveMeNextEventRow();
 
         my %expected = ( pathToEvent => 'https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-cracovia/fslbChRk/',
                          homeTeam => 'Jagiellonia',
                          visitingTeam => 'Cracovia'
-                         #m_BookmakerPageCrawler => $a_SportEvent->{'m_BookmakerPageCrawler'}
                         );
 	#my @actual = $a_betExplorerDownloader->downloadLeaguesNames ( '/soccer/Serbia' );
 	#my $testName = 'fetching leagues list from stubed website';

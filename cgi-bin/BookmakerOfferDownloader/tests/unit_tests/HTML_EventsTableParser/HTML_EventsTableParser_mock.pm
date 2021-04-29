@@ -1,6 +1,7 @@
 package HTML_EventsTableParser_mock;
 use strict;
 use warnings;
+use File::Slurp;
 
 
 #our @EXPORT = qw( giveMeNextEventRow );
@@ -13,7 +14,13 @@ sub pickupHtmlEventsTableFromLeagueHtml();
 
 sub giveMeNextEventRow()
 {
-        return "test abc";
+	my $subroutineName = get_subroutineName();
+        my $mocked_data_dir = "$ENV{'BOOKMAKER_OFFER_DOWNLOADER_UNIT_TEST_DIRECTORY'}/HTML_EventsTableParser/$subroutineName";
+        my $mocked_data_file = "${mocked_data_dir}/firstRow_mock";
+        my $mockedEventRow = read_file($mocked_data_file);
+        return $mockedEventRow;
+ 
+
 };
 
 
