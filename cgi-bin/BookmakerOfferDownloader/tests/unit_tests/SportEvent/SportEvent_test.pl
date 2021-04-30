@@ -11,11 +11,13 @@ use Test::MockModule;
 use Data::Dumper;
 
 ###############SUB PROTOTYPES############################################
-sub downloadEventData();
+sub fillEventData();
+sub insertIntoSelectorFile();
 ############################MAIN##############################################
 print("\n##Testing module SportEvent##\n\n");
 
 fillEventData();
+insertIntoSelectorFile();
 done_testing();
 
 ####################SUB DEFINITIONS############################################
@@ -30,50 +32,50 @@ sub fillEventData()
         my $eventTableParser = HTML_EventsTableParser->new('');
         my $eventRowFromMock = $eventTableParser->giveMeNextEventRow();
         
-	my $sportEvent = SportEvent->new( $eventRowFromMock ); 
+        
+        my $sportEventMock = Test::MockModule->new('SportEvent')->redefine( new => sub{});
+	my $sportEvent = SportEvent->new( 'unused argument' ); 
+        $sportEvent->{eventDataHtmlRow} = $eventRowFromMock;
 
 
         my %expected = ( pathToEvent => 'https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-cracovia/fslbChRk/',
+                         'relativePathToLeague' => 'soccer/Poland/ekstraklasa/',
                          homeTeam => 'Jagiellonia',
                          visitingTeam => 'Cracovia'
                         );
-	#my @actual = $a_betExplorerDownloader->downloadLeaguesNames ( '/soccer/Serbia' );
-	#my $testName = 'fetching leagues list from stubed website';
 	
-	is_deeply( $a_SportEvent , \%expected, 'Test if details of SportEvent are filled' );
+	is_deeply( $sportEvent , \%expected, 'Test if details of SportEvent are filled' );
 
 }
 
-sub find_countries_xpaths_mock
+sub insertIntoSelectorFile()
 {
-	return('/note/data/soccer/Serbia'); 
-}
+	my $subroutineName = get_subroutineName();
+	print "\nTESTING SUBROUTINE: $subroutineName\n";
+        
+        my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/SportEvent";
+	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
 
+        my $sportEventMock = Test::MockModule->new('SportEvent')->redefine( new => sub{return bless{},'SportEvent'; });
+	my $sportEvent = SportEvent->new( 'unused argument' ); 
 
-sub find_leagues_xpaths_mock
-{
-        return('/note/data/soccer/Poland/ekstraklasa'); 
-}
+        #better as just one assingnemnt
+        $sportEvent->{homeTeam} = 'Slask Wroclaw';
+        $sportEvent->{visitingTeam} = 'Zaglebie Lubin';
+        $sportEvent->{pathToEvent} = 'https://www.betexplorer.com/soccer/Poland/ekstraklasa/slask-zaglebie/rtrqQVel/';
+        $sportEvent->{relativePathToLeague} = 'soccer/Poland/ekstraklasa/';
+       
+        my $selectorFile = "${subroutine_unitTest_directory}/selector_poland.xml";
+        my $sportEventsFile_actual = "${subroutine_unitTest_directory}/sportEvents_actual.xml";
+        my $sportEventsFile_expected = "${subroutine_unitTest_directory}/sportEvents_expected.xml";
+        
+        cp( $selectorFile, $sportEventsFile_actual ) or die $!;
 
-sub insertEvents_intoLeagueNode_mock($\@)
-{
-        my $self = shift;
-        my ( $league_xpath , $event_URLs_ref ) = @_;
-        my @eventsURLs = @{$event_URLs_ref};
+        $sportEvent->insertIntoSelectorFile( $sportEventsFile_actual );
 
-	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
-	my $subroutine_unitTest_directory = "${unit_testDirectory}/insertEvents_intoLeagueNode";
-
-        my $outputFileName = $self->get_OutputFile();
-        my $sourceFile = "${subroutine_unitTest_directory}/poland_events_list_expected.xml";
-        cp $sourceFile, $outputFileName or die "Can't copy file $sourceFile -> $outputFileName";
-}
-
-sub downloadEventsURLs_mock
-{
-        return('https://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/',
-               'https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/');
-}
+        files_eq( $sportEventsFile_actual , $sportEventsFile_expected , "Testing inserting event into selector file" );
+        
+} 
 
 sub get_subroutineName()
 {	
