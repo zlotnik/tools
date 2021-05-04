@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <note>
   <dataSources>
-  <betexplorer/>  
+    <betexplorer />
   </dataSources>
   <data>
-  <soccer>
-  <Poland>
-  </Poland>
-  </soccer>
+    <soccer>
+      <Poland>
+        <ekstraklasa>
+          <events>
+            <event url="https://www.betexplorer.com/soccer/Poland/ekstraklasa/slask-zaglebie/rtrqQVel/">
+              <homeTeam>Slask Wroclaw</homeTeam>
+              <visitingTeam>Zaglebie Lubin</visitingTeam>
+            </event>
+          </events>
+        </ekstraklasa>
+      </Poland>
+    </soccer>
   </data>
-  
-</note> 
+</note>

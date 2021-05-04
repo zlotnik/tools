@@ -64,6 +64,7 @@ sub parseFile($);
 sub insertEvents_intoLeagueNode($\@);
 sub downloadEventsURLs($);
 sub downloadSportEvents($);
+sub mergeEventsIntoSelectorFile($);
 #################DICTIONARY##############################################
 
 
@@ -430,16 +431,14 @@ sub updateOutputFileWithSportEvents()
                 $league_URL_path =~ s|/note/data||g;
 		my @event_URLs = $self->downloadEventsURLs( $league_URL_path );
 
-
                 #NEW FUNCTIONALITY TEMPORARY COMENTED OUT BECAUSE CAUSES FREEZE 
                 my @sportEvents = $self->downloadSportEvents( $league_xpath );
-                #$self->mergeEventsIntoSelectorFile( \@sportEvents );
+                #$self->mergeEventsIntoSelectorFile( \@sportEvents );#rename mergeLeagueEventsInto...
 
 		$self->insertEvents_intoLeagueNode( $league_xpath , \@event_URLs );
 	}
 }
 
-sub mergeEventsIntoSelectorFile($);
 sub mergeEventsIntoSelectorFile($)
 {
 
@@ -472,7 +471,6 @@ sub downloadSportEvents($)
 	my $linkToLeague = 'https://www.betexplorer.com/' . $league_URL_path . "/";	
 	
 	my $contentOfLeaguePage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToLeague);
-	my @linksToSportEvents;
 
         my $htmlTableWithEvents = BetexplorerParser::pickupHtmlEventsTableFromLeagueHtml( $contentOfLeaguePage );
 

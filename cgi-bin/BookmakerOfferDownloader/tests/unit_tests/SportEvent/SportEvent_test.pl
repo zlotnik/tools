@@ -18,6 +18,7 @@ print("\n##Testing module SportEvent##\n\n");
 
 fillEventData();
 insertIntoSelectorFile();
+#addNewEventsNode();
 done_testing();
 
 ####################SUB DEFINITIONS############################################
@@ -65,7 +66,7 @@ sub insertIntoSelectorFile()
         $sportEvent->{pathToEvent} = 'https://www.betexplorer.com/soccer/Poland/ekstraklasa/slask-zaglebie/rtrqQVel/';
         $sportEvent->{relativePathToLeague} = 'soccer/Poland/ekstraklasa/';
        
-        my $selectorFile = "${subroutine_unitTest_directory}/selector_poland.xml";
+        my $selectorFile = "${subroutine_unitTest_directory}/selector_with_events_node_poland.xml";
         my $sportEventsFile_actual = "${subroutine_unitTest_directory}/sportEvents_actual.xml";
         my $sportEventsFile_expected = "${subroutine_unitTest_directory}/sportEvents_expected.xml";
         
@@ -77,9 +78,15 @@ sub insertIntoSelectorFile()
         
 } 
 
+sub addNewEventsNode()
+{
+        ...;
+}
+
 sub get_subroutineName()
 {	
 	my $calingFunctionName = (caller(1))[3] ;
 	$calingFunctionName =~ /main::(.*)/;
 	return  $1 ;
 }
+
