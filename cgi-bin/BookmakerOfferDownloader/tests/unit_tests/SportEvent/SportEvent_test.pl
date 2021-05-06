@@ -34,18 +34,17 @@ sub fillEventData()
         my $eventRowFromMock = $eventTableParser->giveMeNextEventRow();
         
         
-        my $sportEventMock = Test::MockModule->new('SportEvent')->redefine( new => sub{});
+        #my $sportEventMock = Test::MockModule->new('SportEvent')->redefine( new => sub{});
 	my $sportEvent = SportEvent->new( 'unused argument' ); 
         $sportEvent->{eventDataHtmlRow} = $eventRowFromMock;
+        $sportEvent->fillEventData();
 
 
-        my %expected = ( pathToEvent => 'https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-cracovia/fslbChRk/',
-                         'relativePathToLeague' => 'soccer/Poland/ekstraklasa/',
-                         homeTeam => 'Jagiellonia',
-                         visitingTeam => 'Cracovia'
-                        );
-	
-	is_deeply( $sportEvent , \%expected, 'Test if details of SportEvent are filled' );
+        my $homeTeam_expected = 'Sonderjyske';	
+	is( $sportEvent->{homeTeam} , $homeTeam_expected, 'Test if home team is filled' );
+
+        my $visitingTeam_expected = 'Odense';
+	is( $sportEvent->{visitingTeam} , $visitingTeam_expected, 'Test if visiting team is filled' );
 
 }
 

@@ -3,6 +3,9 @@ use strict;
 use warnings;
 use XML::LibXML; 
 use XML::Tidy;
+use HTML::Parser;
+our @ISA = qw(HTML::Parser); #isit needed?
+#use parent 'HT.. ?
 
 sub new($);
 sub insertIntoSelectorFile($);
@@ -23,22 +26,89 @@ sub new($)
         my $class = shift;
 
         my ( $eventDataHtmlRow ) = @_;
-        my $self = bless {}, $class;
-        
+
+        my $self = $class->SUPER::new( api_version => 3, marked_sections => 1 );
+
+        $self->handler(start =>  "start", 'self, tagname, attr, text' );
+        $self->handler(end =>  "end", 'self, tagname, text' );
+        $self->handler(text =>  "text", 'self, text' );
+
         $self->{eventDataHtmlRow} = $eventDataHtmlRow;
 
-        #$self->{pathToEvent} = $pathToEvent;
-	#my $mockedOrRealWWW_argument = '--realnet';
-        #$self->{m_BookmakerPageCrawler} = BookmakerPageCrawler->new($mockedOrRealWWW_argument);
+        $self->{inside_linkToEvent_STATE} = 0;
+        $self->{spanIdxInsideLinkToEvent} = 0;
+        $self->{insideSpan_STATE} = 1;
 
-        #$self->downloadEventData();
+        bless $self, $class;
+
         return $self;
 }
 
 
+sub start
+{ 
+        my $self = shift; 
+	my ($tagname, $attr, $origtext) = @_;
+
+	if ($tagname eq 'a') 
+	{
+                $self->{inside_linkToEvent_STATE} = 1;
+		my $linkToEvent = ${$attr}{'href'};
+                $self->{linkToEvent} = $linkToEvent;
+	}
+
+        if( $tagname eq 'span' and  $self->{inside_linkToEvent_STATE} == 1 )
+        {
+                $self->{spanIdxInsideLinkToEvent}++;
+                $self->{insideSpan_STATE} = 1;
+        }
+
+}
+
+sub text
+{
+        my $self = shift;
+	my ($text) = @_;
+
+        if( $self->{inside_linkToEvent_STATE} == 1 and  $self->{insideSpan_STATE} == 1)
+        {
+                if($self->{spanIdxInsideLinkToEvent} == 1)
+                {
+                        $self->{homeTeam} = $text;
+                }
+                if($self->{spanIdxInsideLinkToEvent} == 2)
+                {
+                        $self->{visitingTeam} = $text;
+                }
+
+        }
+
+}
+
+sub end
+{
+        my $self = shift;
+	my ($tagname, $attr, $attrseq, $origtext) = @_;
+
+	if ($tagname eq 'a')
+        {
+                $self->{inside_linkToEvent_STATE} = 0;
+                $self->{spanIdxInsideLinkToEvent} = 0; #number not index
+        } 
+
+         
+        if( $tagname eq 'span' )
+        {
+                $self->{insideSpan_STATE} = 0;
+        }
+}
+
 sub fillEventData()
 {
-        ...
+        my $self = shift;
+        my $sportEventRow = $self->{eventDataHtmlRow};
+        
+        $self->parse( $sportEventRow );
 }
 
 sub downloadEventData()
