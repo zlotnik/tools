@@ -145,11 +145,19 @@ sub insertIntoSelectorFile($)
 
         my $xpathToLeague = "/note/data/" . $self->{relativePathToLeague};
         
-        #check if events node exists # maybe events node wouldn't be needed
-        #$self->addNewEventsNode( $xpathToLeague );
+        
         
         my $pathToEventsNode = "${xpathToLeague}/events";
          
+        if( not $document->findnodes( $pathToEventsNode )->[0] ) #this part probably can be withdrawned because events node seems to not be needed
+        {
+                my $newEventsNode = XML::LibXML::Element->new( 'events' );
+                my $xpathToLeagueWithoutSlash = $xpathToLeague;
+                chop $xpathToLeagueWithoutSlash;
+                my $leagueNode = $document->findnodes( $xpathToLeagueWithoutSlash )->[0]; 
+                $leagueNode->addChild( $newEventsNode );
+        }
+
 	my $eventsNode = $document->findnodes( $pathToEventsNode )->[0] or die "Can't find xml node specify by xpath:$pathToEventsNode xml\n $document\n";
         
         my $newEventNode = XML::LibXML::Element->new( 'event' );
