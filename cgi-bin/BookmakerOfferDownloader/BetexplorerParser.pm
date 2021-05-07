@@ -150,10 +150,10 @@ sub pickupHtmlEventsTableFromLeagueHtml($)
         my ( $contentOfLeaguePage ) = @_;
 
         my $htmlTableWithEvents = '';
-	my $regexp = '(<td class=\"table-main__daysign\")([\s\S]*?)(</table>)';
+	my $regexp = '(<table)([\s\S]*?)(<td class=\"table-main__daysign\")([\s\S]*?)(</table>)';
 	if( $contentOfLeaguePage =~ m|${regexp}|m )
 	{
-	        $htmlTableWithEvents = $1.$2.$3;
+	        $htmlTableWithEvents = $1.$2.$3.$4.$5;
 	}
 
         return $htmlTableWithEvents;
