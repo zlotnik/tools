@@ -46,6 +46,8 @@ sub fillEventData()
         my $visitingTeam_expected = 'Odense';
 	is( $sportEvent->{visitingTeam} , $visitingTeam_expected, 'Test if visiting team is filled' );
 
+        my $linkToEvent_expected = 'http://www.betexplorer.com/soccer/World/club-friendly/sonderjyske-odense/ENIWBJAR/';
+	is( $sportEvent->{linkToEvent} , $linkToEvent_expected, 'Test if link to event is filled' );
 }
 
 sub insertIntoSelectorFile()
