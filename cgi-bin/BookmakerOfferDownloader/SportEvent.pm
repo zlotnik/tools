@@ -14,6 +14,10 @@ sub set_useStubNet();
 sub isNotEmpty();
 sub fillEventData();
 sub insertIntoSelectorFile($);
+sub correctFormatXmlDocument($);
+sub insertVisitingTeamIntoEventNode();
+sub insertHomeTeamIntoEventNode();
+
 
 sub isNotEmpty()
 {
@@ -54,7 +58,10 @@ sub start
 	{
                 $self->{inside_linkToEvent_STATE} = 1;
 		my $linkToEvent = ${$attr}{'href'};
-                $self->{linkToEvent} = $linkToEvent;
+                if( $linkToEvent !~ /javascript/ )
+                {
+                        $self->{linkToEvent} = "http://www.betexplorer.com${linkToEvent}"; #might be written better
+                }
 	}
 
         if( $tagname eq 'span' and  $self->{inside_linkToEvent_STATE} == 1 )
@@ -129,10 +136,6 @@ sub addNewEventsNode($)
         my ( $pathToLeague ) = @_;
         ...;         
 }
-
-sub correctFormatXmlDocument($);
-sub insertVisitingTeamIntoEventNode();
-sub insertHomeTeamIntoEventNode();
 
 sub insertIntoSelectorFile($)
 {
