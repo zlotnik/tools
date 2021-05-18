@@ -57,10 +57,13 @@ sub start
 	if ($tagname eq 'a') 
 	{
                 $self->{inside_linkToEvent_STATE} = 1;
-		my $linkToEvent = ${$attr}{'href'};
+		my $linkToEvent = ${$attr}{'href'}; #relative
                 if( $linkToEvent !~ /javascript/ )
                 {
                         $self->{linkToEvent} = "http://www.betexplorer.com${linkToEvent}"; #might be written better
+                        
+                        $linkToEvent =~ m|/(\w+)(/\w+)(/.+?)/|;
+                        $self->{relativePathToLeague} = $1.$2.$3;
                 }
 	}
 
@@ -148,15 +151,13 @@ sub insertIntoSelectorFile($)
 
         my $xpathToLeague = "/note/data/" . $self->{relativePathToLeague};
         
-        
-        
         my $pathToEventsNode = "${xpathToLeague}/events";
          
         if( not $document->findnodes( $pathToEventsNode )->[0] ) #this part probably can be withdrawned because events node seems to not be needed
         {
                 my $newEventsNode = XML::LibXML::Element->new( 'events' );
                 my $xpathToLeagueWithoutSlash = $xpathToLeague;
-                chop $xpathToLeagueWithoutSlash;
+                #chop $xpathToLeagueWithoutSlash;
                 my $leagueNode = $document->findnodes( $xpathToLeagueWithoutSlash )->[0]; 
                 $leagueNode->addChild( $newEventsNode );
         }
@@ -164,7 +165,7 @@ sub insertIntoSelectorFile($)
 	my $eventsNode = $document->findnodes( $pathToEventsNode )->[0] or die "Can't find xml node specify by xpath:$pathToEventsNode xml\n $document\n";
         
         my $newEventNode = XML::LibXML::Element->new( 'event' );
-        $newEventNode->setAttribute( 'url', $self->{pathToEvent} );
+        $newEventNode->setAttribute( 'url', $self->{linkToEvent} );
         $self->insertHomeTeamIntoEventNode( $newEventNode );
         $self->insertVisitingTeamIntoEventNode( $newEventNode ); #better name
 
