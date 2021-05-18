@@ -48,6 +48,9 @@ sub fillEventData()
 
         my $linkToEvent_expected = 'http://www.betexplorer.com/soccer/World/club-friendly/sonderjyske-odense/ENIWBJAR/';
 	is( $sportEvent->{linkToEvent} , $linkToEvent_expected, 'Test if link to event is filled' );
+
+        my $relativePathToLeague_expected = 'soccer/World/club-friendly';
+	is( $sportEvent->{relativePathToLeague} , $relativePathToLeague_expected, 'Test if relative path to the league to event is filled' );
 }
 
 sub insertIntoSelectorFile()
@@ -64,7 +67,7 @@ sub insertIntoSelectorFile()
         #better as just one assingnemnt
         $sportEvent->{homeTeam} = 'Slask Wroclaw';
         $sportEvent->{visitingTeam} = 'Zaglebie Lubin';
-        $sportEvent->{pathToEvent} = 'https://www.betexplorer.com/soccer/Poland/ekstraklasa/slask-zaglebie/rtrqQVel/';
+        $sportEvent->{linkToEvent} = 'https://www.betexplorer.com/soccer/Poland/ekstraklasa/slask-zaglebie/rtrqQVel/';
         $sportEvent->{relativePathToLeague} = 'soccer/Poland/ekstraklasa/';
        
         my $selectorFile = "${subroutine_unitTest_directory}/selector_with_events_node_poland.xml";
