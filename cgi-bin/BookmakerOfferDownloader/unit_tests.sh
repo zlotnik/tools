@@ -15,5 +15,12 @@ else
 exit
 fi
 
+if [ $? == 0 ]
+then
+perl $@ $BOOKMAKER_OFFER_DOWNLOADER_MODULE_DIRECTORY/tests/unit_tests/SportEvent/SportEvent_test.pl
+else
+exit
+fi
+
 
 
