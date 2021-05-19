@@ -5,9 +5,7 @@
   </dataSources>
   <data>
   <soccer>
-  <Czech-republic>
-  </Czech-republic>
+  <germany/>
   </soccer>
   </data>
-  
 </note> 
