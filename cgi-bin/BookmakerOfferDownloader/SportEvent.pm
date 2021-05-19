@@ -58,7 +58,7 @@ sub start
 	{
                 $self->{inside_linkToEvent_STATE} = 1;
 		my $linkToEvent = ${$attr}{'href'}; #relative
-                if( $linkToEvent !~ /javascript/ )
+                if( $linkToEvent !~ /javascript|myselections\.php|\/bookmaker/ ) #isnt tidy probably mocked data might be corupted however at this point it is easier to do so
                 {
                         $self->{linkToEvent} = "http://www.betexplorer.com${linkToEvent}"; #might be written better
                         
