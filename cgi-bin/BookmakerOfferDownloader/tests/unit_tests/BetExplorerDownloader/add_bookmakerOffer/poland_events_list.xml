@@ -12,7 +12,10 @@
             <visitingTeam>Plock</visitingTeam>
             <homeTeam>Korona Kielce</homeTeam>
             </event> 
-            <event url="https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/"/>
+            <event url="https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/">
+            <visitingTeam>Jagielonia</visitingTeam>
+            <homeTeam>Lech Poznan</homeTeam>
+            </event>
           </events>
         </ekstraklasa>
       </Poland>

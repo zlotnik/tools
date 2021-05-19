@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <note>
   <dataSources>
@@ -10,6 +10,8 @@
         <ekstraklasa>
           <events>
             <event url="https://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/">
+              <visitingTeam>Plock</visitingTeam>
+              <homeTeam>Korona Kielce</homeTeam>
               <_1X2>
                 <_1>
                   <_1xBet>1.67</_1xBet>
@@ -41,6 +43,8 @@
               </_1X2>
             </event>
             <event url="https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/">
+              <visitingTeam>Jagielonia</visitingTeam>
+              <homeTeam>Lech Poznan</homeTeam>
               <_1X2>
                 <_1>
                   <_1xBet>1.67</_1xBet>
