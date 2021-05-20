@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <note>
   <dataSources>
     <betexplorer />
@@ -10,6 +9,8 @@
         <ekstraklasa>
           <events>
             <event url="https://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/">
+              <homeTeam>Korona Kielce</homeTeam>
+              <visitingTeam>Wisla Plock</visitingTeam>
               <_1X2>
                 <_1>
                   <_1xBet>1.67</_1xBet>
