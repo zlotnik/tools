@@ -19,19 +19,14 @@ generateOfferProfitabilityFile();
 sub generateOfferProfitabilityFile()
 {
                 
-        #copy "../BookmakerOfferDownloader/output/downloadedPolandEkstraklasa_mockednet.xml", 'input/bookmakersOffers_generatedByMock.xml' or die;
 
         my $pathToSubTestingDirectory = $ENV{PROFITABILITY_MODULE_DIRECTORY}."/tests/ProfitabilityCalculator/generateOfferProfitabilityFile" ;
         my $pathToBookmakersOfferFile = "${pathToSubTestingDirectory}/bookmakerOfferFile.xml";
  
-
-        #"/input/bookmakersOffers_generatedByMock.xml";
-        my $offerProfitabilityFile_actual = "${pathToSubTestingDirectory}/profitabilityFile_expected.xml";
-        my $expectedProfitabiltyFile = "${pathToSubTestingDirectory}/profitabilityFile_actual.xml";
+        my $offerProfitabilityFile_actual = "${pathToSubTestingDirectory}/profitabilityFile_actual.xml";
+        my $offerProfitabilityFile_expected = "${pathToSubTestingDirectory}/profitabilityFile_expected.xml";
 
         print "****TEST MOCKED BETEXPLORER DOWNLOADER: Testing generating profitability file based on input file: $pathToBookmakersOfferFile*****\n\n";
-
-        my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new(); 
 
         my $theProfitabilityCalculator = ProfitabilityCalculator->new();
 
@@ -42,7 +37,7 @@ sub generateOfferProfitabilityFile()
 
         $theProfitabilityCalculator->generateOfferProfitabilityFile($offerProfitabilityFile_actual);
         
-        files_eq($offerProfitabilityFile_actual, $expectedProfitabiltyFile , 'Checking if profitability file looks as expected');
+        files_eq($offerProfitabilityFile_actual, $offerProfitabilityFile_expected , 'Checking if profitability file looks as expected');
 
 }
 
