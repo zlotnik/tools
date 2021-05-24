@@ -13,7 +13,6 @@ sub downloadEventData();
 sub set_useStubNet();
 sub isNotEmpty();
 sub fillEventData();
-sub insertIntoSelectorFile($);
 sub correctFormatXmlDocument($);
 sub insertVisitingTeamIntoEventNode();
 sub insertHomeTeamIntoEventNode();
@@ -133,6 +132,7 @@ sub downloadEventData()
         #findVisitorName()
 }
 
+#do I need that?
 sub addNewEventsNode($)
 {
         my $self = shift;

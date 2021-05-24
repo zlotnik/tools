@@ -61,10 +61,10 @@ sub updateOutputFileWithSportEvents();
 sub find_leagues_xpaths($);
 sub get_selectorFile();
 sub parseFile($);
-sub insertEvents_intoLeagueNode($\@);
 sub downloadEventsURLs($);
 sub downloadSportEvents($);
 sub mergeEventsIntoSelectorFile($);
+sub insertEvents_intoLeagueNode($\@);#to delete persist only in tests
 #################DICTIONARY##############################################
 
 
@@ -369,35 +369,11 @@ sub find_leagues_xpaths($) ##copy paste sub think how to reuse the same fragment
 	{
 		my $aLeagueNode = $_;
 		my $aLeagueXPath = $aLeagueNode->nodePath();
+                
 		push @toReturn, $aLeagueXPath;
 	}
 	return @toReturn;
 
-}
-
-sub insertEvents_intoLeagueNode($\@)
-{
-	my $self = shift;
-	my ( $country_xpath, $leagues_names_ref )  = @_;
-	my @leagues_list = @{$leagues_names_ref}; 
-        my $outputFileName  = $self->get_OutputFile();
-	my $document = $self->parseFile( $outputFileName ) or die $?;
-
-	my $countryNode = $document->findnodes( $country_xpath )->[0] or die "Can't find xml node specify by xpath:$country_xpath in xml\n $document\n";
-        
-        my $events_ParentNode = XML::LibXML::Element->new( 'events' );
-        $countryNode->addChild($events_ParentNode);
-
-        foreach( @leagues_list )
-        {
-                my $leagueName = $_;
-	        my $newChildNode = XML::LibXML::Element->new( 'event' ); #change name to more adequate because it just copied from insertLeagues_intoCountryNode
-                $newChildNode->setAttribute( 'url', $_ );
-	        $events_ParentNode->addChild( $newChildNode );	
-        }
-
-	$document->toFile( $outputFileName ) or die $?;	
-        $self->correctFormatXmlDocument();
 }
 
 sub downloadEventsURLs($)
@@ -431,11 +407,8 @@ sub updateOutputFileWithSportEvents()
                 $league_URL_path =~ s|/note/data||g;
 		my @event_URLs = $self->downloadEventsURLs( $league_URL_path );
 
-                #NEW FUNCTIONALITY TEMPORARY COMENTED OUT BECAUSE CAUSES FREEZE 
                 my @sportEvents = $self->downloadSportEvents( $league_xpath );
-                #$self->mergeEventsIntoSelectorFile( \@sportEvents );#rename mergeLeagueEventsInto...
-
-		$self->insertEvents_intoLeagueNode( $league_xpath , \@event_URLs );
+                $self->mergeEventsIntoSelectorFile( \@sportEvents );#rename mergeLeagueEventsInto...
 	}
 }
 
@@ -457,6 +430,33 @@ sub mergeEventsIntoSelectorFile($)
 
 }
 
+
+#to delete persist only in tests
+sub insertEvents_intoLeagueNode($\@)
+{
+       my $self = shift;
+       my ( $country_xpath, $leagues_names_ref )  = @_;
+       my @leagues_list = @{$leagues_names_ref}; 
+        my $outputFileName  = $self->get_OutputFile();
+       my $document = $self->parseFile( $outputFileName ) or die $?;
+
+       my $countryNode = $document->findnodes( $country_xpath )->[0] or die "Can't find xml node specify by xpath:$country_xpath in xml\n $document\n";
+        
+        my $events_ParentNode = XML::LibXML::Element->new( 'events' );
+        $countryNode->addChild($events_ParentNode);
+
+        foreach( @leagues_list )
+        {
+                my $leagueName = $_;
+               my $newChildNode = XML::LibXML::Element->new( 'event' ); #change name to more adequate because it just copied from insertLeagues_intoCountryNode
+                $newChildNode->setAttribute( 'url', $_ );
+               $events_ParentNode->addChild( $newChildNode );  
+        }
+
+       $document->toFile( $outputFileName ) or die $?; 
+        $self->correctFormatXmlDocument();
+}
+
 sub downloadSportEvents($)
 {
 
@@ -473,7 +473,6 @@ sub downloadSportEvents($)
 	my $contentOfLeaguePage  = $self->{m_strategyOfObtainingBookmakerData}->get($linkToLeague);
 
         my $htmlTableWithEvents = BetexplorerParser::pickupHtmlEventsTableFromLeagueHtml( $contentOfLeaguePage );
-
         
         my $eventTableParser = HTML_EventsTableParser->new( $htmlTableWithEvents );
         while(my $htmlEventRow = $eventTableParser->giveMeNextEventRow() )

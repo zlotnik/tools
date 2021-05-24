@@ -135,7 +135,7 @@ sub insertBestCombinationsNode()
 	{
 		my $eventNode = $_;
 
-                my $bookmakerBetType = $eventNode->nonBlankChildNodes()->get_node(1);
+                my $bookmakerBetType = $eventNode->nonBlankChildNodes()->[2];
 		my $best_combination_node = $xmlParserDoc->createElement("bestCombinations");
 		$best_combination_node->addChild($bookmakerBetType);
 		$eventNode->addChild($best_combination_node);	
@@ -343,7 +343,7 @@ sub updateWithProfitabilityData()
 	{
 		my $productGroupNode = $_;
 		my $profitNode = createProfitNode($productGroupNode);
-		$productGroupNode->insertBefore($profitNode, $productGroupNode->getFirstChild());		
+		$productGroupNode->insertBefore($profitNode, $productGroupNode->getLastChild());		
 		#add profitNode		
 	}
 	
