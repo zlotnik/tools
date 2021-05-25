@@ -5,10 +5,7 @@
   </dataSources>
   <data>
   <soccer>
-  <Ireland>
-  <premier-division/>
-  <fai-cup/>  
-  </Ireland>
+  <ireland/>
   </soccer>
   </data>  
 </note> 
