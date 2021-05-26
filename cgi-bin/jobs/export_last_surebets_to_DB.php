@@ -100,9 +100,9 @@ function export_surebetsToDB( $surebetsInfoList, $pathToDB )
         foreach( $surebetsInfoList as $urlToEvent => $surebetInfoEntry  )
         {
                 #name of fields can be inserted automaticly by key name
-                $insertQuery = 'insert into Surebets_1X2 (profit, homeTeam, visitingTeam, bookmaker_1, bookmaker_X, bookmaker_2, price_1, price_X, price_2) values ';
+                $insertQuery = 'insert into Surebets_1X2 (profit, linkToEvent ,homeTeam, visitingTeam, bookmaker_1, bookmaker_X, bookmaker_2, price_1, price_X, price_2) values ';
                 $homeTeam = $surebetInfoEntry['home'];
-                $homeTeam = $urlToEvent;
+                $linkToEvent = $urlToEvent;
 
                 $visitingTeam = $surebetInfoEntry['visitor'];
                 $bookmaker_1 = ($surebetInfoEntry['_1X2']->_1->children()[0]->getName()) ; 
@@ -114,10 +114,10 @@ function export_surebetsToDB( $surebetsInfoList, $pathToDB )
                 $profit =  $surebetInfoEntry['_1X2']->profit;
 
 
-                $insertQueryValues = sprintf( '(%f, "%s", "%s", "%s", "%s", "%s", %f, %f, %f );', $profit, $homeTeam, $visitingTeam, $bookmaker_1, $bookmaker_X, $bookmaker_2, $price_1, $price_X, $price_2 );
+                $insertQueryValues = sprintf( '(%f,"%s", "%s", "%s", "%s", "%s", "%s", %f, %f, %f );', $profit, $linkToEvent, $homeTeam, $visitingTeam, $bookmaker_1, $bookmaker_X, $bookmaker_2, $price_1, $price_X, $price_2 );
                
                 $insertQuery .= $insertQueryValues;
-
+                print $insertQuery;
                 //print_r ("Insert query $insertQuery\n");
                 $db = new SQLite3($pathToDB);
                 //print_r ($surebetNode);
@@ -150,11 +150,11 @@ function findAllSurebets( $profitabilityFile )
                         $urlToEvent = (string)($event_node['url']);     
 
                         print_r("Found surebet for event $urlToEvent\n"); 
-                        $surebetInfo[$urlToEvent] = array( 'home' => 'Wiarusy'
-                                                , 'visitor' => 'Clo'
-                                                , 'date' => '2000.01.01'
-                                                , '_1X2' =>  $event_node->bestCombinations->_1X2
-                                                );
+                        $surebetInfo[$urlToEvent] = array( 'home' => $event_node->homeTeam 
+                                                         , 'visitor' => $event_node->visitingTeam
+                                                         , 'date' => '2000.01.01'
+                                                         , '_1X2' =>  $event_node->bestCombinations->_1X2
+                                                         );
                 }
         }
 

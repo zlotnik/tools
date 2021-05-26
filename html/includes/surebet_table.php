@@ -70,16 +70,13 @@ function generateSingle_table_row($singleSurebet)
     print '<tr align="center" >';
     
     $profit = $singleSurebet['profit'];
-    $eventName = $singleSurebet['homeTeam'];
+    $eventName = $singleSurebet['homeTeam'] ." - " . $singleSurebet['visitingTeam'];
     $bookmakerName_1 = removeLeadingUndescore( $singleSurebet['bookmaker_1'] );
     $bookmakerName_x = removeLeadingUndescore( $singleSurebet['bookmaker_X'] );
     $bookmakerName_2 = removeLeadingUndescore( $singleSurebet['bookmaker_2'] );
     $price_1 = $singleSurebet['price_1'];
     $price_x = $singleSurebet['price_X'];
     $price_2 = $singleSurebet['price_2'];
-
-    $pieces = explode('/',$eventName);
-    $eventName = $pieces[6];
 
     print '<td align="center">' . $profit . '</td>';
     print "<td>Soccer</td>";
