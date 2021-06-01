@@ -65,6 +65,7 @@ sub downloadEventsURLs($);
 sub downloadSportEvents($);
 sub mergeEventsIntoSelectorFile($);
 sub insertEvents_intoLeagueNode($\@);#to delete persist only in tests
+sub unEscapeNotLegitXmlNodeName($);
 #################DICTIONARY##############################################
 
 
@@ -222,6 +223,32 @@ sub pickupLinksFromXml($)
 	#I am not sure but I suppose that isn't most important functionality so could be implemented later
 
 }
+
+sub unEscapeNotLegitXmlNodeName($)
+{
+        my $nodeName = $_[0];
+        $nodeName =~ s/__//g; 
+        return $nodeName;
+
+};
+
+sub escapeNotLegitXmlNodeName($)
+{
+        my $nodeName = $_[0];
+
+
+        if( $nodeName =~ /(\d\S*)/ )
+        {
+                return "__".$1; 
+        }
+        else
+        {
+                return $nodeName;
+        }
+        
+
+}
+
 
 sub injectBookmakerProductEventOffertIntoXML($$$)
 {
@@ -447,9 +474,9 @@ sub insertEvents_intoLeagueNode($\@)
 
         foreach( @leagues_list )
         {
-                my $leagueName = $_;
+               my $leagueName = $_;
                my $newChildNode = XML::LibXML::Element->new( 'event' ); #change name to more adequate because it just copied from insertLeagues_intoCountryNode
-                $newChildNode->setAttribute( 'url', $_ );
+               $newChildNode->setAttribute( 'url', $_ );
                $events_ParentNode->addChild( $newChildNode );  
         }
 
@@ -514,9 +541,8 @@ sub insertLeagues_intoCountryNode($\@)
         foreach( @leagues_list )
         {
                 my $leagueName = $_;
+                $leagueName = escapeNotLegitXmlNodeName($leagueName);
 	        my $newChildNode = XML::LibXML::Element->new( $leagueName );
-	        #my $lineBreakTextNode = XML::LibXML::Text->new("\n");	
-                #$newChildNode->addChild( $lineBreakTextNode );
 	        $countryNode->addChild( $newChildNode );	
         }
 

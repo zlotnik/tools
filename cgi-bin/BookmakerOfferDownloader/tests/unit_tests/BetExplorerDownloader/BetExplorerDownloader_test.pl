@@ -52,6 +52,8 @@ sub updateOutputFileWithSportEvents();
 sub insertEvents_intoLeagueNode_mock($\@);
 sub downloadEventsURLs();
 sub insertEvents_intoLeagueNode();
+sub escapeNotLegitXmlNodeName();
+sub unEscapeNotLegitXmlNodeName();
 ############################MAIN##############################################
 print("\n##Testing module BetExplorerDownloader##\n\n");
 
@@ -67,6 +69,8 @@ insertEvents_intoLeagueNode();
 downloadEventsURLs();
 createEventListXML();
 add_bookmakerOffer();
+escapeNotLegitXmlNodeName();
+unEscapeNotLegitXmlNodeName();
 
 done_testing();
 
@@ -249,6 +253,39 @@ sub downloadEventsURLs()
         my $testName = 'fetching event list from stubed website';
 
         is_deeply( \@actual, \@expected, $testName );
+
+}
+
+sub escapeNotLegitXmlNodeName()
+{
+
+        my $subroutineName = get_subroutineName();
+        print "\nTESTING SUBROUTINE: $subroutineName\n";
+
+        my $expected = ( '__2-bundesliga' );
+
+        my $actual = BetExplorerDownloader::escapeNotLegitXmlNodeName( '2-bundesliga' );
+
+
+        my $testName = "testing simply sub used to escape illegal XML node name; starting from digit eg. 2-bundesliga"; 
+        is_deeply( $actual, $expected, $testName );
+
+}
+
+
+sub unEscapeNotLegitXmlNodeName()
+{
+
+        my $subroutineName = get_subroutineName();
+        print "\nTESTING SUBROUTINE: $subroutineName\n";
+
+        my $expected = ( '2-bundesliga' );
+
+        my $actual = BetExplorerDownloader::unEscapeNotLegitXmlNodeName( '__2-bundesliga' );
+
+
+        my $testName = "testing simply sub used to delete escape sign; __ from escaped node name"; 
+        is_deeply( $actual, $expected, $testName );
 
 }
 
