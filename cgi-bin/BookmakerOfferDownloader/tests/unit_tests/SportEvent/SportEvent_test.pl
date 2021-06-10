@@ -13,15 +13,33 @@ use Data::Dumper;
 ###############SUB PROTOTYPES############################################
 sub fillEventData();
 sub insertIntoSelectorFile();
+sub escapeNotLegitXmlNodeNameInXpath();
 ############################MAIN##############################################
 print("\n##Testing module SportEvent##\n\n");
 
+escapeNotLegitXmlNodeNameInXpath();
 fillEventData();
 insertIntoSelectorFile();
 #addNewEventsNode();
 done_testing();
 
 ####################SUB DEFINITIONS############################################
+
+sub escapeNotLegitXmlNodeNameInXpath()
+{
+	my $subroutineName = get_subroutineName();
+	print "\nTESTING SUBROUTINE: $subroutineName\n";
+
+        my $incorectXpath = "/note/data/soccer/Germany/2-bundesliga";
+
+        my $expected = "/note/data/soccer/Germany/__2-bundesliga";
+
+        SportEvent::escapeNotLegitXmlNodeNameInXpath($incorectXpath);
+        my $actual = $incorectXpath;
+
+	is( $actual , $expected, 'Test escaping illegal node part from xpath' );
+
+}
 
 sub fillEventData()
 {
@@ -71,15 +89,29 @@ sub insertIntoSelectorFile()
         $sportEvent->{relativePathToLeague} = 'soccer/Poland/ekstraklasa/';
        
         my $selectorFile = "${subroutine_unitTest_directory}/selector_with_events_node_poland.xml";
-        my $sportEventsFile_actual = "${subroutine_unitTest_directory}/sportEvents_actual.xml";
-        my $sportEventsFile_expected = "${subroutine_unitTest_directory}/sportEvents_expected.xml";
+        my $sportEventsFile_actual = "${subroutine_unitTest_directory}/sportEventsPoland_actual.xml";
+        my $sportEventsFile_expected = "${subroutine_unitTest_directory}/sportEventsPoland_expected.xml";
         
         cp( $selectorFile, $sportEventsFile_actual ) or die $!;
 
         $sportEvent->insertIntoSelectorFile( $sportEventsFile_actual );
 
         files_eq( $sportEventsFile_actual , $sportEventsFile_expected , "Testing inserting event into selector file" );
+
+
+        $sportEvent->{homeTeam} = 'Hamburger SV';
+        $sportEvent->{visitingTeam} = 'Karlsruher SC';
+        $sportEvent->{linkToEvent} = 'https://www.betexplorer.com/soccer/germany/2-bundesliga/hamburger-karlsruher/KII7KkM6/';
+        $sportEvent->{relativePathToLeague} = '/soccer/germany/2-bundesliga/';
+
+        $selectorFile = "${subroutine_unitTest_directory}/selector_with_events_node_germany.xml";
+        $sportEventsFile_actual = "${subroutine_unitTest_directory}/sportEventsGermany_actual.xml";
+        $sportEventsFile_expected = "${subroutine_unitTest_directory}/sportEventsGermany_expected.xml";
         
+        cp( $selectorFile, $sportEventsFile_actual ) or die $!;
+        $sportEvent->insertIntoSelectorFile( $sportEventsFile_actual );
+
+        files_eq( $sportEventsFile_actual , $sportEventsFile_expected , "Testing inserting event into selector for Germany (contains escaped node name: 2_bundesliga) " );
 } 
 
 sub addNewEventsNode()

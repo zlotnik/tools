@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+  <dataSources>
+    <betexplorer />
+  </dataSources>
+  <data>
+    <soccer>
+      <germany>
+        <__2-bundesliga>
+          <events>
+            <event url="https://www.betexplorer.com/soccer/germany/2-bundesliga/hamburger-karlsruher/KII7KkM6/">
+              <homeTeam>Hamburger SV</homeTeam>
+              <visitingTeam>Karlsruher SC</visitingTeam>
+            </event>
+          </events>
+        </__2-bundesliga>
+      </germany>
+    </soccer>
+  </data>
+</note>
