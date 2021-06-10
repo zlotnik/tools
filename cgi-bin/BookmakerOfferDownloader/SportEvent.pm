@@ -4,6 +4,7 @@ use warnings;
 use XML::LibXML; 
 use XML::Tidy;
 use HTML::Parser;
+use BetExplorerDownloader;
 our @ISA = qw(HTML::Parser); #isit needed?
 #use parent 'HT.. ?
 
@@ -16,7 +17,7 @@ sub fillEventData();
 sub correctFormatXmlDocument($);
 sub insertVisitingTeamIntoEventNode();
 sub insertHomeTeamIntoEventNode();
-
+sub escapeNotLegitXmlNodeNameInXpath($);
 
 sub isNotEmpty()
 {
@@ -140,6 +141,16 @@ sub addNewEventsNode($)
         ...;         
 }
 
+sub escapeNotLegitXmlNodeNameInXpath($)
+{
+        my $xpath = $_[0];
+
+        $xpath =~ s|/(\d)|/__$1|g;
+        $_[0] = $xpath
+
+};
+
+
 sub insertIntoSelectorFile($)
 {
         my $self = shift;
@@ -149,7 +160,7 @@ sub insertIntoSelectorFile($)
      
 	my $document = $xmlParser->parse_file( $selectorFileWithLeague ) or die $?;
 
-        my $xpathToLeague = "/note/data/" . $self->{relativePathToLeague};
+        my $xpathToLeague = "/note/data/" . escapeNotLegitXmlNodeNameInXpath($self->{relativePathToLeague} );
         
         my $pathToEventsNode = "${xpathToLeague}/events";
          
@@ -157,7 +168,8 @@ sub insertIntoSelectorFile($)
         {
                 my $newEventsNode = XML::LibXML::Element->new( 'events' );
                 my $xpathToLeagueWithoutSlash = $xpathToLeague;
-                #chop $xpathToLeagueWithoutSlash;
+                $xpathToLeagueWithoutSlash =~ s|(.*)/$|$1|g;
+
                 my $leagueNode = $document->findnodes( $xpathToLeagueWithoutSlash )->[0]; 
                 $leagueNode->addChild( $newEventsNode );
         }
