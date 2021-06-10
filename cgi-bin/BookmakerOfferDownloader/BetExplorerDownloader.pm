@@ -18,10 +18,11 @@ use SportEvent;
 
 
 our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml 
-				 create_BookmakersOfferFile add_bookmakerOffer);
+				 create_BookmakersOfferFile add_bookmakerOffer escapeNotLegitXmlNodeName);
 
 ###############SUB PROTOTYPES############################################
 sub new();
+sub escapeNotLegitXmlNodeName($);
 sub loadSelectorFile($);
 sub getsLinksForAllEventsFromSubCategory($$);
 sub getTableWithEvents($);
@@ -492,6 +493,7 @@ sub downloadSportEvents($)
 
         my @toReturn;
 
+        $leagueXpath = unEscapeNotLegitXmlNodeName( $leagueXpath );
         my $league_URL_path = $leagueXpath;
         $league_URL_path =~ s|/note/data||g;
 	
@@ -541,7 +543,7 @@ sub insertLeagues_intoCountryNode($\@)
         foreach( @leagues_list )
         {
                 my $leagueName = $_;
-                $leagueName = escapeNotLegitXmlNodeName($leagueName);
+                $leagueName = escapeNotLegitXmlNodeName($leagueName); #here a problem
 	        my $newChildNode = XML::LibXML::Element->new( $leagueName );
 	        $countryNode->addChild( $newChildNode );	
         }
