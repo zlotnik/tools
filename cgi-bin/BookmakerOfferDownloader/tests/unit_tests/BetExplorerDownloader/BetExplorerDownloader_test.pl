@@ -269,6 +269,15 @@ sub escapeNotLegitXmlNodeName()
 
         my $testName = "testing simply sub used to escape illegal XML node name; starting from digit eg. 2-bundesliga"; 
         is_deeply( $actual, $expected, $testName );
+   
+        my $expected = ( 'division-1' );
+
+        my $actual = BetExplorerDownloader::escapeNotLegitXmlNodeName( 'division-1' );
+
+        my $testName = "Test used to verify bug: division-1 has been renamed to __1";
+        is_deeply( $actual, $expected, $testName );
+
+
 
 }
 
