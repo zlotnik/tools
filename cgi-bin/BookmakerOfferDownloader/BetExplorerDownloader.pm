@@ -238,7 +238,7 @@ sub escapeNotLegitXmlNodeName($)
         my $nodeName = $_[0];
 
 
-        if( $nodeName =~ /(\d\S*)/ )
+        if( $nodeName =~ /^(\d\S*)/ )
         {
                 return "__".$1; 
         }
