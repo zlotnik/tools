@@ -32,7 +32,7 @@ if($mon < 10)
 	$mon = "0" . $mon; 
 } 
 
-my $timeStamp = $year +1900 . $mon+1 . $mday . '_' . $hour . '_' . $min . '_' .$sec ;	
+my $timeStamp = $year +1900 . $mon . $mday . '_' . $hour . '_' . $min . '_' .$sec ;	
 
 my $outputDirectory = "results/${timeStamp}";
 
