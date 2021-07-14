@@ -64,7 +64,7 @@ sub get_selectorFile();
 sub parseFile($);
 sub downloadEventsURLs($);
 sub downloadSportEvents($);
-sub mergeEventsIntoSelectorFile($);
+sub mergeLeagueEventsIntoSelectorFile($);
 sub unEscapeNotLegitXmlNodeName($);
 #################DICTIONARY##############################################
 
@@ -435,11 +435,11 @@ sub updateOutputFileWithSportEvents()
 		my @event_URLs = $self->downloadEventsURLs( $league_URL_path );
 
                 my @sportEvents = $self->downloadSportEvents( $league_xpath );
-                $self->mergeEventsIntoSelectorFile( \@sportEvents );#rename mergeLeagueEventsInto...
+                $self->mergeLeagueEventsIntoSelectorFile( \@sportEvents );#rename mergeLeagueEventsInto...
 	}
 }
 
-sub mergeEventsIntoSelectorFile($)
+sub mergeLeagueEventsIntoSelectorFile($)
 {
 
 	my $self = shift;
