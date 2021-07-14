@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use HTML::Parser;
-our @ISA = qw(HTML::Parser);
+use parent qw(HTML::Parser);
 
 sub new();
 sub append_to_parsingResults($);

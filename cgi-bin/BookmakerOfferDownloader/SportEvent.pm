@@ -5,8 +5,7 @@ use XML::LibXML;
 use XML::Tidy;
 use HTML::Parser;
 use BetExplorerDownloader;
-our @ISA = qw(HTML::Parser); #isit needed?
-#use parent 'HT.. ?
+use parent qw(HTML::Parser);
 
 sub new($);
 sub insertIntoSelectorFile($);

@@ -4,7 +4,7 @@ use BookmakerPageCrawler;
 use warnings;
 use strict;
 
-our @ISA = qw(CategoryPage);
+use parent qw(CategoryPage);
 
 sub new();
 

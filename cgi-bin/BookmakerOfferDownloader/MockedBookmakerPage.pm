@@ -4,7 +4,7 @@ use warnings;
 use Class::Interface;
 use SourceOfBookmakerPage;
 
-our @ISA = qw(SourceOfBookmakerPage);
+use parent qw(SourceOfBookmakerPage);
 our @EXPORT = qw(getRawDataOfEvent new);
 
 sub getRawDataOfEvent($);

@@ -4,12 +4,10 @@ use warnings;
 use strict;
 use MockedBookmakerPage;
 use WWWBookmakerPage;
-#use SourceOfBookmakerPageIf;
 
 
 use Class::Interface;
 &implements( 'CategoryPageIf' );
-#our @ISA = qw(CategoryPageIf);
 
 sub getAllSubCategories($);
 sub setStrategy($);

@@ -8,7 +8,7 @@ use strict;
 #-hardcoded category list
 #
 
-our @ISA = qw(CategoryPage);
+use parent qw(CategoryPage);
 
 sub new();
 

@@ -5,7 +5,7 @@ use strict;
 use LWP::Simple;
 use BetexplorerParser;
 
-our @ISA = qw(CategoryPage);
+use parent qw(CategoryPage);
 
 sub new();
 

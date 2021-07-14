@@ -1,5 +1,5 @@
 package MarathonParser;
-our @ISA = qw(BookmakerParser);
+use parent qw(BookmakerParser);
 
 sub new
 {
@@ -15,8 +15,6 @@ sub downloadOffer(@)
 
 	my $class = shift;
 	print "Marathon";
-
-
 }
 
 

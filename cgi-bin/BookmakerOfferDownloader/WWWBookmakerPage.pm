@@ -8,7 +8,7 @@ use String::Random;
 use File::Basename;
 use Digest::MD5 qw(md5_hex);
 
-our @ISA = qw(SourceOfBookmakerPage);
+use parent qw(SourceOfBookmakerPage);
 our @EXPORT = qw(getRawDataOfEvent new);
 
 sub getRawDataOfEvent($);

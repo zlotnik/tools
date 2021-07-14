@@ -17,8 +17,7 @@ use strict;
 use warnings;
  
 use Exporter;
-our @ISA = qw( Exporter );
-
+use parent qw( Exporter );
 
 sub trimBeginning($$);
 
@@ -31,3 +30,4 @@ sub trimBeginning($$)
 	return $wholeXpath;
 };
 
+1;

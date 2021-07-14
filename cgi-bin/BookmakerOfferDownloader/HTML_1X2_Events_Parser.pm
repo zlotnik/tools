@@ -1,7 +1,7 @@
 package HTML_1X2_Events_Parser;
 
 use HTML::Parser;
-our @ISA = qw(HTML::Parser);
+use parent qw(HTML::Parser);
 
 sub new();
 
