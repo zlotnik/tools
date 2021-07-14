@@ -65,7 +65,6 @@ sub parseFile($);
 sub downloadEventsURLs($);
 sub downloadSportEvents($);
 sub mergeEventsIntoSelectorFile($);
-sub insertEvents_intoLeagueNode($\@);#to delete persist only in tests
 sub unEscapeNotLegitXmlNodeName($);
 #################DICTIONARY##############################################
 
@@ -456,33 +455,6 @@ sub mergeEventsIntoSelectorFile($)
                 $sportEvent->insertIntoSelectorFile( $selectorFileWithLeagues );
         }
 
-}
-
-
-#to delete persist only in tests
-sub insertEvents_intoLeagueNode($\@)
-{
-       my $self = shift;
-       my ( $country_xpath, $leagues_names_ref )  = @_;
-       my @leagues_list = @{$leagues_names_ref}; 
-        my $outputFileName  = $self->get_OutputFile();
-       my $document = $self->parseFile( $outputFileName ) or die $?;
-
-       my $countryNode = $document->findnodes( $country_xpath )->[0] or die "Can't find xml node specify by xpath:$country_xpath in xml\n $document\n";
-        
-        my $events_ParentNode = XML::LibXML::Element->new( 'events' );
-        $countryNode->addChild($events_ParentNode);
-
-        foreach( @leagues_list )
-        {
-               my $leagueName = $_;
-               my $newChildNode = XML::LibXML::Element->new( 'event' ); #change name to more adequate because it just copied from insertLeagues_intoCountryNode
-               $newChildNode->setAttribute( 'url', $_ );
-               $events_ParentNode->addChild( $newChildNode );  
-        }
-
-       $document->toFile( $outputFileName ) or die $?; 
-        $self->correctFormatXmlDocument();
 }
 
 sub downloadSportEvents($)

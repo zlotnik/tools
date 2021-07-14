@@ -150,33 +150,6 @@ sub insertLeagues_intoCountryNode_mock  #todo mock should be in separated module
 
 }
 
-sub insertEvents_intoLeagueNode()
-{
-        my $subroutineName = get_subroutineName();
-        print "\nTESTING SUBROUTINE: $subroutineName\n";
-	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
-	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
-	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
-
-        my $inputFile = "${subroutine_unitTest_directory}/leagues_list_Poland.xml";
-
-        my $eventList_actual = "${subroutine_unitTest_directory}/event_list_actual.xml";
-        my $eventList_expected = "${subroutine_unitTest_directory}/poland_events_list_expected.xml";
-
-        cp $inputFile, $eventList_actual or die;
-        $a_betExplorerDownloader->set_OutputFile( $eventList_actual );
-        my $leagueXpath = '/note/data/soccer/Poland/ekstraklasa'; 
-
-        my @league_list = ( 
-                                'https://www.betexplorer.com/soccer/Poland/ekstraklasa/korona-kielce-plock/6L7f5jc4/', 
-                                'https://www.betexplorer.com/soccer/Poland/ekstraklasa/jagiellonia-lech-poznan/SU8j6Wsb/'
-                          );
-
-
-        $a_betExplorerDownloader->insertEvents_intoLeagueNode( $leagueXpath, \@league_list );
-        files_eq( $eventList_actual, $eventList_expected, "Testing if the output file is updated with event list");
-
-}
 
 sub insertLeagues_intoCountryNode()
 {
@@ -265,19 +238,6 @@ sub find_leagues_xpaths_mock
         return('/note/data/soccer/Poland/ekstraklasa'); 
 }
 
-sub insertEvents_intoLeagueNode_mock($\@)
-{
-        my $self = shift;
-        my ( $league_xpath , $event_URLs_ref ) = @_;
-        my @eventsURLs = @{$event_URLs_ref};
-
-	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
-	my $subroutine_unitTest_directory = "${unit_testDirectory}/insertEvents_intoLeagueNode";
-
-        my $outputFileName = $self->get_OutputFile();
-        my $sourceFile = "${subroutine_unitTest_directory}/poland_events_list_expected.xml";
-        cp $sourceFile, $outputFileName or die "Can't copy file $sourceFile -> $outputFileName";
-}
 
 sub downloadEventsURLs_mock
 {
@@ -323,7 +283,6 @@ sub updateOutputFileWithSportEvents()
 	my $betExplorerDownloader_mock = Test::MockModule->new('BetExplorerDownloader');
 
 	$betExplorerDownloader_mock->redefine( 'find_leagues_xpaths', \&find_leagues_xpaths_mock );
-	$betExplorerDownloader_mock->redefine( 'insertEvents_intoLeagueNode', \&insertEvents_intoLeagueNode_mock );
 	$betExplorerDownloader_mock->redefine( 'downloadEventsURLs', \&downloadEventsURLs_mock);
 
 	$a_betExplorerDownloader->loadSelectorFile( $selectorFile );
