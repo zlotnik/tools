@@ -94,7 +94,6 @@ sub find_countries_xpaths()
 	my $subroutineName = get_subroutineName();
 	print "\nTESTING SUBROUTINE: $subroutineName\n";
 
-	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
 	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
 
@@ -102,6 +101,11 @@ sub find_countries_xpaths()
 	my @expected = ('/note/data/soccer/Poland','/note/data/soccer/Germany','/note/data/soccer/Sweden' ); 
 	my $testName = "Testing finding xpath in surebet template file";
 #	$a_betExplorerDownloader->{};# here probable should be name of propertie with path to selector
+
+
+	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
+        $a_betExplorerDownloader->{outputXmlDocument} = $a_betExplorerDownloader->parseFile( $selectorFile ); 
+  
 	my @got = $a_betExplorerDownloader->find_countries_xpaths( $selectorFile );
         is_deeply( \@got, \@expected, $testName );
 	
@@ -141,6 +145,7 @@ sub createEventListXML()
 	unlink $bookmakerEventList_actual;
 
 	$a_betExplorerDownloader->{mSelectorFile} = $examplarySelectorFile;
+	$a_betExplorerDownloader->{outputXmlDocument} = $a_betExplorerDownloader->parseFile( $examplarySelectorFile ); 
         $a_betExplorerDownloader->set_OutputFile( $bookmakerEventList_actual );
         cp ( $a_betExplorerDownloader->get_selectorFile, $a_betExplorerDownloader->get_OutputFile() ) or die "Can't load selector file"; 
 	$a_betExplorerDownloader->createEventListXML();
@@ -161,8 +166,9 @@ sub add_bookmakerOffer()
         cp ( $path2Xml_with_events, $bookmakerOfferFile_actual ) or die $!;
 
 	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet'); #isn't readable what to pass especially that real decision is taken to level down
-	$a_betExplorerDownloader->{mSelectorFile} = $path2Xml_with_events;
+	#$a_betExplorerDownloader->{mSelectorFile} = $path2Xml_with_events;
         $a_betExplorerDownloader->set_OutputFile( $bookmakerOfferFile_actual );       
+	$a_betExplorerDownloader->{outputXmlDocument} = $a_betExplorerDownloader->parseFile( $path2Xml_with_events ); 
 
 	$a_betExplorerDownloader->add_bookmakerOffer(); #this argument should be deleted
 	files_eq ( $bookmakerOfferFile_actual, $bookmakerOfferFile_expected , 'creating a sport events file' );
@@ -196,8 +202,12 @@ sub insertLeagues_intoCountryNode()
         my $expectedXml = "${subroutine_unitTest_directory}/serbia_leagues_list_expected.xml";
 
         
+        #these things should be mocked
         cp $inputFile, $actualXml or die;
-        $a_betExplorerDownloader->set_OutputFile($actualXml);
+        $a_betExplorerDownloader->set_OutputFile( $actualXml );
+	$a_betExplorerDownloader->{outputXmlDocument} = $a_betExplorerDownloader->parseFile( $actualXml ); 
+
+
         my $countriesXpath = '/note/data/soccer/Serbia'; 
         my @league_list = ('super-liga', 'prva-liga' );
 
@@ -322,7 +332,6 @@ sub find_leagues_xpaths()
 	my $subroutineName = get_subroutineName();
 	print "\nTESTING SUBROUTINE: $subroutineName\n";
 
-	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
 	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
 
@@ -331,7 +340,10 @@ sub find_leagues_xpaths()
 
 	my $testName = "Testing finding leagues xpath in surebet template file";
 
-	my @got = $a_betExplorerDownloader->find_leagues_xpaths( $selectorFile );
+	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
+        $a_betExplorerDownloader->{outputXmlDocument} = $a_betExplorerDownloader->parseFile( $selectorFile ); 
+
+	my @got = $a_betExplorerDownloader->find_leagues_xpaths();
         is_deeply( \@got, \@expected, $testName );
 	
 }

@@ -59,7 +59,7 @@ sub set_OutputFile($);
 sub get_OutputFile();
 sub insertLeagues_intoCountryNode($\@);
 sub updateOutputFileWithSportEvents();
-sub find_leagues_xpaths($);
+sub find_leagues_xpaths();
 sub get_selectorFile();
 sub parseFile($);
 sub downloadEventsURLs($);
@@ -159,18 +159,18 @@ sub create_BookmakersOfferFile()
 {
         my $self = shift;
 
-        #this things might be encapsulated	
+        #this things might be encapsulated
 	my $pathToXmlSelector = $self->get_selectorFile();
-	defined  $self->{mSelectorFile} or die "The selector file didn't loaded\n";
+	defined  $pathToXmlSelector or die "The selector file didn't loaded\n";
 
-        my $outputXmlPath = $self->get_OutputFile();
-	copy $self->{mSelectorFile}, $outputXmlPath or die "Can't load selector file $self->{mSelectorFile}";
+        my $outputXmlPath = $self->get_OutputFile();# rename get_OutputFileName ?
+           
+	$self->{outputXmlDocument} = $self->parseFile( $pathToXmlSelector ); 
 
 	$self->createEventListXML();
 	
-	updateEventListXMLWithEventDetails($outputXmlPath);#NOT IMPLEMENTED YET
+	updateEventListXMLWithEventDetails($outputXmlPath);#NOT IMPLEMENTED YET, however Iam not sure if I shouldn't move it down into add_bookmakerOffer
 	$self->add_bookmakerOffer();
-
 
 }
 
@@ -202,7 +202,7 @@ sub correctFormatXmlDocument()
 sub updateEventListXMLWithEventDetails($)
 {
 	my ($pathToXmlWithEventsLinks) = @_;
-	my @eventsLinks = pickupLinksFromXml($pathToXmlWithEventsLinks);
+	my @eventsLinks = pickupLinksFromXml($pathToXmlWithEventsLinks); #NIY not implemented yet
 	
 	my @fileNamesWithAnEventDetails;  
 	
@@ -214,7 +214,6 @@ sub updateEventListXMLWithEventDetails($)
 		die "TODO: merging xml element with main xml";
 		die "TODO: if there are more than 10 process wait";
 	}
-		
 		
 }
 
@@ -248,7 +247,6 @@ sub escapeNotLegitXmlNodeName($)
         
 
 }
-
 
 sub injectBookmakerProductEventOffertIntoXML($$$)
 {
@@ -313,7 +311,8 @@ sub add_bookmakerOffer()
         
         my $pathToEventListXML = $self->get_OutputFile();
 
-	my $xmlDoc = $self->parseFile( $pathToEventListXML ); 
+	my $xmlDoc = $self->{outputXmlDocument}; 
+
 	my @allEventXml = $xmlDoc->findnodes('/note/data/*/*/*/events/event'); 
 	
 	for(@allEventXml)
@@ -378,16 +377,15 @@ sub createEventListXML()
 
 	$self->updateOutputFileWithLeagues();
 	$self->updateOutputFileWithSportEvents();
-        my $outputXmlPath = $self->get_OutputFile();
 	$self->correctFormatXmlDocument(); 
 };
 
-sub find_leagues_xpaths($) ##copy paste sub think how to reuse the same fragment
+sub find_leagues_xpaths()
 {
 	my $self = shift;
 
-	my ($templateFile) = @_; 
-	my $xmlDoc = $self->parseFile($templateFile) or die;  #xmlDoc should be stored in object
+	my $xmlDoc = $self->{outputXmlDocument};
+
 	my $countriesXpath = '/note/data/*/*/*';
 	my @allLeagues = $xmlDoc->findnodes( $countriesXpath );
 	my @toReturn;
@@ -425,7 +423,7 @@ sub updateOutputFileWithSportEvents()
 	my $self = shift;
         my $selectorFileWithLeagues  = $self->get_OutputFile();
 
-	my @leagues_xpaths = $self->find_leagues_xpaths( $selectorFileWithLeagues );
+	my @leagues_xpaths = $self->find_leagues_xpaths();
         
 	foreach( @leagues_xpaths )
 	{
@@ -435,8 +433,13 @@ sub updateOutputFileWithSportEvents()
 		my @event_URLs = $self->downloadEventsURLs( $league_URL_path );
 
                 my @sportEvents = $self->downloadSportEvents( $league_xpath );
-                $self->mergeLeagueEventsIntoSelectorFile( \@sportEvents );#rename mergeLeagueEventsInto...
+
+                #there is no tests for mergeLeagueEventsIntoSelectorFile
+                $self->mergeLeagueEventsIntoSelectorFile( \@sportEvents );#TODO in the future merging will be done on xml object not file
 	}
+
+        #TODO add getter and setter
+        $self->{outputXmlDocument} = $self->parseFile( $self->get_OutputFile() ); 
 }
 
 sub mergeLeagueEventsIntoSelectorFile($)
@@ -508,7 +511,7 @@ sub insertLeagues_intoCountryNode($\@)
 	my ( $country_xpath, $leagues_names_ref )  = @_;
 	my @leagues_list = @{$leagues_names_ref}; 
         my $outputFileName  = $self->get_OutputFile();
-	my $document = $self->parseFile( $outputFileName ) or die $?;
+	my $document = $self->{outputXmlDocument};
 
 	my $countryNode = $document->findnodes( $country_xpath )->[0] or die "Can't find xml node specify by xpath:$country_xpath in xml\n $document\n";
         
@@ -543,7 +546,7 @@ sub find_countries_xpaths($)
 {
 	my $self = shift;
 	my ($templateFile) = @_; 
-	my $xmlDoc = $self->parseFile($templateFile) or die;  #xmlDoc should be stored in object
+	my $xmlDoc = $self->{outputXmlDocument}; 
 	my $countriesXpath = '/note/data/*/*';
 	my @allLeagues = $xmlDoc->findnodes( $countriesXpath );
 	my @toReturn;
