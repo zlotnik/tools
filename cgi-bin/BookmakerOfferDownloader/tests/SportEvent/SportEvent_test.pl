@@ -76,7 +76,7 @@ sub insertIntoSelectorFile()
 	my $subroutineName = get_subroutineName();
 	print "\nTESTING SUBROUTINE: $subroutineName\n";
         
-        my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/SportEvent";
+        my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/SportEvent";
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
 
         my $sportEventMock = Test::MockModule->new('SportEvent')->redefine( new => sub{return bless{},'SportEvent'; });

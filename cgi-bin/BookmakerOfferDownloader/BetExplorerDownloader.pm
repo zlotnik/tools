@@ -438,7 +438,6 @@ sub updateOutputFileWithSportEvents()
                 $self->mergeLeagueEventsIntoSelectorFile( \@sportEvents );#TODO in the future merging will be done on xml object not file
 	}
 
-        #TODO add getter and setter
         $self->{outputXmlDocument} = $self->parseFile( $self->get_OutputFile() ); 
 }
 

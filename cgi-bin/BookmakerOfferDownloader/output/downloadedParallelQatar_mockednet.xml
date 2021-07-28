@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <note>
   <dataSources>
-    <betexplorer />
+  <betexplorer/>  
   </dataSources>
-  <eventList>
-    <soccer>
-      <Qatar>
-        <premier-league>
-          <Events>
-            <event url="https://www.betexplorer.com/soccer/qatar/premier-league/al-arabi-al-duhail/I73hNeNi/" />
-            <event url="https://www.betexplorer.com/soccer/qatar/premier-league/al-markhiya-qatar-sc/0WhcMFxb/&quot; data-live-cell=&quot;matchlink" />
-          </Events>
-        </premier-league>
-      </Qatar>
-    </soccer>
-  </eventList>
-</note>
+  <dataChoosenToDownload>
+  <soccer>
+  <Qatar/>
+  </soccer>
+  </dataChoosenToDownload>
+  
+</note> 

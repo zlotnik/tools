@@ -13,7 +13,7 @@ sub pickupTableWithEventsFromWeburl($)
 {
         my ($leagueGroupEvents_url) = @_; 
         my $sub_name = get_subroutineName(); 
-        my $betexplorerParserDir = "$ENV{BOOKMAKER_OFFER_DOWNLOADER_MODULE_DIRECTORY}/tests/unit_tests/BetexplorerParser";
+        my $betexplorerParserDir = "$ENV{BOOKMAKER_OFFER_DOWNLOADER_MODULE_DIRECTORY}/tests/BetexplorerParser";
         my $mockData_file = "${betexplorerParserDir}/${sub_name}/dataForMock";
         my $mockData_fileContent;
         open(FH, '<', $mockData_file) or die "can not open file $mockData_file";
@@ -29,7 +29,7 @@ sub pickupHtmlEventsTableFromLeagueHtml()
 {
         my ($leagueGroupEvents_url) = @_; 
         my $sub_name = get_subroutineName(); 
-        my $betexplorerParserDir = "$ENV{BOOKMAKER_OFFER_DOWNLOADER_MODULE_DIRECTORY}/tests/unit_tests/BetexplorerParser";
+        my $betexplorerParserDir = "$ENV{BOOKMAKER_OFFER_DOWNLOADER_MODULE_DIRECTORY}/tests/BetexplorerParser";
         my $mockData_file = "${betexplorerParserDir}/${sub_name}/dataForMock";
         my $mockData_fileContent;
         open(FH, '<', $mockData_file) or die "can not open file $mockData_file";

@@ -94,7 +94,7 @@ sub find_countries_xpaths()
 	my $subroutineName = get_subroutineName();
 	print "\nTESTING SUBROUTINE: $subroutineName\n";
 
-	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/BetExplorerDownloader";
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
 
 	my $selectorFile = "${subroutine_unitTest_directory}/surebet_template_file.xml";
@@ -117,7 +117,7 @@ sub create_BookmakersOfferFile()
 	print "\nTESTING SUBROUTINE: $subroutineName\n";
 	
 	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
-	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/BetExplorerDownloader";
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
 
 	my $examplarySelectorFile = "${subroutine_unitTest_directory}/selectorFile_example.xml";
@@ -136,7 +136,7 @@ sub createEventListXML()
 	print "\nTESTING SUBROUTINE: $subroutineName\n";
 	
 	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
-	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/BetExplorerDownloader";
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
 
 	my $examplarySelectorFile = "${subroutine_unitTest_directory}/selectorFile_example.xml";
@@ -157,7 +157,7 @@ sub add_bookmakerOffer()
 {
 	my $subroutineName = get_subroutineName();
         print "\nTESTING SUBROUTINE: $subroutineName\n";
-	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/BetExplorerDownloader";
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
 	
 	my $path2Xml_with_events = "${subroutine_unitTest_directory}/poland_events_list.xml";
@@ -179,7 +179,7 @@ sub add_bookmakerOffer()
 sub insertLeagues_intoCountryNode_mock  #todo mock should be in separated module
 {
         my $self = shift;
-	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/BetExplorerDownloader";
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/insertLeagues_intoCountryNode";
 
         my $outputFileName = $self->get_OutputFile();
@@ -192,7 +192,7 @@ sub insertLeagues_intoCountryNode()
 {
         my $subroutineName = get_subroutineName();
         print "\nTESTING SUBROUTINE: $subroutineName\n";
-	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/BetExplorerDownloader";
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
         
 	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
@@ -294,7 +294,7 @@ sub updateOutputFileWithLeagues()
 	print "\nTESTING SUBROUTINE: $subroutineName\n";
 
 	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
-	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/BetExplorerDownloader";
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
 
 	my $selectorFile = "${subroutine_unitTest_directory}/selector_serbia.xml";
@@ -332,7 +332,7 @@ sub find_leagues_xpaths()
 	my $subroutineName = get_subroutineName();
 	print "\nTESTING SUBROUTINE: $subroutineName\n";
 
-	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/BetExplorerDownloader";
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
 
 	my $selectorFile = "${subroutine_unitTest_directory}/serbia_leagues_list_actual.xml";
@@ -354,7 +354,7 @@ sub updateOutputFileWithSportEvents()
 	print "\nTESTING SUBROUTINE: $subroutineName\n";
 
 	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
-	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/unit_tests/BetExplorerDownloader";
+	my $unit_testDirectory = "$ENV{BACKEND_ROOT_DIRECTORY}/BookmakerOfferDownloader/tests/BetExplorerDownloader";
 	my $subroutine_unitTest_directory = "${unit_testDirectory}/$subroutineName";
 
 	my $selectorFile = "${subroutine_unitTest_directory}/selector_poland_leagues_list.xml";
