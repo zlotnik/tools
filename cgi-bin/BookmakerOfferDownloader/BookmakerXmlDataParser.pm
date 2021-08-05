@@ -3,8 +3,6 @@ use BookmakersRegexps;
 use strict;
 use warnings;
 use base 'Exporter';
-our @EXPORT = qw(isCorrectSurebetsFile isCorectBookmakerDataSelectorFile 
-				 isCorrectEventListFile isEventListFileHasCorrectSyntax isCorrectProfitabilityFile); # iam not sure if all these exports are needed
 
 use LWP::Simple;
 use XML::LibXML;
@@ -14,7 +12,7 @@ use XML::LibXML;
 #incorrect inputs should be
 ##################DECLARATION##################################
 sub new();
-sub isCorectBookmakerDataSelectorFile($);
+sub isCorectBookmakerDataSelectorFile($); #rename typo
 sub isCorectDownloadedBookmakerOfferFile($);
 sub xmlSelectorContainsAllNeededData($);
 sub isCorrectBookmakerDataSourceName($);
