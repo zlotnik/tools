@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+  <dataSources>
+    <betexplorer />
+  </dataSources>
+  <data>
+    <soccer>
+      <jordan>
+        <premier-league>
+          <events>
+            <event url="http://www.betexplorer.com/soccer/jordan/premier-league/al-wehdat-al-buqaa/27e39TYA/">
+              <homeTeam>Al Wehdat</homeTeam>
+              <visitingTeam>Al Buqaa</visitingTeam>
+              <_1X2>
+                <_1>
+                  <_Pinnacle>1.11</_Pinnacle>
+                  <_Unibet>1.07</_Unibet>
+                  <_BetfairExchange>1.08</_BetfairExchange>
+                </_1>
+                <_X>
+                  <_10Bet>9.00</_10Bet>
+                  <_BetfairExchange>8.98</_BetfairExchange>
+                </_X>
+                <_2>
+                  <_10Bet>21.00</_10Bet>
+                  <_BetfairExchange>16.68</_BetfairExchange>
+                </_2>
+              </_1X2>
+            </event>
+            <event url="http://www.betexplorer.com/soccer/jordan/premier-league/al-ramtha-aqaba/pWp88mlH/">
+              <homeTeam>Al Ramtha</homeTeam>
+              <visitingTeam>Aqaba</visitingTeam>
+              <_1X2>
+                <_1>
+                  <_10Bet>1.55</_10Bet>
+                  <_WilliamHill>1.57</_WilliamHill>
+                  <_BetfairExchange>1.59</_BetfairExchange>
+                </_1>
+                <_X>
+                  <_10Bet>3.50</_10Bet>
+                  <_188BET>3.40</_188BET>
+                  <_BetfairExchange>3.47</_BetfairExchange>
+                </_X>
+                <_2>
+                  <_10Bet>5.75</_10Bet>
+                  <_WilliamHill>5.80</_WilliamHill>
+                  <_BetfairExchange>6.13</_BetfairExchange>
+                </_2>
+              </_1X2>
+            </event>
+          </events>
+        </premier-league>
+      </jordan>
+    </soccer>
+  </data>
+</note>

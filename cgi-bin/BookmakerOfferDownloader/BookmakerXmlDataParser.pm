@@ -3,8 +3,8 @@ use BookmakersRegexps;
 use strict;
 use warnings;
 use base 'Exporter';
-our @EXPORT = qw(isCorrectSurebetsFile isCorectDownloadedBookmakerOfferFile isCorectBookmakerDataSelectorFile 
-				 isCorrectEventListFile isEventListFileHasCorrectSyntax isCorrectProfitabilityFile);
+our @EXPORT = qw(isCorrectSurebetsFile isCorectBookmakerDataSelectorFile 
+				 isCorrectEventListFile isEventListFileHasCorrectSyntax isCorrectProfitabilityFile); # iam not sure if all these exports are needed
 
 use LWP::Simple;
 use XML::LibXML;
