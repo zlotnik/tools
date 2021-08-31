@@ -160,16 +160,15 @@ sub isCorectDownloadedBookmakerOfferFile($)
 													^<\?xml.version="1.0".encoding="(UTF|utf)-8"\?>.*
 													<note>.*
 													<dataSources>.*
-													<betexplorer />.*
+													<betexplorer/>.*
 													</dataSources>.*
-													<eventList>.*
+													<data>.*
 													<($disciplineName_re)>.*
-													<Events>.*
-													<event.url="https://www.betexplorer.com/($disciplineName_re).*".?>.*
+													<events>.*
+													<event.url="http://www.betexplorer.com/($disciplineName_re).*".?>.*
 													(</event>).*
-													</Events>.*
+													</events>.*
 													</($disciplineName_re)>.*
-													</eventList>.*
 													</note>
 													}sx);
 		
