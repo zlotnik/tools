@@ -11,12 +11,15 @@ git clone https://gitlab.com/wojomc/arrakis.git
 3.Pushing to git
 git push -u origin master
 
-4. How to run tool 
+4.Updating PAT (Personal Access Token) 
+git remote set-url origin https://ghp_TOgC3zAw3uZ3IC8uMPJ3Ectz9vlTBx3vMDKf@github.com/zlotnik/arrakis
+
+5. How to run tool 
 Tool isn't available for cygwin environment the only environment that works is Windows
 
 perl .\surebetCrafter .\input\ekstraklasaSelector.xml .\output\realData\ekstraKlasaResults.xml
 
-5. How to run tests
-5.1 
+6. How to run tests
+6.1 
 
-6.Module responsibilities
+7.Module responsibilities
