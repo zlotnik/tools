@@ -164,6 +164,8 @@ sub isCorrectDownloadedBookmakerOfferFile($)
 													<data>.*
 													<($disciplineName_re)>.*
 													<events>.*
+                                                                                                        <homeTeam>.*?</homeTeam>.*
+                                                                                                        <visitingTeam>.*?</visitingTeam>.*
 													<event.url="http://www.betexplorer.com/($disciplineName_re).*".?>.*
 													(</event>).*
 													</events>.*
