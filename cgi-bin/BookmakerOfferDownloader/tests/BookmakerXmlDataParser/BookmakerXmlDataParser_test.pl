@@ -12,14 +12,14 @@ use BookmakerXmlDataParser;
 ###############SUB PROTOTYPES############################################
 sub pickupLinksToEventFromTable();
 sub get_subroutineName(); #move it to some external package
-sub isCorectDownloadedBookmakerOfferFile();
+sub isCorrectDownloadedBookmakerOfferFile();
 ############################MAIN##############################################
 
 print("\n##Testing module BetexplorerParser##\n\n");
-isCorectDownloadedBookmakerOfferFile();
+isCorrectDownloadedBookmakerOfferFile();
 done_testing();
 
-sub isCorectDownloadedBookmakerOfferFile()
+sub isCorrectDownloadedBookmakerOfferFile()
 {
 
         my $subroutineName = get_subroutineName();
@@ -32,7 +32,7 @@ sub isCorectDownloadedBookmakerOfferFile()
         
 	my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new();
         
-        my $actual_result_of_parsing = $aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile( $correctBookmakerOfferFile );
+        my $actual_result_of_parsing = $aBookmakerXmlDataParser->isCorrectDownloadedBookmakerOfferFile( $correctBookmakerOfferFile );
         my $testName = "Testing correct bookmaker offer file";
         my $expected_result_of_parsing_file = 1;
 

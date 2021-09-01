@@ -50,7 +50,7 @@ sub loadBookmakersOfferFile($)
 	#todo validate $bookmakerOfferFilename
 	my $aBookmakerXmlDataParser = BookmakerXmlDataParser->new();
 	
-	if (! $aBookmakerXmlDataParser->isCorectDownloadedBookmakerOfferFile($bookmakerOfferFilename))
+	if (! $aBookmakerXmlDataParser->isCorrectDownloadedBookmakerOfferFile($bookmakerOfferFilename))
 	{
                 #this must be fixed
 		print "WARNING: incorrect format of bookmaker offer file\n";

@@ -30,12 +30,12 @@ sub escapeNotLegitXmlNodeNameInXpath()
 	my $subroutineName = get_subroutineName();
 	print "\nTESTING SUBROUTINE: $subroutineName\n";
 
-        my $incorectXpath = "/note/data/soccer/Germany/2-bundesliga";
+        my $incorrectXpath = "/note/data/soccer/Germany/2-bundesliga";
 
         my $expected = "/note/data/soccer/Germany/__2-bundesliga";
 
-        SportEvent::escapeNotLegitXmlNodeNameInXpath($incorectXpath);
-        my $actual = $incorectXpath;
+        SportEvent::escapeNotLegitXmlNodeNameInXpath($incorrectXpath);
+        my $actual = $incorrectXpath;
 
 	is( $actual , $expected, 'Test escaping illegal node part from xpath' );
 

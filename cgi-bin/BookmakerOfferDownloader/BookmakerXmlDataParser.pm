@@ -12,8 +12,8 @@ use XML::LibXML;
 #incorrect inputs should be
 ##################DECLARATION##################################
 sub new();
-sub isCorectBookmakerDataSelectorFile($); #rename typo
-sub isCorectDownloadedBookmakerOfferFile($);
+sub isCorrectBookmakerDataSelectorFile($);
+sub isCorrectDownloadedBookmakerOfferFile($);
 sub xmlSelectorContainsAllNeededData($);
 sub isCorrectBookmakerDataSourceName($);
 sub isCorrectDisciplineName($);
@@ -132,7 +132,7 @@ sub isCorrectRawDataFile($)
 
 }
 
-sub isCorectBookmakerDataSelectorFile($)
+sub isCorrectBookmakerDataSelectorFile($)
 {
 	my $self = shift;
 	my $pathToXmlSelector = $_[0];
@@ -147,8 +147,7 @@ sub isCorectBookmakerDataSelectorFile($)
 	return 0;
 };
 
-
-sub isCorectDownloadedBookmakerOfferFile($)
+sub isCorrectDownloadedBookmakerOfferFile($)
 {
 	my $self = shift;
 	my $xmlSelectorPath = $_[0];
