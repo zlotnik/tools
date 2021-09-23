@@ -87,7 +87,7 @@ function generateSingle_table_row($singleSurebet)
     print "<td>$price_1</td>";    
     print "<td>$price_x</td>";
     print "<td>$price_2</td>";
-    print "</tr>";
+    print "</tr>\n";
     
 }
 ?>
