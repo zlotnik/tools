@@ -2,7 +2,7 @@
 <title>Surebet Harvester - free tool used to seek for bookmaker's surebets</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Surebet Harvester - free tool used to seek for bookmaker's surebets">
-<meta name="keywords" content="surebet, sport arbitrage, betting arbitrage">
+<meta name="keywords" content="surebet surebet 1x2bet betfair sport arbitrage betting">
 <!-- styles -->
 <link href="assets/css/bootstrap.css" rel="stylesheet">
 <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
