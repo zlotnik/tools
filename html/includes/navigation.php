@@ -8,7 +8,7 @@
             <div class="span4">
               <!-- logo -->
               <div class="logo">
-                <h1><a href="index.html">Surebet</a></h1>
+                <h1><a href="index.php">Surebet</a></h1>
                 <!-- <img src="assets/img/logo.png" alt="" /> -->
               </div>
               <!-- end logo -->
@@ -21,7 +21,7 @@
                   <nav>
                     <ul class="nav topnav">
                       <li class="dropdown active">
-                        <a href="index.html">Home</a>
+                        <a href="index.php">Home</a>
                       </li>                 
                       
                       <li>
