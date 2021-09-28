@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <title>Surebet Harvester - free tool used to seek for bookmaker's surebets</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=0.4">
 <meta name="description" content="Surebet Harvester - free tool used to seek for bookmaker's surebets">
 <meta name="keywords" content="surebet surebet 1x2bet betfair sport arbitrage betting">
 <!-- styles -->
