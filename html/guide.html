@@ -19,9 +19,54 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700" rel="stylesheet">
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/color/default.css" rel="stylesheet">
-                <style> 
-                td{background:#d0dafd;color:#339}#box-table-b{font-family:lucida sans unicode,lucida grande,Sans-Serif;font-size:20px;width:1400px;text-align:center;border-collapse:collapse;border-top:7px solid #9baff1;border-bottom:7px solid #9baff1;margin:20px}#box-table-b th{font-size:23px;font-weight:400;background:#e8edff;border-right:1px solid #9baff1;border-left:1px solid #9baff1;color:#039;padding:8px}#box-table-b
-        </style>
+        <style> 
+                td
+				{
+					background:#d0dafd;color:#339
+				}
+				
+				#box-table-b
+				{
+					font-family:lucida sans unicode,
+					lucida grande,
+					Sans-Serif;font-size:20px;width:1400px;text-align:center;border-collapse:collapse;border-top:7px solid #9baff1;border-bottom:7px solid #9baff1;margin:20px
+				}
+				
+				#box-table-b th
+				{
+					font-size:23px;font-weight:400;background:#e8edff;border-right:1px solid #9baff1;border-left:1px solid #9baff1;color:#039;padding:8px
+				}
+				
+				#box-table-b
+        		* {
+				  box-sizing: border-box;
+				}
+
+				.column {
+				  float: left;
+				  width: 29%;
+				  padding: 5px;
+				}
+
+				/* Clearfix (clear floats) */
+				.row::after {
+				  content: "";
+				  clear: both;
+				  display: table;
+				}
+				
+				#content figcaption {
+					  border: 1px solid blue;
+					  font-family: Verdana, Geneva, sans-serif;
+					  font-size: 12px;
+					  text-shadow: none;
+					  color: black;
+					  text-align: center;
+					  height: auto;
+					  word-wrap: break-word;
+					  width:300px;
+					}
+		</style>
         <!-- fav and touch icons -->
         <link rel="shortcut icon" href="assets/ico/favicon.ico">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
@@ -82,16 +127,40 @@ Author URL: https://bootstrapmade.com
 	<section id="intro">
 	<div class="container">
                 
-	        <div >
+	        <div class="container">
                         <h3>
-                                Surebet or arbitrage betting it is situation when we bet for complementary events in different bookmakers and prices of the events are enought high to guarantee a profit regardless the events results. See an example, there might be a tennis match:
-
-
+                                Surebet or arbitrage betting it is situation when we bet for complementary events in different bookmakers and prices of the events are enought
+								high to guarantee a profit regardless the events results. See an example, there might be a tennis match between 
+								Caroline Wozniacki and Maria Sharapova:
+								<br><br>
+								<div class="container">
+									<div class="column">
+									    <figure>
+											<img src="assets/img/wozniacki.png" alt="Caroline Wozniacki"  width="50%"/>
+											<figcaption>Caroline Wozniacki</figcaption>
+										</figure>
+									</div>
+									<div class="column">
+										vs
+										<!-- <img src="assets/img/wozniacki.png" alt="Wozniacki"  width="50%"/> -->
+									</div>
+									<div class="column">
+										<img src="assets/img/sharapova.png" alt="Maria Sharapova"/ width="50%">
+										<figcaption>Maria Sharapova</figcaption>
+									</div>
+								</div>
+								<br>						
               
                         </h3>
-                </div>
-		<div class="row">
-                </div>
+            </div>
+			<br><br>
+			<p>For this event bookmaker offer bet for following [stawki/price]</p>
+			<div class="container">
+					1xbet    betfair
+			</div>
+			<p>You put 50 $ on Serena woźniacki and 50 $ on Maria Sharapova. There are two scenarios</p>
+	</div>
+
 
   </section>
   <section id="maincontent">
