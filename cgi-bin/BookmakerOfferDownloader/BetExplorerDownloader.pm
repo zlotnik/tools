@@ -15,6 +15,7 @@ use Cwd;
 use HTML_1X2_Events_Parser;
 use Xpath;
 use SportEvent;
+use EventNode;
 
 
 our @EXPORT = qw(startCreatingXmlPartWithAnEventDetail pickupLinksFromXml 
@@ -66,6 +67,7 @@ sub downloadEventsURLs($);
 sub downloadSportEvents($);
 sub mergeLeagueEventsIntoSelectorFile($);
 sub unEscapeNotLegitXmlNodeName($);
+sub add_1X2_offer($);
 #################DICTIONARY##############################################
 
 
@@ -318,14 +320,7 @@ sub add_bookmakerOffer()
 	for(@allEventXml)
 	{		
 		my $eventNode = $_;
-
-		# add_1X2_offers($eventNode);#not implemented just draft 
-
-		# add_UnderOver_offers($eventNode);
-
-		my $nodeThatNeedUpdated = XML::LibXML::Element->new("_1X2"); 
-		$eventNode->addChild( $nodeThatNeedUpdated );
-		
+	
 		$eventNode =~ m{event url="(.*\/)((&quot.*")|("))} or die;
 		my $linkToEvent = $1;
 		
@@ -336,8 +331,29 @@ sub add_bookmakerOffer()
 
 		$dataWithBets = $eventParser->parse($dataWithBets);
 
-		injectBookmakerEventOfferIntoXML($dataWithBets, $nodeThatNeedUpdated);
+        	my $newOfferNode = XML::LibXML::Element->new("_1X2"); 
+		$eventNode->addChild( $newOfferNode );
+		injectBookmakerEventOfferIntoXML($dataWithBets, $newOfferNode);
 	}
+
+        for( @allEventXml )
+        {
+                next;
+		my $xmlEventNode = $_;
+
+               $self->add_1X2_offer( $xmlEventNode );#might be encapsuleted more; can be delegated to some new class like EventNode
+               #$self->add_UnderOver_offer( $eventNode );
+
+               #my $eventNode  = EventNode->new( $eventNode );
+
+               #my $bookmakerOfferData = $eventNode->download_1X2_offers(); #raw form of offer
+               #
+               
+
+               #newEventNode = $self->addOfferNode('1X2');
+    	       #injectBookmaker_1X2_EventOfferIntoXML($bookmakerOffer, $newOfferNode);
+
+        }
 		
 	open XML, ">$pathToEventListXML" or die;
 	print XML $xmlDoc->toString();
@@ -345,6 +361,31 @@ sub add_bookmakerOffer()
 	
 	$self->correctFormatXmlDocument();
 		
+}
+
+
+sub add_1X2_offer($)
+{
+        my $self = shift;
+        
+        my ( $xmlEventNode ) = @_;          
+
+        my $eventNode  = EventNode->new( $xmlEventNode );
+
+        my $bookmakerOfferHtml = $eventNode->download_1X2_offers(); #raw form of offer
+        #
+
+	my $eventParser = HTML_1X2_Events_Parser->new();		
+	my $dataWithBetsRawText = $eventParser->parse( $bookmakerOfferHtml );
+
+        #newEventNode = $self->addOfferNode('1X2');
+        #or
+        #newEventNode = $self->addOfferNodes('1X2');
+        #
+        #
+        #injectBookmaker_1X2_EventOfferIntoXML($bookmakerOffer, $newOfferNode);
+
+        ...
 }
 
 sub removeEmptyLines(\$)
