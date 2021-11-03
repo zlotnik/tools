@@ -9,9 +9,7 @@
               <!-- logo -->
               <div class="logo">
                 <h1><a href="index.php">Surebet</a></h1>
-                <!-- <img src="assets/img/logo.png" alt="" /> -->
               </div>
-              <!-- end logo -->
             </div>
 
             <div class="span8">
@@ -23,7 +21,9 @@
                       <li class="dropdown active">
                         <a href="index.php">Home</a>
                       </li>                 
-                      
+                      <li class="dropdown active">
+                        <!-- <a href="guide.html">Guide</a> -->
+                      </li>                 
                       <li>
                         <a href="contact.html">Contact</a>
                       </li>
