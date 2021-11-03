@@ -11,8 +11,12 @@ git clone https://gitlab.com/wojomc/arrakis.git
 3.Pushing to git
 git push -u origin master
 
-4.Updating PAT (Personal Access Token) 
+4. PAT (Personal Access Token) 
+4.1 Creating (first time)
 git remote set-url origin https://ghp_TOgC3zAw3uZ3IC8uMPJ3Ectz9vlTBx3vMDKf@github.com/zlotnik/arrakis
+
+4.2 Updating
+git remote  set-url  --push origin https://ghp_2olg0PqdiN2OYhrT4iavitBzNGrYzl1KO1gM@github.com/zlotnik/arrakis/
 
 5. How to run tool 
 Tool isn't available for cygwin environment the only environment that works is Windows
