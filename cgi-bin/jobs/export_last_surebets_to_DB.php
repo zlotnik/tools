@@ -105,9 +105,18 @@ function export_surebetsToDB( $surebetsInfoList, $pathToDB )
                 $linkToEvent = $urlToEvent;
 
                 $visitingTeam = $surebetInfoEntry['visitor'];
-                $bookmaker_1 = ($surebetInfoEntry['_1X2']->_1->children()[0]->getName()) ; 
-                $bookmaker_X = ($surebetInfoEntry['_1X2']->_X->children()[0]->getName()) ; 
-                $bookmaker_2 = ($surebetInfoEntry['_1X2']->_2->children()[0]->getName()) ; 
+                try
+                {
+                        
+                        $bookmaker_1 = ($surebetInfoEntry['_1X2']->_1->children()[0]->getName()) ; 
+                        $bookmaker_X = ($surebetInfoEntry['_1X2']->_X->children()[0]->getName()) ; 
+                        $bookmaker_2 = ($surebetInfoEntry['_1X2']->_2->children()[0]->getName()) ; 
+                }
+                catch (Error $e)
+                {
+                        echo "exception" . $e . "END\n";
+                }
+
                 $price_1 = $surebetInfoEntry['_1X2']->_1->$bookmaker_1;
                 $price_X = $surebetInfoEntry['_1X2']->_X->$bookmaker_X;
                 $price_2 = $surebetInfoEntry['_1X2']->_2->$bookmaker_2;
@@ -144,7 +153,12 @@ function findAllSurebets( $profitabilityFile )
 
         foreach ($profitXml->xpath('//event') as $event_node)
         {
-                if( $event_node->bestCombinations->_1X2->profit > 0 )
+                #print "bc". $event_node->bestCombinations . "bcend\n";
+                if (! $event_node->bestCombinations )
+                {
+                }
+
+                if( $event_node->bestCombinations and  $event_node->bestCombinations->_1X2->profit > 0 and  $event_node->bestCombinations->_1X2->profit != 1   )
                 {
 
                         $urlToEvent = (string)($event_node['url']);     
