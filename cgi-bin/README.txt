@@ -30,3 +30,9 @@ perl .\surebetCrafter .\input\ekstraklasaSelector.xml .\output\realData\ekstraKl
 8. Cron activities need to run machinery
 40 10,18,23,3 * * * /var/www/cgi-bin/jobs/runWhole_harvest_process.sh
 20 10,18,23,3 * * * find /var/www/cgi-bin/tmp -type f -mtime +3 -name '*' -execdir rm -- '{}' \;
+
+9.Tags
+9.1 Show tag history
+git log --no-walk --tags --pretty="%h %d %s" --decorate=full
+9.2
+git tag -ln
