@@ -540,7 +540,7 @@ sub updateOutputFileWithLeagues()
 	foreach( @countries_xpaths )
 	{
 		my $country_xpath = $_;
-		my @leagues_names = $self->downloadLeaguesNames( $country_xpath );
+		my @leagues_names = $self->downloadLeaguesNames( $country_xpath ); #to mock with league name
 		$self->insertLeagues_intoCountryNode( $country_xpath , \@leagues_names );
 	}
 }

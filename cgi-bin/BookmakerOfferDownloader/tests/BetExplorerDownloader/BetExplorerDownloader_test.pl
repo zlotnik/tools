@@ -5,47 +5,17 @@ use warnings;
 use Test::More;
 use Test::File::Contents;
 use File::Copy 'cp'; 
-use BetExplorerDownloader;
+use BetExplorerDownloader; #to rename I don't us BetExplorerDownloader anymore
 use Test::MockModule;
 use Data::Dumper;
 
 ###############SUB PROTOTYPES############################################
-# sub new();
-# sub loadSelectorFile($);
-# sub getsLinksForAllEventsFromSubCategory($$);
-# sub getTableWithEvents($);
-# sub getLinksToEventFromTable($);
-# sub downloadRawDataOfChoosenOfert(\%);
-# sub generateReportLine($);
-# sub getRawDataOfEvent($);
-# sub checkNumberOfBookmaker($);
-# sub convertRawDownloadedDataToHash($);
-# sub getAllSubCategories($$);
-# sub updateXmlNodeWithDataFromBookmaker($$);
-# sub getRootNode($);
-# sub addChildSubcategoryNodeToOfferXml($$$);
-# sub addLinkToEventToOfferXml($$$);
-# sub updateEventListXMLWithEventDetails($);
-# sub add_bookmakerOffer($);
-# sub correctFormatXmlDocument($);
-# sub xmlDocumentHasNodeWithoutLineBreaks($);
-# sub validateSelectorFile();
-# sub isLinkToEvent($);
-# sub startCreatingXmlPartWithAnEventDetail($);
-# sub pickupLinksFromXml($);
-# sub removeEmptyLines(\$);
-# sub showUsage();
-# sub prepareTemplateFor_SportEventsFile($);
-# sub isEventsNodeExists($$);
-# sub addEventNodeToXmlEventList($$);
-# sub injectBookmakerEventOfferIntoXML($$);
-# sub injectBookmakerProductEventOffertIntoXML($$$);
 sub add_bookmakerOffer();
 sub create_BookmakersOfferFile();
 sub createEventListXML();
 sub updateOutputFileWithLeagues();
 sub find_countries_xpaths();
-sub downloadLeaguesNames();
+sub downloadLeaguesNames(); # to mock
 sub insertLeagues_intoCountryNode();
 sub find_leagues_xpaths();
 sub updateOutputFileWithSportEvents();
@@ -53,7 +23,7 @@ sub downloadEventsURLs();
 sub escapeNotLegitXmlNodeName();
 sub unEscapeNotLegitXmlNodeName();
 ############################MAIN##############################################
-print("\n##Testing module BetExplorerDownloader##\n\n");
+print("\n##Testing module BetExplorerDownloader##\n\n"); #to rename
 
 insertLeagues_intoCountryNode();
 updateOutputFileWithLeagues();
@@ -61,8 +31,6 @@ find_countries_xpaths();
 downloadLeaguesNames();
 updateOutputFileWithSportEvents();
 find_leagues_xpaths();
-#create_BookmakersOfferFile();
-# add_leagues_events();
 downloadEventsURLs();
 createEventListXML();
 add_bookmakerOffer();
@@ -79,13 +47,18 @@ sub downloadLeaguesNames()
 	my $subroutineName = get_subroutineName();
 	print "\nTESTING SUBROUTINE: $subroutineName\n";
 
-	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet');
+	my $a_betExplorerDownloader = BetExplorerDownloader->new('--mockednet'); #I thinktest shouldn't be a part of implementation
 
-	my @expected = ('super-liga', 'prva-liga');
-	my @actual = $a_betExplorerDownloader->downloadLeaguesNames ( '/soccer/Serbia' );
-	my $testName = 'fetching leagues list from stubed website';
-	
+	my @expected = ( 'bundesliga');
+	my @actual = $a_betExplorerDownloader->downloadLeaguesNames ( '/soccer/Germany' );
+	my $testName = 'temporarily hardcoded functionality for geting list of German leagues';
 	is_deeply( \@actual, \@expected, $testName );
+        
+        @expected = ( 'premier-league' );
+        @actual = $a_betExplorerDownloader->downloadLeaguesNames ( '/soccer/England' );
+	$testName = 'temporarily hardcoded functionality for geting list of English leagues';
+	is_deeply( \@actual, \@expected, $testName );
+
 
 }
 
