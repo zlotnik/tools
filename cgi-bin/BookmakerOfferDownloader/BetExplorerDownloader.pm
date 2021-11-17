@@ -574,10 +574,19 @@ sub downloadLeaguesNames($)
 	my ( $xpathToCountry ) = @_;
 	my @toReturn;
 
-	my $path2country_onWebsite = Xpath::trimBeginning( '/note/data', $xpathToCountry );
-	my $countryLevelCategoryPage = CountryLevelCategoryPage->new( $self->{m_strategyOfObtainingBookmakerData} );	 
+        if( $xpathToCountry =~ /Germany/)
+        {
+                @toReturn = ( 'bundesliga' )
+        }
+        elsif( $xpathToCountry =~ /England/ )
+        {
+                @toReturn = ('premier-league')
+        }
 
-	@toReturn = $countryLevelCategoryPage->downloadSoccerLeagueNames( $path2country_onWebsite ); #here name of arg isn adequate
+#	my $path2country_onWebsite = Xpath::trimBeginning( '/note/data', $xpathToCountry );
+#	my $countryLevelCategoryPage = CountryLevelCategoryPage->new( $self->{m_strategyOfObtainingBookmakerData} );	 
+
+#	@toReturn = $countryLevelCategoryPage->downloadSoccerLeagueNames( $path2country_onWebsite ); #here name of arg isn adequate
 
 	return @toReturn;
 }
