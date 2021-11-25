@@ -99,6 +99,7 @@ sub transcriptSingleWord($)
 	$wordToTrascript = lc( $wordToTrascript);
 	chomp($wordToTrascript);
 	$wordToTrascript =~ s/,//;
+	$wordToTrascript =~ s/\.//;
 
 	my $commandToDownloadSite = "curl https://dictionary.cambridge.org/dictionary/english/${wordToTrascript} 2>/dev/null";
 	my $downladedSite = `$commandToDownloadSite`;
